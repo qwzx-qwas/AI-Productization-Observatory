@@ -1,0 +1,55 @@
+version: v0
+source_of_truth: hand_maintained_artifact
+assignment_policy:
+  target_type: product
+  primary_must_be_unique: true
+  secondary_optional: true
+  l1_required_when_classifiable: true
+  l2_optional_in_v0: true
+  unresolved_code: unresolved
+nodes:
+  - code: JTBD_CONTENT
+    level: 1
+    parent_code: null
+    label: Content Creation And Editing
+    zh_label: 内容生成与编辑
+  - code: JTBD_KNOWLEDGE
+    level: 1
+    parent_code: null
+    label: Knowledge Search And Q&A
+    zh_label: 知识检索与问答
+  - code: JTBD_PRODUCTIVITY_AUTOMATION
+    level: 1
+    parent_code: null
+    label: Workflow Automation
+    zh_label: 工作流与效率自动化
+  - code: JTBD_DEV_TOOLS
+    level: 1
+    parent_code: null
+    label: Developer Tools
+    zh_label: 开发者工具
+  - code: JTBD_DATA_ANALYTICS
+    level: 1
+    parent_code: null
+    label: Data Analysis And BI
+    zh_label: 数据分析与商业洞察
+  - code: JTBD_MARKETING_GROWTH
+    level: 1
+    parent_code: null
+    label: Marketing And Growth
+    zh_label: 营销与增长
+  - code: JTBD_SALES_SUPPORT
+    level: 1
+    parent_code: null
+    label: Sales And Customer Support
+    zh_label: 销售与客户支持
+  - code: JTBD_DESIGN_PRESENTATION
+    level: 1
+    parent_code: null
+    label: Design And Presentation
+    zh_label: 设计与展示表达
+  - code: JTBD_OTHER_VERTICAL
+    level: 1
+    parent_code: null
+    label: Vertical Or Specialized Domain
+    zh_label: 垂直场景与专业领域

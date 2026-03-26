@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "review_packet",
+  "type": "object",
+  "required": [
+    "target_summary",
+    "issue_type",
+    "current_auto_result",
+    "related_evidence",
+    "conflict_point",
+    "recommended_action",
+    "upstream_downstream_links"
+  ],
+  "properties": {
+    "target_summary": {"type": "string"},
+    "issue_type": {"type": "string"},
+    "current_auto_result": {"type": "object"},
+    "related_evidence": {"type": "array"},
+    "conflict_point": {"type": "string"},
+    "recommended_action": {"type": "string"},
+    "upstream_downstream_links": {"type": "array"}
+  },
+  "additionalProperties": false
+}

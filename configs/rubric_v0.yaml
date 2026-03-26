@@ -1,0 +1,72 @@
+version: v0
+source_of_truth: hand_maintained_artifact
+band_scale:
+  - high
+  - medium
+  - low
+scores:
+  - score_type: build_evidence_score
+    phase1_status: required
+    output_mode: band
+    applicable_when: always
+    null_policy: not_allowed
+  - score_type: need_clarity_score
+    phase1_status: required
+    output_mode: band
+    applicable_when: always
+    null_policy: not_allowed
+  - score_type: attention_score
+    phase1_status: required
+    output_mode: raw_plus_normalized_plus_band
+    applicable_when: source_metrics_available_and_metric_definition_exists
+    null_policy: allowed_with_reason
+    stability_validation_status: frozen_defaults_not_yet_validated
+    explicit_null_exposure_required: true
+    formula: source_metric_registry_plus_percentile_within_source_and_window
+    metric_registry: source_metric_registry_v4
+    metric_selection_policy: native_metric_then_registered_proxy_then_null
+    proxy_semantics_constraint: same_latent_semantics_only
+    normalization_scope:
+      - same_source_id
+      - same_relation_type
+    percentile_tie_handling: mid_rank
+    benchmark_policy: source_defined_expand_window_then_null
+    benchmark_windows:
+      primary_window_days: 30
+      fallback_window_days: 90
+    min_sample_size: 30
+    band_thresholds:
+      high_gte: 0.80
+      medium_gte: 0.40
+      low_lt: 0.40
+    calibration_review_gate:
+      min_completed_weekly_cycles: 6
+      min_candidates_per_source_relation_type_in_primary_window: 200
+      required_observed_data:
+        - null_rate
+        - band_distribution
+        - review_data
+      default_first_adjustment_if_null_rate_high: lower_min_sample_size_to_20_before_band_change
+    insufficient_sample_behavior: normalized_and_band_null
+    null_reasons:
+      - source_metrics_unavailable
+      - metric_definition_unavailable
+      - metric_semantics_mismatch
+      - window_benchmark_unavailable
+      - benchmark_sample_insufficient
+    unsupported_methods:
+      - learned_optimal_weights
+      - age_decay
+      - velocity_adjustment
+      - bayesian_smoothing
+      - cross_source_aggregation
+  - score_type: commercial_score
+    phase1_status: optional
+    output_mode: band_or_null
+    applicable_when: homepage_or_pricing_evidence_available
+    null_policy: allowed_with_reason
+  - score_type: persistence_score
+    phase1_status: reserved
+    output_mode: reserved
+    applicable_when: repeated_observations_available_and_enabled
+    null_policy: allowed_with_reason

@@ -1,0 +1,41 @@
+version: prompt_routing_v1
+source_of_truth: hand_maintained_artifact
+provider_contract_status: frozen_abstract_capability
+vendor_binding_status: provisional_default
+vendor_selection_trigger: fixture_eval_after_minimum_extractor_profiler_classifier_suite
+evidence_schema_artifact_policy: inline_until_trigger
+evidence_schema_artifact_triggers:
+  - first_extractor_implementation_lands
+  - first_ci_schema_validation_or_contract_test
+  - second_independent_module_reuses_evidence_schema
+routes:
+  - route_id: route_evidence_extractor_v1
+    module_name: Evidence Extractor
+    execution_mode: llm_optional_rule_first
+    primary_engine: llm_structured_json
+    fallback_engine: rule_only
+    requires_schema_validation: true
+  - route_id: route_product_profiler_v1
+    module_name: Product Profiler
+    execution_mode: llm_structured_json
+    primary_engine: llm_structured_json
+    fallback_engine: review_only
+    requires_schema_validation: true
+  - route_id: route_taxonomy_classifier_v1
+    module_name: Taxonomy Classifier
+    execution_mode: llm_or_rule
+    primary_engine: llm_structured_json
+    fallback_engine: rule_only
+    requires_schema_validation: true
+  - route_id: route_score_engine_v1
+    module_name: Score Engine
+    execution_mode: rule_plus_llm_optional
+    primary_engine: hybrid_rule_llm
+    fallback_engine: rule_only
+    requires_schema_validation: true
+  - route_id: route_review_packet_builder_v1
+    module_name: Review Packet Builder
+    execution_mode: rule_plus_template
+    primary_engine: rule_template
+    fallback_engine: rule_template
+    requires_schema_validation: true

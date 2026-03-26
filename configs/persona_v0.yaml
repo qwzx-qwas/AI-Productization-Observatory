@@ -1,0 +1,20 @@
+version: persona_v0
+source_of_truth: hand_maintained_artifact
+codes:
+  - developer
+  - creator
+  - marketer
+  - sales_rep
+  - support_agent
+  - analyst
+  - operator
+  - founder
+  - designer
+  - researcher
+  - student_educator
+  - recruiter_hr
+  - healthcare_professional
+  - legal_professional
+  - finance_professional
+  - general_business_user
+  - unknown

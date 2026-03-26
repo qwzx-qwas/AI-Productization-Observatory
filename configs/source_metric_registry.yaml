@@ -1,0 +1,73 @@
+version: source_metric_registry_v4
+source_of_truth: hand_maintained_artifact
+attention_v1_policy:
+  skeleton_status: frozen_v1
+  window_parameter_status: frozen
+  threshold_parameter_status: frozen_for_v1_with_calibration_review
+  stability_validation_status: frozen_defaults_not_yet_validated
+  current_default_is_not_stability_claim: true
+  explicit_null_exposure_required: true
+  relation_type_level_calibration_claim_allowed: false
+  frozen_parameters:
+    primary_window_days: 30
+    fallback_window_days: 90
+    min_sample_size: 30
+    band_thresholds:
+      high_gte: 0.80
+      medium_gte: 0.40
+      low_lt: 0.40
+  calibration_review_gate:
+    min_completed_weekly_cycles: 6
+    min_candidates_per_source_relation_type_in_primary_window: 200
+    required_observed_data:
+      - null_rate
+      - band_distribution
+      - review_data
+    default_first_adjustment_if_null_rate_high: lower_min_sample_size_to_20_before_band_change
+    band_change_only_if_distribution_health_checks_not_jointly_met:
+      attention_null_rate_lte: 0.35
+      high_share_between:
+        - 0.10
+        - 0.30
+      medium_share_between:
+        - 0.30
+        - 0.60
+      low_share_between:
+        - 0.20
+        - 0.50
+  monitoring_metrics:
+    - attention_null_rate
+    - band_distribution_by_source
+    - delta_between_30d_and_90d_results
+    - high_attention_review_dispute_rate
+    - sample_size_distribution_by_source_and_relation_type
+  source_window_override_policy: no_source_specific_override_in_phase1
+definitions:
+  - source_id: src_product_hunt
+    metric_semantics: attention
+    primary_metric: vote_count
+    proxy_formula: null
+    proxy_weights: null
+    metric_definition_version: attention_metric_v1
+    fallback_policy:
+      benchmark_scope:
+        - same_source_id
+        - same_relation_type
+      primary_window_policy: source_defined_primary_window
+      fallback_window_policy: expand_window_then_source_defined_fallback_window
+      insufficient_sample_policy: return_null_with_reason
+    human_rationale: vote_count is the default attention metric for Product Hunt in phase1. comment_count and rank stay in current_metrics_json as auxiliary fields and are not mixed into the default attention score.
+  - source_id: src_github
+    metric_semantics: attention
+    primary_metric: star_count
+    proxy_formula: null
+    proxy_weights: null
+    metric_definition_version: attention_metric_v1
+    fallback_policy:
+      benchmark_scope:
+        - same_source_id
+        - same_relation_type
+      primary_window_policy: source_defined_primary_window
+      fallback_window_policy: expand_window_then_source_defined_fallback_window
+      insufficient_sample_policy: return_null_with_reason
+    human_rationale: star_count is the default attention metric for GitHub in phase1. fork_count and watcher_count stay in current_metrics_json as auxiliary fields and are not mixed into the default attention score because they blur attention with adoption or activity semantics.

@@ -1,0 +1,108 @@
+version: source_governance_v4
+source_of_truth: hand_maintained_artifact
+sources:
+  - source_id: src_product_hunt
+    source_code: product_hunt
+    source_name: Product Hunt
+    source_type: launch_platform
+    primary_role: supply_primary
+    enabled: true
+    enabled_in_phase: phase1
+    access_profile:
+      access_method: official_product_hunt_graphql_api
+      update_frequency: weekly
+      expected_entities:
+        - launch_listing
+        - launch_detail
+      auth_required: true
+      incremental_supported: false
+      rate_limit_notes: GraphQL quota is complexity-based; phase1 uses published_at-bounded weekly replay only
+      request_template: published_window_plus_page_or_cursor
+      update_frequency_review_policy:
+        initial_frequency: weekly
+        minimum_completed_weekly_cycles_before_revisit: 6
+        scale_up_requires:
+          - commercial_authorization_confirmed
+          - business_evidence_of_weekly_miss_exists
+      commercial_use_policy:
+        operating_boundary: internal_research_analysis_prototype_only
+        authorization_required_before_business_use: true
+        external_delivery_requires_authorization_or_legal_confirmation: true
+        paid_embedding_requires_authorization_or_legal_confirmation: true
+        raw_or_derived_redistribution_requires_authorization_or_legal_confirmation: true
+        legal_boundary_status: open_pending_formal_business_or_legal_definition
+        higher_limit_default: not_requested_in_phase1
+        higher_limit_triggers:
+          - two_consecutive_weeks_complexity_peak_above_70_percent
+          - two_consecutive_weeks_api_429_ratio_above_1_percent
+          - planned_frequency_above_weekly
+          - historical_backfill_window_over_26_weeks
+    research_profile:
+      why_included: 公开发布侧的 AI 产品化供给信号
+      suitable_for:
+        - 观测近期被公开发布的供给
+        - 补充 launch 和 homepage 线索
+        - 识别发布侧 attention 信号
+      not_suitable_for:
+        - 推断真实需求分布
+        - 推断长期留存
+        - 推断真实市场规模与支付意愿
+      main_bias: 偏可见发布、平台曝光与 launch 行为
+      legal_or_terms_notes: public-read-only by default; Product Hunt API docs state non-commercial use by default and require contacting Product Hunt for business use or higher limit
+      estimated_cost: medium
+      reliability_level: medium
+  - source_id: src_github
+    source_code: github
+    source_name: GitHub
+    source_type: code_hosting_platform
+    primary_role: supply_primary
+    enabled: true
+    enabled_in_phase: phase1
+    access_profile:
+      access_method: official_github_rest_api
+      update_frequency: weekly
+      expected_entities:
+        - repo
+      auth_required: true
+      incremental_supported: true
+      rate_limit_notes: authenticated requests only; search queries have endpoint-specific rate limits and result caps; split slices on cap risk or incomplete_results; use conditional requests on detail endpoints
+      request_template: selection_rule_version_plus_pushed_window_plus_page
+      selection_rule_version_default: github_qsv1
+      selection_rule_extension_policy:
+        main_family_priority: ai_applications_and_products
+        reserve_only_as_separate_candidate_track:
+          - ai_dev_tools
+          - frameworks
+          - sdk
+          - orchestration
+          - eval
+          - agent_framework
+        reopen_condition: reopen_only_if_first_review_shows_application_layer_recall_materially_depends_on_tool_or_framework_terms
+      language_policy:
+        main_query_language: english
+        chinese_query_terms_in_main_family: false
+        reserved_experiment_hook: separate_family_or_experiment_bucket
+        reopen_condition: reopen_only_if_first_english_query_review_shows_clear_high_value_chinese_misses
+      update_frequency_review_policy:
+        initial_frequency: weekly
+        minimum_completed_weekly_cycles_before_revisit: 6
+        scale_up_candidate_frequency: twice_weekly
+        scale_up_requires_all_for_4_consecutive_weeks:
+          - no_unresolved_incomplete_results
+          - no_continuous_429_or_secondary_rate_limit
+          - search_quota_peak_below_50_percent
+          - review_backlog_below_50
+    research_profile:
+      why_included: 公开实现侧的 AI 产品化供给信号
+      suitable_for:
+        - 观测 repo 级实现与开源供给
+        - 补充 README 和 topics 线索
+        - 识别实现侧 build evidence
+      not_suitable_for:
+        - 推断真实商业成功
+        - 代表完整封闭源供给
+        - 推断真实支付意愿
+      main_bias: 偏公开仓库、开源实现与可见 build 轨迹
+      legal_or_terms_notes: must comply with GitHub Terms and REST API rate limits; authenticated serial requests required; stop and back off when rate-limited
+      estimated_cost: low_to_medium
+      reliability_level: high

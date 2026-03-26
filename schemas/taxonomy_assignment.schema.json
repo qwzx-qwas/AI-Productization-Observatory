@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "taxonomy_assignment",
+  "type": "object",
+  "required": [
+    "target_type",
+    "target_id",
+    "taxonomy_version",
+    "label_level",
+    "label_role",
+    "category_code",
+    "rationale",
+    "assigned_by",
+    "model_or_rule_version",
+    "assigned_at",
+    "evidence_refs_json"
+  ],
+  "properties": {
+    "target_type": {"type": "string"},
+    "target_id": {"type": "string"},
+    "taxonomy_version": {"type": "string"},
+    "label_level": {"type": "integer"},
+    "label_role": {"type": "string"},
+    "category_code": {"type": "string"},
+    "confidence": {"type": ["number", "null"]},
+    "rationale": {"type": "string"},
+    "assigned_by": {"type": "string"},
+    "model_or_rule_version": {"type": "string"},
+    "assigned_at": {"type": "string"},
+    "is_override": {"type": ["boolean", "null"]},
+    "override_review_issue_id": {"type": ["string", "null"]},
+    "result_status": {"type": ["string", "null"]},
+    "effective_from": {"type": ["string", "null"]},
+    "supersedes_assignment_id": {"type": ["string", "null"]},
+    "evidence_refs_json": {"type": "array"}
+  },
+  "additionalProperties": false
+}

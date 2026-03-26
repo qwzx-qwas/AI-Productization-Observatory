@@ -1,0 +1,42 @@
+version: review_rules_v1
+source_of_truth: hand_maintained_artifact
+priority_system:
+  - P0
+  - P1
+  - P2
+  - P3
+issue_types:
+  - entity_merge_uncertainty
+  - taxonomy_low_confidence
+  - taxonomy_conflict
+  - score_conflict
+  - suspicious_result
+resolution_actions:
+  - confirm_auto_result
+  - override_auto_result
+  - mark_unresolved
+  - reject_issue
+  - needs_more_evidence
+queue_buckets:
+  - queue_bucket: high_impact_merge
+    when:
+      issue_type: entity_merge_uncertainty
+      priority_code: P0
+  - queue_bucket: taxonomy_conflict
+    when:
+      issue_type: taxonomy_conflict
+  - queue_bucket: score_conflict
+    when:
+      issue_type:
+        - score_conflict
+        - suspicious_result
+  - queue_bucket: low_confidence_backlog
+    when:
+      issue_type: taxonomy_low_confidence
+  - queue_bucket: stale_followup
+    when:
+      stale: true
+maker_checker_required_for:
+  - P0 taxonomy override
+  - P0 score override
+  - P0 entity merge or split

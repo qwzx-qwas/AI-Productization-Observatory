@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "score_component",
+  "type": "object",
+  "required": [
+    "score_type",
+    "rationale",
+    "evidence_refs_json"
+  ],
+  "properties": {
+    "score_type": {"type": "string"},
+    "raw_value": {},
+    "normalized_value": {"type": ["number", "null"]},
+    "band": {"type": ["string", "null"]},
+    "rationale": {"type": "string"},
+    "evidence_refs_json": {"type": "array"}
+  },
+  "additionalProperties": false
+}

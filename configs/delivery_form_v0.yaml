@@ -1,0 +1,16 @@
+version: delivery_form_v0
+source_of_truth: hand_maintained_artifact
+codes:
+  - chat_assistant
+  - web_app
+  - browser_extension
+  - api_sdk
+  - copilot_plugin
+  - workflow_agent
+  - dashboard_workspace
+  - editor_canvas
+  - template_pack
+  - embedded_widget
+  - bot_integration
+  - cli_tool
+  - unknown

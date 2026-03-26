@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "product_profile",
+  "type": "object",
+  "required": [
+    "product_id",
+    "profile_version",
+    "evidence_refs_json",
+    "extracted_at",
+    "extracted_by"
+  ],
+  "properties": {
+    "product_id": {"type": "string"},
+    "profile_version": {"type": "string"},
+    "one_sentence_job": {"type": ["string", "null"]},
+    "primary_persona_code": {"type": ["string", "null"]},
+    "delivery_form_code": {"type": ["string", "null"]},
+    "summary": {"type": ["string", "null"]},
+    "evidence_refs_json": {"type": "array"},
+    "extracted_at": {"type": "string"},
+    "extracted_by": {"type": "string"}
+  },
+  "additionalProperties": false
+}

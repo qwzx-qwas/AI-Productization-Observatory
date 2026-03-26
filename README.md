@@ -1,1 +1,122 @@
-# AI-Productization-Observatory
+# AI Productization Observatory
+
+AI Productization Observatory 是一个面向公开网络、可持续运行、偏差可解释的 AI 产品化供给观测系统。
+
+它当前不是“真实需求探测器”，而是用于回答：
+
+- 最近 30 / 90 天哪些 JTBD 被高频产品化
+- 这些结果来自哪些 source item
+- 为什么某个 product 被归到某个 taxonomy
+- build evidence / clarity / attention 为什么这样判定
+
+## 先看哪些文档
+
+首次进入本仓库，按以下顺序建立上下文：
+
+1. [document_overview.md](/mnt/d/APO/AI-Productization-Observatory/document_overview.md)
+2. [00_project_definition.md](/mnt/d/APO/AI-Productization-Observatory/00_project_definition.md)
+3. [02_domain_model_and_boundaries.md](/mnt/d/APO/AI-Productization-Observatory/02_domain_model_and_boundaries.md)
+4. [08_schema_contracts.md](/mnt/d/APO/AI-Productization-Observatory/08_schema_contracts.md)
+5. [09_pipeline_and_module_contracts.md](/mnt/d/APO/AI-Productization-Observatory/09_pipeline_and_module_contracts.md)
+6. [10_prompt_and_model_routing_contracts.md](/mnt/d/APO/AI-Productization-Observatory/10_prompt_and_model_routing_contracts.md)
+7. [16_repo_structure_and_module_mapping.md](/mnt/d/APO/AI-Productization-Observatory/16_repo_structure_and_module_mapping.md)
+8. [17_open_decisions_and_freeze_board.md](/mnt/d/APO/AI-Productization-Observatory/17_open_decisions_and_freeze_board.md)
+9. [19_ai_context_allowlist_and_exclusion_policy.md](/mnt/d/APO/AI-Productization-Observatory/19_ai_context_allowlist_and_exclusion_policy.md)
+
+不要把以下文件当作当前实现主规范：
+
+- `docs/history/*`
+- `phase0_prompt.md`
+
+做 AI coding 时，默认上下文白名单 / 黑名单统一见：
+
+- [19_ai_context_allowlist_and_exclusion_policy.md](/mnt/d/APO/AI-Productization-Observatory/19_ai_context_allowlist_and_exclusion_policy.md)
+
+做历史回顾或文档治理时，统一从以下索引进入：
+
+- [docs/history/README.md](/mnt/d/APO/AI-Productization-Observatory/docs/history/README.md)
+
+## 目录结构
+
+- `configs/`
+  - 机器可读配置 artifact
+- `schemas/`
+  - 机器可读 JSON schema artifact
+- `10_prompt_specs/`
+  - prompt 套件片段
+- `src/`
+  - 代码模块落点
+- `fixtures/`
+  - 测试 fixture
+- `gold_set/`
+  - gold set 与标注产物
+- 根目录 `*.md`
+  - 领域规范与治理文档
+
+更细的目录映射见：
+
+- [16_repo_structure_and_module_mapping.md](/mnt/d/APO/AI-Productization-Observatory/16_repo_structure_and_module_mapping.md)
+
+runtime task / replay 细则见：
+
+- [18_runtime_task_and_replay_contracts.md](/mnt/d/APO/AI-Productization-Observatory/18_runtime_task_and_replay_contracts.md)
+
+## 常用命令
+
+当前仓库仍以文档与 artifact 冻结为主，代码模块尚未落成。
+
+建议常用命令：
+
+```bash
+rg --files -g '*.md'
+rg --files configs schemas 10_prompt_specs
+```
+
+后续实现命令约定将补充到：
+
+- [16_repo_structure_and_module_mapping.md](/mnt/d/APO/AI-Productization-Observatory/16_repo_structure_and_module_mapping.md)
+
+## 当前实现状态
+
+- 文档治理总控页：已补齐
+- prompt / routing contracts：已补齐
+- schema/config artifact：已从空壳补为最小可用版本
+- repo 结构映射：已补齐
+- 冻结板：已补齐
+- 代码实现：尚未开始
+
+## 当前 blocker
+
+当前 blocker 统一见：
+
+- [17_open_decisions_and_freeze_board.md](/mnt/d/APO/AI-Productization-Observatory/17_open_decisions_and_freeze_board.md)
+
+其中最关键的是：
+
+- 当前冻结板中已不存在 `blocking = yes` 且 `status != frozen` 的条目
+- attention v1 当前参数已冻结为：`30d / 90d` benchmark windows、`min_sample_size = 30`、`high >= 0.80`、`medium >= 0.40 and < 0.80`、`low < 0.40`
+- 上述 attention v1 只是当前冻结默认值，不是已被运行验证稳定的结论
+- GitHub `selection_rule_version` 首版已冻结为 `github_qsv1`
+- 其余 blocker 以 [17_open_decisions_and_freeze_board.md](/mnt/d/APO/AI-Productization-Observatory/17_open_decisions_and_freeze_board.md) 的 `blocking` / `status` 为准
+
+是否仍为阻塞项，以 [17_open_decisions_and_freeze_board.md](/mnt/d/APO/AI-Productization-Observatory/17_open_decisions_and_freeze_board.md) 的 `blocking` / `status` 为准。
+
+## 最近冻结结论
+
+- Product Hunt access method：`official Product Hunt GraphQL API + mandatory token auth`
+- Product Hunt window / incremental：window key = `published_at`；`incremental_supported = false`
+- GitHub access method：`official GitHub REST API + mandatory token auth + conditional requests preferred`
+- GitHub discovery strategy：`versioned search/repositories query slices + pushed window split-to-exhaustion`
+- GitHub selection rule：`selection_rule_version = github_qsv1`；6 个 query families；固定结构过滤 `is:public fork:false archived:false mirror:false`
+- GitHub next family expansion：主路径继续优先 `AI 应用 / 产品`；开发工具 / 框架只保留为独立候选 family 或支线
+- GitHub query language：主 family 继续 `English only`；中文仅预留为独立实验入口
+- GitHub watermark：逻辑键 `pushed_at + external_id`；技术 checkpoint 为 `query_slice_id + page/link`
+- Product Hunt watermark：逻辑键 `published_at + external_id`；技术 checkpoint 为上游 pagination cursor
+- GitHub README excerpt：冻结为 `8000` 个规范化字符，完整 README 继续保留在 raw payload
+- attention：冻结 v1 骨架与参数 `30d / 90d + min_sample_size 30 + 0.80 / 0.40 bands`；这是当前冻结默认值，不是已验证稳定结论；首版允许显式 `null`，仅在正式校准 gate 后复核
+- source frequency：Product Hunt 与 GitHub 首版都保持 `weekly`
+- Product Hunt boundary：当前运行边界是 `internal research / analysis / prototype validation`；若未来涉及外部交付、付费嵌入或原始/派生数据再分发，需额外授权或法务确认；正式法律边界仍 open
+- raw retention：审计元数据 `24` 个月；raw payload / raw README `30d` 热存、`180d` 冷存、`180d` 后删除；例外 `365d`；默认值不延长，但保留 policy override 入口
+- v0 runtime profile：冻结为 Python + PostgreSQL-compatible + S3-compatible + cron/systemd + DB task table + pull worker + `local_only/single_vps` 优先
+- provider / routing：冻结抽象能力契约；vendor binding 仍为 provisional default
+- evidence schema：保持 inline，待触发条件满足后再提升为独立 artifact

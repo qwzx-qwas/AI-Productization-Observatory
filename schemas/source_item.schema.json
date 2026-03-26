@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "source_item",
+  "type": "object",
+  "required": [
+    "raw_id",
+    "source_id",
+    "external_id",
+    "first_observed_at",
+    "latest_observed_at",
+    "normalization_version"
+  ],
+  "properties": {
+    "raw_id": {"type": "string", "minLength": 1},
+    "source_id": {"type": "string", "minLength": 1},
+    "external_id": {"type": "string", "minLength": 1},
+    "canonical_url": {"type": ["string", "null"]},
+    "linked_homepage_url": {"type": ["string", "null"]},
+    "linked_repo_url": {"type": ["string", "null"]},
+    "title": {"type": ["string", "null"]},
+    "author_name": {"type": ["string", "null"]},
+    "author_handle": {"type": ["string", "null"]},
+    "published_at": {"type": ["string", "null"]},
+    "raw_text_excerpt": {"type": ["string", "null"]},
+    "current_summary": {"type": ["string", "null"]},
+    "current_metrics_json": {"type": ["object", "null"]},
+    "topics": {"type": ["array", "null"], "items": {"type": "string"}},
+    "language": {"type": ["string", "null"]},
+    "item_status": {"type": ["string", "null"]},
+    "first_observed_at": {"type": "string"},
+    "latest_observed_at": {"type": "string"},
+    "normalization_version": {"type": "string"}
+  },
+  "additionalProperties": false
+}
