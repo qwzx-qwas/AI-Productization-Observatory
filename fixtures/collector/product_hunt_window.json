@@ -1,0 +1,61 @@
+{
+  "fixture_version": "collector_product_hunt_v1",
+  "source_id": "src_product_hunt",
+  "source_code": "product_hunt",
+  "window_start": "2026-03-01T00:00:00Z",
+  "window_end": "2026-03-08T00:00:00Z",
+  "watermark_before": {
+    "window_key": "published_at",
+    "published_at": "2026-03-01T00:00:00Z",
+    "external_id": "ph_seed_0000"
+  },
+  "request_params": {
+    "first": 2,
+    "postedAfter": "2026-03-01T00:00:00Z",
+    "postedBefore": "2026-03-08T00:00:00Z"
+  },
+  "items": [
+    {
+      "external_id": "ph_1001",
+      "name": "Desk Research Copilot",
+      "tagline": "Turn scattered notes into product briefs.",
+      "description": "AI assistant for turning interviews into launch-ready product briefs and crisp customer summaries.",
+      "product_url": "https://www.producthunt.com/posts/desk-research-copilot",
+      "website_url": "https://deskresearch.example.com",
+      "maker_name": "A. Chen",
+      "maker_handle": "achen",
+      "topics": [
+        "research",
+        "ai"
+      ],
+      "language": "en",
+      "metrics": {
+        "votes_count": 128,
+        "comments_count": 14
+      },
+      "published_at": "2026-03-03T09:00:00Z",
+      "status": "featured"
+    },
+    {
+      "external_id": "ph_1002",
+      "name": "Sprint QA Agent",
+      "tagline": "Regression smoke tests for fast-moving teams.",
+      "description": "Runs deterministic QA checks on every staging build and turns flaky reports into concise review packets.",
+      "product_url": "https://www.producthunt.com/posts/sprint-qa-agent",
+      "website_url": "https://sprintqa.example.com",
+      "maker_name": "M. Rivera",
+      "maker_handle": "mrivera",
+      "topics": [
+        "quality-assurance",
+        "agents"
+      ],
+      "language": "en",
+      "metrics": {
+        "votes_count": 96,
+        "comments_count": 9
+      },
+      "published_at": "2026-03-05T18:30:00Z",
+      "status": "launched"
+    }
+  ]
+}

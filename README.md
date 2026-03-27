@@ -63,18 +63,30 @@ runtime task / replay 细则见：
 
 ## 常用命令
 
-当前仓库仍以文档与 artifact 冻结为主，代码模块尚未落成。
-
-建议常用命令：
+当前仓库已经补到“最小可运行骨架”状态，常用命令如下：
 
 ```bash
-rg --files -g '*.md'
-rg --files configs schemas 10_prompt_specs
+make install
+make lint
+make test
+make validate-schemas
+make validate-configs
+make replay-window SOURCE=product_hunt WINDOW=2026-03-01..2026-03-08
+make build-mart-window
 ```
 
-后续实现命令约定将补充到：
+等价 CLI：
 
-- [16_repo_structure_and_module_mapping.md](16_repo_structure_and_module_mapping.md)
+```bash
+python3 -m src.cli --help
+python3 -m src.cli install
+python3 -m src.cli replay-window --source product_hunt --window 2026-03-01..2026-03-08
+python3 -m src.cli build-mart-window
+```
+
+`make install` 当前执行的是本地 bootstrap：创建 `.runtime/` 目录、校验最小运行前提，不强依赖系统 `pip` 是否可用。
+
+本地默认配置由 [`.env.example`](.env.example) 提供，未显式设置时会回退到仓库内 `configs/`、`schemas/`、`fixtures/` 与 `.runtime/`。
 
 ## 当前实现状态
 
@@ -83,7 +95,10 @@ rg --files configs schemas 10_prompt_specs
 - schema/config artifact：已从空壳补为最小可用版本
 - repo 结构映射：已补齐
 - 冻结板：已补齐
-- 代码实现：尚未开始
+- 代码实现：已补齐最小可运行骨架
+- fixture replay：已打通 `product_hunt fixture -> raw -> source_item`
+- mart skeleton：已打通 `effective result -> mart`
+- gold set：仍为 `stub`，等待双标 + adjudication 样本
 
 ## 当前 blocker
 

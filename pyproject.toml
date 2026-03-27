@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-productization-observatory"
+version = "0.1.0"
+description = "Minimal runnable baseline for the AI Productization Observatory."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "PyYAML>=6.0",
+  "jsonschema>=4.10",
+]
+
+[project.scripts]
+apo-observatory = "src.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]

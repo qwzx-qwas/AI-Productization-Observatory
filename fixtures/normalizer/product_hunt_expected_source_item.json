@@ -1,0 +1,27 @@
+{
+  "author_handle": "achen",
+  "author_name": "A. Chen",
+  "canonical_url": "https://www.producthunt.com/posts/desk-research-copilot",
+  "current_metrics_json": {
+    "comments_count": 14,
+    "votes_count": 128
+  },
+  "current_summary": "Turn scattered notes into product briefs.",
+  "external_id": "ph_1001",
+  "first_observed_at": "2026-03-03T09:00:00Z",
+  "item_status": "featured",
+  "language": "en",
+  "latest_observed_at": "NON_DETERMINISTIC",
+  "linked_homepage_url": "https://deskresearch.example.com",
+  "linked_repo_url": null,
+  "normalization_version": "product_hunt_v1",
+  "published_at": "2026-03-03T09:00:00Z",
+  "raw_id": "NON_DETERMINISTIC",
+  "raw_text_excerpt": "AI assistant for turning interviews into launch-ready product briefs and crisp customer summaries.",
+  "source_id": "src_product_hunt",
+  "title": "Desk Research Copilot",
+  "topics": [
+    "research",
+    "ai"
+  ]
+}
