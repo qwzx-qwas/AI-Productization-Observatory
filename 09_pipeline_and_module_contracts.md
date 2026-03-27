@@ -57,7 +57,7 @@ last_frozen_version: pipeline_v2
 - extractor / profiler / classifier / scorer：`per_product_batch`
 - mart builder：`per_metric_window_batch`
 
-以上是 v0 建议默认值；最终同步/异步边界和调度粒度仍需人工确认。
+以上默认边界已在本轮人工确认中冻结为 Phase1 current default；若后续需要调整，必须同步回写 `17_open_decisions_and_freeze_board.md` 与相关 ops 文档。
 
 ## 2. Module Contracts
 
@@ -530,8 +530,50 @@ last_frozen_version: pipeline_v2
 - 技术失败只去 `processing_error`
 - 语义不确定只去 `review_issue`
 
-## 5. 当前待人工确认项
+## 5. 本轮人工确认结论
 
-- 哪些模块必须同步执行，哪些允许异步
-- 调度粒度是否固定为 `per-source + per-window`
-- 哪些模块允许自动 replay，哪些必须人工批准
+### 5.1 执行边界与调度主粒度
+
+- 一个模块从“读取输入”到“产出本模块承诺结果并落库”应尽量作为单个连续、可判定成功/失败的执行单元。
+- 当上游模块已稳定写出本模块可消费的输出后，下游模块应以新 task 异步衔接，不应继续在同一调用栈里硬串执行。
+- Phase1 调度与 replay 编排主粒度固定为 `per-source + per-window`。
+- 模块内部仍按本文件已定义的 `run_unit` 执行对象级或 batch 级处理；`per-source + per-window` 是编排主粒度，不替代模块内处理边界。
+
+### 5.2 默认允许自动 replay 的模块
+
+- `Pull Collector`
+  - 允许自动 replay，但仅限同窗 replay，以及“checkpoint 可验证 + window 未变化 + 错误属于 retryable technical failure”时的跨 run 自动 resume。Product Hunt 仍按显式 `published_at` 周窗口 replay；GitHub 仍按 `pushed` 窗口与 versioned query slices 执行，若 `incomplete_results = true` 或未在 cap 内 exhaust，必须继续拆 slice，不得直接把窗口记为成功。
+- `Raw Snapshot Storage`
+  - 允许自动 replay。该层是 append-only 原始事实存储，幂等键已由 `source_id + external_id + content_hash` 定义；重放可产生新的 `crawl_run`，但不得制造重复的完全相同 raw 记录。
+- `Normalizer`
+  - 允许自动 replay。其 contract 已要求“同一 raw + 同一 `normalization_version` 输出等价”，缺失字段只能返回 `null`，不得猜测。
+- `Observation Builder`
+  - 允许自动 replay。`observation` 是 append-only 的时间化事实，不承担 merge 裁决；只要对象强键与去重规则成立，自动 replay 风险可控。
+- `Evidence Extractor`
+  - 允许自动 replay。evidence 必须回链到 snippet 与 `source_url`，同版本可重放，新版本保留历史结果，因此可按版本化重算处理技术失败或同版本回放。
+- `Product Profiler`
+  - 允许自动 replay。其输出是 versioned `product_profile`，且 contract 已要求同版本重放等价，并明确不负责 taxonomy assignment。
+- `Review Packet Builder`
+  - 允许自动 replay，但仅限造单与补单。真正需要人工的是 `review_issue` 的 resolution，而不是 packet 的生成。
+- `Analytics Mart Builder`
+  - 允许自动 replay，并允许窗口重建。mart 只消费当前有效结果，且需支持 late-arriving data 触发的重建，因此属于消费层重算，不属于语义裁决层。
+
+### 5.3 允许自动 replay，但结果生效受人工 gate 约束的模块
+
+- `Entity Resolver`
+  - 允许自动 replay。高置信候选可维持自动 merge 路径，但中低置信候选、P0 merge / split 与其他高影响裁决仍必须经 review / maker-checker 后才能生效。
+- `Taxonomy Classifier`
+  - 允许自动 replay。普通样本可自动分类重放；`taxonomy_low_confidence`、`taxonomy_conflict` 与 P0 taxonomy override 仍必须走 review，且人工 override 优先于自动结果。
+- `Score Engine`
+  - 允许自动 replay。`build_evidence_score`、`need_clarity_score` 等同版本重放应保持稳定；但 `attention_score` 仍受 `human_confirmation_required = true`、attention audit 与高影响 P0 score override maker-checker 约束，自动 replay 不等于自动信任或自动生效。
+
+### 5.4 必须人工批准的模块或场景
+
+- `Definition & Governance Layer` 的版本发布
+  - 配置发布可以重放发布流程，但不属于 worker 自动恢复路径；任何版本 promotion / release 都必须人工批准。
+- 所有高影响 override / adjudication 生效
+  - 包括 P0 taxonomy override、P0 score override、P0 entity merge / split；reviewer 可提出建议，但未经 approver 不得生效。
+- 任何 `blocked replay`
+  - 当 replay basis 不可信、resume state 不安全、跨 run resume 条件不成立、上游未完成或命中未冻结 blocker 时，task 必须停在 `blocked`，等待人工处理或拆成更小安全 task。
+- 任何 source governance 边界变更
+  - 包括 `source contract`、`query strategy`、`selection_rule_version / query family`、`window key`、`frequency` 与 legal boundary 变更；这类事项必须走人工批准的版本发布，不得通过运行时自动 replay 顺带带改。

@@ -13,7 +13,7 @@ depends_on:
   - ERROR-RETRY-POLICY
 supersedes: []
 implementation_ready: true
-last_frozen_version: test_plan_v2
+last_frozen_version: test_plan_v3
 ---
 
 这份文档把“测试怎么做”和“什么算通过”分开。
@@ -154,7 +154,11 @@ attention 相关最小 fixture 还应覆盖：
 ### Gold Set
 
 - `gold_set_300` 用于 taxonomy / clarity / build evidence 评估
-- gold set 应保留 adjudication 结果
+- `gold_set_300` 当前默认要求双标 + adjudication
+- 当前双标通道默认由本地项目使用者与 LLM 构成；后续可扩展为多人标注
+- gold set 应保留双标原始结果、最终 adjudication 结果与裁决理由
+- 初版切分默认使用 `60 / 20 / 20`（train / validation / test）
+- 若样本允许，切分时优先保持 `source` 与 L1 `primary_category_code` 的基本分层一致
 
 ## 3. Test Type 说明
 
@@ -179,16 +183,20 @@ attention 相关最小 fixture 还应覆盖：
 - source_item -> product / observation
 - product -> profile / taxonomy / score
 - effective results -> mart
+- entity / taxonomy / score replay 不得绕过 review gate 或 maker-checker 直接覆盖当前有效结果
 - GitHub `github_qsv1` 六个 query slices 的 request params 可重放且带 `selection_rule_version + query_slice_id`
 - GitHub `search/repositories` slice split on `incomplete_results` / result-cap risk
 - GitHub README normalization + 8000-char excerpt cap
 - Product Hunt `published_at` weekly replay + cursor resume within same window
+- 跨 run 自动 resume 仅允许在 checkpoint 可验证、window 未变化、且错误属于 retryable technical failure；并且必须从 last durable checkpoint 恢复
 - raw payload / raw README 的压缩、去重、热转冷 lifecycle 与例外保留标签不破坏 traceability
 
 ### Regression Tests
 
 - same-window rerun
 - partial failure resume
+- 跨 run resume 命中 `schema_drift`、`json_schema_validation_failed`、`parse_failure`、`resume_state_invalid`、`blocked replay` 或治理边界变更时，必须停在人工处理路径
+- blocked replay 只能停留在 `blocked` 或转成更小安全 task，不得被自动提升为成功
 - prompt regression
 - taxonomy regression on gold set
 - mart snapshot regression
@@ -199,6 +207,7 @@ attention 相关最小 fixture 还应覆盖：
 - over-merge case walkthrough
 - unresolved routing walkthrough
 - review writeback walkthrough
+- blocked replay -> 人工批准 / 拆分安全 task -> replay writeback walkthrough
 
 ## 4. CI / CD 触发建议
 
@@ -240,10 +249,17 @@ attention 相关最小 fixture 还应覆盖：
 
 量化 gate：
 
-- rerun reconciliation >= `TBD_HUMAN`
-- merge spot-check precision >= `TBD_HUMAN`
-- review backlog <= `TBD_HUMAN`
-- dashboard reconciliation >= `TBD_HUMAN`
+- rerun reconciliation = `100%`
+- merge spot-check precision >= `0.95`
+- review backlog <= `50`
+- dashboard reconciliation = `100%`
+
+初版测试通过阈值：
+
+- contract tests pass rate = `100%`
+- critical integration tests pass rate = `100%`
+- critical regression tests pass rate = `100%`
+- required manual trace scenarios pass rate = `100%`
 
 ## 6. Manual Audit Sampling Rules
 
@@ -253,24 +269,42 @@ attention 相关最小 fixture 还应覆盖：
 - attention audit：抽查 `source_metric_registry` 默认主指标是否与 source bias / 解释边界一致，且未把 `activity` / `adoption` 信号误混入 attention
 - unresolved audit：抽查 unresolved 是否真的证据不足，而不是模型偷懒
 
-## 7. Owner / Blocking Rules
+## 7. Owner / Merge / Release Rules
 
 - owner：
   - 各模块 owner 负责修复对应测试失败
 - reviewer：
   - 数据质量 reviewer 负责 gold set / manual trace
 - approver：
-  - 阶段 approver 负责 gate sign-off
+  - 阶段 gate sign-off 由项目负责人执行；本项目默认即本地项目使用者
 
-以下失败默认阻塞 merge / release：
+## 8. 已确认的人工结论
+
+- 本项目为个人项目，`merge` 与 `release` 最终由项目负责人自主决定。
+- 下述规则用于辅助判断当前版本的风险与可用性，不替代强制审批流。
+- `merge` 关注“代码逻辑是否基本正确、是否会破坏主干”。
+- `release` 关注“实际使用是否可行、结果是否值得继续用”。
+
+默认不建议 `merge` 的情况：
 
 - contract test 失败
+- critical integration tests 或 critical regression tests 失败
 - same-window rerun 失败
-- dashboard reconciliation 失败
 - core traceability 失败
+- review gate / maker-checker 被绕过，导致高影响 entity / taxonomy / score 结果未经批准直接生效
+- `blocked replay` 未经人工批准被自动放行
+- required manual trace 场景暴露出明显代码错误、逻辑错误或主干回归
 
-## 8. 当前待人工确认项
+默认不建议 `release` 的情况：
 
-- 每类 test 的最终通过阈值
-- gold set 的切分方式
-- 哪些失败阻塞 merge，哪些只阻塞 release
+- 任一不建议 `merge` 的问题仍未解决
+- dashboard reconciliation 不通过
+- 实际使用中发现核心流程不可用
+- taxonomy / score 结果质量明显影响使用价值
+- review backlog 或 processing_error backlog 已影响当前版本可用性
+- manual audit / sampling 表明主报表结果暂不可信
+
+补充说明：
+
+- 若实际风险判断与上述默认规则冲突，以项目负责人对当前版本的人工判断为准。
+- 文档中的 gate / blocker 表述默认按“是否不建议 merge”与“是否不建议 release”两层理解，而非强制团队审批流程。

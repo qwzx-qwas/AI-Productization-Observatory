@@ -80,7 +80,7 @@ last_frozen_version: runtime_profile_v2
 
 ### v0 推荐拓扑
 
-- 单数据库实例
+- 单数据库实例（默认 `PostgreSQL 17`）
 - 单 object store
 - 一个 scheduler 进程
 - 一组通用 worker
@@ -106,7 +106,7 @@ last_frozen_version: runtime_profile_v2
 - backend language:
   - Python 3.12+
 - relational DB:
-  - PostgreSQL-compatible
+  - `PostgreSQL 17`（官方社区版 / PGDG distribution，自托管基线）
 - object storage:
   - S3-compatible object store or local dev equivalent
 - scheduler / worker:
@@ -123,7 +123,9 @@ last_frozen_version: runtime_profile_v2
 说明：
 
 - 上述 profile 已作为 `DEC-007` 的冻结结论回写
-- 具体 dashboard framework、secrets manager 与 vendor 级产品名仍可后续确认
+- `local_only` 与首个 `single_vps` 默认使用同一套自托管 `PostgreSQL 17`
+- 进入 `cloud_managed` 阶段后，可再评估托管 PostgreSQL 产品，但不更换数据库引擎
+- 具体 dashboard framework 与 secrets manager 仍可后续确认
 
 ## 4. Storage Split
 
@@ -208,6 +210,11 @@ last_frozen_version: runtime_profile_v2
 - at-least-once 执行 + idempotent write
 - 同一窗口可 replay
 - partial success 支持 resume
+- task table 默认落在主关系库
+- 默认 `task lease timeout = 30s`
+- worker 必须具备 heartbeat 续租能力，默认每 `10s` 左右续租一次
+- 跨进程自动 reclaim 仅在 lease 已过期、幂等写成立且 compare-and-swap (CAS) 抢占成功时允许
+- 其他 reclaim 进入人工 requeue / 人工确认路径
 
 ## 6. 模型接入层
 
@@ -242,9 +249,11 @@ last_frozen_version: runtime_profile_v2
 
 ### migration 原则
 
+- 默认采用 `forward-only + additive-first`
 - schema 变更走 migration
 - config / taxonomy / rubric / prompt / model routing 变更走 version
 - 新增可空列优先于破坏性改列
+- 破坏性变更优先拆成 `expand -> backfill -> contract`
 - override 与版本化对象不做无痕覆盖
 
 ### migration tooling 要求

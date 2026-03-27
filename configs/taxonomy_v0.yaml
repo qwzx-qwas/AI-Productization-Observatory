@@ -48,6 +48,11 @@ nodes:
     parent_code: null
     label: Design And Presentation
     zh_label: 设计与展示表达
+  - code: JTBD_PERSONAL_CREATIVE
+    level: 1
+    parent_code: null
+    label: Personal Life And Creative Applications
+    zh_label: 个人生活与创意应用
   - code: JTBD_OTHER_VERTICAL
     level: 1
     parent_code: null

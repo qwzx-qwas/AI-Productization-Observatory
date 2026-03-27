@@ -78,7 +78,7 @@ last_frozen_version: governance_v2
 4. 更贴近实现层的 `layer` 优先于更上位的抽象层：
    - `schema` / `pipeline` / `ops` / `consumption` 高于 `blueprint` / `domain`
 5. `implementation_ready = true` 高于 `false`
-6. 若仍冲突且都为 canonical，则视为阻塞项，必须写入 [17_open_decisions_and_freeze_board.md](/mnt/d/APO/AI-Productization-Observatory/17_open_decisions_and_freeze_board.md)，AI 不得自行脑补
+6. 若仍冲突且都为 canonical，则视为阻塞项，必须写入 [17_open_decisions_and_freeze_board.md](17_open_decisions_and_freeze_board.md)，AI 不得自行脑补
 
 补充规则：
 
@@ -140,7 +140,7 @@ last_frozen_version: governance_v2
    - layer：`blueprint`
    - precedence_rank：`20`
    - implementation_ready：`false`
-   - notes：含多项待冻结阈值
+   - notes：阶段 gate 与人工确认结论已补齐；实现仍需结合更低层 contract
    (4) 第 4 行
    - file：`02_domain_model_and_boundaries.md`
    - role：对象边界 / source of truth
@@ -194,7 +194,7 @@ last_frozen_version: governance_v2
    - layer：`domain`
    - precedence_rank：`50`
    - implementation_ready：`false`
-   - notes：可指导分类，不可单独裁决实现
+   - notes：已回写 Phase1 主类补充结论；L2 仍按审阅结果逐步冻结
    (10) 第 10 行
    - file：`05_controlled_vocabularies_v0.md`
    - role：受控词表
@@ -203,7 +203,7 @@ last_frozen_version: governance_v2
    - layer：`domain`
    - precedence_rank：`60`
    - implementation_ready：`true`
-   - notes：受控枚举主规范
+   - notes：受控枚举主规范；本轮已冻结 persona 保持现状、delivery form 扩展与 evidence/source/metric 边界
    (11) 第 11 行
    - file：`06_score_rubric_v0.md`
    - role：rubric 规格
@@ -239,7 +239,7 @@ last_frozen_version: governance_v2
    - layer：`pipeline`
    - precedence_rank：`100`
    - implementation_ready：`true`
-   - notes：实现主规范之一
+   - notes：实现主规范之一；同步/异步边界、调度主粒度与 replay gate 已冻结
    (15) 第 15 行
    - file：`10_prompt_and_model_routing_contracts.md`
    - role：prompt / routing contracts
@@ -266,7 +266,7 @@ last_frozen_version: governance_v2
    - layer：`consumption`
    - precedence_rank：`120`
    - implementation_ready：`true`
-   - notes：主报表与 mart 规范
+   - notes：主报表与 mart 规范；主统计只消费 effective resolved taxonomy，`unresolved` 单独进入 registry / quality 视图
    (18) 第 18 行
    - file：`12_review_policy.md`
    - role：review policy
@@ -275,7 +275,7 @@ last_frozen_version: governance_v2
    - layer：`ops`
    - precedence_rank：`130`
    - implementation_ready：`true`
-   - notes：review 主规范
+   - notes：review 主规范；`unresolved` 分流、候选样本池与 training pool / gold set 分层准入已冻结
    (19) 第 19 行
    - file：`13_error_and_retry_policy.md`
    - role：error / retry
@@ -403,7 +403,7 @@ last_frozen_version: governance_v2
 
 ## Blocking Open Decisions
 
-当前阻塞“完整实现闭环”的未决事项统一以 [17_open_decisions_and_freeze_board.md](/mnt/d/APO/AI-Productization-Observatory/17_open_decisions_and_freeze_board.md) 为准。
+当前阻塞“完整实现闭环”的未决事项统一以 [17_open_decisions_and_freeze_board.md](17_open_decisions_and_freeze_board.md) 为准。
 
 当前状态：
 
@@ -417,7 +417,7 @@ last_frozen_version: governance_v2
 
 ## Default AI Context Policy
 
-默认 AI coding context 白名单见 [19_ai_context_allowlist_and_exclusion_policy.md](/mnt/d/APO/AI-Productization-Observatory/19_ai_context_allowlist_and_exclusion_policy.md)。
+默认 AI coding context 白名单见 [19_ai_context_allowlist_and_exclusion_policy.md](19_ai_context_allowlist_and_exclusion_policy.md)。
 
 最小白名单：
 
@@ -575,7 +575,7 @@ last_frozen_version: governance_v2
   - 放入 `docs/history/legacy/`
 - 历史文档可以保留原始判断与当时上下文
 - 但历史文档不得继续承担当前字段、流程、SQL、JSON contract 的裁决职责
-- 历史文档若引用已缺失旧文件，应统一回链到 [docs/history/README.md](/mnt/d/APO/AI-Productization-Observatory/docs/history/README.md)
+- 历史文档若引用已缺失旧文件，应统一回链到 [docs/history/README.md](docs/history/README.md)
 
 ## Principles
 

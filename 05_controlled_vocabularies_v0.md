@@ -158,7 +158,19 @@ last_frozen_version: vocab_v1
 - `code`: `web_app`
   - `label`: `Web App / Web 应用`
   - `definition`: 以独立网页应用为主要交付形态。
-  - `usage_note`: 默认 web 产品形态。
+  - `usage_note`: 默认 browser-based 产品形态；不包含以独立移动端或桌面客户端为主的产品。
+  - `deprecated`: `false`
+
+- `code`: `mobile_app`
+  - `label`: `Mobile App / 移动应用`
+  - `definition`: 以手机或平板端应用为主要交付形态。
+  - `usage_note`: 当主要消费入口是 iOS / Android 或其他移动端客户端，而非浏览器内 web app 时使用。
+  - `deprecated`: `false`
+
+- `code`: `desktop_app`
+  - `label`: `Desktop App / 桌面应用`
+  - `definition`: 以桌面客户端为主要交付形态。
+  - `usage_note`: 当主要消费入口是 Windows、macOS、Linux 等独立桌面客户端时使用；不包含普通 web app。
   - `deprecated`: `false`
 
 - `code`: `browser_extension`
@@ -403,6 +415,8 @@ v0 先冻结三档：
 
 ## 9. Source Type
 
+`source_type` 当前只冻结跨 source 的平台级通用值；若后续出现业务专用值，应通过新版本受控词表扩展，而不是在运行时自由新增。
+
 - `code`: `launch_platform`
   - `label`: `Launch Platform`
   - `definition`: 以产品发布、榜单、上线展示为主的平台。
@@ -441,6 +455,8 @@ v0 先冻结三档：
 
 ## 10. Primary Role
 
+`primary_role` 当前只冻结跨 source 的角色边界；若后续出现新的治理角色或业务专用角色，应通过新版本扩展。
+
 - `code`: `supply_primary`
   - `label`: `Supply Primary`
   - `definition`: 可进入主统计的供给主源。
@@ -467,6 +483,8 @@ v0 先冻结三档：
 
 ## 11. Metric Semantics
 
+v0 当前只保留 coarse-grained 语义集合；若后续要增加更细分值，必须在新版本中显式扩展并同步回写 score / mart 相关文档。
+
 - `code`: `attention`
   - `label`: `Attention`
   - `definition`: 平台内可见互动或曝光信号。
@@ -485,17 +503,27 @@ v0 先冻结三档：
   - `usage_note`: 不得在未单独定义规则时直接混入 `attention_score`。
   - `deprecated`: `false`
 
-## 12. 占位与人工确认项
+## 12. 本轮人工确认结论
 
-当前仍需人工确认：
+### 12.1 Persona
 
-- persona 清单是否还要进一步收窄或扩展
-- delivery form 最小集合是否要更细或更粗
-- evidence strength 三档命名是否保持 `low / medium / high`
-- source_type / primary_role 是否还要加业务专用值
-- `metric_semantics` 是否需要在后续阶段增加更细分值
+- persona 清单在当前版本保持现状，不新增 `personal_creator`
+- 个人生活 / 创意用途产品相关语义优先由 taxonomy 中的 `JTBD_PERSONAL_CREATIVE` 承担，避免在 persona 维度重复编码
 
-但在 v0 阶段，上述词表已经足以支撑：
+### 12.2 Delivery Form
+
+- delivery form 在当前版本新增 `mobile_app` 与 `desktop_app`
+- `web_app`、`mobile_app`、`desktop_app` 按主要消费入口区分，不互相替代
+
+### 12.3 Evidence / Source / Metric 边界
+
+- `evidence_strength` 三档命名冻结为 `low / medium / high`
+- `source_type` / `primary_role` 保持当前通用边界，不在 v0 引入额外业务专用值
+- `metric_semantics` 继续保持当前粗粒度集合，当前阶段不增加更细分值，但保留后续版本扩展接口
+
+### 12.4 当前覆盖范围
+
+在 v0 阶段，上述词表已经足以支撑：
 
 - `product_profile`
 - `observation.relation_type`
@@ -503,3 +531,9 @@ v0 先冻结三档：
 - `review_issue`
 - `score_component`
 - `source_registry`
+
+### 12.5 数据库落地边界
+
+- 跨文档受控词表的 canonical source 继续是版本化 `configs/*.yaml`
+- schema / runtime 层默认保存 `text code`，当前版本不把这组词表冻结为数据库 enum
+- 若后续需要数据库侧 lookup / join，可增补 reference table 或由 artifact 生成对照表，但不得改变 code 语义

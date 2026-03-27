@@ -44,7 +44,7 @@ last_frozen_version: repo_mapping_v2
 - `src/scoring/`
   - score engine
 - `src/review/`
-  - review packet builder / writeback helpers
+  - review packet builder / writeback helpers / unresolved registry helpers
 - `src/marts/`
   - mart builder / SQL templates
 - `src/runtime/`

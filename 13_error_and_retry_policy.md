@@ -53,9 +53,9 @@ last_frozen_version: error_policy_v1
 - `dependency_unavailable`
 - `resume_state_invalid`
 
-## 3. Retry Matrix (proposed default)
+## 3. Retry Matrix (initial default)
 
-主题：3. Retry Matrix (proposed default)
+主题：3. Retry Matrix (initial default)
 1. 列定义
    (1) 第 1 列：error_type
    (2) 第 2 列：retryable
@@ -125,7 +125,13 @@ last_frozen_version: error_policy_v1
    - note：需要人工处理 run 状态
 
 
-以上 `default_max_retries` 为 proposed default，最终值仍需人工确认。
+以上 `default_max_retries` 当前先作为初版运行值冻结。
+
+补充约束：
+
+- 这组值是 current default，不是最终稳定结论
+- 后续应结合 `429` 比例、恢复成功率、重复失败率和队列积压情况复核
+- 实现时不得把这组值硬编码为不可替换常量
 
 ## 4. Backoff 策略
 
@@ -188,13 +194,15 @@ last_frozen_version: error_policy_v1
 - partial success 必须保留成功结果
 - partial success 不推进最终 watermark
 - resume 必须从最后一个 durable logical watermark 或 durable cursor 继续
-- 不允许跨 run 静默跳过失败段
+- 允许跨 run 自动 resume，但仅限 checkpoint 可验证、window 未变化、且错误属于 retryable technical failure
+- 不允许跨 run 静默跳过失败段；不得跨窗自动推进，也不得把失败段视为已完成
 
 ## 7. Watermark Safety
 
 - only advance watermark when `run_status = success`
 - `partial_success` never commits final `watermark_after`
 - resume must restart from last durable checkpoint
+- 跨 run 自动 resume 不得提前推进 final watermark
 - schema drift / validation failure / parse failure 不得推进 watermark
 
 ### Source-Specific Checkpoint Rules
@@ -223,6 +231,7 @@ last_frozen_version: error_policy_v1
 - 标记 `resolution_status = blocked`
 - 打开 incident
 - 暂停相关 parser path 或 source path
+- `blocked replay`、`resume_state_invalid` 与任何 source governance 边界变更默认要求人工介入，不得自动放行
 
 ## 9. Alerting / Observability
 
@@ -249,8 +258,27 @@ last_frozen_version: error_policy_v1
 - `last_failed_at`
 - `resolution_status`
 
-## 10. 当前待人工确认项
+## 10. 本轮补充结论
 
-- 最大重试次数
-- 哪些错误需要人工告警
-- 是否允许自动 resume 跨 run
+- 以下情况默认需要人工告警 / 介入：
+  - `schema_drift`
+  - watermark 安全规则被破坏
+  - `resume_state_invalid`
+  - 任何 `blocked replay`
+  - 任何 source contract / query strategy / frequency / legal boundary 变更
+
+## 11. 本轮人工确认结论
+
+- 跨 run 自动 resume：有条件允许。
+- 允许条件：
+  - checkpoint 可验证
+  - window 未变化
+  - 错误属于 retryable technical failure
+- 禁止自动跨 run resume 的情况：
+  - `schema_drift`
+  - `json_schema_validation_failed`
+  - `parse_failure`
+  - `resume_state_invalid`
+  - 任何 `blocked replay`
+  - 任何治理边界变更
+- 自动 resume 只能从 last durable checkpoint 继续，不能跳段，不能提前推进 final watermark。

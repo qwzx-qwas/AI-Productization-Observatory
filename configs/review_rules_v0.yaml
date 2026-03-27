@@ -1,4 +1,4 @@
-version: review_rules_v1
+version: review_rules_v2
 source_of_truth: hand_maintained_artifact
 priority_system:
   - P0
@@ -40,3 +40,54 @@ maker_checker_required_for:
   - P0 taxonomy override
   - P0 score override
   - P0 entity merge or split
+unresolved_handling:
+  canonical_source_of_truth:
+    - taxonomy_assignment
+    - score_run
+    - review_issue
+  main_report_policy:
+    scope: effective_resolved_only
+    exclude_category_codes:
+      - unresolved
+  unresolved_registry_view:
+    derived_from:
+      - review_issue
+      - taxonomy_assignment
+    required_fields:
+      - target_id
+      - issue_type
+      - priority_code
+      - resolution_action
+      - review_issue_id
+      - resolution_notes
+      - reviewed_at
+      - is_stale
+      - is_effective_unresolved
+  unresolved_modes:
+    - writeback_unresolved
+    - review_only_unresolved
+sample_pool_rules:
+  candidate_pool:
+    selector: top_10_candidate_samples
+    per_batch_top_limit: 10
+    whitelist_bypass_limit: true
+    required_review_status: closed
+    exclude_effective_category_codes:
+      - unresolved
+    exclude_resolution_actions:
+      - needs_more_evidence
+    ordering:
+      - need_clarity_band_high_first
+      - build_evidence_band_high_second
+      - attention_score_secondary_only
+    whitelist_field: whitelist_reason
+  training_pool:
+    source: candidate_pool
+    require_review_closure: true
+    require_sufficient_evidence: true
+    require_clear_adjudication: true
+    exclude_effective_category_codes:
+      - unresolved
+  gold_set:
+    require_double_annotation: true
+    require_adjudication: true

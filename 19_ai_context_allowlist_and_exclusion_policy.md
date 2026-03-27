@@ -88,4 +88,4 @@ last_frozen_version: ai_context_v1
 - 先读 allowlist 主链
 - 再按任务类型增量补充
 - 只有在做历史回顾、审查或治理时，才允许打开默认排除文档
-- 若需要读取历史材料，统一从 [docs/history/README.md](/mnt/d/APO/AI-Productization-Observatory/docs/history/README.md) 进入，而不是直接把整个历史目录注入默认上下文
+- 若需要读取历史材料，统一从 [docs/history/README.md](docs/history/README.md) 进入，而不是直接把整个历史目录注入默认上下文

@@ -44,6 +44,7 @@ last_frozen_version: runtime_task_v2
 
 - `15_tech_stack_and_runtime.md`
 - `DEC-007`
+- `DEC-022`
 
 安全实现边界：
 
@@ -127,6 +128,9 @@ v0 runtime task 统一覆盖：
 
 ## 4. Claim / Lease Rules
 
+- v0 task table 默认落在主关系库；如后续引入第二套 task 存储，不得改变当前字段语义与状态机 contract
+- 默认 `lease timeout = 30s`
+- heartbeat 为必需能力；worker 持有 lease 时默认每 `10s` 左右续租一次
 - worker claim task 时必须写入：
   - `lease_owner`
   - `lease_expires_at`
@@ -135,6 +139,12 @@ v0 runtime task 统一覆盖：
   - `status = running`
   - `started_at`
 - lease 过期后，其他 worker 才可重新 claim
+- 非过期 lease 不得被其他 worker 抢占
+- 允许跨进程自动 reclaim，但仅限同时满足：
+  - `lease_expires_at` 已过期
+  - 对应 task 的写路径满足 idempotent write contract
+  - 新 worker 通过 compare-and-swap (CAS) 抢占成功
+- 未满足上述条件时，不得自动 reclaim；只能人工 requeue，或由定时扫描发现后进入人工确认路径
 - 不允许多个 worker 同时持有同一 task 的有效 lease
 
 ## 5. Retry / Replay Rules
@@ -159,6 +169,21 @@ v0 runtime task 统一覆盖：
 - Product Hunt pull replay 还必须保留：
   - `payload_json.window_key = published_at`
 
+### replay gating
+
+- Phase1 replay 编排主粒度固定为 `per-source + per-window`；模块内部对象级 / batch 级 `run_unit` 仍按 `09_pipeline_and_module_contracts.md` 执行
+- 自动跨 run resume 仅在 checkpoint 可验证、window 未变化、且错误属于 retryable technical failure 时允许；并且只能从 last durable checkpoint 继续，不得跳段或提前推进 final watermark
+- 以下模块允许自动 replay：
+  - `pull_collect`
+  - `normalize_raw`
+  - `build_observation_batch`
+  - `extract_evidence_batch`
+  - `profile_product_batch`
+  - `build_review_packet`
+  - `build_mart_window`
+- `resolve_entity_batch`、`classify_taxonomy_batch`、`score_product_batch` 允许自动 replay，但命中 review 或 maker-checker 条件的结果不得直接写成当前有效结果
+- `Definition & Governance Layer` 发布流不属于自动 replay 范围；任何 `blocked replay` 也不得自动放行
+
 ## 6. Blocked Task Rules
 
 以下情况进入 `blocked`：
@@ -166,6 +191,7 @@ v0 runtime task 统一覆盖：
 - 命中 `17_open_decisions_and_freeze_board.md` 中 `blocking = yes` 且未冻结的实现点
 - 依赖对象或上游 task 未完成
 - replay basis 不可信
+- 跨 run 自动 resume 条件不成立
 - resume state 无法保证安全
 
 `blocked` task 只能：
@@ -173,6 +199,7 @@ v0 runtime task 统一覆盖：
 - 等待人工冻结
 - 等待依赖完成
 - 重新生成安全范围更小的新 task
+- 不得绕过 review / maker-checker / release approval gate 直接改写当前有效结果
 
 ## 7. Idempotency Guidance
 
@@ -207,9 +234,9 @@ v0 runtime task 统一覆盖：
 - replay / retry helper：
   - `src/runtime/`
 
-## 10. 当前待人工确认项
+## 10. 本轮人工确认结论
 
-- task table 最终是否落在主关系库
-- lease timeout 默认值
-- heartbeat 是否必需
-- 是否允许跨进程自动 reclaim
+- task table 默认落在主关系库；如后续引入第二套存储，只能作为后续演进，不改变当前 contract
+- `task lease timeout = 30s`
+- heartbeat 为必需能力；worker 默认每 `10s` 左右续租一次
+- 允许跨进程自动 reclaim，但仅限于 `lease` 已过期、幂等写成立且 compare-and-swap (CAS) 抢占成功时；其他情况仍走人工 requeue 或定时扫描后的人工确认路径

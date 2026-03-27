@@ -11,7 +11,7 @@ depends_on:
   - PIPELINE-MODULE-CONTRACTS
 supersedes: []
 implementation_ready: true
-last_frozen_version: marts_v2
+last_frozen_version: marts_v3
 ---
 
 这份文档把分析口径写成可执行 contract。
@@ -36,7 +36,7 @@ last_frozen_version: marts_v2
 
 - 主统计单位：`distinct product_id`
 - 主时间字段：`observed_at`
-- 主分类来源：当前有效 `primary taxonomy`
+- 主分类来源：当前有效且已 resolved 的 `primary taxonomy`
 - dashboard 优先消费 mart，不现场拼运行层细表
 
 ## 1. 当前有效结果优先级
@@ -46,7 +46,9 @@ last_frozen_version: marts_v2
 1. 仅考虑 `result_status = 'active'` 的结果
 2. 已生效人工 override / adjudication
 3. 若无人工结果，取最新有效自动结果
-4. 若 `category_code = 'unresolved'` 或缺失，则不进入主分类统计
+4. 当前 effective result 可以是 `unresolved`
+5. 主报表与主分类统计只消费 `effective resolved result`
+6. 若 `category_code = 'unresolved'` 或缺失，则不进入主分类统计
 
 ## 2. 主报表范围规则
 
@@ -55,7 +57,7 @@ last_frozen_version: marts_v2
 - source 已注册且 `enabled = true`
 - source 满足主统计 predicate
 - observation 存在
-- product 存在当前有效 `primary taxonomy`
+- product 存在当前有效且已 resolved 的 `primary taxonomy`
 - 结果不是 `unresolved`
 
 不进入主统计但可进入辅助视图：
@@ -129,7 +131,7 @@ and sr.primary_role = 'supply_primary'
 
 ## 4. Main SQL Contract
 
-### 当前有效 primary taxonomy
+### 当前有效 primary taxonomy（主报表 resolved 口径）
 
 ```sql
 with effective_primary_taxonomy as (
@@ -160,7 +162,8 @@ with effective_primary_taxonomy as (
 - 只读 `result_status = 'active'`
 - `is_override = true` 优先
 - 同级中取最新 `effective_from`
-- 若 `category_code = 'unresolved'`，排除出主统计
+- `category_code = 'unresolved'` 仍可能是当前 effective taxonomy
+- 主报表与主统计必须在消费层显式过滤 `category_code <> 'unresolved'`
 
 ### 当前有效 score
 
@@ -285,8 +288,12 @@ order by product_count desc;
 ### unresolved
 
 - `unresolved` 统一由 `taxonomy_assignment.category_code = 'unresolved'` 表示
-- 排除出 top JTBD 主报表
-- 单独进入 unresolved backlog / quality view
+- 可成为当前 effective taxonomy，但仍排除出 top JTBD 主报表
+- 主报表语义应明确写为 `effective resolved taxonomy`
+- 单独进入 `unresolved_registry_view` / quality view
+- `unresolved_registry_view` 应同时区分：
+  - `writeback unresolved`
+  - `review-only unresolved`
 
 ### review override
 

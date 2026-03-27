@@ -10,7 +10,7 @@ depends_on:
   - SCORE-RUBRIC-V0
 supersedes: []
 implementation_ready: false
-last_frozen_version: annotation_v1
+last_frozen_version: annotation_v2
 ---
 
 这份文档回答“拿到一条样本后，标注员怎么一步步做”。
@@ -146,9 +146,11 @@ last_frozen_version: annotation_v1
 
 ## 6. 双标 / 复核 / Adjudication
 
-### 默认建议
+### 当前运行默认
 
 - `gold_set_300`：双标 + adjudication
+- 当前双标通道默认由本地项目使用者与 LLM 构成
+- 后续若引入更多人工标注员，仍保留双标 + adjudication 接口与状态定义
 - 日常 review：单标 + 仅对冲突项或高影响项进入 adjudication
 
 ### 双标流程
@@ -158,9 +160,14 @@ last_frozen_version: annotation_v1
 3. 系统比对差异
 4. 冲突样本进入 adjudication
 
+补充说明：
+
+- 当前 annotator A / B 默认对应“本地项目使用者 + LLM”两路独立标注
+- `gold_set_300` 的最终可用版本必须保留 adjudication 结果；即使无冲突，也应由 adjudicator 完成最终确认
+
 ### Adjudication 流程
 
-1. adjudicator 先看冲突字段
+1. adjudicator 先看冲突字段或双标确认结果
 2. 回到事实层与 evidence
 3. 只在必要时看派生对象
 4. 给出最终裁决与理由
@@ -195,6 +202,11 @@ review_reason: null
 taxonomy_change_suggestion: null
 ```
 
+补充约束：
+
+- `taxonomy_change_suggestion` 仅用于记录候选规则反馈
+- 该字段不得直接触发 taxonomy 节点改写，必须先经 adjudicator 确认
+
 ## 8. Calibration 示例
 
 ### 示例 A
@@ -222,12 +234,13 @@ taxonomy_change_suggestion: null
 
 ## 9. 标注员权限边界
 
-- 标注员可以提出 taxonomy 改动建议
+- 标注员可以记录 taxonomy 变更候选建议
 - 标注员不直接修改 taxonomy 节点定义
-- taxonomy 建议应进入单独的规则 / 设计回修流程
+- 标注员记录的 taxonomy 建议必须先经 adjudicator 确认，才能进入单独的规则 / 设计回修流程
 
-## 10. 当前待人工确认项
+## 10. 本轮人工确认结论
 
-- 是否所有 gold set 都要求双标
-- 谁担任 adjudicator
-- 标注员是否允许直接提交 taxonomy 节点改动建议
+- `gold_set_300` 当前默认要求双标 + adjudication；当前双标主体为本地项目使用者与 LLM，后续保留扩展到多人标注的接口
+- 当前 adjudicator 默认由本地项目使用者担任；若后续进入多人协作，再拆分为独立角色
+- 标注员可以记录 `taxonomy_change_suggestion` 作为候选备注，但不得直接提交 taxonomy 节点改动；只有经 adjudicator 确认后，才进入规则 / 设计回修流程
+- 候选样本池、training pool 与 `gold_set` 必须分层管理；样本若要进入 `gold_set`，仍必须满足双标 + adjudication，而不能直接沿用 training pool 准入条件

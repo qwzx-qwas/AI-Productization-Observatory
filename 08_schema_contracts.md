@@ -40,9 +40,9 @@ v0 目标：
 
 说明：
 
-- 最终数据库产品仍待人工确认。
-- 本文先采用 PostgreSQL-compatible DDL 作为基线草案。
-- 若后续数据库产品不同，应保留对象边界、强键和审计原则不变。
+- 最终数据库产品冻结为 `PostgreSQL 17`（官方社区版 / PGDG distribution，自托管优先）。
+- 本文采用 `PostgreSQL 17-compatible DDL` 作为 v0 基线。
+- 若后续迁移到托管 PostgreSQL 产品，应保留对象边界、强键和审计原则不变。
 
 ## 1. 全局约定
 
@@ -52,6 +52,13 @@ v0 目标：
 - 时间默认使用 `timestamptz`
 - JSON 容器默认使用 `jsonb`
 - 布尔使用 `boolean`
+
+### ID 生成基线
+
+- 主键默认使用应用层生成的 opaque `text` ID
+- 不把 `serial` / `bigserial` 或数据库 sequence 当作 canonical 跨环境主键依赖
+- 业务幂等继续依赖业务强键与唯一约束，主键不替代业务强键
+- 具体编码格式可在实现层选择，但不得改变字段语义、可回放性与跨环境可迁移性
 
 ### 审计列
 
@@ -72,7 +79,11 @@ v0 目标：
 
 ### migration compatibility notes
 
+- migration 默认采用 `forward-only + additive-first`
 - 新增可空列优先于破坏性改列
+- 破坏性变更应优先拆成 `expand -> backfill -> contract`
+- 若暂时不能安全回滚，必须至少提供明确前滚策略
+- schema diff 与 migration history 必须可追溯
 - 受控词表新增 code 不应破坏旧值
 - deprecated code 保留读兼容
 - 版本化表新增新版本，不批量覆盖旧记录
@@ -82,6 +93,13 @@ v0 目标：
 - prose 层可以使用 `TBD_HUMAN` 描述未冻结事项
 - 机器可读 artifact 与数据库字段在未冻结时统一使用 `null`
 - loader / runner 不得把字面量 `TBD_HUMAN` 当作稳定字段值写入数据库
+
+### 受控词表数据库表达
+
+- 跨文档受控词表的 canonical source 继续是 `configs/*.yaml`
+- 运行层字段默认保存 `text code`，v0 不把这组词表冻结为 PostgreSQL enum
+- v0 不强制所有受控词表先落数据库 reference table
+- 若后续需要数据库侧 join、治理台展示或 artifact 对照，可增补 reference table 或 generated lookup，但不得改变 code 语义
 
 ## 2. 业务强键与版本键
 
@@ -232,6 +250,8 @@ v0 目标：
 
 - 使用 `category_code = 'unresolved'`
 - `result_status` 只表达生命周期：`active | superseded | dismissed`
+- 当前 effective taxonomy 允许是 `unresolved`
+- 主报表、主 mart 或任何要求 resolved 口径的消费层，必须显式过滤 `category_code <> 'unresolved'`
 
 ### score
 
@@ -254,6 +274,28 @@ v0 目标：
 - `approved_at`
 - `maker_checker_required`
 - `resolution_payload_json`
+
+## 2.8 Unresolved Registry Derived Contract
+
+`unresolved_registry_view` 只能从 canonical 对象派生，不得双写另一套 unresolved 事实表。
+
+最小派生字段：
+
+- `target_id`
+- `issue_type`
+- `priority_code`
+- `resolution_action`
+- `review_issue_id`
+- `resolution_notes`
+- `reviewed_at`
+- `is_stale`
+- `is_effective_unresolved`
+
+补充约束：
+
+- `is_effective_unresolved = true` 表示该 unresolved 已通过 writeback 成为当前 effective taxonomy
+- `is_effective_unresolved = false` 表示该记录仍属于 `review-only unresolved`
+- 视图状态来自 `review_issue` 与当前有效 `taxonomy_assignment` 的组合判断，不得单靠任一字段近似代替
 
 ## 3. 最小 DDL
 
@@ -832,10 +874,27 @@ create index idx_processing_error_module_status on processing_error (module_name
 }
 ```
 
-## 8. 当前待人工确认项
+## 8. 本轮人工确认结论
 
-- 最终数据库产品
-- ID 生成方式
-- 是否引入 soft delete
-- migration 风格
-- 是否需要把受控词表做成数据库 enum 还是 reference table
+### 8.1 已冻结项
+
+- 最终数据库产品：`PostgreSQL 17`（官方社区版 / PGDG distribution）；`local_only` 与首个 `single_vps` 默认自托管，进入 `cloud_managed` 阶段后再评估托管 PostgreSQL，但不更换数据库引擎。
+- ID 生成方式：继续采用应用层生成的 opaque `text` ID；业务幂等依赖业务强键与唯一约束，而不是数据库 sequence。
+- soft delete：v0 继续不引入业务层 `soft delete`；append-only 对象通过 retention / lifecycle 管理，失效或废弃通过状态字段表达，不覆盖历史。
+- migration 风格：冻结为 `forward-only + additive-first`；优先新增可空列、回填、切换读路径，再收敛旧结构；默认要求 migration history、schema diff 与明确前滚策略。
+- 受控词表数据库表达：跨文档受控词表继续以 artifact 为 canonical source，数据库字段默认保存 `text code`；v0 不采用 PostgreSQL enum 作为主表达，也不强制所有词表先落 reference table；如后续需要数据库侧对照，可补 reference table / generated lookup。
+
+### 8.2 数据库产品裁决依据
+
+- 项目冻结的不是“关系型还是文档型”，而是已经明确到 `PostgreSQL-compatible`。关系库承担 canonical / governance / review / error / task / mart；raw payload、README 与页面快照继续放在 `S3-compatible object storage`。
+- 当前 schema contract 对 PostgreSQL 能力依赖很具体：`jsonb`、`timestamptz`、外键、`UNIQUE`、`CHECK`、索引、append-only / upsert、effective result 读取规则都已写入 DDL 与约束语义。
+- 核心 workload 是 `append-only + upsert + replay + task table`，运行语义冻结为 `at-least-once + idempotent write`；这要求强事务、可追溯 replay、任务状态机与版本化派生结果，而不是单纯“能存数据”。
+- dashboard 明确优先消费 mart / materialized view，不在前端现场拼细表；这更适合标准 PostgreSQL 基线。
+- 当前推荐演进路径是 `local_only -> single_vps -> cloud_managed`，因此首选产品应优先满足本地开发和首阶段单 VPS 生产化的一致性，而不是为 serverless / managed convenience 提前引入平台绑定。
+- 截至本轮冻结日期，PostgreSQL 官方 current 已进入 18 系列，但 17 仍在官方支持期；v0 先固定 17 作为保守稳定基线，18 升级另立决策，不与当前 schema freeze 绑定。
+
+### 8.3 当前阶段风险与边界
+
+- 最大代价是自托管运维责任在项目侧：备份、恢复、监控、升级窗口与 WAL 策略需要自行建立。
+- 单节点 `single_vps` 有真实上限；若 append-only 历史持续增长、mart 刷新变重或 dashboard 查询显著增多，后续仍可能需要垂直扩容、分区、读副本或迁入托管 PostgreSQL。
+- materialized view / mart 的刷新未来可能成为热点；当前文档只冻结 capability 与读取口径，不预设自动增量数仓能力。

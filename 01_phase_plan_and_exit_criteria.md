@@ -85,11 +85,27 @@ last_frozen_version: unfrozen
 
 ### Phase0 Quantitative Gates
 
-- 复标一致性：`>= TBD_HUMAN`
-- gold set 一级分类表现：`>= TBD_HUMAN`
-- build evidence band 一致性：`>= TBD_HUMAN`
+- 复标一致性：`Krippendorff's alpha >= 0.80`
+- gold set 一级分类表现：`macro-F1 >= 0.85`
+- build evidence band 一致性：`weighted kappa >= 0.70`
 - schema validation 通过率：`100%`
 - 核心契约中的阻塞级 TBD：`0`
+
+指标定义说明：
+
+- `复标一致性` 只统计双标样本的双通道一致性，口径为 `primary_category_code` 的 `Krippendorff's alpha`；当前运行默认通道为“本地项目使用者 + LLM”；不得用简单 accuracy、micro-F1 或 adjudication 后结果替代。
+- `gold set 一级分类表现` 统计候选 prompt / rule / model 在 `gold_set_300` 上对 L1 `primary_category_code` 的表现，口径为 `macro-F1`；`unresolved` 作为受控输出类单独统计，不得与“未出结果”混为一类。
+- `build evidence band 一致性` 只统计 `build_evidence_band` 的双通道一致性；当前运行默认通道为“本地项目使用者 + LLM”；因其为有序等级，口径固定为 `weighted kappa`；不得改用未加权 kappa 或简单一致率。
+- 以上三个 gate 默认都基于冻结版 guideline、taxonomy、rubric 和同一批次样本计算；若任一口径、样本范围或标签集合变更，必须重新记录版本并重算，不得直接与旧结果横向比较。
+- 若后续进入多人标注，应把人工-人工与人工-LLM 指标分开记录，不得混成单一口径直接横向比较。
+
+判定逻辑：
+
+- 三项人工质量 gate 必须同时达标，Phase0 才可进入退出评审。
+- 若 `复标一致性` 未达标，优先回看 annotation guideline、taxonomy 邻近类边界与 adjudication 记录，而不是先调 prompt。
+- 若 `gold set 一级分类表现` 未达标但人工一致性已达标，优先调整 prompt / routing / rule，不应倒推放宽人工 gate。
+- 若 `build evidence band 一致性` 未达标，优先收紧 band 定义、补充正反例，并检查是否存在“证据不足却被强判高 band”的系统性偏差。
+- 不允许通过临时删除难例、缩小标签空间或跳过 `unresolved` 来换取 gate 达标。
 
 ### 退出条件
 
@@ -176,11 +192,30 @@ last_frozen_version: unfrozen
 
 ### Phase1 Quantitative Gates
 
-- 自动 merge 抽检精度：`>= TBD_HUMAN`
-- 同窗口 rerun reconciliation 通过率：`>= TBD_HUMAN`
-- review backlog 上限：`<= TBD_HUMAN`
-- dashboard reconciliation 通过率：`>= TBD_HUMAN`
-- 阻塞级 processing error 未清项：`<= TBD_HUMAN`
+- 自动 merge 抽检精度：`precision >= 0.95`
+- 同窗口 rerun reconciliation 通过率：`100%`
+- review backlog 上限：`<= 50`
+- dashboard reconciliation 通过率：`100%`
+- 阻塞级 processing error 未清项：`0`
+
+指标定义说明：
+
+- `自动 merge 抽检精度` 只统计进入自动 merge 的样本，口径为人工抽检后的 `precision`；不得用 recall、F1 或“全部候选对上的准确率”替代。抽检必须优先覆盖高影响 merge、跨 source merge 和高相似度边界样本。
+- `同窗口 rerun reconciliation 通过率` 统计同一输入窗口、同一配置版本、同一规则版本下 rerun 后的对账检查通过情况，口径固定为“预定义 reconciliation checks 全通过占比”；v0 默认要求 `100%`，不得改为允许少量漂移的近似通过率。
+- `review backlog 上限` 统计当前仍处于 open / pending 状态且需要人工处理的 `review_issue` 总量；默认按全队列总量计算，不只看单一 bucket。
+- `dashboard reconciliation 通过率` 统计 dashboard 消费层指标与 mart / materialized view 之间预定义对账检查的通过情况，口径固定为“预定义 reconciliation checks 全通过占比”；不得用人工目测一致或抽样对账替代。
+- `阻塞级 processing error 未清项` 只统计 blocker severity 且尚未 closed / resolved 的 `processing_error` 数量；warning 或可重试但未越过阻塞标准的问题不计入该 gate。
+- 以上五个 gate 都必须绑定明确的 run id、window、规则版本与样本/对象范围；若口径、窗口或优先级分桶发生变化，必须以新版本重记，不得与旧结果直接拼接比较。
+
+判定逻辑：
+
+- 五项 gate 必须同时满足，Phase1 才可进入退出评审。
+- 若 `自动 merge 抽检精度` 未达标，优先收紧 auto-merge 阈值、扩大 review 覆盖，必要时暂停高风险 merge 自动化，而不是先提高抽检容忍度。
+- 若 `同窗口 rerun reconciliation` 未达标，优先排查幂等键、去重规则、版本漂移与 partial failure resume 路径，不允许把“可解释差异”宽泛当作默认豁免。
+- 若 `review backlog` 超上限，优先处理队列分桶、触发规则过宽和高噪声 issue 来源，而不是简单上调 backlog 上限。
+- 若 `dashboard reconciliation` 未达标，优先回查 mart 口径、物化层刷新边界与 drill-down traceability，不应通过手工修报表掩盖上游问题。
+- 若存在任一阻塞级 `processing_error` 未清项，默认阻塞退出评审；只有在被正式降级为非阻塞并留下审计记录后，才可移出该 gate。
+- 不允许通过缩小抽检样本、跳过高风险 bucket、排除失败窗口或临时关闭对账检查来换取 gate 达标。
 
 说明：
 
@@ -216,13 +251,15 @@ last_frozen_version: unfrozen
 - reviewer：数据质量 / 标注 / 评估 reviewer
 - approver：项目负责人或阶段批准人
 
-## 当前待人工确认项
+## 已确认的人工结论
+1. 
+- 阻塞进入下一阶段的问题以以下人工核查项为准；任一未满足即视为阻塞：
+- 阶段目标、非目标与阻塞边界已经清楚，不存在关键口径悬空。
+- source 治理骨架与采集边界已经清晰，可说明纳入、排除与回退路径。
+- taxonomy 已按要求落实，且核心对象都能稳定落到分类体系中。
+- rubric 与 annotation guideline 已固定，并完成必要的试标与对齐。
+- gold set 已完成 adjudication，可作为稳定评估基线。
+- 核心对象都已有明确 schema / pipeline 承载落点。
 
-- 复标一致性阈值
-- 自动 merge 抽检精度阈值
-- review backlog 的可接受上限
-- 哪些问题属于阻塞进入下一阶段
-- `commercial_score` 是否在后续阶段升级为正式主报表结果
-
-你现在最需要的是把 Phase0、Phase1 写成可验收规格，而不是只写成描述性说明。
-
+2. 
+- `commercial_score` 当前不预设在后续阶段自动升级为正式主报表结果；如未来需要升级，必须先完成专项收敛，并在对应规范中另行冻结决策。

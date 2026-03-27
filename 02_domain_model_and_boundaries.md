@@ -417,6 +417,32 @@ reviewer、运营研究人员、值班流程会读取它。
 ### 它和上下游是什么关系：
 上游是 `review_issue`；下游服务于人审消费，不直接产出业务结论。
 
+## `unresolved_registry_view`
+
+### 它是什么：
+从 `review_issue` 与当前有效 `taxonomy_assignment` 派生出的 unresolved 管理视图，用于统一查看 unresolved backlog、stale 状态，以及某条 unresolved 是否已经写回为当前 effective unresolved。
+
+### 它不是什么：
+不是新的事实主表，不是第二套 taxonomy 结果存储，也不是替代 `review_issue` 的人工裁决记录。
+
+### 谁创建它：
+通常由 review 查询层、materialized view 或 analytics 侧派生生成。
+
+### 谁读取它：
+triage owner、reviewer、质量审计视图，以及需要单独追踪 unresolved 积压的报表会读取它。
+
+### 什么时候更新：
+当 `review_issue` 状态、`resolution_action`、stale 状态，或当前有效 `taxonomy_assignment` 发生变化时刷新。
+
+### 是否允许为空：
+允许为空，表示当前没有 unresolved 积压，或当前过滤条件下无命中样本。
+
+### 是否允许被覆盖：
+它本身是派生视图，可被刷新重建；但不能拿它反向替代 canonical 层的裁决与写回记录。
+
+### 它和上下游是什么关系：
+上游是 `review_issue` 与 `taxonomy_assignment`；下游服务于 unresolved 审计、backlog 管理与质量视图。视图中应同时容纳 `writeback unresolved` 与 `review-only unresolved` 两类记录。
+
 ## `processing_error`
 
 ### 它是什么：

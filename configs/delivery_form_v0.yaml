@@ -3,6 +3,8 @@ source_of_truth: hand_maintained_artifact
 codes:
   - chat_assistant
   - web_app
+  - mobile_app
+  - desktop_app
   - browser_extension
   - api_sdk
   - copilot_plugin

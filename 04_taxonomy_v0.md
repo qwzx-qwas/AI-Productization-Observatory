@@ -18,7 +18,7 @@ last_frozen_version: unfrozen
 - Phase1 先冻结哪些 L1 主类
 - 每个节点的 code / label / definition / inclusion / exclusion 是什么
 - primary / secondary / unresolved 怎么分配
-- 哪些地方仍需人工确认
+- 本轮人工确认后冻结了哪些补充规则
 
 当前策略：
 
@@ -43,6 +43,7 @@ last_frozen_version: unfrozen
 
 - `code` 使用稳定英文 snake / upper code，不允许运行时自由生成
 - `label` 同时提供英文主标签和中文说明
+- 对内实现、统计和逻辑判断以稳定英文 `code` 为准；对外展示或人工审阅可使用双语 `label`
 - L1 使用 `JTBD_*`
 - L2 使用 `JTBD_<L1>_*`
 - 允许某些 L1 在 v0 暂无稳定 L2；这不构成失败
@@ -288,7 +289,40 @@ last_frozen_version: unfrozen
 - `JTBD_DESIGN_PRESENTATION_SLIDES`
 - `JTBD_DESIGN_PRESENTATION_UI`
 
-### 4.9 `JTBD_OTHER_VERTICAL`
+### 4.9 `JTBD_PERSONAL_CREATIVE`
+
+- `level`: `1`
+- `parent_code`: `null`
+- `label`: `Personal Life And Creative Applications / 个人生活与创意应用`
+- `definition`:
+  - 产品的核心工作是面向个人用户提供表达、陪伴、记录、趣味互动或轻创作体验，更像生活产品或数字作品，而不是组织效率工具。
+- `inclusion_rule`:
+  - 明确面向个人用户，而不是团队、部门或企业流程
+  - 价值主张围绕陪伴、日记记录、记忆整理、兴趣创作、个性化互动或休闲体验
+  - 用户购买或使用的主要原因是情感价值、表达价值或生活体验，而不是业务提效
+- `exclusion_rule`:
+  - 主要价值是通用内容生产，可被 `JTBD_CONTENT` 更稳定覆盖
+  - 主要价值是设计交付或展示表达，可被 `JTBD_DESIGN_PRESENTATION` 覆盖
+  - 主要价值是团队协作、流程自动化或销售 / 客服执行
+- `example_positive`:
+  - AI 陪伴聊天应用
+  - AI 日记 / 记忆助手
+- `example_negative`:
+  - AI PPT 生成器
+  - 团队知识库问答助手
+- `adjacent_confusions`:
+  - `JTBD_CONTENT`
+  - `JTBD_DESIGN_PRESENTATION`
+  - `JTBD_PRODUCTIVITY_AUTOMATION`
+
+建议 L2 示例：
+
+- `JTBD_PERSONAL_CREATIVE_COMPANION`: 陪伴 / 陪聊互动
+- `JTBD_PERSONAL_CREATIVE_JOURNAL`: 日记 / 记录 / 记忆整理
+- `JTBD_PERSONAL_CREATIVE_EXPRESSION`: 个性化表达 / 趣味创作
+- `JTBD_PERSONAL_CREATIVE_ENTERTAINMENT`: 休闲互动 / 娱乐体验
+
+### 4.10 `JTBD_OTHER_VERTICAL`
 
 - `level`: `1`
 - `parent_code`: `null`
@@ -349,6 +383,8 @@ last_frozen_version: unfrozen
 ### L2 分配
 
 - v0 允许很多产品只有 L1、没有 L2
+- 每个 L1 初版最多冻结 `5` 个稳定 L2
+- 允许某些 L1 长期只有一级；只有当子类相似度高、边界清楚、正反例稳定时再补 L2
 - 只有当 L2 的定义、边界、正反例都清楚时才落 L2
 
 ## 7. 邻近混淆处理规则
@@ -359,17 +395,18 @@ last_frozen_version: unfrozen
 - 有问答界面，不一定属于 `JTBD_KNOWLEDGE`；若核心是自动执行流程，可能更像 `JTBD_PRODUCTIVITY_AUTOMATION`
 - 用 LLM 写代码，不一定是通用 productivity；若核心用户是开发者，应优先 `JTBD_DEV_TOOLS`
 
-## 8. 当前待人工确认项
+## 8. 本轮人工确认结论
 
-- 这组 L1 是否就是你认可的 Phase1 主类清单
-- 每个 L1 下最多允许多少个 L2
-- 是否允许某些类长期只有一级、没有二级
-- 中文 / 英文标签是否都保留
-- 你最关心的前 10 个高频 JTBD 候选，是否需要优先补成稳定 L2
+- Phase1 主类清单在现有 L1 基础上新增 `JTBD_PERSONAL_CREATIVE`
+- 每个 L1 初版最多冻结 `5` 个稳定 L2
+- 允许某些 L1 长期只有一级；只有在高频、相似度高且边界清楚时再细化稳定 L2
+- `label` 对外展示和人工审阅保留中英双语；内部实现默认使用稳定英文 `code`
+- 前 `10` 个高频 JTBD 候选进入下一轮 L2 优先池，但不在当前版本一次性全部冻结
 
 ## 9. 后续细化策略
 
 - 先用 gold set 与 review 结果验证 L1 稳定性
+- 优先从前 `10` 个高频 JTBD 候选里筛选可稳定冻结的 L2
 - 再根据 confusion cluster 补 L2
 - 若某些 L1 长期高混淆，再拆分或改名
 

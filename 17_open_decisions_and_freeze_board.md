@@ -8,7 +8,7 @@ depends_on:
   - DOC-OVERVIEW
 supersedes: []
 implementation_ready: true
-last_frozen_version: freeze_board_v4
+last_frozen_version: freeze_board_v8
 ---
 
 # Open Decisions And Freeze Board
@@ -115,10 +115,10 @@ last_frozen_version: freeze_board_v4
    - topic：v0 默认技术栈
    - blocking：`yes`
    - owner：`runtime_owner`
-   - affected_docs：`15`, `16`, `README`
-   - current_default：Python + Postgres + object store compatible
+   - affected_docs：`15`, `16`, `18`, `20`, `README`
+   - current_default：Python + Postgres + object store compatible + DB task table in primary relational DB
    - deadline：`TBD_HUMAN`
-   - final_decision：`freeze v0 runtime profile = Python 3.12 + PostgreSQL-compatible + S3-compatible object store + cron/systemd + DB task table + pull worker + local_only/single_vps first`
+   - final_decision：`freeze v0 runtime profile = Python 3.12 + PostgreSQL-compatible + S3-compatible object store + cron/systemd + DB task table + pull worker + local_only/single_vps first; task table stays in the primary relational DB in the current version; default task lease timeout = 30s; worker heartbeat renews about every 10s; cross-process auto reclaim is allowed only after lease expiry, idempotent-write safety, and compare-and-swap claim success`
    - status：`frozen`
    (8) 第 8 行
    - decision_id：`DEC-008`
@@ -239,6 +239,86 @@ last_frozen_version: freeze_board_v4
    - current_default：`main GitHub family stays English-only; Chinese remains a reserved experiment`
    - deadline：`TBD_HUMAN`
    - final_decision：`freeze current GitHub main-family query language to English only; do not mix Chinese query terms into the main family; reserve explicit hooks for Chinese query expansion as a separate family, version, or experiment bucket only; reopen only when the first English query review shows clear and high-value Chinese misses`
+   - status：`frozen`
+   (20) 第 20 行
+   - decision_id：`DEC-020`
+   - topic：taxonomy v0 Phase1 主类补充与 L2 粒度规则
+   - blocking：`yes`
+   - owner：`taxonomy_owner`
+   - affected_docs：`04`, `17`, `20`, `document_overview.md`, `configs/taxonomy_v0.yaml`
+   - current_default：`keep current L1 set, bilingual human-facing labels, max 5 stable L2 per L1, and defer most L2 freezing`
+   - deadline：`TBD_HUMAN`
+   - final_decision：`freeze taxonomy v0 Phase1 L1 set with an added JTBD_PERSONAL_CREATIVE class for personal-life and creative-use products; keep bilingual human-facing labels while internal logic uses stable English codes; cap stable L2 at 5 per L1 in the current version; allow some L1 classes to remain long-term L1-only; treat the top 10 high-frequency JTBD candidates as the next L2 priority pool rather than freezing them all immediately`
+   - status：`frozen`
+   (21) 第 21 行
+   - decision_id：`DEC-021`
+   - topic：gold set 双标 / adjudicator / taxonomy suggestion 运行默认
+   - blocking：`yes`
+   - owner：`annotation_owner`
+   - affected_docs：`01`, `07`, `12`, `14`, `gold_set/README.md`
+   - current_default：`keep gold_set_300 double-annotated with adjudication, using the local project user plus LLM as the two current annotation channels`
+   - deadline：`TBD_HUMAN`
+   - final_decision：`freeze current annotation operating default as: gold_set_300 requires double annotation plus adjudication; the two current annotation channels are the local project user and an LLM; the adjudicator defaults to the local project user; taxonomy_change_suggestion may be recorded as a candidate note during annotation but cannot enter the taxonomy change flow until adjudicator confirmation; keep the interface open for future multi-annotator expansion without changing field semantics`
+   - status：`frozen`
+   (22) 第 22 行
+   - decision_id：`DEC-022`
+   - topic：pipeline 执行边界、调度主粒度与 replay 人工 gate
+   - blocking：`yes`
+   - owner：`pipeline_owner`
+   - affected_docs：`09`, `12`, `13`, `14`, `18`
+   - current_default：`treat each module as a continuous success/failure unit, orchestrate by per-source + per-window, allow auto replay only on low-risk technical or derived modules, and require review/approval gates for high-impact effective-result writeback`
+   - deadline：`TBD_HUMAN`
+   - final_decision：`freeze Phase1 execution boundary as: each module runs as a continuous read-to-write success/failure unit; once upstream output is durably written, downstream modules continue asynchronously via new tasks rather than the same call stack; orchestration and replay scheduling use per-source + per-window as the primary grain while module-internal run_unit remains contract-defined; auto replay is allowed for Pull Collector, Raw Snapshot Storage, Normalizer, Observation Builder, Evidence Extractor, Product Profiler, Review Packet Builder, and Analytics Mart Builder; cross-run auto resume is allowed only when checkpoint is verifiable, window is unchanged, and the failure is a retryable technical failure, and it must continue from the last durable checkpoint without skipping failed segments or advancing the final watermark early; Entity Resolver, Taxonomy Classifier, and Score Engine may auto replay but their review-triggered or high-impact results cannot become effective without review / maker-checker approval; Definition & Governance Layer releases, any blocked replay, any P0 entity/taxonomy/score override, and any source contract / query strategy / frequency / legal boundary change require explicit human approval`
+   - status：`frozen`
+   (23) 第 23 行
+   - decision_id：`DEC-023`
+   - topic：`unresolved` 主报表分流与 unresolved registry
+   - blocking：`yes`
+   - owner：`review_owner`
+   - affected_docs：`02`, `08`, `11`, `12`, `README`, `document_overview.md`, `configs/review_rules_v0.yaml`
+   - current_default：`keep canonical single source of truth; exclude unresolved from main report while tracking it in a separate registry view`
+   - deadline：`TBD_HUMAN`
+   - final_decision：`freeze unresolved handling as: canonical facts continue to live only in taxonomy_assignment, score_run, and review_issue; unresolved may be the current effective taxonomy, but main reports and primary marts must consume effective resolved results only and explicitly filter category_code <> 'unresolved'; maintain a derived unresolved_registry_view for backlog/quality tracking with target_id, issue_type, priority_code, resolution_action, review_issue_id, resolution_notes, reviewed_at, is_stale, and is_effective_unresolved; distinguish writeback unresolved from review-only unresolved and do not double-write a second fact table`
+   - status：`frozen`
+   (24) 第 24 行
+   - decision_id：`DEC-024`
+   - topic：候选样本池 / training pool / gold set 分层准入
+   - blocking：`no`
+   - owner：`annotation_owner`
+   - affected_docs：`07`, `12`, `README`, `gold_set/README.md`, `document_overview.md`, `configs/review_rules_v0.yaml`
+   - current_default：`select per-batch top 10 high-quality candidates plus whitelist samples; keep candidate pool separate from training pool and gold set`
+   - deadline：`TBD_HUMAN`
+   - final_decision：`freeze sample-pool layering as: each batch may select top_10_candidate_samples plus whitelist samples into a candidate pool; ordering is by pool priority rather than total score; first exclude unresolved, needs_more_evidence, and review-unclosed samples; prioritize need_clarity_band = high, then build_evidence_band = high, while attention_score acts only as a secondary sampling factor; whitelist samples may bypass the top-10 cap but must retain whitelist_reason; candidate pool is not the training pool; only review-closed, evidence-sufficient, clearly adjudicated, non-unresolved samples may enter the training pool; gold set entry still requires double annotation plus adjudication`
+   - status：`frozen`
+   (25) 第 25 行
+   - decision_id：`DEC-025`
+   - topic：merge / release 人工判定边界
+   - blocking：`yes`
+   - owner：`qa_owner`
+   - affected_docs：`14`
+   - current_default：`treat acceptance blockers strictly until a human explicitly separates merge-safety failures from release-usability failures`
+   - deadline：`TBD_HUMAN`
+   - final_decision：`freeze acceptance decision policy as: this is a personal project, so merge and release are both finally decided by the project owner; documented rules act as default guidance rather than a mandatory team approval flow; merge defaults focus on code correctness and trunk safety, so contract failure, critical integration/regression failure, same-window rerun failure, core traceability failure, review-gate bypass, blocked-replay bypass, or obvious logic regression should normally block merge; release defaults focus on real usability and result value, so unresolved merge blockers, dashboard reconciliation failure, unusable core flows, materially low taxonomy/score quality, availability-impacting review or processing-error backlog, or failed manual audit should normally block release`
+   - status：`frozen`
+   (26) 第 26 行
+   - decision_id：`DEC-026`
+   - topic：受控词表 v0 边界与 delivery form 扩展
+   - blocking：`no`
+   - owner：`taxonomy_owner`
+   - affected_docs：`05`, `17`, `README`, `document_overview.md`, `configs/delivery_form_v0.yaml`
+   - current_default：`keep the current controlled-vocabulary set with provisional notes about persona, delivery form, evidence strength, source/role boundaries, and metric semantics`
+   - deadline：`TBD_HUMAN`
+   - final_decision：`freeze controlled-vocabulary v0 as: keep the current persona set unchanged and do not add a personal_creator code in this version, because personal-life and creative-use semantics are already carried by JTBD_PERSONAL_CREATIVE on the taxonomy side; add mobile_app and desktop_app to delivery_form and distinguish them from browser-based web_app by the primary consumption surface; keep evidence_strength fixed at low / medium / high; keep source_type and primary_role at the current cross-source generic boundary without adding business-specific values in v0; keep metric_semantics at the current coarse-grained set while reserving versioned extension hooks for future refinement`
+   - status：`frozen`
+   (27) 第 27 行
+   - decision_id：`DEC-027`
+   - topic：数据库产品基线、ID 生成、soft delete、migration 风格与受控词表数据库表达
+   - blocking：`yes`
+   - owner：`runtime_owner`
+   - affected_docs：`05`, `08`, `15`, `README`
+   - current_default：`keep PostgreSQL-compatible DDL, text primary keys, no business soft delete, migration history plus rollback-or-forward discipline, and artifact-based controlled vocab`
+   - deadline：`TBD_HUMAN`
+   - final_decision：`freeze the schema/runtime database baseline as: use PostgreSQL 17 community edition / PGDG distribution as the self-hosted default for local_only and the first single_vps deployment; evaluate managed PostgreSQL only after entering cloud_managed and do not change the database engine; keep primary keys as application-generated opaque text IDs while business idempotency remains anchored by strong keys and unique constraints rather than database sequences; keep v0 without business-layer soft delete, using append-only history, lifecycle/retention, and explicit status/invalidation fields instead; freeze migration discipline to forward-only plus additive-first, preferring expand/backfill/contract with migration history, schema diff, and an explicit roll-forward path; keep cross-document controlled vocabularies canonical in versioned config artifacts, store runtime values as text codes, and do not freeze them as PostgreSQL enums in v0, while allowing future reference tables or generated lookups if database-side joins become necessary`
    - status：`frozen`
 
 
