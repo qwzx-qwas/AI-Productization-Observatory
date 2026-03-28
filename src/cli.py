@@ -59,9 +59,72 @@ def _validate_taxonomy_config(config_dir: Path) -> None:
     assignment_policy = _require_mapping(taxonomy.get("assignment_policy"), "taxonomy_v0.yaml:assignment_policy")
     if assignment_policy.get("unresolved_code") != "unresolved":
         raise ContractValidationError("taxonomy_v0.yaml must keep unresolved_code = unresolved")
+    if assignment_policy.get("secondary_allowed_only_after_stable_primary") is not True:
+        raise ContractValidationError("taxonomy_v0.yaml must require stable primary before secondary assignment")
+    if assignment_policy.get("l2_can_be_empty_when_only_l1_stable") is not True:
+        raise ContractValidationError("taxonomy_v0.yaml must explicitly allow empty L2 when only L1 is stable")
+    if assignment_policy.get("stable_l2_examples_are_non_exhaustive") is not True:
+        raise ContractValidationError("taxonomy_v0.yaml must declare stable_l2_examples as non-exhaustive")
     cap = assignment_policy.get("stable_l2_cap_per_l1")
     if not isinstance(cap, int) or cap <= 0:
         raise ContractValidationError("taxonomy_v0.yaml stable_l2_cap_per_l1 must be a positive integer")
+    unresolved_exit_conditions = set(
+        _require_list(assignment_policy.get("unresolved_exit_conditions"), "taxonomy_v0.yaml:assignment_policy:unresolved_exit_conditions")
+    )
+    if unresolved_exit_conditions != {
+        "stable_unique_primary_l1",
+        "adjacent_confusion_explainable",
+        "traceable_evidence_and_merge_resolved",
+    }:
+        raise ContractValidationError("taxonomy_v0.yaml unresolved_exit_conditions drifted from the frozen taxonomy policy")
+    long_term_l1_only_codes = {
+        _require_string(code, "taxonomy_v0.yaml:assignment_policy:long_term_l1_only_codes[]")
+        for code in _require_list(assignment_policy.get("long_term_l1_only_codes"), "taxonomy_v0.yaml:assignment_policy:long_term_l1_only_codes")
+    }
+    if long_term_l1_only_codes != {"JTBD_OTHER_VERTICAL"}:
+        raise ContractValidationError("taxonomy_v0.yaml long_term_l1_only_codes drifted from the frozen Phase1 allowlist")
+
+    required_adjacent_pairs = {
+        tuple(sorted(("JTBD_CONTENT", "JTBD_KNOWLEDGE"))),
+        tuple(sorted(("JTBD_KNOWLEDGE", "JTBD_PRODUCTIVITY_AUTOMATION"))),
+        tuple(sorted(("JTBD_DEV_TOOLS", "JTBD_PRODUCTIVITY_AUTOMATION"))),
+        tuple(sorted(("JTBD_MARKETING_GROWTH", "JTBD_CONTENT"))),
+        tuple(sorted(("JTBD_SALES_SUPPORT", "JTBD_KNOWLEDGE"))),
+    }
+    adjacent_confusion_rules = _require_list(taxonomy.get("adjacent_confusion_rules"), "taxonomy_v0.yaml:adjacent_confusion_rules")
+    seen_adjacent_pairs: set[tuple[str, str]] = set()
+    for entry in adjacent_confusion_rules:
+        rule = _require_mapping(entry, "taxonomy_v0.yaml:adjacent_confusion_rules[]")
+        raw_pair = _require_list(rule.get("pair"), "taxonomy_v0.yaml:adjacent_confusion_rules[].pair")
+        if len(raw_pair) != 2:
+            raise ContractValidationError("taxonomy_v0.yaml adjacent confusion rules must define exactly two codes per pair")
+        pair = [_require_string(code, "taxonomy_v0.yaml:adjacent_confusion_rules[].pair[]") for code in raw_pair]
+        normalized_pair = tuple(sorted(pair))
+        if normalized_pair in seen_adjacent_pairs:
+            raise ContractValidationError(f"taxonomy_v0.yaml contains duplicate adjacent confusion pair: {normalized_pair}")
+        seen_adjacent_pairs.add(normalized_pair)
+
+        decide_when = _require_mapping(rule.get("decide_when"), "taxonomy_v0.yaml:adjacent_confusion_rules[].decide_when")
+        if set(decide_when) != set(pair):
+            raise ContractValidationError(f"taxonomy_v0.yaml adjacent confusion pair {normalized_pair} must define decide_when entries for both codes")
+        for code in pair:
+            decision = _require_mapping(decide_when.get(code), f"taxonomy_v0.yaml:{code}:decide_when")
+            inclusion_signals = _require_list(decision.get("inclusion_signals"), f"taxonomy_v0.yaml:{code}:inclusion_signals")
+            exclusion_signals = _require_list(decision.get("exclusion_signals"), f"taxonomy_v0.yaml:{code}:exclusion_signals")
+            if not inclusion_signals or not exclusion_signals:
+                raise ContractValidationError(f"taxonomy_v0.yaml adjacent confusion rule for {code} must define inclusion and exclusion signals")
+            for signal in inclusion_signals:
+                _require_string(signal, f"taxonomy_v0.yaml:{code}:inclusion_signals[]")
+            for signal in exclusion_signals:
+                _require_string(signal, f"taxonomy_v0.yaml:{code}:exclusion_signals[]")
+            _require_string(decision.get("example_positive"), f"taxonomy_v0.yaml:{code}:example_positive")
+        _require_string(rule.get("example_negative"), f"taxonomy_v0.yaml:{normalized_pair}:example_negative")
+        _require_string(
+            rule.get("route_to_review_or_unresolved_when"),
+            f"taxonomy_v0.yaml:{normalized_pair}:route_to_review_or_unresolved_when",
+        )
+    if seen_adjacent_pairs != required_adjacent_pairs:
+        raise ContractValidationError("taxonomy_v0.yaml adjacent confusion pair set does not match the frozen Phase1 taxonomy boundaries")
 
     nodes = _require_list(taxonomy.get("nodes"), "taxonomy_v0.yaml:nodes")
     required_codes = {
@@ -77,6 +140,7 @@ def _validate_taxonomy_config(config_dir: Path) -> None:
         "JTBD_OTHER_VERTICAL",
     }
     seen_codes: set[str] = set()
+    seen_stable_l2_codes: set[str] = set()
     for entry in nodes:
         node = _require_mapping(entry, "taxonomy_v0.yaml:nodes[]")
         code = _require_string(node.get("code"), "taxonomy node code")
@@ -99,8 +163,18 @@ def _validate_taxonomy_config(config_dir: Path) -> None:
         stable_l2_examples = _require_list(node.get("stable_l2_examples"), f"taxonomy_v0.yaml:{code}:stable_l2_examples")
         if len(stable_l2_examples) > cap:
             raise ContractValidationError(f"taxonomy_v0.yaml node {code} exceeds stable L2 cap {cap}")
+        for l2_entry in stable_l2_examples:
+            l2 = _require_mapping(l2_entry, f"taxonomy_v0.yaml:{code}:stable_l2_examples[]")
+            l2_code = _require_string(l2.get("code"), f"taxonomy_v0.yaml:{code}:stable_l2_examples[].code")
+            _require_string(l2.get("label"), f"taxonomy_v0.yaml:{code}:stable_l2_examples[].label")
+            _require_string(l2.get("zh_label"), f"taxonomy_v0.yaml:{code}:stable_l2_examples[].zh_label")
+            if l2_code in seen_stable_l2_codes:
+                raise ContractValidationError(f"taxonomy_v0.yaml contains duplicate stable L2 code: {l2_code}")
+            seen_stable_l2_codes.add(l2_code)
     if seen_codes != required_codes:
         raise ContractValidationError("taxonomy_v0.yaml L1 code set does not match the frozen Phase1 taxonomy set")
+    if not long_term_l1_only_codes.issubset(seen_codes):
+        raise ContractValidationError("taxonomy_v0.yaml long_term_l1_only_codes must be a subset of the frozen L1 code set")
 
 
 def _validate_vocab_configs(config_dir: Path) -> None:

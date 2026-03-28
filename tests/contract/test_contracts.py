@@ -1,11 +1,14 @@
 from __future__ import annotations
 
 import os
+import shutil
 import subprocess
 import sys
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
+
+import yaml
 
 from tests.helpers import REPO_ROOT
 
@@ -47,6 +50,36 @@ class ContractCommandTests(unittest.TestCase):
         result = self.run_cli("validate-configs", env={"APO_CONFIG_DIR": str(missing_dir)})
         self.assertEqual(result.returncode, 2)
         self.assertIn("APO_CONFIG_DIR points to missing directory", result.stderr)
+
+    def test_validate_configs_rejects_taxonomy_adjacent_confusion_without_negative_example(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            config_dir = root / "configs"
+            shutil.copytree(REPO_ROOT / "configs", config_dir)
+
+            taxonomy_path = config_dir / "taxonomy_v0.yaml"
+            taxonomy = yaml.safe_load(taxonomy_path.read_text(encoding="utf-8"))
+            taxonomy["adjacent_confusion_rules"][0]["example_negative"] = ""
+            taxonomy_path.write_text(yaml.safe_dump(taxonomy, sort_keys=False, allow_unicode=True), encoding="utf-8")
+
+            result = self.run_cli("validate-configs", env={"APO_CONFIG_DIR": str(config_dir)})
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("example_negative", result.stderr)
+
+    def test_validate_configs_rejects_taxonomy_long_term_l1_only_drift(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            config_dir = root / "configs"
+            shutil.copytree(REPO_ROOT / "configs", config_dir)
+
+            taxonomy_path = config_dir / "taxonomy_v0.yaml"
+            taxonomy = yaml.safe_load(taxonomy_path.read_text(encoding="utf-8"))
+            taxonomy["assignment_policy"]["long_term_l1_only_codes"] = ["JTBD_OTHER_VERTICAL", "JTBD_CONTENT"]
+            taxonomy_path.write_text(yaml.safe_dump(taxonomy, sort_keys=False, allow_unicode=True), encoding="utf-8")
+
+            result = self.run_cli("validate-configs", env={"APO_CONFIG_DIR": str(config_dir)})
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("long_term_l1_only_codes", result.stderr)
 
     def test_install_bootstraps_runtime_directories_and_task_store(self) -> None:
         with TemporaryDirectory() as tmp_dir:

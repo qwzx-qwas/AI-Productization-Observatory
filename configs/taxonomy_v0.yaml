@@ -7,8 +7,11 @@ assignment_policy:
   primary_must_be_unique: true
   secondary_optional: true
   secondary_requires_distinct_evidence: true
+  secondary_allowed_only_after_stable_primary: true
   l1_required_when_classifiable: true
   l2_optional_in_v0: true
+  l2_can_be_empty_when_only_l1_stable: true
+  stable_l2_examples_are_non_exhaustive: true
   unresolved_code: unresolved
   unresolved_entry_conditions:
     - low_need_clarity
@@ -17,13 +20,18 @@ assignment_policy:
     - unstable_product_merge
     - primary_job_not_identifiable
   unresolved_exit_conditions:
-    - stable_primary_l1_or_l2_with_traceable_evidence
+    - stable_unique_primary_l1
+    - adjacent_confusion_explainable
+    - traceable_evidence_and_merge_resolved
   review_required_when:
     - primary_job_not_unique
     - adjacent_confusion_not_explainable
     - unstable_product_merge
     - unresolved_assigned
+    - high_impact_writeback
   stable_l2_cap_per_l1: 5
+  long_term_l1_only_codes:
+    - JTBD_OTHER_VERTICAL
 naming_policy:
   l1_prefix: JTBD_
   l2_prefix_pattern: JTBD_<L1>_*
@@ -33,37 +41,112 @@ adjacent_confusion_rules:
   - pair:
       - JTBD_CONTENT
       - JTBD_KNOWLEDGE
-    choose_first:
-      JTBD_CONTENT: final deliverable is a content asset such as writing, image, audio, video, or editable creative output.
-      JTBD_KNOWLEDGE: final deliverable is an answer, explanation, summary, or knowledge navigation result.
+    decide_when:
+      JTBD_CONTENT:
+        inclusion_signals:
+          - Final deliverable is a content asset such as writing, image, audio, video, or editable creative output.
+          - Success is judged by the quality, editability, or publishability of the produced asset.
+        exclusion_signals:
+          - Final deliverable is mainly an answer, explanation, summary, or knowledge navigation result.
+          - User intent is search, retrieval, or understanding rather than content production.
+        example_positive: Turn bullet points into blog posts and landing-page copy.
+      JTBD_KNOWLEDGE:
+        inclusion_signals:
+          - Final deliverable is an answer, explanation, summary, or knowledge navigation result.
+          - User goal is to search, understand, or navigate an existing knowledge domain.
+        exclusion_signals:
+          - User success is judged by the quality of a produced content asset.
+          - The product is primarily positioned as a writing, image, audio, or video creation tool.
+        example_positive: Ask your company docs and get instant answers.
+    example_negative: General AI assistant for any question or writing task.
     route_to_review_or_unresolved_when: product only claims general chat or "AI assistant" value without a traceable primary job.
   - pair:
       - JTBD_KNOWLEDGE
       - JTBD_PRODUCTIVITY_AUTOMATION
-    choose_first:
-      JTBD_KNOWLEDGE: product stops at answering, summarizing, or explaining.
-      JTBD_PRODUCTIVITY_AUTOMATION: product triggers actions, completes tasks, or orchestrates a workflow across tools.
+    decide_when:
+      JTBD_KNOWLEDGE:
+        inclusion_signals:
+          - Product stops at answering, summarizing, or explaining.
+          - No reliable evidence shows the system takes external action or completes tasks.
+        exclusion_signals:
+          - Product creates tasks, routes work, updates systems, sends replies, or otherwise closes an action loop.
+          - Agent language is backed by observable execution rather than read-only answers.
+        example_positive: Search policies and answer employee questions.
+      JTBD_PRODUCTIVITY_AUTOMATION:
+        inclusion_signals:
+          - Product triggers actions, completes tasks, or orchestrates a workflow across tools.
+          - Evidence shows action closure rather than suggestion-only output.
+        exclusion_signals:
+          - Product only answers, summarizes, or explains without workflow execution.
+          - There is no traceable action, writeback, or system orchestration evidence.
+        example_positive: Read inbound email, classify intent, and create follow-up tasks automatically.
+    example_negative: General operations agent with no traceable action closure.
     route_to_review_or_unresolved_when: the product uses "agent" language but action closure is not evidenced.
   - pair:
       - JTBD_DEV_TOOLS
       - JTBD_PRODUCTIVITY_AUTOMATION
-    choose_first:
-      JTBD_DEV_TOOLS: primary user is a developer and the job is coding, debugging, testing, review, or deploy.
-      JTBD_PRODUCTIVITY_AUTOMATION: primary user is a non-developer operator and the job is a generic business workflow.
+    decide_when:
+      JTBD_DEV_TOOLS:
+        inclusion_signals:
+          - Primary user is a developer or engineering team.
+          - Core job is coding, debugging, testing, review, deploy, or a software-delivery workflow.
+        exclusion_signals:
+          - Primary user is a non-developer operator.
+          - Automated workflow is generic back-office or business-process execution rather than software development.
+        example_positive: Generate tests, explain failing traces, and propose pull-request fixes.
+      JTBD_PRODUCTIVITY_AUTOMATION:
+        inclusion_signals:
+          - Primary user is a non-developer operator and the job is a generic business workflow.
+          - The workflow spans forms, approvals, inboxes, operations tooling, or back-office systems.
+        exclusion_signals:
+          - The core task lives inside a developer workflow such as coding, debugging, testing, or deploy.
+          - Developer productivity language is supported by developer-facing evidence and user targeting.
+        example_positive: Route invoices across tools and complete back-office approval steps.
+    example_negative: AI automation for every team with no stable primary user or primary workflow.
     route_to_review_or_unresolved_when: both engineering and non-engineering flows are claimed and neither is clearly primary.
   - pair:
       - JTBD_MARKETING_GROWTH
       - JTBD_CONTENT
-    choose_first:
-      JTBD_MARKETING_GROWTH: content generation is explicitly tied to SEO, campaign execution, acquisition, or conversion.
-      JTBD_CONTENT: content generation remains general-purpose without a stable marketing goal.
+    decide_when:
+      JTBD_MARKETING_GROWTH:
+        inclusion_signals:
+          - Content generation is explicitly tied to SEO, campaign execution, acquisition, or conversion.
+          - Evidence shows a marketing workflow or growth objective rather than general creative production.
+        exclusion_signals:
+          - Content generation remains general-purpose without a stable marketing goal.
+          - Marketing teams may use it, but no campaign, SEO, or conversion workflow is evidenced.
+        example_positive: Generate ad variants, landing pages, and campaign briefs for paid growth teams.
+      JTBD_CONTENT:
+        inclusion_signals:
+          - Content generation remains general-purpose without a stable marketing goal.
+          - User goal is to create writing, images, audio, or video for broad use cases.
+        exclusion_signals:
+          - Output is explicitly evaluated by marketing outcomes such as SEO, acquisition, or conversion.
+          - Evidence shows a repeatable marketing workflow rather than broad creation support.
+        example_positive: Write essays, scripts, and newsletters for any use case.
+    example_negative: Marketing-friendly AI writer for everyone with no campaign, SEO, or conversion evidence.
     route_to_review_or_unresolved_when: marketing language is broad but no campaign or growth workflow evidence is present.
   - pair:
       - JTBD_SALES_SUPPORT
       - JTBD_KNOWLEDGE
-    choose_first:
-      JTBD_SALES_SUPPORT: product drafts replies, handles tickets, updates CRM, or supports customer communication workflows.
-      JTBD_KNOWLEDGE: product mainly answers questions from docs or a knowledge base.
+    decide_when:
+      JTBD_SALES_SUPPORT:
+        inclusion_signals:
+          - Product drafts replies, handles tickets, updates CRM, or supports customer communication workflows.
+          - Success is judged by moving sales, support, or customer-handling work forward.
+        exclusion_signals:
+          - Product mainly answers questions from docs or a knowledge base.
+          - No customer-facing or workflow-advancing action is evidenced.
+        example_positive: Draft customer replies, summarize tickets, and update the helpdesk queue.
+      JTBD_KNOWLEDGE:
+        inclusion_signals:
+          - Product mainly answers questions from docs or a knowledge base.
+          - User value comes from explanation, retrieval, or guided understanding rather than customer communication execution.
+        exclusion_signals:
+          - Product writes back to CRM, helpdesk, or customer communication channels.
+          - Evidence shows ticket handling, outreach, reply drafting, or queue management as the core job.
+        example_positive: Answer product questions from the knowledge base.
+    example_negative: Customer AI assistant with unclear boundary between answering and workflow execution.
     route_to_review_or_unresolved_when: it is unclear whether the product only answers or also takes customer-facing action.
 nodes:
   - code: JTBD_CONTENT

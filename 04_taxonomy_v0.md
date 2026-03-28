@@ -80,6 +80,9 @@ last_frozen_version: unfrozen
 - `secondary_requires_distinct_evidence`: `true`
 - `l1_required_when_classifiable`: `true`
 - `l2_optional_in_v0`: `true`
+- `l2_can_be_empty_when_only_l1_stable`: `true`
+- `stable_l2_examples_are_non_exhaustive`: `true`
+- `long_term_l1_only_codes`: `JTBD_OTHER_VERTICAL`
 - `review_required_when_boundary_unexplained`: `true`
 
 进入 `unresolved` 的情况：
@@ -429,6 +432,17 @@ last_frozen_version: unfrozen
 - 允许某些 L1 长期只有一级；只有当子类相似度高、边界清楚、正反例稳定时再补 L2
 - 只有当 L2 的定义、边界、正反例都清楚时才落 L2
 
+当前冻结的长期 L1-only 允许名单：
+
+- `JTBD_OTHER_VERTICAL`
+  - 原因：强垂直专业流程的分化度高，当前先冻结 L1 边界更稳定；文档中的 healthcare / legal 仅作为稳定示例，不代表必须继续扩成完整固定 L2 树
+
+补充说明：
+
+- 除 `JTBD_OTHER_VERTICAL` 外，其他 L1 仍允许在单个样本上只给 L1、L2 留空
+- 但这些 L1 当前已经存在稳定 L2 示例；当 evidence 足够时，应优先复用稳定示例，而不是把“可留空”误解为“不需要稳定 L2”
+- `stable_l2_examples` 是当前稳定示例，不是完整子类树，也不是强制必填项
+
 ## 7. 邻近混淆处理规则
 
 优先按“用户要完成的工作”分类，而不是按模型能力分类：
@@ -443,10 +457,24 @@ last_frozen_version: unfrozen
 - 若核心价值是“找到答案、解释材料、总结文档、导航知识”，优先 `JTBD_KNOWLEDGE`
 - 只有“既能问答又能写作”的宽泛表述，而没有主工作证据时，不强分，进入 review 或 `unresolved`
 
-最小判例：
+应判为 `JTBD_CONTENT` 的 inclusion 信号：
 
-- “Ask your company docs and get instant answers” -> `JTBD_KNOWLEDGE`
+- 用户成功标准是内容资产是否可直接发布、可编辑或可复用
+- evidence 明确出现 draft、rewrite、script、image、video asset 等内容产物
+
+不应判为 `JTBD_CONTENT` 的 exclusion 信号：
+
+- 产出主要是答案、解释、摘要、知识导航，而不是内容资产
+- 用户目标是查资料、问问题、理解知识，而不是完成内容生产
+
+正例：
+
 - “Turn bullet points into blog posts and landing-page copy” -> `JTBD_CONTENT`
+
+反例：
+
+- “General AI assistant for any question or writing task” -> review / `unresolved`
+- “Ask your company docs and get instant answers” -> `JTBD_KNOWLEDGE`
 
 ### 7.2 `JTBD_KNOWLEDGE` vs `JTBD_PRODUCTIVITY_AUTOMATION`
 
@@ -454,9 +482,23 @@ last_frozen_version: unfrozen
 - 能跨系统执行任务、触发动作、自动流转流程，优先 `JTBD_PRODUCTIVITY_AUTOMATION`
 - 若宣传同时写 `copilot / assistant / agent`，但没有动作闭环证据，不得仅因出现 `agent` 一词就改判自动化
 
-最小判例：
+应判为 `JTBD_KNOWLEDGE` 的 inclusion 信号：
+
+- 产品停在 search、answer、summarize、explain 等认知输出
+- 没有 evidence 证明系统会写回外部系统、推进流程或自动完成动作
+
+不应判为 `JTBD_KNOWLEDGE` 的 exclusion 信号：
+
+- evidence 明确显示会 create task、route item、send reply、update system 等动作闭环
+- “agent” 表述伴随实际执行而非只读回答
+
+正例：
 
 - “Search policies and answer employee questions” -> `JTBD_KNOWLEDGE`
+
+反例：
+
+- “General operations agent” 但没有可回链动作证据 -> review / `unresolved`
 - “Read inbound email, classify intent, and create follow-up tasks automatically” -> `JTBD_PRODUCTIVITY_AUTOMATION`
 
 ### 7.3 `JTBD_DEV_TOOLS` vs `JTBD_PRODUCTIVITY_AUTOMATION`
@@ -465,9 +507,23 @@ last_frozen_version: unfrozen
 - 即使产品也在“提效”，只要主任务发生在开发流程中，仍不改判为通用自动化
 - 面向宽泛业务人员的表单、邮件、后台流程执行，再考虑 `JTBD_PRODUCTIVITY_AUTOMATION`
 
-最小判例：
+应判为 `JTBD_DEV_TOOLS` 的 inclusion 信号：
+
+- 主要用户是 developer / engineering 团队
+- 核心动作围绕 code、test、debug、review、deploy 或开发流水线
+
+不应判为 `JTBD_DEV_TOOLS` 的 exclusion 信号：
+
+- 主要用户是财务、运营、销售等非开发岗位
+- 自动化对象是通用业务流程，而不是软件开发流程
+
+正例：
 
 - “Generate tests, explain failing traces, and propose pull-request fixes” -> `JTBD_DEV_TOOLS`
+
+反例：
+
+- “AI automation for every team” 但没有稳定主用户与主流程 -> review / `unresolved`
 - “Route invoices across tools and complete back-office approval steps” -> `JTBD_PRODUCTIVITY_AUTOMATION`
 
 ### 7.4 `JTBD_MARKETING_GROWTH` vs `JTBD_CONTENT`
@@ -476,9 +532,23 @@ last_frozen_version: unfrozen
 - 若只是通用写作、通用图像或视频生成，没有稳定营销场景，优先 `JTBD_CONTENT`
 - “营销团队可使用”不是充分条件；必须有营销目标或营销工作流证据
 
-最小判例：
+应判为 `JTBD_MARKETING_GROWTH` 的 inclusion 信号：
+
+- 生成内容直接服务于 SEO、campaign、ads、lead generation、conversion
+- evidence 指向营销团队工作流，而不只是“内容更好看”
+
+不应判为 `JTBD_MARKETING_GROWTH` 的 exclusion 信号：
+
+- 只有泛化文案生成能力，没有稳定营销目标或营销流程
+- 只是“营销团队也能用”，但主场景仍是通用创作
+
+正例：
 
 - “Generate ad variants, landing pages, and campaign briefs for paid growth teams” -> `JTBD_MARKETING_GROWTH`
+
+反例：
+
+- “Marketing-friendly AI writer for everyone” 但无 campaign / SEO / conversion 证据 -> review / `unresolved`
 - “Write essays, scripts, and newsletters for any use case” -> `JTBD_CONTENT`
 
 ### 7.5 `JTBD_SALES_SUPPORT` vs `JTBD_KNOWLEDGE`
@@ -487,9 +557,23 @@ last_frozen_version: unfrozen
 - 若核心只是让内部或外部用户问答、查知识、看说明，优先 `JTBD_KNOWLEDGE`
 - 客服机器人只有在承担真实回复或工单动作时，才从知识问答转为销售/支持
 
-最小判例：
+应判为 `JTBD_SALES_SUPPORT` 的 inclusion 信号：
+
+- evidence 指向 CRM、ticket、reply、outreach、customer communication 等客户侧推进动作
+- 成功标准是销售或客服流程是否被推进，而不是答案本身是否完整
+
+不应判为 `JTBD_SALES_SUPPORT` 的 exclusion 信号：
+
+- 产品只是从 docs / KB 回答问题，没有客户侧写回或沟通动作
+- 客服场景只体现为知识查询入口，而非真实 support workflow
+
+正例：
 
 - “Draft customer replies, summarize tickets, and update the helpdesk queue” -> `JTBD_SALES_SUPPORT`
+
+反例：
+
+- “Customer AI assistant” 但看不出是答疑还是代办流程 -> review / `unresolved`
 - “Answer product questions from the knowledge base” -> `JTBD_KNOWLEDGE`
 
 ### 7.6 `JTBD_PERSONAL_CREATIVE` 与 persona / delivery form 的边界
@@ -502,6 +586,7 @@ last_frozen_version: unfrozen
 
 - Phase1 主类清单在现有 L1 基础上新增 `JTBD_PERSONAL_CREATIVE`
 - 每个 L1 初版最多冻结 `5` 个稳定 L2
+- `JTBD_OTHER_VERTICAL` 是当前唯一显式允许长期 L1-only 的 L1；其他 L1 允许样本级 L2 留空，但不视为放弃当前稳定 L2 示例
 - 允许某些 L1 长期只有一级；只有在高频、相似度高且边界清楚时再细化稳定 L2
 - `label` 对外展示和人工审阅保留中英双语；内部实现默认使用稳定英文 `code`
 - 前 `10` 个高频 JTBD 候选进入下一轮 L2 优先池，但不在当前版本一次性全部冻结

@@ -152,6 +152,7 @@ taxonomy / annotation 最小样例说明还应覆盖：
 - `KNOWLEDGE vs PRODUCTIVITY_AUTOMATION`
 - `DEV_TOOLS vs PRODUCTIVITY_AUTOMATION`
 - `MARKETING_GROWTH vs CONTENT`
+- `SALES_SUPPORT vs KNOWLEDGE`
 - annotation `needs_review` -> `review_issue`
 - 高影响 override -> maker-checker writeback gate
 
@@ -184,7 +185,7 @@ taxonomy / annotation 最小样例说明还应覆盖：
 - JSON schema validation
 - prompt input / output contract
 - module input / output contract
-- taxonomy config 中 L1 集合、邻近混淆与稳定 L2 示例存在且无重复 code
+- taxonomy config 中 L1 集合、长期 L1-only allowlist、关键邻近混淆的 inclusion / exclusion / 正反例与稳定 L2 示例存在且无重复 code
 - rubric config 中五类 `score_type`、attention null-reason code 与 calibration gate 参数和 registry 一致
 - review rules 中 annotation decision-form 字段映射与 adjudication 状态值存在
 
