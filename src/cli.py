@@ -34,6 +34,12 @@ def _require_string(value: object, description: str) -> str:
     return value
 
 
+def _require_bool(value: object, description: str) -> bool:
+    if not isinstance(value, bool):
+        raise ContractValidationError(f"{description} must be a boolean")
+    return value
+
+
 def _load_config_mapping(config_dir: Path, file_name: str) -> dict[str, object]:
     return _require_mapping(load_yaml(config_dir / file_name), file_name)
 
@@ -276,6 +282,56 @@ def _validate_review_rules_config(config_dir: Path) -> None:
     review_rules = _load_config_mapping(config_dir, "review_rules_v0.yaml")
     if _require_list(review_rules.get("priority_system"), "review_rules_v0.yaml:priority_system") != ["P0", "P1", "P2", "P3"]:
         raise ContractValidationError("review_rules_v0.yaml priority_system must stay on P0/P1/P2/P3")
+    if _require_list(review_rules.get("issue_types"), "review_rules_v0.yaml:issue_types") != [
+        "entity_merge_uncertainty",
+        "taxonomy_low_confidence",
+        "taxonomy_conflict",
+        "score_conflict",
+        "suspicious_result",
+    ]:
+        raise ContractValidationError("review_rules_v0.yaml issue_types drifted from the frozen review policy")
+    if _require_list(review_rules.get("resolution_actions"), "review_rules_v0.yaml:resolution_actions") != [
+        "confirm_auto_result",
+        "override_auto_result",
+        "mark_unresolved",
+        "reject_issue",
+        "needs_more_evidence",
+    ]:
+        raise ContractValidationError("review_rules_v0.yaml resolution_actions drifted from the frozen review policy")
+    if _require_list(review_rules.get("maker_checker_required_for"), "review_rules_v0.yaml:maker_checker_required_for") != [
+        "P0 taxonomy override",
+        "P0 score override",
+        "P0 entity merge or split",
+    ]:
+        raise ContractValidationError("review_rules_v0.yaml maker_checker_required_for drifted from the frozen review policy")
+
+    maker_checker_writeback = _require_mapping(
+        review_rules.get("maker_checker_writeback"),
+        "review_rules_v0.yaml:maker_checker_writeback",
+    )
+    if _require_list(
+        maker_checker_writeback.get("required_fields"),
+        "review_rules_v0.yaml:maker_checker_writeback:required_fields",
+    ) != [
+        "reviewer",
+        "reviewed_at",
+        "resolution_action",
+        "resolution_notes",
+        "approver",
+        "approved_at",
+        "review_issue_id",
+    ]:
+        raise ContractValidationError("review_rules_v0.yaml maker_checker_writeback.required_fields drifted from the frozen writeback contract")
+    if (
+        _require_bool(
+            maker_checker_writeback.get("approved_writeback_required_for_high_impact_override"),
+            "review_rules_v0.yaml:maker_checker_writeback:approved_writeback_required_for_high_impact_override",
+        )
+        is not True
+    ):
+        raise ContractValidationError("high-impact override writeback must require approval before becoming effective")
+    if maker_checker_writeback.get("effective_result_writeback_mode") != "new_version_only":
+        raise ContractValidationError("review_rules_v0.yaml maker_checker_writeback.effective_result_writeback_mode must stay new_version_only")
 
     sample_pool_rules = _require_mapping(review_rules.get("sample_pool_rules"), "review_rules_v0.yaml:sample_pool_rules")
     candidate_pool = _require_mapping(sample_pool_rules.get("candidate_pool"), "review_rules_v0.yaml:candidate_pool")
@@ -283,8 +339,70 @@ def _validate_review_rules_config(config_dir: Path) -> None:
         raise ContractValidationError("candidate_pool.per_batch_top_limit must remain 10")
     if "unresolved" not in _require_list(candidate_pool.get("exclude_effective_category_codes"), "review_rules_v0.yaml:candidate_pool:exclude_effective_category_codes"):
         raise ContractValidationError("candidate_pool must exclude unresolved")
+    if _require_list(candidate_pool.get("ordering"), "review_rules_v0.yaml:candidate_pool:ordering") != [
+        "need_clarity_band_high_first",
+        "build_evidence_band_high_second",
+        "attention_score_secondary_only",
+    ]:
+        raise ContractValidationError("candidate_pool ordering drifted from the frozen sample-pool layering rule")
+
+    training_pool = _require_mapping(sample_pool_rules.get("training_pool"), "review_rules_v0.yaml:training_pool")
+    if training_pool.get("source") != "candidate_pool":
+        raise ContractValidationError("training_pool must only source from candidate_pool")
+    if (
+        _require_bool(training_pool.get("require_review_closure"), "review_rules_v0.yaml:training_pool:require_review_closure") is not True
+        or _require_bool(
+            training_pool.get("require_sufficient_evidence"),
+            "review_rules_v0.yaml:training_pool:require_sufficient_evidence",
+        )
+        is not True
+        or _require_bool(
+            training_pool.get("require_clear_adjudication"),
+            "review_rules_v0.yaml:training_pool:require_clear_adjudication",
+        )
+        is not True
+    ):
+        raise ContractValidationError("training_pool must keep the frozen review/evidence/adjudication gates")
+
+    gold_set = _require_mapping(sample_pool_rules.get("gold_set"), "review_rules_v0.yaml:gold_set")
+    if gold_set.get("pool_name") != "gold_set_300":
+        raise ContractValidationError("gold_set.pool_name must stay gold_set_300")
+    if (
+        _require_bool(gold_set.get("require_double_annotation"), "review_rules_v0.yaml:gold_set:require_double_annotation") is not True
+        or _require_bool(gold_set.get("require_adjudication"), "review_rules_v0.yaml:gold_set:require_adjudication") is not True
+    ):
+        raise ContractValidationError("gold_set must keep double-annotation plus adjudication")
 
     annotation_contract = _require_mapping(review_rules.get("annotation_contract"), "review_rules_v0.yaml:annotation_contract")
+    if annotation_contract.get("target_type") != "product":
+        raise ContractValidationError("annotation_contract.target_type must stay product")
+    if _require_list(
+        annotation_contract.get("decision_form_required_fields"),
+        "review_rules_v0.yaml:annotation_contract:decision_form_required_fields",
+    ) != [
+        "sample_id",
+        "target_type",
+        "target_id",
+        "primary_category_code",
+        "secondary_category_code",
+        "primary_persona_code",
+        "delivery_form_code",
+        "build_evidence_band",
+        "need_clarity_band",
+        "rationale",
+        "evidence_refs",
+        "adjudication_status",
+    ]:
+        raise ContractValidationError("annotation decision-form required fields drifted from the frozen annotation guideline")
+    if _require_list(
+        annotation_contract.get("decision_form_optional_fields"),
+        "review_rules_v0.yaml:annotation_contract:decision_form_optional_fields",
+    ) != [
+        "review_recommended",
+        "review_reason",
+        "taxonomy_change_suggestion",
+    ]:
+        raise ContractValidationError("annotation decision-form optional fields drifted from the frozen annotation guideline")
     if set(_require_list(annotation_contract.get("adjudication_statuses"), "review_rules_v0.yaml:annotation_contract:adjudication_statuses")) != {
         "single_annotated",
         "double_annotated",
@@ -292,11 +410,68 @@ def _validate_review_rules_config(config_dir: Path) -> None:
         "needs_review",
     }:
         raise ContractValidationError("annotation adjudication statuses drifted from the frozen annotation workflow")
+    if _require_list(
+        annotation_contract.get("default_double_annotation_channels"),
+        "review_rules_v0.yaml:annotation_contract:default_double_annotation_channels",
+    ) != ["local_project_user", "llm"]:
+        raise ContractValidationError("annotation default_double_annotation_channels drifted from the frozen gold-set default")
+    if annotation_contract.get("default_adjudicator_role") != "local_project_user":
+        raise ContractValidationError("annotation default_adjudicator_role must stay local_project_user")
+    if (
+        _require_bool(
+            annotation_contract.get("gold_set_finalization_requires_adjudicator_confirmation"),
+            "review_rules_v0.yaml:annotation_contract:gold_set_finalization_requires_adjudicator_confirmation",
+        )
+        is not True
+    ):
+        raise ContractValidationError("gold_set finalization must require adjudicator confirmation")
     field_mappings = _require_mapping(annotation_contract.get("field_mappings"), "review_rules_v0.yaml:annotation_contract:field_mappings")
     if _require_mapping(field_mappings.get("build_evidence_band"), "build_evidence_band").get("score_type") != "build_evidence_score":
         raise ContractValidationError("build_evidence_band must map to build_evidence_score")
     if _require_mapping(field_mappings.get("need_clarity_band"), "need_clarity_band").get("score_type") != "need_clarity_score":
         raise ContractValidationError("need_clarity_band must map to need_clarity_score")
+    if _require_list(
+        annotation_contract.get("review_recommended_when"),
+        "review_rules_v0.yaml:annotation_contract:review_recommended_when",
+    ) != [
+        "evidence_conflict",
+        "primary_job_not_unique",
+        "unstable_product_merge",
+        "unresolved_assignment",
+        "taxonomy_boundary_not_explainable",
+    ]:
+        raise ContractValidationError("annotation review_recommended_when drifted from the frozen annotation guideline")
+    terminology_alignment = _require_mapping(
+        annotation_contract.get("terminology_alignment"),
+        "review_rules_v0.yaml:annotation_contract:terminology_alignment",
+    )
+    if terminology_alignment != {
+        "needs_review": "annotation_workflow_signal_only",
+        "needs_more_evidence": "review_resolution_without_stable_writeback",
+        "mark_unresolved": "review_resolution_for_effective_unresolved",
+        "override_auto_result": "review_resolution_for_new_effective_result",
+    }:
+        raise ContractValidationError("annotation terminology_alignment drifted from the frozen annotation/review boundary")
+    taxonomy_change_suggestion = _require_mapping(
+        annotation_contract.get("taxonomy_change_suggestion"),
+        "review_rules_v0.yaml:annotation_contract:taxonomy_change_suggestion",
+    )
+    if (
+        _require_bool(
+            taxonomy_change_suggestion.get("record_only_until_adjudicator_confirmation"),
+            "review_rules_v0.yaml:annotation_contract:taxonomy_change_suggestion:record_only_until_adjudicator_confirmation",
+        )
+        is not True
+    ):
+        raise ContractValidationError("taxonomy_change_suggestion must remain record-only until adjudicator confirmation")
+    if (
+        _require_bool(
+            taxonomy_change_suggestion.get("auto_writeback_allowed"),
+            "review_rules_v0.yaml:annotation_contract:taxonomy_change_suggestion:auto_writeback_allowed",
+        )
+        is not False
+    ):
+        raise ContractValidationError("taxonomy_change_suggestion must not become an automatic taxonomy writeback path")
 
 
 def build_parser() -> argparse.ArgumentParser:

@@ -10,6 +10,8 @@ from tempfile import TemporaryDirectory
 
 import yaml
 
+from src.common.schema import validate_instance
+from src.common.errors import ContractValidationError
 from tests.helpers import REPO_ROOT
 
 
@@ -80,6 +82,79 @@ class ContractCommandTests(unittest.TestCase):
             result = self.run_cli("validate-configs", env={"APO_CONFIG_DIR": str(config_dir)})
             self.assertEqual(result.returncode, 2)
             self.assertIn("long_term_l1_only_codes", result.stderr)
+
+    def test_validate_configs_rejects_review_rules_gold_set_channel_drift(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            config_dir = root / "configs"
+            shutil.copytree(REPO_ROOT / "configs", config_dir)
+
+            review_rules_path = config_dir / "review_rules_v0.yaml"
+            review_rules = yaml.safe_load(review_rules_path.read_text(encoding="utf-8"))
+            review_rules["annotation_contract"]["default_double_annotation_channels"] = ["llm", "llm"]
+            review_rules_path.write_text(
+                yaml.safe_dump(review_rules, sort_keys=False, allow_unicode=True),
+                encoding="utf-8",
+            )
+
+            result = self.run_cli("validate-configs", env={"APO_CONFIG_DIR": str(config_dir)})
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("default_double_annotation_channels", result.stderr)
+
+    def test_validate_configs_rejects_taxonomy_change_suggestion_auto_writeback(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            config_dir = root / "configs"
+            shutil.copytree(REPO_ROOT / "configs", config_dir)
+
+            review_rules_path = config_dir / "review_rules_v0.yaml"
+            review_rules = yaml.safe_load(review_rules_path.read_text(encoding="utf-8"))
+            review_rules["annotation_contract"]["taxonomy_change_suggestion"]["auto_writeback_allowed"] = True
+            review_rules_path.write_text(
+                yaml.safe_dump(review_rules, sort_keys=False, allow_unicode=True),
+                encoding="utf-8",
+            )
+
+            result = self.run_cli("validate-configs", env={"APO_CONFIG_DIR": str(config_dir)})
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("taxonomy_change_suggestion", result.stderr)
+
+    def test_score_component_schema_accepts_explicit_nulls_for_band_only_output(self) -> None:
+        instance = {
+            "score_type": "build_evidence_score",
+            "raw_value": None,
+            "normalized_value": None,
+            "band": "high",
+            "rationale": "Traceable prompt demo exists.",
+            "evidence_refs_json": [{"evidence_id": "ev_1"}],
+        }
+
+        validate_instance(instance, REPO_ROOT / "schemas" / "score_component.schema.json")
+
+    def test_score_component_schema_rejects_missing_required_output_field(self) -> None:
+        instance = {
+            "score_type": "attention_score",
+            "raw_value": 123,
+            "normalized_value": 0.82,
+            "rationale": "Percentile benchmark is available.",
+            "evidence_refs_json": [{"observation_id": "obs_1"}],
+        }
+
+        with self.assertRaises(ContractValidationError):
+            validate_instance(instance, REPO_ROOT / "schemas" / "score_component.schema.json")
+
+    def test_score_component_schema_rejects_nonstandard_band(self) -> None:
+        instance = {
+            "score_type": "commercial_score",
+            "raw_value": None,
+            "normalized_value": None,
+            "band": "critical",
+            "rationale": "Unsupported band value.",
+            "evidence_refs_json": [{"evidence_id": "ev_1"}],
+        }
+
+        with self.assertRaises(ContractValidationError):
+            validate_instance(instance, REPO_ROOT / "schemas" / "score_component.schema.json")
 
     def test_install_bootstraps_runtime_directories_and_task_store(self) -> None:
         with TemporaryDirectory() as tmp_dir:

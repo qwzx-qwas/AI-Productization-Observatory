@@ -193,6 +193,7 @@ score engine、review queue、sample pool 和 gold set 的行为高度依赖 rub
 - 所有 score 和 annotation 字段都要能回链到现有 schema、config 或 review 规则。
 - 语义不清时优先保守处理，宁可进入 review/unresolved，也不伪造高置信规则。
 
+### 已完成
 ---
 
 ## 阶段 4：同步机器可读 artifact、schema 引用与回归样本

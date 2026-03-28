@@ -4,6 +4,9 @@
   "type": "object",
   "required": [
     "score_type",
+    "raw_value",
+    "normalized_value",
+    "band",
     "rationale",
     "evidence_refs_json"
   ],
@@ -11,7 +14,10 @@
     "score_type": {"type": "string"},
     "raw_value": {},
     "normalized_value": {"type": ["number", "null"]},
-    "band": {"type": ["string", "null"]},
+    "band": {
+      "type": ["string", "null"],
+      "enum": ["high", "medium", "low", null]
+    },
     "rationale": {"type": "string"},
     "evidence_refs_json": {"type": "array"}
   },

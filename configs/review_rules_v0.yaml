@@ -40,6 +40,17 @@ maker_checker_required_for:
   - P0 taxonomy override
   - P0 score override
   - P0 entity merge or split
+maker_checker_writeback:
+  required_fields:
+    - reviewer
+    - reviewed_at
+    - resolution_action
+    - resolution_notes
+    - approver
+    - approved_at
+    - review_issue_id
+  approved_writeback_required_for_high_impact_override: true
+  effective_result_writeback_mode: new_version_only
 unresolved_handling:
   canonical_source_of_truth:
     - taxonomy_assignment
@@ -89,6 +100,7 @@ sample_pool_rules:
     exclude_effective_category_codes:
       - unresolved
   gold_set:
+    pool_name: gold_set_300
     require_double_annotation: true
     require_adjudication: true
 annotation_contract:
@@ -106,11 +118,20 @@ annotation_contract:
     - rationale
     - evidence_refs
     - adjudication_status
+  decision_form_optional_fields:
+    - review_recommended
+    - review_reason
+    - taxonomy_change_suggestion
   adjudication_statuses:
     - single_annotated
     - double_annotated
     - adjudicated
     - needs_review
+  default_double_annotation_channels:
+    - local_project_user
+    - llm
+  default_adjudicator_role: local_project_user
+  gold_set_finalization_requires_adjudicator_confirmation: true
   field_mappings:
     primary_category_code:
       canonical_object: taxonomy_assignment
@@ -140,5 +161,11 @@ annotation_contract:
     - unstable_product_merge
     - unresolved_assignment
     - taxonomy_boundary_not_explainable
+  terminology_alignment:
+    needs_review: annotation_workflow_signal_only
+    needs_more_evidence: review_resolution_without_stable_writeback
+    mark_unresolved: review_resolution_for_effective_unresolved
+    override_auto_result: review_resolution_for_new_effective_result
   taxonomy_change_suggestion:
     record_only_until_adjudicator_confirmation: true
+    auto_writeback_allowed: false
