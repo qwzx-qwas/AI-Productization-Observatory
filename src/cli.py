@@ -13,7 +13,7 @@ from src.common.logging_utils import configure_logging, get_logger
 from src.common.schema import validate_schema_document
 from src.devtools.quality import format_python, lint_python, typecheck_python
 from src.runtime.migrations import migration_plan
-from src.runtime.replay import build_default_mart, replay_source_window
+from src.runtime.replay import build_mart_window, replay_source_window
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -137,8 +137,12 @@ def main(argv: list[str] | None = None) -> int:
             return 0
 
         if args.command == "build-mart-window":
-            mart = build_default_mart(config)
-            print(f"mart_rows={len(mart['top_jtbd_products_30d'])} attention_rows={len(mart['attention_distribution_30d'])}")
+            result = build_mart_window(config)
+            mart = result["mart"]
+            print(
+                f"task_id={result['task_id']} mart_rows={len(mart['top_jtbd_products_30d'])} "
+                f"attention_rows={len(mart['attention_distribution_30d'])}"
+            )
             return 0
 
         if args.command == "migrate":

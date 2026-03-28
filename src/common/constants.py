@@ -14,10 +14,36 @@ DEFAULT_LOG_LEVEL = "INFO"
 
 DEFAULT_LEASE_TIMEOUT_SECONDS = 30
 DEFAULT_HEARTBEAT_INTERVAL_SECONDS = 10
+DEFAULT_RETRY_BASE_DELAY_SECONDS = 30
+DEFAULT_RETRY_MAX_DELAY_SECONDS = 1800
 WINDOW_SEPARATOR = ".."
 
 DEFAULT_NORMALIZATION_VERSION = "product_hunt_v1"
 DEFAULT_MART_VERSION = "mart_window_v1"
+
+TASK_STATUSES = {
+    "queued",
+    "leased",
+    "running",
+    "succeeded",
+    "failed_retryable",
+    "failed_terminal",
+    "blocked",
+    "cancelled",
+}
+
+TASK_TYPES = {
+    "pull_collect",
+    "normalize_raw",
+    "resolve_entity_batch",
+    "build_observation_batch",
+    "extract_evidence_batch",
+    "profile_product_batch",
+    "classify_taxonomy_batch",
+    "score_product_batch",
+    "build_review_packet",
+    "build_mart_window",
+}
 
 NON_RETRYABLE_ERROR_TYPES = {
     "schema_drift",

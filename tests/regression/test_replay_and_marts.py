@@ -6,8 +6,9 @@ from tempfile import TemporaryDirectory
 import unittest
 
 from src.common.errors import BlockedReplayError, ProcessingError
+from src.marts.builder import build_mart_from_fixture
 from src.runtime.models import default_payload
-from src.runtime.replay import build_default_mart, replay_source_window
+from src.runtime.replay import build_default_mart, build_mart_window, replay_source_window
 from src.runtime.tasks import FileTaskStore
 from tests.helpers import REPO_ROOT, temp_config
 
@@ -58,6 +59,52 @@ class ReplayAndMartRegressionTests(unittest.TestCase):
             attention_rows = {(row["category_code"], row["attention_band"]): row["product_count"] for row in mart["attention_distribution_30d"]}
             self.assertEqual(attention_rows[("research_ops", "high")], 1)
             self.assertEqual(attention_rows[("research_ops", "medium")], 1)
+            self.assertNotIn(("qa_automation", None), attention_rows)
+
+    def test_mart_build_replays_same_window_with_new_task(self) -> None:
+        with temp_config() as config:
+            first = build_mart_window(config)
+            second = build_mart_window(config)
+
+            self.assertEqual(first["mart"]["top_jtbd_products_30d"], second["mart"]["top_jtbd_products_30d"])
+            self.assertEqual(first["mart"]["attention_distribution_30d"], second["mart"]["attention_distribution_30d"])
+
+            store = FileTaskStore(config.task_store_path)
+            mart_tasks = [task for task in store.all_tasks() if task["task_type"] == "build_mart_window"]
+            self.assertEqual(len(mart_tasks), 2)
+            self.assertEqual(mart_tasks[1]["parent_task_id"], mart_tasks[0]["task_id"])
+            self.assertEqual(mart_tasks[1]["status"], "succeeded")
+
+    def test_mart_builder_only_consumes_active_effective_results(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            fixtures_dir = Path(tmp_dir)
+            (fixtures_dir / "marts").mkdir(parents=True, exist_ok=True)
+
+            mart_fixture = json.loads((REPO_ROOT / "fixtures" / "marts" / "effective_results_window.json").read_text(encoding="utf-8"))
+            mart_fixture["records"].append(
+                {
+                    "product_id": "prod_pending",
+                    "source_id": "src_product_hunt",
+                    "observed_at": "2026-03-20T08:00:00Z",
+                    "effective_taxonomy": {
+                        "label_role": "primary",
+                        "result_status": "pending_review",
+                        "category_code": "research_ops",
+                    },
+                    "effective_scores": {"attention_band": "high"},
+                }
+            )
+            (fixtures_dir / "marts" / "effective_results_window.json").write_text(
+                json.dumps(mart_fixture, indent=2, ensure_ascii=True) + "\n",
+                encoding="utf-8",
+            )
+
+            mart = build_mart_from_fixture(
+                fixtures_dir / "marts" / "effective_results_window.json",
+                REPO_ROOT / "configs" / "source_registry.yaml",
+            )
+            categories = {row["category_code"]: row["product_count"] for row in mart["top_jtbd_products_30d"]}
+            self.assertEqual(categories["research_ops"], 2)
 
     def test_replay_rejects_fixture_window_mismatch(self) -> None:
         with TemporaryDirectory() as tmp_dir:

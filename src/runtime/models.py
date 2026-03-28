@@ -5,7 +5,13 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass, field
 from typing import Any
 
-from src.common.constants import DEFAULT_LEASE_TIMEOUT_SECONDS
+from src.common.constants import (
+    DEFAULT_HEARTBEAT_INTERVAL_SECONDS,
+    DEFAULT_LEASE_TIMEOUT_SECONDS,
+    TASK_STATUSES,
+    TASK_TYPES,
+)
+from src.common.errors import ContractValidationError
 from src.common.files import utc_now_iso
 
 
@@ -35,16 +41,33 @@ class TaskRecord:
     created_at: str = field(default_factory=utc_now_iso)
     updated_at: str = field(default_factory=utc_now_iso)
 
+    def __post_init__(self) -> None:
+        if self.task_type not in TASK_TYPES:
+            raise ContractValidationError(f"Unsupported task_type: {self.task_type}")
+        if self.status not in TASK_STATUSES:
+            raise ContractValidationError(f"Unsupported task status: {self.status}")
+        if not isinstance(self.payload_json, dict):
+            raise ContractValidationError("payload_json must be a JSON object")
+        if self.window_start and self.window_end and self.window_start > self.window_end:
+            raise ContractValidationError("window_start must not be later than window_end")
+
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
 
 
-def default_payload(source_code: str, window_start: str, window_end: str) -> dict[str, Any]:
-    return {
+def default_payload(source_code: str, window_start: str, window_end: str, *, task_type: str | None = None) -> dict[str, Any]:
+    payload = {
         "source_code": source_code,
         "run_unit": "per_source + per_window",
         "window_key": "published_at" if source_code == "product_hunt" else None,
         "window_start": window_start,
         "window_end": window_end,
         "lease_timeout_seconds": DEFAULT_LEASE_TIMEOUT_SECONDS,
+        "heartbeat_interval_seconds": DEFAULT_HEARTBEAT_INTERVAL_SECONDS,
+        "idempotency_key": f"{task_type or 'task'}:{source_code}:{window_start}:{window_end}",
+        "idempotent_write": True,
+        "resume_checkpoint_verified": True,
     }
+    if task_type is not None:
+        payload["task_type"] = task_type
+    return payload
