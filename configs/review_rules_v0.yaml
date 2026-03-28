@@ -91,3 +91,54 @@ sample_pool_rules:
   gold_set:
     require_double_annotation: true
     require_adjudication: true
+annotation_contract:
+  target_type: product
+  decision_form_required_fields:
+    - sample_id
+    - target_type
+    - target_id
+    - primary_category_code
+    - secondary_category_code
+    - primary_persona_code
+    - delivery_form_code
+    - build_evidence_band
+    - need_clarity_band
+    - rationale
+    - evidence_refs
+    - adjudication_status
+  adjudication_statuses:
+    - single_annotated
+    - double_annotated
+    - adjudicated
+    - needs_review
+  field_mappings:
+    primary_category_code:
+      canonical_object: taxonomy_assignment
+      canonical_field: category_code
+      label_role: primary
+    secondary_category_code:
+      canonical_object: taxonomy_assignment
+      canonical_field: category_code
+      label_role: secondary
+    primary_persona_code:
+      canonical_object: product_profile
+      canonical_field: primary_persona_code
+    delivery_form_code:
+      canonical_object: product_profile
+      canonical_field: delivery_form_code
+    build_evidence_band:
+      canonical_object: score_component
+      canonical_field: band
+      score_type: build_evidence_score
+    need_clarity_band:
+      canonical_object: score_component
+      canonical_field: band
+      score_type: need_clarity_score
+  review_recommended_when:
+    - evidence_conflict
+    - primary_job_not_unique
+    - unstable_product_merge
+    - unresolved_assignment
+    - taxonomy_boundary_not_explainable
+  taxonomy_change_suggestion:
+    record_only_until_adjudicator_confirmation: true

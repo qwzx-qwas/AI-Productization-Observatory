@@ -186,6 +186,14 @@ maker-checker 建议：
 - taxonomy 的当前有效结果必须服从 `08_schema_contracts.md` 中 `result_status + is_override + effective_from`
 - score 的当前有效结果必须服从 `score_run.is_override + computed_at`
 
+## 8.5 Annotation / Review 术语对齐
+
+- annotation 中的 `adjudication_status` 是标注工作流状态，不等于 `review_issue.status`
+- annotation 中的 `build_evidence_band` 必须回链到 `score_type = build_evidence_score` 的 `score_component.band`
+- annotation 中的 `need_clarity_band` 必须回链到 `score_type = need_clarity_score` 的 `score_component.band`
+- `review_recommended = true` 表示应创建或补充 `review_issue`，而不是直接写回最终 override
+- `needs_review` 只表示需要进入 adjudication 或 review；真正的 review close action 仍使用 `needs_more_evidence`、`mark_unresolved`、`override_auto_result` 等 resolution action
+
 ## 9. Re-open 规则
 
 以下情况允许 reopen：

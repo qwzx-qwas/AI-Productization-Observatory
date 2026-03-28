@@ -13,6 +13,9 @@
 - `gold_set_300` 默认采用双标 + adjudication
 - 当前双标通道默认由本地项目使用者与 LLM 构成
 - 当前 adjudicator 默认由本地项目使用者担任
+- candidate pool 每批次默认取 `top_10_candidate_samples`，白名单样本可额外放行
+- candidate pool 先排除 `unresolved`、`needs_more_evidence`、review 未关闭样本
+- candidate pool 排序优先级：`need_clarity_band = high` -> `build_evidence_band = high` -> `attention_score` 仅作次要因子
 - 候选样本池、training pool 与 `gold_set` 不是同一层
 - 进入 training pool 的样本至少要满足：review closure 完成、证据充分、裁决清晰、非 `unresolved`
 - 进入 `gold_set` 的样本在此基础上仍必须满足双标 + adjudication

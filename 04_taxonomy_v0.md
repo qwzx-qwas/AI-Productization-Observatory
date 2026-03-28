@@ -1,13 +1,13 @@
 ---
 doc_id: TAXONOMY-V0
-status: draft
+status: active
 layer: domain
 canonical: true
 precedence_rank: 50
 depends_on:
   - PROJECT-DEFINITION
 supersedes: []
-implementation_ready: false
+implementation_ready: true
 last_frozen_version: unfrozen
 ---
 
@@ -25,6 +25,31 @@ last_frozen_version: unfrozen
 - 先冻结 L1 主类
 - 只给少量高价值 L2 示例
 - 不把二级类一次性铺太细
+
+## Implementation Boundary
+
+本文件的 `implementation_ready: true` 表示以下内容已足以直接驱动 taxonomy classifier、review packet builder、mart predicate 与 prompt regression：
+
+- Phase1 L1 主类集合
+- `primary / secondary / unresolved` 分配规则
+- `unresolved` 的 canonical 表达
+- 关键邻近混淆的裁决逻辑
+- 当前稳定 L2 示例与“不必强给 L2”的边界
+
+仍未承诺的范围：
+
+- 不一次性冻结完整 L2 树
+- 不新增未经过 freeze board 的新 L1 主类
+- 不把 persona、delivery form 或 score 语义塞进 taxonomy code
+
+下游同步对象：
+
+- `configs/taxonomy_v0.yaml`
+- `schemas/taxonomy_assignment.schema.json`
+- `10_prompt_and_model_routing_contracts.md`
+- `12_review_policy.md`
+- `11_metrics_and_marts.md`
+- `14_test_plan_and_acceptance.md`
 
 ## 1. Taxonomy Version
 
@@ -52,16 +77,24 @@ last_frozen_version: unfrozen
 
 - `primary_must_be_unique`: `true`
 - `secondary_optional`: `true`
+- `secondary_requires_distinct_evidence`: `true`
 - `l1_required_when_classifiable`: `true`
 - `l2_optional_in_v0`: `true`
+- `review_required_when_boundary_unexplained`: `true`
 
 进入 `unresolved` 的情况：
 
-- `need_clarity_score` 低
-- evidence conflict unresolved
-- 只有宽泛营销文案，没有具体 job 证据
-- product 归并关系尚不稳定
-- 只能看出“这是一个 AI 产品”，但看不出核心 JTBD
+- `need_clarity_score.band = low`
+- `evidence_conflict_unresolved`
+- `only_broad_marketing_copy`
+- `unstable_product_merge`
+- `primary_job_not_identifiable`
+
+退出 `unresolved` 的条件：
+
+- 至少能稳定给出唯一 `primary` L1
+- 能解释“为什么属于该类，而不是邻近类”
+- 相关 merge 冲突已解除，且 evidence 可回链
 
 ## 4. L1 节点清单
 
@@ -88,7 +121,7 @@ last_frozen_version: unfrozen
   - `JTBD_KNOWLEDGE`
   - `JTBD_MARKETING_GROWTH`
 
-建议 L2 示例：
+当前稳定 L2 示例：
 
 - `JTBD_CONTENT_WRITING`: 写作 / 文案生成
 - `JTBD_CONTENT_IMAGE_VIDEO`: 图像 / 视频内容生成
@@ -116,7 +149,7 @@ last_frozen_version: unfrozen
   - `JTBD_CONTENT`
   - `JTBD_PRODUCTIVITY_AUTOMATION`
 
-建议 L2 示例：
+当前稳定 L2 示例：
 
 - `JTBD_KNOWLEDGE_INTERNAL_DOCS`: 内部文档 / 知识库问答
 - `JTBD_KNOWLEDGE_RESEARCH`: 研究检索 / 总结
@@ -144,7 +177,7 @@ last_frozen_version: unfrozen
   - `JTBD_KNOWLEDGE`
   - `JTBD_DEV_TOOLS`
 
-建议 L2 示例：
+当前稳定 L2 示例：
 
 - `JTBD_PRODUCTIVITY_PERSONAL_ASSISTANT`: 个人效率助理
 - `JTBD_PRODUCTIVITY_BACKOFFICE`: 后台流程自动化
@@ -172,7 +205,7 @@ last_frozen_version: unfrozen
   - `JTBD_PRODUCTIVITY_AUTOMATION`
   - `JTBD_DATA_ANALYTICS`
 
-建议 L2 示例：
+当前稳定 L2 示例：
 
 - `JTBD_DEV_TOOLS_CODING`: 编码辅助
 - `JTBD_DEV_TOOLS_TESTING`: 测试 / 质量辅助
@@ -200,7 +233,7 @@ last_frozen_version: unfrozen
   - `JTBD_KNOWLEDGE`
   - `JTBD_SALES_SUPPORT`
 
-建议 L2 示例：
+当前稳定 L2 示例：
 
 - `JTBD_DATA_ANALYTICS_BI`: BI / dashboard 分析
 - `JTBD_DATA_ANALYTICS_FORECAST`: 预测 / 异常检测
@@ -228,7 +261,7 @@ last_frozen_version: unfrozen
   - `JTBD_CONTENT`
   - `JTBD_SALES_SUPPORT`
 
-建议 L2 示例：
+当前稳定 L2 示例：
 
 - `JTBD_MARKETING_GROWTH_SEO`
 - `JTBD_MARKETING_GROWTH_CAMPAIGN`
@@ -256,7 +289,7 @@ last_frozen_version: unfrozen
   - `JTBD_MARKETING_GROWTH`
   - `JTBD_KNOWLEDGE`
 
-建议 L2 示例：
+当前稳定 L2 示例：
 
 - `JTBD_SALES_SUPPORT_SALES`
 - `JTBD_SALES_SUPPORT_SUPPORT`
@@ -284,7 +317,7 @@ last_frozen_version: unfrozen
   - `JTBD_CONTENT`
   - `JTBD_PRODUCTIVITY_AUTOMATION`
 
-建议 L2 示例：
+当前稳定 L2 示例：
 
 - `JTBD_DESIGN_PRESENTATION_SLIDES`
 - `JTBD_DESIGN_PRESENTATION_UI`
@@ -315,7 +348,7 @@ last_frozen_version: unfrozen
   - `JTBD_DESIGN_PRESENTATION`
   - `JTBD_PRODUCTIVITY_AUTOMATION`
 
-建议 L2 示例：
+当前稳定 L2 示例：
 
 - `JTBD_PERSONAL_CREATIVE_COMPANION`: 陪伴 / 陪聊互动
 - `JTBD_PERSONAL_CREATIVE_JOURNAL`: 日记 / 记录 / 记忆整理
@@ -345,7 +378,7 @@ last_frozen_version: unfrozen
   - `JTBD_KNOWLEDGE`
   - `JTBD_PRODUCTIVITY_AUTOMATION`
 
-建议 L2 示例：
+当前稳定 L2 示例：
 
 - `JTBD_OTHER_VERTICAL_HEALTHCARE`
 - `JTBD_OTHER_VERTICAL_LEGAL`
@@ -365,6 +398,14 @@ last_frozen_version: unfrozen
 - 若能判定到粗粒度 L1，则给 L1 primary，L2 留空
 - 若连 L1 也无法稳定判定，则标 `unresolved`
 - `unresolved` 样本进入 review 或等待更多 evidence
+- 不允许新增单独的 “unresolved status field”；统一仍写为 `category_code = 'unresolved'`
+
+进入 review 的最小触发条件：
+
+- `primary` 不能唯一解释
+- 邻近类存在冲突，且当前理由不足以排除另一类
+- merge 冲突导致 target identity 不稳定
+- 当前裁决会影响主报表、gold set 或高影响样本写回
 
 ## 6. Primary / Secondary 分配规则
 
@@ -379,6 +420,7 @@ last_frozen_version: unfrozen
 - 仅在 primary 已稳定时可给
 - 需要额外 evidence 支撑另一个明确用途
 - 不允许为了“看起来更完整”而强塞 secondary
+- `secondary` 不能拿 persona、delivery form 或模型能力词替代真正的第二用途
 
 ### L2 分配
 
@@ -395,6 +437,67 @@ last_frozen_version: unfrozen
 - 有问答界面，不一定属于 `JTBD_KNOWLEDGE`；若核心是自动执行流程，可能更像 `JTBD_PRODUCTIVITY_AUTOMATION`
 - 用 LLM 写代码，不一定是通用 productivity；若核心用户是开发者，应优先 `JTBD_DEV_TOOLS`
 
+### 7.1 `JTBD_CONTENT` vs `JTBD_KNOWLEDGE`
+
+- 若核心交付物是文章、脚本、海报、视频素材、图像或其他内容资产，优先 `JTBD_CONTENT`
+- 若核心价值是“找到答案、解释材料、总结文档、导航知识”，优先 `JTBD_KNOWLEDGE`
+- 只有“既能问答又能写作”的宽泛表述，而没有主工作证据时，不强分，进入 review 或 `unresolved`
+
+最小判例：
+
+- “Ask your company docs and get instant answers” -> `JTBD_KNOWLEDGE`
+- “Turn bullet points into blog posts and landing-page copy” -> `JTBD_CONTENT`
+
+### 7.2 `JTBD_KNOWLEDGE` vs `JTBD_PRODUCTIVITY_AUTOMATION`
+
+- 只回答、总结、解释，不推动动作闭环，优先 `JTBD_KNOWLEDGE`
+- 能跨系统执行任务、触发动作、自动流转流程，优先 `JTBD_PRODUCTIVITY_AUTOMATION`
+- 若宣传同时写 `copilot / assistant / agent`，但没有动作闭环证据，不得仅因出现 `agent` 一词就改判自动化
+
+最小判例：
+
+- “Search policies and answer employee questions” -> `JTBD_KNOWLEDGE`
+- “Read inbound email, classify intent, and create follow-up tasks automatically” -> `JTBD_PRODUCTIVITY_AUTOMATION`
+
+### 7.3 `JTBD_DEV_TOOLS` vs `JTBD_PRODUCTIVITY_AUTOMATION`
+
+- 主要用户是开发者，且核心工作围绕编码、调试、测试、review、deploy，优先 `JTBD_DEV_TOOLS`
+- 即使产品也在“提效”，只要主任务发生在开发流程中，仍不改判为通用自动化
+- 面向宽泛业务人员的表单、邮件、后台流程执行，再考虑 `JTBD_PRODUCTIVITY_AUTOMATION`
+
+最小判例：
+
+- “Generate tests, explain failing traces, and propose pull-request fixes” -> `JTBD_DEV_TOOLS`
+- “Route invoices across tools and complete back-office approval steps” -> `JTBD_PRODUCTIVITY_AUTOMATION`
+
+### 7.4 `JTBD_MARKETING_GROWTH` vs `JTBD_CONTENT`
+
+- 若内容生成明确服务于 SEO、campaign、广告投放、获客转化，优先 `JTBD_MARKETING_GROWTH`
+- 若只是通用写作、通用图像或视频生成，没有稳定营销场景，优先 `JTBD_CONTENT`
+- “营销团队可使用”不是充分条件；必须有营销目标或营销工作流证据
+
+最小判例：
+
+- “Generate ad variants, landing pages, and campaign briefs for paid growth teams” -> `JTBD_MARKETING_GROWTH`
+- “Write essays, scripts, and newsletters for any use case” -> `JTBD_CONTENT`
+
+### 7.5 `JTBD_SALES_SUPPORT` vs `JTBD_KNOWLEDGE`
+
+- 若核心是线索处理、CRM 推进、工单回复、客户沟通，优先 `JTBD_SALES_SUPPORT`
+- 若核心只是让内部或外部用户问答、查知识、看说明，优先 `JTBD_KNOWLEDGE`
+- 客服机器人只有在承担真实回复或工单动作时，才从知识问答转为销售/支持
+
+最小判例：
+
+- “Draft customer replies, summarize tickets, and update the helpdesk queue” -> `JTBD_SALES_SUPPORT`
+- “Answer product questions from the knowledge base” -> `JTBD_KNOWLEDGE`
+
+### 7.6 `JTBD_PERSONAL_CREATIVE` 与 persona / delivery form 的边界
+
+- `JTBD_PERSONAL_CREATIVE` 只表达产品的核心 JTBD，不引入新的 persona code
+- `personal_creator` 不是当前 v0 persona code；个人生活/创意用途语义由 taxonomy 承担，符合 `DEC-026`
+- `mobile_app`、`desktop_app`、`chat_assistant` 等 delivery form 只表达消费入口，不能替代 `JTBD_PERSONAL_CREATIVE`
+
 ## 8. 本轮人工确认结论
 
 - Phase1 主类清单在现有 L1 基础上新增 `JTBD_PERSONAL_CREATIVE`
@@ -402,8 +505,37 @@ last_frozen_version: unfrozen
 - 允许某些 L1 长期只有一级；只有在高频、相似度高且边界清楚时再细化稳定 L2
 - `label` 对外展示和人工审阅保留中英双语；内部实现默认使用稳定英文 `code`
 - 前 `10` 个高频 JTBD 候选进入下一轮 L2 优先池，但不在当前版本一次性全部冻结
+- `classifier`、`review packet builder` 与 `mart` 统一消费稳定英文 `code`
+- taxonomy config 必须携带与本文件一致的 definition、邻近混淆和稳定 L2 示例，不能只保留 code 名单
 
-## 9. 后续细化策略
+## 9. 最小回归样例说明
+
+- `content_vs_knowledge`
+  - 样本：企业文档搜索与答案生成助手
+  - 预期：`JTBD_KNOWLEDGE`
+  - 回归关注点：不能因生成自然语言答案而误判成 `JTBD_CONTENT`
+- `knowledge_vs_automation`
+  - 样本：读取邮件并自动创建任务的运营 agent
+  - 预期：`JTBD_PRODUCTIVITY_AUTOMATION`
+  - 回归关注点：动作闭环优先于问答界面
+- `devtools_vs_automation`
+  - 样本：代码 review 与测试修复 copilot
+  - 预期：`JTBD_DEV_TOOLS`
+  - 回归关注点：开发者主工作优先于“效率提升”泛表述
+- `marketing_vs_content`
+  - 样本：广告投放文案与 SEO 页面生成器
+  - 预期：`JTBD_MARKETING_GROWTH`
+  - 回归关注点：营销目标不能被通用内容生成吸走
+- `sales_support_vs_knowledge`
+  - 样本：客服回复与工单分流助手
+  - 预期：`JTBD_SALES_SUPPORT`
+  - 回归关注点：真实客户响应动作优先于知识问答标签
+- `personal_creative_boundary`
+  - 样本：AI 陪伴聊天移动应用
+  - 预期：`JTBD_PERSONAL_CREATIVE`
+  - 回归关注点：不要因为 `mobile_app` 或聊天界面把 delivery form 当成 taxonomy
+
+## 10. 后续细化策略
 
 - 先用 gold set 与 review 结果验证 L1 稳定性
 - 优先从前 `10` 个高频 JTBD 候选里筛选可稳定冻结的 L2

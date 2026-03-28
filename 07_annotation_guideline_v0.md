@@ -9,13 +9,35 @@ depends_on:
   - CONTROLLED-VOCABULARIES-V0
   - SCORE-RUBRIC-V0
 supersedes: []
-implementation_ready: false
+implementation_ready: true
 last_frozen_version: annotation_v2
 ---
 
 这份文档回答“拿到一条样本后，标注员怎么一步步做”。
 
 它是 SOP，不是原则宣言。
+
+## Implementation Boundary
+
+本文件的 `implementation_ready: true` 表示以下内容已足以直接指导 annotation、adjudication、review 推荐与 gold set 准入：
+
+- decision form 的最小必填字段
+- `unknown` / `unresolved` / review 的进入边界
+- 双标、adjudication 与 maker-checker writeback 衔接
+- candidate pool、training pool、gold set 的分层规则
+
+仍未承诺的范围：
+
+- 不把 annotation 记录直接当成自动 taxonomy 改写命令
+- 不用 annotation 字段替代 `review_issue`、`taxonomy_assignment`、`score_component` 的 canonical 写回对象
+- 不把 `adjudication_status` 与 `review_issue.status` 混成同一状态机
+
+下游同步对象：
+
+- `12_review_policy.md`
+- `configs/review_rules_v0.yaml`
+- `gold_set/README.md`
+- `14_test_plan_and_acceptance.md`
 
 ## 1. 标注对象
 
@@ -51,8 +73,9 @@ last_frozen_version: annotation_v2
 
 ### Step 4. 判断 build / clarity
 
-- `build_evidence_band` 参考 `06_score_rubric_v0.md`
-- `need_clarity_band` 参考 `06_score_rubric_v0.md`
+- `build_evidence_band` 是 `score_type = build_evidence_score` 的 `band` 视图
+- `need_clarity_band` 是 `score_type = need_clarity_score` 的 `band` 视图
+- 若当前是人工先标再回写 scorer，字段名仍保持以上 annotation 视图名，但语义必须回链到 `score_component.band`
 
 ### Step 5. 判断 secondary
 
@@ -76,7 +99,7 @@ last_frozen_version: annotation_v2
 - 若连 L1 也无法稳定判定，标 `unresolved`
 - 必要时进入 review
 
-## 3. 允许值与字段填写规则
+## 3. Decision Form 字段与填写规则
 
 标注记录至少应填写：
 
@@ -103,6 +126,40 @@ last_frozen_version: annotation_v2
 - `need_clarity_band`：必填
 - `rationale`：必须说明“为什么是这个类，不是邻近类”
 - `evidence_refs`：至少包含 1 条可回链 evidence；若没有则不得给高置信结论
+
+字段回链矩阵：
+
+- `primary_category_code`
+  - 回链对象：`taxonomy_assignment.category_code`
+  - 附加条件：`label_role = 'primary'`
+- `secondary_category_code`
+  - 回链对象：`taxonomy_assignment.category_code`
+  - 附加条件：`label_role = 'secondary'`
+- `primary_persona_code`
+  - 回链对象：`product_profile.primary_persona_code`
+  - 值域来源：`05_controlled_vocabularies_v0.md` 与 `configs/persona_v0.yaml`
+- `delivery_form_code`
+  - 回链对象：`product_profile.delivery_form_code`
+  - 值域来源：`05_controlled_vocabularies_v0.md` 与 `configs/delivery_form_v0.yaml`
+- `build_evidence_band`
+  - 回链对象：`score_component.band`
+  - 附加条件：`score_type = 'build_evidence_score'`
+- `need_clarity_band`
+  - 回链对象：`score_component.band`
+  - 附加条件：`score_type = 'need_clarity_score'`
+- `adjudication_status`
+  - 作用：annotation 工作流状态
+  - 允许值：`single_annotated | double_annotated | adjudicated | needs_review`
+  - 注意：不得拿来替代 `review_issue.status`
+- `review_recommended`
+  - 作用：是否建议创建或补充 `review_issue`
+  - 典型触发：evidence 冲突、`unresolved`、主类无法唯一判定、merge 不稳定、高影响 override
+- `review_reason`
+  - 作用：解释推荐 review 的原因
+  - 约束：必须与 `12_review_policy.md` 的 issue / resolution 术语兼容
+- `taxonomy_change_suggestion`
+  - 作用：记录候选规则反馈
+  - 约束：只能作为候选备注；经 adjudicator 确认前不得触发 taxonomy 改写
 
 ## 4. `unknown` / `unresolved` 规则
 
@@ -180,7 +237,27 @@ last_frozen_version: annotation_v2
 - `adjudicated`
 - `needs_review`
 
-## 7. Decision Form 模板
+## 7. Annotation 到 Review Writeback 的衔接
+
+- annotation 记录的是“当前人工裁决建议”，不是最终 canonical 写回动作
+- 若 `review_recommended = true`，应进入或补充 `review_issue`
+- 若裁决结果是当前无法稳定归类，可在 review closure 后写回 `category_code = 'unresolved'`
+- 若是高影响 taxonomy / score / merge override，必须经过 `maker_checker_required = true` 的审批 gate
+- 写回 taxonomy 时，仍以新的 `taxonomy_assignment` 版本表达，而不是改旧记录
+- 写回 score 时，仍以新的 `score_run` / `score_component` 表达，而不是字段级覆盖
+
+术语对齐：
+
+- `needs_review`
+  - annotation 语义：当前样本需要进入 adjudication 或 review
+- `needs_more_evidence`
+  - review 语义：当前 issue 的关闭动作之一，表示不直接写回稳定结果
+- `mark_unresolved`
+  - review 语义：人工确认当前 effective taxonomy 就是 `unresolved`
+- `override_auto_result`
+  - review 语义：人工批准新的有效结果，不覆盖历史自动结果
+
+## 8. Decision Form 模板
 
 ```yaml
 sample_id: ""
@@ -207,7 +284,20 @@ taxonomy_change_suggestion: null
 - `taxonomy_change_suggestion` 仅用于记录候选规则反馈
 - 该字段不得直接触发 taxonomy 节点改写，必须先经 adjudicator 确认
 
-## 8. Calibration 示例
+## 9. Sample Pool Layering
+
+- candidate pool
+  - 每批次可选 `top_10_candidate_samples`，另可带 `whitelist_reason` 额外放行白名单样本
+  - 先排除 `unresolved`、`needs_more_evidence`、review 未关闭样本
+  - 排序优先级：`need_clarity_band = high` -> `build_evidence_band = high` -> `attention_score` 仅作次要因子
+- training pool
+  - 只能从 candidate pool 进入
+  - 必须满足 review closure 完成、证据充分、裁决清晰、非 `unresolved`
+- `gold_set_300`
+  - 在 training pool 之上继续增加“双标 + adjudication”要求
+  - 当前双标主体默认为“本地项目使用者 + LLM”
+
+## 10. Calibration 示例
 
 ### 示例 A
 
@@ -232,15 +322,25 @@ taxonomy_change_suggestion: null
   - 若 README 有明确开发者与 coding 证据，优先 `JTBD_DEV_TOOLS`
   - 若仍冲突未解，进入 review
 
-## 9. 标注员权限边界
+### 示例 D
+
+- 样本表现：只有产品主页一句 “AI workspace for everyone”，同时没有稳定 merge 结果
+- 判断：
+  - `need_clarity_band` 不应高估
+  - taxonomy 可直接 `unresolved`
+  - `review_recommended = true`
+  - 若后续仍证据不足，可在 review 里走 `needs_more_evidence` 或 `mark_unresolved`
+
+## 11. 标注员权限边界
 
 - 标注员可以记录 taxonomy 变更候选建议
 - 标注员不直接修改 taxonomy 节点定义
 - 标注员记录的 taxonomy 建议必须先经 adjudicator 确认，才能进入单独的规则 / 设计回修流程
 
-## 10. 本轮人工确认结论
+## 12. 本轮人工确认结论
 
 - `gold_set_300` 当前默认要求双标 + adjudication；当前双标主体为本地项目使用者与 LLM，后续保留扩展到多人标注的接口
 - 当前 adjudicator 默认由本地项目使用者担任；若后续进入多人协作，再拆分为独立角色
 - 标注员可以记录 `taxonomy_change_suggestion` 作为候选备注，但不得直接提交 taxonomy 节点改动；只有经 adjudicator 确认后，才进入规则 / 设计回修流程
 - 候选样本池、training pool 与 `gold_set` 必须分层管理；样本若要进入 `gold_set`，仍必须满足双标 + adjudication，而不能直接沿用 training pool 准入条件
+- `review_recommended`、`needs_review`、`mark_unresolved`、`needs_more_evidence`、`override_auto_result` 在 annotation 与 review 间保持各自语义，不混成单一状态机

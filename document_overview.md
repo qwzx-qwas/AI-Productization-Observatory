@@ -189,12 +189,12 @@ last_frozen_version: governance_v2
    (9) 第 9 行
    - file：`04_taxonomy_v0.md`
    - role：taxonomy 规格
-   - status：`draft`
+   - status：`active`
    - canonical：yes
    - layer：`domain`
    - precedence_rank：`50`
-   - implementation_ready：`false`
-   - notes：已回写 Phase1 主类补充结论；L2 仍按审阅结果逐步冻结
+   - implementation_ready：`true`
+   - notes：Phase1 L1 集合、邻近混淆、`unresolved` 规则与 taxonomy config 已对齐；L2 扩展继续按版本冻结
    (10) 第 10 行
    - file：`05_controlled_vocabularies_v0.md`
    - role：受控词表
@@ -207,12 +207,12 @@ last_frozen_version: governance_v2
    (11) 第 11 行
    - file：`06_score_rubric_v0.md`
    - role：rubric 规格
-   - status：`draft`
+   - status：`active`
    - canonical：yes
    - layer：`domain`
    - precedence_rank：`70`
-   - implementation_ready：`false`
-   - notes：需与 schema 对齐
+   - implementation_ready：`true`
+   - notes：五类 score、null/override policy 与 attention v1 默认参数已和 config/schema/test 引用对齐
    (12) 第 12 行
    - file：`07_annotation_guideline_v0.md`
    - role：标注 SOP
@@ -220,8 +220,8 @@ last_frozen_version: governance_v2
    - canonical：yes
    - layer：`domain`
    - precedence_rank：`80`
-   - implementation_ready：`false`
-   - notes：标注与评估规范
+   - implementation_ready：`true`
+   - notes：decision form、双标/adjudication、review writeback 与 sample-pool layering 已形成可执行口径
    (13) 第 13 行
    - file：`08_schema_contracts.md`
    - role：schema / DDL / JSON contract

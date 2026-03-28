@@ -1,60 +1,357 @@
 version: v0
+implementation_ready: true
 source_of_truth: hand_maintained_artifact
+canonical_doc: 04_taxonomy_v0.md
 assignment_policy:
   target_type: product
   primary_must_be_unique: true
   secondary_optional: true
+  secondary_requires_distinct_evidence: true
   l1_required_when_classifiable: true
   l2_optional_in_v0: true
   unresolved_code: unresolved
+  unresolved_entry_conditions:
+    - low_need_clarity
+    - evidence_conflict_unresolved
+    - only_broad_marketing_copy
+    - unstable_product_merge
+    - primary_job_not_identifiable
+  unresolved_exit_conditions:
+    - stable_primary_l1_or_l2_with_traceable_evidence
+  review_required_when:
+    - primary_job_not_unique
+    - adjacent_confusion_not_explainable
+    - unstable_product_merge
+    - unresolved_assigned
+  stable_l2_cap_per_l1: 5
+naming_policy:
+  l1_prefix: JTBD_
+  l2_prefix_pattern: JTBD_<L1>_*
+  internal_logic_uses_stable_english_code: true
+  bilingual_labels_for_human_review: true
+adjacent_confusion_rules:
+  - pair:
+      - JTBD_CONTENT
+      - JTBD_KNOWLEDGE
+    choose_first:
+      JTBD_CONTENT: final deliverable is a content asset such as writing, image, audio, video, or editable creative output.
+      JTBD_KNOWLEDGE: final deliverable is an answer, explanation, summary, or knowledge navigation result.
+    route_to_review_or_unresolved_when: product only claims general chat or "AI assistant" value without a traceable primary job.
+  - pair:
+      - JTBD_KNOWLEDGE
+      - JTBD_PRODUCTIVITY_AUTOMATION
+    choose_first:
+      JTBD_KNOWLEDGE: product stops at answering, summarizing, or explaining.
+      JTBD_PRODUCTIVITY_AUTOMATION: product triggers actions, completes tasks, or orchestrates a workflow across tools.
+    route_to_review_or_unresolved_when: the product uses "agent" language but action closure is not evidenced.
+  - pair:
+      - JTBD_DEV_TOOLS
+      - JTBD_PRODUCTIVITY_AUTOMATION
+    choose_first:
+      JTBD_DEV_TOOLS: primary user is a developer and the job is coding, debugging, testing, review, or deploy.
+      JTBD_PRODUCTIVITY_AUTOMATION: primary user is a non-developer operator and the job is a generic business workflow.
+    route_to_review_or_unresolved_when: both engineering and non-engineering flows are claimed and neither is clearly primary.
+  - pair:
+      - JTBD_MARKETING_GROWTH
+      - JTBD_CONTENT
+    choose_first:
+      JTBD_MARKETING_GROWTH: content generation is explicitly tied to SEO, campaign execution, acquisition, or conversion.
+      JTBD_CONTENT: content generation remains general-purpose without a stable marketing goal.
+    route_to_review_or_unresolved_when: marketing language is broad but no campaign or growth workflow evidence is present.
+  - pair:
+      - JTBD_SALES_SUPPORT
+      - JTBD_KNOWLEDGE
+    choose_first:
+      JTBD_SALES_SUPPORT: product drafts replies, handles tickets, updates CRM, or supports customer communication workflows.
+      JTBD_KNOWLEDGE: product mainly answers questions from docs or a knowledge base.
+    route_to_review_or_unresolved_when: it is unclear whether the product only answers or also takes customer-facing action.
 nodes:
   - code: JTBD_CONTENT
     level: 1
     parent_code: null
     label: Content Creation And Editing
     zh_label: 内容生成与编辑
+    definition: The primary job is to generate, rewrite, edit, polish, or transform content assets.
+    inclusion_rule:
+      - Primary value statement centers on generating or editing text, images, audio, or video.
+      - The user evaluates success by the quality of the produced content asset.
+    exclusion_rule:
+      - Primary value is knowledge retrieval, Q&A, or explanation.
+      - Primary value is workflow execution rather than content production.
+    example_positive:
+      - AI writing assistant
+      - Video script generator
+    example_negative:
+      - AI document search assistant
+      - AI sales lead scoring tool
+    adjacent_confusions:
+      - JTBD_KNOWLEDGE
+      - JTBD_MARKETING_GROWTH
+    stable_l2_examples:
+      - code: JTBD_CONTENT_WRITING
+        label: Writing And Copy Generation
+        zh_label: 写作与文案生成
+      - code: JTBD_CONTENT_IMAGE_VIDEO
+        label: Image And Video Creation
+        zh_label: 图像与视频内容生成
   - code: JTBD_KNOWLEDGE
     level: 1
     parent_code: null
     label: Knowledge Search And Q&A
     zh_label: 知识检索与问答
+    definition: The primary job is to help users search, understand, summarize, and answer within a knowledge domain.
+    inclusion_rule:
+      - Primary value is retrieval, Q&A, summarization, explanation, or knowledge navigation.
+      - Output is an answer, explanation, or guided summary rather than a completed external action.
+    exclusion_rule:
+      - Primary value is content creation.
+      - Primary value is workflow automation or execution.
+    example_positive:
+      - Internal knowledge-base assistant
+      - Document search and summary assistant
+    example_negative:
+      - AI copywriting tool
+      - Automated ticket routing system
+    adjacent_confusions:
+      - JTBD_CONTENT
+      - JTBD_PRODUCTIVITY_AUTOMATION
+    stable_l2_examples:
+      - code: JTBD_KNOWLEDGE_INTERNAL_DOCS
+        label: Internal Docs And Knowledge Base Q&A
+        zh_label: 内部文档与知识库问答
+      - code: JTBD_KNOWLEDGE_RESEARCH
+        label: Research Retrieval And Summarization
+        zh_label: 研究检索与总结
   - code: JTBD_PRODUCTIVITY_AUTOMATION
     level: 1
     parent_code: null
     label: Workflow Automation
     zh_label: 工作流与效率自动化
+    definition: The primary job is to execute, orchestrate, or accelerate repeated workflows rather than only answer questions.
+    inclusion_rule:
+      - Value proposition is centered on automation, agents, workflows, or task execution.
+      - Product can move work forward across steps or systems.
+    exclusion_rule:
+      - Product only generates content without process execution.
+      - Product only answers questions without action closure.
+    example_positive:
+      - Email processing agent
+      - Cross-tool workflow orchestrator
+    example_negative:
+      - Document Q&A bot
+      - AI logo generator
+    adjacent_confusions:
+      - JTBD_KNOWLEDGE
+      - JTBD_DEV_TOOLS
+    stable_l2_examples:
+      - code: JTBD_PRODUCTIVITY_PERSONAL_ASSISTANT
+        label: Personal Productivity Assistant
+        zh_label: 个人效率助理
+      - code: JTBD_PRODUCTIVITY_BACKOFFICE
+        label: Back-Office Workflow Automation
+        zh_label: 后台流程自动化
   - code: JTBD_DEV_TOOLS
     level: 1
     parent_code: null
     label: Developer Tools
     zh_label: 开发者工具
+    definition: The primary job is to help developers write, debug, test, deploy, or maintain software and developer workflows.
+    inclusion_rule:
+      - Primary users are developers or engineering teams.
+      - Core value is tied to code generation, debugging, testing, review, deploy, or SDK/API delivery.
+    exclusion_rule:
+      - Output is only general-purpose writing or media generation.
+      - Product primarily serves non-developer business workflows.
+    example_positive:
+      - Coding assistant
+      - Test-case generator
+    example_negative:
+      - AI marketing email generator
+      - General research Q&A tool
+    adjacent_confusions:
+      - JTBD_PRODUCTIVITY_AUTOMATION
+      - JTBD_DATA_ANALYTICS
+    stable_l2_examples:
+      - code: JTBD_DEV_TOOLS_CODING
+        label: Coding Assistance
+        zh_label: 编码辅助
+      - code: JTBD_DEV_TOOLS_TESTING
+        label: Testing And Quality Assistance
+        zh_label: 测试与质量辅助
   - code: JTBD_DATA_ANALYTICS
     level: 1
     parent_code: null
     label: Data Analysis And BI
     zh_label: 数据分析与商业洞察
+    definition: The primary job is to extract analysis, visualization, monitoring, or business insight from structured or semi-structured data.
+    inclusion_rule:
+      - Main value is analysis, dashboards, reporting, monitoring, or forecasting.
+      - Inputs are typically business metrics, tables, or databases.
+    exclusion_rule:
+      - Product only does general knowledge Q&A.
+      - Product only supports CRM or sales execution.
+    example_positive:
+      - Natural-language BI assistant
+      - Metrics monitoring and insight generator
+    example_negative:
+      - AI CRM follow-up assistant
+      - Code completion tool
+    adjacent_confusions:
+      - JTBD_KNOWLEDGE
+      - JTBD_SALES_SUPPORT
+    stable_l2_examples:
+      - code: JTBD_DATA_ANALYTICS_BI
+        label: BI And Dashboard Analysis
+        zh_label: BI 与看板分析
+      - code: JTBD_DATA_ANALYTICS_FORECAST
+        label: Forecasting And Anomaly Detection
+        zh_label: 预测与异常检测
   - code: JTBD_MARKETING_GROWTH
     level: 1
     parent_code: null
     label: Marketing And Growth
     zh_label: 营销与增长
+    definition: The primary job is to drive acquisition, conversion, distribution, campaign execution, or growth experimentation.
+    inclusion_rule:
+      - Value proposition explicitly mentions ads, SEO, campaigns, lead generation, or conversion work.
+      - Produced outputs or actions are in service of marketing goals rather than general creative output.
+    exclusion_rule:
+      - Product is a general writing tool without a stable marketing scenario.
+      - Product mainly supports sales execution or customer support.
+    example_positive:
+      - Campaign and ad-copy generator
+      - SEO optimization assistant
+    example_negative:
+      - General AI writer
+      - Ticket-response bot
+    adjacent_confusions:
+      - JTBD_CONTENT
+      - JTBD_SALES_SUPPORT
+    stable_l2_examples:
+      - code: JTBD_MARKETING_GROWTH_SEO
+        label: SEO Optimization
+        zh_label: SEO 优化
+      - code: JTBD_MARKETING_GROWTH_CAMPAIGN
+        label: Campaign Generation And Optimization
+        zh_label: Campaign 生成与优化
   - code: JTBD_SALES_SUPPORT
     level: 1
     parent_code: null
     label: Sales And Customer Support
     zh_label: 销售与客户支持
+    definition: The primary job is to move sales, lead handling, customer support, tickets, or customer communication forward.
+    inclusion_rule:
+      - Product clearly serves sales, success, or support teams.
+      - Value centers on leads, CRM, outreach, support, tickets, or customer response.
+    exclusion_rule:
+      - Product is primarily a marketing campaign tool.
+      - Product is mainly a knowledge Q&A tool without customer-facing execution.
+    example_positive:
+      - AI outbound sales assistant
+      - Customer-support reply and ticket assistant
+    example_negative:
+      - General BI tool
+      - Pure SEO optimization tool
+    adjacent_confusions:
+      - JTBD_MARKETING_GROWTH
+      - JTBD_KNOWLEDGE
+    stable_l2_examples:
+      - code: JTBD_SALES_SUPPORT_SALES
+        label: Sales Execution Support
+        zh_label: 销售执行支持
+      - code: JTBD_SALES_SUPPORT_SUPPORT
+        label: Customer Support Operations
+        zh_label: 客服支持运营
   - code: JTBD_DESIGN_PRESENTATION
     level: 1
     parent_code: null
     label: Design And Presentation
     zh_label: 设计与展示表达
+    definition: The primary job is to create visual design, presentation materials, UI, brand assets, or display-oriented outputs.
+    inclusion_rule:
+      - Product explicitly emphasizes design, decks, UI, slides, or brand expression.
+      - Success is judged by the produced design or presentation artifact.
+    exclusion_rule:
+      - Product only does generic image generation without a stable design or presentation workflow.
+      - Product mainly generates copywriting.
+    example_positive:
+      - AI slide generator
+      - UI design assistant
+    example_negative:
+      - General chat assistant
+      - Email automation agent
+    adjacent_confusions:
+      - JTBD_CONTENT
+      - JTBD_PRODUCTIVITY_AUTOMATION
+    stable_l2_examples:
+      - code: JTBD_DESIGN_PRESENTATION_SLIDES
+        label: Slide And Deck Creation
+        zh_label: 幻灯片与演示文稿生成
+      - code: JTBD_DESIGN_PRESENTATION_UI
+        label: UI And Visual Design
+        zh_label: UI 与视觉设计
   - code: JTBD_PERSONAL_CREATIVE
     level: 1
     parent_code: null
     label: Personal Life And Creative Applications
     zh_label: 个人生活与创意应用
+    definition: The primary job is to deliver personal expression, companionship, journaling, lightweight creation, or playful life-use experiences.
+    inclusion_rule:
+      - Product is clearly aimed at individual end users rather than teams or enterprise process owners.
+      - Primary value is emotional, expressive, or personal-life utility rather than business productivity.
+      - Personal-life and creative-use semantics stay in taxonomy rather than persona codes.
+    exclusion_rule:
+      - Product is better covered by a stable content-creation job.
+      - Product is primarily design delivery or presentation work.
+      - Product mainly serves team workflow automation, sales, or support.
+    example_positive:
+      - AI companion chat app
+      - AI journal and memory assistant
+    example_negative:
+      - AI slide generator
+      - Team knowledge assistant
+    adjacent_confusions:
+      - JTBD_CONTENT
+      - JTBD_DESIGN_PRESENTATION
+      - JTBD_PRODUCTIVITY_AUTOMATION
+    stable_l2_examples:
+      - code: JTBD_PERSONAL_CREATIVE_COMPANION
+        label: Companion Interaction
+        zh_label: 陪伴互动
+      - code: JTBD_PERSONAL_CREATIVE_JOURNAL
+        label: Journaling And Memory Capture
+        zh_label: 日记与记忆整理
+      - code: JTBD_PERSONAL_CREATIVE_EXPRESSION
+        label: Personal Expression
+        zh_label: 个性化表达
+      - code: JTBD_PERSONAL_CREATIVE_ENTERTAINMENT
+        label: Entertainment And Play
+        zh_label: 娱乐与休闲互动
   - code: JTBD_OTHER_VERTICAL
     level: 1
     parent_code: null
     label: Vertical Or Specialized Domain
     zh_label: 垂直场景与专业领域
+    definition: The product clearly serves a strong vertical or professional workflow that cannot be stably absorbed by the general L1 set.
+    inclusion_rule:
+      - Product is explicitly tied to healthcare, legal, education, recruiting, finance, or another domain-specific workflow.
+      - Main value comes from domain process expertise rather than general-purpose tooling alone.
+    exclusion_rule:
+      - Product is only repackaged with vertical language but is still a general tool.
+      - Product can be more stably explained by another existing L1 class.
+    example_positive:
+      - Medical-record assistant
+      - Legal document review assistant
+    example_negative:
+      - General document Q&A bot
+      - General code assistant
+    adjacent_confusions:
+      - JTBD_KNOWLEDGE
+      - JTBD_PRODUCTIVITY_AUTOMATION
+    stable_l2_examples:
+      - code: JTBD_OTHER_VERTICAL_HEALTHCARE
+        label: Healthcare Workflow
+        zh_label: 医疗工作流
+      - code: JTBD_OTHER_VERTICAL_LEGAL
+        label: Legal Workflow
+        zh_label: 法律工作流

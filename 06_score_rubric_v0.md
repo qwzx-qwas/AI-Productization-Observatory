@@ -1,13 +1,13 @@
 ---
 doc_id: SCORE-RUBRIC-V0
-status: draft
+status: active
 layer: domain
 canonical: true
 precedence_rank: 70
 depends_on:
   - CONTROLLED-VOCABULARIES-V0
 supersedes: []
-implementation_ready: false
+implementation_ready: true
 last_frozen_version: unfrozen
 ---
 
@@ -24,6 +24,30 @@ last_frozen_version: unfrozen
   - `attention_score`
 - `commercial_score` 为可选启用。
 - `persistence_score` 为预留接口。
+
+## Implementation Boundary
+
+本文件的 `implementation_ready: true` 表示以下内容已足以直接驱动 scorer、review、prompt regression 与 contract test：
+
+- 五类 `score_type` 的 Phase1 适用范围
+- `score_component` 最小输出字段
+- `null_policy` 与 override policy
+- attention v1 的 metric 选择、percentile 范围、窗口、阈值与复核 gate
+
+仍未承诺的范围：
+
+- 不产出 total score
+- 不把 `commercial_score`、`persistence_score` 升级为未经确认的主报表主指标
+- 不把 attention 当前默认参数表述为“已验证稳定”
+
+下游同步对象：
+
+- `configs/rubric_v0.yaml`
+- `configs/source_metric_registry.yaml`
+- `schemas/score_component.schema.json`
+- `10_prompt_and_model_routing_contracts.md`
+- `12_review_policy.md`
+- `14_test_plan_and_acceptance.md`
 
 ## 1. 通用输出契约
 
@@ -43,11 +67,13 @@ last_frozen_version: unfrozen
 - `band`：受控分档；Phase1 主打分至少要能落出 band。
 - `rationale`：简洁可审计的解释，不少于一句。
 - `evidence_refs_json`：引用到 `evidence` 或 `observation`。
+- band-only score 在 v0 仍保留 `raw_value` / `normalized_value` 两个字段，只是允许写 `null`
 
 包装规则：
 
 - 单个分项的 canonical shape 以 `schemas/score_component.schema.json` 为准
 - `Score Engine` 模块输出的是 `score_component` 项的列表；列表中的每个元素都必须满足单分项 schema
+- 人工 override 的审计字段继续通过 `score_run.is_override`、`override_review_issue_id` 以及 `score_component` 的 override 审计列表达
 
 ## 2. 通用 Band 规则
 
@@ -73,7 +99,8 @@ v0 默认使用：
 ### `allowed_with_reason`
 
 - 适用：上游输入可能天然缺失。
-- 行为：允许 `raw_value = null`、`normalized_value = null`、`band = null`，但必须给 `reason`。
+- 行为：允许 `raw_value = null`、`normalized_value = null`、`band = null`，但必须在 `rationale` 中显式写出原因。
+- v0 不新增独立 `reason_code` 字段；若配置中存在 machine-readable null reason，runner 仍应把同名 code 体现在 `rationale` 中。
 
 ## 4. Override Policy
 
@@ -122,6 +149,15 @@ v0 默认使用：
 - `override_allowed`:
   - `true`
 
+实现判例：
+
+- `high`
+  - 样本：展示 prompt demo、build stack、可回链源码或页面片段
+  - 解释：有强 build 证据，且 snippet / source_url 可审计
+- `low`
+  - 样本：只有 “AI-powered” 之类宽泛宣传，没有 build 过程线索
+  - 解释：不得因为产品带 AI 标签就抬高 build evidence
+
 ### 5.2 `need_clarity_score`
 
 - `output_mode`: `band`
@@ -148,6 +184,15 @@ v0 默认使用：
   - `not_allowed`
 - `override_allowed`:
   - `true`
+
+实现判例：
+
+- `high`
+  - 样本：能明确说出 one-sentence job、主要 persona、主要 delivery form
+  - 解释：足以支撑稳定 taxonomy primary
+- `low`
+  - 样本：只有 “AI workspace for teams” 一类宽泛文案
+  - 解释：不得强行输出高置信 taxonomy 结论
 
 ### 5.3 `attention_score`
 
@@ -189,11 +234,11 @@ v0 默认使用：
 - `null_policy`:
   - `allowed_with_reason`
 - `reason_examples`:
-  - `source metrics unavailable`
-  - `metric definition unavailable`
-  - `metric semantics mismatch`
-  - `window benchmark unavailable`
-  - `benchmark sample insufficient`
+  - `source_metrics_unavailable`
+  - `metric_definition_unavailable`
+  - `metric_semantics_mismatch`
+  - `window_benchmark_unavailable`
+  - `benchmark_sample_insufficient`
 - `override_allowed`:
   - `true`
 
@@ -207,6 +252,15 @@ v0 默认使用：
 - 首版允许 `normalized_value = null`、`band = null` 的比例偏高，但必须显式暴露，不能伪装成稳定 band。
 - 在正式复核门槛达成前，不得把 `(source_id, relation_type)` 粒度的 calibration 写成“已确认有效”。
 - attention 参数只允许在既定首轮校准 gate 达成后复核，不得在运行中无痕改写。
+
+实现判例：
+
+- 正常
+  - 样本：source metric registry 已定义 `primary_metric`，同 `source_id + relation_type + window` 样本足够
+  - 解释：输出 `raw_value + normalized_value + band`
+- `allowed_with_reason`
+  - 样本：benchmark 样本不足，即使有 `raw_value` 也无法稳定归一化
+  - 解释：输出 `raw_value`，并在 `rationale` 中写明 `benchmark_sample_insufficient`
 
 ### 5.4 `commercial_score`
 
@@ -229,10 +283,19 @@ v0 默认使用：
 - `null_policy`:
   - `allowed_with_reason`
 - `reason_examples`:
-  - `homepage unavailable`
-  - `pricing evidence unavailable`
+  - `homepage_unavailable`
+  - `pricing_evidence_unavailable`
 - `override_allowed`:
   - `true`
+
+实现判例：
+
+- `high`
+  - 样本：存在定价页、明确付费计划与商业化描述
+  - 解释：可输出稳定 band，但仍只是辅助项
+- `allowed_with_reason`
+  - 样本：主页缺失或证据无法访问
+  - 解释：在 `rationale` 中写明 `homepage_unavailable` 或 `pricing_evidence_unavailable`
 
 ### 5.5 `persistence_score`
 
@@ -246,10 +309,16 @@ v0 默认使用：
 - `null_policy`:
   - `allowed_with_reason`
 - `reason_examples`:
-  - `not enabled in phase1`
-  - `insufficient repeated observations`
+  - `not_enabled_in_phase1`
+  - `insufficient_repeated_observations`
 - `override_allowed`:
   - `false`
+
+实现判例：
+
+- 默认
+  - 样本：Phase1 常规运行
+  - 解释：保留接口，但默认返回 `null`，并在 `rationale` 中写明 `not_enabled_in_phase1`
 
 ## 6. Threshold / Applicability 表
 
@@ -304,6 +373,8 @@ v0 默认使用：
 - attention 的正式稳定性复核仍待运行后触发；当前只冻结默认参数，不宣称已稳定
 - `commercial_score` 是否升级为 Phase1 主结果
 - `persistence_score` 何时进入正式主报表
+
+这些事项不会阻塞当前 `implementation_ready`，因为 scorer、review 与 contract test 所需的默认行为已经冻结。
 
 ## 9. Unified Attention Rule v1 Skeleton
 
@@ -364,11 +435,11 @@ v0 默认使用：
 
 出现以下任一情况时，不输出 `normalized_value` 与 `band`：
 
-- `source metrics unavailable`
-- `metric definition unavailable`
-- `metric semantics mismatch`
-- `window benchmark unavailable`
-- `benchmark sample insufficient`
+- `source_metrics_unavailable`
+- `metric_definition_unavailable`
+- `metric_semantics_mismatch`
+- `window_benchmark_unavailable`
+- `benchmark_sample_insufficient`
 
 ### 9.5 设计原因
 

@@ -16,6 +16,215 @@ from src.runtime.migrations import migration_plan
 from src.runtime.replay import build_mart_window, replay_source_window
 
 
+def _require_mapping(value: object, description: str) -> dict[str, object]:
+    if not isinstance(value, dict):
+        raise ContractValidationError(f"{description} must be a mapping")
+    return value
+
+
+def _require_list(value: object, description: str) -> list[object]:
+    if not isinstance(value, list):
+        raise ContractValidationError(f"{description} must be a list")
+    return value
+
+
+def _require_string(value: object, description: str) -> str:
+    if not isinstance(value, str) or not value:
+        raise ContractValidationError(f"{description} must be a non-empty string")
+    return value
+
+
+def _load_config_mapping(config_dir: Path, file_name: str) -> dict[str, object]:
+    return _require_mapping(load_yaml(config_dir / file_name), file_name)
+
+
+def _validate_source_registry_config(config_dir: Path) -> int:
+    source_registry = _load_config_mapping(config_dir, "source_registry.yaml")
+    sources = _require_list(source_registry.get("sources"), "source_registry.yaml:sources")
+    source_ids = [_require_string(_require_mapping(entry, "source_registry.yaml:sources[]").get("source_id"), "source_id") for entry in sources]
+    if len(source_ids) != len(set(source_ids)):
+        raise ContractValidationError("source_registry.yaml contains duplicate source_id values")
+    if not all(isinstance(_require_mapping(entry, "source_registry.yaml:sources[]").get("enabled"), bool) for entry in sources):
+        raise ContractValidationError("Every source_registry entry must define a boolean enabled field")
+    return len(sources)
+
+
+def _validate_taxonomy_config(config_dir: Path) -> None:
+    taxonomy = _load_config_mapping(config_dir, "taxonomy_v0.yaml")
+    if taxonomy.get("version") != "v0":
+        raise ContractValidationError("taxonomy_v0.yaml must define version = v0")
+    if taxonomy.get("implementation_ready") is not True:
+        raise ContractValidationError("taxonomy_v0.yaml must declare implementation_ready = true")
+
+    assignment_policy = _require_mapping(taxonomy.get("assignment_policy"), "taxonomy_v0.yaml:assignment_policy")
+    if assignment_policy.get("unresolved_code") != "unresolved":
+        raise ContractValidationError("taxonomy_v0.yaml must keep unresolved_code = unresolved")
+    cap = assignment_policy.get("stable_l2_cap_per_l1")
+    if not isinstance(cap, int) or cap <= 0:
+        raise ContractValidationError("taxonomy_v0.yaml stable_l2_cap_per_l1 must be a positive integer")
+
+    nodes = _require_list(taxonomy.get("nodes"), "taxonomy_v0.yaml:nodes")
+    required_codes = {
+        "JTBD_CONTENT",
+        "JTBD_KNOWLEDGE",
+        "JTBD_PRODUCTIVITY_AUTOMATION",
+        "JTBD_DEV_TOOLS",
+        "JTBD_DATA_ANALYTICS",
+        "JTBD_MARKETING_GROWTH",
+        "JTBD_SALES_SUPPORT",
+        "JTBD_DESIGN_PRESENTATION",
+        "JTBD_PERSONAL_CREATIVE",
+        "JTBD_OTHER_VERTICAL",
+    }
+    seen_codes: set[str] = set()
+    for entry in nodes:
+        node = _require_mapping(entry, "taxonomy_v0.yaml:nodes[]")
+        code = _require_string(node.get("code"), "taxonomy node code")
+        if code in seen_codes:
+            raise ContractValidationError(f"taxonomy_v0.yaml contains duplicate node code: {code}")
+        seen_codes.add(code)
+        for field_name in (
+            "label",
+            "zh_label",
+            "definition",
+            "inclusion_rule",
+            "exclusion_rule",
+            "example_positive",
+            "example_negative",
+            "adjacent_confusions",
+            "stable_l2_examples",
+        ):
+            if field_name not in node:
+                raise ContractValidationError(f"taxonomy_v0.yaml node {code} is missing {field_name}")
+        stable_l2_examples = _require_list(node.get("stable_l2_examples"), f"taxonomy_v0.yaml:{code}:stable_l2_examples")
+        if len(stable_l2_examples) > cap:
+            raise ContractValidationError(f"taxonomy_v0.yaml node {code} exceeds stable L2 cap {cap}")
+    if seen_codes != required_codes:
+        raise ContractValidationError("taxonomy_v0.yaml L1 code set does not match the frozen Phase1 taxonomy set")
+
+
+def _validate_vocab_configs(config_dir: Path) -> None:
+    delivery_form = _load_config_mapping(config_dir, "delivery_form_v0.yaml")
+    delivery_codes = set(_require_list(delivery_form.get("codes"), "delivery_form_v0.yaml:codes"))
+    for required_code in {"web_app", "mobile_app", "desktop_app", "unknown"}:
+        if required_code not in delivery_codes:
+            raise ContractValidationError(f"delivery_form_v0.yaml is missing required code: {required_code}")
+
+    persona = _load_config_mapping(config_dir, "persona_v0.yaml")
+    persona_codes = set(_require_list(persona.get("codes"), "persona_v0.yaml:codes"))
+    if "unknown" not in persona_codes:
+        raise ContractValidationError("persona_v0.yaml must include unknown")
+    if "personal_creator" in persona_codes:
+        raise ContractValidationError("persona_v0.yaml must not add personal_creator in v0")
+
+
+def _validate_rubric_config(config_dir: Path) -> None:
+    rubric = _load_config_mapping(config_dir, "rubric_v0.yaml")
+    if rubric.get("version") != "v0":
+        raise ContractValidationError("rubric_v0.yaml must define version = v0")
+    if rubric.get("implementation_ready") is not True:
+        raise ContractValidationError("rubric_v0.yaml must declare implementation_ready = true")
+
+    if _require_list(rubric.get("band_scale"), "rubric_v0.yaml:band_scale") != ["high", "medium", "low"]:
+        raise ContractValidationError("rubric_v0.yaml band_scale must be [high, medium, low]")
+
+    required_output_fields = _require_list(rubric.get("required_output_fields"), "rubric_v0.yaml:required_output_fields")
+    if required_output_fields != [
+        "score_type",
+        "raw_value",
+        "normalized_value",
+        "band",
+        "rationale",
+        "evidence_refs_json",
+    ]:
+        raise ContractValidationError("rubric_v0.yaml required_output_fields drifted from the score_component contract")
+
+    score_entries = _require_list(rubric.get("scores"), "rubric_v0.yaml:scores")
+    scores: dict[str, dict[str, object]] = {}
+    for entry in score_entries:
+        score = _require_mapping(entry, "rubric_v0.yaml:scores[]")
+        score_type = _require_string(score.get("score_type"), "rubric score_type")
+        if score_type in scores:
+            raise ContractValidationError(f"rubric_v0.yaml contains duplicate score_type: {score_type}")
+        scores[score_type] = score
+
+    if set(scores) != {
+        "build_evidence_score",
+        "need_clarity_score",
+        "attention_score",
+        "commercial_score",
+        "persistence_score",
+    }:
+        raise ContractValidationError("rubric_v0.yaml score_type set does not match the frozen Phase1 rubric")
+
+    for required_band_score in ("build_evidence_score", "need_clarity_score"):
+        score = scores[required_band_score]
+        if score.get("phase1_status") != "required" or score.get("null_policy") != "not_allowed":
+            raise ContractValidationError(f"{required_band_score} must stay required with null_policy = not_allowed")
+        if score.get("override_allowed") is not True:
+            raise ContractValidationError(f"{required_band_score} must allow override")
+
+    attention = scores["attention_score"]
+    registry = _load_config_mapping(config_dir, "source_metric_registry.yaml")
+    attention_policy = _require_mapping(registry.get("attention_v1_policy"), "source_metric_registry.yaml:attention_v1_policy")
+    frozen_parameters = _require_mapping(attention_policy.get("frozen_parameters"), "source_metric_registry.yaml:frozen_parameters")
+    band_thresholds = _require_mapping(frozen_parameters.get("band_thresholds"), "source_metric_registry.yaml:band_thresholds")
+    benchmark_windows = _require_mapping(attention.get("benchmark_windows"), "rubric_v0.yaml:attention_score:benchmark_windows")
+    rubric_thresholds = _require_mapping(attention.get("band_thresholds"), "rubric_v0.yaml:attention_score:band_thresholds")
+
+    if benchmark_windows.get("primary_window_days") != frozen_parameters.get("primary_window_days"):
+        raise ContractValidationError("attention primary_window_days drifted between rubric_v0.yaml and source_metric_registry.yaml")
+    if benchmark_windows.get("fallback_window_days") != frozen_parameters.get("fallback_window_days"):
+        raise ContractValidationError("attention fallback_window_days drifted between rubric_v0.yaml and source_metric_registry.yaml")
+    if attention.get("min_sample_size") != frozen_parameters.get("min_sample_size"):
+        raise ContractValidationError("attention min_sample_size drifted between rubric_v0.yaml and source_metric_registry.yaml")
+    if rubric_thresholds != band_thresholds:
+        raise ContractValidationError("attention band_thresholds drifted between rubric_v0.yaml and source_metric_registry.yaml")
+    if set(_require_list(attention.get("null_reasons"), "rubric_v0.yaml:attention_score:null_reasons")) != {
+        "source_metrics_unavailable",
+        "metric_definition_unavailable",
+        "metric_semantics_mismatch",
+        "window_benchmark_unavailable",
+        "benchmark_sample_insufficient",
+    }:
+        raise ContractValidationError("attention null_reasons must stay aligned with the frozen rule set")
+
+    commercial = scores["commercial_score"]
+    if commercial.get("phase1_status") != "optional":
+        raise ContractValidationError("commercial_score must remain optional in phase1")
+
+    persistence = scores["persistence_score"]
+    if persistence.get("phase1_status") != "reserved" or persistence.get("override_allowed") is not False:
+        raise ContractValidationError("persistence_score must remain reserved with override disabled")
+
+
+def _validate_review_rules_config(config_dir: Path) -> None:
+    review_rules = _load_config_mapping(config_dir, "review_rules_v0.yaml")
+    if _require_list(review_rules.get("priority_system"), "review_rules_v0.yaml:priority_system") != ["P0", "P1", "P2", "P3"]:
+        raise ContractValidationError("review_rules_v0.yaml priority_system must stay on P0/P1/P2/P3")
+
+    sample_pool_rules = _require_mapping(review_rules.get("sample_pool_rules"), "review_rules_v0.yaml:sample_pool_rules")
+    candidate_pool = _require_mapping(sample_pool_rules.get("candidate_pool"), "review_rules_v0.yaml:candidate_pool")
+    if candidate_pool.get("per_batch_top_limit") != 10:
+        raise ContractValidationError("candidate_pool.per_batch_top_limit must remain 10")
+    if "unresolved" not in _require_list(candidate_pool.get("exclude_effective_category_codes"), "review_rules_v0.yaml:candidate_pool:exclude_effective_category_codes"):
+        raise ContractValidationError("candidate_pool must exclude unresolved")
+
+    annotation_contract = _require_mapping(review_rules.get("annotation_contract"), "review_rules_v0.yaml:annotation_contract")
+    if set(_require_list(annotation_contract.get("adjudication_statuses"), "review_rules_v0.yaml:annotation_contract:adjudication_statuses")) != {
+        "single_annotated",
+        "double_annotated",
+        "adjudicated",
+        "needs_review",
+    }:
+        raise ContractValidationError("annotation adjudication statuses drifted from the frozen annotation workflow")
+    field_mappings = _require_mapping(annotation_contract.get("field_mappings"), "review_rules_v0.yaml:annotation_contract:field_mappings")
+    if _require_mapping(field_mappings.get("build_evidence_band"), "build_evidence_band").get("score_type") != "build_evidence_score":
+        raise ContractValidationError("build_evidence_band must map to build_evidence_score")
+    if _require_mapping(field_mappings.get("need_clarity_band"), "need_clarity_band").get("score_type") != "need_clarity_score":
+        raise ContractValidationError("need_clarity_band must map to need_clarity_score")
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="apo-observatory", description="Minimal runnable baseline for the observatory.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -49,14 +258,12 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def validate_configs(config: AppConfig) -> int:
-    source_registry = load_yaml(config.config_dir / "source_registry.yaml")
-    sources = source_registry.get("sources", [])
-    source_ids = [entry["source_id"] for entry in sources]
-    if len(source_ids) != len(set(source_ids)):
-        raise ContractValidationError("source_registry.yaml contains duplicate source_id values")
-    if not all(isinstance(entry.get("enabled"), bool) for entry in sources):
-        raise ContractValidationError("Every source_registry entry must define a boolean enabled field")
-    return len(sources)
+    _validate_source_registry_config(config.config_dir)
+    _validate_taxonomy_config(config.config_dir)
+    _validate_vocab_configs(config.config_dir)
+    _validate_rubric_config(config.config_dir)
+    _validate_review_rules_config(config.config_dir)
+    return 6
 
 
 def validate_schemas(config: AppConfig) -> int:
@@ -99,7 +306,7 @@ def main(argv: list[str] | None = None) -> int:
 
         if args.command == "validate-configs":
             count = validate_configs(config)
-            logger.info(f"validated {count} source registry entries")
+            logger.info(f"validated {count} config artifacts")
             return 0
 
         if args.command == "validate-env":

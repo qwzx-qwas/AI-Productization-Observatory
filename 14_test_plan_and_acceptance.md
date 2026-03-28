@@ -146,6 +146,15 @@ attention 相关最小 fixture 还应覆盖：
 - percentile ties 的 `mid-rank` 处理
 - `metric_semantics` 不匹配时不输出 attention band
 
+taxonomy / annotation 最小样例说明还应覆盖：
+
+- `CONTENT vs KNOWLEDGE`
+- `KNOWLEDGE vs PRODUCTIVITY_AUTOMATION`
+- `DEV_TOOLS vs PRODUCTIVITY_AUTOMATION`
+- `MARKETING_GROWTH vs CONTENT`
+- annotation `needs_review` -> `review_issue`
+- 高影响 override -> maker-checker writeback gate
+
 ### Mock API
 
 - collector integration 使用 mock API / stored payload
@@ -175,6 +184,9 @@ attention 相关最小 fixture 还应覆盖：
 - JSON schema validation
 - prompt input / output contract
 - module input / output contract
+- taxonomy config 中 L1 集合、邻近混淆与稳定 L2 示例存在且无重复 code
+- rubric config 中五类 `score_type`、attention null-reason code 与 calibration gate 参数和 registry 一致
+- review rules 中 annotation decision-form 字段映射与 adjudication 状态值存在
 
 ### Integration Tests
 
@@ -200,6 +212,9 @@ attention 相关最小 fixture 还应覆盖：
 - prompt regression
 - taxonomy regression on gold set
 - mart snapshot regression
+- taxonomy 邻近混淆样例在 prompt / rule 更新后不应漂移
+- `attention_score` 的 `benchmark_sample_insufficient`、`metric_definition_unavailable` 等 null case 不得被伪装成有效 band
+- annotation sample-pool layering 不得把 candidate / training / gold set 混层
 
 ### Manual Trace Tests
 
@@ -208,6 +223,7 @@ attention 相关最小 fixture 还应覆盖：
 - unresolved routing walkthrough
 - review writeback walkthrough
 - blocked replay -> 人工批准 / 拆分安全 task -> replay writeback walkthrough
+- annotation decision form -> adjudication -> review packet -> taxonomy / score writeback walkthrough
 
 ## 4. CI / CD 触发建议
 

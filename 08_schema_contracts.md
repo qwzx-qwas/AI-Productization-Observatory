@@ -275,6 +275,20 @@ v0 目标：
 - `maker_checker_required`
 - `resolution_payload_json`
 
+## 2.7.5 Annotation Field Backchain
+
+annotation decision form 不是新的 canonical 事实表；其字段必须回链到现有对象：
+
+- `primary_category_code` / `secondary_category_code` -> `taxonomy_assignment.category_code`
+- `primary_persona_code` / `delivery_form_code` -> `product_profile`
+- `build_evidence_band` / `need_clarity_band` -> `score_component.band`
+- `review_recommended` 与后续 writeback -> `review_issue`
+
+补充约束：
+
+- `adjudication_status` 是 annotation workflow 状态，不替代 `review_issue.status`
+- `taxonomy_change_suggestion` 只能作为候选备注存在于 annotation 记录或 review payload 中，不新增 canonical taxonomy 字段
+
 ## 2.8 Unresolved Registry Derived Contract
 
 `unresolved_registry_view` 只能从 canonical 对象派生，不得双写另一套 unresolved 事实表。

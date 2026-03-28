@@ -1,36 +1,102 @@
 version: v0
+implementation_ready: true
 source_of_truth: hand_maintained_artifact
+canonical_doc: 06_score_rubric_v0.md
+no_total_score: true
 band_scale:
   - high
   - medium
   - low
+required_output_fields:
+  - score_type
+  - raw_value
+  - normalized_value
+  - band
+  - rationale
+  - evidence_refs_json
+override_audit_fields:
+  - overridden_by
+  - override_reason
+  - override_review_issue_id
+  - overridden_at
 scores:
   - score_type: build_evidence_score
     phase1_status: required
     output_mode: band
     applicable_when: always
+    evidence_inputs:
+      - build_tool_claim
+      - prompt_demo
+      - build_speed_claim
+    input_fields:
+      - evidence.evidence_type
+      - evidence.evidence_strength
+      - evidence.snippet
+      - evidence.source_url
+    bands:
+      high: strong build evidence with a traceable snippet and source_url
+      medium: build evidence exists but is not strong enough for high confidence
+      low: only weak hints or no stable build evidence
+    raw_value_allowed_null: true
+    normalized_value_allowed_null: true
     null_policy: not_allowed
+    override_allowed: true
+    example_high: traceable prompt demo or build workflow evidence exists
+    example_low: only broad AI claims exist without build-process evidence
   - score_type: need_clarity_score
     phase1_status: required
     output_mode: band
     applicable_when: always
+    evidence_inputs:
+      - job_statement
+      - target_user_claim
+      - delivery_form_signal
+      - unclear_description_signal
+    input_fields:
+      - product_profile.one_sentence_job
+      - product_profile.primary_persona_code
+      - product_profile.delivery_form_code
+      - evidence.snippet
+    bands:
+      high: job, persona, and delivery form are sufficiently evidenced
+      medium: an initial judgment is possible but notable ambiguity remains
+      low: taxonomy should not be forced into a high-confidence classification
+    raw_value_allowed_null: true
+    normalized_value_allowed_null: true
     null_policy: not_allowed
+    override_allowed: true
+    example_high: one_sentence_job, persona, and delivery form are all traceable
+    example_low: only broad product copy exists without a stable core job
   - score_type: attention_score
     phase1_status: required
     output_mode: raw_plus_normalized_plus_band
     applicable_when: source_metrics_available_and_metric_definition_exists
-    null_policy: allowed_with_reason
-    stability_validation_status: frozen_defaults_not_yet_validated
-    explicit_null_exposure_required: true
+    evidence_inputs:
+      - observation.metrics_snapshot
+      - source_item.current_metrics_json
+      - source_metric_registry
+    input_fields:
+      - source_metric_registry.primary_metric
+      - source_metric_registry.proxy_formula
+      - source_metric_registry.proxy_weights
+      - source_metric_registry.metric_definition_version
+      - source_metric_registry.fallback_policy
+      - observation.observed_at
+      - source_id
+      - relation_type
     formula: source_metric_registry_plus_percentile_within_source_and_window
     metric_registry: source_metric_registry_v4
     metric_selection_policy: native_metric_then_registered_proxy_then_null
     proxy_semantics_constraint: same_latent_semantics_only
+    proxy_weight_policy:
+      allow_equal_weight: true
+      allow_explicit_human_weight: true
+      disallow_learned_optimal_weight: true
     normalization_scope:
       - same_source_id
       - same_relation_type
+      - same_benchmark_window
     percentile_tie_handling: mid_rank
-    benchmark_policy: source_defined_expand_window_then_null
     benchmark_windows:
       primary_window_days: 30
       fallback_window_days: 90
@@ -39,6 +105,17 @@ scores:
       high_gte: 0.80
       medium_gte: 0.40
       low_lt: 0.40
+    null_policy: allowed_with_reason
+    null_reasons:
+      - source_metrics_unavailable
+      - metric_definition_unavailable
+      - metric_semantics_mismatch
+      - window_benchmark_unavailable
+      - benchmark_sample_insufficient
+    explicit_null_exposure_required: true
+    stability_validation_status: frozen_defaults_not_yet_validated
+    current_default_is_not_stability_claim: true
+    human_confirmation_required: true
     calibration_review_gate:
       min_completed_weekly_cycles: 6
       min_candidates_per_source_relation_type_in_primary_window: 200
@@ -47,26 +124,61 @@ scores:
         - band_distribution
         - review_data
       default_first_adjustment_if_null_rate_high: lower_min_sample_size_to_20_before_band_change
-    insufficient_sample_behavior: normalized_and_band_null
-    null_reasons:
-      - source_metrics_unavailable
-      - metric_definition_unavailable
-      - metric_semantics_mismatch
-      - window_benchmark_unavailable
-      - benchmark_sample_insufficient
+      band_change_only_if_distribution_health_checks_not_jointly_met:
+        attention_null_rate_lte: 0.35
+        high_share_between:
+          - 0.10
+          - 0.30
+        medium_share_between:
+          - 0.30
+          - 0.60
+        low_share_between:
+          - 0.20
+          - 0.50
     unsupported_methods:
       - learned_optimal_weights
       - age_decay
       - velocity_adjustment
       - bayesian_smoothing
       - cross_source_aggregation
+    override_allowed: true
+    example_normal: source metric and benchmark both exist, so raw_value and percentile band can be produced
+    example_null: benchmark_sample_insufficient leaves raw_value available but normalized_value and band null
   - score_type: commercial_score
     phase1_status: optional
     output_mode: band_or_null
     applicable_when: homepage_or_pricing_evidence_available
+    evidence_inputs:
+      - pricing_page
+      - paid_plan_claim
+      - testimonial
+    input_fields:
+      - product.canonical_homepage_url
+      - evidence.evidence_type
+      - evidence.snippet
+    default_phase1_behavior: optional
+    bands:
+      high: clear pricing page, paid plan, or strong monetization evidence exists
+      medium: monetization hints exist but evidence is incomplete
+      low: stable commercialization evidence is missing
     null_policy: allowed_with_reason
+    null_reasons:
+      - homepage_unavailable
+      - pricing_evidence_unavailable
+    override_allowed: true
+    example_high: pricing page and paid plan are both traceable
+    example_null: homepage_unavailable prevents stable commercial judgment
   - score_type: persistence_score
     phase1_status: reserved
     output_mode: reserved
     applicable_when: repeated_observations_available_and_enabled
+    evidence_inputs:
+      - observation
+      - repeated_observation_history
+    default_phase1_behavior: disabled
     null_policy: allowed_with_reason
+    null_reasons:
+      - not_enabled_in_phase1
+      - insufficient_repeated_observations
+    override_allowed: false
+    example_default: not_enabled_in_phase1
