@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from src.common.constants import DEFAULT_NORMALIZATION_VERSION
+from src.common.errors import ContractValidationError, ProcessingError
 from src.common.schema import validate_instance
 from src.runtime.raw_store.file_store import FileRawStore
 
@@ -43,10 +44,13 @@ def normalize_raw_record(
         "topics": payload.get("topics"),
         "language": payload.get("language"),
         "item_status": payload.get("status"),
-        "first_observed_at": published_at or raw_record["collected_at"],
-        "latest_observed_at": raw_record["collected_at"],
+        "first_observed_at": published_at or raw_record.get("fetched_at") or raw_record["collected_at"],
+        "latest_observed_at": raw_record.get("fetched_at") or raw_record["collected_at"],
         "normalization_version": normalization_version,
     }
 
-    validate_instance(source_item, schema_path)
+    try:
+        validate_instance(source_item, schema_path)
+    except ContractValidationError as exc:
+        raise ProcessingError("json_schema_validation_failed", str(exc)) from exc
     return source_item

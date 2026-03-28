@@ -15,7 +15,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
 @contextmanager
-def temp_config() -> Iterator[AppConfig]:
+def temp_config(*, fixtures_dir: Path | None = None, schema_dir: Path | None = None) -> Iterator[AppConfig]:
     with TemporaryDirectory() as tmp_dir:
         root = Path(tmp_dir)
         env = {
@@ -23,5 +23,9 @@ def temp_config() -> Iterator[AppConfig]:
             "APO_TASK_STORE_PATH": str(root / "task_store" / "tasks.json"),
             "APO_MART_OUTPUT_DIR": str(root / "marts"),
         }
+        if fixtures_dir is not None:
+            env["APO_FIXTURES_DIR"] = str(fixtures_dir)
+        if schema_dir is not None:
+            env["APO_SCHEMA_DIR"] = str(schema_dir)
         with patch.dict(os.environ, env, clear=False):
             yield AppConfig.from_env(REPO_ROOT)

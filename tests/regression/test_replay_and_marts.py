@@ -1,12 +1,15 @@
 from __future__ import annotations
 
+import json
+from pathlib import Path
+from tempfile import TemporaryDirectory
 import unittest
 
-from src.common.errors import BlockedReplayError
+from src.common.errors import BlockedReplayError, ProcessingError
 from src.runtime.models import default_payload
 from src.runtime.replay import build_default_mart, replay_source_window
 from src.runtime.tasks import FileTaskStore
-from tests.helpers import temp_config
+from tests.helpers import REPO_ROOT, temp_config
 
 
 class ReplayAndMartRegressionTests(unittest.TestCase):
@@ -55,3 +58,23 @@ class ReplayAndMartRegressionTests(unittest.TestCase):
             attention_rows = {(row["category_code"], row["attention_band"]): row["product_count"] for row in mart["attention_distribution_30d"]}
             self.assertEqual(attention_rows[("research_ops", "high")], 1)
             self.assertEqual(attention_rows[("research_ops", "medium")], 1)
+
+    def test_replay_rejects_fixture_window_mismatch(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            fixtures_dir = Path(tmp_dir)
+            (fixtures_dir / "collector").mkdir(parents=True, exist_ok=True)
+
+            collector_fixture = json.loads((REPO_ROOT / "fixtures" / "collector" / "product_hunt_window.json").read_text(encoding="utf-8"))
+            collector_fixture["window_end"] = "2026-03-09T00:00:00Z"
+            (fixtures_dir / "collector" / "product_hunt_window.json").write_text(
+                json.dumps(collector_fixture, indent=2, ensure_ascii=True) + "\n",
+                encoding="utf-8",
+            )
+
+            with temp_config(fixtures_dir=fixtures_dir) as config:
+                with self.assertRaises(ProcessingError) as ctx:
+                    replay_source_window(source_code="product_hunt", window="2026-03-01..2026-03-08", config=config)
+
+                self.assertEqual(ctx.exception.error_type, "parse_failure")
+                store = FileTaskStore(config.task_store_path)
+                self.assertEqual(store.all_tasks()[-1]["status"], "failed_terminal")

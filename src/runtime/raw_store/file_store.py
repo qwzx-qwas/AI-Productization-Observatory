@@ -20,15 +20,24 @@ class FileRawStore:
 
     def store_items(self, crawl_run: dict[str, Any], items: list[dict[str, Any]]) -> list[dict[str, Any]]:
         records: list[dict[str, Any]] = []
+        seen_dedupe_keys: set[tuple[str, str, str]] = set()
         for item in items:
             try:
                 payload_text = json.dumps(item, sort_keys=True, ensure_ascii=True)
             except TypeError as exc:
                 raise ProcessingError("parse_failure", f"Raw payload is not JSON serialisable: {exc}") from exc
 
-            external_id = item["external_id"]
             source_id = crawl_run["source_id"]
+            try:
+                external_id = item["external_id"]
+            except KeyError as exc:
+                raise ProcessingError("parse_failure", f"Raw payload is missing external_id: {item}") from exc
             content_hash = hashlib.sha256(payload_text.encode("utf-8")).hexdigest()
+            dedupe_key = (source_id, external_id, content_hash)
+            if dedupe_key in seen_dedupe_keys:
+                continue
+            seen_dedupe_keys.add(dedupe_key)
+
             raw_id = hashlib.sha256(f"{source_id}:{external_id}:{content_hash}".encode("utf-8")).hexdigest()[:20]
             object_key = (
                 f"{source_id}/window_start={crawl_run['window_start'][:10]}/"
@@ -50,8 +59,11 @@ class FileRawStore:
                     "crawl_run_id": crawl_run["crawl_run_id"],
                     "source_id": source_id,
                     "external_id": external_id,
+                    "fetch_url": item.get("product_url"),
+                    "fetched_at": crawl_run["collected_at"],
                     "content_hash": content_hash,
                     "raw_payload_ref": object_key,
+                    "http_status": None,
                     "watermark_before": crawl_run["watermark_before"],
                     "request_params": crawl_run["request_params"],
                     "collected_at": crawl_run["collected_at"],

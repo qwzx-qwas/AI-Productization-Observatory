@@ -61,12 +61,22 @@ def replay_source_window(
     task_store.start(task.task_id)
     task_store.heartbeat(task.task_id, worker_id="local-cli")
 
-    fixture_path = config.fixtures_dir / "collector" / fixture_name
-    collector_output = collect_fixture_window(fixture_path)
-    raw_store = FileRawStore(config.raw_store_dir)
-    raw_records = raw_store.store_items(collector_output["crawl_run"], collector_output["items"])
-    source_item_schema = config.schema_dir / "source_item.schema.json"
-    source_items = [normalize_raw_record(record, raw_store, source_item_schema) for record in raw_records]
+    try:
+        fixture_path = config.fixtures_dir / "collector" / fixture_name
+        collector_output = collect_fixture_window(
+            fixture_path,
+            expected_source_code=source_code,
+            expected_window_start=f"{window_start}T00:00:00Z" if "T" not in window_start else window_start,
+            expected_window_end=f"{window_end}T00:00:00Z" if "T" not in window_end else window_end,
+        )
+        raw_store = FileRawStore(config.raw_store_dir)
+        raw_records = raw_store.store_items(collector_output["crawl_run"], collector_output["items"])
+        source_item_schema = config.schema_dir / "source_item.schema.json"
+        source_items = [normalize_raw_record(record, raw_store, source_item_schema) for record in raw_records]
+    except ProcessingError as exc:
+        task_store.fail(task.task_id, exc.error_type, str(exc))
+        raise
+
     task_store.succeed(task.task_id)
 
     return {
