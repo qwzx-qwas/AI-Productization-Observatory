@@ -68,6 +68,7 @@ runtime task / replay 细则见：
 ```bash
 make install
 make lint
+make typecheck
 make test
 make validate-schemas
 make validate-configs
@@ -80,11 +81,14 @@ make build-mart-window
 ```bash
 python3 -m src.cli --help
 python3 -m src.cli install
+python3 -m src.cli typecheck
 python3 -m src.cli replay-window --source product_hunt --window 2026-03-01..2026-03-08
 python3 -m src.cli build-mart-window
 ```
 
 `make install` 当前执行的是本地 bootstrap：创建 `.runtime/` 目录、校验最小运行前提，不强依赖系统 `pip` 是否可用。
+
+`make replay-window` 与 `make build-mart-window` 都会把 task state 写入 `APO_TASK_STORE_PATH`；当前最小基线已经保证并行 CLI 运行时不会把 task store 写坏。
 
 本地默认配置由 [`.env.example`](.env.example) 提供，未显式设置时会回退到仓库内 `configs/`、`schemas/`、`fixtures/` 与 `.runtime/`。
 

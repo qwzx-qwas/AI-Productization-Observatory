@@ -53,6 +53,8 @@ last_frozen_version: repo_mapping_v2
   - deterministic fixtures
 - `gold_set/`
   - gold set / adjudicated examples
+- `tests/`
+  - 按 `14_test_plan_and_acceptance.md` 划分的 unit / contract / integration / regression 入口
 
 ## 2. 模块 -> 代码落点
 
@@ -195,18 +197,35 @@ last_frozen_version: repo_mapping_v2
 
 ## 5. 常用运行 / 测试 / Replay 命令约定
 
-当前代码尚未落成，因此先冻结命名约定，不冻结具体实现命令：
+当前最小可运行骨架已经落成，以下命令约定已映射到实际入口：
 
-- `make lint-docs`
-  - 校验 front matter、artifact 引用和 stub
+- `make install`
+  - 初始化 `.runtime/raw_store/`、`.runtime/task_store/tasks.json`、`.runtime/marts/`
+- `make lint`
+  - 运行仓库内最小 Python lint 检查
+- `make typecheck`
+  - 运行仓库内最小 annotation coverage 检查
+- `make test`
+  - 运行 `tests/` 下 unit / contract / integration / regression 测试
 - `make validate-schemas`
   - 校验 `schemas/*.json`
 - `make validate-configs`
   - 校验 `configs/*.yaml`
-- `make regression-prompts`
-  - 运行 prompt regression
 - `make replay-window SOURCE=<source> WINDOW=<window>`
-  - 重放 source window
+  - 当前已实现 `product_hunt` fixture replay
+- `make build-mart-window`
+  - 当前已实现最小 mart fixture rebuild
+
+测试目录与当前最小基线的固定映射：
+
+- `tests/unit/`
+  - runtime task lifecycle 等 unit 级最小壳子
+- `tests/contract/`
+  - CLI / schema / config / env contract
+- `tests/integration/`
+  - `collector -> raw -> source_item` 最小链路
+- `tests/regression/`
+  - same-window rerun、blocked replay、mart snapshot 与并发 task store 写入回归
 
 如果实际技术栈确定后，这些约定应映射到真实命令。
 

@@ -25,10 +25,16 @@
 
 - `fixtures/collector/product_hunt_window.json`
   - 用途：驱动 `per_source + per_window` Product Hunt fixture collector replay
+  - 测试回链：`tests/integration/test_pipeline.py`、`tests/regression/test_replay_and_marts.py`
+  - 验收目标：最小 replay、same-window rerun、fixture window mismatch / parse failure 明确报错
 - `fixtures/normalizer/product_hunt_expected_source_item.json`
   - 用途：对照 normalizer 最小字段映射与 raw traceability
+  - 测试回链：`tests/integration/test_pipeline.py`
+  - 验收目标：`raw -> source_item` 字段映射与 traceability 对齐
 - `fixtures/marts/effective_results_window.json`
   - 用途：驱动 `effective resolved result -> mart` 的本地断言
+  - 测试回链：`tests/regression/test_replay_and_marts.py`
+  - 验收目标：`effective resolved only`、`unresolved` 不进入主报表、mart same-window rebuild
 
 当前仍保留空目录的子域：
 

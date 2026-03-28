@@ -1,7 +1,11 @@
 from __future__ import annotations
 
+from concurrent.futures import ThreadPoolExecutor
 import json
+import os
 from pathlib import Path
+import subprocess
+import sys
 from tempfile import TemporaryDirectory
 import unittest
 
@@ -14,6 +18,57 @@ from tests.helpers import REPO_ROOT, temp_config
 
 
 class ReplayAndMartRegressionTests(unittest.TestCase):
+    def test_parallel_cli_runs_keep_task_store_json_valid(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            env = os.environ.copy()
+            env.update(
+                {
+                    "APO_RAW_STORE_DIR": str(root / "raw_store"),
+                    "APO_TASK_STORE_PATH": str(root / "task_store" / "tasks.json"),
+                    "APO_MART_OUTPUT_DIR": str(root / "marts"),
+                }
+            )
+
+            install = subprocess.run(
+                [sys.executable, "-m", "src.cli", "install"],
+                cwd=REPO_ROOT,
+                env=env,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(install.returncode, 0, msg=install.stderr)
+
+            def run_cli(*args: str) -> subprocess.CompletedProcess[str]:
+                return subprocess.run(
+                    [sys.executable, "-m", "src.cli", *args],
+                    cwd=REPO_ROOT,
+                    env=env,
+                    text=True,
+                    capture_output=True,
+                    check=False,
+                )
+
+            commands = [
+                ("replay-window", "--source", "product_hunt", "--window", "2026-03-01..2026-03-08"),
+                ("build-mart-window",),
+                ("replay-window", "--source", "product_hunt", "--window", "2026-03-01..2026-03-08"),
+                ("build-mart-window",),
+            ]
+            with ThreadPoolExecutor(max_workers=len(commands)) as executor:
+                results = list(executor.map(lambda argv: run_cli(*argv), commands))
+
+            for result in results:
+                self.assertEqual(result.returncode, 0, msg=result.stderr)
+
+            tasks = json.loads((root / "task_store" / "tasks.json").read_text(encoding="utf-8"))
+            self.assertEqual(len(tasks), len(commands))
+            self.assertCountEqual(
+                [task["task_type"] for task in tasks],
+                ["pull_collect", "build_mart_window", "pull_collect", "build_mart_window"],
+            )
+
     def test_same_window_replay_creates_new_task_with_parent(self) -> None:
         with temp_config() as config:
             first = replay_source_window(source_code="product_hunt", window="2026-03-01..2026-03-08", config=config)

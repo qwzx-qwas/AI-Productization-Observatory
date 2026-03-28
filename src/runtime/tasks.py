@@ -3,7 +3,11 @@
 from __future__ import annotations
 
 import hashlib
+import json
+import os
+from contextlib import contextmanager
 from datetime import timedelta
+from pathlib import Path
 from typing import Any
 
 from src.common.constants import (
@@ -15,20 +19,57 @@ from src.common.constants import (
     TASK_TYPES,
 )
 from src.common.errors import BlockedReplayError, ContractValidationError
-from src.common.files import dump_json, load_json, utc_now, utc_now_iso
+from src.common.files import dump_json, ensure_parent, load_json, utc_now, utc_now_iso
 from src.runtime.models import TaskRecord
+
+if os.name == "nt":
+    import msvcrt
+else:
+    import fcntl
 
 
 class FileTaskStore:
     """A deterministic local task table used for tests, replay, and CLI flows."""
 
     def __init__(self, store_path) -> None:
-        self.store_path = store_path
+        self.store_path = Path(store_path)
 
-    def all_tasks(self) -> list[dict[str, Any]]:
+    @property
+    def lock_path(self) -> Path:
+        return self.store_path.with_name(f"{self.store_path.name}.lock")
+
+    @contextmanager
+    def _exclusive_lock(self):
+        ensure_parent(self.lock_path)
+        with self.lock_path.open("a+", encoding="utf-8") as handle:
+            if os.name == "nt":
+                handle.seek(0)
+                msvcrt.locking(handle.fileno(), msvcrt.LK_LOCK, 1)
+            else:
+                fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+            try:
+                yield
+            finally:
+                if os.name == "nt":
+                    handle.seek(0)
+                    msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+                else:
+                    fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+
+    def _load_tasks_unlocked(self) -> list[dict[str, Any]]:
         if not self.store_path.exists():
             return []
-        return load_json(self.store_path)
+        try:
+            payload = load_json(self.store_path)
+        except json.JSONDecodeError as exc:
+            raise ContractValidationError(f"Task store is not valid JSON: {self.store_path}") from exc
+        if not isinstance(payload, list):
+            raise ContractValidationError(f"Task store must contain a JSON list: {self.store_path}")
+        return payload
+
+    def all_tasks(self) -> list[dict[str, Any]]:
+        with self._exclusive_lock():
+            return self._load_tasks_unlocked()
 
     def _write(self, tasks: list[dict[str, Any]]) -> None:
         dump_json(self.store_path, tasks)
@@ -63,15 +104,14 @@ class FileTaskStore:
             raise ContractValidationError(f"Unsupported task status: {task['status']}")
         self._validate_payload(task["task_type"], task["payload_json"])
 
-    def create_task(self, record: TaskRecord) -> TaskRecord:
-        self._validate_payload(record.task_type, record.payload_json)
-        tasks = self.all_tasks()
-        tasks.append(record.to_dict())
-        self._write(tasks)
-        return record
+    def _get_from_tasks(self, tasks: list[dict[str, Any]], task_id: str) -> dict[str, Any]:
+        for task in tasks:
+            if task["task_id"] == task_id:
+                self._validate_task_snapshot(task)
+                return task
+        raise ContractValidationError(f"Unknown task_id: {task_id}")
 
-    def update_task(self, task_id: str, **changes: Any) -> dict[str, Any]:
-        tasks = self.all_tasks()
+    def _update_in_tasks(self, tasks: list[dict[str, Any]], task_id: str, **changes: Any) -> dict[str, Any]:
         updated: dict[str, Any] | None = None
         for task in tasks:
             if task["task_id"] == task_id:
@@ -82,11 +122,11 @@ class FileTaskStore:
                 break
         if updated is None:
             raise ContractValidationError(f"Unknown task_id: {task_id}")
-        self._write(tasks)
         return updated
 
-    def latest_matching_task(
+    def _latest_matching_task_from_tasks(
         self,
+        tasks: list[dict[str, Any]],
         source_id: str | None,
         task_type: str,
         window_start: str | None,
@@ -94,7 +134,7 @@ class FileTaskStore:
     ) -> dict[str, Any] | None:
         matches = [
             task
-            for task in self.all_tasks()
+            for task in tasks
             if task["source_id"] == source_id
             and task["task_type"] == task_type
             and task["window_start"] == window_start
@@ -102,8 +142,9 @@ class FileTaskStore:
         ]
         return matches[-1] if matches else None
 
-    def enqueue(
+    def _enqueue_in_tasks(
         self,
+        tasks: list[dict[str, Any]],
         *,
         task_type: str,
         task_scope: str,
@@ -134,7 +175,68 @@ class FileTaskStore:
             max_attempts=max_attempts,
             parent_task_id=parent_task_id,
         )
-        return self.create_task(record)
+        tasks.append(record.to_dict())
+        return record
+
+    def create_task(self, record: TaskRecord) -> TaskRecord:
+        self._validate_payload(record.task_type, record.payload_json)
+        with self._exclusive_lock():
+            tasks = self._load_tasks_unlocked()
+            tasks.append(record.to_dict())
+            self._write(tasks)
+        return record
+
+    def update_task(self, task_id: str, **changes: Any) -> dict[str, Any]:
+        with self._exclusive_lock():
+            tasks = self._load_tasks_unlocked()
+            updated = self._update_in_tasks(tasks, task_id, **changes)
+            self._write(tasks)
+            return updated
+
+    def latest_matching_task(
+        self,
+        source_id: str | None,
+        task_type: str,
+        window_start: str | None,
+        window_end: str | None,
+    ) -> dict[str, Any] | None:
+        with self._exclusive_lock():
+            tasks = self._load_tasks_unlocked()
+            return self._latest_matching_task_from_tasks(tasks, source_id, task_type, window_start, window_end)
+
+    def enqueue(
+        self,
+        *,
+        task_type: str,
+        task_scope: str,
+        source_id: str | None,
+        target_type: str | None,
+        target_id: str | None,
+        window_start: str | None,
+        window_end: str | None,
+        payload_json: dict[str, Any],
+        max_attempts: int,
+        parent_task_id: str | None = None,
+        status: str = "queued",
+    ) -> TaskRecord:
+        with self._exclusive_lock():
+            tasks = self._load_tasks_unlocked()
+            record = self._enqueue_in_tasks(
+                tasks,
+                task_type=task_type,
+                task_scope=task_scope,
+                source_id=source_id,
+                target_type=target_type,
+                target_id=target_id,
+                window_start=window_start,
+                window_end=window_end,
+                payload_json=payload_json,
+                max_attempts=max_attempts,
+                parent_task_id=parent_task_id,
+                status=status,
+            )
+            self._write(tasks)
+            return record
 
     @staticmethod
     def _is_lease_expired(task: dict[str, Any], current_iso: str) -> bool:
@@ -150,56 +252,58 @@ class FileTaskStore:
         payload = task["payload_json"]
         return bool(payload.get("idempotent_write")) and bool(payload.get("resume_checkpoint_verified", True))
 
-    def _claim_with_cas(self, task_id: str, worker_id: str, previous_updated_at: str) -> dict[str, Any] | None:
-        tasks = self.all_tasks()
-        now = utc_now()
-        current_iso = now.isoformat().replace("+00:00", "Z")
-        claimed: dict[str, Any] | None = None
-        for task in tasks:
-            if task["task_id"] != task_id:
-                continue
-            if task["updated_at"] != previous_updated_at:
-                return None
-            task["status"] = "leased"
-            task["lease_owner"] = worker_id
-            task["lease_expires_at"] = (now + timedelta(seconds=DEFAULT_LEASE_TIMEOUT_SECONDS)).isoformat().replace(
+    def claim(self, task_id: str, worker_id: str) -> dict[str, Any]:
+        with self._exclusive_lock():
+            tasks = self._load_tasks_unlocked()
+            snapshot = self._get_from_tasks(tasks, task_id)
+            current_iso = utc_now_iso()
+            available = snapshot["available_at"] <= current_iso
+            claimable = (
+                snapshot["status"] in {"queued", "failed_retryable"}
+                and available
+                and self._is_lease_expired(snapshot, current_iso)
+            )
+            reclaimable = self._can_auto_reclaim(snapshot, current_iso)
+            if not claimable and not reclaimable:
+                raise ContractValidationError(f"Task is not claimable: {task_id}")
+
+            now = utc_now()
+            snapshot["status"] = "leased"
+            snapshot["lease_owner"] = worker_id
+            snapshot["lease_expires_at"] = (now + timedelta(seconds=DEFAULT_LEASE_TIMEOUT_SECONDS)).isoformat().replace(
                 "+00:00", "Z"
             )
-            task["updated_at"] = current_iso
-            self._validate_task_snapshot(task)
-            claimed = task
-            break
-        if claimed is None:
-            return None
-        self._write(tasks)
-        return claimed
-
-    def claim(self, task_id: str, worker_id: str) -> dict[str, Any]:
-        snapshot = self.get(task_id)
-        current_iso = utc_now_iso()
-        available = snapshot["available_at"] <= current_iso
-        claimable = snapshot["status"] in {"queued", "failed_retryable"} and available and self._is_lease_expired(snapshot, current_iso)
-        reclaimable = self._can_auto_reclaim(snapshot, current_iso)
-        if not claimable and not reclaimable:
-            raise ContractValidationError(f"Task is not claimable: {task_id}")
-
-        claimed = self._claim_with_cas(task_id, worker_id, snapshot["updated_at"])
-        if claimed is None:
-            raise ContractValidationError(f"CAS claim lost for task: {task_id}")
-        return claimed
+            snapshot["updated_at"] = now.isoformat().replace("+00:00", "Z")
+            self._validate_task_snapshot(snapshot)
+            self._write(tasks)
+            return snapshot
 
     def claim_next(self, worker_id: str) -> dict[str, Any] | None:
-        current_iso = utc_now_iso()
-        for task in self.all_tasks():
-            available = task["available_at"] <= current_iso
-            claimable = task["status"] in {"queued", "failed_retryable"} and available and self._is_lease_expired(task, current_iso)
-            reclaimable = self._can_auto_reclaim(task, current_iso)
-            if not claimable and not reclaimable:
-                continue
-            claimed = self._claim_with_cas(task["task_id"], worker_id, task["updated_at"])
-            if claimed is not None:
-                return claimed
-        return None
+        with self._exclusive_lock():
+            tasks = self._load_tasks_unlocked()
+            current_iso = utc_now_iso()
+            for task in tasks:
+                available = task["available_at"] <= current_iso
+                claimable = (
+                    task["status"] in {"queued", "failed_retryable"}
+                    and available
+                    and self._is_lease_expired(task, current_iso)
+                )
+                reclaimable = self._can_auto_reclaim(task, current_iso)
+                if not claimable and not reclaimable:
+                    continue
+
+                now = utc_now()
+                task["status"] = "leased"
+                task["lease_owner"] = worker_id
+                task["lease_expires_at"] = (now + timedelta(seconds=DEFAULT_LEASE_TIMEOUT_SECONDS)).isoformat().replace(
+                    "+00:00", "Z"
+                )
+                task["updated_at"] = now.isoformat().replace("+00:00", "Z")
+                self._validate_task_snapshot(task)
+                self._write(tasks)
+                return task
+            return None
 
     def start(self, task_id: str) -> dict[str, Any]:
         task = self.get(task_id)
@@ -267,11 +371,9 @@ class FileTaskStore:
         )
 
     def get(self, task_id: str) -> dict[str, Any]:
-        for task in self.all_tasks():
-            if task["task_id"] == task_id:
-                self._validate_task_snapshot(task)
-                return task
-        raise ContractValidationError(f"Unknown task_id: {task_id}")
+        with self._exclusive_lock():
+            tasks = self._load_tasks_unlocked()
+            return self._get_from_tasks(tasks, task_id)
 
     def create_replay_task(
         self,
@@ -285,9 +387,40 @@ class FileTaskStore:
         max_attempts: int,
     ) -> TaskRecord:
         self._validate_payload(task_type, payload_json)
-        parent = self.latest_matching_task(source_id, task_type, window_start, window_end)
-        if parent and parent["status"] == "blocked":
-            blocked_task = self.enqueue(
+        with self._exclusive_lock():
+            tasks = self._load_tasks_unlocked()
+            parent = self._latest_matching_task_from_tasks(tasks, source_id, task_type, window_start, window_end)
+            if parent and parent["status"] == "blocked":
+                blocked_task = self._enqueue_in_tasks(
+                    tasks,
+                    task_type=task_type,
+                    task_scope=task_scope,
+                    source_id=source_id,
+                    target_type=None,
+                    target_id=None,
+                    window_start=window_start,
+                    window_end=window_end,
+                    payload_json=payload_json,
+                    max_attempts=max_attempts,
+                    parent_task_id=parent["task_id"],
+                    status="blocked",
+                )
+                blocked_snapshot = self._update_in_tasks(
+                    tasks,
+                    blocked_task.task_id,
+                    last_error_type="blocked_replay",
+                    last_error_message="Replay basis is blocked; create a smaller safe task or resolve upstream first.",
+                    finished_at=utc_now_iso(),
+                    lease_owner=None,
+                    lease_expires_at=None,
+                )
+                blocked_snapshot["status"] = "blocked"
+                self._validate_task_snapshot(blocked_snapshot)
+                self._write(tasks)
+                raise BlockedReplayError(blocked_task.task_id)
+
+            record = self._enqueue_in_tasks(
+                tasks,
                 task_type=task_type,
                 task_scope=task_scope,
                 source_id=source_id,
@@ -297,22 +430,7 @@ class FileTaskStore:
                 window_end=window_end,
                 payload_json=payload_json,
                 max_attempts=max_attempts,
-                parent_task_id=parent["task_id"],
-                status="blocked",
+                parent_task_id=parent["task_id"] if parent else None,
             )
-            self.block(blocked_task.task_id, "Replay basis is blocked; create a smaller safe task or resolve upstream first.")
-            raise BlockedReplayError(blocked_task.task_id)
-
-        parent_task_id = parent["task_id"] if parent else None
-        return self.enqueue(
-            task_type=task_type,
-            task_scope=task_scope,
-            source_id=source_id,
-            target_type=None,
-            target_id=None,
-            window_start=window_start,
-            window_end=window_end,
-            payload_json=payload_json,
-            max_attempts=max_attempts,
-            parent_task_id=parent_task_id,
-        )
+            self._write(tasks)
+            return record

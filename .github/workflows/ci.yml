@@ -16,6 +16,8 @@ jobs:
         run: make install
       - name: Lint
         run: make lint
+      - name: Typecheck
+        run: make typecheck
       - name: Validate schemas
         run: make validate-schemas
       - name: Validate configs

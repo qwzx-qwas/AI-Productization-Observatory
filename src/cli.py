@@ -8,7 +8,7 @@ from pathlib import Path
 
 from src.common.config import AppConfig, require_environment_variables
 from src.common.errors import BlockedReplayError, ConfigError, ContractValidationError, ObservatoryError
-from src.common.files import load_yaml
+from src.common.files import dump_json, load_yaml
 from src.common.logging_utils import configure_logging, get_logger
 from src.common.schema import validate_schema_document
 from src.devtools.quality import format_python, lint_python, typecheck_python
@@ -74,6 +74,8 @@ def bootstrap_install(config: AppConfig) -> str:
     config.raw_store_dir.mkdir(parents=True, exist_ok=True)
     config.task_store_path.parent.mkdir(parents=True, exist_ok=True)
     config.mart_output_dir.mkdir(parents=True, exist_ok=True)
+    if not config.task_store_path.exists():
+        dump_json(config.task_store_path, [])
     return "bootstrap_complete"
 
 
