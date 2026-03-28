@@ -817,27 +817,36 @@ create index idx_processing_error_module_status on processing_error (module_name
     "evidence_refs_json"
   ],
   "properties": {
-    "target_type": {"type": "string"},
-    "target_id": {"type": "string"},
-    "taxonomy_version": {"type": "string"},
-    "label_level": {"type": "integer"},
-    "label_role": {"type": "string"},
-    "category_code": {"type": "string"},
-    "confidence": {"type": ["number", "null"]},
-    "rationale": {"type": "string"},
-    "assigned_by": {"type": "string"},
-    "model_or_rule_version": {"type": "string"},
-    "assigned_at": {"type": "string"},
+    "target_type": {"type": "string", "enum": ["product"]},
+    "target_id": {"type": "string", "minLength": 1},
+    "taxonomy_version": {"type": "string", "minLength": 1},
+    "label_level": {"type": "integer", "enum": [1, 2]},
+    "label_role": {"type": "string", "enum": ["primary", "secondary"]},
+    "category_code": {"type": "string", "minLength": 1},
+    "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "rationale": {"type": "string", "minLength": 1},
+    "assigned_by": {"type": "string", "minLength": 1},
+    "model_or_rule_version": {"type": "string", "minLength": 1},
+    "assigned_at": {"type": "string", "format": "date-time"},
     "is_override": {"type": ["boolean", "null"]},
-    "override_review_issue_id": {"type": ["string", "null"]},
-    "result_status": {"type": ["string", "null"]},
-    "effective_from": {"type": ["string", "null"]},
-    "supersedes_assignment_id": {"type": ["string", "null"]},
-    "evidence_refs_json": {"type": "array"}
+    "override_review_issue_id": {"type": ["string", "null"], "minLength": 1},
+    "result_status": {"type": ["string", "null"], "enum": ["active", "superseded", "dismissed", null]},
+    "effective_from": {"type": ["string", "null"], "format": "date-time"},
+    "supersedes_assignment_id": {"type": ["string", "null"], "minLength": 1},
+    "evidence_refs_json": {"type": "array", "minItems": 1}
   },
   "additionalProperties": false
 }
 ```
+
+补充约束：
+
+- `target_type` 当前只能是 `product`
+- `label_level` 当前只允许 `1 | 2`
+- `label_role` 当前只允许 `primary | secondary`
+- `result_status` 只表达生命周期：`active | superseded | dismissed`
+- `unresolved` 仍统一通过 `category_code = 'unresolved'` 表达，而不是额外 result status
+- `evidence_refs_json` 至少保留 1 条可回链证据
 
 ### score component output schema
 
@@ -846,20 +855,50 @@ create index idx_processing_error_module_status on processing_error (module_name
   "type": "object",
   "required": [
     "score_type",
+    "raw_value",
+    "normalized_value",
+    "band",
     "rationale",
     "evidence_refs_json"
   ],
   "properties": {
-    "score_type": {"type": "string"},
+    "score_type": {
+      "type": "string",
+      "enum": [
+        "build_evidence_score",
+        "need_clarity_score",
+        "attention_score",
+        "commercial_score",
+        "persistence_score"
+      ]
+    },
     "raw_value": {},
     "normalized_value": {"type": ["number", "null"]},
-    "band": {"type": ["string", "null"]},
-    "rationale": {"type": "string"},
-    "evidence_refs_json": {"type": "array"}
+    "band": {"type": ["string", "null"], "enum": ["high", "medium", "low", null]},
+    "rationale": {"type": "string", "minLength": 1},
+    "evidence_refs_json": {"type": "array", "minItems": 1}
   },
+  "allOf": [
+    {
+      "if": {"properties": {"score_type": {"const": "build_evidence_score"}}, "required": ["score_type"]},
+      "then": {"properties": {"band": {"enum": ["high", "medium", "low"]}}}
+    },
+    {
+      "if": {"properties": {"score_type": {"const": "need_clarity_score"}}, "required": ["score_type"]},
+      "then": {"properties": {"band": {"enum": ["high", "medium", "low"]}}}
+    }
+  ],
   "additionalProperties": false
 }
 ```
+
+补充约束：
+
+- `score_type` 必须与 `configs/rubric_v0.yaml` 中冻结的五类 score type 一致
+- `raw_value`、`normalized_value`、`band` 虽允许部分为 `null`，但字段必须始终显式输出
+- `build_evidence_score` 与 `need_clarity_score` 的 `band` 不允许为 `null`
+- `attention_score`、`commercial_score`、`persistence_score` 可在 `allowed_with_reason` 下返回 `band = null`
+- `evidence_refs_json` 至少保留 1 条可回链 evidence / observation 引用
 
 ### review packet schema
 
@@ -876,17 +915,32 @@ create index idx_processing_error_module_status on processing_error (module_name
     "upstream_downstream_links"
   ],
   "properties": {
-    "target_summary": {"type": "string"},
-    "issue_type": {"type": "string"},
-    "current_auto_result": {"type": "object"},
-    "related_evidence": {"type": "array"},
-    "conflict_point": {"type": "string"},
-    "recommended_action": {"type": "string"},
-    "upstream_downstream_links": {"type": "array"}
+    "target_summary": {"type": "string", "minLength": 1},
+    "issue_type": {
+      "type": "string",
+      "enum": [
+        "entity_merge_uncertainty",
+        "taxonomy_low_confidence",
+        "taxonomy_conflict",
+        "score_conflict",
+        "suspicious_result"
+      ]
+    },
+    "current_auto_result": {"type": "object", "minProperties": 1},
+    "related_evidence": {"type": "array", "minItems": 1},
+    "conflict_point": {"type": "string", "minLength": 1},
+    "recommended_action": {"type": "string", "minLength": 1},
+    "upstream_downstream_links": {"type": "array", "minItems": 1}
   },
   "additionalProperties": false
 }
 ```
+
+补充约束：
+
+- `issue_type` 必须与 `configs/review_rules_v0.yaml` 的冻结 issue types 一致，不允许自由生成新枚举
+- `related_evidence` 至少保留 1 条可回链 evidence
+- `upstream_downstream_links` 至少保留 1 条上游/下游链路，确保 writeback、replay 与 review closure 可追踪
 
 ## 8. 本轮人工确认结论
 

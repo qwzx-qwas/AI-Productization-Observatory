@@ -156,6 +156,12 @@ taxonomy / annotation 最小样例说明还应覆盖：
 - annotation `needs_review` -> `review_issue`
 - 高影响 override -> maker-checker writeback gate
 
+主 score_type 最小样例说明还应覆盖：
+
+- `build_evidence_score` 有 traceable demo 时输出非空 `band`
+- `need_clarity_score` 只有宽泛 marketing copy 时输出 `low`
+- `attention_score` 在 `benchmark_sample_insufficient` 时保留 `raw_value` 但 `normalized_value / band = null`
+
 ### Mock API
 
 - collector integration 使用 mock API / stored payload
@@ -188,6 +194,9 @@ taxonomy / annotation 最小样例说明还应覆盖：
 - taxonomy config 中 L1 集合、长期 L1-only allowlist、关键邻近混淆的 inclusion / exclusion / 正反例与稳定 L2 示例存在且无重复 code
 - rubric config 中五类 `score_type`、attention null-reason code 与 calibration gate 参数和 registry 一致
 - review rules 中 annotation decision-form 字段映射与 adjudication 状态值存在
+- `taxonomy_assignment` schema 的 `target_type / label_level / label_role / result_status` 枚举与 taxonomy contract 一致
+- `score_component` schema 的 required fields、`score_type` 枚举与 `build_evidence_score / need_clarity_score` 非空 `band` 约束与 rubric 一致
+- `review_packet` schema 的 `issue_type` 枚举与 review rules 一致，且 `related_evidence / upstream_downstream_links` 非空
 
 ### Integration Tests
 
@@ -214,8 +223,10 @@ taxonomy / annotation 最小样例说明还应覆盖：
 - taxonomy regression on gold set
 - mart snapshot regression
 - taxonomy 邻近混淆样例在 prompt / rule 更新后不应漂移
+- `build_evidence_score` 与 `need_clarity_score` 不得回归成 `band = null`
 - `attention_score` 的 `benchmark_sample_insufficient`、`metric_definition_unavailable` 等 null case 不得被伪装成有效 band
 - annotation sample-pool layering 不得把 candidate / training / gold set 混层
+- annotation `needs_review -> review_issue`、高影响 override -> maker-checker gate 的链路在 prompt / rule 更新后不应断裂
 
 ### Manual Trace Tests
 

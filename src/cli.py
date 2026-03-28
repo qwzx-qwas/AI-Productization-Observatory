@@ -8,7 +8,7 @@ from pathlib import Path
 
 from src.common.config import AppConfig, require_environment_variables
 from src.common.errors import BlockedReplayError, ConfigError, ContractValidationError, ObservatoryError
-from src.common.files import dump_json, load_yaml
+from src.common.files import dump_json, load_json, load_yaml
 from src.common.logging_utils import configure_logging, get_logger
 from src.common.schema import validate_schema_document
 from src.devtools.quality import format_python, lint_python, typecheck_python
@@ -42,6 +42,10 @@ def _require_bool(value: object, description: str) -> bool:
 
 def _load_config_mapping(config_dir: Path, file_name: str) -> dict[str, object]:
     return _require_mapping(load_yaml(config_dir / file_name), file_name)
+
+
+def _load_schema_mapping(schema_dir: Path, file_name: str) -> dict[str, object]:
+    return _require_mapping(load_json(schema_dir / file_name), file_name)
 
 
 def _validate_source_registry_config(config_dir: Path) -> int:
@@ -474,13 +478,118 @@ def _validate_review_rules_config(config_dir: Path) -> None:
         raise ContractValidationError("taxonomy_change_suggestion must not become an automatic taxonomy writeback path")
 
 
+def _validate_schema_alignment(config_dir: Path, schema_dir: Path) -> None:
+    rubric = _load_config_mapping(config_dir, "rubric_v0.yaml")
+    review_rules = _load_config_mapping(config_dir, "review_rules_v0.yaml")
+
+    taxonomy_schema = _load_schema_mapping(schema_dir, "taxonomy_assignment.schema.json")
+    taxonomy_required = _require_list(taxonomy_schema.get("required"), "taxonomy_assignment.schema.json:required")
+    if taxonomy_required != [
+        "target_type",
+        "target_id",
+        "taxonomy_version",
+        "label_level",
+        "label_role",
+        "category_code",
+        "rationale",
+        "assigned_by",
+        "model_or_rule_version",
+        "assigned_at",
+        "evidence_refs_json",
+    ]:
+        raise ContractValidationError("taxonomy_assignment.schema.json required fields drifted from the frozen taxonomy contract")
+    taxonomy_properties = _require_mapping(taxonomy_schema.get("properties"), "taxonomy_assignment.schema.json:properties")
+    if _require_list(_require_mapping(taxonomy_properties.get("target_type"), "taxonomy_assignment.schema.json:target_type").get("enum"), "taxonomy_assignment.schema.json:target_type:enum") != ["product"]:
+        raise ContractValidationError("taxonomy_assignment.schema.json target_type must stay product-only in phase1")
+    if _require_list(_require_mapping(taxonomy_properties.get("label_level"), "taxonomy_assignment.schema.json:label_level").get("enum"), "taxonomy_assignment.schema.json:label_level:enum") != [1, 2]:
+        raise ContractValidationError("taxonomy_assignment.schema.json label_level must stay limited to L1/L2")
+    if _require_list(_require_mapping(taxonomy_properties.get("label_role"), "taxonomy_assignment.schema.json:label_role").get("enum"), "taxonomy_assignment.schema.json:label_role:enum") != ["primary", "secondary"]:
+        raise ContractValidationError("taxonomy_assignment.schema.json label_role drifted from the frozen taxonomy policy")
+    if _require_list(_require_mapping(taxonomy_properties.get("result_status"), "taxonomy_assignment.schema.json:result_status").get("enum"), "taxonomy_assignment.schema.json:result_status:enum") != [
+        "active",
+        "superseded",
+        "dismissed",
+        None,
+    ]:
+        raise ContractValidationError("taxonomy_assignment.schema.json result_status drifted from the frozen lifecycle contract")
+    if _require_mapping(taxonomy_properties.get("evidence_refs_json"), "taxonomy_assignment.schema.json:evidence_refs_json").get("minItems") != 1:
+        raise ContractValidationError("taxonomy_assignment.schema.json evidence_refs_json must require at least one traceable reference")
+
+    score_schema = _load_schema_mapping(schema_dir, "score_component.schema.json")
+    score_required = _require_list(score_schema.get("required"), "score_component.schema.json:required")
+    required_output_fields = _require_list(rubric.get("required_output_fields"), "rubric_v0.yaml:required_output_fields")
+    if score_required != required_output_fields:
+        raise ContractValidationError("score_component.schema.json required fields drifted from rubric_v0.yaml required_output_fields")
+    score_properties = _require_mapping(score_schema.get("properties"), "score_component.schema.json:properties")
+    score_type_enum = set(
+        _require_list(_require_mapping(score_properties.get("score_type"), "score_component.schema.json:score_type").get("enum"), "score_component.schema.json:score_type:enum")
+    )
+    rubric_score_types = {
+        _require_string(_require_mapping(entry, "rubric_v0.yaml:scores[]").get("score_type"), "rubric_v0.yaml:scores[].score_type")
+        for entry in _require_list(rubric.get("scores"), "rubric_v0.yaml:scores")
+    }
+    if score_type_enum != rubric_score_types:
+        raise ContractValidationError("score_component.schema.json score_type enum drifted from rubric_v0.yaml")
+    if _require_list(_require_mapping(score_properties.get("band"), "score_component.schema.json:band").get("enum"), "score_component.schema.json:band:enum") != [
+        "high",
+        "medium",
+        "low",
+        None,
+    ]:
+        raise ContractValidationError("score_component.schema.json band enum must stay aligned with the frozen rubric band scale")
+    if _require_mapping(score_properties.get("evidence_refs_json"), "score_component.schema.json:evidence_refs_json").get("minItems") != 1:
+        raise ContractValidationError("score_component.schema.json evidence_refs_json must require at least one traceable reference")
+    score_all_of = _require_list(score_schema.get("allOf"), "score_component.schema.json:allOf")
+    required_non_null_band_scores = {"build_evidence_score", "need_clarity_score"}
+    guarded_scores: set[str] = set()
+    for entry in score_all_of:
+        branch = _require_mapping(entry, "score_component.schema.json:allOf[]")
+        conditional = _require_mapping(branch.get("if"), "score_component.schema.json:allOf[].if")
+        conditional_properties = _require_mapping(conditional.get("properties"), "score_component.schema.json:allOf[].if.properties")
+        score_type = _require_mapping(conditional_properties.get("score_type"), "score_component.schema.json:allOf[].if.properties.score_type").get("const")
+        if score_type not in required_non_null_band_scores:
+            continue
+        then_branch = _require_mapping(branch.get("then"), "score_component.schema.json:allOf[].then")
+        then_properties = _require_mapping(then_branch.get("properties"), "score_component.schema.json:allOf[].then.properties")
+        if _require_list(_require_mapping(then_properties.get("band"), "score_component.schema.json:allOf[].then.properties.band").get("enum"), "score_component.schema.json:allOf[].then.properties.band:enum") != [
+            "high",
+            "medium",
+            "low",
+        ]:
+            raise ContractValidationError(f"score_component.schema.json must keep non-null band enforcement for {score_type}")
+        guarded_scores.add(score_type)
+    if guarded_scores != required_non_null_band_scores:
+        raise ContractValidationError("score_component.schema.json must keep non-null band enforcement for build_evidence_score and need_clarity_score")
+
+    review_packet_schema = _load_schema_mapping(schema_dir, "review_packet.schema.json")
+    review_packet_required = _require_list(review_packet_schema.get("required"), "review_packet.schema.json:required")
+    if review_packet_required != [
+        "target_summary",
+        "issue_type",
+        "current_auto_result",
+        "related_evidence",
+        "conflict_point",
+        "recommended_action",
+        "upstream_downstream_links",
+    ]:
+        raise ContractValidationError("review_packet.schema.json required fields drifted from the frozen review packet contract")
+    review_packet_properties = _require_mapping(review_packet_schema.get("properties"), "review_packet.schema.json:properties")
+    review_issue_types = _require_list(review_rules.get("issue_types"), "review_rules_v0.yaml:issue_types")
+    if set(_require_list(_require_mapping(review_packet_properties.get("issue_type"), "review_packet.schema.json:issue_type").get("enum"), "review_packet.schema.json:issue_type:enum")) != set(review_issue_types):
+        raise ContractValidationError("review_packet.schema.json issue_type enum drifted from review_rules_v0.yaml")
+    if _require_mapping(review_packet_properties.get("related_evidence"), "review_packet.schema.json:related_evidence").get("minItems") != 1:
+        raise ContractValidationError("review_packet.schema.json related_evidence must require at least one traceable evidence entry")
+    if _require_mapping(review_packet_properties.get("upstream_downstream_links"), "review_packet.schema.json:upstream_downstream_links").get("minItems") != 1:
+        raise ContractValidationError("review_packet.schema.json upstream_downstream_links must require at least one traceable linkage")
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="apo-observatory", description="Minimal runnable baseline for the observatory.")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     subparsers.add_parser("install", help="Bootstrap local runtime directories and dependency checks.")
     subparsers.add_parser("validate-schemas", help="Validate JSON schema documents under schemas/.")
-    subparsers.add_parser("validate-configs", help="Validate YAML config artifacts under configs/.")
+    subparsers.add_parser("validate-configs", help="Validate YAML config artifacts and schema alignment guardrails.")
 
     env_parser = subparsers.add_parser("validate-env", help="Fail when required environment variables are missing.")
     env_parser.add_argument("--require", nargs="+", required=True)
@@ -512,7 +621,8 @@ def validate_configs(config: AppConfig) -> int:
     _validate_vocab_configs(config.config_dir)
     _validate_rubric_config(config.config_dir)
     _validate_review_rules_config(config.config_dir)
-    return 6
+    _validate_schema_alignment(config.config_dir, config.schema_dir)
+    return 9
 
 
 def validate_schemas(config: AppConfig) -> int:

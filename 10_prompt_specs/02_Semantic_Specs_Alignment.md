@@ -258,3 +258,5 @@ score engine、review queue、sample pool 和 gold set 的行为高度依赖 rub
 - 先保持 contract 一致性，再追求文档完整度。
 - 改动应尽量集中、可审查、可对账，避免在多个文件里隐式改口径。
 - 对字段、状态、band、枚举、示例都使用同一命名，不做近义替换。
+
+### 已完成

@@ -16,23 +16,78 @@
     "evidence_refs_json"
   ],
   "properties": {
-    "target_type": {"type": "string"},
-    "target_id": {"type": "string"},
-    "taxonomy_version": {"type": "string"},
-    "label_level": {"type": "integer"},
-    "label_role": {"type": "string"},
-    "category_code": {"type": "string"},
-    "confidence": {"type": ["number", "null"]},
-    "rationale": {"type": "string"},
-    "assigned_by": {"type": "string"},
-    "model_or_rule_version": {"type": "string"},
-    "assigned_at": {"type": "string"},
-    "is_override": {"type": ["boolean", "null"]},
-    "override_review_issue_id": {"type": ["string", "null"]},
-    "result_status": {"type": ["string", "null"]},
-    "effective_from": {"type": ["string", "null"]},
-    "supersedes_assignment_id": {"type": ["string", "null"]},
-    "evidence_refs_json": {"type": "array"}
+    "target_type": {
+      "type": "string",
+      "enum": ["product"],
+      "description": "Phase1 taxonomy assignments only target canonical product entities."
+    },
+    "target_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "taxonomy_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "label_level": {
+      "type": "integer",
+      "enum": [1, 2],
+      "description": "Phase1 assignments only support stable L1 and optional L2 labels."
+    },
+    "label_role": {
+      "type": "string",
+      "enum": ["primary", "secondary"]
+    },
+    "category_code": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Use frozen JTBD codes or the canonical unresolved expression category_code = 'unresolved'."
+    },
+    "confidence": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "assigned_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model_or_rule_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "assigned_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "is_override": {
+      "type": ["boolean", "null"]
+    },
+    "override_review_issue_id": {
+      "type": ["string", "null"],
+      "minLength": 1
+    },
+    "result_status": {
+      "type": ["string", "null"],
+      "enum": ["active", "superseded", "dismissed", null],
+      "description": "Lifecycle only. Do not use result_status to encode unresolved taxonomy."
+    },
+    "effective_from": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "supersedes_assignment_id": {
+      "type": ["string", "null"],
+      "minLength": 1
+    },
+    "evidence_refs_json": {
+      "type": "array",
+      "minItems": 1
+    }
   },
   "additionalProperties": false
 }

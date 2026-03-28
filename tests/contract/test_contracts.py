@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import os
 import shutil
 import subprocess
@@ -119,6 +120,60 @@ class ContractCommandTests(unittest.TestCase):
             self.assertEqual(result.returncode, 2)
             self.assertIn("taxonomy_change_suggestion", result.stderr)
 
+    def test_validate_configs_rejects_score_schema_required_field_drift(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            schema_dir = root / "schemas"
+            shutil.copytree(REPO_ROOT / "schemas", schema_dir)
+
+            score_schema_path = schema_dir / "score_component.schema.json"
+            score_schema = yaml.safe_load(score_schema_path.read_text(encoding="utf-8"))
+            score_schema["required"] = ["score_type", "rationale", "evidence_refs_json"]
+            score_schema_path.write_text(
+                json.dumps(score_schema, indent=2, ensure_ascii=True) + "\n",
+                encoding="utf-8",
+            )
+
+            result = self.run_cli("validate-configs", env={"APO_SCHEMA_DIR": str(schema_dir)})
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("score_component.schema.json required fields", result.stderr)
+
+    def test_validate_configs_rejects_review_packet_issue_type_drift(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            schema_dir = root / "schemas"
+            shutil.copytree(REPO_ROOT / "schemas", schema_dir)
+
+            review_packet_path = schema_dir / "review_packet.schema.json"
+            review_packet = yaml.safe_load(review_packet_path.read_text(encoding="utf-8"))
+            review_packet["properties"]["issue_type"]["enum"] = ["taxonomy_conflict"]
+            review_packet_path.write_text(
+                json.dumps(review_packet, indent=2, ensure_ascii=True) + "\n",
+                encoding="utf-8",
+            )
+
+            result = self.run_cli("validate-configs", env={"APO_SCHEMA_DIR": str(schema_dir)})
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("review_packet.schema.json issue_type enum", result.stderr)
+
+    def test_taxonomy_assignment_schema_rejects_invalid_label_role(self) -> None:
+        instance = {
+            "target_type": "product",
+            "target_id": "prod_1",
+            "taxonomy_version": "v0",
+            "label_level": 1,
+            "label_role": "fallback",
+            "category_code": "JTBD_KNOWLEDGE",
+            "rationale": "Core value is document search and answering.",
+            "assigned_by": "taxonomy_classifier",
+            "model_or_rule_version": "taxonomy_classifier_v1",
+            "assigned_at": "2026-03-28T00:00:00Z",
+            "evidence_refs_json": [{"evidence_id": "ev_1"}],
+        }
+
+        with self.assertRaises(ContractValidationError):
+            validate_instance(instance, REPO_ROOT / "schemas" / "taxonomy_assignment.schema.json")
+
     def test_score_component_schema_accepts_explicit_nulls_for_band_only_output(self) -> None:
         instance = {
             "score_type": "build_evidence_score",
@@ -143,6 +198,19 @@ class ContractCommandTests(unittest.TestCase):
         with self.assertRaises(ContractValidationError):
             validate_instance(instance, REPO_ROOT / "schemas" / "score_component.schema.json")
 
+    def test_score_component_schema_rejects_null_band_for_required_band_score(self) -> None:
+        instance = {
+            "score_type": "need_clarity_score",
+            "raw_value": None,
+            "normalized_value": None,
+            "band": None,
+            "rationale": "Band must still be produced for need_clarity_score.",
+            "evidence_refs_json": [{"evidence_id": "ev_1"}],
+        }
+
+        with self.assertRaises(ContractValidationError):
+            validate_instance(instance, REPO_ROOT / "schemas" / "score_component.schema.json")
+
     def test_score_component_schema_rejects_nonstandard_band(self) -> None:
         instance = {
             "score_type": "commercial_score",
@@ -155,6 +223,33 @@ class ContractCommandTests(unittest.TestCase):
 
         with self.assertRaises(ContractValidationError):
             validate_instance(instance, REPO_ROOT / "schemas" / "score_component.schema.json")
+
+    def test_review_packet_schema_rejects_unknown_issue_type(self) -> None:
+        instance = {
+            "target_summary": "Taxonomy conflict on product profile.",
+            "issue_type": "taxonomy_override",
+            "current_auto_result": {"category_code": "JTBD_CONTENT"},
+            "related_evidence": [{"evidence_id": "ev_1"}],
+            "conflict_point": "Evidence points to knowledge search instead of content generation.",
+            "recommended_action": "mark_unresolved",
+            "upstream_downstream_links": [{"taxonomy_assignment_id": "tax_1"}],
+        }
+
+        with self.assertRaises(ContractValidationError):
+            validate_instance(instance, REPO_ROOT / "schemas" / "review_packet.schema.json")
+
+    def test_review_packet_schema_accepts_traceable_review_packet(self) -> None:
+        instance = {
+            "target_summary": "Attention null case requires review follow-up.",
+            "issue_type": "score_conflict",
+            "current_auto_result": {"score_type": "attention_score", "band": None},
+            "related_evidence": [{"observation_id": "obs_1"}],
+            "conflict_point": "Benchmark sample is insufficient in both 30d and 90d windows.",
+            "recommended_action": "needs_more_evidence",
+            "upstream_downstream_links": [{"score_run_id": "score_run_1"}],
+        }
+
+        validate_instance(instance, REPO_ROOT / "schemas" / "review_packet.schema.json")
 
     def test_install_bootstraps_runtime_directories_and_task_store(self) -> None:
         with TemporaryDirectory() as tmp_dir:

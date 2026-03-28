@@ -47,6 +47,16 @@ last_frozen_version: review_v3
 - `recommended_action`
 - `upstream_downstream_links`
 
+字段约束补充：
+
+- `issue_type` 必须来自冻结的 review issue types，不允许 packet 现场发明新枚举
+- `related_evidence` 至少保留 1 条可回链 evidence
+- `upstream_downstream_links` 至少保留 1 条上游/下游引用，保证后续 writeback、replay 与审计可追踪
+- 若 packet trigger 来自 annotation / adjudication，`conflict_point` 或链路字段里必须能看出：
+  - `review_recommended` 的来源
+  - 冲突字段摘要
+  - 是否命中 maker-checker 提示
+
 ## 3. Priority Matrix
 
 统一优先级体系：
@@ -193,6 +203,7 @@ maker-checker 建议：
 - annotation 中的 `need_clarity_band` 必须回链到 `score_type = need_clarity_score` 的 `score_component.band`
 - `review_recommended = true` 表示应创建或补充 `review_issue`，而不是直接写回最终 override
 - `needs_review` 只表示需要进入 adjudication 或 review；真正的 review close action 仍使用 `needs_more_evidence`、`mark_unresolved`、`override_auto_result` 等 resolution action
+- annotation / adjudication 触发的 review packet 仍必须复用冻结的 `issue_type`、`resolution_action` 与 maker-checker 术语，不单独创造第二套 packet 状态机
 
 ## 9. Re-open 规则
 
@@ -285,3 +296,15 @@ review 结果可以回流：
   - `attention_score` 只作为优先复核 / 优先抽样因子，不作为唯一入池依据
 - 候选池不等于 training pool；只有完成 review closure，且证据充分、裁决清晰、非 `unresolved` 的样本，才正式进入 training pool
 - 若样本要进入 `gold_set`，还必须满足双标 + adjudication
+
+最小回归样例说明：
+
+- `annotation_needs_review_to_review_issue`
+  - 样本：primary 无法唯一判定，annotation 记录 `review_recommended = true`
+  - 预期：创建或补充 `review_issue`，而不是直接写回 override
+- `high_impact_override_requires_maker_checker`
+  - 样本：`P0` taxonomy override
+  - 预期：reviewer 可给建议，但未经 approver 不得成为 effective result
+- `candidate_training_gold_layering`
+  - 样本：review 已关闭但仍是 `unresolved` 的样本
+  - 预期：不得进入 training pool 或 `gold_set_300`
