@@ -138,8 +138,10 @@ python3 -m src.cli build-mart-window
 - Product Hunt boundary：当前运行边界是 `internal research / analysis / prototype validation`；若未来涉及外部交付、付费嵌入或原始/派生数据再分发，需额外授权或法务确认；正式法律边界仍 open
 - raw retention：审计元数据 `24` 个月；raw payload / raw README `30d` 热存、`180d` 冷存、`180d` 后删除；例外 `365d`；默认值不延长，但保留 policy override 入口
 - v0 runtime profile：冻结为 Python + PostgreSQL-compatible + S3-compatible + cron/systemd + DB task table + pull worker + `local_only/single_vps` 优先
+- 当前仓库中的 `.runtime/task_store/tasks.json` 只作为本地最小骨架与 replay harness，不代表最终 runtime backend 已从 DB task table 改成 file-backed store
 - database baseline：冻结为 `PostgreSQL 17` 社区版 / PGDG distribution；`local_only` 与首个 `single_vps` 默认自托管，进入 `cloud_managed` 后再评估托管 PostgreSQL
 - provider / routing：冻结抽象能力契约；vendor binding 仍为 provisional default
 - evidence schema：保持 inline，待触发条件满足后再提升为独立 artifact
 - review unresolved handling：canonical 继续单源；`unresolved` 可成为当前 effective taxonomy，但主报表只消费 effective resolved result，另行进入 `unresolved_registry_view`
-- sample pool layering：每批 `top_10_candidate_samples` 加白名单样本进入候选池；候选池不等于 training pool；`gold_set` 继续要求双标 + adjudication
+- sample pool layering：每批 `top_10_candidate_samples` 加白名单样本进入候选池；该 top 10 是当前运营参数而非理论最优值；候选池不等于 training pool；`gold_set` 继续要求双标 + adjudication
+- gold set：双标记录需保留每个通道的原始标注结果与 channel metadata；若双标通道包含 LLM，应尽量与生产 taxonomy-classification prompt / routing 解耦，并记录相关版本

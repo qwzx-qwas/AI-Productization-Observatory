@@ -96,6 +96,8 @@ last_frozen_version: unfrozen
 - `复标一致性` 只统计双标样本的双通道一致性，口径为 `primary_category_code` 的 `Krippendorff's alpha`；当前运行默认通道为“本地项目使用者 + LLM”；不得用简单 accuracy、micro-F1 或 adjudication 后结果替代。
 - `gold set 一级分类表现` 统计候选 prompt / rule / model 在 `gold_set_300` 上对 L1 `primary_category_code` 的表现，口径为 `macro-F1`；`unresolved` 作为受控输出类单独统计，不得与“未出结果”混为一类。
 - `build evidence band 一致性` 只统计 `build_evidence_band` 的双通道一致性；当前运行默认通道为“本地项目使用者 + LLM”；因其为有序等级，口径固定为 `weighted kappa`；不得改用未加权 kappa 或简单一致率。
+- 上述双通道质量 gate 必须保留每个通道的原始标注结果与 channel metadata，不能只基于 adjudication 后结果回推 agreement 指标。
+- 若其中一条通道为 LLM，该通道应尽量与生产 taxonomy-classification prompt / routing 解耦；若暂时复用部分组件，必须单独记录 prompt / routing version，并在 gate 解释里标注相关性风险。
 - 以上三个 gate 默认都基于冻结版 guideline、taxonomy、rubric 和同一批次样本计算；若任一口径、样本范围或标签集合变更，必须重新记录版本并重算，不得直接与旧结果横向比较。
 - 若后续进入多人标注，应把人工-人工与人工-LLM 指标分开记录，不得混成单一口径直接横向比较。
 

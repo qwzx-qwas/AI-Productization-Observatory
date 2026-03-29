@@ -201,6 +201,7 @@ last_frozen_version: repo_mapping_v2
 
 - `make install`
   - 初始化 `.runtime/raw_store/`、`.runtime/task_store/tasks.json`、`.runtime/marts/`
+  - 其中 `.runtime/task_store/tasks.json` 只是本地骨架与 fixture/replay harness；canonical runtime backend 仍以 `15_tech_stack_and_runtime.md` 与 `18_runtime_task_and_replay_contracts.md` 中冻结的主关系库 task table 为准
 - `make lint`
   - 运行仓库内最小 Python lint 检查
 - `make typecheck`

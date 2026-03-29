@@ -209,6 +209,8 @@ last_frozen_version: annotation_v2
 - 当前双标通道默认由本地项目使用者与 LLM 构成
 - 后续若引入更多人工标注员，仍保留双标 + adjudication 接口与状态定义
 - 日常 review：单标 + 仅对冲突项或高影响项进入 adjudication
+- 每个通道的原始标注结果与 channel metadata 都必须保留，供 agreement、偏差分析与审计复核使用
+- 若其中一条通道为 LLM，该通道应尽量与生产 taxonomy-classification prompt / routing 解耦，避免双标退化为同一路提示词的相关副本
 
 ### 双标流程
 
@@ -288,6 +290,7 @@ taxonomy_change_suggestion: null
 
 - candidate pool
   - 每批次可选 `top_10_candidate_samples`，另可带 `whitelist_reason` 额外放行白名单样本
+  - 上述 top 10 是当前运营上限，不是理论最优值；后续可在不改变分层语义的前提下复核
   - 先排除 `unresolved`、`needs_more_evidence`、review 未关闭样本
   - 排序优先级：`need_clarity_band = high` -> `build_evidence_band = high` -> `attention_score` 仅作次要因子
 - training pool
@@ -340,7 +343,10 @@ taxonomy_change_suggestion: null
 ## 12. 本轮人工确认结论
 
 - `gold_set_300` 当前默认要求双标 + adjudication；当前双标主体为本地项目使用者与 LLM，后续保留扩展到多人标注的接口
+- 双标记录必须保留每个通道的原始标注结果与 channel metadata；不得只保留 adjudication 后的合成结果
+- 若其中一条通道为 LLM，该通道应尽量与生产 taxonomy-classification prompt / routing 解耦；若暂时复用部分组件，必须记录相关版本并在复标分析里显式标注相关性风险
 - 当前 adjudicator 默认由本地项目使用者担任；若后续进入多人协作，再拆分为独立角色
 - 标注员可以记录 `taxonomy_change_suggestion` 作为候选备注，但不得直接提交 taxonomy 节点改动；只有经 adjudicator 确认后，才进入规则 / 设计回修流程
 - 候选样本池、training pool 与 `gold_set` 必须分层管理；样本若要进入 `gold_set`，仍必须满足双标 + adjudication，而不能直接沿用 training pool 准入条件
+- `top_10_candidate_samples` 是当前运营参数，不应被写成理论最优采样规模；后续若调整数量，应保留分层规则与白名单机制不变
 - `review_recommended`、`needs_review`、`mark_unresolved`、`needs_more_evidence`、`override_auto_result` 在 annotation 与 review 间保持各自语义，不混成单一状态机

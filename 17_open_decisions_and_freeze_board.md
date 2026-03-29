@@ -118,7 +118,7 @@ last_frozen_version: freeze_board_v8
    - affected_docs：`15`, `16`, `18`, `20`, `README`
    - current_default：Python + Postgres + object store compatible + DB task table in primary relational DB
    - deadline：`TBD_HUMAN`
-   - final_decision：`freeze v0 runtime profile = Python 3.12 + PostgreSQL-compatible + S3-compatible object store + cron/systemd + DB task table + pull worker + local_only/single_vps first; task table stays in the primary relational DB in the current version; default task lease timeout = 30s; worker heartbeat renews about every 10s; cross-process auto reclaim is allowed only after lease expiry, idempotent-write safety, and compare-and-swap claim success`
+   - final_decision：`freeze v0 runtime profile = Python 3.12 + PostgreSQL-compatible + S3-compatible object store + cron/systemd + DB task table + pull worker + local_only/single_vps first; task table stays in the primary relational DB in the current version; the current repo may keep a local file-backed task store only as a Task 1 / local_only harness that mirrors the contract and must not be described as the final runtime backend; default task lease timeout = 30s; worker heartbeat renews about every 10s; cross-process auto reclaim is allowed only after lease expiry, idempotent-write safety, and compare-and-swap claim success`
    - status：`frozen`
    (8) 第 8 行
    - decision_id：`DEC-008`
@@ -258,7 +258,7 @@ last_frozen_version: freeze_board_v8
    - affected_docs：`01`, `07`, `12`, `14`, `gold_set/README.md`
    - current_default：`keep gold_set_300 double-annotated with adjudication, using the local project user plus LLM as the two current annotation channels`
    - deadline：`TBD_HUMAN`
-   - final_decision：`freeze current annotation operating default as: gold_set_300 requires double annotation plus adjudication; the two current annotation channels are the local project user and an LLM; the adjudicator defaults to the local project user; taxonomy_change_suggestion may be recorded as a candidate note during annotation but cannot enter the taxonomy change flow until adjudicator confirmation; keep the interface open for future multi-annotator expansion without changing field semantics`
+   - final_decision：`freeze current annotation operating default as: gold_set_300 requires double annotation plus adjudication; the two current annotation channels are the local project user and an LLM; the adjudicator defaults to the local project user; raw per-channel annotation outputs and channel metadata must be retained for audit and agreement analysis; the LLM annotation channel should use a prompt / routing path that is decoupled from the production taxonomy-classification prompt as much as practical so the second channel is not merely a correlated duplicate; taxonomy_change_suggestion may be recorded as a candidate note during annotation but cannot enter the taxonomy change flow until adjudicator confirmation; keep the interface open for future multi-annotator expansion without changing field semantics`
    - status：`frozen`
    (22) 第 22 行
    - decision_id：`DEC-022`
@@ -288,7 +288,7 @@ last_frozen_version: freeze_board_v8
    - affected_docs：`07`, `12`, `README`, `gold_set/README.md`, `document_overview.md`, `configs/review_rules_v0.yaml`
    - current_default：`select per-batch top 10 high-quality candidates plus whitelist samples; keep candidate pool separate from training pool and gold set`
    - deadline：`TBD_HUMAN`
-   - final_decision：`freeze sample-pool layering as: each batch may select top_10_candidate_samples plus whitelist samples into a candidate pool; ordering is by pool priority rather than total score; first exclude unresolved, needs_more_evidence, and review-unclosed samples; prioritize need_clarity_band = high, then build_evidence_band = high, while attention_score acts only as a secondary sampling factor; whitelist samples may bypass the top-10 cap but must retain whitelist_reason; candidate pool is not the training pool; only review-closed, evidence-sufficient, clearly adjudicated, non-unresolved samples may enter the training pool; gold set entry still requires double annotation plus adjudication`
+   - final_decision：`freeze sample-pool layering as: each batch may select top_10_candidate_samples plus whitelist samples into a candidate pool; the top-10 cap is the current operating parameter rather than a theoretical optimum and may be reviewed later without changing the layering semantics; ordering is by pool priority rather than total score; first exclude unresolved, needs_more_evidence, and review-unclosed samples; prioritize need_clarity_band = high, then build_evidence_band = high, while attention_score acts only as a secondary sampling factor; whitelist samples may bypass the top-10 cap but must retain whitelist_reason; candidate pool is not the training pool; only review-closed, evidence-sufficient, clearly adjudicated, non-unresolved samples may enter the training pool; gold set entry still requires double annotation plus adjudication`
    - status：`frozen`
    (25) 第 25 行
    - decision_id：`DEC-025`
@@ -336,6 +336,20 @@ last_frozen_version: freeze_board_v8
 
 - 当前不存在 `blocking = yes` 且 `status != frozen` 的条目。
 - 仍存在少量需要上线后复核的治理边界，但当前运行参数、频率、授权与 retention 默认值均已冻结到对应决策条目。
+
+## 2026-03-29 高风险决策签字记录
+
+- `2026-03-29` / `DEC-020` / owner=`taxonomy_owner` / conclusion=`confirmed unchanged` / effective_scope=`taxonomy v0 Phase1 implementation baseline` / writeback_files=`04_taxonomy_v0.md`, `configs/taxonomy_v0.yaml`, `12_review_policy.md`, `14_test_plan_and_acceptance.md` / implementation_blocked=`no`
+- `2026-03-29` / `DEC-023` / owner=`review_owner` / conclusion=`confirmed unchanged` / effective_scope=`canonical unresolved handling and main-report filtering baseline` / writeback_files=`12_review_policy.md`, `README.md`, `configs/review_rules_v0.yaml` / implementation_blocked=`no`
+- `2026-03-29` / `DEC-026` / owner=`taxonomy_owner` / conclusion=`confirmed unchanged` / effective_scope=`controlled vocabulary v0 baseline` / writeback_files=`05_controlled_vocabularies_v0.md`, `configs/delivery_form_v0.yaml`, `README.md` / implementation_blocked=`no`
+- `2026-03-29` / `DEC-006` / owner=`scoring_owner` / conclusion=`confirmed unchanged` / effective_scope=`attention v1 current frozen default, still non-stability-claim` / writeback_files=`06_score_rubric_v0.md`, `configs/rubric_v0.yaml`, `configs/source_metric_registry.yaml`, `README.md` / implementation_blocked=`no`
+- `2026-03-29` / `DEC-021` / owner=`annotation_owner` / conclusion=`confirmed with implementation constraints` / effective_scope=`gold-set double-annotation and adjudication baseline` / writeback_files=`07_annotation_guideline_v0.md`, `12_review_policy.md`, `14_test_plan_and_acceptance.md`, `01_phase_plan_and_exit_criteria.md`, `gold_set/README.md` / implementation_blocked=`no`
+- `2026-03-29` / `DEC-024` / owner=`annotation_owner` / conclusion=`confirmed with operating-parameter note` / effective_scope=`candidate/training/gold layering baseline` / writeback_files=`07_annotation_guideline_v0.md`, `12_review_policy.md`, `README.md`, `gold_set/README.md` / implementation_blocked=`no`
+- `2026-03-29` / `DEC-007` / owner=`runtime_owner` / conclusion=`confirmed with local-harness note` / effective_scope=`v0 runtime profile baseline` / writeback_files=`15_tech_stack_and_runtime.md`, `18_runtime_task_and_replay_contracts.md`, `16_repo_structure_and_module_mapping.md`, `README.md` / implementation_blocked=`no`
+- `2026-03-29` / `DEC-022` / owner=`pipeline_owner` / conclusion=`confirmed unchanged` / effective_scope=`Phase1 execution boundary and replay gate baseline` / writeback_files=`18_runtime_task_and_replay_contracts.md`, `12_review_policy.md`, `14_test_plan_and_acceptance.md` / implementation_blocked=`no`
+- `2026-03-29` / `DEC-025` / owner=`qa_owner` / conclusion=`confirmed unchanged` / effective_scope=`merge-vs-release decision boundary baseline` / writeback_files=`14_test_plan_and_acceptance.md` / implementation_blocked=`no`
+- `2026-03-29` / `DEC-027` / owner=`runtime_owner` / conclusion=`confirmed unchanged` / effective_scope=`database baseline, ID, migration, and vocab-expression baseline` / writeback_files=`15_tech_stack_and_runtime.md`, `08_schema_contracts.md`, `README.md`, `05_controlled_vocabularies_v0.md` / implementation_blocked=`no`
+- `2026-03-29` / `DEC-008` / owner=`prompt_owner` / conclusion=`confirmed unchanged` / effective_scope=`vendor-neutral routing baseline until eval gate` / writeback_files=`10_prompt_and_model_routing_contracts.md`, `configs/model_routing.yaml` / implementation_blocked=`no`
 
 ## 变更规则
 

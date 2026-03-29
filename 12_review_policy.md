@@ -247,6 +247,8 @@ review 结果可以回流：
 - 候选池不等于 training pool
 - 只有 review closure 完成、证据充分、裁决清晰、非 `unresolved` 的样本，才建议进入 training pool
 - 若要进入 `gold_set`，还必须满足双标 + adjudication
+- `gold_set` 必须保留每个双标通道的原始标注结果与 channel metadata，不能只保留 adjudication 后的汇总结果
+- 若当前双标通道包含 LLM，该通道应尽量与生产 taxonomy-classification prompt / routing 解耦；若暂时复用部分组件，必须在评估与复标记录中显式标注相关性风险
 
 ## 12. 本轮人工确认结论
 
@@ -284,6 +286,7 @@ review 结果可以回流：
 ### 候选样本池 / training pool / gold set
 
 - 每批允许选出 `top_10_candidate_samples` 进入候选池
+- `top_10_candidate_samples` 是当前运营参数，不是理论最优规模；后续可在不改变分层规则的前提下复核
 - 白名单样本可绕过 top 10 数量限制直接进入候选池，但必须单独保留 `whitelist_reason`
 - 候选池排序不按“总分”，而按入池优先级排序
 - 进入排序前，先过滤：

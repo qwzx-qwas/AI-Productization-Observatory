@@ -49,6 +49,7 @@ last_frozen_version: runtime_task_v2
 安全实现边界：
 
 - 可以实现 DB task table、状态流转、lease / replay skeleton
+- 当前仓库若保留本地 file-backed task store，只能把它当作 local harness 来镜像本 contract；不得把它升级解释成已替代主关系库 task table 的最终 runtime backend
 - 不得把未冻结的技术选型写成最终产品依赖
 
 ## 1. Runtime Task Scope
@@ -237,6 +238,7 @@ v0 runtime task 统一覆盖：
 ## 10. 本轮人工确认结论
 
 - task table 默认落在主关系库；如后续引入第二套存储，只能作为后续演进，不改变当前 contract
+- 当前仓库中的 `.runtime/task_store/tasks.json` 只作为本地骨架与 fixture/replay harness；它不改变“task table 默认落在主关系库”的冻结结论
 - `task lease timeout = 30s`
 - heartbeat 为必需能力；worker 默认每 `10s` 左右续租一次
 - 允许跨进程自动 reclaim，但仅限于 `lease` 已过期、幂等写成立且 compare-and-swap (CAS) 抢占成功时；其他情况仍走人工 requeue 或定时扫描后的人工确认路径

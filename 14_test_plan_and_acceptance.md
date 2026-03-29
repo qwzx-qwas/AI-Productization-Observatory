@@ -173,6 +173,8 @@ taxonomy / annotation 最小样例说明还应覆盖：
 - `gold_set_300` 当前默认要求双标 + adjudication
 - 当前双标通道默认由本地项目使用者与 LLM 构成；后续可扩展为多人标注
 - gold set 应保留双标原始结果、最终 adjudication 结果与裁决理由
+- gold set 还应保留每个通道的原始标注结果与 channel metadata；若存在 LLM 通道，应记录其 prompt / routing version
+- 若存在 LLM 双标通道，该通道应尽量与生产 taxonomy-classification prompt / routing 解耦；若暂时复用部分组件，测试与评估报告必须显式说明相关性风险
 - 初版切分默认使用 `60 / 20 / 20`（train / validation / test）
 - 若样本允许，切分时优先保持 `source` 与 L1 `primary_category_code` 的基本分层一致
 
