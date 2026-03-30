@@ -127,6 +127,16 @@ class ContractCommandTests(unittest.TestCase):
         self.assertEqual(result.returncode, 2)
         self.assertIn("Missing required environment variables", result.stderr)
 
+    def test_validate_env_uses_runtime_defaults_for_known_config_paths(self) -> None:
+        result = self.run_cli("validate-env", "--require", "APO_CONFIG_DIR", "APO_SCHEMA_DIR")
+        self.assertEqual(result.returncode, 0, msg=result.stderr)
+
+    def test_validate_env_fails_when_resolved_config_path_is_missing(self) -> None:
+        missing_dir = REPO_ROOT / "does-not-exist-config-dir"
+        result = self.run_cli("validate-env", "--require", "APO_CONFIG_DIR", env={"APO_CONFIG_DIR": str(missing_dir)})
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("APO_CONFIG_DIR points to missing directory", result.stderr)
+
     def test_invalid_config_path_fails(self) -> None:
         missing_dir = REPO_ROOT / "does-not-exist-config-dir"
         result = self.run_cli("validate-configs", env={"APO_CONFIG_DIR": str(missing_dir)})

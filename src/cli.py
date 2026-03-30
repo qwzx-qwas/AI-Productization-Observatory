@@ -6,7 +6,7 @@ import argparse
 import sys
 from pathlib import Path
 
-from src.common.config import AppConfig, require_environment_variables
+from src.common.config import AppConfig, resolve_required_settings
 from src.common.errors import BlockedReplayError, ConfigError, ContractValidationError, ObservatoryError
 from src.common.files import dump_json, load_json, load_yaml
 from src.common.logging_utils import configure_logging, get_logger
@@ -591,7 +591,10 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("validate-schemas", help="Validate JSON schema documents under schemas/.")
     subparsers.add_parser("validate-configs", help="Validate YAML config artifacts and schema alignment guardrails.")
 
-    env_parser = subparsers.add_parser("validate-env", help="Fail when required environment variables are missing.")
+    env_parser = subparsers.add_parser(
+        "validate-env",
+        help="Validate resolved runtime config entries and any explicitly required non-config environment variables.",
+    )
     env_parser.add_argument("--require", nargs="+", required=True)
 
     lint_parser = subparsers.add_parser("lint", help="Run lightweight Python lint checks.")
@@ -669,8 +672,9 @@ def main(argv: list[str] | None = None) -> int:
             return 0
 
         if args.command == "validate-env":
-            require_environment_variables(args.require)
-            logger.info(f"validated env vars: {', '.join(args.require)}")
+            resolved = resolve_required_settings(config, args.require)
+            resolved_summary = ", ".join(f"{name}={value}" for name, value in resolved.items())
+            logger.info(f"validated resolved settings: {resolved_summary}")
             return 0
 
         if args.command == "lint":

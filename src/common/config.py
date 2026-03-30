@@ -63,3 +63,38 @@ def require_environment_variables(names: Iterable[str]) -> None:
     if missing:
         joined = ", ".join(sorted(missing))
         raise ConfigError(f"Missing required environment variables: {joined}")
+
+
+_CONFIG_ENV_TO_FIELD = {
+    "APO_CONFIG_DIR": "config_dir",
+    "APO_SCHEMA_DIR": "schema_dir",
+    "APO_FIXTURES_DIR": "fixtures_dir",
+    "APO_RAW_STORE_DIR": "raw_store_dir",
+    "APO_TASK_STORE_PATH": "task_store_path",
+    "APO_MART_OUTPUT_DIR": "mart_output_dir",
+    "APO_LOG_LEVEL": "log_level",
+}
+
+
+def resolve_required_settings(config: AppConfig, names: Iterable[str]) -> dict[str, str]:
+    resolved: dict[str, str] = {}
+    missing_env: list[str] = []
+
+    for name in names:
+        field_name = _CONFIG_ENV_TO_FIELD.get(name)
+        if field_name is None:
+            value = os.environ.get(name)
+            if value:
+                resolved[name] = value
+            else:
+                missing_env.append(name)
+            continue
+
+        value = getattr(config, field_name)
+        resolved[name] = str(value)
+
+    if missing_env:
+        joined = ", ".join(sorted(missing_env))
+        raise ConfigError(f"Missing required environment variables: {joined}")
+
+    return resolved

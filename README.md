@@ -112,6 +112,20 @@ python3 -m src.cli build-mart-window
 
 本地默认配置由 [`.env.example`](.env.example) 提供，未显式设置时会回退到仓库内 `configs/`、`schemas/`、`fixtures/` 与 `.runtime/`。
 
+注意：
+
+- 仓库当前不会自动加载 [`.env.example`](.env.example) 到 shell 环境。
+- 当前运行时配置解析顺序是：优先读取已导出的环境变量；未设置时回退到仓库内默认路径。
+- 因此 `make install`、`make lint`、`make typecheck`、`make validate-schemas`、`make validate-configs`、`make test`、`make replay-window` 与 `make build-mart-window` 可以直接依赖仓库默认路径运行。
+- `make validate-env` 当前会复用实际运行时的配置解析逻辑，校验解析后的配置是否有效；只要默认路径存在，就不要求你必须先 `export APO_CONFIG_DIR`、`APO_SCHEMA_DIR` 才能通过。
+- 若你想覆盖默认路径，仍然可以先导出对应环境变量，例如：
+
+```bash
+export APO_CONFIG_DIR=configs
+export APO_SCHEMA_DIR=schemas
+make validate-env
+```
+
 ## 当前实现状态
 
 - 文档治理总控页：已补齐
@@ -124,6 +138,9 @@ python3 -m src.cli build-mart-window
 - mart skeleton：已打通 `effective result -> mart`
 - 消费层 contract：已在 `11_metrics_and_marts.md` 明确主报表、`unresolved_registry_view`、drill-down 与错误边界
 - 基线验证：已验证 `make install`、`make lint`、`make typecheck`、`make validate-env`、`make validate-schemas`、`make validate-configs`、`make test`、`make replay-window SOURCE=product_hunt WINDOW=2026-03-01..2026-03-08`、`make build-mart-window`
+- 环境自检命令：`make validate-env`
+  - 当前用途：校验 `APO_CONFIG_DIR`、`APO_SCHEMA_DIR` 等配置项在“环境变量优先、默认路径回退”规则下能否成功解析
+  - 当前前提：默认路径存在时可直接通过；若显式覆盖到不存在的目录，则会明确报错
 - CI baseline：`.github/workflows/ci.yml` 当前与本地 `install / lint / typecheck / validate-schemas / validate-configs / test` 基线一致
 - gold set：仍为 `stub`，等待双标 + adjudication 样本
 
