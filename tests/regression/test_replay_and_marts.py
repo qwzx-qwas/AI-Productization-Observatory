@@ -161,6 +161,58 @@ class ReplayAndMartRegressionTests(unittest.TestCase):
             categories = {row["category_code"]: row["product_count"] for row in mart["top_jtbd_products_30d"]}
             self.assertEqual(categories["research_ops"], 2)
 
+    def test_consumption_contract_examples_match_fixture_records(self) -> None:
+        examples = json.loads((REPO_ROOT / "fixtures" / "marts" / "consumption_contract_examples.json").read_text(encoding="utf-8"))
+        mart_fixture = json.loads((REPO_ROOT / "fixtures" / "marts" / "effective_results_window.json").read_text(encoding="utf-8"))
+        expected_source_items = json.loads(
+            (REPO_ROOT / "fixtures" / "normalizer" / "product_hunt_expected_source_items.json").read_text(encoding="utf-8")
+        )
+
+        fixture_records = {record["product_id"]: record for record in mart_fixture["records"]}
+        source_items = {item["external_id"]: item for item in expected_source_items}
+        built_mart = build_mart_from_fixture(
+            REPO_ROOT / "fixtures" / "marts" / "effective_results_window.json",
+            REPO_ROOT / "configs" / "source_registry.yaml",
+        )
+        main_mart_categories = {row["category_code"] for row in built_mart["top_jtbd_products_30d"]}
+        attention_distribution = {(row["category_code"], row["attention_band"]) for row in built_mart["attention_distribution_30d"]}
+
+        for example in examples["examples"]:
+            record = fixture_records[example["product_id"]]
+            expected_outcome = example["expected_outcome"]
+            self.assertIn(Path(example["effective_result_fixture"]).name, {"effective_results_window.json"})
+            self.assertIn(
+                "tests/regression/test_replay_and_marts.py::test_consumption_contract_examples_match_fixture_records",
+                example["test_refs"],
+            )
+
+            if example["path_type"] == "source_to_main_mart":
+                source_item = source_items[example["source_item_external_id"]]
+                self.assertEqual(record["source_external_id"], source_item["external_id"])
+                self.assertEqual(record["source_id"], source_item["source_id"])
+                self.assertTrue(expected_outcome["main_report_included"])
+                self.assertIn(expected_outcome["main_mart_category_code"], main_mart_categories)
+                self.assertIn("drill_down_refs", record)
+                self.assertEqual(record["drill_down_refs"]["source_item_id"], record["source_item_id"])
+                self.assertEqual(record["drill_down_refs"]["product_id"], record["product_id"])
+                if expected_outcome["attention_band"] is None:
+                    self.assertNotIn((record["effective_taxonomy"]["category_code"], None), attention_distribution)
+                else:
+                    self.assertIn(
+                        (record["effective_taxonomy"]["category_code"], expected_outcome["attention_band"]),
+                        attention_distribution,
+                    )
+            elif example["path_type"] == "effective_unresolved_registry":
+                self.assertEqual(record["effective_taxonomy"]["category_code"], "unresolved")
+                self.assertFalse(expected_outcome["main_report_included"])
+                self.assertNotIn("unresolved", main_mart_categories)
+                registry_entry = record["unresolved_registry_entry"]
+                self.assertEqual(registry_entry["target_id"], record["product_id"])
+                self.assertTrue(registry_entry["is_effective_unresolved"])
+                self.assertEqual(record["drill_down_refs"]["review_issue_ids"], [registry_entry["review_issue_id"]])
+            else:
+                self.fail(f"Unknown path_type in consumption contract examples fixture: {example['path_type']}")
+
     def test_replay_rejects_fixture_window_mismatch(self) -> None:
         with TemporaryDirectory() as tmp_dir:
             fixtures_dir = Path(tmp_dir)

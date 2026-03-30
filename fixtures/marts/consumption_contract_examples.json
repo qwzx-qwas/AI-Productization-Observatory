@@ -1,0 +1,58 @@
+{
+  "fixture_version": "consumption_contract_examples_v1",
+  "examples": [
+    {
+      "example_id": "desk_research_main_report",
+      "path_type": "source_to_main_mart",
+      "source_fixture": "fixtures/collector/product_hunt_window.json",
+      "collector_external_id": "ph_1001",
+      "normalized_fixture": "fixtures/normalizer/product_hunt_expected_source_items.json",
+      "source_item_external_id": "ph_1001",
+      "effective_result_fixture": "fixtures/marts/effective_results_window.json",
+      "product_id": "prod_001",
+      "expected_outcome": {
+        "main_report_included": true,
+        "main_mart_category_code": "research_ops",
+        "attention_band": "high"
+      },
+      "test_refs": [
+        "tests/integration/test_pipeline.py::test_expected_fixture_bundle_matches_normalized_outputs",
+        "tests/regression/test_replay_and_marts.py::test_consumption_contract_examples_match_fixture_records"
+      ]
+    },
+    {
+      "example_id": "sprint_qa_main_report_with_null_attention",
+      "path_type": "source_to_main_mart",
+      "source_fixture": "fixtures/collector/product_hunt_window.json",
+      "collector_external_id": "ph_1002",
+      "normalized_fixture": "fixtures/normalizer/product_hunt_expected_source_items.json",
+      "source_item_external_id": "ph_1002",
+      "effective_result_fixture": "fixtures/marts/effective_results_window.json",
+      "product_id": "prod_004",
+      "expected_outcome": {
+        "main_report_included": true,
+        "main_mart_category_code": "qa_automation",
+        "attention_band": null
+      },
+      "test_refs": [
+        "tests/integration/test_pipeline.py::test_expected_fixture_bundle_matches_normalized_outputs",
+        "tests/regression/test_replay_and_marts.py::test_consumption_contract_examples_match_fixture_records"
+      ]
+    },
+    {
+      "example_id": "effective_unresolved_registry_path",
+      "path_type": "effective_unresolved_registry",
+      "effective_result_fixture": "fixtures/marts/effective_results_window.json",
+      "product_id": "prod_003",
+      "expected_outcome": {
+        "main_report_included": false,
+        "main_mart_category_code": "unresolved",
+        "attention_band": "high",
+        "unresolved_registry_view_required": true
+      },
+      "test_refs": [
+        "tests/regression/test_replay_and_marts.py::test_consumption_contract_examples_match_fixture_records"
+      ]
+    }
+  ]
+}

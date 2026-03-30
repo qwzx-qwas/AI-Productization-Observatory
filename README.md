@@ -127,14 +127,17 @@ python3 -m src.cli build-mart-window
 
 ## 最小回链示例
 
-- `product_hunt fixture -> raw -> source_item`
-  - 对应 fixture：`fixtures/collector/product_hunt_window.json`
-  - 断言入口：`tests/integration/test_pipeline.py`
+- `Desk Research Copilot: product_hunt fixture -> raw -> source_item -> effective resolved result -> mart`
+  - 对应 fixture：`fixtures/collector/product_hunt_window.json`、`fixtures/normalizer/product_hunt_expected_source_items.json`、`fixtures/marts/effective_results_window.json`
+  - 断言入口：`tests/integration/test_pipeline.py`、`tests/regression/test_replay_and_marts.py`
 - `same-window replay / blocked replay / parse-failure`
   - 对应入口：`python3 -m src.cli replay-window --source product_hunt --window 2026-03-01..2026-03-08`
   - 断言入口：`tests/integration/test_pipeline.py`、`tests/regression/test_replay_and_marts.py`
-- `effective resolved result -> mart`
-  - 对应 fixture：`fixtures/marts/effective_results_window.json`
+- `Sprint QA Agent: source_item -> effective resolved result -> mart`
+  - 对应 fixture：`fixtures/normalizer/product_hunt_expected_source_items.json`、`fixtures/marts/effective_results_window.json`
+  - 断言入口：`tests/integration/test_pipeline.py`、`tests/regression/test_replay_and_marts.py`
+- `effective unresolved result -> unresolved_registry_view / drill-down`
+  - 对应 fixture：`fixtures/marts/effective_results_window.json`、`fixtures/marts/consumption_contract_examples.json`
   - 断言入口：`tests/regression/test_replay_and_marts.py`
 
 消费层读取边界：
@@ -142,6 +145,7 @@ python3 -m src.cli build-mart-window
 - 主报表与 dashboard 默认只读 mart / materialized view
 - drill-down 只回链运行层对象与 evidence，不现场改写业务结果
 - `processing_error` 与 `review_issue` 分流规则见 `13_error_and_retry_policy.md`
+- 当前最小 contract 示例清单见 `fixtures/marts/consumption_contract_examples.json`
 
 ## 当前 blocker
 

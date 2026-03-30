@@ -6,6 +6,9 @@
     {
       "product_id": "prod_001",
       "source_id": "src_product_hunt",
+      "source_external_id": "ph_1001",
+      "source_item_id": "srcitem_ph_1001_v1",
+      "observation_id": "obs_prod_001_20260310",
       "observed_at": "2026-03-10T10:00:00Z",
       "effective_taxonomy": {
         "label_role": "primary",
@@ -15,11 +18,24 @@
       "effective_scores": {
         "attention_band": "high",
         "build_evidence_band": "high"
+      },
+      "drill_down_refs": {
+        "product_id": "prod_001",
+        "observation_id": "obs_prod_001_20260310",
+        "source_item_id": "srcitem_ph_1001_v1",
+        "evidence_ids": [
+          "ev_prod_001_homepage",
+          "ev_prod_001_description"
+        ],
+        "review_issue_ids": []
       }
     },
     {
       "product_id": "prod_002",
       "source_id": "src_github",
+      "source_external_id": "gh_repo_2002",
+      "source_item_id": "srcitem_gh_2002_v1",
+      "observation_id": "obs_prod_002_20260312",
       "observed_at": "2026-03-12T12:00:00Z",
       "effective_taxonomy": {
         "label_role": "primary",
@@ -29,11 +45,23 @@
       "effective_scores": {
         "attention_band": "medium",
         "build_evidence_band": "medium"
+      },
+      "drill_down_refs": {
+        "product_id": "prod_002",
+        "observation_id": "obs_prod_002_20260312",
+        "source_item_id": "srcitem_gh_2002_v1",
+        "evidence_ids": [
+          "ev_prod_002_readme"
+        ],
+        "review_issue_ids": []
       }
     },
     {
       "product_id": "prod_003",
       "source_id": "src_product_hunt",
+      "source_external_id": "ph_1099",
+      "source_item_id": "srcitem_ph_1099_v1",
+      "observation_id": "obs_prod_003_20260315",
       "observed_at": "2026-03-15T16:00:00Z",
       "effective_taxonomy": {
         "label_role": "primary",
@@ -43,11 +71,36 @@
       "effective_scores": {
         "attention_band": "high",
         "build_evidence_band": "low"
+      },
+      "drill_down_refs": {
+        "product_id": "prod_003",
+        "observation_id": "obs_prod_003_20260315",
+        "source_item_id": "srcitem_ph_1099_v1",
+        "evidence_ids": [
+          "ev_prod_003_conflict_note"
+        ],
+        "review_issue_ids": [
+          "rev_003"
+        ]
+      },
+      "unresolved_registry_entry": {
+        "target_id": "prod_003",
+        "issue_type": "taxonomy_conflict",
+        "priority_code": "P1",
+        "resolution_action": "mark_unresolved",
+        "review_issue_id": "rev_003",
+        "resolution_notes": "Adjacent taxonomy confusion remains unresolved after review closure.",
+        "reviewed_at": "2026-03-16T09:30:00Z",
+        "is_stale": false,
+        "is_effective_unresolved": true
       }
     },
     {
       "product_id": "prod_004",
       "source_id": "src_product_hunt",
+      "source_external_id": "ph_1002",
+      "source_item_id": "srcitem_ph_1002_v1",
+      "observation_id": "obs_prod_004_20260316",
       "observed_at": "2026-03-16T08:00:00Z",
       "effective_taxonomy": {
         "label_role": "primary",
@@ -57,6 +110,16 @@
       "effective_scores": {
         "attention_band": null,
         "build_evidence_band": "high"
+      },
+      "drill_down_refs": {
+        "product_id": "prod_004",
+        "observation_id": "obs_prod_004_20260316",
+        "source_item_id": "srcitem_ph_1002_v1",
+        "evidence_ids": [
+          "ev_prod_004_release_note",
+          "ev_prod_004_smoke_test"
+        ],
+        "review_issue_ids": []
       }
     }
   ]

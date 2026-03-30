@@ -51,6 +51,26 @@ class FixturePipelineIntegrationTests(unittest.TestCase):
             self.assertEqual(actual["canonical_url"], expected["canonical_url"])
             self.assertEqual(actual["current_metrics_json"], expected["current_metrics_json"])
 
+    def test_expected_fixture_bundle_matches_normalized_outputs(self) -> None:
+        with temp_config() as config:
+            result = replay_source_window(
+                source_code="product_hunt",
+                window="2026-03-01..2026-03-08",
+                config=config,
+            )
+            expected_path = config.fixtures_dir / "normalizer" / "product_hunt_expected_source_items.json"
+            expected_items = json.loads(expected_path.read_text(encoding="utf-8"))
+            actual_items = {item["external_id"]: item for item in result["source_items"]}
+
+            self.assertEqual({item["external_id"] for item in expected_items}, set(actual_items))
+            for expected in expected_items:
+                actual = actual_items[expected["external_id"]]
+                self.assertEqual(actual["source_id"], expected["source_id"])
+                self.assertEqual(actual["title"], expected["title"])
+                self.assertEqual(actual["canonical_url"], expected["canonical_url"])
+                self.assertEqual(actual["current_metrics_json"], expected["current_metrics_json"])
+                self.assertEqual(actual["linked_homepage_url"], expected["linked_homepage_url"])
+
     def test_raw_store_dedupes_duplicate_payloads_by_source_external_hash(self) -> None:
         with temp_config() as config:
             collector_fixture = json.loads((config.fixtures_dir / "collector" / "product_hunt_window.json").read_text(encoding="utf-8"))

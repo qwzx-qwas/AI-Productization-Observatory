@@ -418,6 +418,21 @@ order by product_count desc;
 - 若 mart 尚未刷新、drill-down 回链对象缺失、或 replay 仍处于 blocked / failed 状态，消费层可以返回“数据暂不可用”之类的运行态说明，但不得把该运行态伪装成新的业务裁决结果
 - `unresolved` 继续是业务语义；`processing_error` 继续是技术失败语义；二者在消费层必须保持分离
 
+## 9.4 Local Minimal Contract Trace Examples
+
+为了让当前仓库的最小 runnable baseline 能被后续执行者和 LLM 直接复核，本地 fixture 层补充以下 contract 回链：
+
+- `fixtures/marts/consumption_contract_examples.json`
+  - 统一登记 2 条 `source -> raw -> source_item -> effective resolved result -> mart` 样例，以及 1 条 `effective unresolved -> unresolved_registry_view` 样例
+- `fixtures/marts/effective_results_window.json`
+  - 每条样例至少保留 `product_id`、`observation_id`、`source_item_id`、`evidence_ids` 与必要的 `review_issue_id` 回链
+- `tests/integration/test_pipeline.py`
+  - 验证 collector fixture 与 normalizer bundle 能产出与示例清单一致的 source item
+- `tests/regression/test_replay_and_marts.py`
+  - 验证主报表只消费 `effective resolved result`，并且 `unresolved` 只进入 `unresolved_registry_view` 路径，不进入主统计
+
+这些本地示例只用于最小 contract traceability，不替代 canonical mart / review / runtime 规则本身。
+
 ## 9.5 Missing Dimensions 决议
 
 当前决议：

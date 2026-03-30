@@ -40,3 +40,12 @@
 - 样本能回链到 review / evidence / taxonomy 或 score 裁决依据
 - 若存在 `taxonomy_change_suggestion`，只能作为候选备注保留，不能视为已生效 taxonomy 改动
 - 文档状态从 `stub` 更新为 `implemented`
+
+当前仍未满足的差距：
+
+- 还没有落入 `gold_set/gold_set_300/` 的真实双标样本目录
+- 还没有同时保留“本地项目使用者通道 + LLM 通道”的原始标注结果
+- 还没有对应的 adjudication 汇总结果与裁决理由
+- 还没有可回放的 channel metadata、prompt / routing version 记录
+
+因此本轮阶段 3 只能继续保持 `status = stub`，不能提前升级为 `implemented`。
