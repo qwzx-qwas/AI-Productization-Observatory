@@ -436,6 +436,28 @@ last_frozen_version: governance_v2
 - `docs/history/*`
 - `phase0_prompt.md`（默认不进入；仅在做 Phase0 历史回顾时按需打开）
 
+按任务增量扩展：
+
+- prompt / routing / provider eval：
+  - `10_prompt_and_model_routing_contracts.md`
+  - `10a_provider_eval_gate.md`
+- mart / dashboard / consumption：
+  - `11_metrics_and_marts.md`
+- test / acceptance / runtime / replay：
+  - `14_test_plan_and_acceptance.md`
+  - `15_tech_stack_and_runtime.md`
+  - `18_runtime_task_and_replay_contracts.md`
+- 执行阶段 prompt、整理实现报告、或进入 blocker 响应：
+  - `10_prompt_specs/00_base_system_context.md`
+  - `10_prompt_specs/01_task_template.md`
+  - `10_prompt_specs/02_blocker_response_template.md`
+  - 当前目标阶段 prompt 文档
+
+补充规则：
+
+- 不要整目录注入 `10_prompt_specs/`
+- `10_prompt_specs/*.md` 负责执行上下文与输出骨架，不替代 canonical 行为契约
+
 ## 规范层 -> Artifact 层 -> Repo 路径映射
 
 主题：规范层 -> Artifact 层 -> Repo 路径映射
@@ -526,11 +548,17 @@ last_frozen_version: governance_v2
    - status：`implemented`
    (14) 第 14 行
    - doc：`14_test_plan_and_acceptance.md`
-   - artifact：fixtures / gold set
-   - repo path：`fixtures/`, `gold_set/`
+   - artifact：fixtures
+   - repo path：`fixtures/`
+   - owner：`qa_owner`
+   - status：`implemented`
+   (15) 第 15 行
+   - doc：`14_test_plan_and_acceptance.md`
+   - artifact：gold set
+   - repo path：`gold_set/`
    - owner：`qa_owner`
    - status：`stub`
-   (15) 第 15 行
+   (16) 第 16 行
    - doc：`16_repo_structure_and_module_mapping.md`
    - artifact：module mapping
    - repo path：`src/`

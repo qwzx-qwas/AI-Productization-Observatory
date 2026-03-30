@@ -60,6 +60,18 @@ last_frozen_version: ai_context_v1
 - runtime / scheduler：
   - `15_tech_stack_and_runtime.md`
   - `18_runtime_task_and_replay_contracts.md`
+- task execution / implementation report：
+  - `10_prompt_specs/00_base_system_context.md`
+  - `10_prompt_specs/01_task_template.md`
+- blocker handling：
+  - `10_prompt_specs/02_blocker_response_template.md`
+- staged prompt execution in `10_prompt_specs/`：
+  - 当前目标阶段 prompt 文档
+
+补充边界：
+
+- `10_prompt_specs/*.md` 只负责执行上下文、输出骨架与阶段 workflow，不裁决字段、Schema、运行时或业务语义
+- 不要把整个 `10_prompt_specs/` 目录作为默认上下文整体注入
 
 ## 3. Default Exclusion
 
@@ -87,5 +99,6 @@ last_frozen_version: ai_context_v1
 
 - 先读 allowlist 主链
 - 再按任务类型增量补充
+- 只有在任务执行 / 汇报 / blocker workflow 需要时，才按需读取 `10_prompt_specs/00/01/02` 与目标阶段 prompt 文档
 - 只有在做历史回顾、审查或治理时，才允许打开默认排除文档
 - 若需要读取历史材料，统一从 [docs/history/README.md](docs/history/README.md) 进入，而不是直接把整个历史目录注入默认上下文
