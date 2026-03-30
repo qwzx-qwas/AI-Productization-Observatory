@@ -351,6 +351,29 @@ last_frozen_version: freeze_board_v8
 - `2026-03-29` / `DEC-027` / owner=`runtime_owner` / conclusion=`confirmed unchanged` / effective_scope=`database baseline, ID, migration, and vocab-expression baseline` / writeback_files=`15_tech_stack_and_runtime.md`, `08_schema_contracts.md`, `README.md`, `05_controlled_vocabularies_v0.md` / implementation_blocked=`no`
 - `2026-03-29` / `DEC-008` / owner=`prompt_owner` / conclusion=`confirmed unchanged` / effective_scope=`vendor-neutral routing baseline until eval gate` / writeback_files=`10_prompt_and_model_routing_contracts.md`, `configs/model_routing.yaml` / implementation_blocked=`no`
 
+## 2026-03-29 Task 4 统一回写清单
+
+- file=`04_taxonomy_v0.md` / source_decisions=`DEC-020` / task4_action=`confirm_unchanged` / task4_note=`Keep the signed taxonomy v0 Phase1 baseline unchanged unless a new frozen decision supersedes it.`
+- file=`configs/taxonomy_v0.yaml` / source_decisions=`DEC-020` / task4_action=`confirm_unchanged` / task4_note=`Keep taxonomy_v0 artifact fields aligned with the signed Phase1 taxonomy baseline.`
+- file=`05_controlled_vocabularies_v0.md` / source_decisions=`DEC-026`, `DEC-027` / task4_action=`verify_or_update_note` / task4_note=`Keep the controlled vocabulary baseline unchanged and preserve the signed text-code storage boundary for runtime values.`
+- file=`configs/delivery_form_v0.yaml` / source_decisions=`DEC-026` / task4_action=`confirm_unchanged` / task4_note=`Keep the signed v0 delivery-form baseline unchanged.`
+- file=`06_score_rubric_v0.md` / source_decisions=`DEC-006` / task4_action=`confirm_unchanged` / task4_note=`Keep attention v1 parameters described as the current frozen default rather than a validated stable conclusion.`
+- file=`configs/rubric_v0.yaml` / source_decisions=`DEC-006` / task4_action=`confirm_unchanged` / task4_note=`Keep rubric parameters aligned with the signed attention v1 frozen default.`
+- file=`configs/source_metric_registry.yaml` / source_decisions=`DEC-006` / task4_action=`confirm_unchanged` / task4_note=`Keep source metric registry attention parameters aligned with the signed frozen default.`
+- file=`07_annotation_guideline_v0.md` / source_decisions=`DEC-021`, `DEC-024` / task4_action=`verify_or_update_note` / task4_note=`Preserve the signed double-annotation plus adjudication baseline and the candidate/training/gold layering boundary.`
+- file=`08_schema_contracts.md` / source_decisions=`DEC-027` / task4_action=`verify_or_update_note` / task4_note=`Keep the signed database baseline, opaque ID policy, and vocab-as-text expression boundary visible in schema-level guidance.`
+- file=`10_prompt_and_model_routing_contracts.md` / source_decisions=`DEC-008` / task4_action=`confirm_unchanged` / task4_note=`Keep provider routing frozen at the abstract capability contract until the eval gate is triggered.`
+- file=`configs/model_routing.yaml` / source_decisions=`DEC-008` / task4_action=`confirm_unchanged` / task4_note=`Keep vendor binding provisional and preserve the signed vendor-neutral routing baseline.`
+- file=`12_review_policy.md` / source_decisions=`DEC-020`, `DEC-021`, `DEC-022`, `DEC-023`, `DEC-024` / task4_action=`verify_or_update_note` / task4_note=`Keep unresolved handling canonical and ensure annotation, adjudication, sample-pool layering, and replay-gate wording match the signed baseline.`
+- file=`14_test_plan_and_acceptance.md` / source_decisions=`DEC-020`, `DEC-021`, `DEC-022`, `DEC-025` / task4_action=`verify_or_update_note` / task4_note=`Keep test and acceptance wording aligned with the signed taxonomy, gold-set, replay-boundary, and merge-vs-release baseline.`
+- file=`15_tech_stack_and_runtime.md` / source_decisions=`DEC-007`, `DEC-027` / task4_action=`verify_or_update_note` / task4_note=`Preserve the signed local-harness caveat, PostgreSQL baseline, migration discipline, and vocab-expression boundary.`
+- file=`16_repo_structure_and_module_mapping.md` / source_decisions=`DEC-007` / task4_action=`verify_or_update_note` / task4_note=`Keep repo mapping wording consistent with the signed local harness versus final DB task-table boundary.`
+- file=`18_runtime_task_and_replay_contracts.md` / source_decisions=`DEC-007`, `DEC-022` / task4_action=`verify_or_update_note` / task4_note=`Keep replay gate and runtime-task behavior aligned with the signed Phase1 execution boundary and local-harness note.`
+- file=`01_phase_plan_and_exit_criteria.md` / source_decisions=`DEC-021` / task4_action=`verify_or_update_note` / task4_note=`Keep phase-gate language aligned with the signed gold-set double-annotation plus adjudication baseline.`
+- file=`README.md` / source_decisions=`DEC-006`, `DEC-007`, `DEC-023`, `DEC-024`, `DEC-026`, `DEC-027` / task4_action=`verify_or_update_note` / task4_note=`Keep the operator-facing summary aligned with the signed attention default, unresolved filtering, controlled-vocabulary baseline, sample-pool layering, runtime profile, and database baseline.`
+- file=`configs/review_rules_v0.yaml` / source_decisions=`DEC-023` / task4_action=`confirm_unchanged` / task4_note=`Keep unresolved handling and main-report filtering aligned with the signed canonical review-rule baseline.`
+- file=`gold_set/README.md` / source_decisions=`DEC-021`, `DEC-024` / task4_action=`keep_stub_with_signed_boundary` / task4_note=`Keep gold_set marked as stub until real assets land, while recording the signed double-annotation, adjudication, and sample-pool layering boundary.`
+
 ## 变更规则
 
 - 新 blocker 必须先登记，再改规范
