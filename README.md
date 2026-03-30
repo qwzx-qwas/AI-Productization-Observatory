@@ -123,7 +123,15 @@ python3 -m src.cli build-mart-window
 - fixture replay：已打通 `product_hunt fixture -> raw -> source_item`
 - mart skeleton：已打通 `effective result -> mart`
 - 消费层 contract：已在 `11_metrics_and_marts.md` 明确主报表、`unresolved_registry_view`、drill-down 与错误边界
+- 基线验证：已验证 `make install`、`make lint`、`make typecheck`、`make validate-env`、`make validate-schemas`、`make validate-configs`、`make test`、`make replay-window SOURCE=product_hunt WINDOW=2026-03-01..2026-03-08`、`make build-mart-window`
+- CI baseline：`.github/workflows/ci.yml` 当前与本地 `install / lint / typecheck / validate-schemas / validate-configs / test` 基线一致
 - gold set：仍为 `stub`，等待双标 + adjudication 样本
+
+## 当前剩余事项
+
+- `gold_set/gold_set_300/` 仍未落入真实双标 + adjudication 样本，因此 `gold_set/` 继续保持 `stub`
+- `fixtures/extractor/` 与 `fixtures/scoring/` 仍是预留目录，当前不能宣称已具备对应模块的已交付 fixture 覆盖
+- 当前可运行基线仍以 deterministic fixture replay 和本地 file-backed task store harness 为主，不应表述为已完成 live source 接入或最终生产 runtime backend
 
 ## 最小回链示例
 
@@ -152,6 +160,7 @@ python3 -m src.cli build-mart-window
 当前 blocker 统一见：
 
 - [17_open_decisions_and_freeze_board.md](17_open_decisions_and_freeze_board.md)
+- 本轮基线验证未发现新增 blocker；是否存在阻塞项仍以冻结板中的 `blocking` / `status` 为准
 
 其中最关键的是：
 
