@@ -393,6 +393,31 @@ order by product_count desc;
 - 前端显示用 mart
 - drill-down 再回到运行层对象
 
+## 9.2 Consumption Read Contract
+
+- 主报表、dashboard card、固定切片统计默认只读 mart / materialized view，不直接现场 join 运行层细表
+- 主报表口径必须明确写成 `effective resolved result` 或等价表述；不能把仅仅“当前 effective”误写成主统计口径
+- drill-down 允许回到运行层对象，但只用于 traceability、evidence 解释、review 上下文与版本对账；不得在消费层重新裁决 taxonomy / score / unresolved 语义
+- 推荐 drill-down 回链对象至少包括：`product`、`observation`、`evidence`、`taxonomy_assignment`、`score_component`、`review_issue`
+
+消费层对象边界：
+
+- `main mart`
+  - 承接稳定主统计与 dashboard 默认读取口径
+- `unresolved_registry_view`
+  - 承接 unresolved backlog / quality 视图，不替代主 mart
+- `review_queue`
+  - 承接人工裁决工作流，不等同于 unresolved registry，也不直接承担主报表读取
+- `drill-down`
+  - 通过 mart 中的稳定标识回链运行层对象与 evidence，不现场重算主统计
+
+## 9.3 Consumption Error Boundary
+
+- 错误响应必须复用 `13_error_and_retry_policy.md` 的两条失败路径：技术失败进入 `processing_error`，语义不确定进入 `review_issue`
+- 任何 dashboard / API / drill-down 层的错误展示，都只能暴露运行状态、trace id、task id、error_type 或人工处理入口；不得借消费层错误响应改写业务层 taxonomy / score / unresolved 事实
+- 若 mart 尚未刷新、drill-down 回链对象缺失、或 replay 仍处于 blocked / failed 状态，消费层可以返回“数据暂不可用”之类的运行态说明，但不得把该运行态伪装成新的业务裁决结果
+- `unresolved` 继续是业务语义；`processing_error` 继续是技术失败语义；二者在消费层必须保持分离
+
 ## 9.5 Missing Dimensions 决议
 
 当前决议：

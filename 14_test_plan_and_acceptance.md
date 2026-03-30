@@ -31,12 +31,14 @@ last_frozen_version: test_plan_v3
 
 - Phase gate 阈值与部分验收边界，来自 `01_phase_plan_and_exit_criteria.md`
 - taxonomy / score 的最终冻结范围，来自 `04` 与 `06`
-- fixtures / gold set 真实内容当前尚未落成
+- gold set 真实内容当前尚未落成
+- 当前仅有最小已落库 fixtures，可支撑 `product_hunt fixture -> raw -> source_item` 与 `effective resolved result -> mart` 的本地断言
 
 安全实现边界：
 
 - 可以编写测试目录、测试清单、contract test 骨架和 trace checklist
-- 不得把尚未存在的 fixtures / gold set 误记为已交付
+- 不得把尚未存在的 fixtures 或 gold set 误记为已交付
+- 可以把当前最小 fixtures 视为已交付验证资产，但不得把 manual trace、dashboard reconciliation 或 gold set 误记为已完成
 
 ## 1. Test Matrix
 
