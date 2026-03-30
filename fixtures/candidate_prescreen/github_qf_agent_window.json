@@ -1,0 +1,57 @@
+{
+  "source": "github",
+  "source_id": "src_github",
+  "window": "2026-03-01..2026-03-08",
+  "time_field": "pushed_at",
+  "query_family": "ai_applications_and_products",
+  "query_slice_id": "qf_agent",
+  "selection_rule_version": "github_qsv1",
+  "items": [
+    {
+      "external_id": "987654321",
+      "canonical_url": "https://github.com/acme/agentdesk",
+      "title": "agentdesk",
+      "summary": "AI support agent workspace for customer operations teams.",
+      "author_name": "acme",
+      "linked_homepage_url": "https://agentdesk.example.com",
+      "linked_repo_url": null,
+      "published_at": null,
+      "pushed_at": "2026-03-05T12:30:00Z",
+      "raw_evidence_excerpt": "AgentDesk helps support teams route, answer, and summarize tickets with AI agents and auditable workflows.",
+      "topics": [
+        "agent",
+        "customer-support",
+        "workflow"
+      ],
+      "language": "TypeScript",
+      "current_metrics_json": {
+        "star_count": 128,
+        "fork_count": 14,
+        "watcher_count": 9
+      }
+    },
+    {
+      "external_id": "987654322",
+      "canonical_url": "https://github.com/acme/ops-orchestrator",
+      "title": "ops-orchestrator",
+      "summary": "Internal AI workflow runner for operations playbooks.",
+      "author_name": "acme",
+      "linked_homepage_url": null,
+      "linked_repo_url": null,
+      "published_at": null,
+      "pushed_at": "2026-03-06T08:15:00Z",
+      "raw_evidence_excerpt": "AI workflow builder for internal teams. Includes agents, approvals, and task execution traces.",
+      "topics": [
+        "ai-workflow",
+        "operations",
+        "agent"
+      ],
+      "language": "Python",
+      "current_metrics_json": {
+        "star_count": 42,
+        "fork_count": 6,
+        "watcher_count": 5
+      }
+    }
+  ]
+}

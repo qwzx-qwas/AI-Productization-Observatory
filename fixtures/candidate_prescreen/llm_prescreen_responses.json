@@ -1,0 +1,83 @@
+{
+  "prompt_version": "candidate_prescreener_v1",
+  "routing_version": "route_candidate_prescreener_v1",
+  "relay_client_version": "relay_candidate_prescreener_v1",
+  "model": "fixture-llm",
+  "responses": {
+    "github:987654321": {
+      "in_observatory_scope": true,
+      "reason": "The repo describes an end-user support workflow product with clear AI-assisted delivery and traceable product evidence.",
+      "source_evidence_summary": [
+        "The summary says it is an AI support agent workspace for customer operations teams.",
+        "The excerpt mentions auditable workflows, routing, answering, and summarization for tickets."
+      ],
+      "uncertainty_points": [
+        "Need human review to confirm whether the primary job is support operations or broader workflow automation."
+      ],
+      "recommend_candidate_pool": true,
+      "recommended_action": "candidate_pool",
+      "taxonomy_hints": {
+        "primary_category_code": "JTBD_SALES_SUPPORT",
+        "secondary_category_code": null,
+        "primary_persona_code": "unknown",
+        "delivery_form_code": "web_app"
+      },
+      "assessment_hints": {
+        "evidence_strength": "high",
+        "build_evidence_band": "high",
+        "need_clarity_band": "medium",
+        "unresolved_risk": "medium"
+      }
+    },
+    "github:987654322": {
+      "in_observatory_scope": true,
+      "reason": "The repo looks like an internal AI workflow product rather than pure infrastructure, but its boundary with developer tooling still needs a human check.",
+      "source_evidence_summary": [
+        "The summary positions the repo as an internal AI workflow runner for operations playbooks.",
+        "The excerpt highlights approvals, task execution traces, and internal team workflows."
+      ],
+      "uncertainty_points": [
+        "Could drift toward internal tooling or orchestration rather than a user-facing product."
+      ],
+      "recommend_candidate_pool": false,
+      "recommended_action": "hold",
+      "taxonomy_hints": {
+        "primary_category_code": "JTBD_PRODUCTIVITY_AUTOMATION",
+        "secondary_category_code": null,
+        "primary_persona_code": "unknown",
+        "delivery_form_code": "desktop_app"
+      },
+      "assessment_hints": {
+        "evidence_strength": "medium",
+        "build_evidence_band": "medium",
+        "need_clarity_band": "high",
+        "unresolved_risk": "high"
+      }
+    },
+    "product_hunt:ph_20001": {
+      "in_observatory_scope": true,
+      "reason": "The launch is a publicly released AI product for customer operations and has clear source evidence in both the listing and linked homepage/repo fields.",
+      "source_evidence_summary": [
+        "The Product Hunt summary explicitly says support agent copilot for customer ops teams.",
+        "The evidence excerpt describes drafting replies, summarization, and ticket follow-up automation."
+      ],
+      "uncertainty_points": [
+        "Need human review to confirm whether the best taxonomy is support-focused or broader knowledge workflow."
+      ],
+      "recommend_candidate_pool": true,
+      "recommended_action": "whitelist_candidate",
+      "taxonomy_hints": {
+        "primary_category_code": "JTBD_SALES_SUPPORT",
+        "secondary_category_code": null,
+        "primary_persona_code": "unknown",
+        "delivery_form_code": "web_app"
+      },
+      "assessment_hints": {
+        "evidence_strength": "high",
+        "build_evidence_band": "high",
+        "need_clarity_band": "medium",
+        "unresolved_risk": "medium"
+      }
+    }
+  }
+}

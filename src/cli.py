@@ -6,6 +6,12 @@ import argparse
 import sys
 from pathlib import Path
 
+from src.candidate_prescreen.config import load_candidate_prescreen_config
+from src.candidate_prescreen.workflow import (
+    handoff_candidates_to_staging as workflow_handoff_candidates_to_staging,
+    run_candidate_prescreen,
+    validate_candidate_workspace as workflow_validate_candidate_workspace,
+)
 from src.common.config import AppConfig, resolve_required_settings
 from src.common.errors import BlockedReplayError, ConfigError, ContractValidationError, ObservatoryError
 from src.common.files import dump_json, load_json, load_yaml
@@ -38,6 +44,19 @@ def _require_bool(value: object, description: str) -> bool:
     if not isinstance(value, bool):
         raise ContractValidationError(f"{description} must be a boolean")
     return value
+
+
+def _require_non_empty_ref_list(value: object, description: str) -> list[dict[str, object]]:
+    refs = _require_list(value, description)
+    if not refs:
+        raise ContractValidationError(f"{description} must contain at least one reference")
+    normalized: list[dict[str, object]] = []
+    for index, entry in enumerate(refs):
+        ref = _require_mapping(entry, f"{description}[{index}]")
+        if not any(isinstance(candidate, str) and candidate for candidate in ref.values()):
+            raise ContractValidationError(f"{description}[{index}] must retain at least one non-empty trace field")
+        normalized.append(ref)
+    return normalized
 
 
 def _load_config_mapping(config_dir: Path, file_name: str) -> dict[str, object]:
@@ -583,6 +602,321 @@ def _validate_schema_alignment(config_dir: Path, schema_dir: Path) -> None:
         raise ContractValidationError("review_packet.schema.json upstream_downstream_links must require at least one traceable linkage")
 
 
+def _validate_candidate_prescreen_config(config_dir: Path, schema_dir: Path) -> None:
+    workflow = load_candidate_prescreen_config(config_dir)
+    if workflow.get("version") != "candidate_prescreen_v1":
+        raise ContractValidationError("candidate_prescreen_workflow.yaml must define version = candidate_prescreen_v1")
+
+    workspace = _require_mapping(workflow.get("workspace"), "candidate_prescreen_workflow.yaml:workspace")
+    if workspace.get("directory") != "docs/candidate_prescreen_workspace":
+        raise ContractValidationError("candidate_prescreen_workflow.yaml workspace.directory must stay docs/candidate_prescreen_workspace")
+    if _require_bool(workspace.get("outside_formal_gold_set"), "candidate_prescreen_workflow.yaml:workspace:outside_formal_gold_set") is not True:
+        raise ContractValidationError("candidate workspace must stay outside the formal gold_set directory")
+    allowed_statuses = _require_list(
+        workspace.get("allowed_human_review_statuses"),
+        "candidate_prescreen_workflow.yaml:workspace:allowed_human_review_statuses",
+    )
+    if allowed_statuses != [
+        "pending_first_pass",
+        "approved_for_staging",
+        "rejected_after_human_review",
+        "on_hold",
+    ]:
+        raise ContractValidationError("candidate human review statuses drifted from the frozen candidate prescreen workflow")
+    if workspace.get("initial_human_review_status") != "pending_first_pass":
+        raise ContractValidationError("candidate prescreen initial_human_review_status must stay pending_first_pass")
+    if workspace.get("staging_write_requires_human_review_status") != "approved_for_staging":
+        raise ContractValidationError("candidate prescreen staging handoff must require approved_for_staging")
+
+    staging_defaults = _require_mapping(workflow.get("staging_defaults"), "candidate_prescreen_workflow.yaml:staging_defaults")
+    if staging_defaults.get("directory") != "docs/gold_set_300_real_asset_staging":
+        raise ContractValidationError("candidate prescreen staging directory must stay docs/gold_set_300_real_asset_staging")
+    if staging_defaults.get("target_type") != "product":
+        raise ContractValidationError("candidate prescreen staging target_type must stay product")
+    if staging_defaults.get("training_pool_source") != "candidate_pool":
+        raise ContractValidationError("candidate prescreen staging training_pool_source must stay candidate_pool")
+    if _require_bool(staging_defaults.get("preserve_existing_stub_boundary"), "candidate_prescreen_workflow.yaml:staging_defaults:preserve_existing_stub_boundary") is not True:
+        raise ContractValidationError("candidate prescreen staging handoff must preserve the existing stub boundary")
+
+    llm_prescreen = _require_mapping(workflow.get("llm_prescreen"), "candidate_prescreen_workflow.yaml:llm_prescreen")
+    if llm_prescreen.get("prompt_version") != "candidate_prescreener_v1":
+        raise ContractValidationError("candidate prescreen prompt_version must stay candidate_prescreener_v1")
+    if llm_prescreen.get("routing_version") != "route_candidate_prescreener_v1":
+        raise ContractValidationError("candidate prescreen routing_version must stay route_candidate_prescreener_v1")
+    if llm_prescreen.get("relay_transport") != "http_json_relay":
+        raise ContractValidationError("candidate prescreen relay_transport must stay http_json_relay")
+    recommended_actions = _require_list(llm_prescreen.get("recommended_actions"), "candidate_prescreen_workflow.yaml:llm_prescreen:recommended_actions")
+    if recommended_actions != ["reject", "hold", "candidate_pool", "whitelist_candidate"]:
+        raise ContractValidationError("candidate prescreen recommended_actions drifted from the frozen workflow")
+    unresolved_risk_levels = _require_list(
+        llm_prescreen.get("unresolved_risk_levels"),
+        "candidate_prescreen_workflow.yaml:llm_prescreen:unresolved_risk_levels",
+    )
+    if unresolved_risk_levels != ["low", "medium", "high"]:
+        raise ContractValidationError("candidate prescreen unresolved_risk_levels must stay [low, medium, high]")
+
+    sources = _require_list(workflow.get("sources"), "candidate_prescreen_workflow.yaml:sources")
+    if len(sources) != 2:
+        raise ContractValidationError("candidate prescreen workflow must register exactly github and product_hunt sources")
+    github_source = next(
+        (_require_mapping(entry, "candidate_prescreen_workflow.yaml:sources[]") for entry in sources if _require_mapping(entry, "candidate_prescreen_workflow.yaml:sources[]").get("source_code") == "github"),
+        None,
+    )
+    product_hunt_source = next(
+        (_require_mapping(entry, "candidate_prescreen_workflow.yaml:sources[]") for entry in sources if _require_mapping(entry, "candidate_prescreen_workflow.yaml:sources[]").get("source_code") == "product_hunt"),
+        None,
+    )
+    if github_source is None or product_hunt_source is None:
+        raise ContractValidationError("candidate prescreen workflow must include github and product_hunt source entries")
+    if github_source.get("source_id") != "src_github" or github_source.get("time_field") != "pushed_at":
+        raise ContractValidationError("candidate prescreen github source must stay bound to src_github + pushed_at")
+    if github_source.get("selection_rule_version") != "github_qsv1":
+        raise ContractValidationError("candidate prescreen github selection_rule_version must stay github_qsv1")
+    github_filters = _require_list(github_source.get("fixed_filters"), "candidate_prescreen_workflow.yaml:github:fixed_filters")
+    if github_filters != ["is:public", "fork:false", "archived:false", "mirror:false"]:
+        raise ContractValidationError("candidate prescreen github fixed_filters drifted from github_qsv1")
+    github_slices = _require_list(github_source.get("query_slices"), "candidate_prescreen_workflow.yaml:github:query_slices")
+    expected_slice_ids = {
+        "qf_agent",
+        "qf_rag",
+        "qf_ai_assistant",
+        "qf_copilot",
+        "qf_chatbot",
+        "qf_ai_workflow",
+    }
+    seen_slice_ids: set[str] = set()
+    for entry in github_slices:
+        slice_config = _require_mapping(entry, "candidate_prescreen_workflow.yaml:github:query_slices[]")
+        query_slice_id = _require_string(slice_config.get("query_slice_id"), "candidate prescreen github query_slice_id")
+        seen_slice_ids.add(query_slice_id)
+        if slice_config.get("query_family") != "ai_applications_and_products":
+            raise ContractValidationError(f"{query_slice_id} must stay in the ai_applications_and_products family")
+        _require_string(slice_config.get("query_text_template"), f"{query_slice_id}:query_text_template")
+        if _require_bool(slice_config.get("enabled"), f"{query_slice_id}:enabled") is not True:
+            raise ContractValidationError(f"{query_slice_id} must stay enabled in candidate prescreen workflow")
+    if seen_slice_ids != expected_slice_ids:
+        raise ContractValidationError("candidate prescreen github query_slice set drifted from github_qsv1")
+
+    if product_hunt_source.get("source_id") != "src_product_hunt" or product_hunt_source.get("time_field") != "published_at":
+        raise ContractValidationError("candidate prescreen product_hunt source must stay bound to src_product_hunt + published_at")
+    if product_hunt_source.get("selection_rule_version") != "product_hunt_published_window_v1":
+        raise ContractValidationError("candidate prescreen product_hunt selection_rule_version drifted")
+    ph_slices = _require_list(product_hunt_source.get("query_slices"), "candidate_prescreen_workflow.yaml:product_hunt:query_slices")
+    if len(ph_slices) != 1:
+        raise ContractValidationError("candidate prescreen product_hunt must keep exactly one published-window slice in v1")
+    ph_slice = _require_mapping(ph_slices[0], "candidate_prescreen_workflow.yaml:product_hunt:query_slices[0]")
+    if ph_slice.get("query_slice_id") != "ph_published_launches" or ph_slice.get("query_family") != "published_launches":
+        raise ContractValidationError("candidate prescreen product_hunt slice drifted from the published_at window boundary")
+
+    model_routing = _load_config_mapping(config_dir, "model_routing.yaml")
+    routes = _require_list(model_routing.get("routes"), "model_routing.yaml:routes")
+    route_ids = {
+        _require_string(_require_mapping(entry, "model_routing.yaml:routes[]").get("route_id"), "model_routing route_id")
+        for entry in routes
+    }
+    if "route_candidate_prescreener_v1" not in route_ids:
+        raise ContractValidationError("model_routing.yaml must register route_candidate_prescreener_v1")
+
+    candidate_schema = _load_schema_mapping(schema_dir, "candidate_prescreen_record.schema.json")
+    required_fields = _require_list(candidate_schema.get("required"), "candidate_prescreen_record.schema.json:required")
+    for field_name in (
+        "candidate_id",
+        "source",
+        "source_window",
+        "external_id",
+        "canonical_url",
+        "llm_prescreen",
+        "human_review_status",
+        "human_review_notes",
+        "staging_handoff",
+    ):
+        if field_name not in required_fields:
+            raise ContractValidationError(f"candidate_prescreen_record.schema.json must require {field_name}")
+
+
+def _load_gold_set_status(gold_set_dir: Path) -> str:
+    readme_path = gold_set_dir / "README.md"
+    if not readme_path.exists():
+        raise ContractValidationError("gold_set/README.md is required")
+    readme = readme_path.read_text(encoding="utf-8")
+    matches = [status for status in ("stub", "implemented") if f"status = {status}" in readme]
+    if len(matches) != 1:
+        raise ContractValidationError("gold_set/README.md must declare exactly one status = stub|implemented marker")
+    return matches[0]
+
+
+def _decision_band(value: object, description: str) -> str:
+    band = _require_string(value, description)
+    if band not in {"high", "medium", "low"}:
+        raise ContractValidationError(f"{description} must be one of high|medium|low")
+    return band
+
+
+def _validate_taxonomy_change_suggestion(value: object, description: str) -> None:
+    if value is None:
+        return
+    if not isinstance(value, str) or not value:
+        raise ContractValidationError(f"{description} must be null or a non-empty string")
+
+
+def _validate_local_channel_metadata(metadata: dict[str, object], description: str) -> None:
+    if not any(isinstance(candidate, str) and candidate for candidate in metadata.values()):
+        raise ContractValidationError(f"{description} must retain at least one non-empty channel metadata field")
+
+
+def _validate_llm_channel_metadata(metadata: dict[str, object], description: str) -> None:
+    _require_string(metadata.get("prompt_version"), f"{description}:prompt_version")
+    _require_string(metadata.get("routing_version"), f"{description}:routing_version")
+
+
+def _validate_annotation_decision(record: dict[str, object], description: str, *, allow_adjudicated: bool) -> None:
+    _require_string(record.get("sample_id"), f"{description}:sample_id")
+    if record.get("target_type") != "product":
+        raise ContractValidationError(f"{description}:target_type must stay product")
+    _require_string(record.get("target_id"), f"{description}:target_id")
+    primary_category_code = _require_string(record.get("primary_category_code"), f"{description}:primary_category_code")
+    if primary_category_code == "unresolved":
+        raise ContractValidationError(f"{description}:primary_category_code cannot be unresolved inside gold_set_300")
+    secondary_category_code = record.get("secondary_category_code")
+    if secondary_category_code is not None:
+        _require_string(secondary_category_code, f"{description}:secondary_category_code")
+    _require_string(record.get("primary_persona_code"), f"{description}:primary_persona_code")
+    _require_string(record.get("delivery_form_code"), f"{description}:delivery_form_code")
+    _decision_band(record.get("build_evidence_band"), f"{description}:build_evidence_band")
+    _decision_band(record.get("need_clarity_band"), f"{description}:need_clarity_band")
+    _require_string(record.get("rationale"), f"{description}:rationale")
+    _require_non_empty_ref_list(record.get("evidence_refs"), f"{description}:evidence_refs")
+    adjudication_status = _require_string(record.get("adjudication_status"), f"{description}:adjudication_status")
+    allowed_statuses = {"double_annotated", "adjudicated"} if allow_adjudicated else {"double_annotated"}
+    if adjudication_status not in allowed_statuses:
+        allowed = ", ".join(sorted(allowed_statuses))
+        raise ContractValidationError(f"{description}:adjudication_status must stay within {{{allowed}}}")
+    review_recommended = _require_bool(record.get("review_recommended"), f"{description}:review_recommended")
+    review_reason = record.get("review_reason")
+    if review_recommended:
+        _require_string(review_reason, f"{description}:review_reason")
+    elif review_reason is not None:
+        _require_string(review_reason, f"{description}:review_reason")
+    _validate_taxonomy_change_suggestion(record.get("taxonomy_change_suggestion"), f"{description}:taxonomy_change_suggestion")
+
+
+def _validate_gold_set_sample(sample_dir: Path) -> None:
+    sample_metadata_path = sample_dir / "sample_metadata.json"
+    adjudication_path = sample_dir / "adjudication.json"
+    local_annotation_path = sample_dir / "annotations" / "local_project_user.json"
+    llm_annotation_path = sample_dir / "annotations" / "llm.json"
+
+    for path in (sample_metadata_path, adjudication_path, local_annotation_path, llm_annotation_path):
+        if not path.exists():
+            raise ContractValidationError(f"gold set sample is missing required file: {path.relative_to(sample_dir.parent.parent)}")
+
+    sample_metadata = _require_mapping(load_json(sample_metadata_path), f"{sample_dir.name}:sample_metadata")
+    sample_id = _require_string(sample_metadata.get("sample_id"), f"{sample_dir.name}:sample_metadata:sample_id")
+    if sample_id != sample_dir.name:
+        raise ContractValidationError(f"{sample_dir.name}:sample_metadata:sample_id must match the sample directory name")
+    if sample_metadata.get("target_type") != "product":
+        raise ContractValidationError(f"{sample_dir.name}:sample_metadata:target_type must stay product")
+    target_id = _require_string(sample_metadata.get("target_id"), f"{sample_dir.name}:sample_metadata:target_id")
+    _require_string(sample_metadata.get("source_id"), f"{sample_dir.name}:sample_metadata:source_id")
+    _require_non_empty_ref_list(sample_metadata.get("source_record_refs"), f"{sample_dir.name}:sample_metadata:source_record_refs")
+    _require_non_empty_ref_list(sample_metadata.get("review_refs"), f"{sample_dir.name}:sample_metadata:review_refs")
+    _require_non_empty_ref_list(sample_metadata.get("evidence_refs"), f"{sample_dir.name}:sample_metadata:evidence_refs")
+    eligibility_snapshot = _require_mapping(sample_metadata.get("eligibility_snapshot"), f"{sample_dir.name}:sample_metadata:eligibility_snapshot")
+    if _require_bool(eligibility_snapshot.get("review_closed"), f"{sample_dir.name}:eligibility_snapshot:review_closed") is not True:
+        raise ContractValidationError(f"{sample_dir.name}:sample_metadata must retain review_closed = true")
+    if _require_bool(eligibility_snapshot.get("sufficient_evidence"), f"{sample_dir.name}:eligibility_snapshot:sufficient_evidence") is not True:
+        raise ContractValidationError(f"{sample_dir.name}:sample_metadata must retain sufficient_evidence = true")
+    if _require_bool(eligibility_snapshot.get("clear_adjudication"), f"{sample_dir.name}:eligibility_snapshot:clear_adjudication") is not True:
+        raise ContractValidationError(f"{sample_dir.name}:sample_metadata must retain clear_adjudication = true")
+    if _require_bool(eligibility_snapshot.get("is_unresolved"), f"{sample_dir.name}:eligibility_snapshot:is_unresolved") is not False:
+        raise ContractValidationError(f"{sample_dir.name}:sample_metadata must retain is_unresolved = false")
+    pool_trace = _require_mapping(sample_metadata.get("pool_trace"), f"{sample_dir.name}:sample_metadata:pool_trace")
+    _require_string(pool_trace.get("candidate_pool_batch_id"), f"{sample_dir.name}:pool_trace:candidate_pool_batch_id")
+    if pool_trace.get("training_pool_source") != "candidate_pool":
+        raise ContractValidationError(f"{sample_dir.name}:pool_trace:training_pool_source must stay candidate_pool")
+    whitelist_reason = pool_trace.get("whitelist_reason")
+    if whitelist_reason is not None:
+        _require_string(whitelist_reason, f"{sample_dir.name}:pool_trace:whitelist_reason")
+
+    local_annotation = _require_mapping(load_json(local_annotation_path), f"{sample_dir.name}:annotations:local_project_user")
+    if _require_string(local_annotation.get("sample_id"), f"{sample_dir.name}:annotations:local_project_user:sample_id") != sample_id:
+        raise ContractValidationError(f"{sample_dir.name}: local_project_user sample_id drifted from sample_metadata")
+    if _require_string(local_annotation.get("target_id"), f"{sample_dir.name}:annotations:local_project_user:target_id") != target_id:
+        raise ContractValidationError(f"{sample_dir.name}: local_project_user target_id drifted from sample_metadata")
+    if local_annotation.get("annotator_channel") != "local_project_user":
+        raise ContractValidationError(f"{sample_dir.name}: local_project_user annotation must declare annotator_channel = local_project_user")
+    _require_string(local_annotation.get("annotated_at"), f"{sample_dir.name}:annotations:local_project_user:annotated_at")
+    _validate_annotation_decision(local_annotation, f"{sample_dir.name}:annotations:local_project_user", allow_adjudicated=False)
+    local_channel_metadata = _require_mapping(
+        local_annotation.get("channel_metadata"),
+        f"{sample_dir.name}:annotations:local_project_user:channel_metadata",
+    )
+    _validate_local_channel_metadata(local_channel_metadata, f"{sample_dir.name}:annotations:local_project_user:channel_metadata")
+
+    llm_annotation = _require_mapping(load_json(llm_annotation_path), f"{sample_dir.name}:annotations:llm")
+    if _require_string(llm_annotation.get("sample_id"), f"{sample_dir.name}:annotations:llm:sample_id") != sample_id:
+        raise ContractValidationError(f"{sample_dir.name}: llm sample_id drifted from sample_metadata")
+    if _require_string(llm_annotation.get("target_id"), f"{sample_dir.name}:annotations:llm:target_id") != target_id:
+        raise ContractValidationError(f"{sample_dir.name}: llm target_id drifted from sample_metadata")
+    if llm_annotation.get("annotator_channel") != "llm":
+        raise ContractValidationError(f"{sample_dir.name}: llm annotation must declare annotator_channel = llm")
+    _require_string(llm_annotation.get("annotated_at"), f"{sample_dir.name}:annotations:llm:annotated_at")
+    _validate_annotation_decision(llm_annotation, f"{sample_dir.name}:annotations:llm", allow_adjudicated=False)
+    llm_channel_metadata = _require_mapping(llm_annotation.get("channel_metadata"), f"{sample_dir.name}:annotations:llm:channel_metadata")
+    _validate_llm_channel_metadata(llm_channel_metadata, f"{sample_dir.name}:annotations:llm:channel_metadata")
+
+    adjudication = _require_mapping(load_json(adjudication_path), f"{sample_dir.name}:adjudication")
+    if _require_string(adjudication.get("sample_id"), f"{sample_dir.name}:adjudication:sample_id") != sample_id:
+        raise ContractValidationError(f"{sample_dir.name}: adjudication sample_id drifted from sample_metadata")
+    _require_string(adjudication.get("adjudicated_at"), f"{sample_dir.name}:adjudication:adjudicated_at")
+    if adjudication.get("adjudicator_role") != "local_project_user":
+        raise ContractValidationError(f"{sample_dir.name}:adjudication:adjudicator_role must stay local_project_user")
+    source_annotation_channels = _require_list(adjudication.get("source_annotation_channels"), f"{sample_dir.name}:adjudication:source_annotation_channels")
+    if source_annotation_channels != ["local_project_user", "llm"]:
+        raise ContractValidationError(f"{sample_dir.name}:adjudication must retain source_annotation_channels = [local_project_user, llm]")
+    final_decision = _require_mapping(adjudication.get("final_decision"), f"{sample_dir.name}:adjudication:final_decision")
+    if _require_string(final_decision.get("sample_id"), f"{sample_dir.name}:adjudication:final_decision:sample_id") != sample_id:
+        raise ContractValidationError(f"{sample_dir.name}: adjudication final_decision sample_id drifted from sample_metadata")
+    if _require_string(final_decision.get("target_id"), f"{sample_dir.name}:adjudication:final_decision:target_id") != target_id:
+        raise ContractValidationError(f"{sample_dir.name}: adjudication final_decision target_id drifted from sample_metadata")
+    _validate_annotation_decision(final_decision, f"{sample_dir.name}:adjudication:final_decision", allow_adjudicated=True)
+    _require_string(adjudication.get("adjudication_rationale"), f"{sample_dir.name}:adjudication:adjudication_rationale")
+    _require_non_empty_ref_list(adjudication.get("review_refs"), f"{sample_dir.name}:adjudication:review_refs")
+    _require_non_empty_ref_list(adjudication.get("evidence_refs"), f"{sample_dir.name}:adjudication:evidence_refs")
+    _require_non_empty_ref_list(adjudication.get("decision_basis_refs"), f"{sample_dir.name}:adjudication:decision_basis_refs")
+
+
+def validate_gold_set(config: AppConfig, *, require_implemented: bool = False) -> tuple[str, int]:
+    status = _load_gold_set_status(config.gold_set_dir)
+    gold_set_300_dir = config.gold_set_dir / "gold_set_300"
+    if not gold_set_300_dir.exists() or not gold_set_300_dir.is_dir():
+        raise ContractValidationError("gold_set/gold_set_300/ directory is required")
+
+    # README/.gitkeep are scaffolding; anything else must either be a real sample directory or absent in stub mode.
+    sample_entries = [
+        entry
+        for entry in sorted(gold_set_300_dir.iterdir())
+        if entry.name not in {".gitkeep", "README.md"} and not entry.name.startswith(".")
+    ]
+
+    if status == "stub":
+        if sample_entries:
+            raise ContractValidationError("gold_set/README.md says status = stub but gold_set/gold_set_300/ already contains sample assets")
+        if require_implemented:
+            raise ContractValidationError("gold_set remains status = stub; real double-annotation assets are still required")
+        return status, 0
+
+    sample_dirs = [entry for entry in sample_entries if entry.is_dir()]
+    stray_files = [entry for entry in sample_entries if not entry.is_dir()]
+    if stray_files:
+        raise ContractValidationError("gold_set/gold_set_300/ may only contain sample directories plus README/.gitkeep")
+    if not sample_dirs:
+        raise ContractValidationError("gold_set status = implemented requires at least one adjudicated sample directory")
+    for sample_dir in sample_dirs:
+        _validate_gold_set_sample(sample_dir)
+    return status, len(sample_dirs)
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="apo-observatory", description="Minimal runnable baseline for the observatory.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -590,6 +924,26 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("install", help="Bootstrap local runtime directories and dependency checks.")
     subparsers.add_parser("validate-schemas", help="Validate JSON schema documents under schemas/.")
     subparsers.add_parser("validate-configs", help="Validate YAML config artifacts and schema alignment guardrails.")
+    gold_set_parser = subparsers.add_parser("validate-gold-set", help="Validate the gold_set/ directory contract and sample asset completeness.")
+    gold_set_parser.add_argument("--require-implemented", action="store_true")
+    subparsers.add_parser("validate-candidate-workspace", help="Validate candidate prescreen YAML documents outside gold_set/.")
+
+    candidate_parser = subparsers.add_parser(
+        "run-candidate-prescreen",
+        help="Discover candidates, call the relay-LLM prescreener, and write candidate docs outside gold_set/.",
+    )
+    candidate_parser.add_argument("--source", required=True)
+    candidate_parser.add_argument("--window", required=True)
+    candidate_parser.add_argument("--query-slice")
+    candidate_parser.add_argument("--limit", type=int, default=10)
+    candidate_parser.add_argument("--discovery-fixture-path")
+    candidate_parser.add_argument("--llm-fixture-path")
+
+    staging_handoff_parser = subparsers.add_parser(
+        "handoff-candidates-to-staging",
+        help="Write only human-approved candidate prescreen records into the external staging carrier.",
+    )
+    staging_handoff_parser.add_argument("--candidate-id", action="append", default=[])
 
     env_parser = subparsers.add_parser(
         "validate-env",
@@ -625,7 +979,8 @@ def validate_configs(config: AppConfig) -> int:
     _validate_rubric_config(config.config_dir)
     _validate_review_rules_config(config.config_dir)
     _validate_schema_alignment(config.config_dir, config.schema_dir)
-    return 9
+    _validate_candidate_prescreen_config(config.config_dir, config.schema_dir)
+    return 10
 
 
 def validate_schemas(config: AppConfig) -> int:
@@ -669,6 +1024,38 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "validate-configs":
             count = validate_configs(config)
             logger.info(f"validated {count} config artifacts")
+            return 0
+
+        if args.command == "validate-gold-set":
+            status, sample_count = validate_gold_set(config, require_implemented=args.require_implemented)
+            logger.info(f"validated gold_set status={status} sample_count={sample_count}")
+            return 0
+
+        if args.command == "validate-candidate-workspace":
+            count = workflow_validate_candidate_workspace(config)
+            logger.info(f"validated candidate workspace document_count={count}")
+            return 0
+
+        if args.command == "run-candidate-prescreen":
+            written_paths = run_candidate_prescreen(
+                config,
+                source_code=args.source,
+                window=args.window,
+                query_slice_id=args.query_slice,
+                limit=args.limit,
+                discovery_fixture_path=Path(args.discovery_fixture_path) if args.discovery_fixture_path else None,
+                llm_fixture_path=Path(args.llm_fixture_path) if args.llm_fixture_path else None,
+            )
+            logger.info(f"candidate prescreen wrote {len(written_paths)} documents")
+            for path in written_paths:
+                print(path)
+            return 0
+
+        if args.command == "handoff-candidates-to-staging":
+            results = workflow_handoff_candidates_to_staging(config, candidate_ids=args.candidate_id or None)
+            logger.info(f"candidate-to-staging handoff wrote {len(results)} entries")
+            for candidate_path, staging_document_path, slot_id in results:
+                print(f"{candidate_path} -> {staging_document_path} [{slot_id}]")
             return 0
 
         if args.command == "validate-env":

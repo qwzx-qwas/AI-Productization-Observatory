@@ -1,15 +1,23 @@
 from __future__ import annotations
 
 import json
+import shutil
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
+from src.candidate_prescreen.workflow import (
+    handoff_candidates_to_staging,
+    run_candidate_prescreen,
+    validate_candidate_workspace,
+)
 from src.common.errors import ProcessingError
+from src.common.files import dump_yaml, load_yaml, utc_now_iso
 from src.runtime.raw_store.file_store import FileRawStore
 from src.runtime.replay import replay_source_window
 from src.runtime.tasks import FileTaskStore
+from src.cli import validate_gold_set
 from tests.helpers import REPO_ROOT, temp_config
 
 
@@ -156,3 +164,74 @@ class FixturePipelineIntegrationTests(unittest.TestCase):
             task = store.all_tasks()[-1]
             self.assertEqual(task["status"], "failed_retryable")
             self.assertEqual(task["last_error_type"], "storage_write_failed")
+
+    def test_candidate_prescreen_writes_workspace_documents_from_fixtures(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            candidate_workspace = root / "candidate_workspace"
+            staging_dir = root / "staging"
+            shutil.copytree(REPO_ROOT / "docs" / "gold_set_300_real_asset_staging", staging_dir)
+
+            with temp_config(candidate_workspace_dir=candidate_workspace, gold_set_staging_dir=staging_dir) as config:
+                paths = run_candidate_prescreen(
+                    config,
+                    source_code="github",
+                    window="2026-03-01..2026-03-08",
+                    query_slice_id="qf_agent",
+                    limit=2,
+                    discovery_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "github_qf_agent_window.json",
+                    llm_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "llm_prescreen_responses.json",
+                )
+
+                self.assertEqual(len(paths), 2)
+                self.assertEqual(validate_candidate_workspace(config), 2)
+
+                first_record = load_yaml(paths[0])
+                self.assertEqual(first_record["human_review_status"], "pending_first_pass")
+                self.assertEqual(first_record["llm_prescreen"]["status"], "succeeded")
+                self.assertEqual(first_record["llm_prescreen"]["channel_metadata"]["prompt_version"], "candidate_prescreener_v1")
+                self.assertTrue(paths[0].is_relative_to(candidate_workspace))
+
+    def test_candidate_handoff_to_staging_keeps_gold_set_stub_boundary(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            candidate_workspace = root / "candidate_workspace"
+            staging_dir = root / "staging"
+            shutil.copytree(REPO_ROOT / "docs" / "gold_set_300_real_asset_staging", staging_dir)
+
+            with temp_config(candidate_workspace_dir=candidate_workspace, gold_set_staging_dir=staging_dir) as config:
+                paths = run_candidate_prescreen(
+                    config,
+                    source_code="product_hunt",
+                    window="2026-03-01..2026-03-08",
+                    query_slice_id="ph_published_launches",
+                    limit=1,
+                    discovery_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "product_hunt_window.json",
+                    llm_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "llm_prescreen_responses.json",
+                )
+
+                record = load_yaml(paths[0])
+                record["human_review_status"] = "approved_for_staging"
+                record["human_review_notes"] = "First-pass human review approved this candidate for staging."
+                record["human_reviewed_at"] = utc_now_iso()
+                record["whitelist_reason"] = "manual_first_pass_whitelist"
+                dump_yaml(paths[0], record)
+
+                results = handoff_candidates_to_staging(config, candidate_ids=[record["candidate_id"]])
+                self.assertEqual(len(results), 1)
+
+                staging_payload = load_yaml(Path(results[0][1]))
+                samples = staging_payload["samples"]
+                matching = [sample for sample in samples if sample["sample_id"] == record["candidate_id"]]
+                self.assertEqual(len(matching), 1)
+                staged = matching[0]
+                self.assertEqual(staged["current_state"], "candidate_approved_for_annotation")
+                self.assertEqual(staged["training_pool_source"], "candidate_pool")
+                self.assertEqual(staged["whitelist_reason"], "manual_first_pass_whitelist")
+                self.assertEqual(staged["review_closed"], None)
+                self.assertFalse(staged["local_project_user_annotation"]["provided"])
+                self.assertEqual(staged["candidate_prescreen_ref"]["candidate_id"], record["candidate_id"])
+
+                status, sample_count = validate_gold_set(config)
+                self.assertEqual(status, "stub")
+                self.assertEqual(sample_count, 0)

@@ -15,7 +15,13 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
 @contextmanager
-def temp_config(*, fixtures_dir: Path | None = None, schema_dir: Path | None = None) -> Iterator[AppConfig]:
+def temp_config(
+    *,
+    fixtures_dir: Path | None = None,
+    schema_dir: Path | None = None,
+    candidate_workspace_dir: Path | None = None,
+    gold_set_staging_dir: Path | None = None,
+) -> Iterator[AppConfig]:
     with TemporaryDirectory() as tmp_dir:
         root = Path(tmp_dir)
         env = {
@@ -27,5 +33,9 @@ def temp_config(*, fixtures_dir: Path | None = None, schema_dir: Path | None = N
             env["APO_FIXTURES_DIR"] = str(fixtures_dir)
         if schema_dir is not None:
             env["APO_SCHEMA_DIR"] = str(schema_dir)
+        if candidate_workspace_dir is not None:
+            env["APO_CANDIDATE_WORKSPACE_DIR"] = str(candidate_workspace_dir)
+        if gold_set_staging_dir is not None:
+            env["APO_GOLD_SET_STAGING_DIR"] = str(gold_set_staging_dir)
         with patch.dict(os.environ, env, clear=False):
             yield AppConfig.from_env(REPO_ROOT)

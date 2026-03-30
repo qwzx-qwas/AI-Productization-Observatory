@@ -33,6 +33,17 @@ def load_yaml(path: Path) -> Any:
     return yaml.safe_load(path.read_text(encoding="utf-8"))
 
 
+def dump_yaml(path: Path, payload: Any) -> None:
+    ensure_parent(path)
+    serialized = yaml.safe_dump(payload, sort_keys=False, allow_unicode=False)
+    if not serialized.endswith("\n"):
+        serialized += "\n"
+    with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=path.parent, delete=False) as handle:
+        handle.write(serialized)
+        temp_path = Path(handle.name)
+    os.replace(temp_path, path)
+
+
 def utc_now() -> datetime:
     return datetime.now(timezone.utc)
 

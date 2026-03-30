@@ -7,6 +7,9 @@
 - `status = stub`
 - 目录已建立
 - 样本文件尚未落成
+- `make validate-gold-set` 当前用于校验 `stub` / `implemented` 状态与目录契约是否一致
+- 当真实样本落入后，可用 `make validate-gold-set REQUIRE_IMPLEMENTED=1` 强制校验已实现状态
+- 中间承载层若存在，必须放在 `gold_set/` 正式目录之外，不能污染 `gold_set/gold_set_300/` 的 `stub` 边界
 
 当前运行默认：
 
@@ -48,4 +51,4 @@
 - 还没有对应的 adjudication 汇总结果与裁决理由
 - 还没有可回放的 channel metadata、prompt / routing version 记录
 
-因此本轮阶段 3 只能继续保持 `status = stub`，不能提前升级为 `implemented`。
+因此本轮阶段 2 仍只能继续保持 `status = stub`，不能提前升级为 `implemented`。

@@ -122,6 +122,13 @@ last_frozen_version: test_plan_v3
    - regression：yes
    - manual trace：yes
    (11) 第 11 行
+   - module：candidate prescreener / staging handoff
+   - unit：yes
+   - contract：yes
+   - integration：yes
+   - regression：yes
+   - manual trace：yes
+   (12) 第 12 行
    - module：mart builder
    - unit：yes
    - contract：yes
@@ -138,6 +145,7 @@ last_frozen_version: test_plan_v3
 - extractor：固定 source_item / linked page fixtures
 - scorer：固定 evidence fixtures + `source_metric_registry` fixtures
 - mart builder：固定 small-window snapshot fixtures
+- candidate prescreener：固定 GitHub / Product Hunt 候选 discovery fixtures + relay-LLM fixture responses
 
 attention 相关最小 fixture 还应覆盖：
 
@@ -201,6 +209,7 @@ taxonomy / annotation 最小样例说明还应覆盖：
 - `taxonomy_assignment` schema 的 `target_type / label_level / label_role / result_status` 枚举与 taxonomy contract 一致
 - `score_component` schema 的 required fields、`score_type` 枚举与 `build_evidence_score / need_clarity_score` 非空 `band` 约束与 rubric 一致
 - `review_packet` schema 的 `issue_type` 枚举与 review rules 一致，且 `related_evidence / upstream_downstream_links` 非空
+- `candidate_prescreen_record` schema 必须保留 `prompt_version / routing_version`、人工一审状态、以及 staging handoff 字段
 
 ### Integration Tests
 
@@ -209,6 +218,7 @@ taxonomy / annotation 最小样例说明还应覆盖：
 - source_item -> product / observation
 - product -> profile / taxonomy / score
 - effective results -> mart
+- candidate discovery -> relay prescreen -> candidate workspace -> staging handoff
 - entity / taxonomy / score replay 不得绕过 review gate 或 maker-checker 直接覆盖当前有效结果
 - GitHub `github_qsv1` 六个 query slices 的 request params 可重放且带 `selection_rule_version + query_slice_id`
 - GitHub `search/repositories` slice split on `incomplete_results` / result-cap risk
@@ -230,6 +240,7 @@ taxonomy / annotation 最小样例说明还应覆盖：
 - `build_evidence_score` 与 `need_clarity_score` 不得回归成 `band = null`
 - `attention_score` 的 `benchmark_sample_insufficient`、`metric_definition_unavailable` 等 null case 不得被伪装成有效 band
 - annotation sample-pool layering 不得把 candidate / training / gold set 混层
+- candidate prescreen 中间文档不得被直接视为正式 gold set annotation / adjudication
 - annotation `needs_review -> review_issue`、高影响 override -> maker-checker gate 的链路在 prompt / rule 更新后不应断裂
 
 ### Manual Trace Tests
@@ -240,6 +251,7 @@ taxonomy / annotation 最小样例说明还应覆盖：
 - review writeback walkthrough
 - blocked replay -> 人工批准 / 拆分安全 task -> replay writeback walkthrough
 - annotation decision form -> adjudication -> review packet -> taxonomy / score writeback walkthrough
+- candidate prescreen doc -> human first-pass review -> staging handoff walkthrough
 
 ## 4. CI / CD 触发建议
 

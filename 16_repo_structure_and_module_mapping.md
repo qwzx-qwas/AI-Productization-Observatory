@@ -45,6 +45,8 @@ last_frozen_version: repo_mapping_v2
   - score engine
 - `src/review/`
   - review packet builder / writeback helpers / unresolved registry helpers
+- `src/candidate_prescreen/`
+  - 候选发现、LLM 预筛、中间文档落盘与 staging handoff
 - `src/marts/`
   - mart builder / SQL templates
 - `src/runtime/`
@@ -109,6 +111,10 @@ last_frozen_version: repo_mapping_v2
    - canonical spec：`08`, `09`, `10`, `12`
    - repo path：`src/review/review_packet_builder.py`
    (12) 第 12 行
+   - module：Candidate Discovery / Prescreener / Staging Handoff
+   - canonical spec：`08`, `09`, `10`, `12`
+   - repo path：`src/candidate_prescreen/`
+   (13) 第 13 行
    - module：Analytics Mart Builder
    - canonical spec：`09`, `11`
    - repo path：`src/marts/`
@@ -151,29 +157,37 @@ last_frozen_version: repo_mapping_v2
    - artifact：`model_routing`
    - repo path：`configs/model_routing.yaml`
    (8) 第 8 行
+   - doc：`09_pipeline_and_module_contracts.md`, `10_prompt_and_model_routing_contracts.md`
+   - artifact：`candidate_prescreen_workflow`
+   - repo path：`configs/candidate_prescreen_workflow.yaml`
+   (9) 第 9 行
    - doc：`12_review_policy.md`
    - artifact：`review_rules_v0`
    - repo path：`configs/review_rules_v0.yaml`
-   (9) 第 9 行
+   (10) 第 10 行
    - doc：`08_schema_contracts.md`
    - artifact：`source_item` schema
    - repo path：`schemas/source_item.schema.json`
-   (10) 第 10 行
+   (11) 第 11 行
    - doc：`08_schema_contracts.md`
    - artifact：`product_profile` schema
    - repo path：`schemas/product_profile.schema.json`
-   (11) 第 11 行
+   (12) 第 12 行
    - doc：`08_schema_contracts.md`
    - artifact：`taxonomy_assignment` schema
    - repo path：`schemas/taxonomy_assignment.schema.json`
-   (12) 第 12 行
+   (13) 第 13 行
    - doc：`08_schema_contracts.md`
    - artifact：`score_component` schema
    - repo path：`schemas/score_component.schema.json`
-   (13) 第 13 行
+   (14) 第 14 行
    - doc：`08_schema_contracts.md`
    - artifact：`review_packet` schema
    - repo path：`schemas/review_packet.schema.json`
+   (15) 第 15 行
+   - doc：`08_schema_contracts.md`
+   - artifact：`candidate_prescreen_record` schema
+   - repo path：`schemas/candidate_prescreen_record.schema.json`
 
 
 ## 4. Fixture And Gold Set 落点
@@ -192,8 +206,12 @@ last_frozen_version: repo_mapping_v2
   - `fixtures/scoring/`
 - mart fixtures：
   - `fixtures/marts/`
+- candidate prescreen fixtures：
+  - `fixtures/candidate_prescreen/`
 - adjudicated gold set：
   - `gold_set/gold_set_300/`
+- candidate prescreen workspace：
+  - `docs/candidate_prescreen_workspace/`
 
 ## 5. 常用运行 / 测试 / Replay 命令约定
 

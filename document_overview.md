@@ -511,54 +511,72 @@ last_frozen_version: governance_v2
    - owner：`review_owner`
    - status：`implemented`
    (8) 第 8 行
+   - doc：`09_pipeline_and_module_contracts.md`, `10_prompt_and_model_routing_contracts.md`
+   - artifact：`candidate_prescreen_workflow`
+   - repo path：`configs/candidate_prescreen_workflow.yaml`
+   - owner：`pipeline_owner`
+   - status：`implemented`
+   (9) 第 9 行
    - doc：`08_schema_contracts.md`
    - artifact：`source_item` schema
    - repo path：`schemas/source_item.schema.json`
    - owner：`data_model_owner`
    - status：`implemented`
-   (9) 第 9 行
+   (10) 第 10 行
    - doc：`08_schema_contracts.md`
    - artifact：`product_profile` schema
    - repo path：`schemas/product_profile.schema.json`
    - owner：`data_model_owner`
    - status：`implemented`
-   (10) 第 10 行
+   (11) 第 11 行
    - doc：`08_schema_contracts.md`
    - artifact：`taxonomy_assignment` schema
    - repo path：`schemas/taxonomy_assignment.schema.json`
    - owner：`data_model_owner`
    - status：`implemented`
-   (11) 第 11 行
+   (12) 第 12 行
    - doc：`08_schema_contracts.md`
    - artifact：`score_component` schema
    - repo path：`schemas/score_component.schema.json`
    - owner：`data_model_owner`
    - status：`implemented`
-   (12) 第 12 行
+   (13) 第 13 行
    - doc：`08_schema_contracts.md`
    - artifact：`review_packet` schema
    - repo path：`schemas/review_packet.schema.json`
    - owner：`data_model_owner`
    - status：`implemented`
-   (13) 第 13 行
+   (14) 第 14 行
+   - doc：`08_schema_contracts.md`
+   - artifact：`candidate_prescreen_record` schema
+   - repo path：`schemas/candidate_prescreen_record.schema.json`
+   - owner：`data_model_owner`
+   - status：`implemented`
+   (15) 第 15 行
    - doc：`10_prompt_and_model_routing_contracts.md`
    - artifact：prompt suite
    - repo path：`10_prompt_specs/`
    - owner：`prompt_owner`
    - status：`implemented`
-   (14) 第 14 行
+   (16) 第 16 行
+   - doc：`09_pipeline_and_module_contracts.md`
+   - artifact：candidate prescreen workspace
+   - repo path：`docs/candidate_prescreen_workspace/`
+   - owner：`annotation_owner`
+   - status：`implemented`
+   (17) 第 17 行
    - doc：`14_test_plan_and_acceptance.md`
    - artifact：fixtures
    - repo path：`fixtures/`
    - owner：`qa_owner`
    - status：`implemented`
-   (15) 第 15 行
+   (18) 第 18 行
    - doc：`14_test_plan_and_acceptance.md`
    - artifact：gold set
    - repo path：`gold_set/`
    - owner：`qa_owner`
    - status：`stub`
-   (16) 第 16 行
+   (19) 第 19 行
    - doc：`16_repo_structure_and_module_mapping.md`
    - artifact：module mapping
    - repo path：`src/`

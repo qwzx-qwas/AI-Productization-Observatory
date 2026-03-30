@@ -1,0 +1,3 @@
+interface:
+  display_name: "Gold Set 300 Staging Writeflow"
+  short_description: "Stage, check, and later land real gold_set_300 assets"

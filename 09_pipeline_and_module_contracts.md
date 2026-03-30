@@ -37,6 +37,8 @@ last_frozen_version: pipeline_v2
 
 - 同步或紧邻批处理：
   - `Pull collector`
+  - `Candidate discovery`
+  - `Candidate prescreener`
   - `Raw snapshot storage`
   - `Normalizer`
 - 异步批处理：
@@ -56,6 +58,8 @@ last_frozen_version: pipeline_v2
 - entity / observation：`per_source_item_batch`
 - extractor / profiler / classifier / scorer：`per_product_batch`
 - mart builder：`per_metric_window_batch`
+- candidate discovery / prescreener：`per_source + per_window + per_query_slice`
+- candidate staging handoff：`per_candidate_batch`
 
 以上默认边界已在本轮人工确认中冻结为 Phase1 current default；若后续需要调整，必须同步回写 `17_open_decisions_and_freeze_board.md` 与相关 ops 文档。
 
@@ -140,6 +144,84 @@ last_frozen_version: pipeline_v2
   - taxonomy
   - evidence
   - entity merge
+
+### Candidate Discovery / Prescreener
+
+- `run_unit`: `per_source + per_window + per_query_slice`
+- `inputs`:
+  - `03a/03b/03c` source spec
+  - `configs/candidate_prescreen_workflow.yaml`
+  - `configs/model_routing.yaml`
+  - relay prompt / routing metadata
+- `preconditions`:
+  - source 已启用
+  - source window 明确
+  - GitHub discovery 必须携带 `selection_rule_version + query_slice_id`
+  - Product Hunt discovery 必须携带 `published_at` window
+- `outputs`:
+  - 候选 source items
+  - `candidate_prescreen_record`
+- `postconditions`:
+  - 候选文档位于正式 `gold_set/` 目录之外
+  - LLM 预筛结果必须保留理由、证据摘要、不确定点与 channel metadata
+  - 失败时保留清晰错误分类，不伪造成成功预筛
+- `side_effects`:
+  - 读取外部 source 或 fixture
+  - 写入 `docs/candidate_prescreen_workspace/`
+- `idempotency_key`:
+  - `source_code + window + query_slice_id + external_id + candidate_prescreen_version`
+- `error_sink`:
+  - `processing_error`
+- `review_sink`:
+  - 无正式 `review_issue`；当前只进入人工第一轮审核工作流
+- `version_dependencies`:
+  - `selection_rule_version`
+  - `prompt_version`
+  - `routing_version`
+- `replay_rules`:
+  - same-window rerun 允许覆盖同一候选文档的最新预筛快照
+  - 不得因为 LLM 失败而静默跳过候选
+  - GitHub 若命中 `incomplete_results` 或结果上限风险，必须继续按更小窗口 split-to-exhaustion，而不是把父 slice 直接视为成功
+- `not_responsible_for`:
+  - 正式 gold set annotation
+  - adjudication
+  - `gold_set/gold_set_300/` 正式落地
+
+### Candidate Staging Handoff
+
+- `run_unit`: `per_candidate_batch`
+- `inputs`:
+  - `candidate_prescreen_record`
+  - 人工第一轮审核结果
+  - `docs/gold_set_300_real_asset_staging/`
+- `preconditions`:
+  - `human_review_status = approved_for_staging`
+  - staging 承载层存在
+  - 正式 `gold_set/` 仍保持 `stub` 边界
+- `outputs`:
+  - 更新后的外部 staging YAML
+- `postconditions`:
+  - 仅写入真实已知字段
+  - 缺失字段保持空位并记录 `blocking_items`
+  - 不生成任何正式 gold set 样本目录
+- `side_effects`:
+  - 更新 `docs/gold_set_300_real_asset_staging/`
+  - 更新候选文档中的 `staging_handoff`
+- `idempotency_key`:
+  - `candidate_id + staging_document_path + sample_slot_id`
+- `error_sink`:
+  - `processing_error`
+- `review_sink`:
+  - 无
+- `version_dependencies`:
+  - `candidate_prescreen_v1`
+- `replay_rules`:
+  - 只允许对已通过人工一审的候选重复写入同一 slot 或首个可用空 slot
+  - 不得把 LLM 预筛 hint 写进正式 annotation / adjudication 字段
+- `not_responsible_for`:
+  - `local_project_user` 原始标注
+  - `llm` 正式双标通道写入
+  - adjudication
 
 ### Raw Snapshot Storage
 

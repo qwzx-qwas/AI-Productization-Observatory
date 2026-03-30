@@ -1,0 +1,96 @@
+version: candidate_prescreen_v1
+workspace:
+  directory: docs/candidate_prescreen_workspace
+  outside_formal_gold_set: true
+  allowed_human_review_statuses:
+    - pending_first_pass
+    - approved_for_staging
+    - rejected_after_human_review
+    - on_hold
+  initial_human_review_status: pending_first_pass
+  staging_write_requires_human_review_status: approved_for_staging
+staging_defaults:
+  directory: docs/gold_set_300_real_asset_staging
+  target_type: product
+  training_pool_source: candidate_pool
+  preserve_existing_stub_boundary: true
+llm_prescreen:
+  prompt_version: candidate_prescreener_v1
+  routing_version: route_candidate_prescreener_v1
+  relay_transport: http_json_relay
+  relay_client_version: relay_candidate_prescreener_v1
+  timeout_seconds_default: 30
+  max_retries_default: 2
+  recommended_actions:
+    - reject
+    - hold
+    - candidate_pool
+    - whitelist_candidate
+  unresolved_risk_levels:
+    - low
+    - medium
+    - high
+sources:
+  - source_code: github
+    source_id: src_github
+    time_field: pushed_at
+    selection_rule_version: github_qsv1
+    fixed_filters:
+      - is:public
+      - fork:false
+      - archived:false
+      - mirror:false
+    query_slices:
+      - query_family: ai_applications_and_products
+        query_slice_id: qf_agent
+        query_text_template: agent in:name,description,readme,topics is:public fork:false
+          archived:false mirror:false pushed:WINDOW_START..WINDOW_END
+        enabled: true
+        owner: source_governance_owner
+        last_reviewed_at: '2026-03-26'
+      - query_family: ai_applications_and_products
+        query_slice_id: qf_rag
+        query_text_template: rag in:name,description,readme,topics is:public fork:false
+          archived:false mirror:false pushed:WINDOW_START..WINDOW_END
+        enabled: true
+        owner: source_governance_owner
+        last_reviewed_at: '2026-03-26'
+      - query_family: ai_applications_and_products
+        query_slice_id: qf_ai_assistant
+        query_text_template: '"ai assistant" in:name,description,readme,topics is:public
+          fork:false archived:false mirror:false pushed:WINDOW_START..WINDOW_END'
+        enabled: true
+        owner: source_governance_owner
+        last_reviewed_at: '2026-03-26'
+      - query_family: ai_applications_and_products
+        query_slice_id: qf_copilot
+        query_text_template: copilot in:name,description,readme,topics is:public fork:false
+          archived:false mirror:false pushed:WINDOW_START..WINDOW_END
+        enabled: true
+        owner: source_governance_owner
+        last_reviewed_at: '2026-03-26'
+      - query_family: ai_applications_and_products
+        query_slice_id: qf_chatbot
+        query_text_template: chatbot in:name,description,readme,topics is:public fork:false
+          archived:false mirror:false pushed:WINDOW_START..WINDOW_END
+        enabled: true
+        owner: source_governance_owner
+        last_reviewed_at: '2026-03-26'
+      - query_family: ai_applications_and_products
+        query_slice_id: qf_ai_workflow
+        query_text_template: '"ai workflow" in:name,description,readme,topics is:public
+          fork:false archived:false mirror:false pushed:WINDOW_START..WINDOW_END'
+        enabled: true
+        owner: source_governance_owner
+        last_reviewed_at: '2026-03-26'
+  - source_code: product_hunt
+    source_id: src_product_hunt
+    time_field: published_at
+    selection_rule_version: product_hunt_published_window_v1
+    query_slices:
+      - query_family: published_launches
+        query_slice_id: ph_published_launches
+        query_text_template: published_at:WINDOW_START..WINDOW_END
+        enabled: true
+        owner: source_governance_owner
+        last_reviewed_at: '2026-03-30'

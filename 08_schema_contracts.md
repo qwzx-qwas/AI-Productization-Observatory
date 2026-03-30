@@ -692,6 +692,7 @@ create index idx_processing_error_module_status on processing_error (module_name
 - `schemas/taxonomy_assignment.schema.json`
 - `schemas/score_component.schema.json`
 - `schemas/review_packet.schema.json`
+- `schemas/candidate_prescreen_record.schema.json`
 
 本文件提供解释性规范；artifact 提供精确 shape。两者必须同次提交同步更新。
 
@@ -941,6 +942,35 @@ create index idx_processing_error_module_status on processing_error (module_name
 - `issue_type` 必须与 `configs/review_rules_v0.yaml` 的冻结 issue types 一致，不允许自由生成新枚举
 - `related_evidence` 至少保留 1 条可回链 evidence
 - `upstream_downstream_links` 至少保留 1 条上游/下游链路，确保 writeback、replay 与 review closure 可追踪
+
+### candidate prescreen record schema
+
+`candidate_prescreen_record` 是位于正式 `gold_set/` 目录之外的中间工作文档 schema。
+
+它至少要稳定支撑以下字段：
+
+- `candidate_id`
+- `source`
+- `source_window`
+- `external_id`
+- `canonical_url`
+- `title`
+- `summary`
+- `raw_evidence_excerpt`
+- `query_family`
+- `query_slice_id`
+- `selection_rule_version`
+- `llm_prescreen`
+- `human_review_status`
+- `human_review_notes`
+- `staging_handoff`
+
+补充约束：
+
+- 该 schema 只用于候选发现、LLM 预筛与人工一审前后的中间文档，不等于正式 annotation / adjudication。
+- 若 `llm_prescreen.status = succeeded`，必须保留 `channel_metadata.prompt_version` 与 `channel_metadata.routing_version`。
+- 该文档层必须位于 `gold_set/` 正式目录之外，不能污染 `gold_set/gold_set_300/` 的 `stub` 边界。
+- `human_review_status = approved_for_staging` 只表示允许进入外部 staging 承载层，不表示已经完成双标、adjudication 或正式 gold set 落地。
 
 ## 8. 本轮人工确认结论
 

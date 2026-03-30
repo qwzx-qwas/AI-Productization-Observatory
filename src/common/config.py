@@ -8,8 +8,11 @@ from pathlib import Path
 from typing import Iterable
 
 from src.common.constants import (
+    DEFAULT_CANDIDATE_WORKSPACE_DIR,
     DEFAULT_CONFIG_DIR,
     DEFAULT_FIXTURES_DIR,
+    DEFAULT_GOLD_SET_DIR,
+    DEFAULT_GOLD_SET_STAGING_DIR,
     DEFAULT_LOG_LEVEL,
     DEFAULT_MART_OUTPUT_DIR,
     DEFAULT_RAW_STORE_DIR,
@@ -25,6 +28,9 @@ class AppConfig:
     config_dir: Path
     schema_dir: Path
     fixtures_dir: Path
+    gold_set_dir: Path
+    candidate_workspace_dir: Path
+    gold_set_staging_dir: Path
     raw_store_dir: Path
     task_store_path: Path
     mart_output_dir: Path
@@ -38,6 +44,18 @@ class AppConfig:
             config_dir=cls._resolve_dir(root, "APO_CONFIG_DIR", DEFAULT_CONFIG_DIR),
             schema_dir=cls._resolve_dir(root, "APO_SCHEMA_DIR", DEFAULT_SCHEMA_DIR),
             fixtures_dir=cls._resolve_dir(root, "APO_FIXTURES_DIR", DEFAULT_FIXTURES_DIR),
+            gold_set_dir=cls._resolve_dir(root, "APO_GOLD_SET_DIR", DEFAULT_GOLD_SET_DIR),
+            candidate_workspace_dir=cls._resolve_dir(
+                root,
+                "APO_CANDIDATE_WORKSPACE_DIR",
+                DEFAULT_CANDIDATE_WORKSPACE_DIR,
+                must_exist=False,
+            ),
+            gold_set_staging_dir=cls._resolve_dir(
+                root,
+                "APO_GOLD_SET_STAGING_DIR",
+                DEFAULT_GOLD_SET_STAGING_DIR,
+            ),
             raw_store_dir=cls._resolve_dir(root, "APO_RAW_STORE_DIR", DEFAULT_RAW_STORE_DIR, must_exist=False),
             task_store_path=cls._resolve_path(root, "APO_TASK_STORE_PATH", DEFAULT_TASK_STORE_PATH),
             mart_output_dir=cls._resolve_dir(root, "APO_MART_OUTPUT_DIR", DEFAULT_MART_OUTPUT_DIR, must_exist=False),
@@ -69,6 +87,9 @@ _CONFIG_ENV_TO_FIELD = {
     "APO_CONFIG_DIR": "config_dir",
     "APO_SCHEMA_DIR": "schema_dir",
     "APO_FIXTURES_DIR": "fixtures_dir",
+    "APO_GOLD_SET_DIR": "gold_set_dir",
+    "APO_CANDIDATE_WORKSPACE_DIR": "candidate_workspace_dir",
+    "APO_GOLD_SET_STAGING_DIR": "gold_set_staging_dir",
     "APO_RAW_STORE_DIR": "raw_store_dir",
     "APO_TASK_STORE_PATH": "task_store_path",
     "APO_MART_OUTPUT_DIR": "mart_output_dir",

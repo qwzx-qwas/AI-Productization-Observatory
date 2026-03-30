@@ -1,0 +1,33 @@
+{
+  "source": "product_hunt",
+  "source_id": "src_product_hunt",
+  "window": "2026-03-01..2026-03-08",
+  "time_field": "published_at",
+  "query_family": "published_launches",
+  "query_slice_id": "ph_published_launches",
+  "selection_rule_version": "product_hunt_published_window_v1",
+  "items": [
+    {
+      "external_id": "ph_20001",
+      "canonical_url": "https://www.producthunt.com/posts/agentdesk",
+      "title": "AgentDesk",
+      "summary": "A support agent copilot for customer ops teams.",
+      "author_name": "AgentDesk",
+      "linked_homepage_url": "https://agentdesk.example.com",
+      "linked_repo_url": "https://github.com/acme/agentdesk",
+      "published_at": "2026-03-03T09:00:00Z",
+      "pushed_at": null,
+      "raw_evidence_excerpt": "Support teams can use AgentDesk to draft replies, summarize conversations, and automate ticket follow-up with approval steps.",
+      "topics": [
+        "customer support",
+        "artificial intelligence"
+      ],
+      "language": null,
+      "current_metrics_json": {
+        "vote_count": 322,
+        "comment_count": 24,
+        "rank": 3
+      }
+    }
+  ]
+}

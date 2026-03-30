@@ -19,6 +19,130 @@ from tests.helpers import REPO_ROOT
 FREEZE_BOARD_PATH = REPO_ROOT / "17_open_decisions_and_freeze_board.md"
 
 
+def _write_json(path: Path, payload: dict[str, object]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
+
+
+def _replace_gold_set_status(gold_set_dir: Path, status: str) -> None:
+    readme_path = gold_set_dir / "README.md"
+    content = readme_path.read_text(encoding="utf-8").replace("status = stub", f"status = {status}")
+    readme_path.write_text(content, encoding="utf-8")
+
+
+def _valid_gold_set_sample(sample_id: str = "sample_0001") -> dict[str, dict[str, object]]:
+    evidence_refs = [{"evidence_id": "ev_1", "source_item_id": "src_item_1"}]
+    review_refs = [{"review_issue_id": "review_1"}]
+    source_record_refs = [{"raw_record_id": "raw_1"}]
+    decision_basis_refs = [{"taxonomy_assignment_id": "tax_1"}]
+    final_decision = {
+        "sample_id": sample_id,
+        "target_type": "product",
+        "target_id": "product_1",
+        "primary_category_code": "JTBD_KNOWLEDGE",
+        "secondary_category_code": None,
+        "primary_persona_code": "unknown",
+        "delivery_form_code": "web_app",
+        "build_evidence_band": "high",
+        "need_clarity_band": "medium",
+        "rationale": "Evidence points to document understanding and search.",
+        "evidence_refs": evidence_refs,
+        "adjudication_status": "adjudicated",
+        "review_recommended": False,
+        "review_reason": None,
+        "taxonomy_change_suggestion": None,
+    }
+    return {
+        "sample_metadata": {
+            "sample_id": sample_id,
+            "target_type": "product",
+            "target_id": "product_1",
+            "source_id": "product_hunt",
+            "source_record_refs": source_record_refs,
+            "review_refs": review_refs,
+            "evidence_refs": evidence_refs,
+            "eligibility_snapshot": {
+                "review_closed": True,
+                "sufficient_evidence": True,
+                "clear_adjudication": True,
+                "is_unresolved": False,
+            },
+            "pool_trace": {
+                "candidate_pool_batch_id": "batch_2026_03_30",
+                "training_pool_source": "candidate_pool",
+                "whitelist_reason": None,
+            },
+        },
+        "local_annotation": {
+            "sample_id": sample_id,
+            "annotator_channel": "local_project_user",
+            "annotated_at": "2026-03-30T10:00:00Z",
+            "target_type": "product",
+            "target_id": "product_1",
+            "primary_category_code": "JTBD_KNOWLEDGE",
+            "secondary_category_code": None,
+            "primary_persona_code": "unknown",
+            "delivery_form_code": "web_app",
+            "build_evidence_band": "high",
+            "need_clarity_band": "medium",
+            "rationale": "The product promise centers on finding and answering from knowledge assets.",
+            "evidence_refs": evidence_refs,
+            "adjudication_status": "double_annotated",
+            "review_recommended": False,
+            "review_reason": None,
+            "taxonomy_change_suggestion": None,
+            "channel_metadata": {
+                "annotator_role": "local_project_user",
+                "session_id": "manual_session_1",
+            },
+        },
+        "llm_annotation": {
+            "sample_id": sample_id,
+            "annotator_channel": "llm",
+            "annotated_at": "2026-03-30T10:01:00Z",
+            "target_type": "product",
+            "target_id": "product_1",
+            "primary_category_code": "JTBD_KNOWLEDGE",
+            "secondary_category_code": None,
+            "primary_persona_code": "unknown",
+            "delivery_form_code": "web_app",
+            "build_evidence_band": "high",
+            "need_clarity_band": "medium",
+            "rationale": "The description emphasizes search and answer workflows over content generation.",
+            "evidence_refs": evidence_refs,
+            "adjudication_status": "double_annotated",
+            "review_recommended": False,
+            "review_reason": None,
+            "taxonomy_change_suggestion": None,
+            "channel_metadata": {
+                "prompt_version": "gold_set_annotation_v1",
+                "routing_version": "gold_set_route_v1",
+                "provider": "test_provider",
+            },
+        },
+        "adjudication": {
+            "sample_id": sample_id,
+            "adjudicated_at": "2026-03-30T10:05:00Z",
+            "adjudicator_role": "local_project_user",
+            "source_annotation_channels": ["local_project_user", "llm"],
+            "final_decision": final_decision,
+            "adjudication_rationale": "Both channels aligned on the same primary category and evidence band.",
+            "review_refs": review_refs,
+            "evidence_refs": evidence_refs,
+            "decision_basis_refs": decision_basis_refs,
+        },
+    }
+
+
+def _materialize_gold_set_sample(gold_set_dir: Path, sample_id: str = "sample_0001") -> None:
+    payload = _valid_gold_set_sample(sample_id)
+    sample_dir = gold_set_dir / "gold_set_300" / sample_id
+    _write_json(sample_dir / "sample_metadata.json", payload["sample_metadata"])
+    _write_json(sample_dir / "annotations" / "local_project_user.json", payload["local_annotation"])
+    _write_json(sample_dir / "annotations" / "llm.json", payload["llm_annotation"])
+    _write_json(sample_dir / "adjudication.json", payload["adjudication"])
+
+
 def _markdown_section_lines(path: Path, heading: str) -> list[str]:
     lines = path.read_text(encoding="utf-8").splitlines()
     target_heading = f"## {heading}"
@@ -113,6 +237,8 @@ class ContractCommandTests(unittest.TestCase):
         result = self.run_cli("--help")
         self.assertEqual(result.returncode, 0)
         self.assertIn("replay-window", result.stdout)
+        self.assertIn("run-candidate-prescreen", result.stdout)
+        self.assertIn("validate-candidate-workspace", result.stdout)
 
     def test_validate_schemas(self) -> None:
         result = self.run_cli("validate-schemas")
@@ -121,6 +247,46 @@ class ContractCommandTests(unittest.TestCase):
     def test_validate_configs(self) -> None:
         result = self.run_cli("validate-configs")
         self.assertEqual(result.returncode, 0, msg=result.stderr)
+
+    def test_validate_gold_set_stub_contract(self) -> None:
+        result = self.run_cli("validate-gold-set")
+        self.assertEqual(result.returncode, 0, msg=result.stderr)
+        self.assertIn("status=stub", result.stderr)
+
+    def test_validate_gold_set_require_implemented_rejects_stub(self) -> None:
+        result = self.run_cli("validate-gold-set", "--require-implemented")
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("status = stub", result.stderr)
+
+    def test_validate_gold_set_accepts_minimal_implemented_sample(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            gold_set_dir = root / "gold_set"
+            shutil.copytree(REPO_ROOT / "gold_set", gold_set_dir)
+            _replace_gold_set_status(gold_set_dir, "implemented")
+            _materialize_gold_set_sample(gold_set_dir)
+
+            result = self.run_cli("validate-gold-set", "--require-implemented", env={"APO_GOLD_SET_DIR": str(gold_set_dir)})
+            self.assertEqual(result.returncode, 0, msg=result.stderr)
+            self.assertIn("status=implemented", result.stderr)
+            self.assertIn("sample_count=1", result.stderr)
+
+    def test_validate_gold_set_rejects_llm_channel_without_prompt_version(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            gold_set_dir = root / "gold_set"
+            shutil.copytree(REPO_ROOT / "gold_set", gold_set_dir)
+            _replace_gold_set_status(gold_set_dir, "implemented")
+            _materialize_gold_set_sample(gold_set_dir)
+
+            llm_annotation_path = gold_set_dir / "gold_set_300" / "sample_0001" / "annotations" / "llm.json"
+            llm_annotation = json.loads(llm_annotation_path.read_text(encoding="utf-8"))
+            llm_annotation["channel_metadata"].pop("prompt_version")
+            llm_annotation_path.write_text(json.dumps(llm_annotation, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
+
+            result = self.run_cli("validate-gold-set", "--require-implemented", env={"APO_GOLD_SET_DIR": str(gold_set_dir)})
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("prompt_version", result.stderr)
 
     def test_missing_env_var_fails(self) -> None:
         result = self.run_cli("validate-env", "--require", "APO_REQUIRED_FOR_TEST")
@@ -208,6 +374,21 @@ class ContractCommandTests(unittest.TestCase):
             result = self.run_cli("validate-configs", env={"APO_CONFIG_DIR": str(config_dir)})
             self.assertEqual(result.returncode, 2)
             self.assertIn("taxonomy_change_suggestion", result.stderr)
+
+    def test_validate_configs_rejects_candidate_prescreen_action_drift(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            config_dir = root / "configs"
+            shutil.copytree(REPO_ROOT / "configs", config_dir)
+
+            workflow_path = config_dir / "candidate_prescreen_workflow.yaml"
+            workflow = yaml.safe_load(workflow_path.read_text(encoding="utf-8"))
+            workflow["llm_prescreen"]["recommended_actions"] = ["reject", "hold", "candidate_pool"]
+            workflow_path.write_text(yaml.safe_dump(workflow, sort_keys=False, allow_unicode=True), encoding="utf-8")
+
+            result = self.run_cli("validate-configs", env={"APO_CONFIG_DIR": str(config_dir)})
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("recommended_actions", result.stderr)
 
     def test_validate_configs_rejects_score_schema_required_field_drift(self) -> None:
         with TemporaryDirectory() as tmp_dir:

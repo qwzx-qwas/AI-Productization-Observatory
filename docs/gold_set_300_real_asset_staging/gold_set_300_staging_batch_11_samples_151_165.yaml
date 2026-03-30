@@ -1,0 +1,1508 @@
+document_id: gold_set_300_staging_batch_11
+document_purpose: External staging carrier for future real gold_set_300 assets before
+  formal landing into gold_set/gold_set_300/.
+coverage_scope:
+  sample_slot_start: 151
+  sample_slot_end: 165
+  sample_slot_ids:
+  - GS300-151
+  - GS300-165
+  intended_sample_count: 15
+status_boundary:
+  staging_layer_only: true
+  represents_formal_gold_set_delivery: false
+  notes: This file is an external intermediate carrier. It does not mean gold_set
+    has been formally landed or that phase 2 is complete.
+future_formal_target:
+  directory_pattern: gold_set/gold_set_300/<sample_id>/
+  target_files:
+  - annotations/local_project_user.json
+  - annotations/llm.json
+  - adjudication.json
+  - sample_metadata.json
+samples:
+- slot_index: 151
+  sample_slot_id: GS300-151
+  current_state: awaiting_real_input
+  ready_for_formal_writeflow: false
+  future_formal_target_path: gold_set/gold_set_300/<sample_id>/
+  sample_id: null
+  target_type: product
+  review_closed: null
+  clear_adjudication: null
+  primary_category_code: null
+  review_refs: []
+  evidence_refs: []
+  source_record_refs: []
+  training_pool_source: candidate_pool
+  whitelist_reason: null
+  local_project_user_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata: {}
+  llm_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: null
+      routing_version: null
+  adjudicated_output:
+    provided: false
+    sample_id: null
+    target_type: product
+    target_id: null
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    adjudication_status: adjudicated
+  adjudication_basis:
+    provided: false
+    adjudicated_at: null
+    adjudicator_role: local_project_user
+    source_annotation_channels:
+    - local_project_user
+    - llm
+    adjudication_rationale: null
+    decision_basis_refs: []
+    notes: null
+  sample_metadata:
+    provided: false
+    sample_id: null
+    target_id: null
+    source_id: null
+    target_type: product
+    source_record_refs: []
+    review_refs: []
+    evidence_refs: []
+    eligibility_snapshot:
+      review_closed: null
+      sufficient_evidence: null
+      clear_adjudication: null
+      is_unresolved: null
+    pool_trace:
+      candidate_pool_batch_id: null
+      training_pool_source: candidate_pool
+      whitelist_reason: null
+  blocking_items:
+  - real sample_id not yet provided
+  - local_project_user raw annotation not yet provided
+  - llm raw annotation not yet provided
+  - adjudicated final decision fields not yet provided
+  - adjudication basis not yet provided
+  - review_refs/evidence_refs/source_record_refs not yet provided
+- slot_index: 152
+  sample_slot_id: GS300-152
+  current_state: awaiting_real_input
+  ready_for_formal_writeflow: false
+  future_formal_target_path: gold_set/gold_set_300/<sample_id>/
+  sample_id: null
+  target_type: product
+  review_closed: null
+  clear_adjudication: null
+  primary_category_code: null
+  review_refs: []
+  evidence_refs: []
+  source_record_refs: []
+  training_pool_source: candidate_pool
+  whitelist_reason: null
+  local_project_user_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata: {}
+  llm_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: null
+      routing_version: null
+  adjudicated_output:
+    provided: false
+    sample_id: null
+    target_type: product
+    target_id: null
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    adjudication_status: adjudicated
+  adjudication_basis:
+    provided: false
+    adjudicated_at: null
+    adjudicator_role: local_project_user
+    source_annotation_channels:
+    - local_project_user
+    - llm
+    adjudication_rationale: null
+    decision_basis_refs: []
+    notes: null
+  sample_metadata:
+    provided: false
+    sample_id: null
+    target_id: null
+    source_id: null
+    target_type: product
+    source_record_refs: []
+    review_refs: []
+    evidence_refs: []
+    eligibility_snapshot:
+      review_closed: null
+      sufficient_evidence: null
+      clear_adjudication: null
+      is_unresolved: null
+    pool_trace:
+      candidate_pool_batch_id: null
+      training_pool_source: candidate_pool
+      whitelist_reason: null
+  blocking_items:
+  - real sample_id not yet provided
+  - local_project_user raw annotation not yet provided
+  - llm raw annotation not yet provided
+  - adjudicated final decision fields not yet provided
+  - adjudication basis not yet provided
+  - review_refs/evidence_refs/source_record_refs not yet provided
+- slot_index: 153
+  sample_slot_id: GS300-153
+  current_state: awaiting_real_input
+  ready_for_formal_writeflow: false
+  future_formal_target_path: gold_set/gold_set_300/<sample_id>/
+  sample_id: null
+  target_type: product
+  review_closed: null
+  clear_adjudication: null
+  primary_category_code: null
+  review_refs: []
+  evidence_refs: []
+  source_record_refs: []
+  training_pool_source: candidate_pool
+  whitelist_reason: null
+  local_project_user_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata: {}
+  llm_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: null
+      routing_version: null
+  adjudicated_output:
+    provided: false
+    sample_id: null
+    target_type: product
+    target_id: null
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    adjudication_status: adjudicated
+  adjudication_basis:
+    provided: false
+    adjudicated_at: null
+    adjudicator_role: local_project_user
+    source_annotation_channels:
+    - local_project_user
+    - llm
+    adjudication_rationale: null
+    decision_basis_refs: []
+    notes: null
+  sample_metadata:
+    provided: false
+    sample_id: null
+    target_id: null
+    source_id: null
+    target_type: product
+    source_record_refs: []
+    review_refs: []
+    evidence_refs: []
+    eligibility_snapshot:
+      review_closed: null
+      sufficient_evidence: null
+      clear_adjudication: null
+      is_unresolved: null
+    pool_trace:
+      candidate_pool_batch_id: null
+      training_pool_source: candidate_pool
+      whitelist_reason: null
+  blocking_items:
+  - real sample_id not yet provided
+  - local_project_user raw annotation not yet provided
+  - llm raw annotation not yet provided
+  - adjudicated final decision fields not yet provided
+  - adjudication basis not yet provided
+  - review_refs/evidence_refs/source_record_refs not yet provided
+- slot_index: 154
+  sample_slot_id: GS300-154
+  current_state: awaiting_real_input
+  ready_for_formal_writeflow: false
+  future_formal_target_path: gold_set/gold_set_300/<sample_id>/
+  sample_id: null
+  target_type: product
+  review_closed: null
+  clear_adjudication: null
+  primary_category_code: null
+  review_refs: []
+  evidence_refs: []
+  source_record_refs: []
+  training_pool_source: candidate_pool
+  whitelist_reason: null
+  local_project_user_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata: {}
+  llm_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: null
+      routing_version: null
+  adjudicated_output:
+    provided: false
+    sample_id: null
+    target_type: product
+    target_id: null
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    adjudication_status: adjudicated
+  adjudication_basis:
+    provided: false
+    adjudicated_at: null
+    adjudicator_role: local_project_user
+    source_annotation_channels:
+    - local_project_user
+    - llm
+    adjudication_rationale: null
+    decision_basis_refs: []
+    notes: null
+  sample_metadata:
+    provided: false
+    sample_id: null
+    target_id: null
+    source_id: null
+    target_type: product
+    source_record_refs: []
+    review_refs: []
+    evidence_refs: []
+    eligibility_snapshot:
+      review_closed: null
+      sufficient_evidence: null
+      clear_adjudication: null
+      is_unresolved: null
+    pool_trace:
+      candidate_pool_batch_id: null
+      training_pool_source: candidate_pool
+      whitelist_reason: null
+  blocking_items:
+  - real sample_id not yet provided
+  - local_project_user raw annotation not yet provided
+  - llm raw annotation not yet provided
+  - adjudicated final decision fields not yet provided
+  - adjudication basis not yet provided
+  - review_refs/evidence_refs/source_record_refs not yet provided
+- slot_index: 155
+  sample_slot_id: GS300-155
+  current_state: awaiting_real_input
+  ready_for_formal_writeflow: false
+  future_formal_target_path: gold_set/gold_set_300/<sample_id>/
+  sample_id: null
+  target_type: product
+  review_closed: null
+  clear_adjudication: null
+  primary_category_code: null
+  review_refs: []
+  evidence_refs: []
+  source_record_refs: []
+  training_pool_source: candidate_pool
+  whitelist_reason: null
+  local_project_user_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata: {}
+  llm_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: null
+      routing_version: null
+  adjudicated_output:
+    provided: false
+    sample_id: null
+    target_type: product
+    target_id: null
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    adjudication_status: adjudicated
+  adjudication_basis:
+    provided: false
+    adjudicated_at: null
+    adjudicator_role: local_project_user
+    source_annotation_channels:
+    - local_project_user
+    - llm
+    adjudication_rationale: null
+    decision_basis_refs: []
+    notes: null
+  sample_metadata:
+    provided: false
+    sample_id: null
+    target_id: null
+    source_id: null
+    target_type: product
+    source_record_refs: []
+    review_refs: []
+    evidence_refs: []
+    eligibility_snapshot:
+      review_closed: null
+      sufficient_evidence: null
+      clear_adjudication: null
+      is_unresolved: null
+    pool_trace:
+      candidate_pool_batch_id: null
+      training_pool_source: candidate_pool
+      whitelist_reason: null
+  blocking_items:
+  - real sample_id not yet provided
+  - local_project_user raw annotation not yet provided
+  - llm raw annotation not yet provided
+  - adjudicated final decision fields not yet provided
+  - adjudication basis not yet provided
+  - review_refs/evidence_refs/source_record_refs not yet provided
+- slot_index: 156
+  sample_slot_id: GS300-156
+  current_state: awaiting_real_input
+  ready_for_formal_writeflow: false
+  future_formal_target_path: gold_set/gold_set_300/<sample_id>/
+  sample_id: null
+  target_type: product
+  review_closed: null
+  clear_adjudication: null
+  primary_category_code: null
+  review_refs: []
+  evidence_refs: []
+  source_record_refs: []
+  training_pool_source: candidate_pool
+  whitelist_reason: null
+  local_project_user_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata: {}
+  llm_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: null
+      routing_version: null
+  adjudicated_output:
+    provided: false
+    sample_id: null
+    target_type: product
+    target_id: null
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    adjudication_status: adjudicated
+  adjudication_basis:
+    provided: false
+    adjudicated_at: null
+    adjudicator_role: local_project_user
+    source_annotation_channels:
+    - local_project_user
+    - llm
+    adjudication_rationale: null
+    decision_basis_refs: []
+    notes: null
+  sample_metadata:
+    provided: false
+    sample_id: null
+    target_id: null
+    source_id: null
+    target_type: product
+    source_record_refs: []
+    review_refs: []
+    evidence_refs: []
+    eligibility_snapshot:
+      review_closed: null
+      sufficient_evidence: null
+      clear_adjudication: null
+      is_unresolved: null
+    pool_trace:
+      candidate_pool_batch_id: null
+      training_pool_source: candidate_pool
+      whitelist_reason: null
+  blocking_items:
+  - real sample_id not yet provided
+  - local_project_user raw annotation not yet provided
+  - llm raw annotation not yet provided
+  - adjudicated final decision fields not yet provided
+  - adjudication basis not yet provided
+  - review_refs/evidence_refs/source_record_refs not yet provided
+- slot_index: 157
+  sample_slot_id: GS300-157
+  current_state: awaiting_real_input
+  ready_for_formal_writeflow: false
+  future_formal_target_path: gold_set/gold_set_300/<sample_id>/
+  sample_id: null
+  target_type: product
+  review_closed: null
+  clear_adjudication: null
+  primary_category_code: null
+  review_refs: []
+  evidence_refs: []
+  source_record_refs: []
+  training_pool_source: candidate_pool
+  whitelist_reason: null
+  local_project_user_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata: {}
+  llm_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: null
+      routing_version: null
+  adjudicated_output:
+    provided: false
+    sample_id: null
+    target_type: product
+    target_id: null
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    adjudication_status: adjudicated
+  adjudication_basis:
+    provided: false
+    adjudicated_at: null
+    adjudicator_role: local_project_user
+    source_annotation_channels:
+    - local_project_user
+    - llm
+    adjudication_rationale: null
+    decision_basis_refs: []
+    notes: null
+  sample_metadata:
+    provided: false
+    sample_id: null
+    target_id: null
+    source_id: null
+    target_type: product
+    source_record_refs: []
+    review_refs: []
+    evidence_refs: []
+    eligibility_snapshot:
+      review_closed: null
+      sufficient_evidence: null
+      clear_adjudication: null
+      is_unresolved: null
+    pool_trace:
+      candidate_pool_batch_id: null
+      training_pool_source: candidate_pool
+      whitelist_reason: null
+  blocking_items:
+  - real sample_id not yet provided
+  - local_project_user raw annotation not yet provided
+  - llm raw annotation not yet provided
+  - adjudicated final decision fields not yet provided
+  - adjudication basis not yet provided
+  - review_refs/evidence_refs/source_record_refs not yet provided
+- slot_index: 158
+  sample_slot_id: GS300-158
+  current_state: awaiting_real_input
+  ready_for_formal_writeflow: false
+  future_formal_target_path: gold_set/gold_set_300/<sample_id>/
+  sample_id: null
+  target_type: product
+  review_closed: null
+  clear_adjudication: null
+  primary_category_code: null
+  review_refs: []
+  evidence_refs: []
+  source_record_refs: []
+  training_pool_source: candidate_pool
+  whitelist_reason: null
+  local_project_user_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata: {}
+  llm_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: null
+      routing_version: null
+  adjudicated_output:
+    provided: false
+    sample_id: null
+    target_type: product
+    target_id: null
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    adjudication_status: adjudicated
+  adjudication_basis:
+    provided: false
+    adjudicated_at: null
+    adjudicator_role: local_project_user
+    source_annotation_channels:
+    - local_project_user
+    - llm
+    adjudication_rationale: null
+    decision_basis_refs: []
+    notes: null
+  sample_metadata:
+    provided: false
+    sample_id: null
+    target_id: null
+    source_id: null
+    target_type: product
+    source_record_refs: []
+    review_refs: []
+    evidence_refs: []
+    eligibility_snapshot:
+      review_closed: null
+      sufficient_evidence: null
+      clear_adjudication: null
+      is_unresolved: null
+    pool_trace:
+      candidate_pool_batch_id: null
+      training_pool_source: candidate_pool
+      whitelist_reason: null
+  blocking_items:
+  - real sample_id not yet provided
+  - local_project_user raw annotation not yet provided
+  - llm raw annotation not yet provided
+  - adjudicated final decision fields not yet provided
+  - adjudication basis not yet provided
+  - review_refs/evidence_refs/source_record_refs not yet provided
+- slot_index: 159
+  sample_slot_id: GS300-159
+  current_state: awaiting_real_input
+  ready_for_formal_writeflow: false
+  future_formal_target_path: gold_set/gold_set_300/<sample_id>/
+  sample_id: null
+  target_type: product
+  review_closed: null
+  clear_adjudication: null
+  primary_category_code: null
+  review_refs: []
+  evidence_refs: []
+  source_record_refs: []
+  training_pool_source: candidate_pool
+  whitelist_reason: null
+  local_project_user_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata: {}
+  llm_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: null
+      routing_version: null
+  adjudicated_output:
+    provided: false
+    sample_id: null
+    target_type: product
+    target_id: null
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    adjudication_status: adjudicated
+  adjudication_basis:
+    provided: false
+    adjudicated_at: null
+    adjudicator_role: local_project_user
+    source_annotation_channels:
+    - local_project_user
+    - llm
+    adjudication_rationale: null
+    decision_basis_refs: []
+    notes: null
+  sample_metadata:
+    provided: false
+    sample_id: null
+    target_id: null
+    source_id: null
+    target_type: product
+    source_record_refs: []
+    review_refs: []
+    evidence_refs: []
+    eligibility_snapshot:
+      review_closed: null
+      sufficient_evidence: null
+      clear_adjudication: null
+      is_unresolved: null
+    pool_trace:
+      candidate_pool_batch_id: null
+      training_pool_source: candidate_pool
+      whitelist_reason: null
+  blocking_items:
+  - real sample_id not yet provided
+  - local_project_user raw annotation not yet provided
+  - llm raw annotation not yet provided
+  - adjudicated final decision fields not yet provided
+  - adjudication basis not yet provided
+  - review_refs/evidence_refs/source_record_refs not yet provided
+- slot_index: 160
+  sample_slot_id: GS300-160
+  current_state: awaiting_real_input
+  ready_for_formal_writeflow: false
+  future_formal_target_path: gold_set/gold_set_300/<sample_id>/
+  sample_id: null
+  target_type: product
+  review_closed: null
+  clear_adjudication: null
+  primary_category_code: null
+  review_refs: []
+  evidence_refs: []
+  source_record_refs: []
+  training_pool_source: candidate_pool
+  whitelist_reason: null
+  local_project_user_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata: {}
+  llm_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: null
+      routing_version: null
+  adjudicated_output:
+    provided: false
+    sample_id: null
+    target_type: product
+    target_id: null
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    adjudication_status: adjudicated
+  adjudication_basis:
+    provided: false
+    adjudicated_at: null
+    adjudicator_role: local_project_user
+    source_annotation_channels:
+    - local_project_user
+    - llm
+    adjudication_rationale: null
+    decision_basis_refs: []
+    notes: null
+  sample_metadata:
+    provided: false
+    sample_id: null
+    target_id: null
+    source_id: null
+    target_type: product
+    source_record_refs: []
+    review_refs: []
+    evidence_refs: []
+    eligibility_snapshot:
+      review_closed: null
+      sufficient_evidence: null
+      clear_adjudication: null
+      is_unresolved: null
+    pool_trace:
+      candidate_pool_batch_id: null
+      training_pool_source: candidate_pool
+      whitelist_reason: null
+  blocking_items:
+  - real sample_id not yet provided
+  - local_project_user raw annotation not yet provided
+  - llm raw annotation not yet provided
+  - adjudicated final decision fields not yet provided
+  - adjudication basis not yet provided
+  - review_refs/evidence_refs/source_record_refs not yet provided
+- slot_index: 161
+  sample_slot_id: GS300-161
+  current_state: awaiting_real_input
+  ready_for_formal_writeflow: false
+  future_formal_target_path: gold_set/gold_set_300/<sample_id>/
+  sample_id: null
+  target_type: product
+  review_closed: null
+  clear_adjudication: null
+  primary_category_code: null
+  review_refs: []
+  evidence_refs: []
+  source_record_refs: []
+  training_pool_source: candidate_pool
+  whitelist_reason: null
+  local_project_user_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata: {}
+  llm_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: null
+      routing_version: null
+  adjudicated_output:
+    provided: false
+    sample_id: null
+    target_type: product
+    target_id: null
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    adjudication_status: adjudicated
+  adjudication_basis:
+    provided: false
+    adjudicated_at: null
+    adjudicator_role: local_project_user
+    source_annotation_channels:
+    - local_project_user
+    - llm
+    adjudication_rationale: null
+    decision_basis_refs: []
+    notes: null
+  sample_metadata:
+    provided: false
+    sample_id: null
+    target_id: null
+    source_id: null
+    target_type: product
+    source_record_refs: []
+    review_refs: []
+    evidence_refs: []
+    eligibility_snapshot:
+      review_closed: null
+      sufficient_evidence: null
+      clear_adjudication: null
+      is_unresolved: null
+    pool_trace:
+      candidate_pool_batch_id: null
+      training_pool_source: candidate_pool
+      whitelist_reason: null
+  blocking_items:
+  - real sample_id not yet provided
+  - local_project_user raw annotation not yet provided
+  - llm raw annotation not yet provided
+  - adjudicated final decision fields not yet provided
+  - adjudication basis not yet provided
+  - review_refs/evidence_refs/source_record_refs not yet provided
+- slot_index: 162
+  sample_slot_id: GS300-162
+  current_state: awaiting_real_input
+  ready_for_formal_writeflow: false
+  future_formal_target_path: gold_set/gold_set_300/<sample_id>/
+  sample_id: null
+  target_type: product
+  review_closed: null
+  clear_adjudication: null
+  primary_category_code: null
+  review_refs: []
+  evidence_refs: []
+  source_record_refs: []
+  training_pool_source: candidate_pool
+  whitelist_reason: null
+  local_project_user_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata: {}
+  llm_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: null
+      routing_version: null
+  adjudicated_output:
+    provided: false
+    sample_id: null
+    target_type: product
+    target_id: null
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    adjudication_status: adjudicated
+  adjudication_basis:
+    provided: false
+    adjudicated_at: null
+    adjudicator_role: local_project_user
+    source_annotation_channels:
+    - local_project_user
+    - llm
+    adjudication_rationale: null
+    decision_basis_refs: []
+    notes: null
+  sample_metadata:
+    provided: false
+    sample_id: null
+    target_id: null
+    source_id: null
+    target_type: product
+    source_record_refs: []
+    review_refs: []
+    evidence_refs: []
+    eligibility_snapshot:
+      review_closed: null
+      sufficient_evidence: null
+      clear_adjudication: null
+      is_unresolved: null
+    pool_trace:
+      candidate_pool_batch_id: null
+      training_pool_source: candidate_pool
+      whitelist_reason: null
+  blocking_items:
+  - real sample_id not yet provided
+  - local_project_user raw annotation not yet provided
+  - llm raw annotation not yet provided
+  - adjudicated final decision fields not yet provided
+  - adjudication basis not yet provided
+  - review_refs/evidence_refs/source_record_refs not yet provided
+- slot_index: 163
+  sample_slot_id: GS300-163
+  current_state: awaiting_real_input
+  ready_for_formal_writeflow: false
+  future_formal_target_path: gold_set/gold_set_300/<sample_id>/
+  sample_id: null
+  target_type: product
+  review_closed: null
+  clear_adjudication: null
+  primary_category_code: null
+  review_refs: []
+  evidence_refs: []
+  source_record_refs: []
+  training_pool_source: candidate_pool
+  whitelist_reason: null
+  local_project_user_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata: {}
+  llm_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: null
+      routing_version: null
+  adjudicated_output:
+    provided: false
+    sample_id: null
+    target_type: product
+    target_id: null
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    adjudication_status: adjudicated
+  adjudication_basis:
+    provided: false
+    adjudicated_at: null
+    adjudicator_role: local_project_user
+    source_annotation_channels:
+    - local_project_user
+    - llm
+    adjudication_rationale: null
+    decision_basis_refs: []
+    notes: null
+  sample_metadata:
+    provided: false
+    sample_id: null
+    target_id: null
+    source_id: null
+    target_type: product
+    source_record_refs: []
+    review_refs: []
+    evidence_refs: []
+    eligibility_snapshot:
+      review_closed: null
+      sufficient_evidence: null
+      clear_adjudication: null
+      is_unresolved: null
+    pool_trace:
+      candidate_pool_batch_id: null
+      training_pool_source: candidate_pool
+      whitelist_reason: null
+  blocking_items:
+  - real sample_id not yet provided
+  - local_project_user raw annotation not yet provided
+  - llm raw annotation not yet provided
+  - adjudicated final decision fields not yet provided
+  - adjudication basis not yet provided
+  - review_refs/evidence_refs/source_record_refs not yet provided
+- slot_index: 164
+  sample_slot_id: GS300-164
+  current_state: awaiting_real_input
+  ready_for_formal_writeflow: false
+  future_formal_target_path: gold_set/gold_set_300/<sample_id>/
+  sample_id: null
+  target_type: product
+  review_closed: null
+  clear_adjudication: null
+  primary_category_code: null
+  review_refs: []
+  evidence_refs: []
+  source_record_refs: []
+  training_pool_source: candidate_pool
+  whitelist_reason: null
+  local_project_user_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata: {}
+  llm_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: null
+      routing_version: null
+  adjudicated_output:
+    provided: false
+    sample_id: null
+    target_type: product
+    target_id: null
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    adjudication_status: adjudicated
+  adjudication_basis:
+    provided: false
+    adjudicated_at: null
+    adjudicator_role: local_project_user
+    source_annotation_channels:
+    - local_project_user
+    - llm
+    adjudication_rationale: null
+    decision_basis_refs: []
+    notes: null
+  sample_metadata:
+    provided: false
+    sample_id: null
+    target_id: null
+    source_id: null
+    target_type: product
+    source_record_refs: []
+    review_refs: []
+    evidence_refs: []
+    eligibility_snapshot:
+      review_closed: null
+      sufficient_evidence: null
+      clear_adjudication: null
+      is_unresolved: null
+    pool_trace:
+      candidate_pool_batch_id: null
+      training_pool_source: candidate_pool
+      whitelist_reason: null
+  blocking_items:
+  - real sample_id not yet provided
+  - local_project_user raw annotation not yet provided
+  - llm raw annotation not yet provided
+  - adjudicated final decision fields not yet provided
+  - adjudication basis not yet provided
+  - review_refs/evidence_refs/source_record_refs not yet provided
+- slot_index: 165
+  sample_slot_id: GS300-165
+  current_state: awaiting_real_input
+  ready_for_formal_writeflow: false
+  future_formal_target_path: gold_set/gold_set_300/<sample_id>/
+  sample_id: null
+  target_type: product
+  review_closed: null
+  clear_adjudication: null
+  primary_category_code: null
+  review_refs: []
+  evidence_refs: []
+  source_record_refs: []
+  training_pool_source: candidate_pool
+  whitelist_reason: null
+  local_project_user_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata: {}
+  llm_annotation:
+    provided: false
+    adjudication_status: double_annotated
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: null
+      routing_version: null
+  adjudicated_output:
+    provided: false
+    sample_id: null
+    target_type: product
+    target_id: null
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    build_evidence_band: null
+    need_clarity_band: null
+    rationale: null
+    evidence_refs: []
+    review_recommended: null
+    review_reason: null
+    taxonomy_change_suggestion: null
+    adjudication_status: adjudicated
+  adjudication_basis:
+    provided: false
+    adjudicated_at: null
+    adjudicator_role: local_project_user
+    source_annotation_channels:
+    - local_project_user
+    - llm
+    adjudication_rationale: null
+    decision_basis_refs: []
+    notes: null
+  sample_metadata:
+    provided: false
+    sample_id: null
+    target_id: null
+    source_id: null
+    target_type: product
+    source_record_refs: []
+    review_refs: []
+    evidence_refs: []
+    eligibility_snapshot:
+      review_closed: null
+      sufficient_evidence: null
+      clear_adjudication: null
+      is_unresolved: null
+    pool_trace:
+      candidate_pool_batch_id: null
+      training_pool_source: candidate_pool
+      whitelist_reason: null
+  blocking_items:
+  - real sample_id not yet provided
+  - local_project_user raw annotation not yet provided
+  - llm raw annotation not yet provided
+  - adjudicated final decision fields not yet provided
+  - adjudication basis not yet provided
+  - review_refs/evidence_refs/source_record_refs not yet provided

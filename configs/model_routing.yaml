@@ -39,3 +39,9 @@ routes:
     primary_engine: rule_template
     fallback_engine: rule_template
     requires_schema_validation: true
+  - route_id: route_candidate_prescreener_v1
+    module_name: Candidate Prescreener
+    execution_mode: llm_structured_json
+    primary_engine: llm_structured_json
+    fallback_engine: hold_for_human_review
+    requires_schema_validation: true
