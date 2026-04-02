@@ -7,6 +7,7 @@ normalization, YAML writes, and workspace validation do not drift apart.
 
 from __future__ import annotations
 
+import re
 from typing import Any
 
 from src.common.errors import ContractValidationError
@@ -122,44 +123,405 @@ def _normalize_candidate(candidate: Any, *, adjacent: bool = False) -> dict[str,
     return normalized
 
 
+def _string_or_none(value: Any) -> str | None:
+    if isinstance(value, str):
+        stripped = value.strip()
+        return stripped or None
+    return None
+
+
+def _slugify_label(value: Any) -> str | None:
+    text = _string_or_none(value)
+    if text is None:
+        return None
+    normalized = re.sub(r"[^a-z0-9]+", "_", text.lower()).strip("_")
+    return normalized or text.lower()
+
+
+def _map_confidence_level(value: Any) -> str | None:
+    text = _string_or_none(value)
+    if text is None:
+        return None
+    lowered = text.lower()
+    if lowered in CONFIDENCE_LEVELS:
+        return lowered
+    if "high" in lowered:
+        return "high"
+    if "medium" in lowered:
+        return "medium"
+    if "low" in lowered:
+        return "low"
+    return None
+
+
+def _map_recommended_action(value: Any) -> str | None:
+    if isinstance(value, dict):
+        nested = value.get("recommended_action")
+        if nested is not None:
+            return _map_recommended_action(nested)
+        return None
+    text = _string_or_none(value)
+    if text is None:
+        return None
+    if text in RECOMMENDED_ACTIONS:
+        return text
+    lowered = text.lower()
+    if "whitelist" in lowered:
+        return "whitelist_candidate"
+    if "candidate_pool" in lowered or ("candidate" in lowered and "pool" in lowered):
+        return "candidate_pool"
+    if "reject" in lowered:
+        return "reject"
+    if "hold" in lowered or "triage" in lowered or "manual" in lowered:
+        return "hold"
+    return None
+
+
+def _infer_source_field(value: Any) -> str:
+    text = _string_or_none(value) or ""
+    lowered = text.lower()
+    if "raw_evidence_excerpt" in lowered:
+        return "raw_evidence_excerpt"
+    if "summary" in lowered:
+        return "summary"
+    if "title" in lowered:
+        return "title"
+    if "canonical_url" in lowered:
+        return "canonical_url"
+    if "query_family" in lowered:
+        return "query_family"
+    return "candidate_input"
+
+
+def _normalize_evidence_anchors(value: Any) -> list[dict[str, Any]]:
+    if not isinstance(value, list):
+        return []
+    anchors: list[dict[str, Any]] = []
+    for index, anchor in enumerate(value, start=1):
+        if not isinstance(anchor, dict):
+            continue
+        evidence_text = _string_or_none(anchor.get("evidence_text")) or _string_or_none(anchor.get("quote"))
+        why_it_matters = _string_or_none(anchor.get("why_it_matters")) or _string_or_none(anchor.get("rationale"))
+        if evidence_text is None or why_it_matters is None:
+            continue
+        anchor_rank = anchor.get("anchor_rank")
+        if not isinstance(anchor_rank, int) or anchor_rank < 1:
+            anchor_rank = index
+        applies_to = anchor.get("applies_to")
+        normalized_anchor = {
+            "anchor_rank": anchor_rank,
+            "evidence_text": evidence_text,
+            "evidence_source_field": _infer_source_field(anchor.get("evidence_source_field") or anchor.get("quote")),
+            "why_it_matters": why_it_matters,
+        }
+        if isinstance(applies_to, list):
+            normalized_anchor["applies_to"] = [item for item in applies_to if isinstance(item, str)]
+        anchors.append(normalized_anchor)
+    anchors.sort(key=lambda anchor: anchor["anchor_rank"])
+    for expected_rank, anchor in enumerate(anchors, start=1):
+        anchor["anchor_rank"] = expected_rank
+    return anchors[:5]
+
+
+def _ensure_minimum_evidence_anchor(
+    anchors: list[dict[str, Any]],
+    *,
+    fallback_reason: str | None,
+    fallback_scope_note: str | None,
+) -> list[dict[str, Any]]:
+    if anchors:
+        return anchors
+    evidence_text = fallback_reason or fallback_scope_note
+    if evidence_text is None:
+        evidence_text = "Provider response omitted explicit evidence anchors; prescreen remains low-confidence and requires human review."
+    return [
+        {
+            "anchor_rank": 1,
+            "evidence_text": evidence_text,
+            "evidence_source_field": "candidate_input",
+            "why_it_matters": "This fallback anchor preserves a minimally explainable first-pass review card when the provider omits structured evidence anchors.",
+            "applies_to": ["scope", "recommended_action"],
+        }
+    ]
+
+
+def _normalize_source_evidence_summary(
+    result: dict[str, Any],
+    anchors: list[dict[str, Any]],
+    *,
+    fallback_reason: str | None,
+    fallback_scope_note: str | None,
+) -> list[str]:
+    summary = result.get("source_evidence_summary")
+    if isinstance(summary, list):
+        normalized = [item for item in summary if isinstance(item, str) and item.strip()]
+        if normalized:
+            return normalized
+    derived = [anchor["evidence_text"] for anchor in anchors[:3] if isinstance(anchor.get("evidence_text"), str)]
+    if derived:
+        return derived
+    fallback = []
+    if fallback_reason:
+        fallback.append(fallback_reason)
+    if fallback_scope_note and fallback_scope_note not in fallback:
+        fallback.append(fallback_scope_note)
+    review_focus_points = result.get("review_focus_points")
+    if isinstance(review_focus_points, list):
+        for item in review_focus_points:
+            if isinstance(item, str) and item.strip() and item not in fallback:
+                fallback.append(item)
+                break
+    return fallback
+
+
+def _normalize_uncertainty_points(result: dict[str, Any], confidence_summary: dict[str, Any], decision_snapshot: Any) -> list[str]:
+    uncertainty_points = result.get("uncertainty_points")
+    if isinstance(uncertainty_points, list):
+        normalized = [item for item in uncertainty_points if isinstance(item, str) and item.strip()]
+        if normalized is not None:
+            return normalized
+    derived: list[str] = []
+    if isinstance(confidence_summary.get("uncertainty_reasons"), list):
+        derived.extend(item for item in confidence_summary["uncertainty_reasons"] if isinstance(item, str) and item.strip())
+    if isinstance(confidence_summary.get("uncertainty_drivers"), list):
+        derived.extend(item for item in confidence_summary["uncertainty_drivers"] if isinstance(item, str) and item.strip())
+    if isinstance(decision_snapshot, dict) and isinstance(decision_snapshot.get("risk_flags"), list):
+        derived.extend(str(item) for item in decision_snapshot["risk_flags"] if isinstance(item, str) and item.strip())
+    return derived
+
+
+def _normalize_confidence_summary(value: Any) -> dict[str, Any]:
+    if not isinstance(value, dict):
+        return empty_confidence_summary()
+    normalized = empty_confidence_summary()
+    for field_name in ("scope_confidence", "taxonomy_confidence", "persona_confidence"):
+        normalized[field_name] = _map_confidence_level(value.get(field_name))
+    overall = _map_confidence_level(value.get("overall_confidence"))
+    if overall is not None:
+        for field_name, current_value in normalized.items():
+            if current_value is None:
+                normalized[field_name] = overall
+    uncertainty_level = _string_or_none(value.get("uncertainty_level"))
+    if uncertainty_level == "high":
+        normalized["persona_confidence"] = normalized["persona_confidence"] or "low"
+        normalized["taxonomy_confidence"] = normalized["taxonomy_confidence"] or "low"
+        normalized["scope_confidence"] = normalized["scope_confidence"] or "low"
+    for field_name, current_value in normalized.items():
+        if current_value is None:
+            normalized[field_name] = "low"
+    return normalized
+
+
+def _normalize_handoff_hint(value: Any, *, recommended_action: str | None) -> dict[str, Any]:
+    normalized = empty_handoff_readiness_hint()
+    if isinstance(value, dict):
+        normalized["suggested_action"] = _map_recommended_action(value.get("suggested_action")) or _map_recommended_action(value)
+        rationale = _string_or_none(value.get("rationale"))
+        if rationale is None:
+            why = _string_or_none(value.get("why"))
+            risk = _string_or_none(value.get("risk_if_misclassified"))
+            if why and risk:
+                rationale = f"{why} Risk if misclassified: {risk}"
+            else:
+                rationale = why or risk
+        normalized["rationale"] = rationale
+    elif isinstance(value, str):
+        normalized["rationale"] = value.strip()
+    if normalized["suggested_action"] is None:
+        normalized["suggested_action"] = recommended_action
+    return normalized
+
+
+def _normalize_persona_candidates(value: Any, *, anchor_refs: list[int]) -> tuple[list[dict[str, Any]], str | None]:
+    if not isinstance(value, list):
+        return [], None
+    candidates: list[dict[str, Any]] = []
+    primary_persona_code: str | None = None
+    for index, candidate in enumerate(value, start=1):
+        if not isinstance(candidate, dict):
+            continue
+        persona_code = _string_or_none(candidate.get("persona_code")) or _slugify_label(candidate.get("persona"))
+        rationale = _string_or_none(candidate.get("rationale")) or _string_or_none(candidate.get("fit_rationale"))
+        if persona_code is None or rationale is None:
+            continue
+        rank = candidate.get("confidence_rank")
+        if not isinstance(rank, int) or rank < 1:
+            rank = index
+        refs = candidate.get("supporting_evidence_anchors")
+        supporting_refs = [value for value in refs if isinstance(value, int)] if isinstance(refs, list) else anchor_refs[:2]
+        normalized_candidate = {
+            "persona_code": persona_code,
+            "confidence_rank": rank,
+            "rationale": rationale,
+            "supporting_evidence_anchors": supporting_refs,
+        }
+        candidates.append(normalized_candidate)
+    candidates.sort(key=lambda candidate: candidate["confidence_rank"])
+    for expected_rank, candidate in enumerate(candidates, start=1):
+        candidate["confidence_rank"] = expected_rank
+    if candidates:
+        primary_persona_code = candidates[0]["persona_code"]
+    return candidates[:3], primary_persona_code
+
+
+def _normalize_taxonomy_hints(
+    value: Any,
+    *,
+    fallback_reason: str | None,
+    primary_persona_code: str | None,
+    anchor_refs: list[int],
+) -> dict[str, Any]:
+    normalized = empty_taxonomy_hints()
+    if not isinstance(value, dict):
+        return normalized
+    primary_category_code = _string_or_none(value.get("primary_category_code"))
+    main_candidate = value.get("main_category_candidate")
+    if isinstance(main_candidate, dict):
+        normalized["main_category_candidate"] = _normalize_candidate(main_candidate)
+        primary_category_code = primary_category_code or normalized["main_category_candidate"]["category_code"]
+    else:
+        main_label = _string_or_none(main_candidate)
+        if main_label is not None:
+            primary_category_code = primary_category_code or main_label
+            normalized["main_category_candidate"] = {
+                "category_code": primary_category_code,
+                "rationale": fallback_reason or main_label,
+                "supporting_evidence_anchors": anchor_refs[:2],
+            }
+    adjacent_candidate = value.get("adjacent_category_candidate")
+    if isinstance(adjacent_candidate, dict):
+        normalized["adjacent_category_candidate"] = _normalize_candidate(adjacent_candidate, adjacent=True)
+    else:
+        adjacent_label = _string_or_none(adjacent_candidate)
+        if adjacent_label is not None:
+            normalized["adjacent_category_candidate"] = {
+                "category_code": adjacent_label,
+                "rationale_for_similarity": adjacent_label,
+                "supporting_evidence_anchors": anchor_refs[:2],
+            }
+    normalized["primary_category_code"] = primary_category_code
+    normalized["secondary_category_code"] = _string_or_none(value.get("secondary_category_code"))
+    normalized["primary_persona_code"] = _string_or_none(value.get("primary_persona_code")) or primary_persona_code
+    normalized["delivery_form_code"] = _string_or_none(value.get("delivery_form_code"))
+    normalized["adjacent_category_rejected_reason"] = _string_or_none(value.get("adjacent_category_rejected_reason"))
+    if normalized["main_category_candidate"]["rationale"] is None and fallback_reason is not None:
+        normalized["main_category_candidate"]["rationale"] = fallback_reason
+    return normalized
+
+
+def _normalize_assessment_hints(value: Any, *, confidence_summary: dict[str, Any], recommended_action: str | None) -> dict[str, Any]:
+    normalized = {
+        "evidence_strength": None,
+        "build_evidence_band": None,
+        "need_clarity_band": None,
+        "unresolved_risk": None,
+    }
+    if isinstance(value, dict):
+        for field_name in normalized:
+            normalized[field_name] = _map_confidence_level(value.get(field_name))
+    scope_confidence = confidence_summary.get("scope_confidence")
+    normalized["evidence_strength"] = normalized["evidence_strength"] or scope_confidence
+    normalized["build_evidence_band"] = normalized["build_evidence_band"] or scope_confidence
+    if normalized["need_clarity_band"] is None:
+        normalized["need_clarity_band"] = "high" if recommended_action == "hold" else confidence_summary.get("taxonomy_confidence")
+    if normalized["unresolved_risk"] is None:
+        normalized["unresolved_risk"] = "high" if recommended_action == "hold" else confidence_summary.get("persona_confidence")
+    return normalized
+
+
 def normalize_llm_result(result: dict[str, Any]) -> dict[str, Any]:
+    decision_snapshot = result.get("decision_snapshot")
     taxonomy_hints = result.get("taxonomy_hints") if isinstance(result.get("taxonomy_hints"), dict) else {}
-    confidence_summary = result.get("confidence_summary") if isinstance(result.get("confidence_summary"), dict) else {}
-    handoff_hint = result.get("handoff_readiness_hint") if isinstance(result.get("handoff_readiness_hint"), dict) else {}
+    confidence_summary = _normalize_confidence_summary(result.get("confidence_summary"))
+    anchors = _normalize_evidence_anchors(result.get("evidence_anchors"))
+    recommended_action = _map_recommended_action(result.get("recommended_action")) or _map_recommended_action(decision_snapshot)
+    scope_boundary_note = _string_or_none(result.get("scope_boundary_note"))
+    reason = _string_or_none(result.get("reason"))
+    if reason is None and isinstance(decision_snapshot, dict):
+        reason = (
+            _string_or_none(decision_snapshot.get("rationale"))
+            or _string_or_none(decision_snapshot.get("recommendation_reason"))
+            or _string_or_none(decision_snapshot.get("why"))
+        )
+    decision_snapshot_text = _string_or_none(decision_snapshot)
+    if decision_snapshot_text is None and isinstance(decision_snapshot, dict):
+        snapshot_rationale = _string_or_none(decision_snapshot.get("rationale")) or _string_or_none(
+            decision_snapshot.get("recommendation_reason")
+        )
+        if recommended_action and snapshot_rationale:
+            decision_snapshot_text = f"Recommend {recommended_action} because {snapshot_rationale}"
+        else:
+            decision_snapshot_text = snapshot_rationale or _string_or_none(decision_snapshot.get("prescreen_outcome"))
+    source_evidence_summary = _normalize_source_evidence_summary(
+        result,
+        anchors,
+        fallback_reason=reason,
+        fallback_scope_note=scope_boundary_note,
+    )
+    uncertainty_points = _normalize_uncertainty_points(result, result.get("confidence_summary") if isinstance(result.get("confidence_summary"), dict) else {}, decision_snapshot)
+    recommend_candidate_pool = result.get("recommend_candidate_pool")
+    if recommend_candidate_pool is None and recommended_action is not None:
+        recommend_candidate_pool = recommended_action in {"candidate_pool", "whitelist_candidate"}
+    handoff_hint = _normalize_handoff_hint(result.get("handoff_readiness_hint"), recommended_action=recommended_action)
+    reason = reason or handoff_hint.get("rationale") or scope_boundary_note
+    if recommended_action is None:
+        recommended_action = _map_recommended_action(handoff_hint.get("suggested_action"))
+    if recommended_action is None and (
+        reason is not None
+        or scope_boundary_note is not None
+        or anchors
+        or (isinstance(result.get("review_focus_points"), list) and result.get("review_focus_points"))
+    ):
+        recommended_action = "hold"
+    if reason is None and source_evidence_summary:
+        reason = source_evidence_summary[0]
+    anchors = _ensure_minimum_evidence_anchor(
+        anchors,
+        fallback_reason=reason,
+        fallback_scope_note=scope_boundary_note,
+    )
+    source_evidence_summary = source_evidence_summary or [anchors[0]["evidence_text"]]
+    if decision_snapshot_text is None and recommended_action and reason:
+        decision_snapshot_text = f"Recommend {recommended_action} because {reason}"
+    if decision_snapshot_text is None:
+        decision_snapshot_text = reason
+    anchor_refs = [anchor["anchor_rank"] for anchor in anchors]
+    persona_candidates, primary_persona_code = _normalize_persona_candidates(result.get("persona_candidates"), anchor_refs=anchor_refs)
+    if not persona_candidates:
+        persona_candidates = [
+            {
+                "persona_code": "unknown",
+                "confidence_rank": 1,
+                "rationale": reason or "Provider response did not supply a reliable primary persona candidate.",
+                "supporting_evidence_anchors": anchor_refs[:1],
+            }
+        ]
+        primary_persona_code = "unknown"
+    taxonomy_hints_normalized = _normalize_taxonomy_hints(
+        taxonomy_hints,
+        fallback_reason=reason or decision_snapshot_text,
+        primary_persona_code=primary_persona_code,
+        anchor_refs=anchor_refs,
+    )
+    assessment_hints = _normalize_assessment_hints(result.get("assessment_hints"), confidence_summary=confidence_summary, recommended_action=recommended_action)
+    handoff_hint["suggested_action"] = handoff_hint.get("suggested_action") or recommended_action
     normalized = {
         "in_observatory_scope": result.get("in_observatory_scope"),
-        "reason": result.get("reason"),
-        "decision_snapshot": result.get("decision_snapshot"),
-        "scope_boundary_note": result.get("scope_boundary_note"),
-        "source_evidence_summary": result.get("source_evidence_summary") if isinstance(result.get("source_evidence_summary"), list) else [],
-        "evidence_anchors": result.get("evidence_anchors") if isinstance(result.get("evidence_anchors"), list) else [],
+        "reason": reason,
+        "decision_snapshot": decision_snapshot_text,
+        "scope_boundary_note": scope_boundary_note,
+        "source_evidence_summary": source_evidence_summary,
+        "evidence_anchors": anchors,
         "review_focus_points": result.get("review_focus_points") if isinstance(result.get("review_focus_points"), list) else [],
-        "uncertainty_points": result.get("uncertainty_points") if isinstance(result.get("uncertainty_points"), list) else [],
-        "recommend_candidate_pool": result.get("recommend_candidate_pool"),
-        "recommended_action": result.get("recommended_action"),
-        "confidence_summary": empty_confidence_summary(),
-        "handoff_readiness_hint": empty_handoff_readiness_hint(),
-        "persona_candidates": result.get("persona_candidates") if isinstance(result.get("persona_candidates"), list) else [],
-        "taxonomy_hints": empty_taxonomy_hints(),
-        "assessment_hints": result.get("assessment_hints") if isinstance(result.get("assessment_hints"), dict) else {},
+        "uncertainty_points": uncertainty_points,
+        "recommend_candidate_pool": recommend_candidate_pool,
+        "recommended_action": recommended_action,
+        "confidence_summary": confidence_summary,
+        "handoff_readiness_hint": handoff_hint,
+        "persona_candidates": persona_candidates,
+        "taxonomy_hints": taxonomy_hints_normalized,
+        "assessment_hints": assessment_hints,
     }
-    for field_name in ("scope_confidence", "taxonomy_confidence", "persona_confidence"):
-        field_value = confidence_summary.get(field_name)
-        if isinstance(field_value, str) or field_value is None:
-            normalized["confidence_summary"][field_name] = field_value
-    for field_name in ("suggested_action", "rationale"):
-        field_value = handoff_hint.get(field_name)
-        if isinstance(field_value, str) or field_value is None:
-            normalized["handoff_readiness_hint"][field_name] = field_value
-    for field_name in ("primary_category_code", "secondary_category_code", "primary_persona_code", "delivery_form_code", "adjacent_category_rejected_reason"):
-        field_value = taxonomy_hints.get(field_name)
-        if isinstance(field_value, str) or field_value is None:
-            normalized["taxonomy_hints"][field_name] = field_value
-    normalized["taxonomy_hints"]["main_category_candidate"] = _normalize_candidate(taxonomy_hints.get("main_category_candidate"))
-    normalized["taxonomy_hints"]["adjacent_category_candidate"] = _normalize_candidate(
-        taxonomy_hints.get("adjacent_category_candidate"),
-        adjacent=True,
-    )
     return normalized
 
 
