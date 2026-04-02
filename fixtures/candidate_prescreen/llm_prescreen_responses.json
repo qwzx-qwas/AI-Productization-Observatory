@@ -7,20 +7,84 @@
     "github:987654321": {
       "in_observatory_scope": true,
       "reason": "The repo describes an end-user support workflow product with clear AI-assisted delivery and traceable product evidence.",
+      "decision_snapshot": "Recommend candidate_pool because the repo presents a support-team AI workspace with concrete ticket workflow evidence.",
+      "scope_boundary_note": "This looks in scope because it describes a support workspace used by customer operations teams, not a generic agent framework.",
       "source_evidence_summary": [
         "The summary says it is an AI support agent workspace for customer operations teams.",
         "The excerpt mentions auditable workflows, routing, answering, and summarization for tickets."
+      ],
+      "evidence_anchors": [
+        {
+          "anchor_rank": 1,
+          "evidence_text": "AI support agent workspace for customer operations teams.",
+          "evidence_source_field": "summary",
+          "why_it_matters": "This is the clearest end-user product statement and points to both observatory scope and the likely support persona.",
+          "applies_to": ["scope", "persona", "recommended_action"]
+        },
+        {
+          "anchor_rank": 2,
+          "evidence_text": "route, answer, and summarize tickets with AI agents",
+          "evidence_source_field": "raw_evidence_excerpt",
+          "why_it_matters": "The wording centers on customer support execution rather than generic knowledge retrieval, which supports the main taxonomy choice.",
+          "applies_to": ["taxonomy", "recommended_action"]
+        },
+        {
+          "anchor_rank": 3,
+          "evidence_text": "auditable workflows",
+          "evidence_source_field": "raw_evidence_excerpt",
+          "why_it_matters": "This explains why workflow automation is an adjacent category while still remaining secondary to the support use case.",
+          "applies_to": ["taxonomy", "scope"]
+        }
+      ],
+      "review_focus_points": [
+        "Confirm support teams are the primary end users rather than internal ops builders.",
+        "Check whether knowledge assistance is secondary to ticket handling workflow.",
+        "Verify the product is consumed as a workspace rather than just an internal automation library."
       ],
       "uncertainty_points": [
         "Need human review to confirm whether the primary job is support operations or broader workflow automation."
       ],
       "recommend_candidate_pool": true,
       "recommended_action": "candidate_pool",
+      "confidence_summary": {
+        "scope_confidence": "high",
+        "taxonomy_confidence": "medium",
+        "persona_confidence": "high"
+      },
+      "handoff_readiness_hint": {
+        "suggested_action": "candidate_pool",
+        "rationale": "Evidence is strong enough for staging, but human review should still confirm that support is primary over adjacent workflow automation."
+      },
+      "persona_candidates": [
+        {
+          "persona_code": "support_agent",
+          "confidence_rank": 1,
+          "rationale": "The summary explicitly names customer operations teams and the excerpt centers on ticket workflows.",
+          "supporting_evidence_anchors": [1, 2]
+        },
+        {
+          "persona_code": "operator",
+          "confidence_rank": 2,
+          "rationale": "The product also emphasizes auditable workflows, which can fit broader operations ownership.",
+          "supporting_evidence_anchors": [2, 3]
+        }
+      ],
       "taxonomy_hints": {
         "primary_category_code": "JTBD_SALES_SUPPORT",
         "secondary_category_code": null,
-        "primary_persona_code": "unknown",
-        "delivery_form_code": "web_app"
+        "primary_persona_code": "support_agent",
+        "delivery_form_code": "web_app",
+        "main_category_candidate": {
+          "category_code": "JTBD_SALES_SUPPORT",
+          "rationale": "The source language is organized around routing, answering, and summarizing support tickets for customer operations teams.",
+          "supporting_evidence_anchors": [1, 2]
+        },
+        "adjacent_category_candidate": {
+          "category_code": "JTBD_PRODUCTIVITY_AUTOMATION",
+          "rationale_for_similarity": "The excerpt mentions auditable workflows and AI agents, which can resemble a workflow automation tool.",
+          "supporting_evidence_anchors": [2, 3]
+        },
+        "adjacent_category_rejected_reason": "It looks close to workflow automation because of the agent and workflow language, but the strongest evidence is still about customer support ticket handling for support teams, so support remains the primary category."
       },
       "assessment_hints": {
         "evidence_strength": "high",
@@ -32,20 +96,90 @@
     "github:987654322": {
       "in_observatory_scope": true,
       "reason": "The repo looks like an internal AI workflow product rather than pure infrastructure, but its boundary with developer tooling still needs a human check.",
+      "decision_snapshot": "Recommend hold because the workflow automation signal is real, but the internal-tooling boundary is too thin for automatic promotion.",
+      "scope_boundary_note": "The candidate may be in scope as an internal ops workflow product, but it could also fall outside the observatory as orchestration tooling.",
       "source_evidence_summary": [
         "The summary positions the repo as an internal AI workflow runner for operations playbooks.",
         "The excerpt highlights approvals, task execution traces, and internal team workflows."
+      ],
+      "evidence_anchors": [
+        {
+          "anchor_rank": 1,
+          "evidence_text": "Internal AI workflow runner for operations playbooks.",
+          "evidence_source_field": "summary",
+          "why_it_matters": "This is the strongest scope signal, but the word internal also creates the main human-review boundary.",
+          "applies_to": ["scope", "recommended_action"]
+        },
+        {
+          "anchor_rank": 2,
+          "evidence_text": "Includes agents, approvals, and task execution traces.",
+          "evidence_source_field": "raw_evidence_excerpt",
+          "why_it_matters": "These are workflow automation cues that support the main category choice.",
+          "applies_to": ["taxonomy", "scope"]
+        },
+        {
+          "anchor_rank": 3,
+          "evidence_text": "internal teams",
+          "evidence_source_field": "raw_evidence_excerpt",
+          "why_it_matters": "This raises the risk that the repo is closer to internal tooling than a broadly consumed end-user product.",
+          "applies_to": ["scope", "recommended_action", "persona"]
+        }
+      ],
+      "review_focus_points": [
+        "Check whether this is a real end-user product or primarily internal orchestration tooling.",
+        "Confirm whether operations users, not developers, are the intended primary persona.",
+        "Look for evidence of a user-facing workspace beyond workflow engine language."
       ],
       "uncertainty_points": [
         "Could drift toward internal tooling or orchestration rather than a user-facing product."
       ],
       "recommend_candidate_pool": false,
       "recommended_action": "hold",
+      "confidence_summary": {
+        "scope_confidence": "medium",
+        "taxonomy_confidence": "medium",
+        "persona_confidence": "low"
+      },
+      "handoff_readiness_hint": {
+        "suggested_action": "hold",
+        "rationale": "The automation signal is plausible, but the internal-tooling ambiguity should be resolved before it enters the candidate pool."
+      },
+      "persona_candidates": [
+        {
+          "persona_code": "operator",
+          "confidence_rank": 1,
+          "rationale": "Operations playbooks and approvals point most directly to operators handling repeatable workflows.",
+          "supporting_evidence_anchors": [1, 2]
+        },
+        {
+          "persona_code": "general_business_user",
+          "confidence_rank": 2,
+          "rationale": "The source indicates internal team workflows but does not cleanly identify a narrower business persona.",
+          "supporting_evidence_anchors": [1, 3]
+        },
+        {
+          "persona_code": "unknown",
+          "confidence_rank": 3,
+          "rationale": "The public source does not clearly show who the day-to-day operator is beyond an internal team context.",
+          "supporting_evidence_anchors": [3]
+        }
+      ],
       "taxonomy_hints": {
         "primary_category_code": "JTBD_PRODUCTIVITY_AUTOMATION",
         "secondary_category_code": null,
-        "primary_persona_code": "unknown",
-        "delivery_form_code": "desktop_app"
+        "primary_persona_code": "operator",
+        "delivery_form_code": "desktop_app",
+        "main_category_candidate": {
+          "category_code": "JTBD_PRODUCTIVITY_AUTOMATION",
+          "rationale": "Approvals, task execution traces, and workflow-runner language point to automated operations workflows rather than pure content or knowledge use cases.",
+          "supporting_evidence_anchors": [1, 2]
+        },
+        "adjacent_category_candidate": {
+          "category_code": "JTBD_DEV_TOOLS",
+          "rationale_for_similarity": "A workflow runner with agents and execution traces can resemble developer or orchestration tooling.",
+          "supporting_evidence_anchors": [2, 3]
+        },
+        "adjacent_category_rejected_reason": "Developer-tool adjacency is real because the repo looks like orchestration infrastructure at first glance, but the available evidence still frames it as an operations workflow product rather than a coding or developer lifecycle tool."
       },
       "assessment_hints": {
         "evidence_strength": "medium",
@@ -57,20 +191,83 @@
     "product_hunt:ph_20001": {
       "in_observatory_scope": true,
       "reason": "The launch is a publicly released AI product for customer operations and has clear source evidence in both the listing and linked homepage/repo fields.",
+      "decision_snapshot": "Recommend whitelist_candidate because the launch has strong public product evidence and a clear support-ops use case.",
+      "scope_boundary_note": "This is comfortably in scope because it is a public product launch for customer operations rather than a hidden internal tool.",
       "source_evidence_summary": [
         "The Product Hunt summary explicitly says support agent copilot for customer ops teams.",
         "The evidence excerpt describes drafting replies, summarization, and ticket follow-up automation."
+      ],
+      "evidence_anchors": [
+        {
+          "anchor_rank": 1,
+          "evidence_text": "support agent copilot for customer ops teams",
+          "evidence_source_field": "summary",
+          "why_it_matters": "This directly names the persona and the customer-support use case, making it high-value first-pass evidence.",
+          "applies_to": ["scope", "persona", "taxonomy"]
+        },
+        {
+          "anchor_rank": 2,
+          "evidence_text": "drafting replies",
+          "evidence_source_field": "raw_evidence_excerpt",
+          "why_it_matters": "Reply drafting is a concrete support workflow action rather than a generic productivity claim.",
+          "applies_to": ["taxonomy", "recommended_action"]
+        },
+        {
+          "anchor_rank": 3,
+          "evidence_text": "ticket follow-up automation",
+          "evidence_source_field": "raw_evidence_excerpt",
+          "why_it_matters": "This explains why workflow automation is adjacent, but still downstream of the support-facing job.",
+          "applies_to": ["taxonomy", "scope"]
+        }
+      ],
+      "review_focus_points": [
+        "Confirm the primary JTBD is support execution rather than broader knowledge assistance.",
+        "Check whether the copilot is a workspace product or a narrower plugin-like delivery form."
       ],
       "uncertainty_points": [
         "Need human review to confirm whether the best taxonomy is support-focused or broader knowledge workflow."
       ],
       "recommend_candidate_pool": true,
       "recommended_action": "whitelist_candidate",
+      "confidence_summary": {
+        "scope_confidence": "high",
+        "taxonomy_confidence": "medium",
+        "persona_confidence": "high"
+      },
+      "handoff_readiness_hint": {
+        "suggested_action": "whitelist_candidate",
+        "rationale": "The launch is public and product-shaped, so it is a good whitelist candidate pending a quick human taxonomy check."
+      },
+      "persona_candidates": [
+        {
+          "persona_code": "support_agent",
+          "confidence_rank": 1,
+          "rationale": "The summary explicitly names support agent and customer ops teams.",
+          "supporting_evidence_anchors": [1, 2]
+        },
+        {
+          "persona_code": "operator",
+          "confidence_rank": 2,
+          "rationale": "Ticket follow-up automation could also serve broader customer operations owners.",
+          "supporting_evidence_anchors": [1, 3]
+        }
+      ],
       "taxonomy_hints": {
         "primary_category_code": "JTBD_SALES_SUPPORT",
         "secondary_category_code": null,
-        "primary_persona_code": "unknown",
-        "delivery_form_code": "web_app"
+        "primary_persona_code": "support_agent",
+        "delivery_form_code": "web_app",
+        "main_category_candidate": {
+          "category_code": "JTBD_SALES_SUPPORT",
+          "rationale": "The launch centers on support agents, replies, and ticket follow-up rather than general knowledge retrieval.",
+          "supporting_evidence_anchors": [1, 2]
+        },
+        "adjacent_category_candidate": {
+          "category_code": "JTBD_KNOWLEDGE",
+          "rationale_for_similarity": "Summarization and copilot language can resemble a knowledge assistant.",
+          "supporting_evidence_anchors": [1, 2]
+        },
+        "adjacent_category_rejected_reason": "It resembles knowledge tooling because it summarizes and assists, but the highest-value evidence is about handling customer support replies and follow-up workflows, so support remains the better primary label."
       },
       "assessment_hints": {
         "evidence_strength": "high",

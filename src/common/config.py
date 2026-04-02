@@ -5,7 +5,7 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
+from typing import Iterable, Mapping
 
 from src.common.constants import (
     DEFAULT_CANDIDATE_WORKSPACE_DIR,
@@ -20,6 +20,10 @@ from src.common.constants import (
     DEFAULT_TASK_STORE_PATH,
 )
 from src.common.errors import ConfigError
+
+
+_SENSITIVE_ENV_NAME_PARTS = ("KEY", "TOKEN", "SECRET", "CREDENTIAL", "PASSWORD")
+_SECRET_LOG_PLACEHOLDER = "[REDACTED]"
 
 
 @dataclass(frozen=True)
@@ -83,6 +87,39 @@ def require_environment_variables(names: Iterable[str]) -> None:
         raise ConfigError(f"Missing required environment variables: {joined}")
 
 
+def is_sensitive_environment_variable(name: str) -> bool:
+    normalized = name.upper()
+    return any(part in normalized for part in _SENSITIVE_ENV_NAME_PARTS)
+
+
+def require_environment_variable(name: str, *, local_env_file: str = ".env", template_file: str = ".env.example") -> str:
+    value = os.environ.get(name)
+    if value:
+        return value
+
+    setup_hint = f"Copy {template_file} to {local_env_file}, fill in your own local value, and export it before running."
+    if is_sensitive_environment_variable(name):
+        raise ConfigError(
+            f"{name} is required but not set. API credentials are private and must stay in local-only {local_env_file}. "
+            f"{setup_hint} Never commit real secrets to this public repository."
+        )
+    raise ConfigError(f"{name} is required but not set. {setup_hint}")
+
+
+def redact_sensitive_value(value: str) -> str:
+    if not value:
+        return "<unset>"
+    return _SECRET_LOG_PLACEHOLDER
+
+
+def summarize_resolved_settings(settings: Mapping[str, str]) -> str:
+    parts = []
+    for name, value in settings.items():
+        rendered_value = redact_sensitive_value(value) if is_sensitive_environment_variable(name) else value
+        parts.append(f"{name}={rendered_value}")
+    return ", ".join(parts)
+
+
 _CONFIG_ENV_TO_FIELD = {
     "APO_CONFIG_DIR": "config_dir",
     "APO_SCHEMA_DIR": "schema_dir",
@@ -116,6 +153,9 @@ def resolve_required_settings(config: AppConfig, names: Iterable[str]) -> dict[s
 
     if missing_env:
         joined = ", ".join(sorted(missing_env))
-        raise ConfigError(f"Missing required environment variables: {joined}")
+        raise ConfigError(
+            f"Missing required environment variables: {joined}. "
+            "Copy .env.example to .env, fill in your local values, and export them before running."
+        )
 
     return resolved

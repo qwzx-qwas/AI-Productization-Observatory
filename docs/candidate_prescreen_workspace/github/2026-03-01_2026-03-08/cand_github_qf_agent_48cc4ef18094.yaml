@@ -1,0 +1,177 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_48cc4ef18094
+candidate_batch_id: candidate_batch_github_qf_agent_2026-03-01_2026-03-08
+created_at: '2026-04-01T13:07:16.097224Z'
+updated_at: '2026-04-01T13:07:26.836903Z'
+source: github
+source_id: src_github
+source_window: 2026-03-01..2026-03-08
+time_field: pushed_at
+external_id: '628172054'
+canonical_url: https://github.com/emarco177/langchain-course
+title: langchain-course
+summary: 'A project-based course repository for developing AI agents using LangChain
+  v1+ and LangGraph: search agents, RAG systems, reflection agents, and code interpreters.'
+raw_evidence_excerpt: "A project-based course repository for developing AI agents\
+  \ using LangChain v1+ and LangGraph: search agents, RAG systems, reflection agents,\
+  \ and code interpreters.\n\n# LangChain- Develop AI Agents with LangChain & LangGraph\
+  \ \U0001F99C\U0001F517\n\n**Learn LangChain and LangGraph by building real world\
+  \ AI Agents (Python, Latest Version V.1.0+)**\n\nThis course is designed to teach\
+  \ you how to QUICKLY harness the power of the LangChain library for LLM applications.\
+  \ Build 3 end-to-end working LangChain based generative AI applications with no\
+  \ fluff, no toy examples - just real projects using real APIs and real-world skills.\n\
+  \n![LangChain Logo](/static/LangChain_OSS%20Lockup_light.png)\n![LangGraph Logo](/static/LangGraph_OSS%20Lockup_light.png)\n\
+  \n[![Twitter Follow](https://img.shields.io/twitter/follow/EdenMarco177?style=social)](https://twitter.com/EdenMarco177)\n\
+  [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)\n\
+  \n[![udemy](https://img.shields.io/badge/LangChain%20Udemy%20Course%20Coupon%20%2412.99-brightgreen)](https://www.udemy.com/course/langchain/?couponCode=MARCH-2026)\n\
+  \n\n\n## \U0001F4A1 What You'll Build \n\nThis course takes you through building\
+  \ 7 real-world AI agent projects, from simple hello-world applications to advanced\
+  \ agentic systems:\n\n| Project | Type | Description |\n|---------|------|-------------|\n\
+  | \U0001F44B [LangChain Hello World](https://github.com/emarco177/langchain-course/tree/project/hello-world)\
+  \ | Branch (`project/hello-world`) | Your first AI agent - basic structure and LLM\
+  \ integration |\n| \U0001F50E  [Modern Search Agent](https://github.com/emarco177/ice_breaker/tree/project/search-agent)\
+  \ | Branch (`project/search-agent`) | Build search agents using LangChain v.1's\
+  \ `create_agent` interface with custom tools, Tavily integration, and structured\
+  \ outputs |\n| \U0001F9E0 [Agents Under The Hood](https://github.com/emarco177/langchain-course/tree/project/agents-under-the-hood)\
+  \ | Branch (`project/agents-under-the-hood`) | Understanding reasoning and acting\
+  \ patterns in AI agents |\n| \U0001F4C4 [RAG Gist](https://github.com/emarco177/langchain-course/tree/project/rag-gist)\
+  \ | Branch (`project/rag-gist`) | The gist of retrieval-augmented generation |\n\
+  | \U0001F4DA [Documentation Helper](https://github.com/emarco177/documentation-helper)\
+  \ | External Repo | Intelligent documentation assistant |\n| \U0001F4BB [Code Interpreter](https://github.com/emarco177/langchain-course/tree/project/code-interpreter)\
+  \ | Branch (`project/code-interpreter`) | AI-powered code execution and analysis\
+  \ |\n| \U0001FA9E [Reflection Agent](https://github.com/emarco177/langgraph-course/tree/project/reflection-agent)\
+  \ | External Repo | Self-improving agent with reflection and critique capabilities\
+  \ |\n| \U0001F504 [Reflexion Agent](https://github.com/emarco177/langgraph-course/tree/project/reflexion-agent)\
+  \ | External Repo | Advanced self-correcting agent using reflexion techniques |\n\
+  | \U0001F916 [Agentic RAG](https://github.com/emarco177/langgraph-course/tree/project/agentic-rag)\
+  \ | External Repo | Advanced retrieval-augmented generation system |\n\n## \U0001F4DA\
+  \ Course Highlights \n\n- **7 Complete Projects** - From beginner to advanced implementations\
+  \ including Ice Breaker, Documentation Helper, and Code Interpreter\n- **Real-World\
+  \ Applications** - Build agents that solve actual problems with live APIs\n- **Modern\
+  \ Tech Stack** - LangChain v0.3+, LangGraph, Pinecone, FAISS, Streamlit\n- **Practical\
+  \ Skills** - Learn RAG, vector databases, prompt engineering, and agent workflows\n\
+  - **Interactive Learning** - Follow commits chronologically for step-by-step learning\n\
+  \n## \U0001F914 Learning Path \n\n### Phase 1: Foundations\n1. **Hello World Chain**\
+  \ - Basic agent structure and LLM integration\n2. **Code Interpreter** - Tool calling\
+  \ and code execution capabilities\n\n### Phase 2: Real-World Applications\n3. **Ice\
+  \ Breaker** - Data collection and social media integration\n4. **Documentation Helper**\
+  \ - RAG implementation and knowledge management\n\n### Phase 3: Advanced Concepts\n\
+  5. **Blog Analyzer** - Multi-step reasoning and content analysis\n6. **Agentic RAG**\
+  \ - Self-correcting agents with memory and planning\n\n## \u25B6\uFE0F Getting Started\
+  \ \n\n### \U0001F6E0\uFE0F Prerequisites \n- **This is not a beginner course** -\
+  \ Basic software engineering concepts needed\n- Familiarity with: git, Python, environment\
+  \ variables, classes, testing and debugging\n- Python 3.10+\n- Any Python package\
+  \ manager (uv, poetry, pipenv) - but NOT conda!\n- Access to an LLM (can be open\
+  \ source via Ollama, or cloud providers like OpenAI, Anthropic, Gemini)\n- No Machine\
+  \ Learning experience needed\n\n### \u2699\uFE0F Setup Instructions \n\n1. **Clone\
+  \ the repository**\n   ```bash\n   git clone https://github.com/emarco177/langchain-course\n\
+  \   cd langchain-course\n   ```\n2. **Choose your learning path**\n   \n   **For\
+  \ branch-based projects:**\n   ```bash\n   # Start with Hello World\n   git checkout\
+  \ project/hello-world\n   uv sync\n   uv run python main.py\n   \n   # Progress\
+  \ to Code Interpreter\n   git checkout project/code-interpreter\n   uv sync\n  \
+  \ uv run python main.py\n   ```\n   \n   **For external repository projects:**\n\
+  \   ```bash\n   # Clone specific project repositories\n   git clone https://github.com/emarco177/ice_breaker\n\
+  \   cd ice_breaker\n   # Follow project-specific setup instructions\n   ```\n\n\
+  3. **Follow the commits**\n   - Each commit represents a lesson or feature implementation\n\
+  \   - Use `git log --oneline` to see the learning progression\n   - Checkout previous\
+  \ commits to understand the development process\n\n**External Projects:**\n- [Ice\
+  \ Breaker](https://github.com/emarco177/ice_breaker) - Social media profile analyzer\n\
+  - [Medium Analyzer](https://github.com/emarco177/blog-analyzer) - Content analysis\
+  \ and insights generator\n- [Documentation Helper](https://github.com/emarco177/documentation-helper)\
+  \ - AI documentation assistant\n- [Reflection Agent](https://github.com/emarco177/langgraph-course/tree/project/reflection-agent)\
+  \ - Self-improving agent with reflection and critique capabilities\n- [Reflexion\
+  \ Agent](https://github.com/emarco177/langgraph-course/tree/project/reflexion-agent)\
+  \ - Advanced self-correcting agent using reflexion techniques\n- [Agentic RAG](https://github.com/emarco177/langgraph-course/tree/project/agentic-rag)\
+  \ - Advanced retrieval-augmented generation system\n\n\n## \U0001F4DA Learning Objectives\
+  \ \n\nBy the end of this course, you'll be able to:\n\n- Build AI agents from scratch\
+  \ using modern frameworks\n- Implement tool calling and external API integrations\n\
+  - Create RAG systems with vector databases\n- Design multi-step reasoning workflows\n\
+  - Deploy agents to production environments\n- Handle error correction and self-improvement\
+  \ in agents\n- Optimize agent performance and cost efficiency\n\n\n\n\n\n## \U0001F64F\
+  \ Acknowledgements \n\nBig thanks to the **LangChain / LangGraph** team and their\
+  \ excellent [documentation and tutorials](https://langchain-ai.github.io/langgraph/tutorials/introduction/)\
+  \ that make this course possible.\n\n## \U0001F31F Support\n\nIf you find this project\
+  \ helpful, please consider:\n- \u2B50 Starring the repository\n- \U0001F41B Reporting\
+  \ issues\n- \U0001F4A1 Contributing improvements\n- \U0001F4E2 Sharing with others\n\
+  \n---\n\n<div align=\"center\">\n\n### \U0001F517 Connect with Me\n\n[![Portfolio](https://img.shields.io/badge/Portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.udemy.com/course/langchain/?referralCode=D981B8213164A3EA91AC)\n\
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/eden-marco/)\n\
+  [![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/EdenEmarco177)\n\
+  \n**Built with \u2764\uFE0F by Eden Marco**\n\n</div>"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-01'
+    window_end: '2026-03-08'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-01..2026-03-08
+    external_id: '628172054'
+    canonical_url: https://github.com/emarco177/langchain-course
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: Relay returned HTTP 404
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

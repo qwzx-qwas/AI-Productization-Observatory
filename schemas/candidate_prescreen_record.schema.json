@@ -26,6 +26,7 @@
     "llm_prescreen",
     "whitelist_reason",
     "human_review_status",
+    "human_review_note_template_key",
     "human_review_notes",
     "staging_handoff"
   ],
@@ -176,10 +177,17 @@
         "status",
         "in_observatory_scope",
         "reason",
+        "decision_snapshot",
+        "scope_boundary_note",
         "source_evidence_summary",
+        "evidence_anchors",
+        "review_focus_points",
         "uncertainty_points",
         "recommend_candidate_pool",
         "recommended_action",
+        "confidence_summary",
+        "handoff_readiness_hint",
+        "persona_candidates",
         "taxonomy_hints",
         "assessment_hints",
         "channel_metadata",
@@ -205,11 +213,37 @@
             "null"
           ]
         },
+        "decision_snapshot": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scope_boundary_note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "source_evidence_summary": {
           "type": "array",
           "items": {
             "type": "string"
           }
+        },
+        "evidence_anchors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceAnchor"
+          },
+          "maxItems": 5
+        },
+        "review_focus_points": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 4
         },
         "uncertainty_points": {
           "type": "array",
@@ -236,6 +270,62 @@
             null
           ]
         },
+        "confidence_summary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "scope_confidence",
+            "taxonomy_confidence",
+            "persona_confidence"
+          ],
+          "properties": {
+            "scope_confidence": {
+              "$ref": "#/$defs/nullableConfidenceLevel"
+            },
+            "taxonomy_confidence": {
+              "$ref": "#/$defs/nullableConfidenceLevel"
+            },
+            "persona_confidence": {
+              "$ref": "#/$defs/nullableConfidenceLevel"
+            }
+          }
+        },
+        "handoff_readiness_hint": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "suggested_action",
+            "rationale"
+          ],
+          "properties": {
+            "suggested_action": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "reject",
+                "hold",
+                "candidate_pool",
+                "whitelist_candidate",
+                null
+              ]
+            },
+            "rationale": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "persona_candidates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/personaCandidate"
+          },
+          "maxItems": 3
+        },
         "taxonomy_hints": {
           "type": "object",
           "additionalProperties": false,
@@ -243,7 +333,10 @@
             "primary_category_code",
             "secondary_category_code",
             "primary_persona_code",
-            "delivery_form_code"
+            "delivery_form_code",
+            "main_category_candidate",
+            "adjacent_category_candidate",
+            "adjacent_category_rejected_reason"
           ],
           "properties": {
             "primary_category_code": {
@@ -265,6 +358,18 @@
               ]
             },
             "delivery_form_code": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "main_category_candidate": {
+              "$ref": "#/$defs/categoryCandidate"
+            },
+            "adjacent_category_candidate": {
+              "$ref": "#/$defs/adjacentCategoryCandidate"
+            },
+            "adjacent_category_rejected_reason": {
               "type": [
                 "string",
                 "null"
@@ -407,6 +512,18 @@
         "on_hold"
       ]
     },
+    "human_review_note_template_key": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "approved",
+        "hold",
+        "rejected",
+        null
+      ]
+    },
     "human_review_notes": {
       "type": [
         "string",
@@ -472,6 +589,154 @@
     }
   },
   "$defs": {
+    "nullableConfidenceLevel": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        null
+      ]
+    },
+    "evidenceAnchor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "anchor_rank",
+        "evidence_text",
+        "evidence_source_field",
+        "why_it_matters"
+      ],
+      "properties": {
+        "anchor_rank": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "evidence_text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_source_field": {
+          "type": "string",
+          "minLength": 1
+        },
+        "why_it_matters": {
+          "type": "string",
+          "minLength": 1
+        },
+        "applies_to": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "scope",
+              "taxonomy",
+              "persona",
+              "recommended_action"
+            ]
+          }
+        }
+      }
+    },
+    "categoryCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "category_code",
+        "rationale",
+        "supporting_evidence_anchors"
+      ],
+      "properties": {
+        "category_code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rationale": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "supporting_evidence_anchors": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          }
+        }
+      }
+    },
+    "adjacentCategoryCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "category_code",
+        "rationale_for_similarity",
+        "supporting_evidence_anchors"
+      ],
+      "properties": {
+        "category_code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rationale_for_similarity": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "supporting_evidence_anchors": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          }
+        }
+      }
+    },
+    "personaCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "persona_code",
+        "confidence_rank",
+        "rationale",
+        "supporting_evidence_anchors"
+      ],
+      "properties": {
+        "persona_code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "confidence_rank": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supporting_evidence_anchors": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          }
+        }
+      }
+    },
     "nonEmptyReference": {
       "type": "object",
       "minProperties": 1,

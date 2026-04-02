@@ -7,6 +7,8 @@ from typing import Any
 
 from src.candidate_prescreen.config import candidate_batch_id, candidate_id, load_candidate_prescreen_config
 from src.candidate_prescreen.discovery import discover_candidates, discovery_metadata
+from src.candidate_prescreen.prompt_contract import candidate_prescreener_prompt_contract
+from src.candidate_prescreen.review_card import empty_llm_prescreen, validate_candidate_review_card
 from src.candidate_prescreen.relay import screen_candidate
 from src.candidate_prescreen.staging import handoff_candidate_to_staging
 from src.common.config import AppConfig
@@ -94,39 +96,15 @@ def _empty_prescreen_record(
                 "canonical_url": candidate_input["canonical_url"],
             },
         },
-        "llm_prescreen": {
-            "status": "failed",
-            "in_observatory_scope": None,
-            "reason": None,
-            "source_evidence_summary": [],
-            "uncertainty_points": [],
-            "recommend_candidate_pool": None,
-            "recommended_action": None,
-            "taxonomy_hints": {
-                "primary_category_code": None,
-                "secondary_category_code": None,
-                "primary_persona_code": None,
-                "delivery_form_code": None,
-            },
-            "assessment_hints": {
-                "evidence_strength": None,
-                "build_evidence_band": None,
-                "need_clarity_band": None,
-                "unresolved_risk": None,
-            },
-            "channel_metadata": {
-                "prompt_version": llm_defaults["prompt_version"],
-                "routing_version": llm_defaults["routing_version"],
-                "relay_client_version": llm_defaults["relay_client_version"],
-                "model": None,
-                "transport": llm_defaults["relay_transport"],
-                "request_id": None,
-            },
-            "error_type": None,
-            "error_message": None,
-        },
+        "llm_prescreen": empty_llm_prescreen(
+            prompt_version=str(llm_defaults["prompt_version"]),
+            routing_version=str(llm_defaults["routing_version"]),
+            relay_client_version=str(llm_defaults["relay_client_version"]),
+            relay_transport=str(llm_defaults["relay_transport"]),
+        ),
         "whitelist_reason": None,
         "human_review_status": "pending_first_pass",
+        "human_review_note_template_key": None,
         "human_review_notes": None,
         "human_reviewed_at": None,
         "staging_handoff": {
@@ -142,6 +120,14 @@ def _empty_prescreen_record(
 
 def _validate_candidate_record(config: AppConfig, record: dict[str, Any]) -> None:
     validate_instance(record, _schema_path(config))
+    workflow_config = load_candidate_prescreen_config(config.config_dir)
+    workspace = workflow_config.get("workspace")
+    if not isinstance(workspace, dict):
+        raise ContractValidationError("candidate_prescreen_workflow.yaml:workspace must be a mapping")
+    note_templates = workspace.get("human_review_note_templates")
+    if not isinstance(note_templates, dict):
+        raise ContractValidationError("candidate_prescreen_workflow.yaml:workspace:human_review_note_templates must be a mapping")
+    validate_candidate_review_card(record, note_templates=note_templates)
 
 
 def run_candidate_prescreen(
@@ -193,6 +179,9 @@ def run_candidate_prescreen(
                 routing_version=str(llm_defaults["routing_version"]),
                 relay_transport=str(llm_defaults["relay_transport"]),
                 relay_client_version=str(llm_defaults["relay_client_version"]),
+                prompt_contract=candidate_prescreener_prompt_contract(
+                    prompt_spec_ref=str(llm_defaults.get("prompt_spec_ref") or ""),
+                ),
                 fixture_path=llm_fixture_path,
                 timeout_seconds=int(llm_defaults["timeout_seconds_default"]),
                 max_retries=int(llm_defaults["max_retries_default"]),
@@ -205,10 +194,17 @@ def run_candidate_prescreen(
             record["llm_prescreen"]["status"] = "succeeded"
             record["llm_prescreen"]["in_observatory_scope"] = llm_result["in_observatory_scope"]
             record["llm_prescreen"]["reason"] = llm_result["reason"]
+            record["llm_prescreen"]["decision_snapshot"] = llm_result["decision_snapshot"]
+            record["llm_prescreen"]["scope_boundary_note"] = llm_result["scope_boundary_note"]
             record["llm_prescreen"]["source_evidence_summary"] = llm_result["source_evidence_summary"]
+            record["llm_prescreen"]["evidence_anchors"] = llm_result["evidence_anchors"]
+            record["llm_prescreen"]["review_focus_points"] = llm_result["review_focus_points"]
             record["llm_prescreen"]["uncertainty_points"] = llm_result["uncertainty_points"]
             record["llm_prescreen"]["recommend_candidate_pool"] = llm_result["recommend_candidate_pool"]
             record["llm_prescreen"]["recommended_action"] = llm_result["recommended_action"]
+            record["llm_prescreen"]["confidence_summary"] = llm_result["confidence_summary"]
+            record["llm_prescreen"]["handoff_readiness_hint"] = llm_result["handoff_readiness_hint"]
+            record["llm_prescreen"]["persona_candidates"] = llm_result["persona_candidates"]
             record["llm_prescreen"]["taxonomy_hints"] = llm_result["taxonomy_hints"]
             record["llm_prescreen"]["assessment_hints"] = llm_result["assessment_hints"]
             record["llm_prescreen"]["channel_metadata"] = llm_result["channel_metadata"]

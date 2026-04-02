@@ -66,9 +66,9 @@ last_frozen_version: freeze_board_v8
    - blocking：`yes`
    - owner：`source_governance_owner`
    - affected_docs：`03`, `03a`, `configs/source_registry.yaml`
-   - current_default：`official Product Hunt GraphQL API + mandatory token auth`
+   - current_default：`keep official Product Hunt GraphQL API + mandatory token auth as the reserved live path; current phase does not execute Product Hunt live ingestion and keeps Product Hunt as fixture/replay/contract plus future integration boundary`
    - deadline：`TBD_HUMAN`
-   - final_decision：`official Product Hunt GraphQL API + mandatory token auth`
+   - final_decision：`freeze Product Hunt live access path as official Product Hunt GraphQL API + mandatory token auth when live integration resumes; current phase keeps Product Hunt in fixture/replay/contract mode only, does not execute Product Hunt live ingestion, and must not describe PRODUCT_HUNT_TOKEN as a prerequisite for the minimal runnable baseline`
    - status：`frozen`
    (3) 第 3 行
    - decision_id：`DEC-003`
@@ -206,9 +206,9 @@ last_frozen_version: freeze_board_v8
    - blocking：`no`
    - owner：`source_governance_owner`
    - affected_docs：`03`, `03a`, `README`, `configs/source_registry.yaml`
-   - current_default：`internal research / analysis / prototype use only; authorization before commercial use; no higher-limit request in phase1 unless triggered`
+   - current_default：`internal research / analysis / prototype use only; authorization before commercial use; no higher-limit request in phase1 unless triggered; current phase keeps Product Hunt live ingestion deferred`
    - deadline：`TBD_HUMAN`
-   - final_decision：`freeze Product Hunt operating boundary as: internal research / analysis / prototype validation only in the current version; external delivery, paid embedding, or raw/derived data redistribution require additional authorization or legal confirmation; do not describe this as a finalized legal boundary; legal boundary stays open until formal business/legal definition exists; do not request higher limit by default in phase1; request higher limit only when any of the following occurs: complexity peak > 70% for two consecutive weeks, 429 ratio > 1% of PH requests for two consecutive weeks, planned frequency above weekly, or historical backfill > 26 weeks`
+   - final_decision：`freeze Product Hunt operating boundary as: internal research / analysis / prototype validation only in the current version; external delivery, paid embedding, or raw/derived data redistribution require additional authorization or legal confirmation; do not describe this as a finalized legal boundary; legal boundary stays open until formal business/legal definition exists; do not request higher limit by default in phase1; request higher limit only when any of the following occurs: complexity peak > 70% for two consecutive weeks, 429 ratio > 1% of PH requests for two consecutive weeks, planned frequency above weekly, or historical backfill > 26 weeks; this preserves the future live integration boundary but does not make Product Hunt live ingestion a current-phase deliverable`
    - status：`frozen`
    (17) 第 17 行
    - decision_id：`DEC-017`

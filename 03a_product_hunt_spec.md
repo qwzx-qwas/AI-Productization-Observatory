@@ -97,6 +97,7 @@ Phase1 不纳入：
 - 不得把上述运行边界写成“已被法务最终定义”
 - Phase1 默认不申请更高限额；只有在既定触发条件出现时才升级申请
 - Phase1 collector 运行方式固定为：按 `published_at` 做显式周级窗口 replay；同窗内可用 cursor resume；不得宣称支持无窗 watermark-only 连续增量
+- 当前阶段执行约束：仓库只保留上述 live path 作为 future integration boundary；当前 runnable baseline 对 Product Hunt 仅保留 fixture / replay / contract validation，不要求把 `PRODUCT_HUNT_TOKEN` 作为本阶段前提。
 
 ## 4. Required Normalized Fields
 
@@ -335,4 +336,5 @@ PH collector 不直接写：
 
 - Product Hunt 当前运行边界已冻结为：`internal research / analysis / prototype validation`。
 - Product Hunt 正式法律边界保持 open；只有在业务或法务给出正式定义时才更新本文件。
+- Product Hunt live integration 当前阶段暂缓；fixture / replay / contract 边界继续保留，待外部限制解除后再恢复正式 live path。
 - raw retention 默认值已冻结，不延长；只有在法务、审计或客户合同要求出现时，才复核并启用 override path。

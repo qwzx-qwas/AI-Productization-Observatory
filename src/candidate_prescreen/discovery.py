@@ -14,7 +14,8 @@ from socket import timeout as SocketTimeout
 from typing import Any
 
 from src.candidate_prescreen.config import query_slice_config, source_config
-from src.common.errors import ConfigError, ContractValidationError, ProcessingError
+from src.common.config import require_environment_variable
+from src.common.errors import ContractValidationError, ProcessingError
 from src.common.files import load_json
 
 
@@ -159,11 +160,7 @@ def _discover_github_live(
     limit: int,
     timeout_seconds: int,
 ) -> list[dict[str, Any]]:
-    import os
-
-    token = os.environ.get("GITHUB_TOKEN")
-    if not token:
-        raise ConfigError("GITHUB_TOKEN is required for live GitHub candidate discovery")
+    token = require_environment_variable("GITHUB_TOKEN")
     start_date, end_date = _parse_window(window)
     return _discover_github_window(
         workflow_config,
@@ -268,11 +265,7 @@ def _discover_product_hunt_live(
     limit: int,
     timeout_seconds: int,
 ) -> list[dict[str, Any]]:
-    import os
-
-    token = os.environ.get("PRODUCT_HUNT_TOKEN")
-    if not token:
-        raise ConfigError("PRODUCT_HUNT_TOKEN is required for live Product Hunt candidate discovery")
+    token = require_environment_variable("PRODUCT_HUNT_TOKEN")
     start_date, end_date = _parse_window(window)
     query = """
     query CandidatePosts($first: Int!, $after: String, $postedAfter: DateTime!, $postedBefore: DateTime!) {

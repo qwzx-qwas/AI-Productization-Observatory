@@ -126,6 +126,7 @@ last_frozen_version: runtime_profile_v2
 - `local_only` 与首个 `single_vps` 默认使用同一套自托管 `PostgreSQL 17`
 - 进入 `cloud_managed` 阶段后，可再评估托管 PostgreSQL 产品，但不更换数据库引擎
 - 当前仓库中的本地 file-backed task store 只允许作为 Task 1 / `local_only` 骨架与 fixture/replay harness 使用；它用于镜像 task contract，不得被描述为当前版本的最终 runtime backend
+- 当前阶段的最小 runnable baseline 不应被描述为依赖 `PRODUCT_HUNT_TOKEN`；该 token 仅保留给未来恢复 Product Hunt live integration 时使用，而当前 live source 执行默认优先 GitHub。
 - 具体 dashboard framework 与 secrets manager 仍可后续确认
 
 ## 4. Storage Split

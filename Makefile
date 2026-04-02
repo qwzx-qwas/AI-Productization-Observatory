@@ -1,6 +1,8 @@
 PYTHON ?= python3
 WINDOW ?=
-SOURCE ?= product_hunt
+SOURCE ?=
+REPLAY_SOURCE ?= product_hunt
+PRESCREEN_SOURCE ?= github
 QUERY_SLICE ?=
 
 .PHONY: install lint format typecheck test validate-schemas validate-configs validate-gold-set validate-candidate-workspace validate-env replay-window build-mart-window migrate-plan run-candidate-prescreen handoff-candidates-to-staging
@@ -37,7 +39,7 @@ validate-env:
 
 replay-window:
 	@if [ -z "$(WINDOW)" ]; then echo "WINDOW is required, for example 2026-03-01..2026-03-08"; exit 2; fi
-	$(PYTHON) -m src.cli replay-window --source $(SOURCE) --window $(WINDOW)
+	$(PYTHON) -m src.cli replay-window --source $(if $(SOURCE),$(SOURCE),$(REPLAY_SOURCE)) --window $(WINDOW)
 
 build-mart-window:
 	$(PYTHON) -m src.cli build-mart-window
@@ -47,7 +49,7 @@ migrate-plan:
 
 run-candidate-prescreen:
 	@if [ -z "$(WINDOW)" ]; then echo "WINDOW is required, for example 2026-03-01..2026-03-08"; exit 2; fi
-	$(PYTHON) -m src.cli run-candidate-prescreen --source $(SOURCE) --window $(WINDOW) $(if $(QUERY_SLICE),--query-slice $(QUERY_SLICE),)
+	$(PYTHON) -m src.cli run-candidate-prescreen --source $(if $(SOURCE),$(SOURCE),$(PRESCREEN_SOURCE)) --window $(WINDOW) $(if $(QUERY_SLICE),--query-slice $(QUERY_SLICE),)
 
 handoff-candidates-to-staging:
 	$(PYTHON) -m src.cli handoff-candidates-to-staging

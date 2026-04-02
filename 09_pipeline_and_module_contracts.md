@@ -63,6 +63,11 @@ last_frozen_version: pipeline_v2
 
 以上默认边界已在本轮人工确认中冻结为 Phase1 current default；若后续需要调整，必须同步回写 `17_open_decisions_and_freeze_board.md` 与相关 ops 文档。
 
+### 当前阶段执行约束
+
+- GitHub 仍是当前阶段默认 live candidate discovery 路径。
+- Product Hunt 继续保留 module contract、fixture / replay、`published_at` window replay 语义与 future live integration boundary，但当前阶段不执行 Product Hunt live pull collection 或 live candidate discovery。
+
 ## 2. Module Contracts
 
 ### 定义与治理层
@@ -163,7 +168,7 @@ last_frozen_version: pipeline_v2
   - `candidate_prescreen_record`
 - `postconditions`:
   - 候选文档位于正式 `gold_set/` 目录之外
-  - LLM 预筛结果必须保留理由、证据摘要、不确定点与 channel metadata
+  - LLM 预筛结果必须保留理由、证据摘要、不确定点、关键 evidence anchors、主类/邻近类说明、persona 候选与 channel metadata
   - 失败时保留清晰错误分类，不伪造成成功预筛
 - `side_effects`:
   - 读取外部 source 或 fixture

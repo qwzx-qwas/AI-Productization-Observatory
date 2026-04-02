@@ -167,6 +167,7 @@ Phase1 当前正式接入的主源只有两个：
 - Product Hunt：`official_product_hunt_graphql_api + mandatory token auth`
 - GitHub：`official_github_rest_api + mandatory token auth + conditional requests preferred`
 - 上述两项只冻结“正式 collector 主路径”，不自动等于“增量策略已充分证明安全”
+- Product Hunt 的上述 access path 也只保留为 future live integration boundary；当前阶段不执行 Product Hunt live ingestion，仓库当前只保留 fixture / replay / contract baseline，不把 `PRODUCT_HUNT_TOKEN` 视为本阶段最小运行前提。
 
 ## 4. `source_research_profile_v0`
 
@@ -372,6 +373,7 @@ Phase1 当前正式接入的主源只有两个：
 - Product Hunt 在进入实际商业化使用前，必须先申请授权。
 - 若未来涉及外部交付、付费产品嵌入、原始或派生数据再分发，必须先取得额外授权或法务确认。
 - 上述内容只定义当前运行边界，不得写成“Product Hunt 商业化法律边界已最终确认”。
+- 当前阶段执行约束：Product Hunt live ingestion 暂不落地；仓库仅保留 Product Hunt fixture / replay / contract 与 future integration boundary。
 - Product Hunt 更高限额在 Phase1 默认 `不申请`。
 - 满足以下任一条件时，才申请更高限额：
   - 连续 `2` 周 `15` 分钟窗口 complexity 峰值 `> 70%`

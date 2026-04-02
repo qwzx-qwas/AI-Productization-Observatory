@@ -60,7 +60,7 @@ last_frozen_version: phase1_scope_v1
   - 不做前端。
   - 不做复杂自动化。
 - Phase1 的目标：
-  - 只接入 Product Hunt 和 GitHub。
+  - 只保留 Product Hunt 和 GitHub 两个 Phase1 主 source boundary；当前阶段 live 执行优先 GitHub，Product Hunt 暂保留 fixture / replay / contract 与 future integration boundary。
   - 建立最小可运行供给观测闭环。
   - 稳定输出最近 30 / 90 天最常见 JTBD，并能 drill down 到样本与 evidence。
 - Phase1 的非目标：

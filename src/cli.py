@@ -12,7 +12,7 @@ from src.candidate_prescreen.workflow import (
     run_candidate_prescreen,
     validate_candidate_workspace as workflow_validate_candidate_workspace,
 )
-from src.common.config import AppConfig, resolve_required_settings
+from src.common.config import AppConfig, resolve_required_settings, summarize_resolved_settings
 from src.common.errors import BlockedReplayError, ConfigError, ContractValidationError, ObservatoryError
 from src.common.files import dump_json, load_json, load_yaml
 from src.common.logging_utils import configure_logging, get_logger
@@ -612,6 +612,16 @@ def _validate_candidate_prescreen_config(config_dir: Path, schema_dir: Path) -> 
         raise ContractValidationError("candidate_prescreen_workflow.yaml workspace.directory must stay docs/candidate_prescreen_workspace")
     if _require_bool(workspace.get("outside_formal_gold_set"), "candidate_prescreen_workflow.yaml:workspace:outside_formal_gold_set") is not True:
         raise ContractValidationError("candidate workspace must stay outside the formal gold_set directory")
+    note_templates = _require_mapping(
+        workspace.get("human_review_note_templates"),
+        "candidate_prescreen_workflow.yaml:workspace:human_review_note_templates",
+    )
+    if note_templates != {
+        "approved": "clear end-user product signal; evidence sufficient for staging",
+        "hold": "boundary with internal tooling unclear",
+        "rejected": "outside observatory scope",
+    }:
+        raise ContractValidationError("candidate human review note templates drifted from the frozen candidate prescreen workflow")
     allowed_statuses = _require_list(
         workspace.get("allowed_human_review_statuses"),
         "candidate_prescreen_workflow.yaml:workspace:allowed_human_review_statuses",
@@ -641,6 +651,8 @@ def _validate_candidate_prescreen_config(config_dir: Path, schema_dir: Path) -> 
     llm_prescreen = _require_mapping(workflow.get("llm_prescreen"), "candidate_prescreen_workflow.yaml:llm_prescreen")
     if llm_prescreen.get("prompt_version") != "candidate_prescreener_v1":
         raise ContractValidationError("candidate prescreen prompt_version must stay candidate_prescreener_v1")
+    if llm_prescreen.get("prompt_spec_ref") != "10_prompt_specs/candidate_prescreener_v1.md":
+        raise ContractValidationError("candidate prescreen prompt_spec_ref must stay 10_prompt_specs/candidate_prescreener_v1.md")
     if llm_prescreen.get("routing_version") != "route_candidate_prescreener_v1":
         raise ContractValidationError("candidate prescreen routing_version must stay route_candidate_prescreener_v1")
     if llm_prescreen.get("relay_transport") != "http_json_relay":
@@ -727,6 +739,7 @@ def _validate_candidate_prescreen_config(config_dir: Path, schema_dir: Path) -> 
         "canonical_url",
         "llm_prescreen",
         "human_review_status",
+        "human_review_note_template_key",
         "human_review_notes",
         "staging_handoff",
     ):
@@ -1060,7 +1073,7 @@ def main(argv: list[str] | None = None) -> int:
 
         if args.command == "validate-env":
             resolved = resolve_required_settings(config, args.require)
-            resolved_summary = ", ".join(f"{name}={value}" for name, value in resolved.items())
+            resolved_summary = summarize_resolved_settings(resolved)
             logger.info(f"validated resolved settings: {resolved_summary}")
             return 0
 

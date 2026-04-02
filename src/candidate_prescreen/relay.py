@@ -12,6 +12,8 @@ from pathlib import Path
 from socket import timeout as SocketTimeout
 from typing import Any
 
+from src.candidate_prescreen.review_card import normalize_llm_result
+from src.common.config import require_environment_variable
 from src.common.errors import ConfigError, ProcessingError
 from src.common.files import load_json
 
@@ -26,14 +28,10 @@ class RelayConfig:
 
     @classmethod
     def from_env(cls, default_timeout_seconds: int, default_client_version: str) -> "RelayConfig":
-        base_url = os.environ.get("APO_LLM_RELAY_BASE_URL")
-        token = os.environ.get("APO_LLM_RELAY_TOKEN")
-        model = os.environ.get("APO_LLM_RELAY_MODEL")
+        base_url = require_environment_variable("APO_LLM_RELAY_BASE_URL")
+        token = require_environment_variable("APO_LLM_RELAY_TOKEN")
+        model = require_environment_variable("APO_LLM_RELAY_MODEL")
         timeout_value = os.environ.get("APO_LLM_RELAY_TIMEOUT_SECONDS")
-        if not base_url or not token or not model:
-            raise ConfigError(
-                "APO_LLM_RELAY_BASE_URL, APO_LLM_RELAY_TOKEN, and APO_LLM_RELAY_MODEL are required for live relay use"
-            )
         timeout_seconds = default_timeout_seconds
         if timeout_value:
             try:
@@ -50,19 +48,6 @@ class RelayConfig:
         )
 
 
-def _normalize_result(result: dict[str, Any]) -> dict[str, Any]:
-    return {
-        "in_observatory_scope": result.get("in_observatory_scope"),
-        "reason": result.get("reason"),
-        "source_evidence_summary": result.get("source_evidence_summary") if isinstance(result.get("source_evidence_summary"), list) else [],
-        "uncertainty_points": result.get("uncertainty_points") if isinstance(result.get("uncertainty_points"), list) else [],
-        "recommend_candidate_pool": result.get("recommend_candidate_pool"),
-        "recommended_action": result.get("recommended_action"),
-        "taxonomy_hints": result.get("taxonomy_hints") if isinstance(result.get("taxonomy_hints"), dict) else {},
-        "assessment_hints": result.get("assessment_hints") if isinstance(result.get("assessment_hints"), dict) else {},
-    }
-
-
 def screen_candidate(
     candidate_input: dict[str, Any],
     *,
@@ -70,6 +55,7 @@ def screen_candidate(
     routing_version: str,
     relay_transport: str,
     relay_client_version: str,
+    prompt_contract: dict[str, Any] | None,
     fixture_path: Path | None,
     timeout_seconds: int,
     max_retries: int,
@@ -83,7 +69,7 @@ def screen_candidate(
         response = responses[fixture_key]
         if not isinstance(response, dict):
             raise ProcessingError("parse_failure", f"LLM prescreen fixture response for {fixture_key} must be an object")
-        normalized = _normalize_result(response)
+        normalized = normalize_llm_result(response)
         normalized["channel_metadata"] = {
             "prompt_version": fixture.get("prompt_version", prompt_version),
             "routing_version": fixture.get("routing_version", routing_version),
@@ -102,6 +88,8 @@ def screen_candidate(
         "routing_version": routing_version,
         "input": candidate_input,
     }
+    if isinstance(prompt_contract, dict) and prompt_contract:
+        payload["prompt_contract"] = prompt_contract
     last_error: ProcessingError | None = None
     for _attempt in range(max_retries + 1):
         request = urllib.request.Request(
@@ -144,7 +132,7 @@ def screen_candidate(
                 result = body["output"]
         if not isinstance(result, dict):
             raise ProcessingError("schema_drift", "Relay response must provide a result object")
-        normalized = _normalize_result(result)
+        normalized = normalize_llm_result(result)
         normalized["channel_metadata"] = {
             "prompt_version": prompt_version,
             "routing_version": routing_version,

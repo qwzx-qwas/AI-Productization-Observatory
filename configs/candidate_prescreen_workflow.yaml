@@ -2,6 +2,10 @@ version: candidate_prescreen_v1
 workspace:
   directory: docs/candidate_prescreen_workspace
   outside_formal_gold_set: true
+  human_review_note_templates:
+    approved: clear end-user product signal; evidence sufficient for staging
+    hold: boundary with internal tooling unclear
+    rejected: outside observatory scope
   allowed_human_review_statuses:
     - pending_first_pass
     - approved_for_staging
@@ -16,6 +20,7 @@ staging_defaults:
   preserve_existing_stub_boundary: true
 llm_prescreen:
   prompt_version: candidate_prescreener_v1
+  prompt_spec_ref: 10_prompt_specs/candidate_prescreener_v1.md
   routing_version: route_candidate_prescreener_v1
   relay_transport: http_json_relay
   relay_client_version: relay_candidate_prescreener_v1
@@ -30,11 +35,17 @@ llm_prescreen:
     - low
     - medium
     - high
+execution_boundary:
+  current_phase_default_live_source: github
+  product_hunt_current_phase_mode: fixture_replay_contract_only
+  product_hunt_live_discovery_status: deferred
+  product_hunt_future_live_path: official_product_hunt_graphql_api_with_token_auth
 sources:
   - source_code: github
     source_id: src_github
     time_field: pushed_at
     selection_rule_version: github_qsv1
+    current_phase_runtime_note: current-phase live candidate discovery path
     fixed_filters:
       - is:public
       - fork:false
@@ -87,6 +98,7 @@ sources:
     source_id: src_product_hunt
     time_field: published_at
     selection_rule_version: product_hunt_published_window_v1
+    current_phase_runtime_note: retain fixture/replay/contract only; current phase does not execute live candidate discovery
     query_slices:
       - query_family: published_launches
         query_slice_id: ph_published_launches

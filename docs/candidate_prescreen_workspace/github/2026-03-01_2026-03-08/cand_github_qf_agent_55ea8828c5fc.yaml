@@ -1,0 +1,190 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_55ea8828c5fc
+candidate_batch_id: candidate_batch_github_qf_agent_2026-03-01_2026-03-08
+created_at: '2026-04-01T13:07:26.896938Z'
+updated_at: '2026-04-01T13:07:36.093234Z'
+source: github
+source_id: src_github
+source_window: 2026-03-01..2026-03-08
+time_field: pushed_at
+external_id: '5698643'
+canonical_url: https://github.com/flypythoncom/python
+title: python
+summary: python is all you need !
+raw_evidence_excerpt: "python is all you need !\n\n# \U0001F40D FlyPython - LLM Agent\
+  \ & AI Development Hub\n\n[python.flypython.com](https://python.flypython.com)\n\
+  \n## \U0001F916 LLM Agent Python - Core Focus\n\n### \U0001F680 Leading LLM Agent\
+  \ Frameworks\n\n#### **OpenAI Agents SDK**\n- [OpenAI Agents Python Documentation](https://openai.github.io/openai-agents-python/)\
+  \ - Official OpenAI Agents SDK for building Python agents\n- [OpenAI Agents SDK\
+  \ Quickstart](https://openai.github.io/openai-agents-python/quickstart/) - Official\
+  \ quickstart guide\n- [OpenAI Python Library](https://github.com/openai/openai-python)\
+  \ - Official OpenAI Python client\n- [OpenAI Developer Resources](https://developers.openai.com/resources)\
+  \ - Official OpenAI development resource hub\n\n#### **CrewAI - Multi-Agent Systems**\n\
+  - [CrewAI Framework](https://github.com/joaomdmoura/crewAI) - Framework for orchestrating\
+  \ role-playing, autonomous AI agents\n- [CrewAI Documentation](https://docs.crewai.com/)\
+  \ - Official CrewAI documentation\n- [CrewAI Examples](https://github.com/crewAIInc/crewAI-examples)\
+  \ - Official example projects\n- [Learn Agentic AI with CrewAI](https://github.com/panaversity/learn-agentic-ai)\
+  \ - Broad CrewAI learning resources\n\n#### **LangGraph - Advanced Agent Workflows**\n\
+  - [LangGraph](https://github.com/langchain-ai/langgraph) - Build stateful, multi-actor\
+  \ applications with LLMs\n- [LangChain Agent Tutorials](https://python.langchain.com/docs/tutorials/)\
+  \ - Official agent and tool-calling tutorials\n\n#### **AutoGen - Conversational\
+  \ AI Agents**\n- [Microsoft AutoGen](https://github.com/microsoft/autogen) - Multi-agent\
+  \ conversation framework\n\n#### **Agent Development Infrastructure**\n- [Anthropic\
+  \ Tool Use](https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview)\
+  \ - Official guide to tool calling and agent workflows\n- [Google Agent Development\
+  \ Kit](https://google.github.io/adk-docs/) - Official Google ADK docs\n- [Model\
+  \ Context Protocol](https://modelcontextprotocol.io/introduction) - Open protocol\
+  \ for connecting models to tools and external context\n- [PydanticAI](https://ai.pydantic.dev/)\
+  \ - Type-safe Python agent framework\n- [Mastra Docs](https://mastra.ai/docs) -\
+  \ Agent framework with workflows, evals, and observability\n- [Dapr Python SDK](https://github.com/dapr/python-sdk)\
+  \ - Building blocks for distributed and stateful Python services\n\n### \U0001F6E0\
+  \uFE0F Open Source LLM Agent Projects\n\n#### **Minimal & Educational**\n- [min-agent](https://github.com/zhouzaida/min-agent)\
+  \ - Minimal 200-line LLM agent for understanding core principles\n- [LangChain ReAct\
+  \ Agent](https://github.com/botextractai/ai-langchain-react-agent) - ReAct agent\
+  \ with Python REPL and search\n- [OpenSource LLM Agents ReAct](https://github.com/Praveengovianalytics/llm_agents_open_source)\
+  \ - Open-source ReAct implementation references\n\n#### **Production-Ready Frameworks**\n\
+  - [SuperModels](https://github.com/JohannesVC/SuperModels) - Desktop app for running\
+  \ LLM agents with reflection mechanisms\n- [AgentKit](https://github.com/japanvik/agentkit)\
+  \ - Lightweight toolkit for distributed agents\n\n### \U0001F4DA LLM Agent Learning\
+  \ Resources\n\n#### **Comprehensive Guides**\n- [OpenAI Cookbook](https://cookbook.openai.com/)\
+  \ - Official examples and production patterns\n- [Prompt Optimization Guide](https://cookbook.openai.com/examples/optimize_prompts)\
+  \ - Practical prompt improvement workflow\n\n#### **Courses & Tutorials**\n- [Agentic\
+  \ AI Development Course](https://github.com/panaversity/learn-agentic-ai) - Complete\
+  \ course repository for agentic AI\n- [Python for AI and Machine Learning](https://realpython.com/learning-paths/machine-learning-python/)\
+  \ - Python AI learning path\n\n## \U0001F4D6 Python Learning & Development\n\n###\
+  \ \U0001F3AF Quick Navigation\n\n1. [Python News](#python-news)\n2. [Python Books](#python-books)\n\
+  3. [Courses](#courses)\n4. [Algorithms & Data Structures](#algorithms)\n5. [Web\
+  \ Development](#web-development)\n6. [Data Science & Analysis](#data-science)\n\
+  7. [Automation & Bots](#automation--bots)\n8. [Finance & Trading](#finance--trading)\n\
+  9. [Performance Optimization](#performance)\n\n---\n\n### Python News\n\n- [Python\
+  \ Official](https://www.python.org/)\n- [Python Insider](https://blog.python.org/)\n\
+  - **Reddit Communities:**\n  - [r/Python](https://www.reddit.com/r/Python/)\n  -\
+  \ [r/learnpython](https://www.reddit.com/r/learnpython/)\n  - [r/pythontips](https://www.reddit.com/r/pythontips/)\n\
+  \  - [r/pythoncoding](https://www.reddit.com/r/pythoncoding)\n\n### Python Books\n\
+  \n#### **For Beginners**\n- **Python Crash Course: A Hands-On, Project-Based Introduction\
+  \ to Programming** (3rd Edition, 2023)\n  - [Amazon](https://www.amazon.com/Python-Crash-Course-Hands-Project-Based/dp/1718502702)\n\
+  - **Starting Out with Python** (4th Edition)\n  - [Amazon](https://www.amazon.com/Starting-Out-Python-Tony-Gaddis/dp/0134444329)\n\
+  - **Automate the Boring Stuff with Python** (2nd Edition)\n  - [Free Online](https://automatetheboringstuff.com/)\
+  \ | [Amazon](https://www.amazon.com/Automate-Boring-Stuff-Python-Programming/dp/1593279922)\n\
+  \n#### **Advanced Python**\n- **Python Cookbook: Recipes for Mastering Python 3**\n\
+  \  - [Amazon](https://www.amazon.co.uk/Python-Cookbook-David-Beazley/dp/1449340377)\n\
+  - **Effective Python: 90 Specific Ways to Write Better Python** (2nd Edition)\n\
+  \  - [Amazon](https://www.amazon.com/Effective-Python-Specific-Software-Development/dp/0134853989)\n\
+  - **Clean Code in Python**\n  - [Amazon](https://www.amazon.com/Clean-Code-Python-maintainable-efficient/dp/1788835832)\n\
+  \n### Courses\n\n#### **Beginner Courses**\n- [Python for Everybody](https://www.coursera.org/specializations/python)\n\
+  - [Python 3 Programming](https://www.coursera.org/specializations/python-3-programming)\n\
+  \n#### **Advanced Learning**\n- [REST APIs with Flask and Python](https://www.coursera.org/learn/packt-rest-apis-with-flask-and-python-in-2024-i01az)\
+  \ - Professional Flask development\n- [yfinance Documentation](https://ranaroussi.github.io/yfinance/)\
+  \ - Official docs for Yahoo Finance data access in Python\n\n### Algorithms\n\n\
+  - [Interactive Python Coding Interview Challenges](https://github.com/donnemartin/interactive-coding-challenges)\
+  \ - Algorithms and data structures\n- [Algorithms: Minimal Examples in Python](https://github.com/keon/algorithms)\
+  \ - Data structures and algorithms\n- [Pygorithm](http://pygorithm.readthedocs.io/en/latest)\
+  \ - Fun way to learn algorithms\n\n### Web Development\n\n#### **FastAPI**\n- [FastAPI\
+  \ Documentation](https://fastapi.tiangolo.com/) - Modern, fast web framework for\
+  \ building APIs\n- [FastAPI Best Practices](https://github.com/zhanymkanov/fastapi-best-practices)\n\
+  \n#### **Flask**\n- [REST APIs with Flask and Python](https://www.coursera.org/learn/packt-rest-apis-with-flask-and-python-in-2024-i01az)\n\
+  - [Developing RESTful APIs with Python and Flask](https://auth0.com/blog/developing-restful-apis-with-python-and-flask)\n\
+  - [Flask and Code Quality](https://flake8.pycqa.org/en/latest/user/error-codes.html)\n\
+  \n#### **Django**\n- [Complete Beginner's Guide to Django - Part 1](https://simpleisbetterthancomplex.com/series/2017/09/04/a-complete-beginners-guide-to-django-part-1.html)\n\
+  - [Django REST framework Quickstart](https://www.django-rest-framework.org/tutorial/quickstart/)\n\
+  \n### Data Science\n\n#### **NumPy**\n- [From Python to NumPy](http://www.labri.fr/perso/nrougier/from-python-to-numpy/)\n\
+  - [Exploring Line Lengths in Python Packages](http://jakevdp.github.io/blog/2017/11/09/exploring-line-lengths-in-python-packages)\n\
+  \n#### **Matplotlib**\n- [Anatomy of Matplotlib](https://github.com/matplotlib/AnatomyOfMatplotlib)\n\
+  \n#### **Data Analysis Projects**\n- [Exploring United States Policing Data](https://blog.patricktriest.com/police-data-python)\n\
+  - [Build a Gradebook With pandas](https://realpython.com/pandas-project-gradebook/)\n\
+  - [FiveThirtyEight Style Sheet](https://matplotlib.org/stable/gallery/style_sheets/fivethirtyeight.html)\n\
+  - [Amazon Product Review Analysis](http://minimaxir.com/2017/01/amazon-spark)\n\n\
+  ### Automation & Bots\n\n#### **Web Scraping**\n- [Scrapy Tutorial](https://docs.scrapy.org/en/latest/intro/tutorial.html)\n\
+  - [Advanced Web Scraping: Bypassing 403 Forbidden](http://sangaline.com/post/advanced-web-scraping-tutorial)\n\
+  - [Mastering Python Web Scraping](https://hackernoon.com/mastering-python-web-scraping-get-your-data-back-e9a5cc653d88)\n\
+  \n#### **Automation Projects**\n- [Wedding Automation with Twilio and Python](https://www.twilio.com/blog/2017/04/wedding-at-scale-how-i-used-twilio-python-and-google-to-automate-my-wedding.html)\n\
+  - [Finding Interesting People on Medium](https://medium.freecodecamp.org/how-i-used-python-to-find-interesting-people-on-medium-be9261b924b0)\n\
+  \n#### **Spreadsheets Integration**\n- [Python Excel Tutorial: The Definitive Guide](https://hackernoon.com/python-excel-tutorial-the-definitive-guide-934ee6dd15b0)\n\
+  - [Data Analysis with Python in Excel](https://learning.anaconda.cloud/anaconda-certified-data-analysis-with-python-in-excel)\n\
+  - [Google Sheets and Python](https://www.youtube.com/watch?v=vISRn5qFrkM)\n\n###\
+  \ Finance & Trading\n\n- [yfinance Documentation](https://ranaroussi.github.io/yfinance/)\n\
+  - [Research Backtesting Environments in Python with pandas](https://www.quantstart.com/articles/Research-Backtesting-Environments-in-Python-with-pandas/)\n\
+  - [Alpha Vantage API Documentation](https://www.alphavantage.co/documentation/)\n\
+  - [Stock Price Data - Python for Finance](https://www.youtube.com/watch?v=2BrpKpWwT2A)\n\
+  - [Analyzing Cryptocurrency Markets](https://blog.patricktriest.com/analyzing-cryptocurrencies-python)\n\
+  \n### Performance Optimization\n\n- [Million Requests per Second with Python](https://medium.freecodecamp.com/million-requests-per-second-with-python-95c137af319)\n\
+  - [Yes, Python is Slow, and I Don't Care](https://hackernoon.com/yes-python-is-slow-and-i-dont-care-13763980b5a1)\n\
+  - [Memoization in Python](https://dbader.org/blog/python-memoization)"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-01'
+    window_end: '2026-03-08'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-01..2026-03-08
+    external_id: '5698643'
+    canonical_url: https://github.com/flypythoncom/python
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: Relay returned HTTP 404
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

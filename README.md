@@ -120,7 +120,54 @@ python3 -m src.cli build-mart-window
 
 `make replay-window` 与 `make build-mart-window` 都会把 task state 写入 `APO_TASK_STORE_PATH`；当前最小基线已经保证并行 CLI 运行时不会把 task store 写坏。
 
+当前阶段命令边界说明：
+
+- `make replay-window SOURCE=product_hunt ...` 与 `python3 -m src.cli replay-window --source product_hunt ...` 只对应 Product Hunt fixture / replay baseline，不代表当前阶段支持 Product Hunt live source ingestion。
+- `make run-candidate-prescreen SOURCE=github ...` 与等价 CLI 是当前阶段保留的 live candidate discovery 路径；其默认执行方向也应理解为优先 GitHub，而不是 Product Hunt。
+- Product Hunt 的 official GraphQL API + token auth 路线继续保留为 future integration boundary，但本阶段不落地 live 抓取，也不把 `PRODUCT_HUNT_TOKEN` 视为完成本阶段的必需前提。
+
 本地默认配置由 [`.env.example`](.env.example) 提供，未显式设置时会回退到仓库内 `configs/`、`schemas/`、`fixtures/` 与 `.runtime/`。
+
+## API 与隐私安全
+
+本仓库是 public 仓库。API / Token / Secret / Credential 全部按敏感隐私信息处理。
+
+API 是隐私内容，务必不能泄漏。
+
+任何真实密钥不得提交到 public 仓库。代码可以公开，但权限必须只存在于本地环境变量中。
+
+当前仓库已经提供三层防护：
+
+- [`.env.example`](.env.example) 只提供模板与占位符，不包含任何真实密钥
+- [`.gitignore`](.gitignore) 已忽略 `.env`、`.env.*`、`secrets/`、`*.pem`、`*.key`，用于防止未来误提交敏感信息
+- [`SECURITY.md`](SECURITY.md) 统一记录 API 安全原则、本地配置方法与泄漏后的处置流程
+
+正确配置方式：
+
+```bash
+cp .env.example .env
+set -a
+source .env
+set +a
+```
+
+然后在本地 `.env` 中填写你自己的 API Key / Token。不要填写示例值，不要提交 `.env`。
+
+若你计划运行当前阶段仍保留的 live 路径，请优先检查：
+
+- `GITHUB_TOKEN`
+- `APO_LLM_RELAY_TOKEN`
+- 以及未来本地接入时可能用到的 `OPENAI_API_KEY`、`SCRAPER_API_KEY`
+
+`PRODUCT_HUNT_TOKEN` 当前只保留为 future live integration 或历史兼容预留项；Product Hunt 的 fixture / replay baseline 不要求它。
+
+若未来误把 `.env` 加入 Git 跟踪，请使用：
+
+```bash
+git rm --cached .env
+```
+
+若任何真实密钥发生泄漏，必须立即 revoke 并更换。更完整的说明见 [`SECURITY.md`](SECURITY.md)。
 
 注意：
 
@@ -128,8 +175,10 @@ python3 -m src.cli build-mart-window
 - 当前运行时配置解析顺序是：优先读取已导出的环境变量；未设置时回退到仓库内默认路径。
 - 因此 `make install`、`make lint`、`make typecheck`、`make validate-schemas`、`make validate-configs`、`make test`、`make replay-window` 与 `make build-mart-window` 可以直接依赖仓库默认路径运行。
 - `make validate-env` 当前会复用实际运行时的配置解析逻辑，校验解析后的配置是否有效；只要默认路径存在，就不要求你必须先 `export APO_CONFIG_DIR`、`APO_SCHEMA_DIR` 才能通过。
+- 当前阶段若执行 `run-candidate-prescreen SOURCE=github ...`，仍需本地提供 `GITHUB_TOKEN` 与 `APO_LLM_RELAY_TOKEN`；Product Hunt fixture / replay 路径不要求 `PRODUCT_HUNT_TOKEN`。
 - `make validate-gold-set` 当前会校验 `gold_set/README.md` 的 `stub` / `implemented` 状态与 `gold_set/gold_set_300/` 目录内容是否一致；若要在真实样本落库后强制要求已实现状态，可运行 `make validate-gold-set REQUIRE_IMPLEMENTED=1`。
 - `make validate-candidate-workspace` 当前会校验 `docs/candidate_prescreen_workspace/` 下的候选预筛 YAML 是否仍在正式 gold set 目录之外、字段是否满足 schema、以及 `candidate_id` 是否重复。
+- `make validate-candidate-workspace` 还会校验 candidate prescreen review-card 约束，例如 evidence anchor 排序、rank-1 persona 回填、main/adjacent category 关系，以及 `human_review_notes` 是否遵循标准模板前缀。
 - `run-candidate-prescreen` 会把候选发现、LLM 预筛与中间文档落盘限制在 `docs/candidate_prescreen_workspace/`；它不会直接写 `gold_set/gold_set_300/`。
 - `handoff-candidates-to-staging` 只会转写 `human_review_status = approved_for_staging` 的候选到现有 `docs/gold_set_300_real_asset_staging/`，并保留空位与 `blocking_items` 等待后续双标 / adjudication。
 - 若你想覆盖默认路径，仍然可以先导出对应环境变量，例如：
@@ -157,14 +206,16 @@ make validate-env
   - 当前前提：默认路径存在时可直接通过；若显式覆盖到不存在的目录，则会明确报错
 - CI baseline：`.github/workflows/ci.yml` 当前与本地 `install / lint / typecheck / validate-schemas / validate-configs / test` 基线一致
 - gold set：仍为 `stub`，等待双标 + adjudication 样本
-- 候选预筛工作流：已补齐 `GitHub / Product Hunt` 候选发现、LLM relay 预筛、中间文档落盘与 staging handoff 入口；正式 gold set 目录仍保持 `stub`
+- 候选预筛工作流：已补齐 GitHub live candidate discovery、LLM relay 预筛、中间文档落盘与 staging handoff 入口；Product Hunt 继续保留候选发现 contract / fixture / replay 边界，但本阶段暂不落地 live discovery；正式 gold set 目录仍保持 `stub`
 
 ## 当前剩余事项
 
 - `gold_set/gold_set_300/` 仍未落入真实双标 + adjudication 样本，因此 `gold_set/` 继续保持 `stub`
 - 候选预筛文档与人工一审工作区已放在 `docs/candidate_prescreen_workspace/`，但这些中间产物不能被表述为正式 gold set annotation、正式 adjudication 或已交付样本
+- candidate prescreen 当前优先产出“人工第一轮审核辅助卡片”，重点增强了 persona 候选、main vs adjacent taxonomy、关键 evidence anchors、review focus points 与标准化 `human_review_notes`
 - `fixtures/extractor/` 与 `fixtures/scoring/` 仍是预留目录，当前不能宣称已具备对应模块的已交付 fixture 覆盖
 - 当前可运行基线仍以 deterministic fixture replay 和本地 file-backed task store harness 为主，不应表述为已完成 live source 接入或最终生产 runtime backend
+- Product Hunt live source ingestion / live candidate discovery 本阶段暂缓；当前仓库仍可保留 Product Hunt 的 contract / fixture / replay / source boundary，但不能把它写成默认启用或已落地
 
 ## 最小回链示例
 
@@ -207,7 +258,7 @@ make validate-env
 
 ## 最近冻结结论
 
-- Product Hunt access method：`official Product Hunt GraphQL API + mandatory token auth`
+- Product Hunt access method：保留 `official Product Hunt GraphQL API + mandatory token auth` 作为 future live integration path；当前阶段不执行 Product Hunt live ingestion
 - Product Hunt window / incremental：window key = `published_at`；`incremental_supported = false`
 - GitHub access method：`official GitHub REST API + mandatory token auth + conditional requests preferred`
 - GitHub discovery strategy：`versioned search/repositories query slices + pushed window split-to-exhaustion`

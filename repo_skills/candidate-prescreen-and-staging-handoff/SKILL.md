@@ -43,8 +43,28 @@ description: Use when discovering candidate source items, writing candidate pres
 - `selection_rule_version`
 - `llm_prescreen`
 - `human_review_status`
+- `human_review_note_template_key`
 - `human_review_notes`
 - `staging_handoff`
+
+人工第一轮审核默认应把 `llm_prescreen` 当作 review card 读取，优先查看：
+
+- `decision_snapshot`
+- `scope_boundary_note`
+- `evidence_anchors`
+- `persona_candidates`
+- `taxonomy_hints.main_category_candidate`
+- `taxonomy_hints.adjacent_category_candidate`
+- `taxonomy_hints.adjacent_category_rejected_reason`
+- `review_focus_points`
+
+人工笔记模板：
+
+- `approved`: `clear end-user product signal; evidence sufficient for staging`
+- `hold`: `boundary with internal tooling unclear`
+- `rejected`: `outside observatory scope`
+
+`human_review_notes` 可以在模板短句后追加 `; ` 和补充说明，但前缀应保持一致，便于批量检索与后续 handoff。
 
 ## Handoff Rules
 

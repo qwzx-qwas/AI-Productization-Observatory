@@ -108,10 +108,10 @@ last_frozen_version: prompt_contracts_v1
    (6) 第 6 行
    - prompt_id：`candidate_prescreener_v1`
    - module_name：`Candidate Prescreener`
-   - purpose：产出候选预筛结果、理由、证据摘要与建议动作
+   - purpose：产出面向人工第一轮审核的候选预筛 review card，包括决策快照、关键 evidence anchors、persona 候选、主类/邻近类判断与建议动作
    - input_contract_ref：`candidate source item + source window + query slice metadata`
    - output_contract_ref：`schemas/candidate_prescreen_record.schema.json#llm_prescreen`
-   - prompt_template_ref：`10_prompt_specs/01_task_template.md`
+   - prompt_template_ref：`10_prompt_specs/candidate_prescreener_v1.md`
 
 
 说明：

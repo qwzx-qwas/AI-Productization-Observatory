@@ -1,0 +1,154 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_40e3e398bf6f
+candidate_batch_id: candidate_batch_github_qf_agent_2026-03-01_2026-03-08
+created_at: '2026-04-01T10:06:33.938570Z'
+updated_at: '2026-04-01T10:06:33.944137Z'
+source: github
+source_id: src_github
+source_window: 2026-03-01..2026-03-08
+time_field: pushed_at
+external_id: '987654321'
+canonical_url: https://github.com/acme/agentdesk
+title: agentdesk
+summary: AI support agent workspace for customer operations teams.
+raw_evidence_excerpt: AgentDesk helps support teams route, answer, and summarize tickets
+  with AI agents and auditable workflows.
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: fixture
+  selection_basis:
+    window_start: '2026-03-01'
+    window_end: '2026-03-08'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-01..2026-03-08
+    external_id: '987654321'
+    canonical_url: https://github.com/acme/agentdesk
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: true
+  reason: The repo describes an end-user support workflow product with clear AI-assisted
+    delivery and traceable product evidence.
+  decision_snapshot: Recommend candidate_pool because the repo presents a support-team
+    AI workspace with concrete ticket workflow evidence.
+  scope_boundary_note: This looks in scope because it describes a support workspace
+    used by customer operations teams, not a generic agent framework.
+  source_evidence_summary:
+  - The summary says it is an AI support agent workspace for customer operations teams.
+  - The excerpt mentions auditable workflows, routing, answering, and summarization
+    for tickets.
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: AI support agent workspace for customer operations teams.
+    evidence_source_field: summary
+    why_it_matters: This is the clearest end-user product statement and points to
+      both observatory scope and the likely support persona.
+    applies_to:
+    - scope
+    - persona
+    - recommended_action
+  - anchor_rank: 2
+    evidence_text: route, answer, and summarize tickets with AI agents
+    evidence_source_field: raw_evidence_excerpt
+    why_it_matters: The wording centers on customer support execution rather than
+      generic knowledge retrieval, which supports the main taxonomy choice.
+    applies_to:
+    - taxonomy
+    - recommended_action
+  - anchor_rank: 3
+    evidence_text: auditable workflows
+    evidence_source_field: raw_evidence_excerpt
+    why_it_matters: This explains why workflow automation is an adjacent category
+      while still remaining secondary to the support use case.
+    applies_to:
+    - taxonomy
+    - scope
+  review_focus_points:
+  - Confirm support teams are the primary end users rather than internal ops builders.
+  - Check whether knowledge assistance is secondary to ticket handling workflow.
+  - Verify the product is consumed as a workspace rather than just an internal automation
+    library.
+  uncertainty_points:
+  - Need human review to confirm whether the primary job is support operations or
+    broader workflow automation.
+  recommend_candidate_pool: true
+  recommended_action: candidate_pool
+  confidence_summary:
+    scope_confidence: high
+    taxonomy_confidence: medium
+    persona_confidence: high
+  handoff_readiness_hint:
+    suggested_action: candidate_pool
+    rationale: Evidence is strong enough for staging, but human review should still
+      confirm that support is primary over adjacent workflow automation.
+  persona_candidates:
+  - persona_code: support_agent
+    confidence_rank: 1
+    rationale: The summary explicitly names customer operations teams and the excerpt
+      centers on ticket workflows.
+    supporting_evidence_anchors:
+    - 1
+    - 2
+  - persona_code: operator
+    confidence_rank: 2
+    rationale: The product also emphasizes auditable workflows, which can fit broader
+      operations ownership.
+    supporting_evidence_anchors:
+    - 2
+    - 3
+  taxonomy_hints:
+    primary_category_code: JTBD_SALES_SUPPORT
+    secondary_category_code: null
+    primary_persona_code: support_agent
+    delivery_form_code: web_app
+    main_category_candidate:
+      category_code: JTBD_SALES_SUPPORT
+      rationale: The source language is organized around routing, answering, and summarizing
+        support tickets for customer operations teams.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: JTBD_PRODUCTIVITY_AUTOMATION
+      rationale_for_similarity: The excerpt mentions auditable workflows and AI agents,
+        which can resemble a workflow automation tool.
+      supporting_evidence_anchors:
+      - 2
+      - 3
+    adjacent_category_rejected_reason: It looks close to workflow automation because
+      of the agent and workflow language, but the strongest evidence is still about
+      customer support ticket handling for support teams, so support remains the primary
+      category.
+  assessment_hints:
+    evidence_strength: high
+    build_evidence_band: high
+    need_clarity_band: medium
+    unresolved_risk: medium
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: fixture-llm
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

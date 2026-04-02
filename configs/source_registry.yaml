@@ -10,6 +10,7 @@ sources:
     enabled_in_phase: phase1
     access_profile:
       access_method: official_product_hunt_graphql_api
+      current_phase_runtime_note: current phase keeps Product Hunt live ingestion deferred; retain fixture_replay_contract_only while preserving the official GraphQL plus token-auth future integration path
       update_frequency: weekly
       expected_entities:
         - launch_listing
@@ -60,6 +61,7 @@ sources:
     enabled_in_phase: phase1
     access_profile:
       access_method: official_github_rest_api
+      current_phase_runtime_note: GitHub remains the current-phase default live source path
       update_frequency: weekly
       expected_entities:
         - repo

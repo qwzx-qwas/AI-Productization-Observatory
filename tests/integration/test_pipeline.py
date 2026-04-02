@@ -188,8 +188,14 @@ class FixturePipelineIntegrationTests(unittest.TestCase):
 
                 first_record = load_yaml(paths[0])
                 self.assertEqual(first_record["human_review_status"], "pending_first_pass")
+                self.assertIsNone(first_record["human_review_note_template_key"])
                 self.assertEqual(first_record["llm_prescreen"]["status"], "succeeded")
                 self.assertEqual(first_record["llm_prescreen"]["channel_metadata"]["prompt_version"], "candidate_prescreener_v1")
+                self.assertEqual(first_record["llm_prescreen"]["taxonomy_hints"]["primary_persona_code"], "support_agent")
+                self.assertEqual(first_record["llm_prescreen"]["persona_candidates"][0]["persona_code"], "support_agent")
+                self.assertEqual(first_record["llm_prescreen"]["taxonomy_hints"]["main_category_candidate"]["category_code"], "JTBD_SALES_SUPPORT")
+                self.assertEqual(first_record["llm_prescreen"]["handoff_readiness_hint"]["suggested_action"], "candidate_pool")
+                self.assertEqual(first_record["llm_prescreen"]["evidence_anchors"][0]["anchor_rank"], 1)
                 self.assertTrue(paths[0].is_relative_to(candidate_workspace))
 
     def test_candidate_handoff_to_staging_keeps_gold_set_stub_boundary(self) -> None:
@@ -212,7 +218,8 @@ class FixturePipelineIntegrationTests(unittest.TestCase):
 
                 record = load_yaml(paths[0])
                 record["human_review_status"] = "approved_for_staging"
-                record["human_review_notes"] = "First-pass human review approved this candidate for staging."
+                record["human_review_note_template_key"] = "approved"
+                record["human_review_notes"] = "clear end-user product signal; evidence sufficient for staging; Product Hunt launch copy is specific enough for staging."
                 record["human_reviewed_at"] = utc_now_iso()
                 record["whitelist_reason"] = "manual_first_pass_whitelist"
                 dump_yaml(paths[0], record)

@@ -8,11 +8,13 @@ import sys
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from unittest.mock import patch
 
 import yaml
 
+from src.common.config import require_environment_variable
+from src.common.errors import ConfigError, ContractValidationError
 from src.common.schema import validate_instance
-from src.common.errors import ContractValidationError
 from tests.helpers import REPO_ROOT
 
 
@@ -292,16 +294,40 @@ class ContractCommandTests(unittest.TestCase):
         result = self.run_cli("validate-env", "--require", "APO_REQUIRED_FOR_TEST")
         self.assertEqual(result.returncode, 2)
         self.assertIn("Missing required environment variables", result.stderr)
+        self.assertIn(".env.example", result.stderr)
+        self.assertIn(".env", result.stderr)
 
     def test_validate_env_uses_runtime_defaults_for_known_config_paths(self) -> None:
         result = self.run_cli("validate-env", "--require", "APO_CONFIG_DIR", "APO_SCHEMA_DIR")
         self.assertEqual(result.returncode, 0, msg=result.stderr)
+
+    def test_validate_env_redacts_sensitive_values(self) -> None:
+        result = self.run_cli(
+            "validate-env",
+            "--require",
+            "APO_CONFIG_DIR",
+            "GITHUB_TOKEN",
+            env={"GITHUB_TOKEN": "your_github_token_here"},
+        )
+        self.assertEqual(result.returncode, 0, msg=result.stderr)
+        self.assertIn("GITHUB_TOKEN=[REDACTED]", result.stderr)
+        self.assertNotIn("your_github_token_here", result.stderr)
+        self.assertIn("APO_CONFIG_DIR=", result.stderr)
 
     def test_validate_env_fails_when_resolved_config_path_is_missing(self) -> None:
         missing_dir = REPO_ROOT / "does-not-exist-config-dir"
         result = self.run_cli("validate-env", "--require", "APO_CONFIG_DIR", env={"APO_CONFIG_DIR": str(missing_dir)})
         self.assertEqual(result.returncode, 2)
         self.assertIn("APO_CONFIG_DIR points to missing directory", result.stderr)
+
+    def test_require_environment_variable_guides_local_secret_setup(self) -> None:
+        with patch.dict(os.environ, {}, clear=True):
+            with self.assertRaises(ConfigError) as context:
+                require_environment_variable("GITHUB_TOKEN")
+        self.assertIn(".env.example", str(context.exception))
+        self.assertIn(".env", str(context.exception))
+        self.assertIn("private", str(context.exception))
+        self.assertIn("Never commit real secrets", str(context.exception))
 
     def test_invalid_config_path_fails(self) -> None:
         missing_dir = REPO_ROOT / "does-not-exist-config-dir"
@@ -389,6 +415,21 @@ class ContractCommandTests(unittest.TestCase):
             result = self.run_cli("validate-configs", env={"APO_CONFIG_DIR": str(config_dir)})
             self.assertEqual(result.returncode, 2)
             self.assertIn("recommended_actions", result.stderr)
+
+    def test_validate_configs_rejects_candidate_prescreen_note_template_drift(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            config_dir = root / "configs"
+            shutil.copytree(REPO_ROOT / "configs", config_dir)
+
+            workflow_path = config_dir / "candidate_prescreen_workflow.yaml"
+            workflow = yaml.safe_load(workflow_path.read_text(encoding="utf-8"))
+            workflow["workspace"]["human_review_note_templates"]["approved"] = "free-form approval note"
+            workflow_path.write_text(yaml.safe_dump(workflow, sort_keys=False, allow_unicode=True), encoding="utf-8")
+
+            result = self.run_cli("validate-configs", env={"APO_CONFIG_DIR": str(config_dir)})
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("note templates", result.stderr)
 
     def test_validate_configs_rejects_score_schema_required_field_drift(self) -> None:
         with TemporaryDirectory() as tmp_dir:
