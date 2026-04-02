@@ -186,9 +186,12 @@ def run_candidate_prescreen(
                 timeout_seconds=int(llm_defaults["timeout_seconds_default"]),
                 max_retries=int(llm_defaults["max_retries_default"]),
             )
-        except ProcessingError as exc:
+        except (ProcessingError, ContractValidationError) as exc:
             record["llm_prescreen"]["status"] = "failed"
-            record["llm_prescreen"]["error_type"] = exc.error_type
+            if isinstance(exc, ProcessingError):
+                record["llm_prescreen"]["error_type"] = exc.error_type
+            else:
+                record["llm_prescreen"]["error_type"] = "schema_drift"
             record["llm_prescreen"]["error_message"] = str(exc)
         else:
             record["llm_prescreen"]["status"] = "succeeded"

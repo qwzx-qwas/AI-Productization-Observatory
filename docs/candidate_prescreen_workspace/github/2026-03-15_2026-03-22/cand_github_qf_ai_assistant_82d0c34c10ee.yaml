@@ -1,0 +1,120 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_82d0c34c10ee
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2026-03-15_2026-03-22
+created_at: '2026-04-02T10:35:47.097651Z'
+updated_at: '2026-04-02T10:36:10.818757Z'
+source: github
+source_id: src_github
+source_window: 2026-03-15..2026-03-22
+time_field: pushed_at
+external_id: '1041868088'
+canonical_url: https://github.com/amanaiproduct/personal-os
+title: personal-os
+summary: Local AI agent powered task management system that processes backlog notes
+  into prioritized tasks based on user goals.
+raw_evidence_excerpt: 'PersonalOS is an AI-powered task management system that keeps
+  you focused on what matters.
+
+
+  The README instructs users to brain dump into BACKLOG.md, ask an AI assistant to
+  process it, and receive organized tasks prioritized by goals.
+
+
+  Key Features
+
+
+  - Goal-driven prioritization.
+
+  - Knowledge base and backlog processing.
+
+  - Natural-language commands such as process my backlog and what should I work on.
+
+  - Smart deduplication and session evals.
+
+  - MCP integration for Claude and other AI assistants.
+
+
+  This is positioned as a directly usable personal productivity system rather than
+  a generic SDK.'
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-15'
+    window_end: '2026-03-22'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-15..2026-03-22
+    external_id: '1041868088'
+    canonical_url: https://github.com/amanaiproduct/personal-os
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: LLM prescreen not used for this candidate because live relay responses
+    were unstable during this staging run; human first-pass review was completed directly
+    from live GitHub evidence.
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  local AI task-management system with direct user workflow and goal-driven prioritization
+  fits the user-side productivity product boundary.
+human_reviewed_at: '2026-04-02T10:35:47.097651Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_03_samples_031_045.yaml
+  sample_slot_id: GS300-040
+  sample_id: cand_github_qf_ai_assistant_82d0c34c10ee
+  blocking_items: []
+  last_attempted_at: '2026-04-02T10:36:10.818733Z'

@@ -109,7 +109,7 @@ def _clean_excerpt_line(raw_line: str) -> str:
     return line
 
 
-def _clean_raw_evidence_excerpt(value: Any) -> str:
+def clean_raw_evidence_excerpt(value: Any) -> str:
     text = _normalize_prompt_text(value)
     if not text:
         return ""
@@ -171,7 +171,7 @@ def _build_relay_input(candidate_input: dict[str, Any]) -> dict[str, Any]:
         "canonical_url": _normalize_prompt_text(candidate_input.get("canonical_url")),
         "title": _normalize_prompt_text(candidate_input.get("title")),
         "summary": _normalize_prompt_text(candidate_input.get("summary")),
-        "raw_evidence_excerpt": _clean_raw_evidence_excerpt(candidate_input.get("raw_evidence_excerpt")),
+        "raw_evidence_excerpt": clean_raw_evidence_excerpt(candidate_input.get("raw_evidence_excerpt")),
         "query_family": _normalize_prompt_text(candidate_input.get("query_family")),
         "query_slice_id": _normalize_prompt_text(candidate_input.get("query_slice_id")),
         "selection_rule_version": _normalize_prompt_text(candidate_input.get("selection_rule_version")),

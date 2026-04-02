@@ -1,0 +1,249 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_bbbee3622346
+candidate_batch_id: candidate_batch_github_qf_chatbot_2026-03-15_2026-03-22
+created_at: '2026-04-02T10:26:39.037355Z'
+updated_at: '2026-04-02T10:27:13.754253Z'
+source: github
+source_id: src_github
+source_window: 2026-03-15..2026-03-22
+time_field: pushed_at
+external_id: '660489378'
+canonical_url: https://github.com/microsoft/promptflow
+title: promptflow
+summary: Build high-quality LLM apps - from prototyping, testing to production deployment
+  and monitoring.
+raw_evidence_excerpt: "Build high-quality LLM apps - from prototyping, testing to\
+  \ production deployment and monitoring.\n\nPrompt flow\n\n> Welcome to join us to\
+  \ make prompt flow better by > participating discussions, > opening issues, > submitting\
+  \ PRs.\n\n**Prompt flow** is a suite of development tools designed to streamline\
+  \ the end-to-end development cycle of LLM-based AI applications, from ideation,\
+  \ prototyping, testing, evaluation to production deployment and monitoring. It makes\
+  \ prompt engineering much easier and enables you to build LLM apps with production\
+  \ quality.\n\nWith prompt flow, you will be able to:\n\n- **Create and iteratively\
+  \ develop flow** - Create executable flows that link LLMs, prompts, Python code\
+  \ and other tools together. - Debug and iterate your flows, especially tracing interaction\
+  \ with LLMs with ease. - **Evaluate flow quality and performance** - Evaluate your\
+  \ flow's quality and performance with larger datasets. - Integrate the testing and\
+  \ evaluation into your CI/CD system to ensure quality of your flow. - **Streamlined\
+  \ development cycle for production** - Deploy your flow to the serving platform\
+  \ you choose or integrate into your app's code base easily. - (Optional but highly\
+  \ recommended) Collaborate with your team by leveraging the cloud version of Prompt\
+  \ flow in Azure AI.\n\n------\n\nInstallation\n\nTo get started quickly, you can\
+  \ use a pre-built development environment. **Click the button below** to open the\
+  \ repo in GitHub Codespaces, and then continue the readme!\n\nIf you want to get\
+  \ started in your local environment, first install the packages:\n\nEnsure you have\
+  \ a python environment, `python>=3.9, <=3.11` is recommended.\n\nQuick Start \u26A1\
+  \n\n**Create a chatbot with prompt flow**\n\nRun the command to initiate a prompt\
+  \ flow from a chat template, it creates folder named `my_chatbot` and generates\
+  \ required files within it:\n\n**Setup a connection for your API key**\n\nFor OpenAI\
+  \ key, establish a connection by running the command, using the `openai.yaml` file\
+  \ in the `my_chatbot` folder, which stores your OpenAI key (override keys and name\
+  \ with --set to avoid yaml file changes):\n\nFor Azure OpenAI key, establish the\
+  \ connection by running the command, using the `azure_openai.yaml` file:\n\n**Chat\
+  \ with your flow**\n\nIn the `my_chatbot` folder, there's a `flow.dag.yaml` file\
+  \ that outlines the flow, including inputs/outputs, nodes, connection, and the LLM\
+  \ model, etc\n\n> Note that in the `chat` node, we're using a connection named `open_ai_connection`\
+  \ (specified in `connection` field) and the `gpt-35-turbo` model (specified in `deployment_name`\
+  \ field). The deployment_name filed is to specify the OpenAI model, or the Azure\
+  \ OpenAI deployment resource.\n\nInteract with your chatbot by running: (press `Ctrl\
+  \ + C` to end the session)\n\n**Core value: ensuring \"High Quality\u201D from prototype\
+  \ to production**\n\nExplore our **15-minute tutorial** that guides you through\
+  \ prompt tuning \u27A1 batch testing \u27A1 evaluation, all designed to ensure high\
+  \ quality ready for production.\n\nNext Step! Continue with the **Tutorial** \U0001F447\
+  \ section to delve deeper into prompt flow.\n\nTutorial \U0001F3C3\u200D\u2642\uFE0F\
+  \n\nPrompt flow is a tool designed to **build high quality LLM apps**, the development\
+  \ process in prompt flow follows these steps: develop a flow, improve the flow quality,\
+  \ deploy the flow to production.\n\nDevelop your own LLM apps\n\nVS Code Extension\n\
+  \nWe also offer a VS Code extension (a flow designer) for an interactive flow development\
+  \ experience with UI.\n\nYou can install it from the visualstudio marketplace .\n\
+  \nDeep delve into flow development\n\nGetting started with prompt flow: A step by\
+  \ step guidance to invoke your first flow run.\n\nLearn from use cases\n\nTutorial:\
+  \ Chat with PDF: An end-to-end tutorial on how to build a high quality chat application\
+  \ with prompt flow, including flow development and evaluation with metrics. > More\
+  \ examples can be found here. We welcome contributions of new use cases!\n\nSetup\
+  \ for contributors\n\nIf you're interested in contributing, please start with our\
+  \ dev setup guide: dev_setup.md.\n\nNext Step! Continue with the **Contributing**\
+  \ \U0001F447 section to contribute to prompt flow.\n\nContributing\n\nThis project\
+  \ welcomes contributions and suggestions. Most contributions require you to agree\
+  \ to a Contributor License Agreement (CLA) declaring that you have the right to,\
+  \ and actually do, grant us the rights to use your contribution. For details, visit\
+  \ https://cla.opensource.microsoft.com.\n\nWhen you submit a pull request, a CLA\
+  \ bot will automatically determine whether you need to provide a CLA and decorate\
+  \ the PR appropriately (e.g., status check, comment). Simply follow the instructions\
+  \ provided by the bot. You will only need to do this once across all repos using\
+  \ our CLA.\n\nThis project has adopted the Microsoft Open Source Code of Conduct.\
+  \ For more information see the Code of Conduct FAQ or contact opencode@microsoft.com\
+  \ with any additional questions or comments.\n\nTrademarks\n\nThis project may contain\
+  \ trademarks or logos for projects, products, or services. Authorized use of Microsoft\
+  \ trademarks or logos is subject to and must follow Microsoft's Trademark & Brand\
+  \ Guidelines. Use of Microsoft trademarks or logos in modified versions of this\
+  \ project must not cause confusion or imply Microsoft sponsorship. Any use of third-party\
+  \ trademarks or logos are subject to those third-party's policies.\n\nCode of Conduct\n\
+  \nThis project has adopted the Microsoft Open Source Code of Conduct. For more information\
+  \ see the Code of Conduct FAQ or contact opencode@microsoft.com with any additional\
+  \ questions or comments.\n\nData Collection\n\nThe software may collect information\
+  \ about you and your use of the software and send it to Microsoft if configured\
+  \ to enable telemetry. Microsoft may use this information to provide services and\
+  \ improve our products and services. You may turn on the telemetry as described\
+  \ in the repository. There are also some features in the software that may enable\
+  \ you and Microsoft to collect data from users of your applications. If you use\
+  \ these features, you must comply with applicable law, including providing appropriate\
+  \ notices to users of your applications together with a copy of Microsoft's privacy\
+  \ statement. Our privacy statement is located at https://go.microsoft.com/fwlink/?LinkID=824704.\
+  \ You can learn more about data collection and use in the help documentation and\
+  \ our privacy statement. Your use of the software operates as your consent to these\
+  \ practices.\n\nTelemetry Configuration\n\nTelemetry collection is on by default.\n\
+  \nTo opt out, please run `pf config set telemetry.enabled=false` to turn it off.\n\
+  \nLicense\n\nCopyright (c) Microsoft Corporation. All rights reserved.\n\nLicensed\
+  \ under the MIT license."
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-15'
+    window_end: '2026-03-22'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-15..2026-03-22
+    external_id: '660489378'
+    canonical_url: https://github.com/microsoft/promptflow
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Ready for quick human triage; key boundary question is taxonomy fit, not
+    evidence sufficiency.
+  decision_snapshot: likely_in_scope_but_needs_taxonomy_confirmation
+  scope_boundary_note: 'Treat this candidate as infrastructure for building and operating
+    LLM apps (flow authoring, eval, deployment, monitoring), not as a standalone consumer
+    AI application. Boundary check: include if your scope covers AI productization
+    tooling; exclude if scope is limited to end-user AI apps only.'
+  source_evidence_summary:
+  - '"Prompt flow is a suite of development tools designed to streamline the end-to-end
+    development cycle of LLM-based AI applications, from ideation, prototyping, testing,
+    evaluation to production deployment and monitoring."'
+  - '"Build high-quality LLM apps - from prototyping, testing to production deployment
+    and monitoring."'
+  - '"Create executable flows that link LLMs, prompts, Python code and other tools
+    together."'
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: '"Prompt flow is a suite of development tools designed to streamline
+      the end-to-end development cycle of LLM-based AI applications, from ideation,
+      prototyping, testing, evaluation to production deployment and monitoring."'
+    evidence_source_field: candidate_input
+    why_it_matters: Directly states tool category and full lifecycle orientation.
+  - anchor_rank: 2
+    evidence_text: '"Build high-quality LLM apps - from prototyping, testing to production
+      deployment and monitoring."'
+    evidence_source_field: candidate_input
+    why_it_matters: Concise value proposition aligned with productization pipeline.
+  - anchor_rank: 3
+    evidence_text: '"Create executable flows that link LLMs, prompts, Python code
+      and other tools together."'
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates orchestration/framework behavior rather than a single
+      model endpoint.
+  - anchor_rank: 4
+    evidence_text: '"Evaluate your flow''s quality and performance with larger datasets.
+      Integrate the testing and evaluation into your CI/CD system..."'
+    evidence_source_field: candidate_input
+    why_it_matters: Signals MLOps/LLMOps quality assurance integration.
+  - anchor_rank: 5
+    evidence_text: '"Deploy your flow to the serving platform you choose or integrate
+      into your app''s code base easily."'
+    evidence_source_field: candidate_input
+    why_it_matters: Confirms deployment and integration focus for production use.
+  review_focus_points:
+  - 'Confirm taxonomy fit: AI app productization tooling vs generic dev framework.'
+  - Verify whether Azure cloud coupling is optional or central for inclusion criteria.
+  - Check if telemetry-default behavior affects eligibility under governance/privacy
+    filters.
+  - Assess maturity signals (docs, tutorials, CI/CD workflow claims) against observatory
+    thresholds.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: Ready for quick human triage; key boundary question is taxonomy fit,
+      not evidence sufficiency.
+  persona_candidates:
+  - persona_code: llm_application_platform_tooling_maintainer
+    confidence_rank: 1
+    rationale: Primary messaging centers on enabling developers to create, evaluate,
+      and deploy LLM flows with production quality.
+    supporting_evidence_anchors:
+    - 1
+    - 2
+  - persona_code: ai_ml_engineer_llmops_oriented
+    confidence_rank: 2
+    rationale: Explicit mentions of evaluation datasets, CI/CD integration, deployment,
+      and monitoring align with operational ML workflows.
+    supporting_evidence_anchors:
+    - 1
+    - 2
+  - persona_code: developer_experience_ecosystem_team_vs_code_cli
+    confidence_rank: 3
+    rationale: Presence of CLI quick start and VS Code extension suggests strong DX
+      focus.
+    supporting_evidence_anchors:
+    - 1
+    - 2
+  taxonomy_hints:
+    primary_category_code: LLM application development and productization platform
+    secondary_category_code: null
+    primary_persona_code: llm_application_platform_tooling_maintainer
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: LLM application development and productization platform
+      rationale: Ready for quick human triage; key boundary question is taxonomy fit,
+        not evidence sufficiency.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: End-user AI chatbot application
+      rationale_for_similarity: End-user AI chatbot application
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Repository provides tooling to build/chatbot
+      flows, but does not present itself as a single hosted chatbot product for end
+      users.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope; repository is a developer toolchain for building and operating LLM apps, not a direct end-user AI product.
+human_reviewed_at: '2026-04-02T10:28:30Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -1,0 +1,113 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_1455730e33be
+candidate_batch_id: candidate_batch_github_qf_agent_2026-03-08_2026-03-15
+created_at: '2026-04-02T08:38:35.486882Z'
+updated_at: '2026-04-02T10:04:46.043794Z'
+source: github
+source_id: src_github
+source_window: 2026-03-08..2026-03-15
+time_field: pushed_at
+external_id: '1031598928'
+canonical_url: https://github.com/lybic/agent
+title: agent
+summary: "\u5F00\u6E90\u7684 Agentic \u6846\u67B6\uFF0C\u4E3B\u6253 Computer Use Agent\uFF0C\
+  \u5F3A\u8C03\u8BA9 AI \u50CF\u4EBA\u7C7B\u4E00\u6837\u4F7F\u7528\u8BA1\u7B97\u673A\
+  \u3002\n\u540C\u65F6\u5B9A\u4F4D\u4E3A\u53EF\u63D0\u4F9B\u591A Agent \u8FD0\u884C\
+  \u65F6\u80FD\u529B\u7684\u57FA\u7840\u8BBE\u65BD\u7EC4\u4EF6\u3002\n"
+raw_evidence_excerpt: "\u9879\u76EE README \u6838\u5FC3\u4FE1\u53F7\uFF08\u538B\u7F29\
+  \u7248\uFF0C\u53EF\u8BFB\u6458\u5F55\uFF09\uFF1A\n- \u5B9A\u4F4D\uFF1ALybic GUI\
+  \ Agent\uFF0C\u9762\u5411\u8BA1\u7B97\u673A\u64CD\u4F5C\u667A\u80FD\u4F53\uFF08\
+  Computer Use Agent\uFF09\u7684\u5F00\u6E90\u6846\u67B6\u3002\n- \u8986\u76D6\u5E73\
+  \u53F0\uFF1AWindows\u3001macOS\u3001Linux\uFF0C\u5E76\u63D0\u5230 Android \u6C99\
+  \u7BB1\u652F\u6301\u3002\n- \u80FD\u529B\u58F0\u660E\uFF1A\u591A\u6A21\u578B\u63D0\
+  \u4F9B\u5546\u63A5\u5165\u3001RAG \u6269\u5C55\u3001\u53EF\u89C2\u6D4B\u6027\u3001\
+  \u672C\u5730\u90E8\u7F72\u3001\u4E91\u7AEF\u6C99\u7BB1\u3002\n- \u4F7F\u7528\u65B9\
+  \u5F0F\uFF1A\u652F\u6301 pip/source \u5B89\u88C5\uFF0CCLI \u8FD0\u884C\uFF0CDocker\
+  \ \u8FD0\u884C\uFF0C\u4EE5\u53CA\u4F5C\u4E3A Python \u5E93\u6216 gRPC/REST \u670D\
+  \u52A1\u96C6\u6210\u3002\n- \u5DE5\u7A0B\u5316\u4FE1\u606F\uFF1A\u5305\u542B API\
+  \ Key \u914D\u7F6E\u3001\u5DE5\u5177\u914D\u7F6E\u3001\u6545\u969C\u6392\u67E5\u3001\
+  \u53EF\u9009 Prometheus \u76D1\u63A7\u3001\u53EF\u9009 PostgreSQL \u4EFB\u52A1\u6301\
+  \u4E45\u5316\u3002\n- \u7ED3\u679C\u4E0E\u80CC\u4E66\uFF1AREADME \u63D0\u4F9B benchmark\
+  \ \u6210\u7EE9\u3001arXiv \u8BBA\u6587\u5F15\u7528\u3001\u5F00\u6E90\u8BB8\u53EF\
+  \u8BC1\u4E0E\u793E\u533A\u8054\u7CFB\u65B9\u5F0F\u3002\n\n\u4EE3\u8868\u6027\u539F\
+  \u6587\u7247\u6BB5\uFF1A\n\"Lybic GUI Agent is an open-source framework that enables\
+  \ developers and businesses to create intelligent computer-use agents...\"\n"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-08'
+    window_end: '2026-03-15'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-08..2026-03-15
+    external_id: '1031598928'
+    canonical_url: https://github.com/lybic/agent
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  user confirmed and requested pool admission.
+human_reviewed_at: '2026-04-02T10:02:37.123383Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_03_samples_031_045.yaml
+  sample_slot_id: GS300-032
+  sample_id: cand_github_qf_agent_1455730e33be
+  blocking_items: []
+  last_attempted_at: '2026-04-02T10:04:46.043775Z'

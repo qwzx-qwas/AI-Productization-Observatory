@@ -14,6 +14,7 @@ from socket import timeout as SocketTimeout
 from typing import Any
 
 from src.candidate_prescreen.config import query_slice_config, source_config
+from src.candidate_prescreen.relay import clean_raw_evidence_excerpt
 from src.common.config import require_environment_variable
 from src.common.errors import ContractValidationError, ProcessingError
 from src.common.files import load_json
@@ -114,7 +115,9 @@ def _normalize_fixture_item(
     for item in items:
         if not isinstance(item, dict):
             raise ContractValidationError("Candidate discovery fixture items must be mappings")
-        normalized.append(item)
+        fixture_item = dict(item)
+        fixture_item["raw_evidence_excerpt"] = clean_raw_evidence_excerpt(fixture_item.get("raw_evidence_excerpt"))
+        normalized.append(fixture_item)
     return normalized
 
 
@@ -233,6 +236,7 @@ def _discover_github_window(
         full_name = item.get("full_name")
         readme_excerpt = _read_github_readme(full_name, token, timeout_seconds) if isinstance(full_name, str) and full_name else ""
         summary = item.get("description") or ""
+        readable_excerpt = clean_raw_evidence_excerpt("\n\n".join(part for part in [summary, readme_excerpt] if part))
         normalized.append(
             {
                 "external_id": str(item.get("id")),
@@ -244,7 +248,7 @@ def _discover_github_window(
                 "linked_repo_url": None,
                 "published_at": None,
                 "pushed_at": item.get("pushed_at"),
-                "raw_evidence_excerpt": "\n\n".join(part for part in [summary, readme_excerpt] if part),
+                "raw_evidence_excerpt": readable_excerpt,
                 "topics": item.get("topics") if isinstance(item.get("topics"), list) else [],
                 "language": item.get("language"),
                 "current_metrics_json": {
