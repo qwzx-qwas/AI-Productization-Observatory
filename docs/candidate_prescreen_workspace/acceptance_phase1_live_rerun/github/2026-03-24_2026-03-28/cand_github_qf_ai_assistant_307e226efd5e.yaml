@@ -1,0 +1,393 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_307e226efd5e
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2026-03-24_2026-03-28
+created_at: '2026-04-02T14:37:17.631709Z'
+updated_at: '2026-04-02T14:38:12.629650Z'
+source: github
+source_id: src_github
+source_window: 2026-03-24..2026-03-28
+time_field: pushed_at
+external_id: '906447572'
+canonical_url: https://github.com/supabase-community/supabase-mcp
+title: supabase-mcp
+summary: Connect Supabase to your AI assistants
+raw_evidence_excerpt: 'Connect Supabase to your AI assistants
+
+
+  Supabase MCP Server
+
+
+  > Connect your Supabase projects to Cursor, Claude, Windsurf, and other AI assistants.
+
+
+  The Model Context Protocol (MCP) standardizes how Large Language Models (LLMs) talk
+  to external services like Supabase. It connects AI assistants directly with your
+  Supabase project and allows them to perform tasks like managing tables, fetching
+  config, and querying data. See the full list of tools.
+
+
+  Setup
+
+
+  1. Follow our security best practices
+
+
+  Before setting up the MCP server, we recommend you read our security best practices
+  to understand the risks of connecting an LLM to your Supabase projects and how to
+  mitigate them.
+
+
+  2. Configure your MCP client
+
+
+  To configure the Supabase MCP server on your client, visit our setup documentation.
+  You can also generate a custom MCP URL for your project by visiting the MCP connection
+  tab in the Supabase dashboard.
+
+
+  Your MCP client will automatically prompt you to log in to Supabase during setup.
+  Be sure to choose the organization that contains the project you wish to work with.
+
+
+  Most MCP clients require the following information:
+
+
+  If you don''t see your MCP client listed in our documentation, check your client''s
+  MCP documentation and copy the above MCP information into their expected format
+  (json, yaml, etc).
+
+
+  CLI
+
+
+  If you''re running Supabase locally with Supabase CLI, you can access the MCP server
+  at `http://localhost:54321/mcp`. Currently, the MCP Server in CLI environments offers
+  a limited subset of tools and no OAuth 2.1.
+
+
+  Self-hosted
+
+
+  For self-hosted Supabase, check the Enabling MCP server page. Currently, the MCP
+  Server in self-hosted environments offers a limited subset of tools and no OAuth
+  2.1.
+
+
+  Options
+
+
+  The following options are configurable as URL query parameters:
+
+
+  - `read_only`: Used to restrict the server to read-only queries and tools. Recommended
+  by default. See read-only mode. - `project_ref`: Used to scope the server to a specific
+  project. Recommended by default. If you omit this, the server will have access to
+  all projects in your Supabase account. See project scoped mode. - `features`: Used
+  to specify which tool groups to enable. See feature groups.
+
+
+  When using the URL in the dashboard or docs, these parameters will be populated
+  for you.
+
+
+  Project scoped mode
+
+
+  Without project scoping, the MCP server will have access to all projects in your
+  Supabase organization. We recommend you restrict the server to a specific project
+  by setting the `project_ref` query parameter in the server URL:
+
+
+  Replace ` ` with the ID of your project. You can find this under **Project ID**
+  in your Supabase project settings.
+
+
+  After scoping the server to a project, account-level tools like `list_projects`
+  and `list_organizations` will no longer be available. The server will only have
+  access to the specified project and its resources.
+
+
+  Read-only mode
+
+
+  To restrict the Supabase MCP server to read-only queries, set the `read_only` query
+  parameter in the server URL:
+
+
+  We recommend enabling this setting by default. This prevents write operations on
+  any of your databases by executing SQL as a read-only Postgres user (via `execute_sql`).
+  All other mutating tools are disabled in read-only mode, including: `apply_migration`
+  `create_project` `pause_project` `restore_project` `deploy_edge_function` `create_branch`
+  `delete_branch` `merge_branch` `reset_branch` `rebase_branch` `update_storage_config`.
+
+
+  Feature groups
+
+
+  You can enable or disable specific tool groups by passing the `features` query parameter
+  to the MCP server. This allows you to customize which tools are available to the
+  LLM. For example, to enable only the database and docs tools, you would specify
+  the server URL as:
+
+
+  Available groups are: `account`, `docs`, `database`, `debugging`, `development`,
+  `functions`, `storage`, and `branching`.
+
+
+  If this parameter is not set, the default feature groups are: `account`, `database`,
+  `debugging`, `development`, `docs`, `functions`, and `branching`.
+
+
+  Tools
+
+
+  _**Note:** This server is pre-1.0, so expect some breaking changes between versions.
+  Since LLMs will automatically adapt to the tools available, this shouldn''t affect
+  most users._
+
+
+  The following Supabase tools are available to the LLM, grouped by feature.
+
+
+  Account
+
+
+  Enabled by default when no `project_ref` is set. Use `account` to target this group
+  of tools with the `features` option.
+
+
+  _**Note:** these tools will be unavailable if the server is scoped to a project._
+
+
+  - `list_projects`: Lists all Supabase projects for the user. - `get_project`: Gets
+  details for a project. - `create_project`: Creates a new Supabase project. - `pause_project`:
+  Pauses a project. - `restore_project`: Restores a project. - `list_organizations`:
+  Lists all organizations that the user is a member of. - `get_organization`: Gets
+  details for an organization. - `get_cost`: Gets the cost of a new project or branch
+  for an organization. - `confirm_cost`: Confirms the user''s understanding of new
+  project or branch costs. This is required to create a new project or branch.
+
+
+  Knowledge Base
+
+
+  Enabled by default. Use `docs` to target this group of tools with the `features`
+  option.
+
+
+  - `search_docs`: Searches the Supabase documentation for up-to-date information.
+  LLMs can use this to find answers to questions or learn how to use specific features.
+
+
+  Database
+
+
+  Enabled by default. Use `database` to target this group of tools with the `features`
+  option.
+
+
+  - `list_tables`: Lists all tables within the specified schemas. - `list_extensions`:
+  Lists all extensions in the database. - `list_migrations`: Lists all migrations
+  in the database. - `apply_migration`: Applies a SQL migration to the database. SQL
+  passed to this tool will be tracked within the database, so LLMs should use this
+  for DDL operations (schema changes). - `execute_sql`: Executes raw SQL in the database.
+  LLMs should use this for regular queries that don''t change the schema.
+
+
+  Debugging
+
+
+  Enabled by default. Use `debugging` to target this group of tools with the `features`
+  option.
+
+
+  - `get_logs`: Gets logs for a Supabase project by service type (api, postgres, edge
+  functions, auth, storage, realtime). LLMs can use this to help with debugging and
+  monitoring service performance. - `get_advisors`: Gets a list of advisory notices
+  for a Supabase project. LLMs can use this to check for security vulnerabilities
+  or performance issues.
+
+
+  Development
+
+
+  Enabled by default. Use `development` to target this group of tools with the `features`
+  option.
+
+
+  - `get_project_url`: Gets the API URL for a project. - `get_publishable_keys`: Gets
+  the anonymous API keys for a project. Returns an array of client-safe API keys including
+  legacy anon keys and modern publishable keys. Publishable keys are recommended for
+  new applications. - `generate_typescript_types`: Generates TypeScript types based
+  on the database schema. LLMs can save this to a file and use it in their code.
+
+
+  Edge Functions
+
+
+  Enabled by default. Use `functions` to target this group of tools with the `features`
+  option.
+
+
+  - `list_edge_functions`: Lists all Edge Functions in a Supabase project. - `get_edge_function`:
+  Retrieves file contents for an Edge Function in a Supabase project. - `deploy_edge_function`:
+  Deploys a new Edge Function to a Supabase project. LLMs can use this to deploy new
+  functions or update existing ones.
+
+
+  Branching (Experimental, requires a paid plan)
+
+
+  Enabled by default. Use `branching` to target this group of tools with the `features`
+  option.
+
+
+  - `create_branch`: Creates a development branch with migrations from production
+  branch. - `list_branches`: Lists all development branches. - `delete_branch`: Deletes
+  a development branch. - `merge_branch`: Merges migrations and edge functions from
+  a development branch to production. - `reset_branch`: Resets migrations of a development
+  branch to a prior version. - `rebase_branch`: Rebases development branch on production
+  to handle migration drift.
+
+
+  Storage'
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-24'
+    window_end: '2026-03-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-24..2026-03-28
+    external_id: '906447572'
+    canonical_url: https://github.com/supabase-community/supabase-mcp
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: High-value README evidence is sufficient for quick human triage; minimal
+    need to reread full raw excerpt unless taxonomy boundary is disputed.
+  decision_snapshot: likely_in_scope_infrastructure_project, but requires boundary
+    confirmation against generic SDK/tooling buckets
+  scope_boundary_note: 'Treat this as AI-assistant integration infrastructure (MCP
+    server + controllable tool surface), not as a standalone end-user AI app. Key
+    boundary question: does your taxonomy include enabling connectors/protocol servers
+    for LLM agents, or only finished assistant products?'
+  source_evidence_summary:
+  - "\u201CConnect Supabase projects to Cursor, Claude, Windsurf, and other AI assistants.\u201D"
+  - "\u201CThe Model Context Protocol (MCP) standardizes how Large Language Models\
+    \ (LLMs) talk to external services like Supabase.\u201D"
+  - "\u201Callows them to perform tasks like managing tables, fetching config, and\
+    \ querying data.\u201D"
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: "\u201CConnect Supabase projects to Cursor, Claude, Windsurf, and\
+      \ other AI assistants.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Directly ties the project to AI assistant interoperability.
+  - anchor_rank: 2
+    evidence_text: "\u201CThe Model Context Protocol (MCP) standardizes how Large\
+      \ Language Models (LLMs) talk to external services like Supabase.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Positions repo as protocol-layer infrastructure for LLM tool use.
+  - anchor_rank: 3
+    evidence_text: "\u201Callows them to perform tasks like managing tables, fetching\
+      \ config, and querying data.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Confirms actionable agent/tooling capabilities beyond passive
+      documentation.
+  - anchor_rank: 4
+    evidence_text: "\u201Cread_only: Used to restrict the server to read-only queries\
+      \ and tools. Recommended by default.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Shows explicit AI-safety/guardrail design, relevant for productionization
+      maturity.
+  - anchor_rank: 5
+    evidence_text: "\u201CThis server is pre-1.0, so expect some breaking changes\
+      \ between versions.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Signals maturity risk; useful for prioritization and readiness
+      scoring.
+  review_focus_points:
+  - Confirm taxonomy eligibility for AI-enabling infrastructure (MCP servers) vs only
+    user-facing AI products.
+  - Check whether broad mutating capabilities (e.g., apply_migration, deploy_edge_function,
+    create_project) affect risk posture classification.
+  - Validate maturity threshold handling given explicit pre-1.0 breaking-change warning.
+  - Assess whether security controls (read_only, project_ref, feature groups) are
+    sufficient for candidate-pool quality bar.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: High-value README evidence is sufficient for quick human triage; minimal
+      need to reread full raw excerpt unless taxonomy boundary is disputed.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: High-value README evidence is sufficient for quick human triage; minimal
+      need to reread full raw excerpt unless taxonomy boundary is disputed.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI assistant infrastructure / MCP tool server
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI assistant infrastructure / MCP tool server
+      rationale: High-value README evidence is sufficient for quick human triage;
+        minimal need to reread full raw excerpt unless taxonomy boundary is disputed.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: General Supabase developer SDK/integration utility
+      rationale_for_similarity: General Supabase developer SDK/integration utility
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Core value proposition is not generic API consumption;
+      it is specifically LLM-to-service mediation via MCP with assistant-oriented
+      tool invocation and safety controls.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear; The README provides strong
+  evidence of an MCP server that enables existing AI assistants to operate on Supabase,
+  but this is connector infrastructure rather than a clearly standalone end-user AI
+  product and needs boundary confirmation.
+human_reviewed_at: '2026-04-02T14:38:12.629631Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

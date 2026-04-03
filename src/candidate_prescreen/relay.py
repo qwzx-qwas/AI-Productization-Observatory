@@ -7,6 +7,7 @@ import json
 import os
 import re
 import ssl
+import time
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
@@ -24,6 +25,7 @@ README_EXCERPT_MAX_CHARS = 8000
 RELAY_API_STYLE_OPTIONS = {"relay_json", "openai_compatible"}
 RELAY_AUTH_STYLE_OPTIONS = {"bearer", "raw"}
 RELAY_MESSAGE_CONTENT_STYLE_OPTIONS = {"string", "parts_list"}
+DEFAULT_RELAY_MIN_REQUEST_INTERVAL_SECONDS = 60
 _BADGE_MARKERS = (
     "img.shields.io",
     "shields.io",
@@ -31,6 +33,7 @@ _BADGE_MARKERS = (
     "visitor badge",
     "badge.svg",
 )
+_LAST_RELAY_REQUEST_MONOTONIC: float | None = None
 
 
 @dataclass(frozen=True)
@@ -79,6 +82,33 @@ class RelayConfig:
             auth_style=auth_style,
             message_content_style=message_content_style,
         )
+
+
+def relay_min_request_interval_seconds() -> int:
+    value = os.environ.get("APO_LLM_RELAY_MIN_REQUEST_INTERVAL_SECONDS")
+    if value is None or not value.strip():
+        return DEFAULT_RELAY_MIN_REQUEST_INTERVAL_SECONDS
+    try:
+        interval = int(value)
+    except ValueError as exc:
+        raise ConfigError("APO_LLM_RELAY_MIN_REQUEST_INTERVAL_SECONDS must be an integer") from exc
+    return max(0, interval)
+
+
+def _wait_for_relay_request_cooldown() -> None:
+    global _LAST_RELAY_REQUEST_MONOTONIC
+
+    cooldown_seconds = relay_min_request_interval_seconds()
+    if cooldown_seconds <= 0:
+        _LAST_RELAY_REQUEST_MONOTONIC = time.monotonic()
+        return
+
+    now = time.monotonic()
+    if _LAST_RELAY_REQUEST_MONOTONIC is not None:
+        remaining = cooldown_seconds - (now - _LAST_RELAY_REQUEST_MONOTONIC)
+        if remaining > 0:
+            time.sleep(remaining)
+    _LAST_RELAY_REQUEST_MONOTONIC = time.monotonic()
 
 
 def _normalize_prompt_text(value: Any) -> str:
@@ -324,6 +354,95 @@ def _extract_result_object(body: dict[str, Any], *, api_style: str) -> dict[str,
     return result
 
 
+def _is_timeout_reason(reason: Any) -> bool:
+    if isinstance(reason, (SocketTimeout, TimeoutError)):
+        return True
+    text = str(reason).strip().lower()
+    return bool(text) and "timed out" in text
+
+
+def _map_http_error(exc: urllib.error.HTTPError, *, request_label: str) -> ProcessingError:
+    if exc.code == 429:
+        return ProcessingError("api_429", f"{request_label} returned HTTP 429 (rate limited)")
+    if exc.code in {401, 403}:
+        return ProcessingError(
+            "dependency_unavailable",
+            f"{request_label} authentication/authorization failed with HTTP {exc.code}",
+        )
+    if exc.code == 408:
+        return ProcessingError("timeout", f"{request_label} returned HTTP 408 before a complete response was received")
+    if exc.code in {502, 503, 504}:
+        return ProcessingError("dependency_unavailable", f"{request_label} upstream unavailable with HTTP {exc.code}")
+    if 500 <= exc.code <= 599:
+        return ProcessingError("dependency_unavailable", f"{request_label} returned upstream/server HTTP {exc.code}")
+    return ProcessingError(
+        "dependency_unavailable",
+        f"{request_label} rejected the request with HTTP {exc.code}; check relay contract, routing, or auth settings",
+    )
+
+
+def _map_url_error(
+    exc: urllib.error.URLError,
+    *,
+    request_label: str,
+    stage: str,
+) -> ProcessingError:
+    if _is_timeout_reason(exc.reason):
+        error_type = "provider_timeout" if stage == "read" else "timeout"
+        stage_text = "while reading response body" if stage == "read" else "before receiving response headers"
+        return ProcessingError(error_type, f"{request_label} timed out {stage_text}")
+    return ProcessingError("network_error", f"{request_label} network error: {exc.reason}")
+
+
+def post_json_to_relay(
+    *,
+    request_url: str,
+    payload: dict[str, Any],
+    relay_config: RelayConfig,
+    request_label: str,
+) -> tuple[dict[str, Any], str | None]:
+    _wait_for_relay_request_cooldown()
+    request = urllib.request.Request(
+        request_url,
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "Authorization": _authorization_header(relay_config),
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        },
+        method="POST",
+    )
+    try:
+        response = urllib.request.urlopen(
+            request,
+            timeout=relay_config.timeout_seconds,
+            context=ssl.create_default_context(),
+        )
+    except urllib.error.HTTPError as exc:
+        raise _map_http_error(exc, request_label=request_label) from exc
+    except urllib.error.URLError as exc:
+        raise _map_url_error(exc, request_label=request_label, stage="open") from exc
+    except (SocketTimeout, TimeoutError) as exc:
+        raise ProcessingError("timeout", f"{request_label} timed out before receiving response headers") from exc
+
+    with response:
+        request_id = response.headers.get("X-Request-Id")
+        try:
+            raw_body = response.read().decode("utf-8")
+        except urllib.error.URLError as exc:
+            raise _map_url_error(exc, request_label=request_label, stage="read") from exc
+        except (SocketTimeout, TimeoutError) as exc:
+            raise ProcessingError("provider_timeout", f"{request_label} timed out while reading response body") from exc
+
+    try:
+        body = json.loads(raw_body)
+    except json.JSONDecodeError as exc:
+        raise ProcessingError("parse_failure", f"{request_label} returned invalid JSON") from exc
+    if not isinstance(body, dict):
+        raise ProcessingError("schema_drift", f"{request_label} response body must be an object")
+    return body, request_id
+
+
 def screen_candidate(
     candidate_input: dict[str, Any],
     *,
@@ -366,40 +485,16 @@ def screen_candidate(
     )
     last_error: ProcessingError | None = None
     for _attempt in range(max_retries + 1):
-        request = urllib.request.Request(
-            request_url,
-            data=json.dumps(payload).encode("utf-8"),
-            headers={
-                "Authorization": _authorization_header(relay_config),
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-            },
-            method="POST",
-        )
         try:
-            with urllib.request.urlopen(
-                request,
-                timeout=relay_config.timeout_seconds,
-                context=ssl.create_default_context(),
-            ) as response:
-                raw_body = response.read().decode("utf-8")
-                request_id = response.headers.get("X-Request-Id")
-        except urllib.error.HTTPError as exc:
-            error_type = "api_429" if exc.code == 429 else "dependency_unavailable"
-            last_error = ProcessingError(error_type, f"Relay returned HTTP {exc.code}")
+            body, request_id = post_json_to_relay(
+                request_url=request_url,
+                payload=payload,
+                relay_config=relay_config,
+                request_label="Relay request",
+            )
+        except ProcessingError as exc:
+            last_error = exc
             continue
-        except urllib.error.URLError as exc:
-            last_error = ProcessingError("network_error", f"Relay network error: {exc.reason}")
-            continue
-        except SocketTimeout as exc:
-            last_error = ProcessingError("provider_timeout", "Relay timed out")
-            continue
-        try:
-            body = json.loads(raw_body)
-        except json.JSONDecodeError as exc:
-            raise ProcessingError("parse_failure", "Relay returned invalid JSON") from exc
-        if not isinstance(body, dict):
-            raise ProcessingError("schema_drift", "Relay response body must be an object")
         result = _extract_result_object(body, api_style=relay_config.api_style)
         normalized = normalize_llm_result(result)
         normalized["channel_metadata"] = {

@@ -1,0 +1,249 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_b549a6622492
+candidate_batch_id: candidate_batch_github_qf_rag_2026-03-19_2026-03-23
+created_at: '2026-04-02T14:50:16.846605Z'
+updated_at: '2026-04-02T14:50:56.568418Z'
+source: github
+source_id: src_github
+source_window: 2026-03-19..2026-03-23
+time_field: pushed_at
+external_id: '876064934'
+canonical_url: https://github.com/patchy631/ai-engineering-hub
+title: ai-engineering-hub
+summary: In-depth tutorials on LLMs, RAGs and real-world AI agent applications.
+raw_evidence_excerpt: "In-depth tutorials on LLMs, RAGs and real-world AI agent applications.\n\
+  \n---\n\nAI Engineering Hub \U0001F680\n\nWelcome to the **AI Engineering Hub**\
+  \ - your comprehensive resource for learning and building with AI!\n\n\U0001F31F\
+  \ Why This Repo?\n\nAI Engineering is advancing rapidly, and staying at the forefront\
+  \ requires both deep understanding and hands-on experience. Here, you will find:\
+  \ - **93+ Production-Ready Projects** across all skill levels - In-depth tutorials\
+  \ on **LLMs, RAG, Agents, and more** - Real-world **AI agent** applications - Examples\
+  \ to implement, adapt, and scale in your projects\n\nWhether you're a beginner,\
+  \ practitioner, or researcher, this repo provides resources for all skill levels\
+  \ to experiment and succeed in AI engineering.\n\n---\n\n\U0001F4CB Table of Contents\n\
+  \n- Getting Started - Newsletter - Projects by Difficulty - Beginner Projects (22)\
+  \ - Intermediate Projects (48) - Advanced Projects (23) - Contributing - License\n\
+  \n---\n\n\U0001F3AF Getting Started\n\nNew to AI Engineering? Start here:\n\n1.\
+  \ **Complete Beginners**: Check out the AI Engineering Roadmap for a comprehensive\
+  \ learning path 2. **Learn the Basics**: Start with Beginner Projects like OCR apps\
+  \ and simple RAG implementations 3. **Build Your Skills**: Move to Intermediate\
+  \ Projects with agents and complex workflows 4. **Master Advanced Concepts**: Tackle\
+  \ Advanced Projects including fine-tuning and production systems\n\n---\n\n\U0001F4EC\
+  \ Stay Updated with Our Newsletter!\n\n**Get a FREE Data Science eBook** \U0001F4D6\
+  \ with 150+ essential lessons in Data Science when you subscribe to our newsletter!\
+  \ Stay in the loop with the latest tutorials, insights, and exclusive resources.\
+  \ Subscribe now!\n\n---\n\n\U0001F393 Projects by Difficulty\n\n\U0001F7E2 Beginner\
+  \ Projects\n\nPerfect for getting started with AI engineering. These projects focus\
+  \ on single components and straightforward implementations.\n\nOCR & Vision - **LaTeX\
+  \ OCR with Llama** - Convert LaTeX equation images to code using Llama 3.2 vision\
+  \ - **Llama OCR** - 100% local OCR app with Llama 3.2 and Streamlit - **Gemma-3\
+  \ OCR** - Local OCR with structured text extraction using Gemma-3 - **Qwen 2.5 OCR**\
+  \ - Text extraction using Qwen 2.5 VL model\n\nChat Interfaces & UI - **Local ChatGPT\
+  \ with DeepSeek** - Mini-ChatGPT with DeepSeek-R1 and Chainlit - **Local ChatGPT\
+  \ with Llama** - ChatGPT clone using Llama 3.2 vision - **Local ChatGPT with Gemma\
+  \ 3** - Local chat interface with Gemma 3 - **DeepSeek Thinking UI** - ChatGPT with\
+  \ visible reasoning using DeepSeek-R1 - **Qwen3 Thinking UI** - Thinking UI with\
+  \ Qwen3:4B and Streamlit - **GPT-OSS Thinking UI** - GPT-OSS with reasoning visualization\
+  \ - **Streaming AI Chatbot** - Real-time AI streaming with Motia framework\n\nBasic\
+  \ RAG - **Simple RAG Workflow** - Basic RAG with LlamaIndex and Ollama - **Document\
+  \ Chat RAG** - Chat with documents using Llama 3.3 - **Fastest RAG Stack** - Fast\
+  \ RAG with SambaNova, LlamaIndex, and Qdrant - **GitHub RAG** - Chat with GitHub\
+  \ repos locally - **ModernBERT RAG** - RAG with ModernBert embeddings - **Llama\
+  \ 4 RAG** - RAG powered by Meta's Llama 4\n\nMultimodal & Media - **Image Generation\
+  \ with Janus-Pro** - Local image generation with DeepSeek Janus-pro 7B - **Video\
+  \ RAG with Gemini** - Chat with videos using Gemini AI\n\nOther Tools - **Website\
+  \ to API with FireCrawl** - Convert websites to APIs - **AI News Generator** - News\
+  \ generation with CrewAI and Cohere - **Siamese Network** - Digit similarity detection\
+  \ on MNIST\n\n---\n\n\U0001F7E1 Intermediate Projects\n\nMulti-component systems,\
+  \ agentic workflows, and advanced features for experienced practitioners.\n\nAI\
+  \ Agents & Workflows - **YouTube Trend Analysis** - Analyze YouTube trends with\
+  \ CrewAI and BrightData - **AutoGen Stock Analyst** - Advanced analyst with Microsoft\
+  \ AutoGen - **Agentic RAG** - RAG with document search and web fallback - **Agentic\
+  \ RAG with DeepSeek** - Enterprise agentic RAG with GroundX - **Book Writer Flow**\
+  \ - Automated book writing with CrewAI - **Content Planner Flow** - Content workflow\
+  \ with CrewAI Flow - **Brand Monitoring** - Automated brand monitoring system -\
+  \ **Hotel Booking Crew** - Multi-agent hotel booking with DeepSeek-R1 - **Deploy\
+  \ Agentic RAG** - Private Agentic RAG API with LitServe - **Zep Memory Assistant**\
+  \ - AI Agent with human-like memory - **Agent with MCP Memory** - Agents with Graphiti\
+  \ memory and Opik - **ACP Code** - Agent Communication Protocol demo - **Motia Content\
+  \ Creation** - Social media automation workflow\n\nVoice & Audio - **Real-time Voice\
+  \ Bot** - Conversational travel guide with AssemblyAI - **RAG Voice Agent** - Real-time\
+  \ RAG Voice Agent with Cartesia - **Chat with Audios** - RAG over audio files -\
+  \ **Audio Analysis Toolkit** - Audio analysis with AssemblyAI - **Multilingual Meeting\
+  \ Notes** - Auto meeting notes with language detection\n\nAdvanced RAG - **RAG with\
+  \ Dockling** - RAG over Excel with IBM's Docling - **Trustworthy RAG** - RAG over\
+  \ complex docs with TLM - **Fastest RAG with Milvus and Groq** - Sub-15ms retrieval\
+  \ latency - **Chat with Code** - Chat with code using Qwen3-Coder - **RAG SQL Router**\
+  \ - Agent with RAG and SQL routing\n\nMultimodal - **DeepSeek Multimodal RAG** -\
+  \ MultiModal RAG with DeepSeek-Janus-Pro - **ColiVara Website RAG** - MultiModal\
+  \ RAG for websites - **Multimodal RAG with AssemblyAI** - Audio + vector database\
+  \ + CrewAI\n\nMCP (Model Context Protocol) - **Cursor Linkup MCP** - Custom MCP\
+  \ with deep web search - **EyeLevel MCP RAG** - MCP for RAG over complex docs -\
+  \ **LlamaIndex MCP** - Local MCP client with LlamaIndex - **MCP Agentic RAG** -\
+  \ MCP-powered Agentic RAG for Cursor - **MCP Agentic RAG Firecrawl** - Agentic RAG\
+  \ with Firecrawl - **MCP Video RAG** - Video RAG using Ragie via MCP - **MCP Voice\
+  \ Agent** - Voice agent with Firecrawl and Supabase - **SDV MCP** - Synthetic Data\
+  \ Vault orchestration - **KitOps MCP** - ML model management with KitOps - **Stagehand\
+  \ \xD7 MCP-Use** - Web automation with Stagehand MCP\n\nModel Comparison & Evaluation\
+  \ - **Evaluation and Observability** - E2E RAG evaluation with CometML Opik - **Llama\
+  \ 4 vs DeepSeek-R1** - Compare models using RAG - **Qwen3 vs DeepSeek-R1** - Model\
+  \ comparison with Opik - **O3 vs Claude Code** - Compare Claude 3.7 and o3 - **Sonnet4\
+  \ vs O4** - Code generation comparison - **Sonnet4 vs Qwen3-Coder** - Coder model\
+  \ comparison - **Code Model Comparison** - Frontier model code comparison - **GPT-OSS\
+  \ vs Qwen3** - Reasoning capabilities comparison\n\n---\n\n\U0001F534 Advanced Projects\n\
+  \nComplex systems, fine-tuning, production deployments, and cutting-edge implementations.\n\
+  \nFine-tuning & Model Development - **DeepSeek Fine-tuning** - Fine-tune DeepSeek\
+  \ with Unsloth and Ollama - **Build Reasoning Model** - Build DeepSeek-R1-like reasoning\
+  \ models - **Attention Is All You Need Implementation** - Transformer architecture\
+  \ from scratch\n\nAdvanced Agent Systems - **NVIDIA Demo** - Documentation writer\
+  \ with CrewAI Flows and NVIDIA NIM - **Documentation Writer Flow** - Agentic documentation\
+  \ workflow - **Multi-Agent Deep Researcher** - MCP-powered deep researcher - **Multiplatform\
+  \ Deep Researcher** - Multi-platform research with BrightData - **Web Browsing Agent**\
+  \ - Browser automation with CrewAI and Stagehand - **Paralegal Agent Crew** - Intelligent\
+  \ paralegal with RAG - **FireCrawl Agent** - Corrective RAG with web search fallback\
+  \ - **Context Engineering Workflow** - Research assistant with TensorLake and Zep\
+  \ - **Parlant Conversational Agent** - Compliance-driven conversational agent -\
+  \ **Stock Portfolio Analysis Agent** - Portfolio analysis with React frontend -\
+  \ **Guidelines vs Traditional Prompt** - Structured guidelines comparison\n\nAdvanced\
+  \ MCP & Infrastructure - **MindsDB MCP** - Unified MCP for all data sources - **Financial\
+  \ Analyst DeepSeek** - MCP financial analysis workflow - **Graphiti MCP** - Persistent\
+  \ memory with Zep's Graphiti - **Pixeltable MCP** - Unified multimodal data orchestration\
+  \ - **Ultimate AI Assistant** - Multi-MCP server interface\n\nProduction Systems\
+  \ - **GroundX Document Pipeline** - World-class document processing - **NotebookLM\
+  \ Clone** - Full NotebookLM with RAG, citations, and podcasts"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-19'
+    window_end: '2026-03-23'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-19..2026-03-23
+    external_id: '876064934'
+    canonical_url: https://github.com/patchy631/ai-engineering-hub
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Ready for quick human pass focused on scope fit and whether to classify
+    as educational infrastructure rather than product candidate.
+  decision_snapshot: Recommend hold because Ready for quick human pass focused on
+    scope fit and whether to classify as educational infrastructure rather than product
+    candidate.
+  scope_boundary_note: 'Treat this as a possible ''AI engineering learning hub'' candidate,
+    not automatically as an AI product/company artifact. Boundary question for human
+    reviewer: does your target set include open tutorial aggregators and project collections,
+    or only standalone products/platforms with clear user-facing deployment and ownership?'
+  source_evidence_summary:
+  - In-depth tutorials on LLMs, RAGs and real-world AI agent applications.
+  - 93+ Production-Ready Projects across all skill levels
+  - Whether you're a beginner, practitioner, or researcher, this repo provides resources
+    for all skill levels
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: In-depth tutorials on LLMs, RAGs and real-world AI agent applications.
+    evidence_source_field: candidate_input
+    why_it_matters: Directly frames the repo as tutorial-focused educational content.
+  - anchor_rank: 2
+    evidence_text: 93+ Production-Ready Projects across all skill levels
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates breadth of examples; also introduces ambiguity between
+      demos and true production systems.
+  - anchor_rank: 3
+    evidence_text: Whether you're a beginner, practitioner, or researcher, this repo
+      provides resources for all skill levels
+    evidence_source_field: candidate_input
+    why_it_matters: Audience positioning is educational and community-oriented rather
+      than product-customer oriented.
+  - anchor_rank: 4
+    evidence_text: Projects by Difficulty - Beginner Projects (22) - Intermediate
+      Projects (48) - Advanced Projects (23)
+    evidence_source_field: candidate_input
+    why_it_matters: Structured curriculum taxonomy suggests learning hub/cookbook
+      format.
+  - anchor_rank: 5
+    evidence_text: Stay Updated with Our Newsletter! Get a FREE Data Science eBook...
+    evidence_source_field: candidate_input
+    why_it_matters: Signals content ecosystem/community growth behavior, not necessarily
+      a standalone AI application.
+  review_focus_points:
+  - 'Confirm inclusion policy: educational repos vs production AI products.'
+  - Verify whether any subproject is independently deployed/adopted enough to qualify
+    as a product candidate.
+  - Check maintenance signals (recent pushes, issue/PR activity, releases) before
+    promotion.
+  - 'Assess originality vs aggregation: is this primarily curation of many mini-demos?'
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: Ready for quick human pass focused on scope fit and whether to classify
+      as educational infrastructure rather than product candidate.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Ready for quick human pass focused on scope fit and whether to classify
+      as educational infrastructure rather than product candidate.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI Engineering Education Hub / Project Cookbook
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI Engineering Education Hub / Project Cookbook
+      rationale: Ready for quick human pass focused on scope fit and whether to classify
+        as educational infrastructure rather than product candidate.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: AI Application Product Platform
+      rationale_for_similarity: AI Application Product Platform
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Evidence describes many tutorials and sample
+      implementations rather than one cohesive product with defined users, service
+      boundary, and product lifecycle.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear; The repository shows strong
+  educational and project-collection value but lacks a clearly singular end-user product
+  signal, making scope fit (learning hub vs product artifact) ambiguous.
+human_reviewed_at: '2026-04-02T14:50:56.568398Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

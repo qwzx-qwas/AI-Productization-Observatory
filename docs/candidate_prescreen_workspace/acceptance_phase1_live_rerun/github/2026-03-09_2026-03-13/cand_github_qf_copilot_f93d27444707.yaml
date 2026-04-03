@@ -1,0 +1,135 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_f93d27444707
+candidate_batch_id: candidate_batch_github_qf_copilot_2026-03-09_2026-03-13
+created_at: '2026-04-02T15:10:54.044217Z'
+updated_at: '2026-04-02T15:19:14.132595Z'
+source: github
+source_id: src_github
+source_window: 2026-03-09..2026-03-13
+time_field: pushed_at
+external_id: '244703180'
+canonical_url: https://github.com/btkrausen/hashicorp
+title: hashicorp
+summary: Random code for HashiCorp related projects, training, etc.
+raw_evidence_excerpt: "Random code for HashiCorp related projects, training, etc.\n\
+  \nSupport My Content Here:\n\nHashiCorp-related training courses, projects, and\
+  \ books\n\nThis repo is intended to supplement training courses and external projects\
+  \ related to HashiCorp training and community-based engagement. It is not affiliated\
+  \ with HashiCorp and should not be treated as such. Content shared here is targeted\
+  \ for students looking for additional content or content referenced in material\
+  \ created for educational purposes.\n\nCheck out my list of courses at btk.me/btk\n\
+  \n*********************************************************************************\n\
+  \n**Buy my books on Amazon:** - \U0001F449 HashiCorp Nomad Fundamentals - The Ultimate\
+  \ Beginner's Guide - \U0001F449 Running HashiCorp Vault in Production - \U0001F449\
+  \ The Best-Kept Secrets of HashiCorp Vault\n\n**Buy my books on Gumroad in PDF format**\
+  \ - \U0001F449 HashiCorp Nomad Fundamentals - The Ultimate Beginner's Guide - \U0001F449\
+  \ Running HashiCorp Vault in Production in PDF - \U0001F449 The Best-Kept Secrets\
+  \ of HashiCorp Vault\n\n**\U0001F91D Looking for Coaching? \U0001F91D** \U0001F4DD\
+  \ Need help preparing for your certification exam? \U0001F3C6 Want guidance on best\
+  \ practices for HashiCorp products? \U0001FAF5 Seeking career advice to break into\
+  \ cloud computing?\n\n**Udemy Discount Coupons**\n\nUdemy Profile for Bryan Krausen\n\
+  \n\U0001F9D1\u200D\U0001F4BB \U0001F9D1\u200D\U0001F4BB Video Courses \U0001F9D1\
+  \u200D\U0001F4BB \U0001F9D1\u200D\U0001F4BB\n\n| Course Link | Repo Link | Coupon\
+  \ Code | | ----------- | :---------: |:------------: | | HashiCorp Certified: Terraform\
+  \ Associate 004 Exam Prep Course) | Link | MAR2026 | | HashiCorp Terraform: The\
+  \ Ultimate Beginner's Guide (with Labs) | Link | MAR2026 | | GitHub Copilot: Use\
+  \ GenAI to Write Terraform for You! | Link| MAR2026 | | GitHub Copilot Coding Agent:\
+  \ Build, Test, and Ship Code Fast | Link| MAR2026 | | HashiCorp Vault for the Absolute\
+  \ Beginner | Link| MAR2026 | | HashiCorp Certified: Vault Associate (w/ Hands-On\
+  \ Labs) | Link| MAR2026 | | Integrating HashiCorp Vault with AWS | Link| MAR2026\
+  \ | | HashiCorp Certified: Vault Operations Professional |Link | MAR2026 | | HCP\
+  \ Terraform: A Crash Course for Beginners | Link| MAR2026 | | HashiCorp Certified:\
+  \ Consul Associate (w Hands-On Labs) | Link| MAR2026 | | HashiCorp Nomad Fundamentals:\
+  \ The Ultimate Beginner's Guide | Link| MAR2026 | | Git Made Easy: A Crash Course\
+  \ for Beginners | Link | MAR2026 | | GitHub Copilot Coding Agent: Build, Test, and\
+  \ Ship Code Fast | Link | MAR2026 | | Amazon S3 Deep Dive: The Ultimate Guide to\
+  \ AWS Cloud Storage | Link| MAR2026 | | Building Automated Machine Images using\
+  \ HashiCorp Packer | Link| MAR2026 |\n\n\U0001F4DD \U0001F4DD Practice Exam Courses\
+  \ \U0001F4DD \U0001F4DD | Course Link | Coupon Code | | ----------- | :-----------:\
+  \ | | HashiCorp Certified: Terraform Associate 004 Practice Exam | MAR2026 | | Kubernetes\
+  \ and Cloud Native Associate (KCNA) Practice Exams | MAR2026 | | HashiCorp Certified:\
+  \ Vault Associate Practice Exam | MAR2026 | | HashiCorp Certified: Consul Associate\
+  \ Practice Exam | MAR2026 | | GitHub Foundations Certification Practice Exams |\
+  \ MAR2026 | | GitHub Copilot Certification Practice Exams | MAR2026 | | GitHub Actions\
+  \ Certification Practice Exams | MAR2026 |\n\nPlease feel free to reach through\
+  \ Twitter or LinkedIn for questions or comments."
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-09'
+    window_end: '2026-03-13'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-09..2026-03-13
+    external_id: '244703180'
+    canonical_url: https://github.com/btkrausen/hashicorp
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: network_error
+  error_message: 'Relay request network error: [Errno -2] Name or service not known'
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope; The repository appears to be a personal
+  training/support and course-promotion collection rather than a distinct end-user
+  AI application or product suitable for observatory staging.
+human_reviewed_at: '2026-04-02T15:19:14.132575Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

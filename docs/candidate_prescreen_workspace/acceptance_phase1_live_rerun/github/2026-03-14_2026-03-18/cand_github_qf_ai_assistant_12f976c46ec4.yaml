@@ -1,0 +1,254 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_12f976c46ec4
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2026-03-14_2026-03-18
+created_at: '2026-04-02T15:05:43.279859Z'
+updated_at: '2026-04-02T15:16:27.050147Z'
+source: github
+source_id: src_github
+source_window: 2026-03-14..2026-03-18
+time_field: pushed_at
+external_id: '1012480482'
+canonical_url: https://github.com/coleam00/context-engineering-intro
+title: context-engineering-intro
+summary: Context engineering is the new vibe coding - it's the way to actually make
+  AI coding assistants work. Claude Code is the best for this so that's what this
+  repo is centered around, but you can apply this strategy with any AI coding assistant!
+raw_evidence_excerpt: "Context engineering is the new vibe coding - it's the way to\
+  \ actually make AI coding assistants work. Claude Code is the best for this so that's\
+  \ what this repo is centered around, but you can apply this strategy with any AI\
+  \ coding assistant!\n\nContext Engineering Template\n\nA comprehensive template\
+  \ for getting started with Context Engineering - the discipline of engineering context\
+  \ for AI coding assistants so they have the information necessary to get the job\
+  \ done end to end.\n\n> **Context Engineering is 10x better than prompt engineering\
+  \ and 100x better than vibe coding.**\n\n\U0001F680 Quick Start\n\n\U0001F4DA Table\
+  \ of Contents\n\n- What is Context Engineering? - Template Structure - Step-by-Step\
+  \ Guide - Writing Effective INITIAL.md Files - The PRP Workflow - Using Examples\
+  \ Effectively - Best Practices\n\nWhat is Context Engineering?\n\nContext Engineering\
+  \ represents a paradigm shift from traditional prompt engineering:\n\nPrompt Engineering\
+  \ vs Context Engineering\n\n**Prompt Engineering:** - Focuses on clever wording\
+  \ and specific phrasing - Limited to how you phrase a task - Like giving someone\
+  \ a sticky note\n\n**Context Engineering:** - A complete system for providing comprehensive\
+  \ context - Includes documentation, examples, rules, patterns, and validation -\
+  \ Like writing a full screenplay with all the details\n\nWhy Context Engineering\
+  \ Matters\n\n1. **Reduces AI Failures**: Most agent failures aren't model failures\
+  \ - they're context failures 2. **Ensures Consistency**: AI follows your project\
+  \ patterns and conventions 3. **Enables Complex Features**: AI can handle multi-step\
+  \ implementations with proper context 4. **Self-Correcting**: Validation loops allow\
+  \ AI to fix its own mistakes\n\nTemplate Structure\n\nThis template doesn't focus\
+  \ on RAG and tools with context engineering because I have a LOT more in store for\
+  \ that soon. ;)\n\nStep-by-Step Guide\n\n1. Set Up Global Rules (CLAUDE.md)\n\n\
+  The `CLAUDE.md` file contains project-wide rules that the AI assistant will follow\
+  \ in every conversation. The template includes:\n\n- **Project awareness**: Reading\
+  \ planning docs, checking tasks - **Code structure**: File size limits, module organization\
+  \ - **Testing requirements**: Unit test patterns, coverage expectations - **Style\
+  \ conventions**: Language preferences, formatting rules - **Documentation standards**:\
+  \ Docstring formats, commenting practices\n\n**You can use the provided template\
+  \ as-is or customize it for your project.**\n\n2. Create Your Initial Feature Request\n\
+  \nEdit `INITIAL.md` to describe what you want to build:\n\n**See `INITIAL_EXAMPLE.md`\
+  \ for a complete example.**\n\n3. Generate the PRP\n\nPRPs (Product Requirements\
+  \ Prompts) are comprehensive implementation blueprints that include:\n\n- Complete\
+  \ context and documentation - Implementation steps with validation - Error handling\
+  \ patterns - Test requirements\n\nThey are similar to PRDs (Product Requirements\
+  \ Documents) but are crafted more specifically to instruct an AI coding assistant.\n\
+  \nRun in Claude Code:\n\n**Note:** The slash commands are custom commands defined\
+  \ in `.claude/commands/`. You can view their implementation: - `.claude/commands/generate-prp.md`\
+  \ - See how it researches and creates PRPs - `.claude/commands/execute-prp.md` -\
+  \ See how it implements features from PRPs\n\nThe `$ARGUMENTS` variable in these\
+  \ commands receives whatever you pass after the command name (e.g., `INITIAL.md`\
+  \ or `PRPs/your-feature.md`).\n\nThis command will: 1. Read your feature request\
+  \ 2. Research the codebase for patterns 3. Search for relevant documentation 4.\
+  \ Create a comprehensive PRP in `PRPs/your-feature-name.md`\n\n4. Execute the PRP\n\
+  \nOnce generated, execute the PRP to implement your feature:\n\nThe AI coding assistant\
+  \ will: 1. Read all context from the PRP 2. Create a detailed implementation plan\
+  \ 3. Execute each step with validation 4. Run tests and fix any issues 5. Ensure\
+  \ all success criteria are met\n\nWriting Effective INITIAL.md Files\n\nKey Sections\
+  \ Explained\n\n**FEATURE**: Be specific and comprehensive - \u274C \"Build a web\
+  \ scraper\" - \u2705 \"Build an async web scraper using BeautifulSoup that extracts\
+  \ product data from e-commerce sites, handles rate limiting, and stores results\
+  \ in PostgreSQL\"\n\n**EXAMPLES**: Leverage the examples/ folder - Place relevant\
+  \ code patterns in `examples/` - Reference specific files and patterns to follow\
+  \ - Explain what aspects should be mimicked\n\n**DOCUMENTATION**: Include all relevant\
+  \ resources - API documentation URLs - Library guides - MCP server documentation\
+  \ - Database schemas\n\n**OTHER CONSIDERATIONS**: Capture important details - Authentication\
+  \ requirements - Rate limits or quotas - Common pitfalls - Performance requirements\n\
+  \nThe PRP Workflow\n\nHow /generate-prp Works\n\nThe command follows this process:\n\
+  \n1. **Research Phase** - Analyzes your codebase for patterns - Searches for similar\
+  \ implementations - Identifies conventions to follow\n\n2. **Documentation Gathering**\
+  \ - Fetches relevant API docs - Includes library documentation - Adds gotchas and\
+  \ quirks\n\n3. **Blueprint Creation** - Creates step-by-step implementation plan\
+  \ - Includes validation gates - Adds test requirements\n\n4. **Quality Check** -\
+  \ Scores confidence level (1-10) - Ensures all context is included\n\nHow /execute-prp\
+  \ Works\n\n1. **Load Context**: Reads the entire PRP 2. **Plan**: Creates detailed\
+  \ task list using TodoWrite 3. **Execute**: Implements each component 4. **Validate**:\
+  \ Runs tests and linting 5. **Iterate**: Fixes any issues found 6. **Complete**:\
+  \ Ensures all requirements met\n\nSee `PRPs/EXAMPLE_multi_agent_prp.md` for a complete\
+  \ example of what gets generated.\n\nUsing Examples Effectively\n\nThe `examples/`\
+  \ folder is **critical** for success. AI coding assistants perform much better when\
+  \ they can see patterns to follow.\n\nWhat to Include in Examples\n\n1. **Code Structure\
+  \ Patterns** - How you organize modules - Import conventions - Class/function patterns\n\
+  \n2. **Testing Patterns** - Test file structure - Mocking approaches - Assertion\
+  \ styles\n\n3. **Integration Patterns** - API client implementations - Database\
+  \ connections - Authentication flows\n\n4. **CLI Patterns** - Argument parsing -\
+  \ Output formatting - Error handling\n\nExample Structure\n\nBest Practices\n\n\
+  1. Be Explicit in INITIAL.md - Don't assume the AI knows your preferences - Include\
+  \ specific requirements and constraints - Reference examples liberally\n\n2. Provide\
+  \ Comprehensive Examples - More examples = better implementations - Show both what\
+  \ to do AND what not to do - Include error handling patterns\n\n3. Use Validation\
+  \ Gates - PRPs include test commands that must pass - AI will iterate until all\
+  \ validations succeed - This ensures working code on first try\n\n4. Leverage Documentation\
+  \ - Include official API docs - Add MCP server resources - Reference specific documentation\
+  \ sections\n\n5. Customize CLAUDE.md - Add your conventions - Include project-specific\
+  \ rules - Define coding standards\n\nResources\n\n- Claude Code Documentation -\
+  \ Context Engineering Best Practices"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-14'
+    window_end: '2026-03-18'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-14..2026-03-18
+    external_id: '1012480482'
+    canonical_url: https://github.com/coleam00/context-engineering-intro
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Repository appears to be a practical workflow/template for improving AI
+    coding assistant outcomes (context engineering + PRP execution), which is adjacent
+    to AI productization practices. However, claims are mostly instructional/marketing-style
+    in README text; human review should confirm implementation depth versus conceptual
+    guidance.
+  decision_snapshot: Repository appears to be a practical workflow/template for improving
+    AI coding assistant outcomes (context engineering + PRP execution), which is adjacent
+    to AI productization practices. However, claims are mostly instructional/marketing-style
+    in README text; human review should confirm implementation depth versus conceptual
+    guidance.
+  scope_boundary_note: 'Treat as potentially in-scope for AI assistant enablement
+    workflows, not as a standalone AI product. Boundary question: does the repo provide
+    reusable operational artifacts (commands/templates/workflow automation) beyond
+    advice text?'
+  source_evidence_summary:
+  - "\u201CA comprehensive template for getting started with Context Engineering -\
+    \ the discipline of engineering context for AI coding assistants so they have\
+    \ the information necessary to get the job done end to end.\u201D"
+  - "\u201CRun in Claude Code: ... custom commands defined in `.claude/commands/`\
+    \ ... `generate-prp.md` ... `execute-prp.md`\u201D"
+  - "\u201CPRPs (Product Requirements Prompts) are comprehensive implementation blueprints\
+    \ ... crafted more specifically to instruct an AI coding assistant.\u201D"
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: "\u201CA comprehensive template for getting started with Context\
+      \ Engineering - the discipline of engineering context for AI coding assistants\
+      \ so they have the information necessary to get the job done end to end.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Directly signals a concrete template/workflow orientation rather
+      than pure opinion content.
+  - anchor_rank: 2
+    evidence_text: "\u201CRun in Claude Code: ... custom commands defined in `.claude/commands/`\
+      \ ... `generate-prp.md` ... `execute-prp.md`\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates actionable implementation artifacts (command files),
+      suggesting operational productization support.
+  - anchor_rank: 3
+    evidence_text: "\u201CPRPs (Product Requirements Prompts) are comprehensive implementation\
+      \ blueprints ... crafted more specifically to instruct an AI coding assistant.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Shows process formalization for AI-assisted software delivery,
+      relevant to applied AI workflows.
+  - anchor_rank: 4
+    evidence_text: "\u201CThis template doesn't focus on RAG and tools with context\
+      \ engineering because I have a LOT more in store for that soon.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Explicitly narrows scope; current repo may be introductory and
+      incomplete for broader production patterns.
+  review_focus_points:
+  - 'Validate repository contents: confirm presence/quality of `.claude/commands`,
+    templates, and runnable workflow assets (not README-only).'
+  - 'Assess generalizability: despite Claude-centric framing, determine if patterns
+    are vendor-agnostic in practice.'
+  - Check evidence of real-world execution quality (examples, validation gates, tests)
+    versus aspirational claims.
+  - Confirm category fit as AI engineering process/tooling rather than generic developer
+    education content.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: medium
+    taxonomy_confidence: medium
+    persona_confidence: medium
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: 'High-value next step: quick repo skim of file tree and command/template
+      implementation to validate operational depth in under 5 minutes.'
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository appears to be a practical workflow/template for improving
+      AI coding assistant outcomes (context engineering + PRP execution), which is
+      adjacent to AI productization practices. However, claims are mostly instructional/marketing-style
+      in README text; human review should confirm implementation depth versus conceptual
+      guidance.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI Engineering Workflow/Enablement (Coding Assistant Operations)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI Engineering Workflow/Enablement (Coding Assistant Operations)
+      rationale: Repository appears to be a practical workflow/template for improving
+        AI coding assistant outcomes (context engineering + PRP execution), which
+        is adjacent to AI productization practices. However, claims are mostly instructional/marketing-style
+        in README text; human review should confirm implementation depth versus conceptual
+        guidance.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: General Prompt Engineering Educational Content
+      rationale_for_similarity: General Prompt Engineering Educational Content
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Content extends beyond prompt phrasing into
+      structured artifacts (CLAUDE.md rules, PRP generation/execution commands, validation
+      workflow), indicating process tooling rather than prompt tips alone.
+  assessment_hints:
+    evidence_strength: medium
+    build_evidence_band: medium
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear; The repo shows a concrete
+  context-engineering template and referenced command/workflow assets for AI coding
+  assistants, but the available evidence leaves unclear whether it is in-scope reusable
+  tooling or mainly educational guidance.
+human_reviewed_at: '2026-04-02T15:16:27.050127Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

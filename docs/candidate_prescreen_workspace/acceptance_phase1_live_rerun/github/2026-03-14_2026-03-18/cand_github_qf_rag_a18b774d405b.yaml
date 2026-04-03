@@ -1,0 +1,289 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_a18b774d405b
+candidate_batch_id: candidate_batch_github_qf_rag_2026-03-14_2026-03-18
+created_at: '2026-04-02T15:03:41.208320Z'
+updated_at: '2026-04-02T15:05:26.262343Z'
+source: github
+source_id: src_github
+source_window: 2026-03-14..2026-03-18
+time_field: pushed_at
+external_id: '996626040'
+canonical_url: https://github.com/datawhalechina/all-in-rag
+title: all-in-rag
+summary: "\U0001F50D\u5927\u6A21\u578B\u5E94\u7528\u5F00\u53D1\u5B9E\u6218\u4E00\uFF1A\
+  RAG \u6280\u672F\u5168\u6808\u6307\u5357\uFF0C\u5728\u7EBF\u9605\u8BFB\u5730\u5740\
+  \uFF1Ahttps://datawhalechina.github.io/all-in-rag/"
+raw_evidence_excerpt: "\U0001F50D\u5927\u6A21\u578B\u5E94\u7528\u5F00\u53D1\u5B9E\u6218\
+  \u4E00\uFF1ARAG \u6280\u672F\u5168\u6808\u6307\u5357\uFF0C\u5728\u7EBF\u9605\u8BFB\
+  \u5730\u5740\uFF1Ahttps://datawhalechina.github.io/all-in-rag/\n\nAll-in-RAG | \u5927\
+  \u6A21\u578B\u5E94\u7528\u5F00\u53D1\u5B9E\u6218\u4E00\uFF1ARAG\u6280\u672F\u5168\
+  \u6808\u6307\u5357\n\n\U0001F50D \u68C0\u7D22\u589E\u5F3A\u751F\u6210 (RAG) \u6280\
+  \u672F\u5168\u6808\u6307\u5357 \u4ECE\u7406\u8BBA\u5230\u5B9E\u8DF5\uFF0C\u4ECE\u57FA\
+  \u7840\u5230\u8FDB\u9636\uFF0C\u6784\u5EFA\u4F60\u7684RAG\u6280\u672F\u4F53\u7CFB\
+  \n\n\U0001F3AF \u7CFB\u7EDF\u5316\u5B66\u4E60 \u5B8C\u6574\u7684RAG\u6280\u672F\u4F53\
+  \u7CFB \U0001F6E0\uFE0F \u52A8\u624B\u5B9E\u8DF5 \u4E30\u5BCC\u7684\u9879\u76EE\u6848\
+  \u4F8B \U0001F680 \u751F\u4EA7\u5C31\u7EEA \u5DE5\u7A0B\u5316\u6700\u4F73\u5B9E\u8DF5\
+  \ \U0001F4CA \u591A\u6A21\u6001\u652F\u6301 \u6587\u672C+\u56FE\u50CF\u68C0\u7D22\
+  \n\n\u9879\u76EE\u7B80\u4ECB\uFF08\u4E2D\u6587 | English\uFF09\n\n\u672C\u9879\u76EE\
+  \u662F\u4E00\u4E2A\u9762\u5411\u5927\u6A21\u578B\u5E94\u7528\u5F00\u53D1\u8005\u7684\
+  RAG\uFF08\u68C0\u7D22\u589E\u5F3A\u751F\u6210\uFF09\u6280\u672F\u5168\u6808\u6559\
+  \u7A0B\uFF0C\u65E8\u5728\u901A\u8FC7\u4F53\u7CFB\u5316\u7684\u5B66\u4E60\u8DEF\u5F84\
+  \u548C\u52A8\u624B\u5B9E\u8DF5\u9879\u76EE\uFF0C\u5E2E\u52A9\u5F00\u53D1\u8005\u638C\
+  \u63E1\u57FA\u4E8E\u5927\u8BED\u8A00\u6A21\u578B\u7684RAG\u5E94\u7528\u5F00\u53D1\
+  \u6280\u80FD\uFF0C\u6784\u5EFA\u751F\u4EA7\u7EA7\u7684\u667A\u80FD\u95EE\u7B54\u548C\
+  \u77E5\u8BC6\u68C0\u7D22\u7CFB\u7EDF\u3002\n\n**\u4E3B\u8981\u5185\u5BB9\u5305\u62EC\
+  \uFF1A**\n\n1. **RAG\u6280\u672F\u57FA\u7840**\uFF1A\u6DF1\u5165\u6D45\u51FA\u5730\
+  \u4ECB\u7ECDRAG\u7684\u6838\u5FC3\u6982\u5FF5\u3001\u6280\u672F\u539F\u7406\u548C\
+  \u5E94\u7528\u573A\u666F 2. **\u6570\u636E\u5904\u7406\u5168\u6D41\u7A0B**\uFF1A\
+  \u4ECE\u6570\u636E\u52A0\u8F7D\u3001\u6E05\u6D17\u5230\u6587\u672C\u5206\u5757\u7684\
+  \u5B8C\u6574\u6570\u636E\u51C6\u5907\u6D41\u7A0B 3. **\u7D22\u5F15\u6784\u5EFA\u4E0E\
+  \u4F18\u5316**\uFF1A\u5411\u91CF\u5D4C\u5165\u3001\u591A\u6A21\u6001\u5D4C\u5165\
+  \u3001\u5411\u91CF\u6570\u636E\u5E93\u6784\u5EFA\u53CA\u7D22\u5F15\u4F18\u5316\u6280\
+  \u672F 4. **\u68C0\u7D22\u6280\u672F\u8FDB\u9636**\uFF1A\u6DF7\u5408\u68C0\u7D22\
+  \u3001\u67E5\u8BE2\u6784\u5EFA\u3001Text2SQL\u7B49\u9AD8\u7EA7\u68C0\u7D22\u6280\
+  \u672F 5. **\u751F\u6210\u96C6\u6210\u4E0E\u8BC4\u4F30**\uFF1A\u683C\u5F0F\u5316\
+  \u751F\u6210\u3001\u7CFB\u7EDF\u8BC4\u4F30\u4E0E\u4F18\u5316\u65B9\u6CD5 6. **\u9879\
+  \u76EE\u5B9E\u6218**\uFF1A\u4ECE\u57FA\u7840\u5230\u8FDB\u9636\u7684\u5B8C\u6574\
+  RAG\u5E94\u7528\u5F00\u53D1\u5B9E\u8DF5\n\n\u9879\u76EE\u610F\u4E49\n\n\u968F\u7740\
+  \u5927\u8BED\u8A00\u6A21\u578B\u7684\u5FEB\u901F\u53D1\u5C55\uFF0CRAG\u6280\u672F\
+  \u5DF2\u6210\u4E3A\u6784\u5EFA\u667A\u80FD\u95EE\u7B54\u7CFB\u7EDF\u3001\u77E5\u8BC6\
+  \u68C0\u7D22\u5E94\u7528\u7684\u6838\u5FC3\u6280\u672F\u3002\u7136\u800C\uFF0C\u73B0\
+  \u6709\u7684RAG\u6559\u7A0B\u5F80\u5F80\u96F6\u6563\u4E14\u7F3A\u4E4F\u7CFB\u7EDF\
+  \u6027\uFF0C\u521D\u5B66\u8005\u96BE\u4EE5\u5F62\u6210\u5B8C\u6574\u7684\u6280\u672F\
+  \u4F53\u7CFB\u8BA4\u77E5\u3002\n\n\u672C\u9879\u76EE\u4ECE\u5B9E\u8DF5\u51FA\u53D1\
+  \uFF0C\u7ED3\u5408\u6700\u65B0\u7684RAG\u6280\u672F\u53D1\u5C55\u8D8B\u52BF\uFF0C\
+  \u6784\u5EFA\u4E86\u4E00\u5957\u5B8C\u6574\u7684RAG\u5B66\u4E60\u4F53\u7CFB\uFF0C\
+  \u5E2E\u52A9\u5F00\u53D1\u8005\uFF1A - \u7CFB\u7EDF\u638C\u63E1RAG\u6280\u672F\u7684\
+  \u7406\u8BBA\u57FA\u7840\u548C\u5B9E\u8DF5\u6280\u80FD - \u7406\u89E3RAG\u7CFB\u7EDF\
+  \u7684\u5B8C\u6574\u67B6\u6784\u548C\u5404\u7EC4\u4EF6\u7684\u4F5C\u7528 - \u5177\
+  \u5907\u72EC\u7ACB\u5F00\u53D1RAG\u5E94\u7528\u7684\u80FD\u529B - \u638C\u63E1RAG\u7CFB\
+  \u7EDF\u7684\u8BC4\u4F30\u548C\u4F18\u5316\u65B9\u6CD5\n\n\u9879\u76EE\u53D7\u4F17\
+  \n\n**\u672C\u9879\u76EE\u9002\u5408\u4EE5\u4E0B\u4EBA\u7FA4\u5B66\u4E60\uFF1A**\
+  \ - \u5177\u5907Python\u7F16\u7A0B\u57FA\u7840\uFF0C\u5BF9RAG\u6280\u672F\u611F\u5174\
+  \u8DA3\u7684\u5F00\u53D1\u8005 - \u5E0C\u671B\u7CFB\u7EDF\u5B66\u4E60RAG\u6280\u672F\
+  \u7684AI\u5DE5\u7A0B\u5E08 - \u60F3\u8981\u6784\u5EFA\u667A\u80FD\u95EE\u7B54\u7CFB\
+  \u7EDF\u7684\u4EA7\u54C1\u5F00\u53D1\u8005 - \u5BF9\u68C0\u7D22\u589E\u5F3A\u751F\
+  \u6210\u6280\u672F\u6709\u5B66\u4E60\u9700\u6C42\u7684\u7814\u7A76\u4EBA\u5458\n\
+  \n**\u524D\u7F6E\u8981\u6C42\uFF1A** - \u638C\u63E1Python\u57FA\u7840\u8BED\u6CD5\
+  \u548C\u5E38\u7528\u5E93\u7684\u4F7F\u7528 - \u80FD\u591F\u7B80\u5355\u4F7F\u7528\
+  docker - \u4E86\u89E3\u57FA\u672C\u7684LLM\u6982\u5FF5\uFF08\u63A8\u8350\u4F46\u975E\
+  \u5FC5\u9700\uFF09 - \u5177\u5907\u57FA\u7840\u7684Linux\u547D\u4EE4\u884C\u64CD\
+  \u4F5C\u80FD\u529B\n\n\u9879\u76EE\u4EAE\u70B9\n\n1. **\u4F53\u7CFB\u5316\u5B66\u4E60\
+  \u8DEF\u5F84**\uFF1A\u4ECE\u57FA\u7840\u6982\u5FF5\u5230\u9AD8\u7EA7\u5E94\u7528\
+  \uFF0C\u6784\u5EFA\u5B8C\u6574\u7684RAG\u6280\u672F\u5B66\u4E60\u4F53\u7CFB 2. **\u7406\
+  \u8BBA\u4E0E\u5B9E\u8DF5\u5E76\u91CD**\uFF1A\u6BCF\u4E2A\u7AE0\u8282\u90FD\u5305\
+  \u542B\u7406\u8BBA\u8BB2\u89E3\u548C\u4EE3\u7801\u5B9E\u8DF5\uFF0C\u786E\u4FDD\u5B66\
+  \u4EE5\u81F4\u7528 3. **\u591A\u6A21\u6001\u652F\u6301**\uFF1A\u4E0D\u4EC5\u6DB5\
+  \u76D6\u6587\u672CRAG\uFF0C\u8FD8\u5305\u62EC\u591A\u6A21\u6001\u5D4C\u5165\u548C\
+  \u68C0\u7D22\u6280\u672F 4. **\u5DE5\u7A0B\u5316\u5BFC\u5411**\uFF1A\u6CE8\u91CD\
+  \u5B9E\u9645\u5E94\u7528\u4E2D\u7684\u5DE5\u7A0B\u5316\u95EE\u9898\uFF0C\u5305\u62EC\
+  \u6027\u80FD\u4F18\u5316\u3001\u7CFB\u7EDF\u8BC4\u4F30\u7B49 5. **\u4E30\u5BCC\u7684\
+  \u5B9E\u6218\u9879\u76EE**\uFF1A\u63D0\u4F9B\u4ECE\u57FA\u7840\u5230\u8FDB\u9636\
+  \u7684\u591A\u4E2A\u5B9E\u6218\u9879\u76EE\uFF0C\u5E2E\u52A9\u5DE9\u56FA\u5B66\u4E60\
+  \u6210\u679C\n\n\u5185\u5BB9\u5927\u7EB2\n\n\u7B2C\u4E00\u90E8\u5206\uFF1ARAG\u57FA\
+  \u7840\u5165\u95E8\n\n**\u7B2C\u4E00\u7AE0 \u89E3\u9501RAG** \U0001F4D6 \u67E5\u770B\
+  \u7AE0\u8282 - [x] RAG\u7B80\u4ECB - RAG\u6280\u672F\u6982\u8FF0\u4E0E\u5E94\u7528\
+  \u573A\u666F - [x] \u51C6\u5907\u5DE5\u4F5C - \u73AF\u5883\u914D\u7F6E\u4E0E\u51C6\
+  \u5907 - [x] \u56DB\u6B65\u6784\u5EFARAG - \u5FEB\u901F\u4E0A\u624BRAG\u5F00\u53D1\
+  \ - [x] \u9644\uFF1A\u73AF\u5883\u90E8\u7F72 - Python\u865A\u62DF\u73AF\u5883\u90E8\
+  \u7F72\u65B9\u6848\u8865\u5145 (\u8D21\u732E\u8005: @anarchysaiko)\n\n**\u7B2C\u4E8C\
+  \u7AE0 \u6570\u636E\u51C6\u5907** \U0001F4D6 \u67E5\u770B\u7AE0\u8282 - [x] \u6570\
+  \u636E\u52A0\u8F7D - \u591A\u683C\u5F0F\u6587\u6863\u5904\u7406\u4E0E\u52A0\u8F7D\
+  \ - [x] \u6587\u672C\u5206\u5757 - \u6587\u672C\u5207\u5206\u7B56\u7565\u4E0E\u4F18\
+  \u5316\n\n\u7B2C\u4E8C\u90E8\u5206\uFF1A\u7D22\u5F15\u6784\u5EFA\u4E0E\u4F18\u5316\
+  \n\n**\u7B2C\u4E09\u7AE0 \u7D22\u5F15\u6784\u5EFA** \U0001F4D6 \u67E5\u770B\u7AE0\
+  \u8282 - [x] \u5411\u91CF\u5D4C\u5165 - \u6587\u672C\u5411\u91CF\u5316\u6280\u672F\
+  \u8BE6\u89E3 - [x] \u591A\u6A21\u6001\u5D4C\u5165 - \u56FE\u6587\u591A\u6A21\u6001\
+  \u5411\u91CF\u5316 - [x] \u5411\u91CF\u6570\u636E\u5E93 - \u5411\u91CF\u5B58\u50A8\
+  \u4E0E\u68C0\u7D22\u7CFB\u7EDF - [x] Milvus\u5B9E\u8DF5 - Milvus\u591A\u6A21\u6001\
+  \u68C0\u7D22\u5B9E\u6218 - [x] \u7D22\u5F15\u4F18\u5316 - \u7D22\u5F15\u6027\u80FD\
+  \u8C03\u4F18\u6280\u5DE7\n\n\u7B2C\u4E09\u90E8\u5206\uFF1A\u68C0\u7D22\u6280\u672F\
+  \u8FDB\u9636\n\n**\u7B2C\u56DB\u7AE0 \u68C0\u7D22\u4F18\u5316** \U0001F4D6 \u67E5\
+  \u770B\u7AE0\u8282 - [x] \u6DF7\u5408\u68C0\u7D22 - \u7A20\u5BC6+\u7A00\u758F\u68C0\
+  \u7D22\u878D\u5408 - [x] \u67E5\u8BE2\u6784\u5EFA - \u667A\u80FD\u67E5\u8BE2\u7406\
+  \u89E3\u4E0E\u6784\u5EFA - [x] Text2SQL - \u81EA\u7136\u8BED\u8A00\u8F6CSQL\u67E5\
+  \u8BE2 - [x] \u67E5\u8BE2\u91CD\u6784\u4E0E\u5206\u53D1 - \u67E5\u8BE2\u4F18\u5316\
+  \u7B56\u7565 - [x] \u68C0\u7D22\u8FDB\u9636\u6280\u672F - \u9AD8\u7EA7\u68C0\u7D22\
+  \u7B97\u6CD5\n\n\u7B2C\u56DB\u90E8\u5206\uFF1A\u751F\u6210\u4E0E\u8BC4\u4F30\n\n\
+  **\u7B2C\u4E94\u7AE0 \u751F\u6210\u96C6\u6210** \U0001F4D6 \u67E5\u770B\u7AE0\u8282\
+  \ - [x] \u683C\u5F0F\u5316\u751F\u6210 - \u7ED3\u6784\u5316\u8F93\u51FA\u4E0E\u683C\
+  \u5F0F\u63A7\u5236\n\n**\u7B2C\u516D\u7AE0 RAG\u7CFB\u7EDF\u8BC4\u4F30** \U0001F4D6\
+  \ \u67E5\u770B\u7AE0\u8282 - [x] \u8BC4\u4F30\u4ECB\u7ECD - RAG\u7CFB\u7EDF\u8BC4\
+  \u4F30\u65B9\u6CD5\u8BBA - [x] \u8BC4\u4F30\u5DE5\u5177 - \u5E38\u7528\u8BC4\u4F30\
+  \u5DE5\u5177\u4E0E\u6307\u6807\n\n\u7B2C\u4E94\u90E8\u5206\uFF1A\u9AD8\u7EA7\u5E94\
+  \u7528\u4E0E\u5B9E\u6218\n\n**\u7B2C\u4E03\u7AE0 \u9AD8\u7EA7RAG\u67B6\u6784\uFF08\
+  \u62D3\u5C55\u90E8\u5206\uFF09** \U0001F4D6 \u67E5\u770B\u7AE0\u8282\n\n- [x] \u57FA\
+  \u4E8E\u77E5\u8BC6\u56FE\u8C31\u7684RAG\n\n**\u7B2C\u516B\u7AE0 \u9879\u76EE\u5B9E\
+  \u6218\u4E00** \U0001F4D6 \u67E5\u770B\u7AE0\u8282 - [x] \u73AF\u5883\u914D\u7F6E\
+  \u4E0E\u9879\u76EE\u67B6\u6784 - [x] \u6570\u636E\u51C6\u5907\u6A21\u5757\u5B9E\u73B0\
+  \ - [x] \u7D22\u5F15\u6784\u5EFA\u4E0E\u68C0\u7D22\u4F18\u5316 - [x] \u751F\u6210\
+  \u96C6\u6210\u4E0E\u7CFB\u7EDF\u6574\u5408\n\n**\u7B2C\u4E5D\u7AE0 \u9879\u76EE\u5B9E\
+  \u6218\u4E00\u4F18\u5316\uFF08\u9009\u4FEE\u7BC7\uFF09** \U0001F4D6 \u67E5\u770B\
+  \u7AE0\u8282\n\n\U0001F37D\uFE0F \u9879\u76EE\u5C55\u793A - [x] \u56FERAG\u67B6\u6784\
+  \u8BBE\u8BA1 - [x] \u56FE\u6570\u636E\u5EFA\u6A21\u4E0E\u51C6\u5907 - [x] Milvus\u7D22\
+  \u5F15\u6784\u5EFA - [x] \u667A\u80FD\u67E5\u8BE2\u8DEF\u7531\u4E0E\u68C0\u7D22\u7B56\
+  \u7565\n\n**\u7B2C\u5341\u7AE0 \u9879\u76EE\u5B9E\u6218\u4E8C\uFF08\u9009\u4FEE\u7BC7\
+  \uFF09** \U0001F4D6 \u67E5\u770B\u7AE0\u8282 *\u89C4\u5212\u4E2D*\n\nExtra-chapter\n\
+  \n- Neo4J \u7B80\u5355\u5E94\u7528 \uFF08\u8D21\u732E\u8005: dalvqw\uFF09\n\n> \u5982\
+  \u679C\u4F60\u5728\u4F7F\u7528 RAG / \u5411\u91CF\u6570\u636E\u5E93 / Agentic RAG\
+  \ \u7B49\u76F8\u5173\u6280\u672F\u65F6\uFF0C\u4E5F\u6709\u503C\u5F97\u5206\u4EAB\
+  \u7684\u7ECF\u9A8C\u4E0E\u4E13\u9898\u5185\u5BB9\uFF0C\u975E\u5E38\u6B22\u8FCE\u4EE5\
+  \u72EC\u7ACB\u7AE0\u8282\u7684\u5F62\u5F0F\u6295\u7A3F\u5230 Extra Chapter \u4E2D\
+  \u3002\u63D0\u4EA4\u524D\u8BF7\u5148\u9605\u8BFB Extra Chapter \u7684\u8D21\u732E\
+  \u4E0E PR \u6307\u5357\uFF0C\u6211\u4EEC\u4F1A\u6839\u636E\u5185\u5BB9\u7684\u5B8C\
+  \u6574\u5EA6\u3001\u5B9E\u8DF5\u6DF1\u5EA6\u4E0E\u53C2\u8003\u4EF7\u503C\u7EFC\u5408\
+  \u8BC4\u4F30\u662F\u5426\u5408\u5E76\uFF0C\u5E76\u89C6\u60C5\u51B5\u5728\u4E3B\u6559\
+  \u7A0B\u4E2D\u8FDB\u884C\u5F15\u7528\u6216\u6269\u5C55\u8BF4\u660E\u3002\n\n\u76EE\
+  \u5F55\u7ED3\u6784\u8BF4\u660E\n\n\u5B9E\u6218\u9879\u76EE\u5C55\u793A\n\n\u7B2C\
+  \u516B\u7AE0 \u9879\u76EE\u4E00\uFF1A\n\n\u7B2C\u4E5D\u7AE0 \u9879\u76EE\u4E00\uFF08\
+  Graph RAG\u4F18\u5316\uFF09\uFF1A\n\n\u7B2C\u5341\u7AE0 \u9879\u76EE\u4E8C\uFF1A\
+  \n\n\u81F4\u8C22\n\n**\u6838\u5FC3\u8D21\u732E\u8005** - dalvqw-\u9879\u76EE\u8D1F\
+  \u8D23\u4EBA\uFF08\u9879\u76EE\u53D1\u8D77\u4EBA\u4E0E\u4E3B\u8981\u8D21\u732E\u8005\
+  \uFF09\n\n**\u989D\u5916\u7AE0\u8282\u8D21\u732E\u8005** - \u5B59\u8D85-\u5185\u5BB9\
+  \u521B\u4F5C\u8005\uFF08Datawhale\u6210\u5458-\u4E0A\u6D77\u5DE5\u7A0B\u6280\u672F\
+  \u5927\u5B66\uFF09\n\n\u7279\u522B\u611F\u8C22 - \u611F\u8C22 @Sm1les \u5BF9\u672C\
+  \u9879\u76EE\u7684\u5E2E\u52A9\u4E0E\u652F\u6301 - \u611F\u8C22\u6240\u6709\u4E3A\
+  \u672C\u9879\u76EE\u505A\u51FA\u8D21\u732E\u7684\u5F00\u53D1\u8005\u4EEC - \u611F\
+  \u8C22\u5F00\u6E90\u793E\u533A\u63D0\u4F9B\u7684\u4F18\u79C0\u5DE5\u5177\u548C\u6846\
+  \u67B6\u652F\u6301 - \u7279\u522B\u611F\u8C22\u4EE5\u4E0B\u4E3A\u6559\u7A0B\u505A\
+  \u51FA\u8D21\u732E\u7684\u5F00\u53D1\u8005\uFF01\n\n*Made with contrib.rocks.*\n\
+  \n\u53C2\u4E0E\u8D21\u732E\n\n\u6211\u4EEC\u6B22\u8FCE\u6240\u6709\u5F62\u5F0F\u7684\
+  \u8D21\u732E\uFF0C\u5305\u62EC\u4F46\u4E0D\u9650\u4E8E\uFF1A\n\n- \U0001F6A8 **Bug\u62A5\
+  \u544A**\uFF1A\u53D1\u73B0\u95EE\u9898\u8BF7\u63D0\u4EA4 Issue - \U0001F4AD **\u6559\
+  \u7A0B\u5EFA\u8BAE**\uFF1A\u6709\u597D\u7684\u60F3\u6CD5\u6B22\u8FCE\u5728 Discussions\
+  \ \u4E2D\u8BA8\u8BBA - \U0001F4DA **\u6587\u6863\u6539\u8FDB**\uFF1A\u5E2E\u52A9\
+  \u5B8C\u5584\u6587\u6863\u5185\u5BB9\u548C\u793A\u4F8B\u4EE3\u7801\uFF08\u5F53\u524D\
+  \u4EC5\u652F\u6301 Extra-chapter \u4F18\u8D28\u5185\u5BB9pr\uFF09\n\nStar History\n\
+  \n\u5982\u679C\u8FD9\u4E2A\u9879\u76EE\u5BF9\u4F60\u6709\u5E2E\u52A9\uFF0C\u8BF7\
+  \u7ED9\u6211\u4EEC\u4E00\u4E2A \u2B50\uFE0F \u8BA9\u66F4\u591A\u4EBA\u53D1\u73B0\
+  \u8FD9\u4E2A\u9879\u76EE\uFF08\u62A4\u98DF\uFF1F\u53D1\u6765\uFF01\uFF09\n\n\u5173\
+  \u4E8E Datawhale\n\n\u626B\u63CF\u4E8C\u7EF4\u7801\u5173\u6CE8 Datawhale \u516C\u4F17\
+  \u53F7\uFF0C\u83B7\u53D6\u66F4\u591A\u4F18\u8D28\u5F00\u6E90\u5185\u5BB9\n\n---\n\
+  \n\u8BB8\u53EF\u8BC1\n\n\u672C\u4F5C\u54C1\u91C7\u7528 \u77E5\u8BC6\u5171\u4EAB\u7F72\
+  \u540D-\u975E\u5546\u4E1A\u6027\u4F7F\u7528-\u76F8\u540C\u65B9\u5F0F\u5171\u4EAB\
+  \ 4.0 \u56FD\u9645\u8BB8\u53EF\u534F\u8BAE \u8FDB\u884C\u8BB8\u53EF\u3002\n\n---"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-14'
+    window_end: '2026-03-18'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-14..2026-03-18
+    external_id: '996626040'
+    canonical_url: https://github.com/datawhalechina/all-in-rag
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: If your program includes AI productization knowledge assets, this is likely
+    worth shortlist consideration; if it requires shipping software artifacts, request
+    code-structure verification before advancing.
+  decision_snapshot: Recommend hold because If your program includes AI productization
+    knowledge assets, this is likely worth shortlist consideration; if it requires
+    shipping software artifacts, request code-structure verification before advancing.
+  scope_boundary_note: Treat this candidate as educational infrastructure for AI application
+    development (curriculum + hands-on project docs), not as a standalone end-user
+    AI application or hosted SaaS. Human review should confirm whether your intake
+    scope includes high-quality technical playbooks/tutorial repos.
+  source_evidence_summary:
+  - Treat this candidate as educational infrastructure for AI application development
+    (curriculum + hands-on project docs), not as a standalone end-user AI application
+    or hosted SaaS. Human review should confirm whether your intake scope includes
+    high-quality technical playbooks/tutorial repos.
+  - 'Confirm taxonomy policy: are tutorial/curriculum repos eligible, or only deployable
+    products/tools?'
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: If your program includes AI productization knowledge assets, this
+      is likely worth shortlist consideration; if it requires shipping software artifacts,
+      request code-structure verification before advancing.
+    evidence_source_field: candidate_input
+    why_it_matters: This fallback anchor preserves a minimally explainable first-pass
+      review card when the provider omits structured evidence anchors.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - 'Confirm taxonomy policy: are tutorial/curriculum repos eligible, or only deployable
+    products/tools?'
+  - Check repository assets for runnable code/templates vs mostly narrative documentation.
+  - Verify recency and maintenance signal (commits/issues/PR cadence) beyond README
+    claims.
+  - Assess uniqueness vs existing RAG guides (depth, reproducibility, evaluation rigor).
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: If your program includes AI productization knowledge assets, this is
+      likely worth shortlist consideration; if it requires shipping software artifacts,
+      request code-structure verification before advancing.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: If your program includes AI productization knowledge assets, this is
+      likely worth shortlist consideration; if it requires shipping software artifacts,
+      request code-structure verification before advancing.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI Productization Playbook / Technical Tutorial (RAG)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI Productization Playbook / Technical Tutorial (RAG)
+      rationale: If your program includes AI productization knowledge assets, this
+        is likely worth shortlist consideration; if it requires shipping software
+        artifacts, request code-structure verification before advancing.
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_candidate:
+      category_code: RAG Framework or Production Tooling Product
+      rationale_for_similarity: RAG Framework or Production Tooling Product
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: Current evidence describes a tutorial/documentation-centric
+      learning system; no clear indication of a packaged runtime platform, API service,
+      or end-user product offering.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear; The repository shows strong
+  AI productization learning content and hands-on RAG project guidance, but the evidence
+  indicates it is primarily a tutorial/curriculum asset rather than a clear end-user
+  product for staging.
+human_reviewed_at: '2026-04-02T15:05:26.262321Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

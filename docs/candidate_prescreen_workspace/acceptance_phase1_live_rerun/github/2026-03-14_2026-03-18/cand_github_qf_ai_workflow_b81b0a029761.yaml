@@ -1,0 +1,251 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_b81b0a029761
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2026-03-14_2026-03-18
+created_at: '2026-04-02T15:05:51.539267Z'
+updated_at: '2026-04-02T15:06:46.102271Z'
+source: github
+source_id: src_github
+source_window: 2026-03-14..2026-03-18
+time_field: pushed_at
+external_id: '1183669668'
+canonical_url: https://github.com/J-Pster/Psters_AI_Workflow
+title: Psters_AI_Workflow
+summary: 'An auto-documenting, model-agnostic AI workflow for any project, framework,
+  and language. It reduces hallucination and keeps delivery predictable: the developer
+  controls the path, AI executes the steps, and project standards stay consistent.'
+raw_evidence_excerpt: "An auto-documenting, model-agnostic AI workflow for any project,\
+  \ framework, and language. It reduces hallucination and keeps delivery predictable:\
+  \ the developer controls the path, AI executes the steps, and project standards\
+  \ stay consistent.\n\nPster's AI Workflow\n\nSelf-documenting, hallucination-reducing,\
+  \ and predictable AI workflow for software teams.\n\nEnglish \xB7 Portugu\xEAs (PT-BR)\n\
+  \nAn auto-documenting, model-agnostic AI workflow for any project, framework, and\
+  \ language. It reduces hallucination and keeps delivery predictable: the developer\
+  \ controls the path, AI executes the steps, and project standards stay consistent.\n\
+  \n\u26A1 Quick Explanation\n\nThe default flow is: `/pwf-brainstorm` (shape feature\
+  \ scope and decisions) -> `/pwf-plan` (turn decisions into phased implementation\
+  \ tasks) -> `/pwf-work-plan` (implement one phase per execution, repeating until\
+  \ all phases are complete).\n\nAfter `/pwf-plan`, you can run `/pwf-checklist`,\
+  \ `/pwf-clarify`, and `/pwf-analyze` as quality gates before implementation.\n\n\
+  `/pwf-work-plan` executes planned phases. `/pwf-work` executes focused changes outside\
+  \ a formal plan.\n\nThis workflow prioritizes predictability: commands do not autonomously\
+  \ pick your path. The developer understands each command and explicitly chooses\
+  \ the next step.\n\nPredictability and documentation are the two central pillars\
+  \ of this plugin: - `/pwf-work` and `/pwf-work-plan` read documentation before implementation\
+  \ and generate/maintain docs automatically during execution. - when you want explicit\
+  \ documentation output, use `/pwf-doc` (scoped docs), `/pwf-doc-foundation` (foundation\
+  \ docs like infrastructure/architecture/integrations/environments/glossary), `/pwf-doc-runbook`\
+  \ (operational runbooks), `/pwf-doc-capture` (reusable learnings), and `/pwf-doc-refresh`\
+  \ (docs lifecycle curation). - this keeps standards consistent and turns docs into\
+  \ reusable project memory for both AI and engineers.\n\nDeep dive: - English Wiki\
+  \ - English Workflow Methodology - English Under The Hood\n\n\U0001F680 Quick Start\n\
+  \n1) Install and start using immediately\n\n1. Install manually (Marketplace is\
+  \ not available yet): - `./scripts/install-plugin-local.sh` 2. Restart Cursor (or\
+  \ reload window). 3. Start with: - `/pwf-help` (quick orientation) - `/pwf-brainstorm`\
+  \ or `/pwf-work` (first real task)\n\n2) If your project is NEW\n\nRecommended setup:\n\
+  \n1. `/pwf-setup-workspace` to create ` _Repos` + ` _Workspace`. 2. Open the generated\
+  \ `.code-workspace` in Cursor. 3. `/pwf-setup` to initialize docs skeleton. 4. `/pwf-doc-foundation\
+  \ all` to create baseline docs.\n\n3) If your project ALREADY EXISTS\n\nRecommended\
+  \ setup:\n\n1. `/pwf-setup` to create/repair workflow docs structure. 2. `/pwf-doc-foundation\
+  \ all` to document current architecture/infrastructure/integrations/environments/glossary.\
+  \ 3. Use manual scoped documentation commands for existing areas: - `/pwf-doc module\
+  \ ` - `/pwf-doc feature ` - `/pwf-doc update` - `/pwf-doc-runbook ` (when operations\
+  \ are undocumented) 4. Then continue with `/pwf-brainstorm` + `/pwf-plan` + `/pwf-work-plan`,\
+  \ or `/pwf-work` for focused direct changes.\n\nIf you are unsure about any command,\
+  \ run `/pwf-help` and ask it to explain that command without executing it (example:\
+  \ \"explain `/pwf-doc-foundation` only\").\n\nNeed a deeper onboarding path? - English\
+  \ Getting Started (Wiki) - English Commands Reference (Wiki)\n\nPrimary workflow\
+  \ steps\n\n- **Step 1 \u2014 `/pwf-brainstorm`**: explore the feature scope, architecture\
+  \ direction, and key decisions. - **Step 2 \u2014 `/pwf-plan`**: generate the phased\
+  \ implementation plan and executable tasks. - After `/pwf-plan`, optionally run\
+  \ quality gates before execution: - `/pwf-checklist` \u2014 validate requirement\
+  \ quality. - `/pwf-clarify` \u2014 resolve high-impact ambiguities. - `/pwf-analyze`\
+  \ \u2014 run read-only consistency/coverage analysis across plan and docs. - **Step\
+  \ 3 \u2014 `/pwf-work-plan`**: implement one phase from the plan, then repeat until\
+  \ all phases are complete.\n\nAdditional execution paths\n\nWork lane commands (outside\
+  \ the main phased path)\n\n- `/pwf-work` \u2014 direct execution lane for focused\
+  \ changes outside formal plan. - `/pwf-work-light` \u2014 lightweight path for trivial/local\
+  \ changes. - `/pwf-work-tdd` \u2014 tests-first execution when explicitly requested.\n\
+  \nReview and delivery commands\n\n- `/pwf-review` \u2014 structured multi-agent\
+  \ review. - `/pwf-commit-changes` \u2014 structured ticket-aware commits (not part\
+  \ of the primary 3-command flow, but part of delivery closure).\n\nDocumentation\
+  \ commands\n\n- `/pwf-doc` \u2014 scoped documentation hub to generate/update specific\
+  \ docs (module, feature, architecture, ADR, infrastructure, full update, and custom\
+  \ targets). - `/pwf-doc-foundation` \u2014 create/refresh core project docs baseline\
+  \ (`infrastructure`, `architecture`, `integrations`, `environments`, `glossary`).\
+  \ - `/pwf-doc-runbook` \u2014 create/refresh operational runbooks under `docs/runbooks/`.\
+  \ - `/pwf-doc-capture` \u2014 capture reusable learnings/patterns after solving\
+  \ non-trivial work. - `/pwf-doc-refresh` \u2014 review and curate `docs/solutions/`\
+  \ lifecycle (keep, update, replace, archive) with user approval.\n\nIf you are unsure\
+  \ which docs command to use, ask `/pwf-help` to compare them first.\n\nAuxiliary\
+  \ commands\n\n- `/pwf-help` \u2014 command guide and workflow orientation. - `/pwf-setup`\
+  \ \u2014 initialize/repair project docs skeleton. - `/pwf-setup-workspace` \u2014\
+  \ create recommended multi-root project layout (`*_Repos` + `*_Workspace`) and workspace\
+  \ file. - `/pwf-aws-lambda-deploy` \u2014 guarded Lambda deployment flow when relevant.\n\
+  \n\U0001F9E9 Why This Workflow Exists\n\nPster's AI Workflow follows a **Spec-Driven\
+  \ Development** mindset inspired by **Extreme Programming (XP)**:\n\n- fast incremental\
+  \ delivery (small batches, short feedback loops), - dynamic depth (lightweight when\
+  \ simple, deeper when risk is higher), - predictable execution (explicit command-by-command\
+  \ flow), - context-first implementation to reduce hallucination, - standard preservation\
+  \ through mandatory documentation reads/updates.\n\nThis project was informed by\
+  \ practical lessons from:\n\n- Compound Engineering, - Superpowers, - SpecKit (GitHub).\n\
+  \nWhat is different in this workflow:\n\n- **Developer-controlled path:** commands\
+  \ do not auto-pick the next strategy; the developer explicitly chooses the path.\
+  \ - **AI-executed rigor:** once the path is chosen, AI executes with structured\
+  \ guardrails. - **Documentation as core runtime memory:** docs are not optional\
+  \ artifacts; they are generated and maintained during delivery. - **Single flow\
+  \ that adapts:** same workflow can run light or heavy without changing philosophy.\n\
+  \nLearn the full rationale: - English Workflow Methodology (Wiki) - English Under\
+  \ The Hood (Wiki) - English Extreme Programming (Wiki)\n\n\U0001F680 Why Teams Choose\
+  \ It\n\n- **Modular by design:** commands, skills, agents, rules, and hooks each\
+  \ have clear responsibilities. - **Dynamic rigor:** small tasks can move fast; critical\
+  \ tasks can activate stronger guardrails and deeper analysis. - **Documentation\
+  \ as system memory:** project `docs/` is continuously generated, updated, and reused\
+  \ for future work. - **Project-agnostic:** usable in new or existing projects, across\
+  \ stacks and languages. - **Open source and extensible:** community can add capabilities,\
+  \ commands, agents, and rules.\n\n\U0001F4DA Documentation and Wiki\n\n- Main Wiki\
+  \ entry point: Psters AI Workflow Wiki - Wiki highlights: - English Getting Started\
+  \ - English Suggested Project Structure - English Workflow Methodology - English\
+  \ Commands Reference - English FAQ - Portuguese Wiki - Main docs index: docs/README.md\
+  \ - English docs: docs/english/README.md - Portuguese docs: docs/portuguese/README.md\
+  \ - Wiki publishing flow: - docs/english/wiki-sync.md - docs/portuguese/wiki-sync.md\n\
+  \n\U0001F30D Community and Contribution\n\n- Discord: Pster's AI Workflow Discord\
+  \ - Featured article: - Gasto mais de R$1.500/m\xEAs em IA e faturo mais de R$40.000/m\xEA\
+  s, O segredo \xE9 o workflow!\n\nContribute with ideas or code via GitHub issues\
+  \ and pull requests. Contribution guide: CONTRIBUTING.md\n\n---\n\n\u26A1 Explicacao\
+  \ Rapida (Portugu\xEAs - PT-BR)"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-14'
+    window_end: '2026-03-18'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-14..2026-03-18
+    external_id: '1183669668'
+    canonical_url: https://github.com/J-Pster/Psters_AI_Workflow
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Repository presents a structured AI-assisted software delivery workflow
+    with explicit commands, guardrails, and documentation automation. It appears productized
+    enough for observatory tracking, but claims (e.g., hallucination reduction, predictability)
+    are mostly self-reported and need validation signals.
+  decision_snapshot: Repository presents a structured AI-assisted software delivery
+    workflow with explicit commands, guardrails, and documentation automation. It
+    appears productized enough for observatory tracking, but claims (e.g., hallucination
+    reduction, predictability) are mostly self-reported and need validation signals.
+  scope_boundary_note: Treat this as a developer workflow/orchestration layer for
+    AI coding inside an IDE context (commanded process + docs lifecycle), not as a
+    foundation model, standalone coding agent, or general project-management SaaS.
+  source_evidence_summary:
+  - Repository presents a structured AI-assisted software delivery workflow with explicit
+    commands, guardrails, and documentation automation. It appears productized enough
+    for observatory tracking, but claims (e.g., hallucination reduction, predictability)
+    are mostly self-reported and need validation signals.
+  - Treat this as a developer workflow/orchestration layer for AI coding inside an
+    IDE context (commanded process + docs lifecycle), not as a foundation model, standalone
+    coding agent, or general project-management SaaS.
+  - 'Verify implementation depth: are commands backed by executable logic/rules/hooks
+    vs mostly prompt text?'
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: Repository presents a structured AI-assisted software delivery
+      workflow with explicit commands, guardrails, and documentation automation. It
+      appears productized enough for observatory tracking, but claims (e.g., hallucination
+      reduction, predictability) are mostly self-reported and need validation signals.
+    evidence_source_field: candidate_input
+    why_it_matters: This fallback anchor preserves a minimally explainable first-pass
+      review card when the provider omits structured evidence anchors.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - 'Verify implementation depth: are commands backed by executable logic/rules/hooks
+    vs mostly prompt text?'
+  - Check real adoption signals (stars, forks, issues, external mentions, active contributors)
+    before elevation.
+  - Assess interoperability claims (model-agnostic, any framework/language) against
+    actual constraints in code/docs.
+  - Confirm whether this is primarily a Cursor plugin workflow package or a broader
+    cross-tool product.
+  uncertainty_points:
+  - Outcome claims are marketing-style and not benchmark-backed in provided excerpt
+  - Could be mistaken for a generic prompt pack unless implementation depth is confirmed
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: Ready for human first-pass taxonomy and maturity scoring; reviewer
+      should quickly inspect repo structure (commands/agents/rules/hooks), release
+      history, and adoption metrics to decide candidate-pool promotion.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository presents a structured AI-assisted software delivery workflow
+      with explicit commands, guardrails, and documentation automation. It appears
+      productized enough for observatory tracking, but claims (e.g., hallucination
+      reduction, predictability) are mostly self-reported and need validation signals.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI Developer Workflow Orchestration & Guardrails
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI Developer Workflow Orchestration & Guardrails
+      rationale: Repository presents a structured AI-assisted software delivery workflow
+        with explicit commands, guardrails, and documentation automation. It appears
+        productized enough for observatory tracking, but claims (e.g., hallucination
+        reduction, predictability) are mostly self-reported and need validation signals.
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_candidate:
+      category_code: Autonomous AI Coding Agent
+      rationale_for_similarity: Autonomous AI Coding Agent
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: The project explicitly states developer-controlled
+      step selection and non-autonomous pathing, so it is not primarily an autonomous
+      end-to-end coding agent.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  The evidence describes an installable, command-driven Cursor workflow plugin with
+  explicit user flows, setup steps, and documentation automation, indicating a concrete
+  end-user AI developer product.
+human_reviewed_at: '2026-04-02T15:06:45.252627Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+  sample_slot_id: GS300-050
+  sample_id: cand_github_qf_ai_workflow_b81b0a029761
+  blocking_items: []
+  last_attempted_at: '2026-04-02T15:06:46.102246Z'

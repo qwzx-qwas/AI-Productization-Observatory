@@ -6,6 +6,7 @@ import argparse
 import sys
 from pathlib import Path
 
+from src.candidate_prescreen.controller import FillControllerOptions, fill_gold_set_staging_until_complete
 from src.candidate_prescreen.config import load_candidate_prescreen_config
 from src.candidate_prescreen.workflow import (
     handoff_candidates_to_staging as workflow_handoff_candidates_to_staging,
@@ -958,6 +959,18 @@ def build_parser() -> argparse.ArgumentParser:
     )
     staging_handoff_parser.add_argument("--candidate-id", action="append", default=[])
 
+    fill_staging_parser = subparsers.add_parser(
+        "fill-gold-set-staging-until-complete",
+        help="Continuously review candidates and fill the external staging carrier until all 300 slots are full.",
+    )
+    fill_staging_parser.add_argument("--source", default="github")
+    fill_staging_parser.add_argument("--initial-window")
+    fill_staging_parser.add_argument("--live-limit", type=int, default=1)
+    fill_staging_parser.add_argument("--discovery-fixture-path")
+    fill_staging_parser.add_argument("--llm-fixture-path")
+    fill_staging_parser.add_argument("--review-fixture-path")
+    fill_staging_parser.add_argument("--max-iterations", type=int)
+
     env_parser = subparsers.add_parser(
         "validate-env",
         help="Validate resolved runtime config entries and any explicitly required non-config environment variables.",
@@ -1069,6 +1082,27 @@ def main(argv: list[str] | None = None) -> int:
             logger.info(f"candidate-to-staging handoff wrote {len(results)} entries")
             for candidate_path, staging_document_path, slot_id in results:
                 print(f"{candidate_path} -> {staging_document_path} [{slot_id}]")
+            return 0
+
+        if args.command == "fill-gold-set-staging-until-complete":
+            result = fill_gold_set_staging_until_complete(
+                config,
+                options=FillControllerOptions(
+                    source_code=args.source,
+                    initial_window=args.initial_window,
+                    live_limit=args.live_limit,
+                    discovery_fixture_path=Path(args.discovery_fixture_path) if args.discovery_fixture_path else None,
+                    llm_fixture_path=Path(args.llm_fixture_path) if args.llm_fixture_path else None,
+                    review_fixture_path=Path(args.review_fixture_path) if args.review_fixture_path else None,
+                    max_iterations=args.max_iterations,
+                ),
+            )
+            logger.info(
+                "fill-gold-set-staging-until-complete finished "
+                f"iterations={result.iterations} total_filled={result.total_filled}/{result.target_total_filled}"
+            )
+            print(f"audit_log={result.audit_log_path}")
+            print(f"cursor={result.cursor_path}")
             return 0
 
         if args.command == "validate-env":

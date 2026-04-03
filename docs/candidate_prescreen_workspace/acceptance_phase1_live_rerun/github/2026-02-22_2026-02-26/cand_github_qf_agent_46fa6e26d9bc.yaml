@@ -1,0 +1,198 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_46fa6e26d9bc
+candidate_batch_id: candidate_batch_github_qf_agent_2026-02-22_2026-02-26
+created_at: '2026-04-03T02:05:17.192361Z'
+updated_at: '2026-04-03T02:32:43.257322Z'
+source: github
+source_id: src_github
+source_window: 2026-02-22..2026-02-26
+time_field: pushed_at
+external_id: '194931406'
+canonical_url: https://github.com/optimizely/agent
+title: agent
+summary: Agent service for Optimizely Feature Experimentation and Optimizely Full
+  Stack (legacy)
+raw_evidence_excerpt: 'Agent service for Optimizely Feature Experimentation and Optimizely
+  Full Stack (legacy)
+
+
+  Optimizely Agent
+
+
+  This repository houses the Optimizely Agent service for use with Optimizely Feature
+  Experimentation and Optimizely Full Stack (legacy).
+
+
+  Optimizely Feature Experimentation is an A/B testing and feature management tool
+  for product development teams that enables you to experiment at every step. Using
+  Optimizely Feature Experimentation allows for every feature on your roadmap to be
+  an opportunity to discover hidden insights. Learn more at Optimizely.com, or see
+  the developer documentation.
+
+
+  Optimizely Rollouts is free feature flags for development teams. You can easily
+  roll out and roll back features in any application without code deploys, mitigating
+  risk for every feature on your roadmap.
+
+
+  Get Started
+
+
+  Refer to the Agent''s developer documentation for detailed instructions on getting
+  started with using the SDK.
+
+
+  Requirements
+
+
+  Optimizely Agent is implemented in Golang. Golang version 1.24.0+ is required for
+  developing and compiling from source. Installers and binary archives for most platforms
+  can be downloaded directly from the Go downloads page.
+
+
+  Run from source (Linux / OSX)
+
+
+  Once Go is installed, the Optimizely Agent can be started via the following `make`
+  command:
+
+
+  This will start the Optimizely Agent with the default configuration in the foreground.
+
+
+  Run from source (Windows)
+
+
+  A helper script is available under scripts/build.ps1 to automate compiling Agent
+  in a Windows environment. The script will download and install both Git and Golang
+  and then attempt to compile Agent. Open a Powershell terminal and run
+
+
+  Run via Docker
+
+
+  If you have Docker installed, Optimizely Agent can be started as a container. First
+  pull the Docker image with:
+
+
+  By default this will pull the "latest" tag. You can also specify a specific version
+  of Agent by providing the version as a tag to the docker command:
+
+
+  Then run the docker container with:
+
+
+  This will start Agent in the foreground and expose the container API port 8080 to
+  the host.
+
+
+  Note that when a new version is released, 2 images are pushed to dockerhub, they
+  are distinguished by their tags:
+
+
+  - :latest (same as :X.Y.Z) - :alpine (same as :X.Y.Z-alpine)
+
+
+  The difference between latest and alpine is that latest is built `FROM scratch`
+  while alpine is `FROM alpine`.
+
+
+  - latest Dockerfile - alpine Dockerfile
+
+
+  Configuration Options
+
+
+  Optimizely Agent configuration can be overridden by a yaml configuration file provided
+  at runtime.
+
+
+  By default the configuration file will be sourced from the current active directory
+  `e.g. ./config.yaml`. Alternative configuration locations can be specified at runtime
+  via environment variable or command line flag.
+
+
+  The default configuration can be found here.
+
+
+  Below is a comprehensive list of available configuration properties.'
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-02-22'
+    window_end: '2026-02-26'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-02-22..2026-02-26
+    external_id: '194931406'
+    canonical_url: https://github.com/optimizely/agent
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: network_error
+  error_message: 'Relay request network error: [Errno -2] Name or service not known'
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope; The repository evidence describes a
+  Golang service for Optimizely feature experimentation/feature flags and deployment
+  tooling, with no explicit AI application or model-powered product signal.
+human_reviewed_at: '2026-04-03T02:32:43.257301Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

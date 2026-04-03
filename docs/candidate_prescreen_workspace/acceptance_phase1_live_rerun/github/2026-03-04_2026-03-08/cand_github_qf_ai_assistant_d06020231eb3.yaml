@@ -1,0 +1,124 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_d06020231eb3
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2026-03-04_2026-03-08
+created_at: '2026-04-02T15:19:24.745184Z'
+updated_at: '2026-04-02T15:21:53.849929Z'
+source: github
+source_id: src_github
+source_window: 2026-03-04..2026-03-08
+time_field: pushed_at
+external_id: '856605046'
+canonical_url: https://github.com/ragpi/ragpi
+title: ragpi
+summary: "\U0001F916 An open-source AI assistant answering questions using your docs"
+raw_evidence_excerpt: "\U0001F916 An open-source AI assistant answering questions\
+  \ using your docs\n\nRagpi\n\nRagpi is an open-source AI assistant that answers\
+  \ questions using your documentation, GitHub issues, and READMEs. It combines LLMs\
+  \ with intelligent search to provide relevant, documentation-backed answers through\
+  \ a simple API. It supports multiple providers like OpenAI, Ollama, and Deepseek,\
+  \ and has built-in integrations with Discord and Slack. A web widget integration\
+  \ is also available to embed the assistant in your website.\n\nDocumentation | API\
+  \ Reference\n\nKey Features\n\n- \U0001F4DA Builds knowledge bases from docs, GitHub\
+  \ issues and READMEs - \U0001F916 Agentic RAG system for dynamic document retrieval\
+  \ - \U0001F50C Supports OpenAI, Ollama, Deepseek & OpenAI-Compatible models - \U0001F4AC\
+  \ Discord and slack integrations for community support - \U0001F680 API-first design\
+  \ with Docker deployment\n\nExample Workflow\n\nHere's a simple workflow to get\
+  \ started with Ragpi once it's deployed:\n\n1. Set up a Source with a Connector\n\
+  \n- Use the `/sources` endpoint to configure a source with your chosen connector.\
+  \ - Each connector type has its own configuration parameters.\n\nExample payload\
+  \ using the Sitemap connector:\n\n2. Monitor Source Synchronization\n\n- After adding\
+  \ a source, documents will be synced automatically. You can monitor the sync process\
+  \ through the `/tasks` endpoint.\n\n3. Chat with the AI Assistant\n\n- Use the `/chat`\
+  \ endpoint to query the AI assistant using the configured sources:\n\n- You can\
+  \ also interact with the AI assistant through the Discord or Slack integration,\
+  \ or by embedding the Web Widget in your website.\n\nConnectors\n\nRagpi supports\
+  \ the following connectors for building knowledge bases:\n\n- **Documentation Website\
+  \ (Sitemap)** - **GitHub Issues** - **GitHub README Files** - **GitHub PDF Files**\
+  \ - **REST API Responses**\n\nExplore connectors \u2192\n\nProviders\n\nRagpi supports\
+  \ the following LLM providers for generating responses and embeddings:\n\n- **OpenAI**\
+  \ (default) - **Ollama** - **Deepseek** - **OpenAI-compatible APIs**\n\nConfigure\
+  \ providers \u2192\n\nIntegrations\n\nRagpi supports the following integrations\
+  \ for interacting with the AI assistant:\n\n- **Discord** - **Slack** - **Web Widget**\n\
+  \nContributing\n\nContributions to Ragpi are welcome! Please check out the contributing\
+  \ guidelines for more information."
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-04'
+    window_end: '2026-03-08'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-04..2026-03-08
+    external_id: '856605046'
+    canonical_url: https://github.com/ragpi/ragpi
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: network_error
+  error_message: 'Relay request network error: [Errno -2] Name or service not known'
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  The repository clearly presents an end-user AI assistant product with deployable
+  API workflows, knowledge-source connectors, and user-facing integrations (Slack,
+  Discord, web widget) backed by concrete feature and usage descriptions.
+human_reviewed_at: '2026-04-02T15:21:53.065240Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+  sample_slot_id: GS300-054
+  sample_id: cand_github_qf_ai_assistant_d06020231eb3
+  blocking_items: []
+  last_attempted_at: '2026-04-02T15:21:53.849907Z'

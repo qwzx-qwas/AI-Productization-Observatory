@@ -1,0 +1,167 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_12ad9d383d20
+candidate_batch_id: candidate_batch_github_qf_agent_2026-03-24_2026-03-28
+created_at: '2026-04-02T14:31:51.507712Z'
+updated_at: '2026-04-02T14:50:24.162764Z'
+source: github
+source_id: src_github
+source_window: 2026-03-24..2026-03-28
+time_field: pushed_at
+external_id: '227559381'
+canonical_url: https://github.com/frappe/agent
+title: agent
+summary: Works with https://github.com/frappe/press
+raw_evidence_excerpt: 'Works with https://github.com/frappe/press
+
+
+  Agent
+
+
+  Installation
+
+
+  Running
+
+
+  CLI
+
+
+  Agent has a CLI (ref). You can access this by activating the env:
+
+
+  Once you have activated the env, you can access the iPython console:
+
+
+  This should have the server object instantiated if it was able to find the `config.json`
+  file. If not you can specify the path (check `agent console --help`).'
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-24'
+    window_end: '2026-03-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-24..2026-03-28
+    external_id: '227559381'
+    canonical_url: https://github.com/frappe/agent
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Available evidence indicates a CLI/server operational agent tied to Frappe
+    Press deployment tooling, with no explicit AI/ML functionality shown in the excerpt.
+  decision_snapshot: Recommend candidate_pool because Available evidence indicates
+    a CLI/server operational agent tied to Frappe Press deployment tooling, with no
+    explicit AI/ML functionality shown in the excerpt.
+  scope_boundary_note: 'Boundary for this prescreen: only a short README-style excerpt
+    was provided. This supports classification as infrastructure/operations tooling,
+    but does not conclusively rule out hidden AI features elsewhere in the repo. Human
+    reviewer should verify full README, dependency tree, and code paths before final
+    exclusion.'
+  source_evidence_summary:
+  - Works with https://github.com/frappe/press
+  - Agent has a CLI (ref). You can access this by activating the env
+  - This should have the server object instantiated if it was able to find the `config.json`
+    file.
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: Works with https://github.com/frappe/press
+    evidence_source_field: candidate_input
+    why_it_matters: Strong signal of ecosystem coupling to Press (hosting/deployment
+      context), not an AI product statement.
+  - anchor_rank: 2
+    evidence_text: Agent has a CLI (ref). You can access this by activating the env
+    evidence_source_field: candidate_input
+    why_it_matters: Describes command-line operational interface; typical of admin/dev
+      tooling.
+  - anchor_rank: 3
+    evidence_text: This should have the server object instantiated if it was able
+      to find the `config.json` file.
+    evidence_source_field: candidate_input
+    why_it_matters: Configuration-driven server bootstrap language suggests runtime/service
+      management rather than model-based AI behavior.
+  review_focus_points:
+  - Check repository README and docs for explicit AI/LLM/ML claims (models, inference,
+    prompts, agents in AI sense).
+  - Inspect dependencies for AI frameworks (e.g., transformers, openai, langchain,
+    vllm) vs pure ops stack.
+  - Confirm whether 'agent' denotes deployment/node agent terminology in Frappe Press
+    architecture.
+  - If any AI features exist, determine whether they are core product functionality
+    or incidental.
+  uncertainty_points: []
+  recommend_candidate_pool: true
+  recommended_action: candidate_pool
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: candidate_pool
+    rationale: Ready for quick human verification pass; likely fast reject for AI-product
+      scope unless hidden AI-specific modules are found.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Available evidence indicates a CLI/server operational agent tied to
+      Frappe Press deployment tooling, with no explicit AI/ML functionality shown
+      in the excerpt.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: Infrastructure & Developer Operations Tooling
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: Infrastructure & Developer Operations Tooling
+      rationale: Available evidence indicates a CLI/server operational agent tied
+        to Frappe Press deployment tooling, with no explicit AI/ML functionality shown
+        in the excerpt.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: AI Applications & Products
+      rationale_for_similarity: AI Applications & Products
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: No explicit evidence of AI model usage, inference
+      workflows, or user-facing AI functionality in provided excerpt.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: low
+    unresolved_risk: low
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: "outside observatory scope; The provided evidence describes a\
+  \ CLI/server deployment agent integrated with Frappe Press and shows no explicit\
+  \ AI/LLM end-user product functionality, placing it outside this observatory\u2019\
+  s scope."
+human_reviewed_at: '2026-04-02T14:50:24.162744Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

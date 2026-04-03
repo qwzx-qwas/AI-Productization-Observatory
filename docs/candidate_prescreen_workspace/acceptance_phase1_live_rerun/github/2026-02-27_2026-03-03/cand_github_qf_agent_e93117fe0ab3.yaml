@@ -1,0 +1,170 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_e93117fe0ab3
+candidate_batch_id: candidate_batch_github_qf_agent_2026-02-27_2026-03-03
+created_at: '2026-04-02T15:23:48.386108Z'
+updated_at: '2026-04-03T01:56:11.951088Z'
+source: github
+source_id: src_github
+source_window: 2026-02-27..2026-03-03
+time_field: pushed_at
+external_id: '801343564'
+canonical_url: https://github.com/compassvpn/agent
+title: agent
+summary: CompassVPN Agent
+raw_evidence_excerpt: "CompassVPN Agent\n\n\u26A0\uFE0F Caution: This project is under\
+  \ active development! \u26A0\uFE0F\n\nCompass VPN Agent\n\nRead the complete guide\
+  \ on our website.\n\nFeatures Read Here.\n\nRequirements\n\nRead Here.\n\nHow to\
+  \ run\n\n1. Setup Agent\n\nFollow this tutorial to get the Compass VPN Agent running.\n\
+  \n2. Setup Manager Follow this tutorial to create a manager.\n\nEnsure you obtain\
+  \ the authentication values from the manager setup. These values will be required\
+  \ to be included in the `env_file` of the agent.\n\nCommands\n\nBootstrap: _(first\
+  \ time)_\n\nRebuild and restart all services:\n\nStart the Panel\n\nView Configuration\
+  \ Links:\n\nCheck & Update:\n\nShow Logs:\n\nServices\n\n`xray-config` Creates `config.json`,\
+  \ monitors configurations, and export Xray configurations via `/metrics` path.\n\
+  \n`xray` Reads `config.json` from the **xray-config** service and runs the Xray-core.\n\
+  \n`v2ray-exporter` Exports V2Ray/Xray configuration metrics.\n\n`node-exporter`\
+  \ Prometheus Node Exporter that collects all critical metrics of the agent machine.\n\
+  \n`nginx` NGINX webserver to manage Xray inbounds and fallbacks, enhancing both\
+  \ performance and security.\n\n`metric-forwarder` Reads metrics from `xray-config`,\
+  \ `node-exporter`, and `v2ray-exporter` services and pushes them to a remote manager\
+  \ `Pushgateway` service or `Grafana Cloud Prometheus` endpoint.\n\n`user-metrics`\
+  \ Tracks approximate active unique users across all configured inbounds and monitors\
+  \ blocked requests due to junk traffic, providing insights into bandwidth optimization."
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-02-27'
+    window_end: '2026-03-03'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-02-27..2026-03-03
+    external_id: '801343564'
+    canonical_url: https://github.com/compassvpn/agent
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: 'Human reviewer should do a quick skim of dependency manifests and manager
+    docs before final exclusion; expected effort: low (5-10 minutes).'
+  decision_snapshot: 'Recommend hold because Human reviewer should do a quick skim
+    of dependency manifests and manager docs before final exclusion; expected effort:
+    low (5-10 minutes).'
+  scope_boundary_note: Likely outside AI productization scope unless deeper repo content
+    shows AI-driven routing, anomaly detection, or model-powered control loops. Current
+    excerpt reads as network service deployment, telemetry export, and manager integration.
+  source_evidence_summary:
+  - '`xray` Reads `config.json` from the **xray-config** service and runs the Xray-core.'
+  - '`metric-forwarder` ... pushes them to a remote manager `Pushgateway` service
+    or `Grafana Cloud Prometheus` endpoint.'
+  - '`node-exporter` Prometheus Node Exporter that collects all critical metrics of
+    the agent machine.'
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: '`xray` Reads `config.json` from the **xray-config** service and
+      runs the Xray-core.'
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates VPN/proxy runtime orchestration, not explicit AI functionality.
+  - anchor_rank: 2
+    evidence_text: '`metric-forwarder` ... pushes them to a remote manager `Pushgateway`
+      service or `Grafana Cloud Prometheus` endpoint.'
+    evidence_source_field: candidate_input
+    why_it_matters: Strong observability/metrics pipeline signal (DevOps/monitoring
+      pattern).
+  - anchor_rank: 3
+    evidence_text: '`node-exporter` Prometheus Node Exporter that collects all critical
+      metrics of the agent machine.'
+    evidence_source_field: candidate_input
+    why_it_matters: Standard infrastructure telemetry component; no model/AI indication.
+  - anchor_rank: 4
+    evidence_text: '`user-metrics` Tracks approximate active unique users ... and
+      monitors blocked requests due to junk traffic'
+    evidence_source_field: candidate_input
+    why_it_matters: Analytics and traffic monitoring present, but no evidence of ML/AI
+      methods.
+  - anchor_rank: 5
+    evidence_text: Ensure you obtain the authentication values from the manager setup...
+      included in the `env_file` of the agent.
+    evidence_source_field: candidate_input
+    why_it_matters: Suggests operational agent-manager deployment mechanics rather
+      than AI product behavior.
+  review_focus_points:
+  - Check repo for any ML/LLM dependencies, model files, or inference services not
+    visible in excerpt.
+  - Verify whether 'junk traffic' detection is heuristic rules vs learned/AI detection.
+  - Confirm if manager side includes AI-based policy generation and this agent is
+    only runtime executor.
+  - If no AI artifacts exist, classify under VPN/observability infrastructure and
+    close from AI-product pool.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: 'Human reviewer should do a quick skim of dependency manifests and
+      manager docs before final exclusion; expected effort: low (5-10 minutes).'
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: 'Human reviewer should do a quick skim of dependency manifests and
+      manager docs before final exclusion; expected effort: low (5-10 minutes).'
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: Network Infrastructure & Observability Tooling
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: Network Infrastructure & Observability Tooling
+      rationale: 'Human reviewer should do a quick skim of dependency manifests and
+        manager docs before final exclusion; expected effort: low (5-10 minutes).'
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: AI-Powered Network Security/Traffic Intelligence
+      rationale_for_similarity: AI-Powered Network Security/Traffic Intelligence
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: No explicit evidence of ML models, inference
+      endpoints, AI training, or algorithmic intelligence claims in the provided material.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope; The provided repository evidence describes
+  VPN agent deployment, networking, and metrics-forwarding infrastructure without
+  any explicit AI/ML functionality or model-powered user product behavior.
+human_reviewed_at: '2026-04-03T01:56:11.951069Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

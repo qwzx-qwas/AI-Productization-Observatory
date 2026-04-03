@@ -1,0 +1,223 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_7e8f7a36df82
+candidate_batch_id: candidate_batch_github_qf_chatbot_2026-03-24_2026-03-28
+created_at: '2026-04-02T14:43:14.874588Z'
+updated_at: '2026-04-02T14:43:53.712608Z'
+source: github
+source_id: src_github
+source_window: 2026-03-24..2026-03-28
+time_field: pushed_at
+external_id: '24561828'
+canonical_url: https://github.com/gunthercox/ChatterBot
+title: ChatterBot
+summary: ChatterBot is a machine learning, conversational dialog engine for creating
+  chat bots
+raw_evidence_excerpt: 'ChatterBot is a machine learning, conversational dialog engine
+  for creating chat bots
+
+
+  ChatterBot
+
+
+  ChatterBot is a machine-learning based conversational dialog engine built in Python
+  which makes it possible to generate responses based on collections of known conversations.
+  The language independent design of ChatterBot allows it to be trained to speak any
+  language.
+
+
+  An example of typical input would be something like this:
+
+
+  > **user:** Good morning! How are you doing? > **bot:** I am doing very well, thank
+  you for asking. > **user:** You''re welcome. > **bot:** Do you like hats?
+
+
+  How it works
+
+
+  An untrained instance of ChatterBot starts off with no knowledge of how to communicate.
+  Each time a user enters a statement, the library saves the text that they entered
+  and the text that the statement was in response to. As ChatterBot receives more
+  input the number of responses that it can reply to, and the accuracy of each response
+  in relation to the input statement increases. The program selects the closest matching
+  response by searching for the closest matching known statement that matches the
+  input, it then returns the most likely response to that statement based on how frequently
+  each response is issued by the people the bot communicates with.
+
+
+  Documentation
+
+
+  View the documentation for ChatterBot.
+
+
+  Installation
+
+
+  This package can be installed from PyPi by running:
+
+
+  Basic Usage
+
+
+  Training data
+
+
+  ChatterBot comes with a data utility module that can be used to train chat bots.
+  At the moment there is training data for over a dozen languages in this module.
+  Contributions of additional training data or training data in other languages would
+  be greatly appreciated. Take a look at the data files in the chatterbot-corpus package
+  if you are interested in contributing.
+
+
+  **Corpus contributions are welcome! Please make a pull request.**
+
+
+  Examples
+
+
+  For examples, see the examples section of the documentation.
+
+
+  History
+
+
+  See release notes for changes https://github.com/gunthercox/ChatterBot/releases
+
+
+  Contributing
+
+
+  Contributions are welcomed, to help ensure a smooth process please start with the
+  contributing guidelines in our documentation:
+
+
+  Sponsors
+
+
+  ChatterBot is sponsored by:
+
+
+  License
+
+
+  ChatterBot is licensed under the BSD 3-clause license.'
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-24'
+    window_end: '2026-03-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-24..2026-03-28
+    external_id: '24561828'
+    canonical_url: https://github.com/gunthercox/ChatterBot
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Ready for quick human triage; reviewer mainly needs to resolve scope policy
+    (library vs product) and maintenance recency.
+  decision_snapshot: Recommend hold because Ready for quick human triage; reviewer
+    mainly needs to resolve scope policy (library vs product) and maintenance recency.
+  scope_boundary_note: Treat as conversational AI infrastructure/tooling (bot engine
+    + training corpus utilities), not as a turnkey customer-facing chatbot product.
+    Human reviewer should decide whether the program scope includes OSS libraries
+    as 'products' for this query slice.
+  source_evidence_summary:
+  - Treat as conversational AI infrastructure/tooling (bot engine + training corpus
+    utilities), not as a turnkey customer-facing chatbot product. Human reviewer should
+    decide whether the program scope includes OSS libraries as 'products' for this
+    query slice.
+  - 'Confirm taxonomy policy: include OSS chatbot engines in this pipeline or require
+    end-user productization.'
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: Ready for quick human triage; reviewer mainly needs to resolve
+      scope policy (library vs product) and maintenance recency.
+    evidence_source_field: candidate_input
+    why_it_matters: This fallback anchor preserves a minimally explainable first-pass
+      review card when the provider omits structured evidence anchors.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - 'Confirm taxonomy policy: include OSS chatbot engines in this pipeline or require
+    end-user productization.'
+  - Check recency/maintenance from repository activity in the provided time window
+    before promotion.
+  - Verify whether functionality is primarily retrieval/similarity-based responses
+    vs modern LLM-based orchestration (may affect categorization granularity).
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: Ready for quick human triage; reviewer mainly needs to resolve scope
+      policy (library vs product) and maintenance recency.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Ready for quick human triage; reviewer mainly needs to resolve scope
+      policy (library vs product) and maintenance recency.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: Conversational AI / Chatbot Framework
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: Conversational AI / Chatbot Framework
+      rationale: Ready for quick human triage; reviewer mainly needs to resolve scope
+        policy (library vs product) and maintenance recency.
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_candidate:
+      category_code: General NLP/ML Library
+      rationale_for_similarity: General NLP/ML Library
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: Repository framing is chatbot-dialog-engine
+      specific, with conversation-response training workflow, not a broad multipurpose
+      NLP toolkit.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear; The repository evidence
+  describes ChatterBot as a Python conversational engine/library with training utilities
+  rather than a clearly productized end-user chatbot, so scope eligibility depends
+  on policy.
+human_reviewed_at: '2026-04-02T14:43:53.712589Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -1457,17 +1457,24 @@ samples:
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2026-03-15_2026-03-22/cand_github_qf_ai_assistant_ba47c89263e5.yaml
 - slot_index: 43
   sample_slot_id: GS300-043
-  current_state: awaiting_real_input
+  current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: null
+  sample_id: cand_github_qf_rag_557d6a8a8855
   target_type: product
   review_closed: null
   clear_adjudication: null
   primary_category_code: null
   review_refs: []
   evidence_refs: []
-  source_record_refs: []
+  source_record_refs: &id013
+  - candidate_id: cand_github_qf_rag_557d6a8a8855
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/acceptance_phase1_live_rerun/github/2026-03-29_2026-04-02/cand_github_qf_rag_557d6a8a8855.yaml
+    source: github
+    source_id: src_github
+    source_window: 2026-03-29..2026-04-02
+    external_id: '902093146'
+    canonical_url: https://github.com/NVIDIA-AI-Blueprints/rag
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -1531,11 +1538,11 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: null
+    sample_id: cand_github_qf_rag_557d6a8a8855
     target_id: null
-    source_id: null
+    source_id: src_github
     target_type: product
-    source_record_refs: []
+    source_record_refs: *id013
     review_refs: []
     evidence_refs: []
     eligibility_snapshot:
@@ -1544,29 +1551,51 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: null
+      candidate_pool_batch_id: candidate_batch_github_qf_rag_2026-03-29_2026-04-02
       training_pool_source: candidate_pool
       whitelist_reason: null
   blocking_items:
-  - real sample_id not yet provided
+  - formal review_refs not yet provided
+  - formal evidence_refs not yet provided
   - local_project_user raw annotation not yet provided
   - llm raw annotation not yet provided
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
-  - review_refs/evidence_refs/source_record_refs not yet provided
+  candidate_prescreen_ref:
+    candidate_id: cand_github_qf_rag_557d6a8a8855
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/acceptance_phase1_live_rerun/github/2026-03-29_2026-04-02/cand_github_qf_rag_557d6a8a8855.yaml
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+    recommended_action: hold
+    human_review_status: approved_for_staging
+    human_review_notes: clear end-user product signal; evidence sufficient for staging;
+      The repository presents a deployment-ready, enterprise RAG reference solution
+      with end-user QA workflows, sample UI, APIs, and documented Docker/Kubernetes
+      operations, which is a strong AI application blueprint signal.
+    human_reviewed_at: '2026-04-02T11:47:06.345492Z'
+  staged_from_candidate_prescreen_at: '2026-04-02T11:47:06.911771Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/acceptance_phase1_live_rerun/github/2026-03-29_2026-04-02/cand_github_qf_rag_557d6a8a8855.yaml
 - slot_index: 44
   sample_slot_id: GS300-044
-  current_state: awaiting_real_input
+  current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: null
+  sample_id: cand_github_qf_ai_workflow_f94eaf7a905e
   target_type: product
   review_closed: null
   clear_adjudication: null
   primary_category_code: null
   review_refs: []
   evidence_refs: []
-  source_record_refs: []
+  source_record_refs: &id014
+  - candidate_id: cand_github_qf_ai_workflow_f94eaf7a905e
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/acceptance_phase1_live_rerun/github/2026-03-29_2026-04-02/cand_github_qf_ai_workflow_f94eaf7a905e.yaml
+    source: github
+    source_id: src_github
+    source_window: 2026-03-29..2026-04-02
+    external_id: '573661753'
+    canonical_url: https://github.com/activepieces/activepieces
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -1630,11 +1659,11 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: null
+    sample_id: cand_github_qf_ai_workflow_f94eaf7a905e
     target_id: null
-    source_id: null
+    source_id: src_github
     target_type: product
-    source_record_refs: []
+    source_record_refs: *id014
     review_refs: []
     evidence_refs: []
     eligibility_snapshot:
@@ -1643,29 +1672,52 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: null
+      candidate_pool_batch_id: candidate_batch_github_qf_ai_workflow_2026-03-29_2026-04-02
       training_pool_source: candidate_pool
       whitelist_reason: null
   blocking_items:
-  - real sample_id not yet provided
+  - formal review_refs not yet provided
+  - formal evidence_refs not yet provided
   - local_project_user raw annotation not yet provided
   - llm raw annotation not yet provided
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
-  - review_refs/evidence_refs/source_record_refs not yet provided
+  candidate_prescreen_ref:
+    candidate_id: cand_github_qf_ai_workflow_f94eaf7a905e
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/acceptance_phase1_live_rerun/github/2026-03-29_2026-04-02/cand_github_qf_ai_workflow_f94eaf7a905e.yaml
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+    recommended_action: hold
+    human_review_status: approved_for_staging
+    human_review_notes: clear end-user product signal; evidence sufficient for staging;
+      The repository presents a clear end-user AI automation product (open-source
+      Zapier replacement) with a no-code workflow builder, AI-agent/MCP interoperability,
+      deployment docs, and self-hosted usage signals that are sufficient for staging
+      eligibility.
+    human_reviewed_at: '2026-04-02T14:31:10.128428Z'
+  staged_from_candidate_prescreen_at: '2026-04-02T14:31:10.701330Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/acceptance_phase1_live_rerun/github/2026-03-29_2026-04-02/cand_github_qf_ai_workflow_f94eaf7a905e.yaml
 - slot_index: 45
   sample_slot_id: GS300-045
-  current_state: awaiting_real_input
+  current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: null
+  sample_id: cand_github_qf_ai_assistant_bd9eadd3c9b9
   target_type: product
   review_closed: null
   clear_adjudication: null
   primary_category_code: null
   review_refs: []
   evidence_refs: []
-  source_record_refs: []
+  source_record_refs: &id015
+  - candidate_id: cand_github_qf_ai_assistant_bd9eadd3c9b9
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/acceptance_phase1_live_rerun/github/2026-03-19_2026-03-23/cand_github_qf_ai_assistant_bd9eadd3c9b9.yaml
+    source: github
+    source_id: src_github
+    source_window: 2026-03-19..2026-03-23
+    external_id: '916847592'
+    canonical_url: https://github.com/makafeli/n8n-workflow-builder
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -1729,11 +1781,11 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: null
+    sample_id: cand_github_qf_ai_assistant_bd9eadd3c9b9
     target_id: null
-    source_id: null
+    source_id: src_github
     target_type: product
-    source_record_refs: []
+    source_record_refs: *id015
     review_refs: []
     evidence_refs: []
     eligibility_snapshot:
@@ -1742,13 +1794,28 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: null
+      candidate_pool_batch_id: candidate_batch_github_qf_ai_assistant_2026-03-19_2026-03-23
       training_pool_source: candidate_pool
       whitelist_reason: null
   blocking_items:
-  - real sample_id not yet provided
+  - formal review_refs not yet provided
+  - formal evidence_refs not yet provided
   - local_project_user raw annotation not yet provided
   - llm raw annotation not yet provided
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
-  - review_refs/evidence_refs/source_record_refs not yet provided
+  candidate_prescreen_ref:
+    candidate_id: cand_github_qf_ai_assistant_bd9eadd3c9b9
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/acceptance_phase1_live_rerun/github/2026-03-19_2026-03-23/cand_github_qf_ai_assistant_bd9eadd3c9b9.yaml
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+    recommended_action: hold
+    human_review_status: approved_for_staging
+    human_review_notes: "clear end-user product signal; evidence sufficient for staging;\
+      \ The candidate shows a clear end-user AI integration product\u2014an MCP server\
+      \ for Claude/ChatGPT and other clients to create, run, and manage n8n workflows\u2014\
+      with documented setup, hosted/local usage paths, and explicit tool capabilities."
+    human_reviewed_at: '2026-04-02T14:52:20.702531Z'
+  staged_from_candidate_prescreen_at: '2026-04-02T14:52:21.283835Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/acceptance_phase1_live_rerun/github/2026-03-19_2026-03-23/cand_github_qf_ai_assistant_bd9eadd3c9b9.yaml

@@ -1,0 +1,261 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_bd9eadd3c9b9
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2026-03-19_2026-03-23
+created_at: '2026-04-02T14:51:39.183562Z'
+updated_at: '2026-04-02T14:52:21.392489Z'
+source: github
+source_id: src_github
+source_window: 2026-03-19..2026-03-23
+time_field: pushed_at
+external_id: '916847592'
+canonical_url: https://github.com/makafeli/n8n-workflow-builder
+title: n8n-workflow-builder
+summary: AI assistant integration for n8n workflow automation through Model Context
+  Protocol (MCP). Connect Claude Desktop, ChatGPT, and other AI assistants to n8n
+  for natural language workflow management.
+raw_evidence_excerpt: "AI assistant integration for n8n workflow automation through\
+  \ Model Context Protocol (MCP). Connect Claude Desktop, ChatGPT, and other AI assistants\
+  \ to n8n for natural language workflow management.\n\nn8n Workflow Builder MCP Server\n\
+  \n**The ultimate AI assistant integration for n8n workflow automation** - Connect\
+  \ Claude Desktop, ChatGPT, and other AI assistants directly to your n8n instance\
+  \ for seamless workflow management, creation, and execution through the Model Context\
+  \ Protocol (MCP).\n\nA powerful Model Context Protocol (MCP) server that enables\
+  \ AI assistants to manage n8n workflows seamlessly. Connect your AI tools directly\
+  \ to n8n for automated workflow creation, execution, and management.\n\n\U0001F4DA\
+  \ Table of Contents\n\n- What is this? - Key Features - Requirements - Installation\
+  \ & Usage - Configuration - MCP Client Setup - Available Tools - Usage Examples\
+  \ - Troubleshooting - FAQ - Contributing - License - Useful Links\n\n\U0001F4D6\
+  \ Additional Documentation\n\n- **\U0001F680 Getting Started Guide** - Quick setup\
+  \ in under 5 minutes - **\U0001F4BC Real-World Use Cases** - E-commerce, data processing,\
+  \ API integrations, and more - **\U0001F50D Comparison with Alternatives** - vs\
+  \ Zapier, Make.com, n8n Web UI, and CLI - **\U0001F527 Comprehensive Troubleshooting**\
+  \ - Solutions for common issues and problems\n\n\U0001F3AF What is this?\n\nThe\
+  \ n8n Workflow Builder MCP Server bridges the gap between AI assistants (like Claude\
+  \ Desktop, Cline, or any MCP-compatible client) and your n8n automation platform.\
+  \ It provides a comprehensive set of tools that allow AI assistants to:\n\n- **List\
+  \ and browse** your existing n8n workflows - **Create new workflows** with complex\
+  \ node configurations - **Execute workflows** on demand - **Manage workflow lifecycle**\
+  \ (activate, deactivate, update, delete) - **Monitor workflow status** and retrieve\
+  \ detailed information\n\nPerfect for teams using n8n who want to leverage AI assistants\
+  \ for workflow automation and management.\n\n\u2728 Key Features\n\n- \U0001F527\
+  \ **Complete Workflow Management** - Full CRUD operations for n8n workflows - \U0001F916\
+  \ **AI-First Design** - Built specifically for AI assistant integration - \U0001F680\
+  \ **Zero Configuration** - Works out of the box with NPX - \U0001F512 **Secure**\
+  \ - Uses n8n's official API with proper authentication - \U0001F4E6 **Modern Architecture**\
+  \ - Built with TypeScript and latest MCP SDK - \u26A1 **High Performance** - Optimized\
+  \ for fast response times\n\n\U0001F4CB Requirements\n\n- **Node.js** v18.0.0 or\
+  \ higher - **n8n instance** (self-hosted or cloud) - **n8n API key** with appropriate\
+  \ permissions\n\n\U0001F680 Installation & Usage\n\nMethod 1: Smithery.ai (Hosted\
+  \ - Recommended)\n\nUse the hosted version on Smithery.ai - no installation required:\n\
+  \n1. **Visit**: smithery.ai 2. **Search**: \"n8n-workflow-builder\" 3. **Connect**:\
+  \ Configure with your n8n host and API key 4. **Use**: Access from any MCP-compatible\
+  \ AI assistant\n\n**Benefits**: No local setup, automatic updates, professional\
+  \ hosting, tool playground.\n\nMethod 2: NPX (Local)\n\nRun locally with NPX:\n\n\
+  Method 2: Manual Installation\n\nFor development or customization:\n\n\u2699\uFE0F\
+  \ Configuration\n\nEnvironment Variables\n\nConfigure the following environment\
+  \ variables to connect to your n8n instance:\n\n| Variable | Description | Example\
+  \ | |----------|-------------|---------| | `N8N_HOST` | Your n8n instance URL |\
+  \ `http://localhost:5678` or `https://your-n8n.com/api/v1` | | `N8N_API_KEY` | Your\
+  \ n8n API key | `n8n_api_1234567890abcdef...` |\n\nGetting Your n8n API Key\n\n\
+  1. Open your n8n instance 2. Go to **Settings** \u2192 **API Keys** 3. Click **Create\
+  \ API Key** 4. Copy the generated key\n\nSetting Environment Variables\n\n\U0001F527\
+  \ MCP Client Setup\n\nClaude Desktop\n\nAdd this configuration to your `claude_desktop_config.json`:\n\
+  \nCline (VS Code Extension)\n\nAdd this to your Cline MCP settings:\n\nOther MCP\
+  \ Clients\n\nThe server works with any MCP-compatible client. Use the same configuration\
+  \ pattern with your client's specific setup method.\n\n\U0001F6E0\uFE0F Available\
+  \ Tools\n\nThe MCP server provides 15 comprehensive tools for complete n8n workflow\
+  \ and execution management:\n\nCore Workflow Operations\n\n| Tool | Description\
+  \ | Parameters | |------|-------------|------------| | `list_workflows` | List all\
+  \ workflows from your n8n instance | None | | `get_workflow` | Retrieve detailed\
+  \ information about a specific workflow | `id`: Workflow ID (string) | | `create_workflow`\
+  \ | Create a new workflow with nodes and connections | `workflow`: Workflow object\
+  \ | | `execute_workflow` | Manually execute a workflow | `id`: Workflow ID (string)\
+  \ |\n\nWorkflow Lifecycle Management\n\n| Tool | Description | Parameters | |------|-------------|------------|\
+  \ | `update_workflow` | Update an existing workflow's configuration | `id`: Workflow\
+  \ ID, `workflow`: Updated workflow object | | `activate_workflow` | Activate a workflow\
+  \ to enable automatic execution | `id`: Workflow ID (string) | | `deactivate_workflow`\
+  \ | Deactivate a workflow to stop automatic execution | `id`: Workflow ID (string)\
+  \ | | `delete_workflow` | Permanently delete a workflow | `id`: Workflow ID (string)\
+  \ |\n\nAdvanced Operations\n\n| Tool | Description | Parameters | |------|-------------|------------|\
+  \ | `create_workflow_and_activate` | Create a new workflow and immediately activate\
+  \ it | `workflow`: Workflow object |\n\nExecution Management \u2B50 NEW\n\n| Tool\
+  \ | Description | Parameters | |------|-------------|------------| | `list_executions`\
+  \ | List workflow executions with filtering and pagination | `includeData`, `status`,\
+  \ `workflowId`, `projectId`, `limit`, `cursor` | | `get_execution` | Get detailed\
+  \ information about a specific execution | `id`: Execution ID, `includeData`: Include\
+  \ detailed data | | `delete_execution` | Delete a workflow execution record | `id`:\
+  \ Execution ID |\n\nTag Management \u2B50 NEW\n\n| Tool | Description | Parameters\
+  \ | |------|-------------|------------| | `list_tags` | List all workflow tags with\
+  \ pagination | `limit`, `cursor` | | `create_tag` | Create a new workflow tag for\
+  \ organization | `name`: Tag name |\n\nSecurity & Compliance \u2B50 NEW\n\n| Tool\
+  \ | Description | Parameters | |------|-------------|------------| | `generate_audit`\
+  \ | Generate comprehensive security audit report | `additionalOptions`: Audit configuration\
+  \ |\n\n\U0001F4A1 Usage Examples\n\nBasic Operations\n\nCreating Workflows\n\nWorkflow\
+  \ Management\n\nExecution Management \u2B50 NEW\n\nTag Management \u2B50 NEW\n\n\
+  Security Audit \u2B50 NEW\n\n\U0001F527 Troubleshooting\n\nCommon Issues\n\n\"Connection\
+  \ refused\" or \"ECONNREFUSED\" - **Cause**: Cannot connect to your n8n instance\
+  \ - **Solution**: Verify your `N8N_HOST` is correct and n8n is running - **Check**:\
+  \ Try accessing your n8n instance in a browser first\n\n\"Unauthorized\" or \"401\
+  \ Error\" - **Cause**: Invalid or missing API key - **Solution**: 1. Verify your\
+  \ `N8N_API_KEY` is correct 2. Ensure the API key has proper permissions 3. Check\
+  \ if the API key hasn't expired\n\n\"Workflow not found\" or \"404 Error\" - **Cause**:\
+  \ Workflow ID doesn't exist - **Solution**: Use `list_workflows` to get valid workflow\
+  \ IDs\n\nServer won't start - **Cause**: Missing Node.js or dependencies - **Solution**:\
+  \ 1. Ensure Node.js v18+ is installed: `node --version` 2. Try clearing npm cache:\
+  \ `npm cache clean --force` 3. For manual installation, run: `npm install && npm\
+  \ run build`\n\nDebug Mode\n\nFor detailed logging, set the debug environment variable:\n\
+  \nGetting Help\n\n1. Check the GitHub Issues 2. Review n8n's API documentation 3.\
+  \ Verify your MCP client configuration\n\n\u2753 Frequently Asked Questions\n\n\
+  What is an MCP Server?\n\nA **Model Context Protocol (MCP) server** is a standardized\
+  \ way for AI assistants to access external tools and data sources. This MCP server\
+  \ specifically provides AI assistants with the ability to interact with n8n workflows,\
+  \ enabling automated workflow management through natural language commands.\n\n\
+  How do I connect AI assistants to n8n workflows?"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-19'
+    window_end: '2026-03-23'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-19..2026-03-23
+    external_id: '916847592'
+    canonical_url: https://github.com/makafeli/n8n-workflow-builder
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Ready for quick human first-pass triage focused on repo substance vs README
+    claims; no blocking data-format gaps.
+  decision_snapshot: Recommend hold because Ready for quick human first-pass triage
+    focused on repo substance vs README claims; no blocking data-format gaps.
+  scope_boundary_note: Treat this as an AI-to-automation integration layer (MCP server
+    for n8n), not a standalone foundation model or generic workflow app. In-scope
+    if your taxonomy includes AI assistant productization infrastructure; out-of-scope
+    if you require proprietary model capability, proven production usage, or non-integration-first
+    products.
+  source_evidence_summary:
+  - "\u201CAI assistant integration for n8n workflow automation through Model Context\
+    \ Protocol (MCP). Connect Claude Desktop, ChatGPT, and other AI assistants to\
+    \ n8n for natural language workflow management.\u201D"
+  - "\u201CA powerful Model Context Protocol (MCP) server that enables AI assistants\
+    \ to manage n8n workflows seamlessly.\u201D"
+  - "\u201CComplete Workflow Management - Full CRUD operations for n8n workflows\u201D"
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: "\u201CAI assistant integration for n8n workflow automation through\
+      \ Model Context Protocol (MCP). Connect Claude Desktop, ChatGPT, and other AI\
+      \ assistants to n8n for natural language workflow management.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Directly states AI-assistant product intent and MCP-based integration
+      pattern.
+  - anchor_rank: 2
+    evidence_text: "\u201CA powerful Model Context Protocol (MCP) server that enables\
+      \ AI assistants to manage n8n workflows seamlessly.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Confirms this is an MCP server product, not just a prompt pack
+      or documentation.
+  - anchor_rank: 3
+    evidence_text: "\u201CComplete Workflow Management - Full CRUD operations for\
+      \ n8n workflows\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates actionable operational surface area beyond read-only
+      integration.
+  - anchor_rank: 4
+    evidence_text: "\u201CThe MCP server provides 15 comprehensive tools for complete\
+      \ n8n workflow and execution management\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Suggests breadth of implemented tool endpoints, relevant for product
+      completeness.
+  - anchor_rank: 5
+    evidence_text: "\u201CMethod 1: Smithery.ai (Hosted - Recommended) ... no installation\
+      \ required\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Signals productization/deployment pathway (hosted distribution),
+      not only local dev artifact.
+  review_focus_points:
+  - 'Verify implementation depth: confirm the claimed 15 MCP tools actually exist
+    and are functional in code.'
+  - 'Check differentiation: assess whether this is materially distinct from generic
+    n8n API wrappers or existing MCP connectors.'
+  - 'Validate operational readiness: authentication handling, error handling, and
+    security/audit features beyond README claims.'
+  - 'Confirm category fit threshold: determine whether integration middleware qualifies
+    as a candidate product in your inclusion criteria.'
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: medium
+    taxonomy_confidence: medium
+    persona_confidence: medium
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: Ready for quick human first-pass triage focused on repo substance vs
+      README claims; no blocking data-format gaps.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Ready for quick human first-pass triage focused on repo substance vs
+      README claims; no blocking data-format gaps.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI application infrastructure - Assistant tool integration
+      (MCP server for workflow automation platforms)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI application infrastructure - Assistant tool integration (MCP
+        server for workflow automation platforms)
+      rationale: Ready for quick human first-pass triage focused on repo substance
+        vs README claims; no blocking data-format gaps.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: General workflow automation plugin / n8n developer utility
+      rationale_for_similarity: General workflow automation plugin / n8n developer
+        utility
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: The primary framing is AI-assistant interoperability
+      via MCP and natural-language control, not merely a non-AI n8n helper library.
+  assessment_hints:
+    evidence_strength: medium
+    build_evidence_band: medium
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: "clear end-user product signal; evidence sufficient for staging;\
+  \ The candidate shows a clear end-user AI integration product\u2014an MCP server\
+  \ for Claude/ChatGPT and other clients to create, run, and manage n8n workflows\u2014\
+  with documented setup, hosted/local usage paths, and explicit tool capabilities."
+human_reviewed_at: '2026-04-02T14:52:20.702531Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_03_samples_031_045.yaml
+  sample_slot_id: GS300-045
+  sample_id: cand_github_qf_ai_assistant_bd9eadd3c9b9
+  blocking_items: []
+  last_attempted_at: '2026-04-02T14:52:21.392468Z'

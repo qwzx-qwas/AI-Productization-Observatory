@@ -1,0 +1,192 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_02fe2e750dc8
+candidate_batch_id: candidate_batch_github_qf_rag_2026-02-27_2026-03-03
+created_at: '2026-04-02T15:25:10.744243Z'
+updated_at: '2026-04-02T15:25:29.786663Z'
+source: github
+source_id: src_github
+source_window: 2026-02-27..2026-03-03
+time_field: pushed_at
+external_id: '771808616'
+canonical_url: https://github.com/RUC-NLPIR/FlashRAG
+title: FlashRAG
+summary: "\u26A1FlashRAG: A Python Toolkit for Efficient RAG Research (WWW2025 Resource)"
+raw_evidence_excerpt: "\u26A1FlashRAG: A Python Toolkit for Efficient RAG Research\
+  \ (WWW2025 Resource)\n\n\u26A1FlashRAG: A Python Toolkit for Efficient RAG Research\
+  \ \\ English | [\u4E2D\u6587 \\]\n\nInstallation | Features | Quick-Start | Components\
+  \ | FlashRAG-UI | Supporting Methods | Supporting Datasets | FAQs\n\nFlashRAG is\
+  \ a Python toolkit for the reproduction and development of Retrieval Augmented Generation\
+  \ (RAG) research. Our toolkit includes 36 pre-processed benchmark RAG datasets and\
+  \ **23 state-of-the-art RAG algorithms**, including **7 reasoning-based methods**\
+  \ that combine reasoning ability with retrieval.\n\nWith FlashRAG and provided resources,\
+  \ you can effortlessly reproduce existing SOTA works in the RAG domain or implement\
+  \ your custom RAG processes and components. Besides, we provide an easy-to-use UI:\n\
+  \n:link: Navigation - Features - Roadmap - Changelog - Installation - Quick Start\
+  \ - Components - FlashRAG-UI - Supporting Methods - Supporting Datasets & Document\
+  \ Corpus - Additional FAQs - License - Citation\n\n:sparkles: Features\n\n- **Extensive\
+  \ and Customizable Framework**: Includes essential components for RAG scenarios\
+  \ such as retrievers, rerankers, generators, and compressors, allowing for flexible\
+  \ assembly of complex pipelines.\n\n- **Comprehensive Benchmark Datasets**: A collection\
+  \ of 36 pre-processed RAG benchmark datasets to test and validate RAG models' performances.\n\
+  \n- **Pre-implemented Advanced RAG Algorithms**: Features **23 advancing RAG algorithms**\
+  \ with reported results, based on our framework. Easily reproducing results under\
+  \ different settings.\n\n- **\U0001F680 Reasoning-based Methods**: **NEW!** We now\
+  \ support **7 reasoning-based methods** that combine reasoning ability with retrieval,\
+  \ achieving superior performance on complex multi-hop tasks.\n\n- **Efficient Preprocessing\
+  \ Stage**: Simplifies the RAG workflow preparation by providing various scripts\
+  \ like corpus processing for retrieval, retrieval index building, and pre-retrieval\
+  \ of documents.\n\n- **Optimized Execution**: The library's efficiency is enhanced\
+  \ with tools like vLLM, FastChat for LLM inference acceleration, and Faiss for vector\
+  \ index management.\n\n- **Easy to Use UI** : We have developed a very easy to use\
+  \ UI to easily and quickly configure and experience the RAG baselines we have implemented,\
+  \ as well as run evaluation scripts on a visual interface.\n\n:mag_right: Roadmap\n\
+  \nFlashRAG is still under development and there are many issues and room for improvement.\
+  \ We will continue to update. And we also sincerely welcome contributions on this\
+  \ open-source toolkit.\n\n- [x] Support OpenAI models - [x] Provdide instructions\
+  \ for each component - [x] Integrate sentence Transformers - [x] Support multimodal\
+  \ RAG - [x] Support reasoning-based methods - [ ] Inlcude more RAG approaches -\
+  \ [ ] Enhance code adaptability and readability - [ ] Add support for api-based\
+  \ retriever (vllm server)\n\n:page_with_curl: Changelog [25/11/06] \U0001F3AF NEW\
+  \ Retriever! We have integrated a Web Search Engine-based Retriever, which seamlessly\
+  \ integrates with existing methods and can be enabled quickly with just a Serper\
+  \ API key! This enhancement significantly expands retrieval coverage and real-time\
+  \ capability, supporting dynamic information access and external knowledge augmentation.\
+  \ Experience a more flexible and powerful retrieval workflow now!\n\n[25/08/06]\
+  \ \U0001F3AF **NEW!** We have added support for **Reasoning Pipeline**, which is\
+  \ a new paradigm that combines reasoning ability and retrieval, representing work\
+  \ that includes R1-Searcher, Search-R1,.... We evaluate the performance of the pipeline\
+  \ on various RAG benchmarks, it can achieve F1 scores close to 60 on multi hop inference\
+  \ datasets such as HotpotQA. See it in **result table**.\n\n[25/03/21] \U0001F680\
+  \ **Major Update!** We have expanded our toolkit to support **23 state-of-the-art\
+  \ RAG algorithms**, including **7 reasoning-based methods** that significantly improve\
+  \ performance on complex reasoning tasks. This represents a major milestone in our\
+  \ toolkit's evolution!\n\n[25/02/24] \U0001F525\U0001F525\U0001F525 We have added\
+  \ support for **multimodal RAG**, including **MLLMs like Llava, Qwen, InternVL**,\
+  \ and various **multimodal retrievers with Clip architecture**. More information\
+  \ can be found in our new version of arxiv article and our documentation. Try it!\n\
+  \n[25/01/21] Our technical paper FlashRAG: A Python Toolkit for Efficient RAG Research\
+  \ is honored to have been accepted to the Resource Track of the 2025 **ACM Web Conference\
+  \ (WWW 2025)**. Please Check it out!\n\n[25/01/12] Introduce FlashRAG-UI , an easy\
+  \ to use interface. You can easily and quickly configure and experience the supported\
+  \ RAG methods and evaluate them on the benchmarks.\n\n[25/01/11] We have added support\
+  \ for a new method RQRAG method, see it in **reproduce_experiment**.\n\n[25/01/07]\
+  \ We have currently support the aggregation of multiple retrievers, see it in **multi\
+  \ retriever usage**.\n\n[25/01/07] We have integrated a very flexible and lightweight\
+  \ corpus chunking library **Chunkie**, which supports various custom chunking methods\
+  \ (tokens, sentences, semantic, etc.). Use it in chunking doc corpus .\n\n[24/10/21]\
+  \ We have released a version based on the Paddle framework that supports Chinese\
+  \ hardware platforms. Please refer to FlashRAG Paddle for details.\n\n[24/10/13]\
+  \ A new in-domain dataset and corpus - DomainRAG have been added to the dataset.\
+  \ The dataset is based on the internal enrollment data of Renmin University of China,\
+  \ covering seven types of tasks, which can be used for conducting domain-specific\
+  \ RAG testing.\n\n[24/09/24] We have released a version based on the MindSpore framework\
+  \ that supports Chinese hardware platforms. Please refer to FlashRAG MindSpore for\
+  \ details.\n\nShow more\n\n[24/09/18] Due to the complexity and limitations of installing\
+  \ Pyserini in certain environments, we have introduced a lightweight `BM25s` package\
+  \ as an alternative (faster and easier to use). The retriever based on Pyserini\
+  \ will be deprecated in future versions. To use retriever with `bm25s`, just set\
+  \ `bm25_backend` to `bm25s` in config.\n\n[24/09/09] We add support for a new method\
+  \ Adaptive-RAG , which can automatically select the RAG process to execute based\
+  \ on the type of query. See it result in result table .\n\n[24/08/02] We add support\
+  \ for a new method Spring , significantly improve the performance of LLM by adding\
+  \ only a few token embeddings. See it result in result table .\n\n[24/07/17] Due\
+  \ to some unknown issues with HuggingFace, our original dataset link has been invalid.\
+  \ We have updated it. Please check the new link if you encounter any problems.\n\
+  \n[24/07/06] We add support for a new method: Trace , which refine text by constructing\
+  \ a knowledge graph. See it results and details .\n\n[24/06/19] We add support for\
+  \ a new method: IRCoT , and update the result table .\n\n[24/06/15] We provide a\
+  \ demo to perform the RAG process using our toolkit.\n\n[24/06/11] We have integrated\
+  \ `sentence transformers` in the retriever module. Now it's easier to use the retriever\
+  \ without setting pooling methods.\n\n[24/06/05] We have provided detailed document\
+  \ for reproducing existing methods (see how to reproduce, baseline details), and\
+  \ configurations settings .\n\n[24/06/02] We have provided an introduction of FlashRAG\
+  \ for beginners, see an introduction to flashrag ( \u4E2D\u6587\u7248 \uD55C\uAD6D\
+  \uC5B4 ).\n\n[24/05/31] We supported Openai-series models as generator.\n\n:wrench:\
+  \ Installation\n\nTo get started with FlashRAG, you can simply install it with pip:\n\
+  \nOr you can clone it from Github and install (requires Python 3.10+):\n\nIf you\
+  \ want to use vllm, sentence-transformers or pyserini, you can install the optional\
+  \ dependencies:\n\nDue to the incompatibility when installing `faiss` using `pip`,\
+  \ it is necessary to use the following conda command for installation.\n\nNote:\
+  \ It is impossible to install the latest version of `faiss` on certain systems.\n\
+  \nFrom the official Faiss repository (source):"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-02-27'
+    window_end: '2026-03-03'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-02-27..2026-03-03
+    external_id: '771808616'
+    canonical_url: https://github.com/RUC-NLPIR/FlashRAG
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: network_error
+  error_message: 'Relay request network error: [Errno -2] Name or service not known'
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  The repository presents a publicly installable Python toolkit with a UI, documented
+  features, and ongoing releases for practical RAG building/evaluation, indicating
+  a concrete developer-facing AI product.
+human_reviewed_at: '2026-04-02T15:25:29.027634Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+  sample_slot_id: GS300-056
+  sample_id: cand_github_qf_rag_02fe2e750dc8
+  blocking_items: []
+  last_attempted_at: '2026-04-02T15:25:29.786643Z'

@@ -1,0 +1,262 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_667592b9c547
+candidate_batch_id: candidate_batch_github_qf_agent_2026-03-09_2026-03-13
+created_at: '2026-04-02T15:07:18.072295Z'
+updated_at: '2026-04-02T15:08:06.137412Z'
+source: github
+source_id: src_github
+source_window: 2026-03-09..2026-03-13
+time_field: pushed_at
+external_id: '1031598928'
+canonical_url: https://github.com/lybic/agent
+title: agent
+summary: An open-source agentic framework that enables AI to use computers like humans
+  and can provide a multi-agent runtime environment as an infrastructure capability
+raw_evidence_excerpt: "An open-source agentic framework that enables AI to use computers\
+  \ like humans and can provide a multi-agent runtime environment as an infrastructure\
+  \ capability\n\n**English | \u4E2D\u6587 | \u65E5\u672C\u8A9E**\n\nLybic GUI Agent:\
+  \ An open-source agentic framework for Computer Use Agents\n\nSupported OS:\n\n\
+  What is Lybic GUI Agent?\n\nLybic platform placeholder - comprehensive AI platform\
+  \ for building and deploying intelligent agents\n\nLybic GUI Agent is an open-source\
+  \ framework that enables developers and businesses to create intelligent computer-use\
+  \ agents,mobile-use agents, and intelligent agents that can understand and interact\
+  \ with graphical user interfaces across Windows, macOS, Linux and Android(via lybic\
+  \ Android Sandbox) platforms.\n\nSkip the setup? Try Lybic GUI Agent in our Playground\
+  \ with a few clicks.(Only in the Chinese mainland supported)\n\n\U0001F973 Updates\
+  \ - [x] **2025/10/17**: We have completed the verification test of the 100-step\
+  \ task at OS-world. - [x] **2025/09/14**: The paper has been accepted by arxiv -\
+  \ [x] **2025/09/09**: We achieved the world's first place in the 50-step length\
+  \ of OS-world! - [x] **2025/08/08**: Released v0.1.0 of Lybic GUI Agent library,\
+  \ with support for Windows, Mac, Ubuntu and Lybic API!\n\nTable of Contents\n\n\
+  1. \U0001F4A1 Introduction 2. \U0001F6E0\uFE0F Installation & Setup 3. \U0001F680\
+  \ Usage 4. \U0001F527 Troubleshooting 5. \U0001F4AC Citations\n\n\U0001F4A1 Introduction\n\
+  \n\u2728 Feature Agentic Lybic Support\n\n- **Multiple LLMs providers**: OpenAI,\
+  \ Anthropic, Google, xAI , AzureOpenAI, DeepSeek, Qwen, Doubao, ZhipuGLM - **Aggregation\
+  \ Model Provider**: Bedrock, Groq, Monica, OpenRouter, SiliconFlow - **RAG**: We\
+  \ support RAG, and this capability is provided as an extension - **Cross-Platform\
+  \ GUI Control**: Windows, Linux, macOS, Android Supported - **Observability**: Supported\
+  \ - **Local Deployment**: Supported - **Cloud Sandbox Environment**: Supported\n\
+  \n\U0001F389 Agents Online Demo\n\n\U0001F3AF Current Results\n\nBenchmark Lybic\
+  \ GUI Agent Previous SOTA\n\nOSWorld Verified (50 step) 57.1% 54.2%\n\nFig. Lybic\
+  \ GUI Agent system structure\n\n\U0001F6E0\uFE0F Installation & Setup\n\n> [!WARNING]\
+  \ > To leverage the full potential of Lybic GUI Agent, we support multiple model\
+  \ providers including OpenAI, Anthropic, Gemini, and Doubao. For the best visual\
+  \ grounding performance, we recommend using UI-TARS models.\n\nInstallation(from\
+  \ pip)\n\nYou can install Lybic GUI Agent by using pip:\n\n> **Note for Windows\
+  \ Users**: If you encounter Unicode decoding errors during installation (especially\
+  \ on systems with non-UTF-8 default encoding like Chinese Windows), set the following\
+  \ environment variable before running pip: > ```cmd > set PYTHONUTF8=1 > ``` > Then\
+  \ run the installation command again. This enables Python's UTF-8 mode, which resolves\
+  \ encoding issues on Windows.\n\nInstallation(from source code)\n\nYou can use UV\
+  \ (a modern Python package manager) version 0.8.5 for installation:\n\n> **Note\
+  \ for Windows Users**: If you encounter Unicode decoding errors during dependency\
+  \ installation (e.g., `UnicodeDecodeError: 'gbk' codec can't decode byte`), this\
+  \ is typically caused by packages with non-UTF-8 encoded files. Set this environment\
+  \ variable before running `uv sync`: > ```cmd > set PYTHONUTF8=1 > ``` > This enables\
+  \ Python's UTF-8 mode, which resolves encoding issues on Windows systems with non-UTF-8\
+  \ default locales.\n\nAPI Key Configuration\n\nThe simplest way to configure API\
+  \ keys is to:\n\n1. Copy `gui_agents/.env.example` to `gui_agents/.env` 2. Edit\
+  \ the `.env` file and add your API keys\n\nTool Configuration\n\nWe provide two\
+  \ pre-configured tool settings:\n\n- `tools_config_en.json`: Configured for English\
+  \ language models (Gemini, Exa) - `tools_config_cn.json`: Configured for Chinese\
+  \ language models (Doubao, bocha)\n\nThe agent uses `tools_config.json` by default.\
+  \ You can:\n\n- Copy either `tools_config_en.json` or `tools_config_cn.json` to\
+  \ `tools_config.json` - Or create your own custom configuration\n\nIf you are using\
+  \ `tools_config_cn.json` and use `pyautogui` backend, the environment variable only\
+  \ `ARK_API_KEY` should be set.\n\nIf you are using `tools_config_en.json` and use\
+  \ `pyautogui` backend, you should set those 3 environment variables:\n\n> **Note**:\
+  \ Our recommended configuration uses `doubao-1-5-ui-tars-250428` for `\"tool_name\"\
+  : \"grounding\" or \"fast_action_generator\"` and `claude-sonnet-4-20250514` or\
+  \ `doubao-seed-1-6-250615` for other tools such as `\"tool_name\": \"action_generator\"\
+  `. You can customize the model configuration in the tools configuration files. Do\
+  \ not modify the `\"tool_name\"` in `tools_config.json` file. To change the `\"\
+  provider\"` and `\"model_name\"` in `tools_config.json` file, see model.md\n\n\U0001F680\
+  \ Usage\n\nCommand Line Interface\n\nRun Lybic GUI Agent with python in the command-line\
+  \ interface:\n\nThis will show a user query prompt where you can enter your instructions\
+  \ and interact with the agent.\n\nOptions\n\n- `--backend [lybic|lybic_mobile|pyautogui|pyautogui_vmware]`:\
+  \ Specifies the backend to use for controlling the GUI. Defaults to `lybic`.\n\n\
+  - `--query \"YOUR_QUERY\"`: Optional, can be input during the runtime; if provided,\
+  \ the agent will execute the query and then exit. - `--max-steps NUMBER`: Sets the\
+  \ maximum number of steps the agent can take. Defaults to `50`. - `--mode [normal|fast]`:\
+  \ (Optional) Selects the agent mode. `normal` runs the full agent with detailed\
+  \ reasoning and memory, while `fast` mode executes actions more quickly with less\
+  \ reasoning overhead. Defaults to `normal`. - `--enable-takeover`: (Optional) Enables\
+  \ user takeover functionality, allowing the agent to pause and request user intervention\
+  \ when needed. By default, user takeover is disabled. - `--disable-search`: (Optional)\
+  \ Disables web search functionality. By default, web search is enabled.\n\nExamples\n\
+  \nRun in interactive mode with the `lybic` backend:\n\nRun a single query with the\
+  \ `pyautogui` backend and a maximum of 20 steps:\n\nRun in fast mode with the `pyautogui`\
+  \ backend:\n\n> [!WARNING] > The agent will directly control your computer with\
+  \ `--backend pyautogui`. Please use with care.\n\nDocker You can also run Lybic\
+  \ GUI Agent using Docker. This is an example of how to run it with the `lybic` backend:\n\
+  \n> **Note**: This command starts the agent in interactive mode. The `--env-file`\
+  \ flag points to the environment file. Please ensure the path is correct.\n\nLybic\
+  \ Sandbox Configuration\n\nThe simplest way to configure Lybic Sandbox is still\
+  \ to edit the `.env` file and add your API keys, as mentioned in the API Key Configuration\
+  \ section.\n\n> **Note**: If you want to use a precreated Lybic Sandbox in Lybic\
+  \ Dashboard, you need to set the `LYBIC_PRECREATE_SID` to the precreated Sandbox\
+  \ ID.\n\n> > ```bash > LYBIC_PRECREATE_SID=SBX-XXXXXXXXXXXXXXX > ```\n\nUse as a\
+  \ service\n\nYou can interact with the agent programmatically either by importing\
+  \ it as a Python library or by running it as a gRPC service.\n\nAs a Python Library\n\
+  \nAfter installing `lybic-guiagents`, you can import and use its components directly\
+  \ in your Python code.\n\nMain Components: - `AgentService`: High-level service\
+  \ interface (recommended for most users). - `AgentS2`, `AgentSFast`: Core agent\
+  \ implementations. - `HardwareInterface`: Hardware abstraction layer for controlling\
+  \ the GUI. - `ServiceConfig`: Configuration management.\n\n**Quick Start:**\n\n\
+  As a gRPC Service\n\nYou can also run the agent as a standalone gRPC service, which\
+  \ is ideal for distributed architectures or integrating with applications written\
+  \ in other languages.\n\n**1. Running the gRPC Server**\n\nFirst, run the gRPC server\
+  \ using Docker. This command overrides the default CLI entrypoint and starts the\
+  \ gRPC service on port 50051.\n\n> **Note**: The `-p 50051:50051` flag maps the\
+  \ container's gRPC port to your host machine.\n\n**Alternative: Running the RESTful\
+  \ API Server**\n\nYou can also run the RESTful API server for HTTP/REST access:\n\
+  \nThe RESTful API provides similar functionality to the gRPC server but uses HTTP/REST\
+  \ protocol with Server-Sent Events (SSE) for streaming. Access the interactive API\
+  \ documentation at `http://localhost:8080/docs`. See docs/restful_api.md for detailed\
+  \ usage guide."
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-09'
+    window_end: '2026-03-13'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-09..2026-03-13
+    external_id: '1031598928'
+    canonical_url: https://github.com/lybic/agent
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Human reviewer can quickly triage by opening README + docs/service modules
+    to confirm runtime architecture, API stability, and whether claimed infra features
+    are operational today.
+  decision_snapshot: Recommend hold because Human reviewer can quickly triage by opening
+    README + docs/service modules to confirm runtime architecture, API stability,
+    and whether claimed infra features are operational today.
+  scope_boundary_note: Treat this as an open-source framework/infrastructure candidate,
+    not as a finished end-user AI product. Prescreen scope should focus on productization
+    signals (deployability, interfaces, observability, runtime packaging) and avoid
+    over-weighting leaderboard/performance claims without independent verification.
+  source_evidence_summary:
+  - '"An open-source agentic framework that enables AI to use computers like humans
+    and can provide a multi-agent runtime environment as an infrastructure capability"'
+  - '"create intelligent computer-use agents, mobile-use agents... across Windows,
+    macOS, Linux and Android"'
+  - '"Use as a service... importing it as a Python library or by running it as a gRPC
+    service"'
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: '"An open-source agentic framework that enables AI to use computers
+      like humans and can provide a multi-agent runtime environment as an infrastructure
+      capability"'
+    evidence_source_field: candidate_input
+    why_it_matters: Directly states framework + infrastructure positioning, which
+      aligns with productization tooling rather than a single-purpose app.
+  - anchor_rank: 2
+    evidence_text: '"create intelligent computer-use agents, mobile-use agents...
+      across Windows, macOS, Linux and Android"'
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates cross-platform execution scope and broader runtime ambition.
+  - anchor_rank: 3
+    evidence_text: '"Use as a service... importing it as a Python library or by running
+      it as a gRPC service"'
+    evidence_source_field: candidate_input
+    why_it_matters: Strong indicator of integration-readiness for developer workflows
+      and production architectures.
+  - anchor_rank: 4
+    evidence_text: '"Alternative: Running the RESTful API Server... HTTP/REST protocol
+      with Server-Sent Events (SSE)"'
+    evidence_source_field: candidate_input
+    why_it_matters: API surface suggests productization maturity beyond a demo script.
+  - anchor_rank: 5
+    evidence_text: '"Observability: Supported - Local Deployment: Supported - Cloud
+      Sandbox Environment: Supported"'
+    evidence_source_field: candidate_input
+    why_it_matters: Claims key infra capabilities; useful but should be human-verified
+      in docs/code paths.
+  review_focus_points:
+  - Verify whether multi-agent runtime is implemented in code versus roadmap/marketing
+    language.
+  - Check service interfaces (Python SDK, gRPC, REST) for completeness, maintenance
+    quality, and real usage examples.
+  - Validate benchmark and SOTA claims (OSWorld results, arXiv acceptance) as contextual
+    evidence only, not core productization proof.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: Human reviewer can quickly triage by opening README + docs/service
+      modules to confirm runtime architecture, API stability, and whether claimed
+      infra features are operational today.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Human reviewer can quickly triage by opening README + docs/service
+      modules to confirm runtime architecture, API stability, and whether claimed
+      infra features are operational today.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI Agent Framework & Runtime Infrastructure
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI Agent Framework & Runtime Infrastructure
+      rationale: Human reviewer can quickly triage by opening README + docs/service
+        modules to confirm runtime architecture, API stability, and whether claimed
+        infra features are operational today.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: End-User AI Productivity Assistant
+      rationale_for_similarity: End-User AI Productivity Assistant
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: The repository emphasizes developer tooling,
+      SDK/service interfaces, and runtime infrastructure; it does not primarily present
+      as a consumer-facing assistant product with packaged user workflows.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear; The repository shows substantial
+  productization for a deployable developer framework (install/docs, CLI, Docker,
+  Python SDK, gRPC/REST), but the evidence points to infrastructure tooling rather
+  than a clear end-user AI product.
+human_reviewed_at: '2026-04-02T15:08:06.137380Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

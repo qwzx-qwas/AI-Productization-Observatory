@@ -1,0 +1,15 @@
+{
+  "current_window": "2026-02-22..2026-02-26",
+  "live_runs": 46,
+  "next_query_index": 4,
+  "query_slice_ids": [
+    "qf_agent",
+    "qf_rag",
+    "qf_ai_assistant",
+    "qf_copilot",
+    "qf_chatbot",
+    "qf_ai_workflow"
+  ],
+  "source_code": "github",
+  "updated_at": "2026-04-03T03:16:21.194327Z"
+}

@@ -1,0 +1,264 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_5793d5851290
+candidate_batch_id: candidate_batch_github_qf_agent_2026-03-19_2026-03-23
+created_at: '2026-04-02T14:48:14.083201Z'
+updated_at: '2026-04-02T14:49:29.091385Z'
+source: github
+source_id: src_github
+source_window: 2026-03-19..2026-03-23
+time_field: pushed_at
+external_id: '287031432'
+canonical_url: https://github.com/kerberos-io/agent
+title: agent
+summary: An open and scalable video surveillance system for anyone making this world
+  a better and more peaceful place.
+raw_evidence_excerpt: "An open and scalable video surveillance system for anyone making\
+  \ this world a better and more peaceful place.\n\nKerberos Agent\n\n**Docker Hub**\
+  \ | **Documentation** | **Website** | **View Demo**\n\n> Before you continue, this\
+  \ repository discusses one of the components of the Kerberos.io stack, the Kerberos\
+  \ Agent, in depth. If you are looking for an end-to-end deployment guide have a\
+  \ look here.\n\nKerberos Agent is an isolated and scalable video (surveillance)\
+  \ management agent made available as Open Source under the MIT License. This means\
+  \ that all the source code is available for you or your company, and you can use,\
+  \ transform and distribute the source code; as long you keep a reference of the\
+  \ original license. Kerberos Agent can be used for commercial usage (which was not\
+  \ the case for v2). Read more about the license here.\n\n:thinking: Prerequisites\n\
+  \n- An IP camera which supports a RTSP H264 or H265 encoded stream, - (or) a USB\
+  \ camera, Raspberry Pi camera or other camera, that you can transform to a valid\
+  \ RTSP H264 or H265 stream. - Any hardware (ARMv6, ARMv7, ARM64, AMD64) that can\
+  \ run a binary or container, for example: a Raspberry Pi, NVidia Jetson, Intel NUC,\
+  \ a VM, Bare metal machine or a full blown Kubernetes cluster.\n\n:video_camera:\
+  \ Is my camera working?\n\nThere are a myriad of cameras out there (USB, IP and\
+  \ other cameras), and it might be daunting to know if Kerberos Agent will work for\
+  \ your camera. Therefore we are listing all the camera models that are acknowlegded\
+  \ by the community. Feel free to add your camera to the list as well!\n\n:books:\
+  \ Overview\n\nUp and running in no time\n\n1. Quickstart - Docker 2. Quickstart\
+  \ - Balena 3. Quickstart - Snap\n\nIntroduction\n\n1. A world of Kerberos Agents\n\
+  \nRunning and automation\n\n1. How to run and deploy a Kerberos Agent 2. Access\
+  \ the Kerberos Agent 3. Configure and persist with volume mounts 4. Configure with\
+  \ environment variables\n\nInsights\n\n1. Encryption 2. H264 vs H265\n\nContributing\n\
+  \n1. Contribute with Codespaces 2. Develop and build 3. Building from source 4.\
+  \ Building for Docker\n\nVaria\n\n1. Support our project 1. What is new? 1. Contributors\n\
+  \nQuickstart - Docker\n\nThe easiest way to get your Kerberos Agent up and running\
+  \ is to use our public image on Docker hub. Once you have selected a specific tag,\
+  \ run `docker` command below, which will open the web interface of your Kerberos\
+  \ agent on port `80`, and off you go. For a more configurable and persistent deployment\
+  \ have a look at Running and automating a Kerberos Agent.\n\ndocker run -p 80:80\
+  \ --name mycamera -d --restart=always kerberos/agent:latest\n\nIf you want to connect\
+  \ to a USB or Raspberry Pi camera, you'll need to run our side car container which\
+  \ proxies the camera to an RTSP stream. In that case you'll want to configure the\
+  \ Kerberos Agent container to run in the host network, so it can connect directly\
+  \ to the RTSP sidecar.\n\ndocker run --network=host --name mycamera -d --restart=always\
+  \ kerberos/agent:latest\n\nQuickstart - Balena\n\nRun Kerberos Agent with Balena\
+  \ Cloud super powers. Monitor your Kerberos Agent with seamless remote access, over\
+  \ the air updates, an encrypted public `https` endpoint and much more. Checkout\
+  \ our application `video-surveillance` on Balena Hub, and create your first or fleet\
+  \ of Kerberos Agent(s).\n\nQuickstart - Snap\n\nRun Kerberos Agent with our Snapcraft\
+  \ package.\n\nsnap install kerberosio\n\nOnce installed you can find your Kerberos\
+  \ Agent configration at `/var/snap/kerberosio/common`. Run the Kerberos Agent as\
+  \ following\n\nsudo kerberosio.agent -action=run -port=80\n\nA world of Kerberos\
+  \ Agents\n\nThe Kerberos Agent is an isolated and scalable video (surveillance)\
+  \ management agent with a strong focus on user experience, scalability, resilience,\
+  \ extension and integration. Next to the Kerberos Agent, Kerberos.io provides many\
+  \ other tools such as Kerberos Factory, Kerberos Vault, and Kerberos Hub to provide\
+  \ additional capabilities: bring your own cloud, bring your own storage, central\
+  \ overview, live streaming, machine learning, etc.\n\nAs mentioned above Kerberos.io\
+  \ applies the concept of agents. An agent is running next to (or on) your camera,\
+  \ and is processing a single camera feed. It applies motion based or continuous\
+  \ recording and makes those recordings available through a user friendly web interface.\
+  \ A Kerberos Agent allows you to connect to other cloud services or integrate with\
+  \ custom applications. Kerberos Agent is used for personal applications and scales\
+  \ to enterprise production level deployments. Learn more about the deployment strategies\
+  \ here.\n\nThis repository contains everything you'll need to know about our core\
+  \ product, Kerberos Agent. Below you'll find a brief list of features and functions.\n\
+  \n- Low memory and CPU usage. - Simplified and modern user interface. - Multi architecture\
+  \ (ARMv6, ARMv7, ARM64, AMD64) - Multi stream, for example recording in H265, live\
+  \ streaming and motion detection in H264. - Multi camera support: IP Cameras (H264\
+  \ and H265), USB cameras and Raspberry Pi Cameras through a RTSP proxy. - Single\
+  \ camera per instance (e.g. one container per camera). - Low resolution streaming\
+  \ through MQTT and high resolution streaming through WebRTC (only supports H264/PCM).\
+  \ - Backchannel audio from Kerberos Hub to IP camera (requires PCM ULAW codec) -\
+  \ Audio (AAC) and video (H264/H265) recording in MP4 container. - End-to-end encryption\
+  \ through MQTT using RSA and AES (livestreaming, ONVIF, remote configuration, etc)\
+  \ - Conditional recording: offline mode, motion region, time table, continuous recording,\
+  \ webhook condition etc. - Post- and pre-recording for motion detection. - Encryption\
+  \ at rest using AES-256-CBC. - Ability to create fragmented recordings, and streaming\
+  \ through HLS fMP4. - Deploy where you want with the tools you use: `docker`, `docker\
+  \ compose`, `ansible`, `terraform`, `kubernetes`, etc. - Cloud storage/persistance:\
+  \ Kerberos Hub, Kerberos Vault and Dropbox. (WIP: Minio, Storj, Google Drive, FTP\
+  \ etc.) - Outputs: trigger an integration (Webhooks, MQTT, Script, etc) when a specific\
+  \ event (motion detection or start recording ) occurs - REST API access and documentation\
+  \ through Swagger (trigger recording, update configuration, etc). - MIT License\n\
+  \nHow to run and deploy a Kerberos Agent\n\nA Kerberos Agent, as previously mentioned,\
+  \ is a container. You can deploy it using various methods and automation tools,\
+  \ including `docker`, `docker compose`, `kubernetes` and more. To streamline your\
+  \ Kerberos.io experience, we provide concrete deployment examples to speed up your\
+  \ Kerberos.io journey\u201D\n\nWe have documented the different deployment models\
+  \ in the `deployments` directory of this repository. There you'll learn and find\
+  \ how to deploy using:\n\n- Static binary - Docker - Docker Compose - Kubernetes\
+  \ - Red Hat OpenShift with Ansible - Terraform - Salt - Balena - Snap\n\nBy default,\
+  \ your Kerberos Agents store all configuration and recordings within the container.\
+  \ To help you automate and have a more consistent data governance, you can attach\
+  \ volumes to configure and persist data of your Kerberos Agents and/or configure\
+  \ each Kerberos Agent through environment variables.\n\nAccess the Kerberos Agent\n\
+  \nOnce you have deployed the Kerberos Agent, using one of the deployment models\
+  \ described above, you will be able to access the Kerberos Agent user interface.\
+  \ A login page is presented asking for some credentials.\n\nThe default username\
+  \ and password for the Kerberos Agent is:\n\n- Username: `root` - Password: `root`\n\
+  \n**_Please note that you change the username and password for a final installation,\
+  \ see Configure with environment variables below._**\n\nConfigure and persist with\
+  \ volume mounts\n\nAn example of how to mount a host directory is shown below using\
+  \ `docker`, but is applicable for all of the deployment models and tools described\
+  \ above.\n\nYou attach a volume to your container by leveraging the `-v` option.\
+  \ To mount your own configuration file and recordings folder, run the following\
+  \ commands:"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-19'
+    window_end: '2026-03-23'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-19..2026-03-23
+    external_id: '287031432'
+    canonical_url: https://github.com/kerberos-io/agent
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: 'Fastest adjudication path: inspect code/docs for concrete AI artifacts
+    (model files, inference runtimes, detector configs). If absent, classify as non-AI
+    core infrastructure.'
+  decision_snapshot: 'Recommend hold because Fastest adjudication path: inspect code/docs
+    for concrete AI artifacts (model files, inference runtimes, detector configs).
+    If absent, classify as non-AI core infrastructure.'
+  scope_boundary_note: This repo is explicitly a single component ('Kerberos Agent')
+    rather than the full Kerberos.io stack. It covers camera ingest, recording, transport,
+    deployment, and automation. Claims about broader stack features (including machine
+    learning) should not be attributed to this repo without direct implementation
+    evidence.
+  source_evidence_summary:
+  - "\u201Cthis repository discusses one of the components of the Kerberos.io stack,\
+    \ the Kerberos Agent, in depth. If you are looking for an end-to-end deployment\
+    \ guide have a look here.\u201D"
+  - "\u201CKerberos Agent is an isolated and scalable video (surveillance) management\
+    \ agent made available as Open Source under the MIT License.\u201D"
+  - "\u201CAn agent is running next to (or on) your camera, and is processing a single\
+    \ camera feed. It applies motion based or continuous recording...\u201D"
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: "\u201Cthis repository discusses one of the components of the Kerberos.io\
+      \ stack, the Kerberos Agent, in depth. If you are looking for an end-to-end\
+      \ deployment guide have a look here.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Directly limits scope to a component, not the full product.
+  - anchor_rank: 2
+    evidence_text: "\u201CKerberos Agent is an isolated and scalable video (surveillance)\
+      \ management agent made available as Open Source under the MIT License.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Positions project as surveillance management/operations software.
+  - anchor_rank: 3
+    evidence_text: "\u201CAn agent is running next to (or on) your camera, and is\
+      \ processing a single camera feed. It applies motion based or continuous recording...\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Describes core function as feed processing + recording, not explicit
+      AI inference.
+  - anchor_rank: 4
+    evidence_text: "Feature list includes: \u201CDeploy where you want... docker...\
+      \ kubernetes...\u201D, \u201CREST API...\u201D, \u201CEncryption at rest...\u201D\
+      , \u201COutputs: trigger an integration...\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Strong DevOps/integration profile; productization infrastructure
+      is clear.
+  - anchor_rank: 5
+    evidence_text: "\u201CKerberos.io provides many other tools such as Kerberos Factory,\
+      \ Kerberos Vault, and Kerberos Hub... live streaming, machine learning, etc.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: "AI/ML appears as broader ecosystem capability, not proven as\
+      \ this repo\u2019s direct functionality."
+  review_focus_points:
+  - Verify whether this specific repo contains embedded AI inference (models, detectors,
+    AI pipelines) versus only motion-trigger logic.
+  - Check if AI claims belong to other Kerberos components (Factory/Hub/Vault) rather
+    than Agent.
+  - 'Confirm category fit: AI application vs surveillance infrastructure/runtime component.'
+  - If included, capture it as enabling infrastructure for AI-adjacent video systems,
+    not primary AI product.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: 'Fastest adjudication path: inspect code/docs for concrete AI artifacts
+      (model files, inference runtimes, detector configs). If absent, classify as
+      non-AI core infrastructure.'
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: 'Fastest adjudication path: inspect code/docs for concrete AI artifacts
+      (model files, inference runtimes, detector configs). If absent, classify as
+      non-AI core infrastructure.'
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: Video Surveillance Management & Edge Ingest Infrastructure
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: Video Surveillance Management & Edge Ingest Infrastructure
+      rationale: 'Fastest adjudication path: inspect code/docs for concrete AI artifacts
+        (model files, inference runtimes, detector configs). If absent, classify as
+        non-AI core infrastructure.'
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: AI Video Analytics Application
+      rationale_for_similarity: AI Video Analytics Application
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Provided evidence does not clearly show built-in
+      AI inference as core repo functionality; AI is mentioned at broader platform
+      level.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope; The repository evidence describes a
+  deployable video surveillance/recording management agent with motion detection and
+  integrations, but provides no concrete AI inference artifacts in this component
+  and frames machine learning as part of other Kerberos.io tools.
+human_reviewed_at: '2026-04-02T14:49:29.091362Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

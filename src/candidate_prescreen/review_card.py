@@ -460,8 +460,6 @@ def normalize_llm_result(result: dict[str, Any]) -> dict[str, Any]:
     )
     uncertainty_points = _normalize_uncertainty_points(result, result.get("confidence_summary") if isinstance(result.get("confidence_summary"), dict) else {}, decision_snapshot)
     recommend_candidate_pool = result.get("recommend_candidate_pool")
-    if recommend_candidate_pool is None and recommended_action is not None:
-        recommend_candidate_pool = recommended_action in {"candidate_pool", "whitelist_candidate"}
     handoff_hint = _normalize_handoff_hint(result.get("handoff_readiness_hint"), recommended_action=recommended_action)
     reason = reason or handoff_hint.get("rationale") or scope_boundary_note
     if recommended_action is None:
@@ -485,6 +483,10 @@ def normalize_llm_result(result: dict[str, Any]) -> dict[str, Any]:
         decision_snapshot_text = f"Recommend {recommended_action} because {reason}"
     if decision_snapshot_text is None:
         decision_snapshot_text = reason
+    if recommended_action in {"candidate_pool", "whitelist_candidate"}:
+        recommend_candidate_pool = True
+    elif recommended_action in {"reject", "hold"}:
+        recommend_candidate_pool = False
     anchor_refs = [anchor["anchor_rank"] for anchor in anchors]
     persona_candidates, primary_persona_code = _normalize_persona_candidates(result.get("persona_candidates"), anchor_refs=anchor_refs)
     if not persona_candidates:

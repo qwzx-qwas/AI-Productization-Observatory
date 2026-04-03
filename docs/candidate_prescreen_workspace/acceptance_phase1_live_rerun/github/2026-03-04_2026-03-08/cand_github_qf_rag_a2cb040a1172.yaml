@@ -1,0 +1,107 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_a2cb040a1172
+candidate_batch_id: candidate_batch_github_qf_rag_2026-03-04_2026-03-08
+created_at: '2026-04-02T15:17:46.998644Z'
+updated_at: '2026-04-02T15:24:58.088073Z'
+source: github
+source_id: src_github
+source_window: 2026-03-04..2026-03-08
+time_field: pushed_at
+external_id: '656278207'
+canonical_url: https://github.com/langchain4j/langchain4j-examples
+title: langchain4j-examples
+summary: ''
+raw_evidence_excerpt: 'LangChain4j Examples
+
+
+  This repository provides several examples using the LangChain4j library.
+
+
+  More examples from the community can be found here.
+
+
+  A good place to start includes: - Tutorials - More examples - Examples of using
+  advanced RAG techniques - Example of an agent with memory, tools and RAG
+
+
+  If you have any issues or feature requests, please submit them here.'
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-04'
+    window_end: '2026-03-08'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-04..2026-03-08
+    external_id: '656278207'
+    canonical_url: https://github.com/langchain4j/langchain4j-examples
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: network_error
+  error_message: 'Relay request network error: [Errno -2] Name or service not known'
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope; The repository is explicitly an examples/tutorials
+  collection for a developer library and does not present a standalone end-user AI
+  product signal.
+human_reviewed_at: '2026-04-02T15:24:58.087921Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

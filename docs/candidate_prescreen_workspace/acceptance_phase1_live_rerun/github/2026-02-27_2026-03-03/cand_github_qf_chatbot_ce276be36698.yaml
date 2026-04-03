@@ -1,0 +1,177 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_ce276be36698
+candidate_batch_id: candidate_batch_github_qf_chatbot_2026-02-27_2026-03-03
+created_at: '2026-04-02T15:27:50.272682Z'
+updated_at: '2026-04-03T02:14:07.083613Z'
+source: github
+source_id: src_github
+source_window: 2026-02-27..2026-03-03
+time_field: pushed_at
+external_id: '609517170'
+canonical_url: https://github.com/chathub-dev/chathub
+title: chathub
+summary: ''
+raw_evidence_excerpt: "ChatHub\n\nInstall\n\n\U0001F4F7 Screenshot\n\n\U0001F91D Sponsors\n\
+  \n\u2728 Features\n\n- \U0001F916 Use different chatbots in one app, currently supporting\
+  \ ChatGPT, new Bing Chat, Google Bard, Claude, and open-source models including\
+  \ LLama2, Vicuna, ChatGLM etc - \U0001F4AC Chat with multiple chatbots at the same\
+  \ time, making it easy to compare their answers - \U0001F680 Support ChatGPT API\
+  \ and GPT-4 Browsing - \U0001F50D Shortcut to quickly activate the app anywhere\
+  \ in the browser - \U0001F3A8 Markdown and code highlight support - \U0001F4DA Prompt\
+  \ Library for custom prompts and community prompts - \U0001F4BE Conversation history\
+  \ saved locally - \U0001F4E5 Export and Import all your data - \U0001F517 Share\
+  \ conversation to markdown - \U0001F319 Dark mode - \U0001F310 Web access\n\n\U0001F916\
+  \ Supported Bots\n\n- ChatGPT (via Webapp/API) - Gemini - Claude (via Webapp/API)\
+  \ - Grok - DeepSeek - Qianwen - Llama - ...\n\n\U0001F528 Build from Source\n\n\
+  - Clone the source code - `corepack enable` - `yarn install` - `yarn build` - In\
+  \ Chrome/Edge go to the Extensions page (chrome://extensions or edge://extensions)\
+  \ - Enable Developer Mode - Drag the `dist` folder anywhere on the page to import\
+  \ it (do not delete the folder afterward)"
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-02-27'
+    window_end: '2026-03-03'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-02-27..2026-03-03
+    external_id: '609517170'
+    canonical_url: https://github.com/chathub-dev/chathub
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: 'Human reviewer can quickly adjudicate with a light repo check: latest commits/releases,
+    install path viability, and whether claimed supported bots still function.'
+  decision_snapshot: 'Recommend hold because Human reviewer can quickly adjudicate
+    with a light repo check: latest commits/releases, install path viability, and
+    whether claimed supported bots still function.'
+  scope_boundary_note: Treat this as an AI application interface layer (multi-bot
+    chat client/browser extension), not as a foundation model provider or core ML
+    research project. Prescreen scope should focus on productization of AI access
+    UX, comparison workflows, and data portability features.
+  source_evidence_summary:
+  - Use different chatbots in one app, currently supporting ChatGPT, new Bing Chat,
+    Google Bard, Claude, and open-source models including LLama2, Vicuna, ChatGLM
+    etc
+  - Chat with multiple chatbots at the same time, making it easy to compare their
+    answers
+  - Support ChatGPT API and GPT-4 Browsing
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: Use different chatbots in one app, currently supporting ChatGPT,
+      new Bing Chat, Google Bard, Claude, and open-source models including LLama2,
+      Vicuna, ChatGLM etc
+    evidence_source_field: candidate_input
+    why_it_matters: Directly indicates a consolidated AI application experience across
+      multiple LLM providers.
+  - anchor_rank: 2
+    evidence_text: Chat with multiple chatbots at the same time, making it easy to
+      compare their answers
+    evidence_source_field: candidate_input
+    why_it_matters: Shows differentiated product behavior (side-by-side comparison),
+      beyond a single-model chat wrapper.
+  - anchor_rank: 3
+    evidence_text: Support ChatGPT API and GPT-4 Browsing
+    evidence_source_field: candidate_input
+    why_it_matters: Signals API-level integration and potentially advanced model-access
+      workflows.
+  - anchor_rank: 4
+    evidence_text: Prompt Library for custom prompts and community prompts
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates user productivity/productization features, not just
+      basic messaging UI.
+  - anchor_rank: 5
+    evidence_text: Conversation history saved locally - Export and Import all your
+      data
+    evidence_source_field: candidate_input
+    why_it_matters: Evidence of data handling/product maturity features relevant to
+      end-user app viability.
+  review_focus_points:
+  - Validate current activity and release cadence to ensure feature claims are still
+    maintained.
+  - Confirm whether the project is primarily a browser extension client vs. broader
+    standalone product.
+  - Assess compliance/privacy implications of routing prompts across multiple third-party
+    model providers.
+  - Check differentiation strength versus other multi-LLM aggregator tools.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: 'Human reviewer can quickly adjudicate with a light repo check: latest
+      commits/releases, install path viability, and whether claimed supported bots
+      still function.'
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: 'Human reviewer can quickly adjudicate with a light repo check: latest
+      commits/releases, install path viability, and whether claimed supported bots
+      still function.'
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI Applications & Products > Conversational AI client (multi-model
+      aggregator)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI Applications & Products > Conversational AI client (multi-model
+        aggregator)
+      rationale: 'Human reviewer can quickly adjudicate with a light repo check: latest
+        commits/releases, install path viability, and whether claimed supported bots
+        still function.'
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: Developer Tools > LLM SDK/API integration utility
+      rationale_for_similarity: Developer Tools > LLM SDK/API integration utility
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Evidence emphasizes end-user chat UX and comparison
+      features rather than developer-first libraries, SDK abstractions, or infrastructure
+      tooling.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  The repository evidence describes a user-facing multi-chatbot browser extension
+  with install instructions and concrete product features, indicating clear AI productization
+  suitable for staging.
+human_reviewed_at: '2026-04-03T02:14:06.244716Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+  sample_slot_id: GS300-058
+  sample_id: cand_github_qf_chatbot_ce276be36698
+  blocking_items: []
+  last_attempted_at: '2026-04-03T02:14:07.083591Z'

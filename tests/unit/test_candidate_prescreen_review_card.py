@@ -136,6 +136,7 @@ class CandidatePrescreenReviewCardUnitTests(unittest.TestCase):
 
         normalized = normalize_llm_result(provider_result)
         self.assertEqual(normalized["recommended_action"], "hold")
+        self.assertFalse(normalized["recommend_candidate_pool"])
         self.assertEqual(normalized["handoff_readiness_hint"]["suggested_action"], "hold")
 
     def test_normalize_llm_result_backfills_evidence_anchors_when_provider_omits_them(self) -> None:
@@ -161,3 +162,31 @@ class CandidatePrescreenReviewCardUnitTests(unittest.TestCase):
 
         normalized = normalize_llm_result(provider_result)
         self.assertGreaterEqual(len(normalized["evidence_anchors"]), 1)
+
+    def test_normalize_llm_result_derives_non_pool_boolean_from_late_handoff_action(self) -> None:
+        provider_result = {
+            "decision_snapshot": {
+                "rationale": "The repository appears to be generic developer tooling rather than an AI product.",
+            },
+            "scope_boundary_note": "Available evidence points outside observatory scope.",
+            "review_focus_points": [
+                "Confirm there is no end-user AI product signal in the README."
+            ],
+            "confidence_summary": {
+                "overall_confidence": "low"
+            },
+            "handoff_readiness_hint": {
+                "suggested_action": "reject",
+                "rationale": "The supplied evidence does not justify candidate-pool promotion.",
+            },
+            "taxonomy_hints": {
+                "main_category_candidate": "Generic developer tooling",
+                "adjacent_category_candidate": "AI product",
+                "adjacent_category_rejected_reason": "No AI-specific capability is present in the supplied evidence.",
+            },
+        }
+
+        normalized = normalize_llm_result(provider_result)
+        self.assertEqual(normalized["recommended_action"], "reject")
+        self.assertFalse(normalized["recommend_candidate_pool"])
+        self.assertEqual(normalized["handoff_readiness_hint"]["suggested_action"], "reject")

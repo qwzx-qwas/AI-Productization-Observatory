@@ -1,0 +1,451 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_611e2619fc12
+candidate_batch_id: candidate_batch_github_qf_copilot_2026-03-24_2026-03-28
+created_at: '2026-04-02T14:39:15.194769Z'
+updated_at: '2026-04-02T14:41:19.337081Z'
+source: github
+source_id: src_github
+source_window: 2026-03-24..2026-03-28
+time_field: pushed_at
+external_id: '667491171'
+canonical_url: https://github.com/microsoft/chat-copilot
+title: chat-copilot
+summary: ''
+raw_evidence_excerpt: '**NOTE**: This is a **sample** application to help you understand
+  how Semantic Kernel and AI can work in Web Applications. This sample is **NOT FOR
+  PRODUCTION** deployments.
+
+
+  Chat Copilot Sample Application
+
+
+  This sample allows you to build your own integrated large language model (LLM) chat
+  copilot. The sample is built on Microsoft Semantic Kernel and has three components:
+
+
+  1. A frontend application React web app 2. A backend REST API .NET web API service
+  3. A .NET worker service for processing semantic memory.
+
+
+  These quick-start instructions run the sample locally. They can also be found on
+  the official Chat Copilot Microsoft Learn documentation page for getting started.
+
+
+  To deploy the sample to Azure, please view Deploying Chat Copilot after meeting
+  the requirements described below.
+
+
+  > **IMPORTANT:** This sample is for educational purposes only and is not recommended
+  for production deployments.
+
+
+  > **IMPORTANT:** Each chat interaction will call Azure OpenAI/OpenAI which will
+  use tokens that you may be billed for.
+
+
+  Requirements
+
+
+  You will need the following items to run the sample:
+
+
+  - .NET 8.0 SDK _(via Setup install.\* script)_ - Node.js _(via Setup install.\*
+  script)_ - Yarn _(via Setup install.\* script)_ - Git - AI Service (one of the following
+  is required)
+
+
+  | AI Service | Requirement | | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  | | Azure OpenAI | - Access - Resource - Deployed models (`gpt-4o` and `text-embedding-ada-002`)
+  - Endpoint - API key | | OpenAI | - Account - API key |
+
+
+  Instructions
+
+
+  Windows
+
+
+  1. Open PowerShell as an administrator. > NOTE: Ensure that you have PowerShell
+  Core 6+ installed. This is different from the default PowerShell installed on Windows.
+  1. Clone this repository
+
+
+  1. Setup your environment.
+
+
+  The following is a script to help you install the dependencies required. Feel free
+  to install `dotnet`, `nodejs`, and `yarn` with your method of choice or use this
+  script.
+
+
+  > NOTE: This script will install `Chocolatey`, `dotnet-8.0-sdk`, `nodejs`, and `yarn`.
+
+
+  > NOTE: If you receive an error that the script is not digitally signed or cannot
+  execute on the system, you may need to change the execution policy (see list of
+  policies and scopes) or unblock the script.
+
+
+  1. Configure Chat Copilot.
+
+
+  - `AI_SERVICE`: `AzureOpenAI` or `OpenAI`. - `API_KEY`: The `API key` for Azure
+  OpenAI or for OpenAI. - `AZURE_OPENAI_ENDPOINT`: The Azure OpenAI resource `Endpoint`
+  address. This is only required when using Azure OpenAI, omit `-Endpoint` if using
+  OpenAI.
+
+
+  - > **IMPORTANT:** For `AzureOpenAI`, if you deployed models `gpt-4o` and `text-embedding-ada-002`
+  with custom names (instead of the default names), also use the parameters:
+
+
+  Open the `.\Configure.ps1` script to see all of the available parameters.
+
+
+  1. Run Chat Copilot locally. This step starts both the backend API and frontend
+  application.
+
+
+  It may take a few minutes for Yarn packages to install on the first run.
+
+
+  > NOTE: Confirm pop-ups are not blocked and you are logged in with the same account
+  used to register the application.
+
+
+  - (Optional) To start ONLY the backend:
+
+
+  Linux/macOS
+
+
+  1. Open Bash as an Administrator. 1. Clone this repository
+
+
+  1. Configure environment.
+
+
+  The following is a script to help you install the dependencies required. Feel free
+  to install `dotnet`, `nodejs`, and `yarn` with your method of choice or use this
+  script.
+
+
+  **Ubuntu/Debian Linux**
+
+
+  > NOTE: This script uses `apt` to install `dotnet-sdk-8.0`, `nodejs`, and `yarn`.
+
+
+  **macOS**
+
+
+  > NOTE: This script uses `homebrew` to install `dotnet-sdk`, `nodejs`, and `yarn`.
+
+
+  1. Configure Chat Copilot.
+
+
+  1. For OpenAI
+
+
+  - `API_KEY`: The `API key` for OpenAI.
+
+
+  2. For Azure OpenAI
+
+
+  - `AZURE_OPENAI_ENDPOINT`: The Azure OpenAI resource `Endpoint` address. - `API_KEY`:
+  The `API key` for Azure OpenAI.
+
+
+  **IMPORTANT:** If you deployed models `gpt-4o` and `text-embedding-ada-002` with
+  custom names (instead of the default names), you need to specify the deployment
+  names with three additional parameters:
+
+
+  1. Run Chat Copilot locally. This step starts both the backend API and frontend
+  application.
+
+
+  It may take a few minutes for Yarn packages to install on the first run.
+
+
+  > NOTE: Confirm pop-ups are not blocked and you are logged in with the same account
+  used to register the application.
+
+
+  - (Optional) To start ONLY the backend:
+
+
+  (Optional) Run the memory pipeline
+
+
+  By default, the webapi is configured to work without the memory pipeline for synchronous
+  processing documents. To enable asynchronous document processing, you need to configure
+  the webapi and the memory pipeline. Please refer to the webapi README and the memory
+  pipeline README for more information.
+
+
+  (Optional) Enable backend authentication via Azure AD
+
+
+  By default, Chat Copilot runs locally without authentication, using a guest user
+  profile. If you want to enable authentication with Azure Active Directory, follow
+  the steps below.
+
+
+  Requirements
+
+
+  - Azure account - Azure AD Tenant
+
+
+  Instructions
+
+
+  1. Create an application registration for the frontend web app, using the values
+  below
+
+
+  - `Supported account types`: "_Accounts in this organizational directory only ({YOUR
+  TENANT} only - Single tenant)_" - `Redirect URI (optional)`: _Single-page application
+  (SPA)_ and use _http://localhost:3000_.
+
+
+  2. Create a second application registration for the backend web api, using the values
+  below: - `Supported account types`: "_Accounts in this organizational directory
+  only ({YOUR TENANT} only - Single tenant)_" - Do **not** configure a `Redirect URI
+  (optional)`
+
+
+  > NOTE: Other account types can be used to allow multitenant and personal Microsoft
+  accounts to use your application if you desire. Doing so may result in more users
+  and therefore higher costs.
+
+
+  > Take note of the `Application (client) ID` for both app registrations as you will
+  need them in future steps.
+
+
+  3. Expose an API within the second app registration
+
+
+  1. Select _Expose an API_ from the menu
+
+
+  2. Add an _Application ID URI_
+
+
+  1. This will generate an `api://` URI
+
+
+  2. Click _Save_ to store the generated URI
+
+
+  3. Add a scope for `access_as_user`
+
+
+  1. Click _Add scope_
+
+
+  2. Set _Scope name_ to `access_as_user`
+
+
+  3. Set _Who can consent_ to _Admins and users_
+
+
+  4. Set _Admin consent display name_ and _User consent display name_ to `Access copilot
+  chat as a user`
+
+
+  5. Set _Admin consent description_ and _User consent description_ to `Allows the
+  accesses to the Copilot chat web API as a user`
+
+
+  4. Add the web app frontend as an authorized client application
+
+
+  1. Click _Add a client application_
+
+
+  2. For _Client ID_, enter the frontend''s application (client) ID
+
+
+  3. Check the checkbox under _Authorized scopes_
+
+
+  4. Click _Add application_
+
+
+  4. Add permissions to web app frontend to access web api as user
+
+
+  1. Open app registration for web app frontend
+
+
+  2. Go to _API Permissions_
+
+
+  3. Click _Add a permission_
+
+
+  4. Select the tab _APIs my organization uses_
+
+
+  5. Choose the app registration representing the web api backend
+
+
+  6. Select permissions `access_as_user`
+
+
+  7. Click _Add permissions_
+
+
+  5. Run the Configure script with additional parameters to set up authentication.
+
+
+  **Powershell**
+
+
+  **Bash**'
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-24'
+    window_end: '2026-03-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-24..2026-03-28
+    external_id: '667491171'
+    canonical_url: https://github.com/microsoft/chat-copilot
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Repository appears to be an educational/sample implementation of an LLM
+    chat copilot, not a production AI product offering. It is likely in-scope as a
+    developer reference artifact but should not be promoted as a deployable product
+    candidate without deeper review.
+  decision_snapshot: Recommend hold because Repository appears to be an educational/sample
+    implementation of an LLM chat copilot, not a production AI product offering. It
+    is likely in-scope as a developer reference artifact but should not be promoted
+    as a deployable product candidate without deeper review.
+  scope_boundary_note: 'Prescreen boundary: treat this as a reference/sample application
+    signal, not evidence of a production-ready copilot business/product. Include only
+    if the catalog accepts developer exemplars, SDK demos, or architecture starter
+    kits.'
+  source_evidence_summary:
+  - '**NOTE**: This is a **sample** application ... This sample is **NOT FOR PRODUCTION**
+    deployments.'
+  - '> **IMPORTANT:** This sample is for educational purposes only and is not recommended
+    for production deployments.'
+  - This sample allows you to build your own integrated large language model (LLM)
+    chat copilot.
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: '**NOTE**: This is a **sample** application ... This sample is
+      **NOT FOR PRODUCTION** deployments.'
+    evidence_source_field: candidate_input
+    why_it_matters: Directly limits classification as a production product.
+  - anchor_rank: 2
+    evidence_text: '> **IMPORTANT:** This sample is for educational purposes only
+      and is not recommended for production deployments.'
+    evidence_source_field: candidate_input
+    why_it_matters: Reinforces educational intent and non-production status.
+  - anchor_rank: 3
+    evidence_text: This sample allows you to build your own integrated large language
+      model (LLM) chat copilot.
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates framework/template nature rather than a packaged end-user
+      service.
+  - anchor_rank: 4
+    evidence_text: 'The sample is built on Microsoft Semantic Kernel and has three
+      components: ... React web app ... .NET web API ... .NET worker service'
+    evidence_source_field: candidate_input
+    why_it_matters: Suggests technical starter architecture targeted at builders.
+  review_focus_points:
+  - Confirm whether observatory scope includes sample/reference repos (vs only deployable
+    products).
+  - Check repo metadata/license/docs for any production branch, hosted demo, or commercialization
+    claims.
+  - Determine if it should be tagged as 'developer enablement / starter app' under
+    AI applications taxonomy.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: 'Ready for quick human first-pass: strongest signals are explicit and
+      repeated disclaimers. Human should only resolve taxonomy inclusion policy for
+      sample apps.'
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository appears to be an educational/sample implementation of an
+      LLM chat copilot, not a production AI product offering. It is likely in-scope
+      as a developer reference artifact but should not be promoted as a deployable
+      product candidate without deeper review.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI application starter/sample (developer reference implementation)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI application starter/sample (developer reference implementation)
+      rationale: Repository appears to be an educational/sample implementation of
+        an LLM chat copilot, not a production AI product offering. It is likely in-scope
+        as a developer reference artifact but should not be promoted as a deployable
+        product candidate without deeper review.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: Production enterprise AI copilot product
+      rationale_for_similarity: Production enterprise AI copilot product
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Repository explicitly states it is a sample
+      for educational purposes and not recommended for production deployments.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear; The repository is clearly
+  an AI chat-copilot application but repeatedly labels itself as an educational sample
+  "NOT FOR PRODUCTION," making staging eligibility depend on whether developer starter
+  apps are in scope.
+human_reviewed_at: '2026-04-02T14:41:19.337063Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

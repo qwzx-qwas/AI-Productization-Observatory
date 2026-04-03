@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
@@ -9,8 +10,118 @@ from src.common.errors import ContractValidationError
 from src.common.files import dump_yaml, load_yaml, utc_now_iso
 
 
+@dataclass(frozen=True)
+class StagingSlotSummary:
+    staging_document_path: str
+    sample_slot_id: str
+    slot_index: int
+    sample_id: str | None
+    current_state: str | None
+
+
+@dataclass(frozen=True)
+class StagingFileSummary:
+    staging_document_path: str
+    filled_slots: int
+    empty_slots: int
+    total_slots: int
+    next_empty_slot: StagingSlotSummary | None
+
+
+@dataclass(frozen=True)
+class StagingProgress:
+    total_filled: int
+    total_slots: int
+    target_total_slots: int
+    file_count: int
+    target_file_count: int
+    per_file_target_slots: int
+    file_summaries: list[StagingFileSummary]
+    next_empty_slot: StagingSlotSummary | None
+
+    @property
+    def is_complete(self) -> bool:
+        return (
+            self.total_filled == self.target_total_slots
+            and self.total_slots == self.target_total_slots
+            and self.file_count == self.target_file_count
+            and all(summary.filled_slots == self.per_file_target_slots for summary in self.file_summaries)
+        )
+
+
 def _staging_files(staging_dir: Path) -> list[Path]:
     return sorted(staging_dir.glob("gold_set_300_staging_batch_*.yaml"))
+
+
+def summarize_staging_progress(
+    staging_dir: Path,
+    *,
+    target_file_count: int = 20,
+    per_file_target_slots: int = 15,
+) -> StagingProgress:
+    staging_files = _staging_files(staging_dir)
+    if len(staging_files) != target_file_count:
+        raise ContractValidationError(
+            f"Expected {target_file_count} staging files under {staging_dir}, found {len(staging_files)}"
+        )
+
+    file_summaries: list[StagingFileSummary] = []
+    next_empty_slot: StagingSlotSummary | None = None
+    total_filled = 0
+    total_slots = 0
+    for staging_path in staging_files:
+        payload = load_yaml(staging_path)
+        if not isinstance(payload, dict):
+            raise ContractValidationError(f"Staging document must be a mapping: {staging_path}")
+        samples = payload.get("samples")
+        if not isinstance(samples, list):
+            raise ContractValidationError(f"Staging document must contain samples[]: {staging_path}")
+        if len(samples) != per_file_target_slots:
+            raise ContractValidationError(
+                f"Staging document must keep exactly {per_file_target_slots} sample slots: {staging_path}"
+            )
+
+        filled_slots = 0
+        file_next_empty_slot: StagingSlotSummary | None = None
+        for index, sample in enumerate(samples, start=1):
+            if not isinstance(sample, dict):
+                raise ContractValidationError(f"Staging sample must be a mapping: {staging_path}#{index}")
+            sample_id = sample.get("sample_id")
+            if isinstance(sample_id, str) and sample_id:
+                filled_slots += 1
+                continue
+            if sample.get("current_state") == "awaiting_real_input" and file_next_empty_slot is None:
+                file_next_empty_slot = StagingSlotSummary(
+                    staging_document_path=str(staging_path),
+                    sample_slot_id=str(sample.get("sample_slot_id")),
+                    slot_index=int(sample.get("slot_index") or index),
+                    sample_id=None,
+                    current_state=sample.get("current_state"),
+                )
+        empty_slots = len(samples) - filled_slots
+        summary = StagingFileSummary(
+            staging_document_path=str(staging_path),
+            filled_slots=filled_slots,
+            empty_slots=empty_slots,
+            total_slots=len(samples),
+            next_empty_slot=file_next_empty_slot,
+        )
+        file_summaries.append(summary)
+        total_filled += filled_slots
+        total_slots += len(samples)
+        if next_empty_slot is None and file_next_empty_slot is not None:
+            next_empty_slot = file_next_empty_slot
+
+    return StagingProgress(
+        total_filled=total_filled,
+        total_slots=total_slots,
+        target_total_slots=target_file_count * per_file_target_slots,
+        file_count=len(file_summaries),
+        target_file_count=target_file_count,
+        per_file_target_slots=per_file_target_slots,
+        file_summaries=file_summaries,
+        next_empty_slot=next_empty_slot,
+    )
 
 
 def _candidate_ref(candidate_record: dict[str, Any], candidate_path: Path) -> dict[str, Any]:
@@ -134,3 +245,39 @@ def _apply_candidate_to_slot(
     pool_trace["whitelist_reason"] = candidate_record.get("whitelist_reason")
     sample["staged_from_candidate_prescreen_at"] = now_iso
     sample["staged_from_candidate_prescreen_path"] = str(candidate_path)
+
+
+def validate_staging_handoff(
+    *,
+    staging_document_path: str,
+    candidate_id: str,
+    candidate_path: Path,
+    sample_slot_id: str,
+) -> None:
+    payload = load_yaml(Path(staging_document_path))
+    if not isinstance(payload, dict):
+        raise ContractValidationError(f"Staging document must be a mapping: {staging_document_path}")
+    samples = payload.get("samples")
+    if not isinstance(samples, list):
+        raise ContractValidationError(f"Staging document must contain samples[]: {staging_document_path}")
+    for sample in samples:
+        if not isinstance(sample, dict):
+            continue
+        if str(sample.get("sample_slot_id")) != sample_slot_id:
+            continue
+        if sample.get("sample_id") != candidate_id:
+            raise ContractValidationError(
+                f"Staging slot {sample_slot_id} expected sample_id={candidate_id}, found {sample.get('sample_id')}"
+            )
+        candidate_ref = sample.get("candidate_prescreen_ref")
+        if not isinstance(candidate_ref, dict):
+            raise ContractValidationError(f"Staging slot {sample_slot_id} must retain candidate_prescreen_ref")
+        if candidate_ref.get("candidate_id") != candidate_id:
+            raise ContractValidationError(f"Staging slot {sample_slot_id} candidate_prescreen_ref lost candidate_id")
+        if candidate_ref.get("candidate_document_path") != str(candidate_path):
+            raise ContractValidationError(f"Staging slot {sample_slot_id} candidate_document_path drifted after handoff")
+        source_record_refs = sample.get("source_record_refs")
+        if not isinstance(source_record_refs, list) or not source_record_refs:
+            raise ContractValidationError(f"Staging slot {sample_slot_id} must retain source_record_refs")
+        return
+    raise ContractValidationError(f"Staging slot {sample_slot_id} not found in {staging_document_path}")

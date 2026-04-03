@@ -1,0 +1,145 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_d483d039f9f3
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2026-02-27_2026-03-03
+created_at: '2026-04-02T15:25:57.821967Z'
+updated_at: '2026-04-02T15:26:37.704780Z'
+source: github
+source_id: src_github
+source_window: 2026-02-27..2026-03-03
+time_field: pushed_at
+external_id: '750068254'
+canonical_url: https://github.com/gptscript-ai/gptscript
+title: gptscript
+summary: Build AI assistants that interact with your systems
+raw_evidence_excerpt: 'Build AI assistants that interact with your systems
+
+
+  GPTScript
+
+
+  GPTScript is a framework that allows Large Language Models (LLMs) to operate and
+  interact with various systems. These systems can range from local executables to
+  complex applications with OpenAPI schemas, SDK libraries, or any RAG-based solutions.
+  GPTScript is designed to easily integrate any system, whether local or remote, with
+  your LLM using just a few lines of prompts.
+
+
+  Here are some sample use cases of GPTScript: 1. Chat with a local CLI - Try it!
+  2. Chat with an OpenAPI compliant endpoint - Try it! 3. Chat with local files and
+  directories - Try it! 4. Run an automated workflow - Try it!
+
+
+  Getting started MacOS and Linux (Homebrew):
+
+
+  MacOS and Linux (install.sh):
+
+
+  Windows:
+
+
+  A few notes: - You''ll need an OpenAI API key - On Windows, after installing gptscript
+  you may need to restart your terminal for the changes to take effect - The above
+  script is a simple chat-based assistant. You can ask it questions and it will answer
+  to the best of its ability.
+
+
+  Community
+
+
+  License
+
+
+  Copyright (c) 2024 Acorn Labs, Inc.
+
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+  this file except in compliance with the License. You may obtain a copy of the License
+  at
+
+
+  Unless required by applicable law or agreed to in writing, software distributed
+  under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS
+  OF ANY KIND, either express or implied. See the License for the specific language
+  governing permissions and limitations under the License.'
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-02-27'
+    window_end: '2026-03-03'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-02-27..2026-03-03
+    external_id: '750068254'
+    canonical_url: https://github.com/gptscript-ai/gptscript
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: network_error
+  error_message: 'Relay request network error: [Errno -2] Name or service not known'
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  The repository presents a publicly distributed AI assistant framework with explicit
+  installation paths, concrete assistant/workflow use cases, and clear positioning
+  as a product for interacting with external systems.
+human_reviewed_at: '2026-04-02T15:26:36.910400Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+  sample_slot_id: GS300-057
+  sample_id: cand_github_qf_ai_assistant_d483d039f9f3
+  blocking_items: []
+  last_attempted_at: '2026-04-02T15:26:37.704728Z'

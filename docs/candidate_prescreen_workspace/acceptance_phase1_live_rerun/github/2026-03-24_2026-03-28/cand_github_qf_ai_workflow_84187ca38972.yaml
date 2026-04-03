@@ -1,0 +1,195 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_84187ca38972
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2026-03-24_2026-03-28
+created_at: '2026-04-02T14:45:19.212057Z'
+updated_at: '2026-04-02T14:46:49.706214Z'
+source: github
+source_id: src_github
+source_window: 2026-03-24..2026-03-28
+time_field: pushed_at
+external_id: '963547829'
+canonical_url: https://github.com/Shopify/roast
+title: roast
+summary: Structured AI workflows made easy
+raw_evidence_excerpt: "Structured AI workflows made easy\n\nRoast\n\nA Ruby-based\
+  \ domain-specific language for creating structured AI workflows. Build complex AI-powered\
+  \ automation with simple, declarative Ruby syntax.\n\nOverview\n\nRoast lets you\
+  \ orchestrate AI workflows by combining \"cogs\" - building blocks that interact\
+  \ with LLMs, run code, execute commands, and process data. Write workflows that:\n\
+  \n- **Chain AI steps together** - Output from one cog flows seamlessly to the next\
+  \ - **Run coding agents locally** - Full filesystem access with Claude Code or other\
+  \ providers - **Process collections** - Map operations over arrays with serial or\
+  \ parallel execution - **Control flow intelligently** - Conditional execution, iteration,\
+  \ and error handling - **Reuse workflow components** - Create modular, parameterized\
+  \ scopes\n\nQuick Example\n\nRun with:\n\nCore Cogs\n\n- **`chat`** - Send prompts\
+  \ to cloud-based LLMs (OpenAI, Anthropic, Gemini, etc.) - **`agent`** - Run local\
+  \ coding agents with filesystem access (Claude Code CLI, etc.) - **`ruby`** - Execute\
+  \ custom Ruby code within workflows - **`cmd`** - Run shell commands and capture\
+  \ output - **`map`** - Process collections in serial or parallel - **`repeat`**\
+  \ - Iterate until conditions are met - **`call`** - Invoke reusable workflow scopes\n\
+  \nInstallation\n\nOr add to your Gemfile:\n\nRequirements\n\n- Ruby 3.0+ - API keys\
+  \ for your AI provider (OpenAI/Anthropic) - Claude Code CLI installed (for agent\
+  \ cog)\n\nGetting Started\n\nThe best way to learn Roast is through the interactive\
+  \ tutorial:\n\n\U0001F4DA **Start the Tutorial**\n\nThe tutorial covers: 1. Your\
+  \ first workflow 2. Chaining cogs together 3. Accepting targets and parameters 4.\
+  \ Configuration options 5. Control flow 6. Reusable scopes 7. Processing collections\
+  \ 8. Iterative workflows 9. Async execution\n\nDocumentation\n\n- Tutorial - Step-by-step\
+  \ guide with examples - Workflow Examples - Toy workflows that demonstrate all functional\
+  \ patterns, use for end-to-end test\n\nDocumentation & References\n\n* __Source\
+  \ code root__: https://github.com/Shopify/roast/tree/main/lib/roast\n\nThe public\
+  \ interfaces of Roast are extensively documented in class and method comments on\
+  \ the relevant classes.\n\n* __Tutorial and Examples__ * Tutorial -- Table of Contents\
+  \ (contains step-by-step guides and runnable examples showing real-world usage)\
+  \ * Additional Example Workflows) (these comprise the Roast end-to-end test suite)\
+  \ * __Configuation__ * General configuration block: `config-context.rbi` * Global\
+  \ cog configuration: `cog/config.rb` * Agent cog configuration: `agent/config.rb`\
+  \ * Chat cog configuration: `chat/config.rb` * Cmd cog configuration: `cmd/config.rb`\
+  \ * Map cog configuration: `map.rb` * __Execution__ * General Execution block: `execution-context.rbi`\
+  \ * __Input and Output__ * General cog input block: `cog-input-context.rbi` * Global\
+  \ cog output: `cog/output.rb` * Agent cog input `agent/input.rb` * Agent cog output\
+  \ `agent/output.rb` * Call cog input: `call.rb` * Chat cog input: `chat.rb` * Chat\
+  \ cog output: `chat.rb` * Cmd cog input: `cmd.rb:159` (scroll down) * Cmd cog output:\
+  \ `cmd.rb:214` (scroll down) * Map cog input: `map.rb:116` (scroll down) * Repeat\
+  \ cog input: `repeat.rb` * Ruby cog input: `ruby.rb` * Ruby cog output: `ruby.rb:63`\
+  \ (scroll down)\n\nContributing\n\nWe welcome contributions! Please see our Contributing\
+  \ Guide for details.\n\nLicense\n\nMIT License"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-24'
+    window_end: '2026-03-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-24..2026-03-28
+    external_id: '963547829'
+    canonical_url: https://github.com/Shopify/roast
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: 'Low re-read needed: core categorization evidence is explicit in project
+    description; reviewer should mainly resolve scope policy and framework-vs-product
+    inclusion.'
+  decision_snapshot: likely_in_scope_as_ai_workflow_developer_tool
+  scope_boundary_note: 'Treat this as a developer-facing orchestration framework (DSL
+    + runtime) for composing LLM, agent, code, and command steps. Do not scope it
+    as an end-user AI application. Boundary check: if your taxonomy excludes SDKs/frameworks
+    and only includes shipped business apps, this should be excluded; if it includes
+    AI productization tooling, it is likely in scope.'
+  source_evidence_summary:
+  - A Ruby-based domain-specific language for creating structured AI workflows.
+  - Roast lets you orchestrate AI workflows by combining "cogs" - building blocks
+    that interact with LLMs, run code, execute commands, and process data.
+  - '**`chat`** ... **`agent`** ... **`ruby`** ... **`cmd`** ... **`map`** ... **`repeat`**
+    ... **`call`**'
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: A Ruby-based domain-specific language for creating structured AI
+      workflows.
+    evidence_source_field: candidate_input
+    why_it_matters: Direct self-identification as a DSL/framework rather than a standalone
+      consumer app.
+  - anchor_rank: 2
+    evidence_text: Roast lets you orchestrate AI workflows by combining "cogs" - building
+      blocks that interact with LLMs, run code, execute commands, and process data.
+    evidence_source_field: candidate_input
+    why_it_matters: Confirms orchestration role across multiple execution modalities
+      (LLM + code + shell + data).
+  - anchor_rank: 3
+    evidence_text: '**`chat`** ... **`agent`** ... **`ruby`** ... **`cmd`** ... **`map`**
+      ... **`repeat`** ... **`call`**'
+    evidence_source_field: candidate_input
+    why_it_matters: Concrete component model suggests reusable workflow engine with
+      control-flow primitives.
+  - anchor_rank: 4
+    evidence_text: Run local coding agents with filesystem access (Claude Code CLI,
+      etc.)
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates agent-execution capability, but as a cog inside a broader
+      workflow system.
+  review_focus_points:
+  - 'Confirm taxonomy policy: include AI developer frameworks/SDKs or only end-user
+    AI products.'
+  - Verify whether local coding-agent execution with filesystem access triggers any
+    safety/risk tagging requirements.
+  - Check maturity signals (stars, releases, adoption) before candidate-pool promotion.
+  - Differentiate from generic automation/orchestration tools by validating explicit
+    LLM-native design.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: 'Low re-read needed: core categorization evidence is explicit in project
+      description; reviewer should mainly resolve scope policy and framework-vs-product
+      inclusion.'
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: 'Low re-read needed: core categorization evidence is explicit in project
+      description; reviewer should mainly resolve scope policy and framework-vs-product
+      inclusion.'
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI workflow orchestration framework (developer tool / DSL)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI workflow orchestration framework (developer tool / DSL)
+      rationale: 'Low re-read needed: core categorization evidence is explicit in
+        project description; reviewer should mainly resolve scope policy and framework-vs-product
+        inclusion.'
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: Autonomous coding agent product
+      rationale_for_similarity: Autonomous coding agent product
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Agent behavior appears as one cog within a
+      broader orchestration system; repository positioning is framework-centric, not
+      a single autonomous agent application.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear; The repository shows a
+  well-documented Ruby DSL/runtime for developers to orchestrate LLM, agent, code,
+  and command workflows, but it lacks clear end-user application signals and hinges
+  on whether developer productization tooling is in-scope.
+human_reviewed_at: '2026-04-02T14:46:49.706084Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

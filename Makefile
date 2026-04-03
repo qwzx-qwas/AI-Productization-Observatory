@@ -5,7 +5,7 @@ REPLAY_SOURCE ?= product_hunt
 PRESCREEN_SOURCE ?= github
 QUERY_SLICE ?=
 
-.PHONY: install lint format typecheck test validate-schemas validate-configs validate-gold-set validate-candidate-workspace validate-env replay-window build-mart-window migrate-plan run-candidate-prescreen handoff-candidates-to-staging
+.PHONY: install lint format typecheck test validate-schemas validate-configs validate-gold-set validate-candidate-workspace validate-env replay-window build-mart-window migrate-plan run-candidate-prescreen handoff-candidates-to-staging fill-gold-set-staging-until-complete
 
 install:
 	$(PYTHON) -m src.cli install
@@ -53,3 +53,6 @@ run-candidate-prescreen:
 
 handoff-candidates-to-staging:
 	$(PYTHON) -m src.cli handoff-candidates-to-staging
+
+fill-gold-set-staging-until-complete:
+	$(PYTHON) -m src.cli fill-gold-set-staging-until-complete $(if $(SOURCE),--source $(SOURCE),) $(if $(WINDOW),--initial-window $(WINDOW),) $(if $(LIVE_LIMIT),--live-limit $(LIVE_LIMIT),)

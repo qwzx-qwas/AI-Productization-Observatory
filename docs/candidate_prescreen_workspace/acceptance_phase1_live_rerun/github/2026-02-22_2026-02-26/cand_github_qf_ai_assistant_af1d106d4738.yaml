@@ -1,0 +1,190 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_af1d106d4738
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2026-02-22_2026-02-26
+created_at: '2026-04-03T02:56:10.275498Z'
+updated_at: '2026-04-03T02:59:12.530309Z'
+source: github
+source_id: src_github
+source_window: 2026-02-22..2026-02-26
+time_field: pushed_at
+external_id: '741744308'
+canonical_url: https://github.com/deepseek-ai/awesome-deepseek-integration
+title: awesome-deepseek-integration
+summary: Integrate the DeepSeek API into popular software
+raw_evidence_excerpt: "Integrate the DeepSeek API into popular software\n\nIntegrate\
+  \ the DeepSeek API into popular softwares. Access DeepSeek Open Platform to get\
+  \ an API key.\n\nEnglish / \u7B80\u4F53\u4E2D\u6587 / \u7E41\u9AD4\u4E2D\u6587 /\
+  \ \u65E5\u672C\u8A9E / Espa\xF1ol\n\nTable of Contents\n\n- Awesome DeepSeek Integrations\
+  \ - Table of Contents - Project List - Applications - AI Agent frameworks - Data\
+  \ AI Applications frameworks - RAG frameworks - FHE (Fully Homomorphic Encryption)\
+  \ frameworks - Solana frameworks - Synthetic data curation - IM Application Plugins\
+  \ - Office Addin - Browser Extensions - VS Code Extensions - Visual Studio Extensions\
+  \ - neovim Extensions - JetBrains Extensions - Discord Bots - Native AI Code Editor\
+  \ - Emacs - Security - Providers - Others - Star History\n\nProject List\n\nApplications\n\
+  \nETOS LLM Studio ETOS LLM Studio (ELS) is a flagship AI client explicitly tailored\
+  \ for watchOS and iOS. It features a watch-first design, aesthetic UI, seamless\
+  \ sync between devices, and deep system integration. Supports multiple models including\
+  \ DeepSeek, redefining AI interaction on your wrist.\n\nOperit AI An open-source\
+  \ system integration AI assistant for the Android platform, supporting almost complete\
+  \ mcp usage and highly compatible with the Android system. The software features\
+  \ both high customization and a low learning threshold, with built-in tools for\
+  \ file operations, searches, automatic clicks, format conversions, and an integrated\
+  \ DeepSeek API webpage.\n\nopenEuler Intelligence The intelligent large model platform,\
+  \ built on openEuler, deeply integrates mainstream large language models, including\
+  \ DeepSeek, and features local knowledge base construction capabilities. The platform\
+  \ offers core functionalities such as semantic interface registration, MCP service\
+  \ management, intelligent agent (Agent) development, and automated workflow orchestration.\
+  \ It supports both web and desktop client access, significantly enhancing development\
+  \ efficiency and enterprise-level application experience!\n\nWeChat RPA Intelligent\
+  \ Customer Service Built-in DeepSeek Official API and Ali Bailian DeepSeek API,\
+  \ with seamless automatic switching when AI services are unavailable, ensuring 24/7\
+  \ stable operation! This tool is implemented via RPA automation, does not access\
+  \ private interfaces.\n\nMigo A free AI innovation accelerator offering intelligent\
+  \ Q&A, in-depth paper comprehension, cutting-edge AI tools, and a personal academic\
+  \ knowledge base. As your exploration partner, Migo helps you discover and realize\
+  \ outstanding ideas!\n\neechat A simple and user-friendly tool for local deployment\
+  \ of large language models, supporting local private deployment of open-source models\
+  \ such as DeepSeek-R1, DLlama 3, Phi-4, Mistral, Gemma 3, etc., while also supporting\
+  \ remote LLM API calls.\n\nOpenRouter OpenRouter provides a unified API that gives\
+  \ you access to hundreds of AI models through a single endpoint, while automatically\
+  \ handling fallbacks and selecting the most cost-effective options. Get started\
+  \ with just a few lines of code using your preferred SDK or framework.\n\nAingDesk\
+  \ One-click deployment of AI models on your computer with a visual interface, featuring\
+  \ an elegant chat UI. It allows online sharing for collaborative use, supports various\
+  \ models like DeepSeek, and enables web search and third-party API integration.\n\
+  \nDingTalk DingTalk AI Assistant integrates multiple AI product features from the\
+  \ DingTalk platform to intelligently support enterprises in their daily workflows.\
+  \ It possesses various intelligent capabilities, including but not limited to smart\
+  \ communication, smart collaboration, and smart management. With these functionalities,\
+  \ the AI assistant can summarize key points within an organization, generate meeting\
+  \ minutes, and provide users with relevant task notifications and schedule reminders.\
+  \ Additionally, DingTalk AI Assistant leverages its knowledge base to intelligently\
+  \ answer common employee inquiries regarding company administrative processes, HR\
+  \ policies, and other related topics.\n\nChatDOC ChatDOC is an AI-powered document\
+  \ reading tool equipped with robust traceability features, ensuring that the source\
+  \ of every piece of information is clear and verifiable, helping you efficiently\
+  \ and accurately grasp the core of your documents.\n\nSwiftChat SwiftChat is a lightning-fast,\
+  \ cross-platform AI chat application built with React Native. It delivers native\
+  \ performance on Android, iOS, and macOS. Features include real-time streaming chat,\
+  \ rich Markdown support, AI image generation, customizable system prompts, quick\
+  \ model selection and multimodal capabilities. Supports multiple AI providers including\
+  \ DeepSeek, Amazon Bedrock, Ollama and OpenAI Compatible Modles with clean UI and\
+  \ high performance.\n\n4EVERChat 4EVERChat is an intelligent model selection platform\
+  \ integrating hundreds of LLMs, enabling real-time comparison of model performance.\
+  \ Leveraging 4EVERLAND AI RPC's unified API endpoint, it achieves cost-free model\
+  \ switching and automatically selects combinations with fast responses and low costs.\n\
+  \nxhai Browser xhai Browser is an Android desktop management & AI browser, DeepSeek\
+  \ is the default AI dialog engine.It has the ultimate performance (0.2 seconds to\
+  \ start), slim size (apk 3M), no ads, ultra-fast ad blocking, multi-screen classification,\
+  \ screen navigation, multi-search box, a box multiple search!\n\nIntelliBar IntelliBar\
+  \ is a beautiful assistant for the Mac that lets you use advanced models like DeepSeek\
+  \ R1 with any app on your Mac \u2014 ex: edit emails in your mail app or summarize\
+  \ articles in your browser.\n\nGPTBots GPTBots is a no-code AI agent building platform\
+  \ that integrates major international LLMs, including Deepseek. It offers modules\
+  \ for RAG-based knowledge storage/retrieval, tool customization/calling, and workflow\
+  \ orchestration. Additionally, it allows agents to be integrated into multiple mainstream\
+  \ platforms (such as WhatsApp, Telegram, etc.), providing end-to-end AI solutions\
+  \ for businesses and helping them stand out in the AI era.\n\nDeepChat DeepChat\
+  \ is a fully free desktop smart assistant, with a powerful DeepSeek large model,\
+  \ supporting multi-round conversations, internet search, file uploads, knowledge\
+  \ bases, and more.\n\nQuantalogic QuantaLogic is a ReAct (Reasoning & Action) framework\
+  \ for building advanced AI agents.\n\nChatbox Chatbox is a desktop client for multiple\
+  \ cutting-edge LLM models, available on Windows, Mac and Linux.\n\nChatGPT-Next-Web\
+  \ ChatGPT Next Web is a cross-platform ChatGPT web UI, with GPT3, GPT4 & Gemini\
+  \ Pro support.\n\nCasibase Casibase is an open source AI knowledge base and dialogue\
+  \ system that combines the latest RAG technology, SSO functionality, and support\
+  \ for a wide range of mainstream AI models. Casibase is designed to provide enterprises\
+  \ and developers with a powerful, flexible, and easy-to-use knowledge management\
+  \ and intelligent dialogue platform.\n\nCoco AI Coco AI is a fully open-source,\
+  \ cross-platform unified search and productivity tool that connects and searches\
+  \ across various data sources, including applications, files, Google Drive, Notion,\
+  \ Yuque, Hugo, and more, both local and cloud-based. By integrating with large models\
+  \ like DeepSeek, Coco AI enables intelligent personal knowledge management, emphasizing\
+  \ privacy and supporting private deployment, helping users quickly and intelligently\
+  \ access their information.\n\nLiubai Liubai allows DeepSeek to have arms and legs\
+  \ to manipulate your notes, tasks, calendars, and to-do lists just on WeChat!\n\n\
+  Pal - AI Chat Client (iOS, ipadOS) Pal is a customized chat playground on iOS.\n\
+  \nLibreChat LibreChat is a customizable open-source app that seamlessly integrates\
+  \ DeepSeek for enhanced AI interactions.\n\nJust-Chat Make your LLM agent and chat\
+  \ with it simple and fast!\n\nPapersGPT PapersGPT is a Zotero plugin that seamlessly\
+  \ with DeepSeek and other multiple AI models for quickly reading papers in Zotero.\n\
+  \nRSS Translator Translate RSS feeds into your language!\n\nRelingo Build and master\
+  \ vocabulary while you browse website and watch youtube!"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-02-22'
+    window_end: '2026-02-26'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-02-22..2026-02-26
+    external_id: '741744308'
+    canonical_url: https://github.com/deepseek-ai/awesome-deepseek-integration
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: network_error
+  error_message: 'Relay request network error: [Errno -2] Name or service not known'
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

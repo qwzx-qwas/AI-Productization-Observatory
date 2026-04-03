@@ -98,6 +98,7 @@ make validate-gold-set
 make validate-candidate-workspace
 make run-candidate-prescreen SOURCE=github WINDOW=2026-03-01..2026-03-08 QUERY_SLICE=qf_agent
 make handoff-candidates-to-staging
+make fill-gold-set-staging-until-complete SOURCE=github WINDOW=2026-03-22..2026-03-29 LIVE_LIMIT=1
 make replay-window SOURCE=product_hunt WINDOW=2026-03-01..2026-03-08
 make build-mart-window
 ```
@@ -112,6 +113,7 @@ python3 -m src.cli validate-gold-set
 python3 -m src.cli validate-candidate-workspace
 python3 -m src.cli run-candidate-prescreen --source github --window 2026-03-01..2026-03-08 --query-slice qf_agent
 python3 -m src.cli handoff-candidates-to-staging
+python3 -m src.cli fill-gold-set-staging-until-complete --source github --initial-window 2026-03-22..2026-03-29 --live-limit 1
 python3 -m src.cli replay-window --source product_hunt --window 2026-03-01..2026-03-08
 python3 -m src.cli build-mart-window
 ```
@@ -181,6 +183,9 @@ git rm --cached .env
 - `make validate-candidate-workspace` 还会校验 candidate prescreen review-card 约束，例如 evidence anchor 排序、rank-1 persona 回填、main/adjacent category 关系，以及 `human_review_notes` 是否遵循标准模板前缀。
 - `run-candidate-prescreen` 会把候选发现、LLM 预筛与中间文档落盘限制在 `docs/candidate_prescreen_workspace/`；它不会直接写 `gold_set/gold_set_300/`。
 - `handoff-candidates-to-staging` 只会转写 `human_review_status = approved_for_staging` 的候选到现有 `docs/gold_set_300_real_asset_staging/`，并保留空位与 `blocking_items` 等待后续双标 / adjudication。
+- `fill-gold-set-staging-until-complete` 会先重新统计 `docs/gold_set_300_real_asset_staging/` 的真实填充进度，再优先扫描已有 `docs/candidate_prescreen_workspace/` 候选；若没有可 handoff 的已审候选，则按 query-slice / window 游标继续 live prescreen、调用 API LLM 做受约束一审、只把 `approved_for_staging` 的候选写入 staging，并把每轮审计日志写到 `docs/candidate_prescreen_workspace/audit/fill_gold_set_staging_until_complete.jsonl`。
+- `fill-gold-set-staging-until-complete` 还会把 live discovery 游标落盘到 `docs/candidate_prescreen_workspace/audit/fill_gold_set_staging_until_complete.cursor.json`，因此进程中断后可从磁盘状态继续，而不是依赖 LLM 记忆。
+- `fill-gold-set-staging-until-complete` 明确不会写 `gold_set/gold_set_300/`；它每轮都会复核 formal gold set 目录仍保持未写入状态。
 - 若你想覆盖默认路径，仍然可以先导出对应环境变量，例如：
 
 ```bash
@@ -207,6 +212,7 @@ make validate-env
 - CI baseline：`.github/workflows/ci.yml` 当前与本地 `install / lint / typecheck / validate-schemas / validate-configs / test` 基线一致
 - gold set：仍为 `stub`，等待双标 + adjudication 样本
 - 候选预筛工作流：已补齐 GitHub live candidate discovery、LLM relay 预筛、中间文档落盘与 staging handoff 入口；Product Hunt 继续保留候选发现 contract / fixture / replay 边界，但本阶段暂不落地 live discovery；正式 gold set 目录仍保持 `stub`
+- staging 持续填充控制器：已补齐 `fill-gold-set-staging-until-complete`，当前由代码负责循环、恢复、validate、审计日志与停止条件，API LLM 只负责单 candidate 的受约束一审判断
 
 ## 当前剩余事项
 

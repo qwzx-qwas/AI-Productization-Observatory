@@ -118,7 +118,7 @@ def _empty_prescreen_record(
     }
 
 
-def _validate_candidate_record(config: AppConfig, record: dict[str, Any]) -> None:
+def validate_candidate_record(config: AppConfig, record: dict[str, Any]) -> None:
     validate_instance(record, _schema_path(config))
     workflow_config = load_candidate_prescreen_config(config.config_dir)
     workspace = workflow_config.get("workspace")
@@ -215,7 +215,7 @@ def run_candidate_prescreen(
             record["llm_prescreen"]["error_message"] = None
         record["updated_at"] = utc_now_iso()
         output_path = _candidate_doc_path(config, source_code, window, candidate_identifier)
-        _validate_candidate_record(config, record)
+        validate_candidate_record(config, record)
         dump_yaml(output_path, record)
         written_paths.append(output_path)
     return written_paths
@@ -234,7 +234,7 @@ def validate_candidate_workspace(config: AppConfig) -> int:
         payload = load_yaml(path)
         if not isinstance(payload, dict):
             raise ContractValidationError(f"Candidate prescreen document must be a mapping: {path}")
-        _validate_candidate_record(config, payload)
+        validate_candidate_record(config, payload)
         candidate_identifier = payload["candidate_id"]
         if candidate_identifier in candidate_ids:
             raise ContractValidationError(f"Duplicate candidate_id in candidate workspace: {candidate_identifier}")
@@ -254,7 +254,7 @@ def handoff_candidates_to_staging(
         payload = load_yaml(path)
         if not isinstance(payload, dict):
             continue
-        _validate_candidate_record(config, payload)
+        validate_candidate_record(config, payload)
         candidate_identifier = str(payload["candidate_id"])
         if selected and candidate_identifier not in selected:
             continue
@@ -274,7 +274,7 @@ def handoff_candidates_to_staging(
             "last_attempted_at": utc_now_iso(),
         }
         payload["updated_at"] = utc_now_iso()
-        _validate_candidate_record(config, payload)
+        validate_candidate_record(config, payload)
         dump_yaml(path, payload)
         results.append((path, staging_document_path, slot_id))
     return results

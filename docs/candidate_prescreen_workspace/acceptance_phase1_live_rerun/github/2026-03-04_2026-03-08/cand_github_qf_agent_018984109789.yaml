@@ -1,0 +1,134 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_018984109789
+candidate_batch_id: candidate_batch_github_qf_agent_2026-03-04_2026-03-08
+created_at: '2026-04-02T15:16:37.025061Z'
+updated_at: '2026-04-02T15:17:15.611903Z'
+source: github
+source_id: src_github
+source_window: 2026-03-04..2026-03-08
+time_field: pushed_at
+external_id: '970088347'
+canonical_url: https://github.com/machinegpt/agent
+title: agent
+summary: ''
+raw_evidence_excerpt: ''
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-04'
+    window_end: '2026-03-08'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-04..2026-03-08
+    external_id: '970088347'
+    canonical_url: https://github.com/machinegpt/agent
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Fast-track for manual triage only after fetching README/topics and first-level
+    file tree; current record should not be promoted without content verification.
+  decision_snapshot: Recommend hold because Fast-track for manual triage only after
+    fetching README/topics and first-level file tree; current record should not be
+    promoted without content verification.
+  scope_boundary_note: Treat this as a metadata-only lead. Do not classify as an AI
+    product/application candidate until repository content (README, topics, code structure,
+    releases) confirms user-facing AI functionality or product intent.
+  source_evidence_summary:
+  - Treat this as a metadata-only lead. Do not classify as an AI product/application
+    candidate until repository content (README, topics, code structure, releases)
+    confirms user-facing AI functionality or product intent.
+  - Open README and repo description to confirm explicit AI functionality and intended
+    users.
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: Fast-track for manual triage only after fetching README/topics
+      and first-level file tree; current record should not be promoted without content
+      verification.
+    evidence_source_field: candidate_input
+    why_it_matters: This fallback anchor preserves a minimally explainable first-pass
+      review card when the provider omits structured evidence anchors.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - Open README and repo description to confirm explicit AI functionality and intended
+    users.
+  - Check package/config files for model/API integrations (e.g., OpenAI/Anthropic/local
+    LLM orchestration).
+  - Verify whether this is a reusable framework/dev tool vs. a deployable end-user
+    product.
+  - Confirm recency and substantive activity beyond metadata (commits, releases, issues).
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: Fast-track for manual triage only after fetching README/topics and
+      first-level file tree; current record should not be promoted without content
+      verification.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Fast-track for manual triage only after fetching README/topics and
+      first-level file tree; current record should not be promoted without content
+      verification.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI agent application/tooling (unconfirmed)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI agent application/tooling (unconfirmed)
+      rationale: Fast-track for manual triage only after fetching README/topics and
+        first-level file tree; current record should not be promoted without content
+        verification.
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_candidate:
+      category_code: Generic software repository (non-AI or placeholder)
+      rationale_for_similarity: Generic software repository (non-AI or placeholder)
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: Only weak naming/routing signals point to AI;
+      however, no direct evidence confirms either category, so keep classification
+      provisional pending content review.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

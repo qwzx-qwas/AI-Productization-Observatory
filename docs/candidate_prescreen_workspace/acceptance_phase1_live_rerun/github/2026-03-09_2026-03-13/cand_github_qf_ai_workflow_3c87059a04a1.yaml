@@ -1,0 +1,168 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_3c87059a04a1
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2026-03-09_2026-03-13
+created_at: '2026-04-02T15:14:30.769918Z'
+updated_at: '2026-04-02T15:14:51.845339Z'
+source: github
+source_id: src_github
+source_window: 2026-03-09..2026-03-13
+time_field: pushed_at
+external_id: '781914762'
+canonical_url: https://github.com/julep-ai/julep
+title: julep
+summary: Deploy serverless AI workflows at scale. Firebase for AI agents
+raw_evidence_excerpt: "Deploy serverless AI workflows at scale. Firebase for AI agents\n\
+  \nDeutsch | Espa\xF1ol | fran\xE7ais | \u65E5\u672C\u8A9E | \uD55C\uAD6D\uC5B4 |\
+  \ Portugu\xEAs | \u0420\u0443\u0441\u0441\u043A\u0438\u0439 | \u4E2D\u6587\n\n\xB7\
+  \n\n---\n\n\u26A0\uFE0F Important Notice: Julep is Shutting Down\n\n**The Julep\
+  \ backend and dashboard will shut down on December 31, 2025.**\n\nJulep is open\
+  \ source and you can continue using it by self-hosting. See the Self-Hosting Guide\
+  \ for instructions.\n\n**We're now working on memory.store** \u2014 check it out!\n\
+  \n---\n\n\U0001F4D6 Table of Contents\n\n- Why Julep? - Self-Hosting - Documentation\
+  \ and Examples - Community and Contributions - License\n\nWhy Julep?\n\nJulep is\
+  \ an open-source platform for building **agent-based AI workflows** that go far\
+  \ beyond simple chains of prompts. It lets you orchestrate complex, multi-step processes\
+  \ with Large Language Models (LLMs) and tools **without managing any infrastructure**.\
+  \ With Julep, you can create AI agents that **remember past interactions** and handle\
+  \ sophisticated tasks with branching logic, loops, parallel execution, and integration\
+  \ of external APIs. In short, Julep acts like a *\u201CFirebase for AI agents,\u201D\
+  * providing a robust backend for intelligent workflows at scale.\n\n**Key Features\
+  \ and Benefits:**\n\n* **Persistent Memory:** Build AI agents that maintain context\
+  \ and long-term memory across conversations, so they can learn and improve over\
+  \ time. * **Modular Workflows:** Define complex tasks as modular steps (in YAML\
+  \ or code) with conditional logic, loops, and error handling. Julep\u2019s workflow\
+  \ engine manages multi-step processes and decisions automatically. * **Tool Orchestration:**\
+  \ Easily integrate external tools and APIs (web search, databases, third-party services,\
+  \ etc.) as part of your agent\u2019s toolkit. Julep\u2019s agents can invoke these\
+  \ tools to augment their capabilities, enabling Retrieval-Augmented Generation and\
+  \ more. * **Parallel & Scalable:** Run multiple operations in parallel for efficiency,\
+  \ and let Julep handle scaling and concurrency under the hood. The platform is serverless,\
+  \ so it seamlessly scales workflows without extra devops overhead. * **Reliable\
+  \ Execution:** Don\u2019t worry about glitches \u2013 Julep provides built-in retries,\
+  \ self-healing steps, and robust error handling to keep long-running tasks on track.\
+  \ You also get real-time monitoring and logging to track progress. * **Easy Integration:**\
+  \ Get started quickly with our SDKs for **Python** and **Node.js**, or use the Julep\
+  \ CLI for scripting. Julep\u2019s REST API is available if you want to integrate\
+  \ directly into other systems.\n\n*Focus on your AI logic and creativity, while\
+  \ Julep takes care of the heavy lifting!*\n\nSelf-Hosting\n\nSince the hosted version\
+  \ is shutting down, you can self-host Julep to continue using it.\n\n1. **Install\
+  \ the SDK:** Install the Julep SDK for your preferred language:\n\n* **Python:**\
+  \ `pip install julep` * **Node.js:** `npm install @julep/sdk` (or `yarn add @julep/sdk`)\n\
+  \n2. **Self-Host Julep:** Follow the Self-Hosting Guide to run Julep on your own\
+  \ infrastructure.\n\n3. **Define Your Agent:** Use the SDK or YAML to define an\
+  \ agent and its task workflow. For example, you can specify the agent's memory,\
+  \ tools it can use, and a step-by-step task logic. (See the **Quick Start** in our\
+  \ docs for a detailed walkthrough.)\n\n4. **Run a Workflow:** Invoke your agent\
+  \ through the SDK to execute the task. Julep will orchestrate the entire workflow\
+  \ and manage the state, tool calls, and LLM interactions for you.\n\nThat's it!\
+  \ For a complete tutorial, check out the **Quick Start Guide** in the documentation.\n\
+  \n> **Note:** Julep also offers a command-line interface (CLI) to manage workflows\
+  \ and agents. See the Julep CLI docs for details.\n\nDocumentation and Examples\n\
+  \nLooking to dive deeper? The **Julep Documentation** covers everything you need\
+  \ to master the platform \u2013 from core concepts (Agents, Tasks, Sessions, Tools)\
+  \ to advanced topics like agent memory management and architecture internals. Key\
+  \ resources include:\n\n* **Concept Guides:** Learn about Julep\u2019s architecture,\
+  \ how sessions and memory work, using tools, managing long conversations, and more.\
+  \ * **API & SDK Reference:** Find detailed reference for all SDK methods and REST\
+  \ API endpoints to integrate Julep into your applications. * **Tutorials:** Step-by-step\
+  \ guides for building real applications (e.g. a research agent that searches the\
+  \ web, a trip-planning assistant, or a chatbot with custom knowledge). * **Cookbook\
+  \ Recipes:** Explore the **Julep Cookbook** for ready-made example workflows and\
+  \ agents. These recipes demonstrate common patterns and use cases \u2013 a great\
+  \ way to learn by example. *Browse the `cookbooks/` directory in this repository\
+  \ for sample agent definitions.* * **IDE Integration:** Access Julep documentation\
+  \ directly in your IDE! Perfect for getting instant answers while coding.\n\nCommunity\
+  \ and Contributions\n\nJoin our growing community of developers and AI enthusiasts!\
+  \ Here are some ways to get involved and get support:\n\n* **Discord Community:**\
+  \ Have questions or ideas? Join the conversation on our official Discord server\
+  \ to chat with other users. * **GitHub Discussions and Issues:** Feel free to use\
+  \ GitHub for reporting bugs, requesting features, or discussing implementation details.\
+  \ Check out the **good first issues** if you'd like to contribute \u2013 we welcome\
+  \ contributions of all kinds. * **Contributing:** If you want to contribute code\
+  \ or improvements, please see our Contributing Guide for how to get started. We\
+  \ appreciate all PRs and feedback.\n\n*Pro tip: Star our repo to stay updated.*\n\
+  \nYour contributions, big or small, are valuable to us. Let's build something amazing\
+  \ together!\n\nOur Amazing Contributors:\n\nLicense\n\nJulep is offered under the\
+  \ **Apache 2.0 License**, which means it\u2019s free to use in your own projects.\
+  \ See the LICENSE file for details. Enjoy building with Julep!"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-09'
+    window_end: '2026-03-13'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-09..2026-03-13
+    external_id: '781914762'
+    canonical_url: https://github.com/julep-ai/julep
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: network_error
+  error_message: 'Relay request network error: [Errno -2] Name or service not known'
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  The repository presents a concrete AI product platform (agent workflow backend with
+  SDKs, API, CLI, and self-hosting path) with clear deployment/use instructions despite
+  hosted shutdown.
+human_reviewed_at: '2026-04-02T15:14:50.986963Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+  sample_slot_id: GS300-052
+  sample_id: cand_github_qf_ai_workflow_3c87059a04a1
+  blocking_items: []
+  last_attempted_at: '2026-04-02T15:14:51.845283Z'
