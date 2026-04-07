@@ -46,6 +46,89 @@ sources:
     time_field: pushed_at
     selection_rule_version: github_qsv1
     current_phase_runtime_note: current-phase live candidate discovery path
+    candidate_gate:
+      gate_version: github_candidate_gate_v1
+      min_summary_chars: 24
+      min_evidence_chars: 80
+      modality_signal_terms:
+        - agent
+        - agents
+        - assistant
+        - assistants
+        - copilot
+        - copilots
+        - chatbot
+        - chatbots
+        - rag
+        - workflow
+        - workflows
+      product_context_signal_terms:
+        - workspace
+        - workbench
+        - dashboard
+        - portal
+        - app
+        - application
+        - service
+        - platform
+        - saas
+        - team
+        - teams
+        - customer
+        - customers
+        - sales
+        - support
+        - finance
+        - legal
+        - hr
+        - marketing
+        - recruiting
+        - recruiter
+        - operations
+        - field service
+        - meeting
+        - meetings
+        - notes
+        - follow-up
+        - follow up
+        - intake
+        - dispatch
+        - inbox
+        - helpdesk
+        - ticket
+        - tickets
+        - case
+        - cases
+        - crm
+        - budget
+        - document
+        - documents
+        - knowledge
+      exclusion_signal_terms:
+        - sdk
+        - framework
+        - library
+        - boilerplate
+        - starter
+        - template
+        - plugin
+        - toolkit
+        - scaffold
+        - example
+        - tutorial
+        - course
+        - benchmark
+        - eval
+        - evaluation
+        - reference solution
+        - blueprint
+        - api client
+        - wrapper
+        - orchestration
+        - observability
+        - adapter
+        - demo
+        - sample app
     fixed_filters:
       - is:public
       - fork:false

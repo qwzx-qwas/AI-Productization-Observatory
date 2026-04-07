@@ -1,0 +1,243 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_4d86ff9135b0
+candidate_batch_id: candidate_batch_github_qf_rag_2025-06-01_2026-04-06
+created_at: '2026-04-06T15:13:40.234321Z'
+updated_at: '2026-04-06T15:15:35.106455Z'
+source: github
+source_id: src_github
+source_window: 2025-06-01..2026-04-06
+time_field: pushed_at
+external_id: '833809926'
+canonical_url: https://github.com/neuml/rag
+title: rag
+summary: "\U0001F680 Retrieval Augmented Generation (RAG) with txtai. Combine search\
+  \ and LLMs to find insights with your own data."
+raw_evidence_excerpt: "\U0001F680 Retrieval Augmented Generation (RAG) with txtai.\
+  \ Combine search and LLMs to find insights with your own data.\n\n\U0001F680 RAG\
+  \ with txtai\n\nThis project is a Retrieval Augmented Generation (RAG) Streamlit\
+  \ application backed by txtai.\n\nRetrieval Augmented Generation (RAG) helps generate\
+  \ factually correct content by limiting the context in which a LLM can generate\
+  \ answers. This is typically done with a search query that hydrates a prompt with\
+  \ a relevant context.\n\nThis application supports two categories of RAG.\n\n- Vector\
+  \ RAG: Context supplied via a vector search query - Graph RAG: Context supplied\
+  \ via a graph path traversal query\n\nQuickstart\n\nThe two primary ways to run\
+  \ this application are as a Docker container and with a Python virtual environment.\
+  \ Running through Docker is recommended, at least to get an idea of the application's\
+  \ capabilities.\n\nDocker\n\nneuml/rag is available on Docker Hub:\n\nThis can be\
+  \ run with the default settings as follows.\n\nPython virtual environment\n\nThe\
+  \ application can also be directly installed and run. It's recommended that this\
+  \ be run within a Python virtual environment.\n\nStart the application.\n\nDemo\n\
+  \nThe short video clip above gives a brief overview on this RAG system. It shows\
+  \ a basic vector RAG query. It also shows a Graph RAG query with uploaded data.\
+  \ The following sections cover more on these concepts.\n\nRAG\n\nTraditional RAG\
+  \ or vector RAG runs a vector search to find the top N most relevant matches to\
+  \ a user's input. Those matches are passed to an LLM and the answer is returned.\n\
+  \nThe query `Who created Linux?` runs a vector search for the best matching documents\
+  \ in the Embeddings index. Those matches are then placed into a LLM prompt. The\
+  \ LLM prompt is executed and the answer is returned.\n\nGraph RAG\n\nGraph RAG is\
+  \ a new method that uses knowledge or semantic graphs to generate a context. Instead\
+  \ of a vector search, graph path queries are run. Graph RAG in the context of this\
+  \ application supports the following methods to generate context.\n\n- Graph query\
+  \ with the `gq: ` prefix. This is a form of graph query expansion. It starts with\
+  \ a vector search to find the top n results. Those results are then expanded using\
+  \ a graph network stored alongside the vector database. - `gq: Tell me about Linux`\n\
+  \n- Graph path query. This query takes a list of concepts and finds the nodes that\
+  \ match closest to those concepts. A graph path traversal then runs to build a context\
+  \ of nodes related to those concepts. The result of this traversal is passed to\
+  \ the LLM as the context. - `linux -> macos -> microsoft windows`\n\n- Combination\
+  \ of both. This first runs a graph path query then runs a graph query only within\
+  \ the context of that path traversal. - `linux -> macos -> microsoft windows gq:\
+  \ Tell me about Linux`\n\nEvery Graph RAG query response will also show a corresponding\
+  \ graph to help understand how the query works. Each node in the graph is a section\
+  \ (paragraph). The node nodes are generated with a LLM prompt that applies a topic\
+  \ label at upload time.\n\nAdding data to the index\n\nRegardless of whether the\
+  \ RAG application was a new Embeddings index or an existing one, additional data\
+  \ can be added.\n\nData can be added as follows.\n\n| Method | | |:-------------------------------------------\
+  \ |:-------------------------------------- | | `# file path or URL` | !Upload File\
+  \ | | `# custom notes and text as a string here!` | !Upload Text |\n\nWhen a query\
+  \ begins with a `#` the URL or file is read by the RAG application and loaded into\
+  \ the index. This method also supports loading text directly into the index. For\
+  \ example `# txtai is an all-in-one AI framework` would create a new entry in the\
+  \ Embeddings database.\n\nConfiguration parameters\n\nThe RAG application has a\
+  \ number of environment variables that can be set to control how the application\
+  \ behaves.\n\n| Variable | Description | Default Value | |:----------- |:-------------------------------------------\
+  \ |:----------------------------------- | | TITLE | Main title of the application\
+  \ | \U0001F680 RAG with txtai | | EXAMPLES | List of queries separated by `;` |\
+  \ `Who created Linux?` | | | | `gq: Tell me about Linux` | | | | `linux -> macos\
+  \ -> microsoft windows` | | | | `linux -> macos -> microsoft windows gq: Tell me\
+  \ about Linux` | | LLM | Path to LLM | Qwen3-4B-Instruct-2507 | | EMBEDDINGS | Embeddings\
+  \ database path | neuml/txtai-wikipedia-slim | | MAXLENGTH | Maximum generation\
+  \ length | 2048 for topics, 4096 for RAG | | STRIPTHINK | Strip thinking text from\
+  \ responses | False | | CONTEXT | RAG context size | 10 | | TEXTBACKEND | Text extraction\
+  \ backend | available | | DATA | Optional directory to index data from | None |\
+  \ | PERSIST | Optional directory to save index updates to | None | | TOPICSBATCH\
+  \ | Optional batch size for LLM topic queries | None |\n\nIn the application, these\
+  \ settings can be shown by typing `:settings`.\n\nSee the following examples for\
+  \ setting this configuration with the Docker container. When running within a Python\
+  \ virtual environment, simply set these as environment variables.\n\nGPT-OSS\n\n\
+  GPT-OSS via Ollama\n\nGPT-5.1\n\nRun with another embeddings index\n\nStart with\
+  \ an empty embeddings index\n\nBuild an embeddings index with a local directory\
+  \ of files\n\nUse the Docling text extraction backend\n\nPersist embeddings and\
+  \ cache models\n\nSee the documentation for the LLM pipeline and Embeddings for\
+  \ more information.\n\nFurther Reading\n\n- Introducing RAG with txtai"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-06-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-06-01..2026-04-06
+    external_id: '833809926'
+    canonical_url: https://github.com/neuml/rag
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Repository appears to be a concrete AI application (Streamlit RAG app) with
+    deploy/run instructions and configurable runtime behavior. It is more than a concept
+    note, but human review should verify production maturity, maintenance activity,
+    and whether it meets inclusion thresholds beyond a demo/reference implementation.
+  decision_snapshot: Repository appears to be a concrete AI application (Streamlit
+    RAG app) with deploy/run instructions and configurable runtime behavior. It is
+    more than a concept note, but human review should verify production maturity,
+    maintenance activity, and whether it meets inclusion thresholds beyond a demo/reference
+    implementation.
+  scope_boundary_note: 'Treat this as an application-layer RAG productization example
+    (UI + retrieval + LLM orchestration + ingestion), not as a foundation model, benchmark
+    paper, or generic library-only artifact. Boundary risk: it may be a reference/demo
+    app rather than a production-ready product.'
+  source_evidence_summary:
+  - '"This project is a Retrieval Augmented Generation (RAG) Streamlit application
+    backed by txtai."'
+  - '"This application supports two categories of RAG. - Vector RAG ... - Graph RAG
+    ..."'
+  - '"The two primary ways to run this application are as a Docker container and with
+    a Python virtual environment."'
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: '"This project is a Retrieval Augmented Generation (RAG) Streamlit
+      application backed by txtai."'
+    evidence_source_field: candidate_input
+    why_it_matters: Directly identifies a runnable end-user application, supporting
+      productization relevance.
+  - anchor_rank: 2
+    evidence_text: '"This application supports two categories of RAG. - Vector RAG
+      ... - Graph RAG ..."'
+    evidence_source_field: candidate_input
+    why_it_matters: Shows distinct implemented capabilities beyond minimal boilerplate.
+  - anchor_rank: 3
+    evidence_text: '"The two primary ways to run this application are as a Docker
+      container and with a Python virtual environment."'
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates practical deployment pathways, useful for real-world
+      adoption.
+  - anchor_rank: 4
+    evidence_text: '"When a query begins with a `#` the URL or file is read by the
+      RAG application and loaded into the index."'
+    evidence_source_field: candidate_input
+    why_it_matters: Demonstrates data ingestion workflow, a key product feature for
+      applied RAG systems.
+  - anchor_rank: 5
+    evidence_text: '"The RAG application has a number of environment variables ...
+      LLM ... EMBEDDINGS ... CONTEXT ... PERSIST"'
+    evidence_source_field: candidate_input
+    why_it_matters: Configuration surface suggests operational tuning and extensibility,
+      not just a static demo.
+  review_focus_points:
+  - Confirm current maintenance/velocity in the source window (commits, releases,
+    issue responsiveness).
+  - Assess whether functionality is primarily tutorial/demo versus production-grade
+    (auth, observability, scaling, safety controls).
+  - Verify dependency on txtai ecosystem and whether repo adds distinct product value
+    vs duplicating upstream examples.
+  - Check licensing/commercial usability constraints for included models, Docker images,
+    and default components.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: 'Ready for quick human triage: reviewer should inspect commit history,
+      release tags, and code structure to decide if this is a productized reference
+      app worth pool inclusion or a framework demo to exclude.'
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository appears to be a concrete AI application (Streamlit RAG app)
+      with deploy/run instructions and configurable runtime behavior. It is more than
+      a concept note, but human review should verify production maturity, maintenance
+      activity, and whether it meets inclusion thresholds beyond a demo/reference
+      implementation.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI Application (RAG assistant / knowledge-grounded QA app)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI Application (RAG assistant / knowledge-grounded QA app)
+      rationale: Repository appears to be a concrete AI application (Streamlit RAG
+        app) with deploy/run instructions and configurable runtime behavior. It is
+        more than a concept note, but human review should verify production maturity,
+        maintenance activity, and whether it meets inclusion thresholds beyond a demo/reference
+        implementation.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: AI Infrastructure Library / Framework
+      rationale_for_similarity: AI Infrastructure Library / Framework
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Although it is backed by txtai, the repository
+      itself is positioned as a runnable Streamlit RAG application with UX, ingestion,
+      and query flows rather than a core reusable framework package.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: 'boundary with internal tooling unclear; Repository appears to
+  be a concrete AI application (Streamlit RAG app) with deploy/run instructions and
+  configurable runtime behavior. It is more than a concept note, but human review
+  should verify production maturity, maintenance activity, and whether it meets inclusion
+  thresholds beyond a demo/reference implementation. Treat this as an application-layer
+  RAG productization example (UI + retrieval + LLM orchestration + ingestion), not
+  as a foundation model, benchmark paper, or generic library-only artifact. Boundary
+  risk: it may be a reference/demo app rather than a production-ready product. evidence_strength=low
+  review_source=existing_llm_prescreen'
+human_reviewed_at: '2026-04-06T15:15:35.106429Z'
+staging_handoff:
+  status: blocked
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items:
+  - candidate first-pass review resolved to on_hold
+  last_attempted_at: '2026-04-06T15:15:35.106449Z'

@@ -55,6 +55,7 @@ last_frozen_version: github_spec_v4
 - 不得自行定义未评审的 query family、推进字段或 README 长度阈值
 - 不得把后续 query 扩展主方向改成 AI infra / framework / SDK / orchestration / eval / agent framework
 - 不得把中文 query terms 混入当前主 family
+- 可以在 query 命中结果进入 LLM 前增加更严格的 application/product 资格闸门，但该闸门只能用于剔除明显模板/框架/SDK/样板噪音，不能取代或改写 `03c` 已冻结的 query registry
 
 ## 1. Source Identity
 

@@ -98,6 +98,7 @@ make validate-gold-set
 make validate-candidate-workspace
 make run-candidate-prescreen SOURCE=github WINDOW=2026-03-01..2026-03-08 QUERY_SLICE=qf_agent
 make handoff-candidates-to-staging
+python3 -m src.cli fill-gold-set-staging-until-complete --source github --initial-window 2026-03-29..2026-04-02 --live-limit 1 --provider-request-interval-seconds 60 --retry-sleep-seconds 30
 make replay-window SOURCE=product_hunt WINDOW=2026-03-01..2026-03-08
 make build-mart-window
 ```
@@ -110,8 +111,9 @@ python3 -m src.cli install
 python3 -m src.cli typecheck
 python3 -m src.cli validate-gold-set
 python3 -m src.cli validate-candidate-workspace
-python3 -m src.cli run-candidate-prescreen --source github --window 2026-03-01..2026-03-08 --query-slice qf_agent
+python3 -m src.cli run-candidate-prescreen --source github --window 2026-03-01..2026-03-08 --query-slice qf_agent --provider-request-interval-seconds 60 --retry-sleep-seconds 30
 python3 -m src.cli handoff-candidates-to-staging
+python3 -m src.cli fill-gold-set-staging-until-complete --source github --initial-window 2026-03-29..2026-04-02 --live-limit 1 --provider-request-interval-seconds 60 --retry-sleep-seconds 30
 python3 -m src.cli replay-window --source product_hunt --window 2026-03-01..2026-03-08
 python3 -m src.cli build-mart-window
 ```
@@ -176,11 +178,17 @@ git rm --cached .env
 - 因此 `make install`、`make lint`、`make typecheck`、`make validate-schemas`、`make validate-configs`、`make test`、`make replay-window` 与 `make build-mart-window` 可以直接依赖仓库默认路径运行。
 - `make validate-env` 当前会复用实际运行时的配置解析逻辑，校验解析后的配置是否有效；只要默认路径存在，就不要求你必须先 `export APO_CONFIG_DIR`、`APO_SCHEMA_DIR` 才能通过。
 - 当前阶段若执行 `run-candidate-prescreen SOURCE=github ...`，仍需本地提供 `GITHUB_TOKEN` 与 `APO_LLM_RELAY_TOKEN`；Product Hunt fixture / replay 路径不要求 `PRODUCT_HUNT_TOKEN`。
+- `run-candidate-prescreen` 与 `fill-gold-set-staging-until-complete` 现在都支持 `--provider-request-interval-seconds` 与 `--retry-sleep-seconds`；若不显式传参，会分别回退到 `APO_PROVIDER_REQUEST_INTERVAL_SECONDS` 与 `APO_RETRY_SLEEP_SECONDS`，当前 operator default 是 `60s` 请求间隔和 `30s` 失败后等待。
 - `make validate-gold-set` 当前会校验 `gold_set/README.md` 的 `stub` / `implemented` 状态与 `gold_set/gold_set_300/` 目录内容是否一致；若要在真实样本落库后强制要求已实现状态，可运行 `make validate-gold-set REQUIRE_IMPLEMENTED=1`。
 - `make validate-candidate-workspace` 当前会校验 `docs/candidate_prescreen_workspace/` 下的候选预筛 YAML 是否仍在正式 gold set 目录之外、字段是否满足 schema、以及 `candidate_id` 是否重复。
 - `make validate-candidate-workspace` 还会校验 candidate prescreen review-card 约束，例如 evidence anchor 排序、rank-1 persona 回填、main/adjacent category 关系，以及 `human_review_notes` 是否遵循标准模板前缀。
 - `run-candidate-prescreen` 会把候选发现、LLM 预筛与中间文档落盘限制在 `docs/candidate_prescreen_workspace/`；它不会直接写 `gold_set/gold_set_300/`。
 - `handoff-candidates-to-staging` 只会转写 `human_review_status = approved_for_staging` 的候选到现有 `docs/gold_set_300_real_asset_staging/`，并保留空位与 `blocking_items` 等待后续双标 / adjudication。
+- `fill-gold-set-staging-until-complete` 会先读取磁盘上的 staging 真实进度，再循环执行 “消化已有 workspace -> 必要时 live prescreen -> API LLM 受约束一审 -> approved handoff -> validate + 审计日志” 直到 `docs/gold_set_300_real_asset_staging/` 达到 `300/300`。默认审计日志会追加到 `docs/candidate_prescreen_workspace/fill_gold_set_staging_audit.jsonl`。
+- `fill-gold-set-staging-until-complete` 默认不会写 `gold_set/gold_set_300/`；它只更新 `docs/candidate_prescreen_workspace/` 与 `docs/gold_set_300_real_asset_staging/`，formal gold set 仍保持 stub 边界。
+- `fill-gold-set-staging-until-complete` 若未传 `--query-slice`，会按 `candidate_prescreen_workflow.yaml` 中启用的 GitHub query slices 顺序循环；每一轮会重新从 staging YAML 读盘统计，而不是信任内存态或单次 LLM 回复。
+- live discovery / relay 请求之间会按配置执行固定节流等待；retryable technical failure 命中后，fill loop 会先写审计日志，再等待一个 backoff 窗口后继续下一轮。
+- 若 live discovery 命中 `schema_drift`、`json_schema_validation_failed`、`parse_failure` 或 `resume_state_invalid` 这类 terminal technical failure，`fill-gold-set-staging-until-complete` 会停止并返回 `status = blocked`，而不是无休止自旋。
 - 若你想覆盖默认路径，仍然可以先导出对应环境变量，例如：
 
 ```bash

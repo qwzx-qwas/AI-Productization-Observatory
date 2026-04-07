@@ -1,0 +1,162 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_ba753c9e7e54
+candidate_batch_id: candidate_batch_github_qf_agent_2025-06-01_2026-04-06
+created_at: '2026-04-06T12:11:02.724457Z'
+updated_at: '2026-04-06T13:07:49.109396Z'
+source: github
+source_id: src_github
+source_window: 2025-06-01..2026-04-06
+time_field: pushed_at
+external_id: '16347164'
+canonical_url: https://github.com/buildkite/agent
+title: agent
+summary: The Buildkite Agent is an open-source toolkit written in Go for securely
+  running build jobs on any device or network
+raw_evidence_excerpt: "The Buildkite Agent is an open-source toolkit written in Go\
+  \ for securely running build jobs on any device or network\n\nBuildkite Agent\n\n\
+  The buildkite-agent is a small, reliable, and cross-platform build runner that makes\
+  \ it easy to run automated builds on your own infrastructure. It\u2019s main responsibilities\
+  \ are polling buildkite.com for work, running build jobs, reporting back the status\
+  \ code and output log of the job, and uploading the job's artifacts.\n\nFull documentation\
+  \ is available at buildkite.com/docs/agent.\n\nDependencies\n\nThe agent is fairly\
+  \ portable and should run out of the box on most supported platforms without extras.\
+  \ On Linux hosts it requires `dbus`.\n\nInstalling\n\nThe agents page on Buildkite\
+  \ has personalised instructions, or you can refer to the Buildkite docs. Both cover\
+  \ installing the agent with Ubuntu (via apt), Debian (via apt), macOS (via homebrew),\
+  \ Windows and Linux.\n\nDocker\n\nWe also support and publish Docker Images for\
+  \ the following operating systems. Docker images are tagged using the agent SemVer\
+  \ components followed by the operating system.\n\nFor example, agent version 3.45.6\
+  \ is published as:\n\n- 3-ubuntu-20.04, tracks minor and bugfix updates in version\
+  \ 3 installed in Ubuntu 20.04 - 3.45-ubuntu-20.04, tracks bugfix updates in version\
+  \ 3.45 installed in Ubuntu 20.04 - 3.45.6-ubuntu-20.04, tracks the exact version\
+  \ installed in Ubuntu 20.04\n\nSupported operating systems\n\n- Alpine 3.18 - Ubuntu\
+  \ 20.04 LTS (x86_64), supported to end of standard support for 20.04 - Ubuntu 22.04\
+  \ LTS (x86_64), supported to end of standard support for 22.04 - Ubuntu 24.04 LTS\
+  \ (x86_64), supported to end of standard support for 24.04\n\nStarting\n\nTo start\
+  \ an agent all you need is your agent token, which you can find on your Agents page\
+  \ within Buildkite, and a build path. For example:\n\nTelemetry\n\nBy default, the\
+  \ agent sends some information back to the Buildkite mothership on what features\
+  \ are in use on that agent. Nothing sensitive or identifying is sent back to Buildkite,\
+  \ but if you want, you can disable this feature reporting by adding the `--no-feature-reporting`\
+  \ flag to your `buildkite-agent start` call. Features that we track can be found\
+  \ inside AgentStartConfig.Features.\n\nDevelopment\n\nThese instructions assume\
+  \ you are running a recent macOS, but could easily be adapted to Linux and Windows.\n\
+  \nGo Version and Dependency Management\n\nThe latest agent version is typically\
+  \ compiled with the highest-numbered stable release of Go. Previous Go versions\
+  \ may work, but are not guaranteed to. We are using newer language features such\
+  \ as generics, so compiling on Go < 1.18 will fail.\n\nWe're using Go Modules to\
+  \ manage our Go dependencies. Dependencies are not vendored into the repository\
+  \ unless necessary.\n\nThe Go module published by this repo (i.e. the one you could\
+  \ use by adding `import \"github.com/buildkite/agent/v3\"` to your code) is **not\
+  \ considered to be versioned using semantic versioning**. Breaking changes may be\
+  \ introduced in minor releases. Use the agent as a runtime depedency of your Go\
+  \ app at your own risk.\n\nPlatform Support\n\nWe provide support for security and\
+  \ bug fixes on the current major release only.\n\nOur architecture and operating\
+  \ system support is primarily limited by what Go itself supports.\n\nArchitecture\
+  \ Support\n\nWe offer support for the following machine architectures (inspired\
+  \ by the Rust language platform support guidance).\n\nTier 1, guaranteed to work\n\
+  \n- linux x86_64 - linux arm64 - windows x86_64\n\nTier 2, guaranteed to build\n\
+  \n- linux x86 - windows x86 - darwin x86_64 - darwin arm64\n\nTier 3, community\
+  \ supported\n\nWe release binaries for various other platforms, and it should be\
+  \ possible to build the agent anywhere supported by Go, but official support is\
+  \ not provided for these Tier 3 platforms.\n\nOperating System Support\n\nWe currently\
+  \ provide support for running the Buildkite Agent on the following operating systems.\
+  \ Future _minor_ releases may drop support for end-of-life operating systems (typically\
+  \ as they become unsupported by the latest stable Go release).\n\nThe agent binary\
+  \ is fairly portable and should run out of the box on most UNIX like systems, as\
+  \ well as Windows.\n\n- Ubuntu 20.04 and newer - Debian 8 and newer - Red Hat RHEL\
+  \ 7 and newer - CentOS - CentOS 7 - CentOS 8 - Amazon Linux 2 - macOS [^1] - 12\
+  \ (Monterey) - 13 (Ventura) - 14 (Sonoma) - 15 (Sequoia) - 26 (Tahoe) - Windows\
+  \ [^2] - 10 - 11 - Server 2016 - Server 2019 - Server 2022\n\n[^1]: See https://github.com/golang/go/issues/23011\
+  \ for macOS / Go support and Supported macOS Versions for the last supported version\
+  \ of the Buildkite Agent for versions of macOS prior to those listed above.\n\n\
+  [^2]: See Go's Windows support page for Go / Windows version compatibility and Supported\
+  \ Windows Versions for the last supported version of the Buildkite Agent for versions\
+  \ of Windows prior to those listed above.\n\nContributing\n\nSee ./CONTRIBUTING.md\n\
+  \nContributors\n\nMany thanks to our fine contributors! You're all amazing, and\
+  \ we greatly appreciate your input \u2764\uFE0F\n\nCopyright\n\nCopyright (c) 2014-2023\
+  \ Buildkite Pty Ltd. See LICENSE for details."
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-06-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-06-01..2026-04-06
+    external_id: '16347164'
+    canonical_url: https://github.com/buildkite/agent
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: Relay returned HTTP 500
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  Ready for quick human pass. Reviewer should only promote if they find concrete AI
+  capability evidence beyond this operational agent scope. Treat this as CI/CD infrastructure
+  tooling unless human review finds explicit AI capabilities (e.g., model inference,
+  AI-assisted build decisions, LLM integrations, or ML-driven optimization). Current
+  evidence supports secure job execution/orchestration, not an AI application/product.
+  evidence_strength=low review_source=fresh_llm_review
+human_reviewed_at: '2026-04-06T13:07:48.197787Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
+  sample_slot_id: GS300-067
+  sample_id: cand_github_qf_agent_ba753c9e7e54
+  blocking_items: []
+  last_attempted_at: '2026-04-06T13:07:49.109381Z'

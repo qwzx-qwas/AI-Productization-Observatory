@@ -1,0 +1,259 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_b31ede31a75a
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2026-03-31_2026-04-06
+created_at: '2026-04-06T09:26:00.181605Z'
+updated_at: '2026-04-06T11:28:59.840493Z'
+source: github
+source_id: src_github
+source_window: 2026-03-31..2026-04-06
+time_field: pushed_at
+external_id: '573661753'
+canonical_url: https://github.com/activepieces/activepieces
+title: activepieces
+summary: "AI Agents & MCPs & AI Workflow Automation \u2022 (~400 MCP servers for AI\
+  \ agents) \u2022 AI Automation / AI Agent with MCPs \u2022 AI Workflows & AI Agents\
+  \ \u2022 MCPs for AI Agents"
+raw_evidence_excerpt: "AI Agents & MCPs & AI Workflow Automation \u2022 (~400 MCP\
+  \ servers for AI agents) \u2022 AI Automation / AI Agent with MCPs \u2022 AI Workflows\
+  \ & AI Agents \u2022 MCPs for AI Agents\n\nAn open source replacement for Zapier\n\
+  \nDocumentation \U0001F32A\uFE0F Create a Piece \U0001F589 Deploy \U0001F525 Join\
+  \ Discord\n\n\U0001F92F Welcome to Activepieces\n\nAll-in-one AI automation designed\
+  \ to be **extensible** through a **type-safe** pieces framework written in **TypeScript**.\
+  \ When you contribute pieces to Activepieces they become automatically available\
+  \ as MCP servers that you can use with LLMs through Claude Desktop, Cursor or Windsurf!\n\
+  \n\U0001F525 Why Activepieces is Different:\n\n- **\U0001F496 Loved by Everyone**:\
+  \ Intuitive interface and great experience for both technical and non-technical\
+  \ users with a quick learning curve.\n\n- **\U0001F310 Open Ecosystem:** All pieces\
+  \ are open source and available on npmjs.com, **60% of the pieces are contributed\
+  \ by the community**.\n\n- **\U0001F6E0\uFE0F Largest open source MCP toolkit**:\
+  \ All our pieces (280+) are available as MCP that you can use with LLMs on Claude\
+  \ Desktop, Cursor or Windsurf.\n\n- **\U0001F6E0\uFE0F Pieces are written in Typescript**:\
+  \ Pieces are npm packages in TypeScript, offering full customization with the best\
+  \ developer experience, including **hot reloading** for **local** piece development\
+  \ on your machine. \U0001F60E\n\n- **\U0001F916 AI-First**: Native AI pieces let\
+  \ you experiment with various providers, or create your own agents using our AI\
+  \ SDK to help you build flows inside the builder.\n\n- **\U0001F3E2 Enterprise-Ready**:\
+  \ Developers set up the tools, and anyone in the organization can use the no-code\
+  \ builder. Full customization from branding to control.\n\n- **\U0001F512 Secure\
+  \ by Design**: Self-hosted and network-gapped for maximum security and control over\
+  \ your data.\n\n- **\U0001F9E0 Human in the Loop**: Delay execution for a period\
+  \ of time or require approval. These are just pieces built on top of the piece framework,\
+  \ and you can build many pieces like that. \U0001F3A8\n\n- **\U0001F4BB Human Input\
+  \ Interfaces**: Built-in support for human input triggers like \"Chat Interface\"\
+  \ \U0001F4AC and \"Form Interface\" \U0001F4DD\n\n\U0001F6E0\uFE0F Builder Features:\n\
+  \n- [x] Loops - [x] Branches - [x] Auto Retries - [x] HTTP - [x] Code with **NPM**\
+  \ - [x] ASK AI in Code Piece (Non technical user can clean data without knowing\
+  \ to code) - [x] Flows are fully versioned. - [x] Languages Translations - [x] Customizable\
+  \ Templates - [X] 200+ Pieces, check https://www.activepieces.com/pieces\n\n**We\
+  \ release updates frequently. Check the product changelog for the latest features.**\n\
+  \n\U0001F50C Create Your Own Piece\n\nActivepieces supports integrations with Google\
+  \ Sheets, OpenAI, Discord, RSS, and over 200 other services. Check out the full\
+  \ list of supported integrations, which is constantly expanding thanks to our community's\
+  \ contributions.\n\nAs an **open ecosystem**, all integration source code is accessible\
+  \ in our repository. These integrations are versioned and published directly to\
+  \ npmjs.com upon contribution.\n\nYou can easily create your own integration using\
+  \ our TypeScript framework. For detailed instructions, please refer to our Contributor's\
+  \ Guide.\n\nLicense\n\nActivepieces' Community Edition is released as open source\
+  \ under the MIT license and enterprise features are released under Commercial License\n\
+  \nRead more about the feature comparison here https://www.activepieces.com/pricing\n\
+  \n\U0001F4AD Join Our Community\n\n\U0001F310 Contributions\n\nWe welcome contributions\
+  \ big or small and in different directions. The best way to do this is to check\
+  \ this document and we are always up to talk on our Discord Server.\n\n\U0001F4DA\
+  \ Translations\n\nNot into coding but still interested in contributing? Come join\
+  \ our Discord and visit https://www.activepieces.com/docs/about/i18n for more information.\n\
+  \n\U0001F9AB Contributors\n\nShahedAlMashni \U0001F50C AbdulTheActivePiecer \U0001F6A7\
+  \ Khaled Mashaly \U0001F6A7 Mohammed Abu Aboud \U0001F6A7 Abdulrahman Zeineddin\
+  \ \U0001F50C ahmad jaber \U0001F50C ashrafsamhouri \U0001F50C\n\nMohammad Abu Musa\
+  \ \U0001F4C6 Mukewa Wekalao \U0001F50C Osama Abdallah Essa Haikal \U0001F50C Arman\
+  \ \U0001F6E1\uFE0F Oskar Kr\xE4mer \U0001F4D6 Thibaut Patel \U0001F914 \U0001F50C\
+  \ Applesaucesomer \U0001F914\n\ncrazyTweek \U0001F914 Muhammad Tabaza \U0001F50C\
+  \ Shay Punter \U0001F4D6 \U0001F50C abaza738 \U0001F50C Jona Boeddinghaus \U0001F50C\
+  \ fomojola \U0001F4BB Alexander Storozhevsky \U0001F4BB\n\nJ0LGER \U0001F6E1\uFE0F\
+  \ Patrick Veverka \U0001F41B Berk S\xFCmb\xFCl \U0001F4D6 Willian Guedes \U0001F50C\
+  \ Abdullah Ranginwala \U0001F4BB Dennis Tychsen \U0001F50C MyWay \U0001F50C\n\n\
+  Bibhuti Bhusan Panda \U0001F50C Tarun Samanta \U0001F41B Herman Kudria \U0001F50C\
+  \ [NULL] Dev \U0001F50C Jan Bebendorf \U0001F50C Nilesh \U0001F50C Vraj Gohil \U0001F50C\
+  \n\nBastienMe \U0001F50C Stephen Foskett \U0001F4D6 Nathan \U0001F4D6 Marcin Natanek\
+  \ \U0001F50C Mark van Bellen \U0001F50C Olivier Guzzi \U0001F50C Osama Zakarneh\
+  \ \U0001F50C\n\nphestvik \U0001F914 Rajdeep Pal \U0001F4D6 Camilo Usuga \U0001F50C\
+  \ Kishan Parmar \U0001F4D6 \U0001F50C BBND \U0001F50C Haseeb Rehman \U0001F50C Rita\
+  \ Gorokhod \U0001F50C\n\nF\xE1bio Ferreira \U0001F50C Florin Buffet \U0001F4D6 Drew\
+  \ Lewis \U0001F50C Benjamin Andr\xE9-Micolon \U0001F50C Denis Gurskij \U0001F50C\
+  \ Nefer Lopez \U0001F4D6 fardeenpanjwani-codeglo \U0001F4D6\n\nLandon Moir \U0001F50C\
+  \ Diego Nijboer \U0001F50C T\xE2n M\u1ED9t N\u1EAFng \U0001F50C Gavin Foley \U0001F4D6\
+  \ Dennis Trautwein \U0001F41B Andrew Rosenblatt \U0001F41B rika \U0001F50C\n\nCyril\
+  \ Selasi \U0001F50C Franck Nijimbere \U0001F50C Aleksandr Denisov \U0001F50C Reuben\
+  \ Swartz \U0001F4D6 joselupianez \U0001F50C Awais Manzoor \U0001F41B \U0001F4BB\
+  \ Andrei \U0001F41B\n\nderbbre \U0001F4D6 Maor Rozenfeld \U0001F4BB Michael Huynh\
+  \ \U0001F4D6 Filip Dun\u0111er \U0001F4BB Don Thorp \U0001F4D6 Joe Workman \U0001F50C\
+  \ Aykut Akg\xFCn \U0001F4BB\n\nYann Petitjean \U0001F50C \U0001F41B pfernandez98\
+  \ \U0001F50C Daniel O. \U0001F50C Meng-Yuan Huang \U0001F4D6 Leyla \U0001F41B i-nithin\
+  \ \U0001F50C la3rence \U0001F50C\n\nDennis Rongo \U0001F41B \U0001F50C Kartik Mehta\
+  \ \U0001F4D6 \U0001F4BB Zakher Masri \U0001F4D6 \U0001F4BB AbdullahBitar \U0001F50C\
+  \ Mario Meyer \U0001F50C Karim Khaleel \U0001F50C CPonchet \U0001F41B\n\nOlivier\
+  \ Sambourg \U0001F50C Ahmad(Ed) \U0001F50C leenmashni \U0001F50C M Abdul Rauf \U0001F4D6\
+  \ Vincent Barrier \U0001F50C John \U0001F4BB \U0001F50C Joost de Valk \U0001F50C\
+  \n\nMJ \U0001F50C ShravanShenoy \U0001F4BB Jon Kristian \U0001F4D6 cr0fters \U0001F41B\
+  \ Bibek Timsina \U0001F41B Viktor Sz\xE9pe \U0001F4BB Rendy Tan \U0001F4D6 \U0001F50C\
+  \n\nIslam Abdelfattah \U0001F41B Yoonjae Choi \U0001F4BB Javier HM \U0001F50C Mohamed\
+  \ Hassan \U0001F41B Christian Schab \U0001F50C Pratik Kinage \U0001F50C Abdelrahman\
+  \ Mostafa \U0001F50C\n\nHamza Zagha \U0001F41B Lasse Schuirmann \U0001F50C Cyril\
+  \ Duchon-Doris \U0001F50C Javiink \U0001F50C Harshit Harchani \U0001F50C MrAkber\
+  \ \U0001F4D6 marek-slavicek \U0001F50C\n\nhugh-codes \U0001F50C Alex Lewis \U0001F41B\
+  \ Yuanlin Lin \U0001F4D6 Ala Shiban \U0001F4D6 hamsh \U0001F4BB Anne Mariel Catapang\
+  \ \U0001F50C Carlo Gino Catapang \U0001F50C\n\nAditya Rathore \U0001F50C coderbob2\
+  \ \U0001F50C Ramy Gamal \U0001F50C Alexandru-Dan Pop \U0001F4BB Frank Micheal \U0001F50C\
+  \ Emmanuel Ferdman \U0001F4D6 Sany A \U0001F50C\n\nNiels Swimberghe \U0001F41B lostinbug\
+  \ \U0001F50C gushkool \U0001F50C Omar Sayed \U0001F50C rSnapkoOpenOps \U0001F41B\
+  \ ahronshor \U0001F50C Cezar \U0001F41B\n\nShawn Lim \U0001F50C Shawn Lim \U0001F50C\
+  \ pavloDeshko \U0001F41B abc \U0001F4BB manoj kumar d \U0001F50C Feli \U0001F50C\
+  \ Miguel \U0001F50C\n\nInstasent DEV \U0001F50C Matthieu Lombard \U0001F50C beyondlevi\
+  \ \U0001F50C Rafal Zawadzki \U0001F50C Simon Courtois \U0001F50C alegria-solutions\
+  \ \U0001F50C D-Rowe-FS \U0001F50C\n\n\u5F20\u665F\u6770 \U0001F50C Ashot \U0001F50C\
+  \ Amr Abu Aza \U0001F50C John Goodliff \U0001F50C Diwash Dev \U0001F50C Andr\xE9\
+  \ \U0001F50C Lou | Digital Marketing \U0001F50C\n\nMaarten Coppens \U0001F50C Mahmoud\
+  \ Hamed \U0001F50C Theo Dammaretz \U0001F50C s31w4n \U0001F4D6 \U0001F4BB \U0001F50C\
+  \ Abdul Rahman \U0001F50C Kent Smith \U0001F50C Arvind Ramesh \U0001F4BB\n\nvalentin-mourtialon\
+  \ \U0001F50C psgpsg16 \U0001F50C Mariia Shyn \U0001F50C Joshua Heslin \U0001F50C\
+  \ Ahmad \U0001F50C Daniel Poon \U0001F4BB K\xE9vin Yu \U0001F50C\n\n\uB178\uC601\
+  \uC740 \U0001F50C reemayoush \U0001F50C Brice \U0001F6E1\uFE0F Mg Wunna \U0001F50C\
+  \ Harikrishnan U M \U0001F41B perrine-pullicino-alan \U0001F50C Tiger Kaovilai \U0001F4BB\
+  \n\nCarefulGuru \U0001F50C Ankit Kumar Sharma \U0001F50C Naeem Hassan \U0001F50C\
+  \ Tim Petricola \U0001F4BB Amaan \U0001F50C Marc Llopart \U0001F50C David Anyatonwu\
+  \ \U0001F50C\n\nneo773 \U0001F50C Daniel-Klippa \U0001F4BB Krushna Kanta Rout \U0001F50C\
+  \ Nimesh Solanki \U0001F4BB Rimjhim Yadav \U0001F50C gs03 \U0001F50C Kunal Darekar\
+  \ \U0001F50C\n\nSanket6652 \U0001F50C Animesh \U0001F50C Derek Johnson \U0001F50C\
+  \ MamieFurax \U0001F50C Harsh Jadhav \U0001F4BB Lucas Lima de Souza \U0001F50C Benjamin\
+  \ Benouarka \U0001F4BB\n\nChris Wu \U0001F4BB Prasanna R \U0001F4BB AdminCraftHD\
+  \ \U0001F4BB Tanakit Phentun \U0001F4BB Sergey Bondar \U0001F50C Yusuf \xC7\u0131\
+  rak \U0001F50C Ezhil Shanmugham \U0001F50C\n\nAnderson \U0001F50C Daniel Callado\
+  \ \U0001F50C Ukaegbu Osinachi \U0001F50C Rishi Mondal \U0001F50C Cloudieunnie \U0001F4BB\
+  \ Balwant Singh \U0001F50C Ravi Kiran Vallamkonda \U0001F4BB\n\nOwuzo Joy \U0001F50C\
+  \ helenedurand-smet \U0001F4BB Nuvex \U0001F50C Apostol Eusebiu \U0001F50C Fortunate\
+  \ \U0001F50C Jaach\u1ECBmm\xE1 Anyat\u1ECDnw\u1EE5 \U0001F50C Luiz D. M. Mainart\
+  \ \U0001F50C\n\nuvenkatateja \U0001F50C SK Akram \U0001F4BB Kim SooHyun \U0001F6E1\
+  \uFE0F Sri malleswari \U0001F50C Anirban Singha \U0001F50C Dania Es \U0001F4BB M.Cafe\
+  \ \U0001F4BB\n\nvishakha1411 \U0001F4BB Nupur Agrawal \U0001F50C Shreedhar Pandey\
+  \ \U0001F50C Harmatta \U0001F50C Alvin Okoro \U0001F50C Angelebeats \U0001F4BB\n\
+  \nThis project follows the all-contributors specification. Contributions of any\
+  \ kind are welcome!"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-31'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-31..2026-04-06
+    external_id: '573661753'
+    canonical_url: https://github.com/activepieces/activepieces
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Repository presents a productized open-source automation platform with explicit
+    AI-agent and MCP positioning, not just a model demo or library.
+  decision_snapshot: Repository presents a productized open-source automation platform
+    with explicit AI-agent and MCP positioning, not just a model demo or library.
+  scope_boundary_note: 'In-scope: productized AI workflow automation platform, AI-agent
+    enablement via MCP, deployable/self-hosted operations tooling. Out-of-scope for
+    this pass: contributor list volume, broad community claims, and unverified quantitative
+    marketing numbers unless corroborated in docs/releases.'
+  source_evidence_summary:
+  - Repository presents a productized open-source automation platform with explicit
+    AI-agent and MCP positioning, not just a model demo or library.
+  - 'In-scope: productized AI workflow automation platform, AI-agent enablement via
+    MCP, deployable/self-hosted operations tooling. Out-of-scope for this pass: contributor
+    list volume, broad community claims, and unverified quantitative marketing numbers
+    unless corroborated in docs/releases.'
+  - Validate numerical claims consistency ("~400 MCP servers" vs "280+ pieces").
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: Repository presents a productized open-source automation platform
+      with explicit AI-agent and MCP positioning, not just a model demo or library.
+    evidence_source_field: candidate_input
+    why_it_matters: This fallback anchor preserves a minimally explainable first-pass
+      review card when the provider omits structured evidence anchors.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - Validate numerical claims consistency ("~400 MCP servers" vs "280+ pieces").
+  - Confirm current AI/MCP capabilities from code/docs, not only README marketing
+    copy.
+  - Check licensing boundary (MIT community edition vs commercial enterprise features)
+    for inclusion criteria.
+  - Verify recency/velocity in the stated source window (2026-03-31..2026-04-06).
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: 'High-value next step: quick triangulation across README, docs, and
+      recent release notes/commits to confirm implemented MCP/AI features and resolve
+      count/licensing ambiguities.'
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository presents a productized open-source automation platform with
+      explicit AI-agent and MCP positioning, not just a model demo or library.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI workflow automation & agent orchestration platform (MCP-enabled)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI workflow automation & agent orchestration platform (MCP-enabled)
+      rationale: Repository presents a productized open-source automation platform
+        with explicit AI-agent and MCP positioning, not just a model demo or library.
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_candidate:
+      category_code: General no-code iPaaS/integration automation tool
+      rationale_for_similarity: General no-code iPaaS/integration automation tool
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: Repository explicitly emphasizes AI-first capabilities,
+      native AI pieces, agent creation, and MCP server interoperability, which exceeds
+      a purely generic iPaaS profile.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: 'clear end-user product signal; evidence sufficient for staging;
+  manual override: user requested to promote all non-duplicate active candidates into
+  gold staging'
+human_reviewed_at: '2026-04-06T11:28:59.039591Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+  sample_slot_id: GS300-060
+  sample_id: cand_github_qf_ai_workflow_b31ede31a75a
+  blocking_items: []
+  last_attempted_at: '2026-04-06T11:28:59.840472Z'

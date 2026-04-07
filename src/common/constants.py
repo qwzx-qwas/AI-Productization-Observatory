@@ -49,6 +49,7 @@ TASK_TYPES = {
 }
 
 NON_RETRYABLE_ERROR_TYPES = {
+    "relay_preflight_failed",
     "schema_drift",
     "json_schema_validation_failed",
     "parse_failure",
@@ -62,6 +63,7 @@ RETRY_POLICY = {
     "network_error": {"retryable": True, "default_max_retries": 5},
     "dependency_unavailable": {"retryable": True, "default_max_retries": 3},
     "storage_write_failed": {"retryable": True, "default_max_retries": 3},
+    "relay_preflight_failed": {"retryable": False, "default_max_retries": 0},
     "schema_drift": {"retryable": False, "default_max_retries": 0},
     "json_schema_validation_failed": {"retryable": False, "default_max_retries": 0},
     "parse_failure": {"retryable": False, "default_max_retries": 0},

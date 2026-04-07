@@ -1,0 +1,264 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_4935f53a3168
+candidate_batch_id: candidate_batch_github_qf_agent_2025-06-01_2026-04-06
+created_at: '2026-04-06T14:49:33.594801Z'
+updated_at: '2026-04-06T14:50:03.703793Z'
+source: github
+source_id: src_github
+source_window: 2025-06-01..2026-04-06
+time_field: pushed_at
+external_id: '901554449'
+canonical_url: https://github.com/stakpak/agent
+title: agent
+summary: "Ship your code, on autopilot. An open source agent that lives on your machines\
+  \ 24/7 and keeps your apps running. \U0001F980"
+raw_evidence_excerpt: "Ship your code, on autopilot. An open source agent that lives\
+  \ on your machines 24/7 and keeps your apps running. \U0001F980\n\nShip your code,\
+  \ on autopilot.\n\nAn open source agent that lives on your machines 24/7, keeps\
+  \ your apps running, and only pings when it needs a human. All the upside of a PaaS,\
+  \ none of the lock-in.\n\n:star: Help us reach more developers and grow the Stakpak\
+  \ community. Star this repo!\n\nTry Stakpak Now\n\nFor more installation options...\n\
+  \nYou can't trust most AI agents with your DevOps. One mistake, and your production\
+  \ is toast. Stakpak is built different: - **Secret Substitution** - The LLM works\
+  \ with your credentials without ever seeing them - **Warden Guardrails** - Network-level\
+  \ policies block destructive operations before they run - **DevOps Playbooks Baked-in**\
+  \ - Curated library of DevOps knowledge in Stakpak Rulebooks\n\nGenerate infrastructure\
+  \ code, debug Kubernetes, configure CI/CD, automate deployments, without giving\
+  \ an LLM the keys to production.\n\n\U0001F916 Autopilot (24/7 Autonomous Runtime)\n\
+  \nUse the new lifecycle aliases for one-command setup/start/stop:\n\nYou can also\
+  \ use the canonical subcommands:\n\nAutopilot prerequisites\n\nBefore running autopilot\
+  \ on a remote VM:\n\n- Docker must be installed and accessible to the current user\
+  \ - 2GB+ RAM is recommended for reliable autopilot + sandbox runs - Swap is strongly\
+  \ recommended on small Linux hosts - Linux user services may require linger to survive\
+  \ logout\n\n`stakpak up` now runs preflight checks before startup, and `stakpak\
+  \ autopilot doctor` can be used as a deployment-readiness check before first boot:\n\
+  \nSee also: cli/README.md\n\nUnified configuration (profiles + autopilot wiring)\n\
+  \n- `~/.stakpak/config.toml`: profile behavior (`model`, `allowed_tools`, `auto_approve`,\
+  \ `system_prompt`, `max_turns`, provider credentials) - `~/.stakpak/autopilot.toml`:\
+  \ runtime wiring (`schedules`, `channels`, service/server settings)\n\nUse `profile\
+  \ = \"name\"` on schedules/channels and keep behavior inside profile definitions.\n\
+  \nFull setup guide: cli/README.md\n\n\U0001F512 Security Hardened\n\n- **Mutual\
+  \ TLS (mTLS)** - End-to-end encrypted MCP - **Dynamic Secret Substitution** - AI\
+  \ can read/write/compare secrets without seeing actual values - **Secure Password\
+  \ Generation** - Generate cryptographically secure passwords with configurable complexity\
+  \ - **Privacy Mode** - Redacts sensitive data like IP addresses and AWS account\
+  \ IDs\n\n\U0001F6E0\uFE0F Built for DevOps Work\n\n- **Asynchronous Task Management**\
+  \ - Run background commands like port forwarding and servers with proper tracking\
+  \ and cancellation - **Real-time Progress Streaming** - Long-running processes (Docker\
+  \ builds, deployments) stream progress updates in real-time - **Infrastructure Code\
+  \ Indexing** - Automatic local indexing and semantic search for Terraform, Kubernetes,\
+  \ Dockerfile, and GitHub Actions - **Documentation Research Agent** - Built-in web\
+  \ search for technical documentation, cloud providers, and development frameworks\
+  \ - **Subagents** - Specialized research agents for code exploration and sandboxed\
+  \ analysis with different tool access levels (enabled with `--enable-subagents`\
+  \ flag) - **Bulk Message Approval** - Approve multiple tool calls at once for efficient\
+  \ workflow execution - **Reversible File Operations** - All file modifications are\
+  \ automatically backed up with recovery capabilities\n\n\U0001F9E0 Adaptive Intelligence\n\
+  \n- **Rule Books** - Customize agent behavior with internal standard operating procedures,\
+  \ playbooks, and organizational policies - **Persistent Knowledge** - Agent learns\
+  \ from interactions, remembers incidents, resources, and environment details to\
+  \ adapt to your workflow\n\nInstallation\n\nAll installation options (Linux, MacOs,\
+  \ Windows)\n\nCheck the docs\n\nHomebrew (Linux & MacOS)\n\nTo update it you can\
+  \ use\n\nBinary Release\n\nDownload the latest binary for your platform from our\
+  \ GitHub Releases.\n\nDocker\n\nThis image includes the most popular CLI tools the\
+  \ agent might need for everyday DevOps tasks like docker, kubectl, aws cli, gcloud,\
+  \ azure cli, and more.\n\nUsage You can use your own Anthropic or OpenAI API keys,\
+  \ custom OpenAI compatible endpoint, or a Stakpak API key.\n\nOption A: Running\
+  \ with a Stakpak API Key (no card required)\n\nJust run `stakpak` and follow the\
+  \ instructions which will create a new API key for you.\n\n> Brave users may encounter\
+  \ issues with automatic redirects to localhost ports during the API key creation\
+  \ flow. If this happens to you: > > Copy your new key from the browser paste it\
+  \ in your terminal\n\nNon-interactive setup (CI/scripts)\n\nOr set the environment\
+  \ variable\n\nView current account (Optional)\n\nOption B: Running Without a Stakpak\
+  \ API Key\n\nNon-interactive setup (CI/scripts)\n\nManual configuration\n\nCreate\
+  \ `~/.stakpak/config.toml` with one of these configurations:\n\n**Option 1: Bring\
+  \ Your Own Keys (BYOK)** - Use your Anthropic/OpenAI API keys:\n\n**Option 2: Bring\
+  \ Your Own LLM** - Use a local OpenAI-compatible endpoint (e.g. Ollama, LM Studio):\n\
+  \n**Option 3: Mix Built-in and Custom Providers**:\n\nThen run with your profile:\n\
+  \nStart Stakpak Agent TUI\n\nStart Stakpak Agent TUI with Docker\n\nMCP Modes\n\n\
+  You can use Stakpak as a secure MCP proxy or expose its security-hardened tools\
+  \ through an MCP server.\n\nMCT Server Tools\n\n- **Local Mode (`--tool-mode local`)**\
+  \ - File operations and command execution only (no API key required) - **Remote\
+  \ Mode (`--tool-mode remote`)** - AI-powered code generation and search tools (API\
+  \ key required) - **Combined Mode (`--tool-mode combined`)** - Both local and remote\
+  \ tools (default, API key required)\n\nStart MCP Server\n\nAdditional flags for\
+  \ the MCP server:\n\n- `--disable-secret-redaction` \u2013 **not recommended**;\
+  \ prints secrets in plaintext to the console - `--privacy-mode` \u2013 redacts additional\
+  \ private data like IP addresses and AWS account IDs - `--enable-slack-tools` \u2013\
+  \ enables experimental Slack tools\n\nMCP Proxy Server\n\nStakpak also includes\
+  \ an MCP proxy server that can multiplex connections to multiple upstream MCP servers\
+  \ using a configuration file.\n\nAgent Client Protocol (ACP)\n\nACP is a standardized\
+  \ protocol that enables AI agents to integrate directly with code editors like Zed,\
+  \ providing seamless AI-powered development assistance.\n\nWhat ACP Offers with\
+  \ Stakpak\n\n- **Real-time AI Chat** - Natural language conversations with context-aware\
+  \ AI assistance - **Live Code Analysis** - AI can read, understand, and modify your\
+  \ codebase in real-time - **Tool Execution** - AI can run commands, edit files,\
+  \ search code, and perform development tasks - **Session Persistence** - Maintains\
+  \ conversation context across editor sessions - **Streaming Responses** - Real-time\
+  \ AI responses with live progress updates - **Agent Plans** - Visual task breakdown\
+  \ and progress tracking\n\nInstallation & Setup\n\n1. **Install Stakpak** (if not\
+  \ already installed) 2. **Configure Zed Editor** - Add to `~/.config/zed/settings.json`:\n\
+  \n3. **Start ACP Agent**:\n\n4. **Use in Zed** - Click Assistant (\u2728) \u2192\
+  \ `+` \u2192 `New stakpak thread`\n\nRulebook Management\n\nManage your standard\
+  \ operating procedures (SOPs), playbooks, and runbooks with Stakpak Rulebooks. Rulebooks\
+  \ customize agent behavior and provide context-specific guidance.\n\nRulebook Format\n\
+  \nRulebooks are markdown files with YAML frontmatter:\n\nShell Mode\n\nExecute system\
+  \ commands explicitly from the input bar.\n\nCheck the Shell Mode docs for details\
+  \ on background vs foreground execution.\n\nPlatform Testing\n\nWindows\n\nComprehensive\
+  \ testing report for Windows CLI functionality, including installation, configuration,\
+  \ and integration with WSL2 and Docker.\n\nView Windows Testing Report\n\n---\n\n\
+  \u2B50 Like what we're building?\n\nIf our Agent saves you time or makes your DevOps\
+  \ life easier, **consider giving us a star on GitHub \u2014 it really helps!**"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-06-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-06-01..2026-04-06
+    external_id: '901554449'
+    canonical_url: https://github.com/stakpak/agent
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Ready for quick human first-pass with emphasis on validating actual LLM
+    execution and autonomy claims from repository artifacts (code, configs, release
+    notes, issues).
+  decision_snapshot: Recommend hold because Ready for quick human first-pass with
+    emphasis on validating actual LLM execution and autonomy claims from repository
+    artifacts (code, configs, release notes, issues).
+  scope_boundary_note: In-scope as an AI application/product if the agent meaningfully
+    uses LLMs to perform DevOps tasks in production-like workflows. Out-of-scope if
+    it is primarily a thin CLI wrapper, MCP plumbing, or infrastructure tooling with
+    minimal AI dependence.
+  source_evidence_summary:
+  - "\u201CAn open source agent that lives on your machines 24/7, keeps your apps\
+    \ running, and only pings when it needs a human.\u201D"
+  - "\u201CGenerate infrastructure code, debug Kubernetes, configure CI/CD, automate\
+    \ deployments, without giving an LLM the keys to production.\u201D"
+  - "\u201CSecret Substitution - The LLM works with your credentials without ever\
+    \ seeing them\u201D and \u201CWarden Guardrails - Network-level policies block\
+    \ destructive operations before they run\u201D"
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: "\u201CAn open source agent that lives on your machines 24/7, keeps\
+      \ your apps running, and only pings when it needs a human.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Direct claim of autonomous agent behavior and continuous operations.
+  - anchor_rank: 2
+    evidence_text: "\u201CGenerate infrastructure code, debug Kubernetes, configure\
+      \ CI/CD, automate deployments, without giving an LLM the keys to production.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Defines AI-assisted DevOps use cases and safety positioning.
+  - anchor_rank: 3
+    evidence_text: "\u201CSecret Substitution - The LLM works with your credentials\
+      \ without ever seeing them\u201D and \u201CWarden Guardrails - Network-level\
+      \ policies block destructive operations before they run\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates productized safety/guardrail layer, not just generic
+      chat tooling.
+  - anchor_rank: 4
+    evidence_text: "\u201CYou can use your own Anthropic or OpenAI API keys, custom\
+      \ OpenAI compatible endpoint, or a Stakpak API key.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Confirms explicit LLM-provider integration and configurable AI
+      backend.
+  - anchor_rank: 5
+    evidence_text: "\u201CMCP Modes\u2026 Local Mode\u2026 Remote Mode\u2026 Combined\
+      \ Mode\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Suggests dual architecture where some functionality may be non-AI/local;
+      important for boundary verification.
+  review_focus_points:
+  - Verify implemented AI pathways in code (provider adapters, inference calls, agent
+    loop) vs README claims.
+  - "Check whether autonomous \u201Cautopilot\u201D is production-grade functionality\
+    \ or early/experimental."
+  - Assess security features (secret substitution, guardrails, privacy mode) for concrete
+    implementation depth.
+  - 'Confirm product maturity signals: releases, issue velocity, docs completeness,
+    install reliability across platforms.'
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: Ready for quick human first-pass with emphasis on validating actual
+      LLM execution and autonomy claims from repository artifacts (code, configs,
+      release notes, issues).
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Ready for quick human first-pass with emphasis on validating actual
+      LLM execution and autonomy claims from repository artifacts (code, configs,
+      release notes, issues).
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI DevOps Automation Agent
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI DevOps Automation Agent
+      rationale: Ready for quick human first-pass with emphasis on validating actual
+        LLM execution and autonomy claims from repository artifacts (code, configs,
+        release notes, issues).
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: General AI Coding Assistant
+      rationale_for_similarity: General AI Coding Assistant
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: The strongest evidence emphasizes always-on
+      ops automation, deployment/runtime management, and production safety controls
+      rather than primarily IDE-centric code completion/chat.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear; Ready for quick human
+  first-pass with emphasis on validating actual LLM execution and autonomy claims
+  from repository artifacts (code, configs, release notes, issues). In-scope as an
+  AI application/product if the agent meaningfully uses LLMs to perform DevOps tasks
+  in production-like workflows. Out-of-scope if it is primarily a thin CLI wrapper,
+  MCP plumbing, or infrastructure tooling with minimal AI dependence. evidence_strength=low
+  review_source=existing_llm_prescreen
+human_reviewed_at: '2026-04-06T14:50:03.703768Z'
+staging_handoff:
+  status: blocked
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items:
+  - candidate first-pass review resolved to on_hold
+  last_attempted_at: '2026-04-06T14:50:03.703787Z'

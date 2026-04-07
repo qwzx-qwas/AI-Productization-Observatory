@@ -1,0 +1,185 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_f77d8dad92a2
+candidate_batch_id: candidate_batch_github_qf_chatbot_2026-03-22_2026-03-29
+created_at: '2026-04-02T11:06:00.393228Z'
+updated_at: '2026-04-07T09:37:37.595099Z'
+source: github
+source_id: src_github
+source_window: 2026-03-22..2026-03-29
+time_field: pushed_at
+external_id: '24561828'
+canonical_url: https://github.com/gunthercox/ChatterBot
+title: ChatterBot
+summary: ChatterBot is a machine learning, conversational dialog engine for creating
+  chat bots
+raw_evidence_excerpt: 'ChatterBot is a machine learning, conversational dialog engine
+  for creating chat bots
+
+
+  ChatterBot
+
+
+  ChatterBot is a machine-learning based conversational dialog engine built in Python
+  which makes it possible to generate responses based on collections of known conversations.
+  The language independent design of ChatterBot allows it to be trained to speak any
+  language.
+
+
+  An example of typical input would be something like this:
+
+
+  > **user:** Good morning! How are you doing? > **bot:** I am doing very well, thank
+  you for asking. > **user:** You''re welcome. > **bot:** Do you like hats?
+
+
+  How it works
+
+
+  An untrained instance of ChatterBot starts off with no knowledge of how to communicate.
+  Each time a user enters a statement, the library saves the text that they entered
+  and the text that the statement was in response to. As ChatterBot receives more
+  input the number of responses that it can reply to, and the accuracy of each response
+  in relation to the input statement increases. The program selects the closest matching
+  response by searching for the closest matching known statement that matches the
+  input, it then returns the most likely response to that statement based on how frequently
+  each response is issued by the people the bot communicates with.
+
+
+  Documentation
+
+
+  View the documentation for ChatterBot.
+
+
+  Installation
+
+
+  This package can be installed from PyPi by running:
+
+
+  Basic Usage
+
+
+  Training data
+
+
+  ChatterBot comes with a data utility module that can be used to train chat bots.
+  At the moment there is training data for over a dozen languages in this module.
+  Contributions of additional training data or training data in other languages would
+  be greatly appreciated. Take a look at the data files in the chatterbot-corpus package
+  if you are interested in contributing.
+
+
+  **Corpus contributions are welcome! Please make a pull request.**
+
+
+  Examples
+
+
+  For examples, see the examples section of the documentation.
+
+
+  History
+
+
+  See release notes for changes https://github.com/gunthercox/ChatterBot/releases
+
+
+  Contributing
+
+
+  Contributions are welcomed, to help ensure a smooth process please start with the
+  contributing guidelines in our documentation:
+
+
+  Sponsors
+
+
+  ChatterBot is sponsored by:
+
+
+  License
+
+
+  ChatterBot is licensed under the BSD 3-clause license.'
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-22'
+    window_end: '2026-03-29'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-22..2026-03-29
+    external_id: '24561828'
+    canonical_url: https://github.com/gunthercox/ChatterBot
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: schema_drift
+  error_message: recommend_candidate_pool must be false when recommended_action is
+    reject or hold
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: 'clear end-user product signal; evidence sufficient for staging;
+  manual override: user requested to promote all non-duplicate active candidates into
+  gold staging'
+human_reviewed_at: '2026-04-06T11:28:55.477956Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+  sample_slot_id: GS300-056
+  sample_id: cand_github_qf_chatbot_f77d8dad92a2
+  blocking_items: []
+  last_attempted_at: '2026-04-07T09:37:37.595081Z'

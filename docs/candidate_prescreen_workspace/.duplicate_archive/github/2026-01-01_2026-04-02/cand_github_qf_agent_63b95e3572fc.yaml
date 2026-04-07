@@ -1,0 +1,220 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_63b95e3572fc
+candidate_batch_id: candidate_batch_github_qf_agent_2026-01-01_2026-04-02
+created_at: '2026-04-03T10:00:10.382338Z'
+updated_at: '2026-04-03T10:08:00.860129Z'
+source: github
+source_id: src_github
+source_window: 2026-01-01..2026-04-02
+time_field: pushed_at
+external_id: '224021526'
+canonical_url: https://github.com/grafana/agent
+title: agent
+summary: Vendor-neutral programmable observability pipelines.
+raw_evidence_excerpt: 'Vendor-neutral programmable observability pipelines.
+
+
+  > Grafana Agent has reached End-of-Life (EOL) on November 1, 2025. > We recommend
+  migrating to the [Grafana Alloy] > collector, which is built on the foundation of
+  Grafana Agent Flow. > > For more information, read our blog posts about Alloy and
+  how to easily > migrate from Agent to Alloy: > > * Alloy announcement blog post
+  > * Alloy FAQ > * Migrate to Alloy > > [Grafana Alloy]: https://github.com/grafana/alloy
+
+
+  Grafana Agent is an OpenTelemetry Collector distribution with configuration inspired
+  by [Terraform][]. It is designed to be flexible, performant, and compatible with
+  multiple ecosystems such as Prometheus and OpenTelemetry.
+
+
+  Grafana Agent is based around **components**. Components are wired together to form
+  programmable observability **pipelines** for telemetry collection, processing, and
+  delivery.
+
+
+  > **NOTE**: This page focuses mainly on "[Flow mode][Grafana Agent Flow]," the >
+  Terraform-inspired revision of Grafana Agent.
+
+
+  Grafana Agent can collect, transform, and send data to:
+
+
+  * The [Prometheus][] ecosystem * The [OpenTelemetry][] ecosystem * The Grafana open
+  source ecosystem ([Loki][], [Grafana][], [Tempo][], [Mimir][], [Pyroscope][])
+
+
+  [Terraform]: https://terraform.io [Grafana Agent Flow]: https://grafana.com/docs/agent/latest/flow/
+  [Prometheus]: https://prometheus.io [OpenTelemetry]: https://opentelemetry.io [Loki]:
+  https://github.com/grafana/loki [Grafana]: https://github.com/grafana/grafana [Tempo]:
+  https://github.com/grafana/tempo [Mimir]: https://github.com/grafana/mimir [Pyroscope]:
+  https://github.com/grafana/pyroscope
+
+
+  Why use Grafana Agent?
+
+
+  * **Vendor-neutral**: Fully compatible with the Prometheus, OpenTelemetry, and Grafana
+  open source ecosystems. * **Every signal**: Collect telemetry data for metrics,
+  logs, traces, and continuous profiles. * **Scalable**: Deploy on any number of machines
+  to collect millions of active series and terabytes of logs. * **Battle-tested**:
+  Grafana Agent extends the existing battle-tested code from the Prometheus and OpenTelemetry
+  Collector projects. * **Powerful**: Write programmable pipelines with ease, and
+  debug them using a [built-in UI][UI]. * **Batteries included**: Integrate with systems
+  like MySQL, Kubernetes, and Apache to get telemetry that''s immediately useful.
+
+
+  [UI]: https://grafana.com/docs/agent/latest/flow/monitoring/debugging/#grafana-agent-flow-ui
+
+
+  Getting started
+
+
+  Check out our [documentation][] to see:
+
+
+  * [Installation instructions][] for Grafana Agent Flow * Details about [Grafana
+  Agent Flow][] * Steps for [Getting started][] with Grafana Agent Flow * The list
+  of Grafana Agent Flow [Components][]
+
+
+  [documentation]: https://grafana.com/docs/agent/latest/ [Installation instructions]:
+  https://grafana.com/docs/agent/latest/flow/setup/install/ [Grafana Agent Flow]:
+  https://grafana.com/docs/agent/latest/flow/ [Getting started]: https://grafana.com/docs/agent/latest/flow/getting_started/
+  [Components]: https://grafana.com/docs/agent/latest/flow/reference/components/
+
+
+  Example
+
+
+  We maintain an example [Docker Compose environment][] that can be used to launch
+  dependencies to play with Grafana Agent locally.
+
+
+  [Docker Compose environment]: ./example/docker-compose/
+
+
+  Release cadence
+
+
+  A new minor release is planned every six weeks.
+
+
+  The release cadence is best-effort: if necessary, releases may be performed outside
+  of this cadence, or a scheduled release date can be moved forwards or backwards.
+
+
+  Minor releases published on cadence include updating dependencies for upstream OpenTelemetry
+  Collector code if new versions are available. Minor releases published outside of
+  the release cadence may not include these dependency updates.
+
+
+  Patch and security releases may be created at any time.
+
+
+  Community
+
+
+  To engage with the Grafana Agent community:
+
+
+  * Chat with us on our community Slack channel. To invite yourself to the Grafana
+  Slack, visit and join the `#agent` channel. * Ask questions on the [Discussions
+  page][]. * [File an issue][] for bugs, issues, and feature suggestions. * Attend
+  the monthly [community call][].
+
+
+  [Discussions page]: https://github.com/grafana/agent/discussions [File an issue]:
+  https://github.com/grafana/agent/issues/new [community call]: https://docs.google.com/document/d/1TqaZD1JPfNadZ4V81OCBPCG_TksDYGlNlGdMnTWUSpo
+
+
+  Contribute
+
+
+  Refer to our [contributors guide][] to learn how to contribute.
+
+
+  [contributors guide]: ./docs/developer/contributing.md'
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-01-01'
+    window_end: '2026-04-02'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-01-01..2026-04-02
+    external_id: '224021526'
+    canonical_url: https://github.com/grafana/agent
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: network_error
+  error_message: 'Relay network error: [Errno -2] Name or service not known'
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear; Human reviewer can likely
+  make a quick scope decision without deep reread; only policy checks needed (AI-adjacent
+  infra inclusion and EOL handling). Treat this as infrastructure tooling for metrics/logs/traces/profiles
+  collection and routing. It may support AI systems operationally, but evidence does
+  not show AI-native capabilities (model serving, inference, LLM orchestration, agent
+  runtime, or AI product UX). EOL status (Nov 1, 2025) further narrows relevance to
+  migration/legacy contexts. evidence_strength=low review_source=fresh_llm_review
+human_reviewed_at: '2026-04-03T10:08:00.860099Z'
+staging_handoff:
+  status: blocked
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items:
+  - candidate first-pass review resolved to on_hold
+  last_attempted_at: '2026-04-03T10:08:00.860123Z'

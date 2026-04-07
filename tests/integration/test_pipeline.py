@@ -7,18 +7,53 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
+from src.candidate_prescreen.fill_controller import LiveDiscoveryCursor, fill_gold_set_staging_until_complete, run_one_fill_iteration
 from src.candidate_prescreen.workflow import (
     handoff_candidates_to_staging,
     run_candidate_prescreen,
     validate_candidate_workspace,
 )
-from src.common.errors import ProcessingError
+from src.common.errors import ContractValidationError, ProcessingError
 from src.common.files import dump_yaml, load_yaml, utc_now_iso
 from src.runtime.raw_store.file_store import FileRawStore
 from src.runtime.replay import replay_source_window
 from src.runtime.tasks import FileTaskStore
 from src.cli import validate_gold_set
 from tests.helpers import REPO_ROOT, temp_config
+
+
+def _prefill_remaining_slots(staging_dir: Path, *, keep_empty_slots: int) -> None:
+    template_sample = None
+    template_candidate_ref = None
+    template_source_ref = None
+    empty_counter = 0
+    synthetic_counter = 0
+    for staging_path in sorted(staging_dir.glob("gold_set_300_staging_batch_*.yaml")):
+        payload = load_yaml(staging_path)
+        samples = payload["samples"]
+        for sample in samples:
+            if sample.get("sample_id") and template_sample is None:
+                template_sample = dict(sample)
+                template_candidate_ref = dict(sample["candidate_prescreen_ref"])
+                template_source_ref = dict(sample["source_record_refs"][0])
+            if sample.get("sample_id"):
+                continue
+            empty_counter += 1
+            if empty_counter <= keep_empty_slots:
+                continue
+            synthetic_counter += 1
+            slot_index = sample["slot_index"]
+            sample_slot_id = sample["sample_slot_id"]
+            sample.update(dict(template_sample))
+            sample["slot_index"] = slot_index
+            sample["sample_slot_id"] = sample_slot_id
+            synthetic_sample_id = f"prefill_candidate_{synthetic_counter:03d}"
+            sample["sample_id"] = synthetic_sample_id
+            sample["candidate_prescreen_ref"] = dict(template_candidate_ref)
+            sample["candidate_prescreen_ref"]["candidate_id"] = synthetic_sample_id
+            sample["source_record_refs"] = [dict(template_source_ref)]
+            sample["source_record_refs"][0]["candidate_id"] = synthetic_sample_id
+        dump_yaml(staging_path, payload)
 
 
 class FixturePipelineIntegrationTests(unittest.TestCase):
@@ -238,6 +273,144 @@ class FixturePipelineIntegrationTests(unittest.TestCase):
                 self.assertEqual(staged["review_closed"], None)
                 self.assertFalse(staged["local_project_user_annotation"]["provided"])
                 self.assertEqual(staged["candidate_prescreen_ref"]["candidate_id"], record["candidate_id"])
+
+                status, sample_count = validate_gold_set(config)
+                self.assertEqual(status, "stub")
+                self.assertEqual(sample_count, 0)
+
+    def test_run_one_fill_iteration_consumes_existing_workspace_candidate_first(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            candidate_workspace = root / "candidate_workspace"
+            staging_dir = root / "staging"
+            shutil.copytree(REPO_ROOT / "docs" / "gold_set_300_real_asset_staging", staging_dir)
+
+            with temp_config(candidate_workspace_dir=candidate_workspace, gold_set_staging_dir=staging_dir) as config:
+                paths = run_candidate_prescreen(
+                    config,
+                    source_code="github",
+                    window="2026-03-01..2026-03-08",
+                    query_slice_id="qf_agent",
+                    limit=1,
+                    discovery_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "github_qf_agent_window.json",
+                    llm_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "llm_prescreen_responses.json",
+                )
+
+                workflow_config = load_yaml(REPO_ROOT / "configs" / "candidate_prescreen_workflow.yaml")
+                cursor = LiveDiscoveryCursor.from_workflow(
+                    workflow_config,
+                    source_code="github",
+                    initial_window="2026-03-01..2026-03-08",
+                    query_slice_id="qf_agent",
+                )
+                summary = run_one_fill_iteration(
+                    config,
+                    cursor=cursor,
+                    live_limit=1,
+                    llm_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "llm_prescreen_responses.json",
+                )
+
+                self.assertIsNotNone(summary["handoff"])
+                self.assertEqual(summary["handoff"]["status"], "written")
+                self.assertIsNone(summary["live_discovery"])
+                candidate_record = load_yaml(paths[0])
+                self.assertEqual(candidate_record["human_review_status"], "approved_for_staging")
+                self.assertEqual(candidate_record["staging_handoff"]["status"], "written")
+                self.assertEqual(summary["progress_after"]["total_filled"], summary["progress_before"]["total_filled"] + 1)
+
+    def test_run_one_fill_iteration_keeps_going_after_review_contract_failure(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            candidate_workspace = root / "candidate_workspace"
+            staging_dir = root / "staging"
+            shutil.copytree(REPO_ROOT / "docs" / "gold_set_300_real_asset_staging", staging_dir)
+
+            with temp_config(candidate_workspace_dir=candidate_workspace, gold_set_staging_dir=staging_dir) as config:
+                paths = run_candidate_prescreen(
+                    config,
+                    source_code="github",
+                    window="2026-03-01..2026-03-08",
+                    query_slice_id="qf_agent",
+                    limit=1,
+                    discovery_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "github_qf_agent_window.json",
+                    llm_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "llm_prescreen_responses.json",
+                )
+                existing_record = load_yaml(paths[0])
+                existing_record["llm_prescreen"]["status"] = "failed"
+                existing_record["llm_prescreen"]["error_type"] = "schema_drift"
+                existing_record["llm_prescreen"]["error_message"] = "preexisting review contract failure"
+                dump_yaml(paths[0], existing_record)
+
+                workflow_config = load_yaml(REPO_ROOT / "configs" / "candidate_prescreen_workflow.yaml")
+                cursor = LiveDiscoveryCursor.from_workflow(
+                    workflow_config,
+                    source_code="github",
+                    initial_window="2026-03-01..2026-03-08",
+                    query_slice_id="qf_agent",
+                )
+                live_review_result = {
+                    "review_source": "fresh_llm_review",
+                    "suggested_review_status": "approved_for_staging",
+                    "note_template_key": "approved",
+                    "human_review_notes": None,
+                    "reason": "fixture live candidate is acceptable for staging",
+                    "boundary_notes": None,
+                    "evidence_sufficiency": "high",
+                    "whitelist_reason": None,
+                }
+                with patch(
+                    "src.candidate_prescreen.fill_controller.run_candidate_prescreen",
+                    wraps=run_candidate_prescreen,
+                ) as run_prescreen_mock, patch(
+                    "src.candidate_prescreen.fill_controller.review_candidate_with_llm",
+                    side_effect=[
+                        ContractValidationError("recommend_candidate_pool must be false when recommended_action is reject or hold"),
+                        live_review_result,
+                    ],
+                ):
+                    summary = run_one_fill_iteration(
+                        config,
+                        cursor=cursor,
+                        live_limit=1,
+                        discovery_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "github_qf_agent_window.json",
+                        llm_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "llm_prescreen_responses.json",
+                    )
+
+                self.assertIsNotNone(summary["live_discovery"])
+                self.assertIsNotNone(summary["handoff"])
+                self.assertEqual(summary["handoff"]["status"], "written")
+                self.assertEqual(summary["progress_after"]["total_filled"], summary["progress_before"]["total_filled"] + 1)
+                self.assertTrue(run_prescreen_mock.called)
+                failure_result = next(
+                    result for result in summary["review_results"] if result["review_source"] == "llm_review_processing_error"
+                )
+                self.assertEqual(failure_result["review_status"], "pending_first_pass")
+
+    def test_fill_gold_set_staging_until_complete_stops_at_300_without_writing_formal_gold_set(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            candidate_workspace = root / "candidate_workspace"
+            staging_dir = root / "staging"
+            shutil.copytree(REPO_ROOT / "docs" / "gold_set_300_real_asset_staging", staging_dir)
+            _prefill_remaining_slots(staging_dir, keep_empty_slots=1)
+
+            with temp_config(candidate_workspace_dir=candidate_workspace, gold_set_staging_dir=staging_dir) as config:
+                summary = fill_gold_set_staging_until_complete(
+                    config,
+                    source_code="product_hunt",
+                    initial_window="2026-03-01..2026-03-08",
+                    query_slice_id="ph_published_launches",
+                    live_limit=1,
+                    discovery_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "product_hunt_window.json",
+                    llm_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "llm_prescreen_responses.json",
+                )
+
+                self.assertEqual(summary["status"], "completed")
+                self.assertEqual(summary["total_filled"], 300)
+                self.assertTrue(Path(summary["audit_log_path"]).exists())
+                audit_log_text = Path(summary["audit_log_path"]).read_text(encoding="utf-8")
+                self.assertIn("\"event\": \"initialize\"", audit_log_text)
+                self.assertIn("\"event\": \"completed\"", audit_log_text)
 
                 status, sample_count = validate_gold_set(config)
                 self.assertEqual(status, "stub")

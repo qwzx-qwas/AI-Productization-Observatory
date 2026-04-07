@@ -1,0 +1,188 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_108fc741a81d
+candidate_batch_id: candidate_batch_github_qf_copilot_2026-01-01_2026-04-06
+created_at: '2026-04-06T11:50:14.716997Z'
+updated_at: '2026-04-06T11:50:44.452168Z'
+source: github
+source_id: src_github
+source_window: 2026-01-01..2026-04-06
+time_field: pushed_at
+external_id: '664836912'
+canonical_url: https://github.com/socfortress/CoPilot
+title: CoPilot
+summary: SOCFortress CoPilot
+raw_evidence_excerpt: "SOCFortress CoPilot\n\nSOCFortress CoPilot focuses on providing\
+  \ a single pane of glass for all your security operations needs. Simplify your open\
+  \ source security stack with a single platform focused on making open source security\
+  \ tools easier to use and more accessible.\n\nTable of contents\n\n- Getting Started\
+  \ - Install / Upgrade - Connectors - Help - License - Sponsoring\n\nGetting started\n\
+  \n\U0001F4DA **Documentation:** https://docs.socfortress.co\n\nCoPilot's true power\
+  \ comes from the ability to integrate with your existing security stack. We have\
+  \ built-in integrations with the following tools:\n\n- Wazuh - Graylog - Velociraptor\
+  \ - Grafana - InfluxDB\n\n\u2757\uFE0F **Note:** CoPilot is currently in beta. We\
+  \ are actively working on adding more integrations and features. If you have any\
+  \ suggestions or feedback, please let us know!\n\nInstall / Upgrade\n\nAll install\
+  \ + upgrade instructions live in the docs site (so the README doesn\u2019t drift):\n\
+  \n- **Docs home:** https://docs.socfortress.co - **Install / Upgrade:** https://docs.socfortress.co/getting-started/install-upgrade\
+  \ - (Source file) `docs/getting-started/install-upgrade.mdx`\n\nQuick upgrade reminder\
+  \ (from your CoPilot directory):\n\nConnectors\n\nCoPilot is designed to be a single\
+  \ pane of glass for your security operations. Think of it as a hub for all your\
+  \ security tools. CoPilot Connectors are the glue that binds your security tools\
+  \ to CoPilot. We take advantage of the APIs and webhooks provided by your security\
+  \ tools to provide a seamless integration.\n\nHelp\n\nYou can reach us on Discord\
+  \ or by \U0001F4E7 if you have any question, issue or idea!\n\nLicense\n\nThe contents\
+  \ of this repository is available under AGPL-3.0 license.\n\nSponsoring\n\nIf you\
+  \ like this project and want to support it, you can consider becoming a sponsor\
+  \ to help us continue maintaining it and adding new features."
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-01-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-01-01..2026-04-06
+    external_id: '664836912'
+    canonical_url: https://github.com/socfortress/CoPilot
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: 'Fastest human check: scan docs and dependency manifests for model/provider
+    integrations; if none found, mark as non-AI adjacent tooling.'
+  decision_snapshot: Likely non-AI productization unless docs or code reveal AI-assisted
+    features not present in excerpt.
+  scope_boundary_note: 'Within the ''ai_applications_and_products'' query family,
+    this appears adjacent but not clearly in-scope: the text emphasizes ''single pane
+    of glass'', connectors, APIs/webhooks, and open-source tool integration. No direct
+    claims of model usage, inference, copiloting via LLM, or AI-driven automation
+    are visible in the provided evidence.'
+  source_evidence_summary:
+  - SOCFortress CoPilot focuses on providing a single pane of glass for all your security
+    operations needs.
+  - Simplify your open source security stack with a single platform focused on making
+    open source security tools easier to use and more accessible.
+  - 'CoPilot''s true power comes from the ability to integrate with your existing
+    security stack. We have built-in integrations with the following tools: Wazuh
+    - Graylog - Velociraptor - Grafana - InfluxDB'
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: SOCFortress CoPilot focuses on providing a single pane of glass
+      for all your security operations needs.
+    evidence_source_field: candidate_input
+    why_it_matters: Positions the product as a unified SecOps interface rather than
+      explicitly an AI system.
+  - anchor_rank: 2
+    evidence_text: Simplify your open source security stack with a single platform
+      focused on making open source security tools easier to use and more accessible.
+    evidence_source_field: candidate_input
+    why_it_matters: Describes usability/integration value proposition, not AI capability.
+  - anchor_rank: 3
+    evidence_text: 'CoPilot''s true power comes from the ability to integrate with
+      your existing security stack. We have built-in integrations with the following
+      tools: Wazuh - Graylog - Velociraptor - Grafana - InfluxDB'
+    evidence_source_field: candidate_input
+    why_it_matters: Core function appears connector-based orchestration across existing
+      tools.
+  - anchor_rank: 4
+    evidence_text: CoPilot Connectors are the glue that binds your security tools
+      to CoPilot. We take advantage of the APIs and webhooks provided by your security
+      tools to provide a seamless integration.
+    evidence_source_field: candidate_input
+    why_it_matters: Technical mechanism is API/webhook integration; no AI inference
+      path indicated.
+  - anchor_rank: 5
+    evidence_text: "\u2757\uFE0F Note: CoPilot is currently in beta. We are actively\
+      \ working on adding more integrations and features."
+    evidence_source_field: candidate_input
+    why_it_matters: Feature set may be evolving; AI capabilities could exist elsewhere
+      but are not evidenced here.
+  review_focus_points:
+  - Check docs.socfortress.co for any explicit LLM/ML features (chat assistant, summarization,
+    detection scoring, model-backed recommendations).
+  - Inspect repository for AI dependencies/endpoints (OpenAI/Anthropic/Ollama/transformers/langchain/litellm)
+    and prompt templates.
+  - Verify whether 'CoPilot' naming is branding-only versus functional AI copilot
+    behavior.
+  - If AI is absent, classify under SecOps integration/orchestration platform rather
+    than AI applications.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: 'Fastest human check: scan docs and dependency manifests for model/provider
+      integrations; if none found, mark as non-AI adjacent tooling.'
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: 'Fastest human check: scan docs and dependency manifests for model/provider
+      integrations; if none found, mark as non-AI adjacent tooling.'
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: Security Operations Integration & Orchestration Platform
+      (non-AI-first)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: Security Operations Integration & Orchestration Platform (non-AI-first)
+      rationale: 'Fastest human check: scan docs and dependency manifests for model/provider
+        integrations; if none found, mark as non-AI adjacent tooling.'
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: AI Security Copilot / GenAI SOC Assistant
+      rationale_for_similarity: AI Security Copilot / GenAI SOC Assistant
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Provided evidence does not mention models,
+      prompts, AI reasoning, or automated AI-generated analyst outputs; functionality
+      is described as connector/API-based aggregation.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: 'boundary with internal tooling unclear; Fastest human check:
+  scan docs and dependency manifests for model/provider integrations; if none found,
+  mark as non-AI adjacent tooling. Within the ''ai_applications_and_products'' query
+  family, this appears adjacent but not clearly in-scope: the text emphasizes ''single
+  pane of glass'', connectors, APIs/webhooks, and open-source tool integration. No
+  direct claims of model usage, inference, copiloting via LLM, or AI-driven automation
+  are visible in the provided evidence. evidence_strength=low review_source=existing_llm_prescreen'
+human_reviewed_at: '2026-04-06T11:50:44.452145Z'
+staging_handoff:
+  status: blocked
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items:
+  - candidate first-pass review resolved to on_hold
+  last_attempted_at: '2026-04-06T11:50:44.452162Z'

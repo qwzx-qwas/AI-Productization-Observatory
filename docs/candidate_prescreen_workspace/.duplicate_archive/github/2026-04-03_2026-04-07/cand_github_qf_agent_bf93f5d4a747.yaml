@@ -1,0 +1,205 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_bf93f5d4a747
+candidate_batch_id: candidate_batch_github_qf_agent_2026-04-03_2026-04-07
+created_at: '2026-04-03T06:53:00.834616Z'
+updated_at: '2026-04-03T07:43:36.234509Z'
+source: github
+source_id: src_github
+source_window: 2026-04-03..2026-04-07
+time_field: pushed_at
+external_id: '614765452'
+canonical_url: https://github.com/Significant-Gravitas/AutoGPT
+title: AutoGPT
+summary: AutoGPT is the vision of accessible AI for everyone, to use and to build
+  on. Our mission is to provide the tools, so that you can focus on what matters.
+raw_evidence_excerpt: "AutoGPT is the vision of accessible AI for everyone, to use\
+  \ and to build on. Our mission is to provide the tools, so that you can focus on\
+  \ what matters.\n\nAutoGPT: Build, Deploy, and Run AI Agents\n\nDeutsch | Espa\xF1\
+  ol | fran\xE7ais | \u65E5\u672C\u8A9E | \uD55C\uAD6D\uC5B4 | Portugu\xEAs | \u0420\
+  \u0443\u0441\u0441\u043A\u0438\u0439 | \u4E2D\u6587\n\n**AutoGPT** is a powerful\
+  \ platform that allows you to create, deploy, and manage continuous AI agents that\
+  \ automate complex workflows.\n\nHosting Options - Download to self-host (Free!)\
+  \ - Join the Waitlist for the cloud-hosted beta (Closed Beta - Public release Coming\
+  \ Soon!)\n\nHow to Self-Host the AutoGPT Platform > [!NOTE] > Setting up and hosting\
+  \ the AutoGPT Platform yourself is a technical process. > If you'd rather something\
+  \ that just works, we recommend joining the waitlist for the cloud-hosted beta.\n\
+  \nSystem Requirements\n\nBefore proceeding with the installation, ensure your system\
+  \ meets the following requirements:\n\nHardware Requirements - CPU: 4+ cores recommended\
+  \ - RAM: Minimum 8GB, 16GB recommended - Storage: At least 10GB of free space\n\n\
+  Software Requirements - Operating Systems: - Linux (Ubuntu 20.04 or newer recommended)\
+  \ - macOS (10.15 or newer) - Windows 10/11 with WSL2 - Required Software (with minimum\
+  \ versions): - Docker Engine (20.10.0 or newer) - Docker Compose (2.0.0 or newer)\
+  \ - Git (2.30 or newer) - Node.js (16.x or newer) - npm (8.x or newer) - VSCode\
+  \ (1.60 or newer) or any modern code editor\n\nNetwork Requirements - Stable internet\
+  \ connection - Access to required ports (will be configured in Docker) - Ability\
+  \ to make outbound HTTPS connections\n\nUpdated Setup Instructions: We've moved\
+  \ to a fully maintained and regularly updated documentation site.\n\n\U0001F449\
+  \ Follow the official self-hosting guide here\n\nThis tutorial assumes you have\
+  \ Docker, VSCode, git and npm installed.\n\n---\n\n\u26A1 Quick Setup with One-Line\
+  \ Script (Recommended for Local Hosting)\n\nSkip the manual steps and get started\
+  \ in minutes using our automatic setup script.\n\nFor macOS/Linux:\n\nFor Windows\
+  \ (PowerShell):\n\nThis will install dependencies, configure Docker, and launch\
+  \ your local instance \u2014 all in one go.\n\n\U0001F9F1 AutoGPT Frontend\n\nThe\
+  \ AutoGPT frontend is where users interact with our powerful AI automation platform.\
+  \ It offers multiple ways to engage with and leverage our AI agents. This is the\
+  \ interface where you'll bring your AI automation ideas to life:\n\n**Agent Builder:**\
+  \ For those who want to customize, our intuitive, low-code interface allows you\
+  \ to design and configure your own AI agents.\n\n**Workflow Management:** Build,\
+  \ modify, and optimize your automation workflows with ease. You build your agent\
+  \ by connecting blocks, where each block performs a single action.\n\n**Deployment\
+  \ Controls:** Manage the lifecycle of your agents, from testing to production.\n\
+  \n**Ready-to-Use Agents:** Don't want to build? Simply select from our library of\
+  \ pre-configured agents and put them to work immediately.\n\n**Agent Interaction:**\
+  \ Whether you've built your own or are using pre-configured agents, easily run and\
+  \ interact with them through our user-friendly interface.\n\n**Monitoring and Analytics:**\
+  \ Keep track of your agents' performance and gain insights to continually improve\
+  \ your automation processes.\n\nRead this guide to learn how to build your own custom\
+  \ blocks.\n\n\U0001F4BD AutoGPT Server\n\nThe AutoGPT Server is the powerhouse of\
+  \ our platform This is where your agents run. Once deployed, agents can be triggered\
+  \ by external sources and can operate continuously. It contains all the essential\
+  \ components that make AutoGPT run smoothly.\n\n**Source Code:** The core logic\
+  \ that drives our agents and automation processes.\n\n**Infrastructure:** Robust\
+  \ systems that ensure reliable and scalable performance.\n\n**Marketplace:** A comprehensive\
+  \ marketplace where you can find and deploy a wide range of pre-built agents.\n\n\
+  \U0001F419 Example Agents\n\nHere are two examples of what you can do with AutoGPT:\n\
+  \n1. **Generate Viral Videos from Trending Topics** - This agent reads topics on\
+  \ Reddit. - It identifies trending topics. - It then automatically creates a short-form\
+  \ video based on the content.\n\n2. **Identify Top Quotes from Videos for Social\
+  \ Media** - This agent subscribes to your YouTube channel. - When you post a new\
+  \ video, it transcribes it. - It uses AI to identify the most impactful quotes to\
+  \ generate a summary. - Then, it writes a post to automatically publish to your\
+  \ social media.\n\nThese examples show just a glimpse of what you can achieve with\
+  \ AutoGPT! You can create customized workflows to build agents for any use case.\n\
+  \n---\n\n**License Overview:**\n\n\U0001F6E1\uFE0F **Polyform Shield License:**\
+  \ All code and content within the `autogpt_platform` folder is licensed under the\
+  \ Polyform Shield License. This new project is our in-developlemt platform for building,\
+  \ deploying and managing agents. _Read more about this effort_\n\n\U0001F989 **MIT\
+  \ License:** All other portions of the AutoGPT repository (i.e., everything outside\
+  \ the `autogpt_platform` folder) are licensed under the MIT License. This includes\
+  \ the original stand-alone AutoGPT Agent, along with projects such as Forge, agbenchmark\
+  \ and the AutoGPT Classic GUI. We also publish additional work under the MIT Licence\
+  \ in other repositories, such as GravitasML which is developed for and used in the\
+  \ AutoGPT Platform. See also our MIT Licenced Code Ability project.\n\n--- Mission\
+  \ Our mission is to provide the tools, so that you can focus on what matters:\n\n\
+  - \U0001F3D7\uFE0F **Building** - Lay the foundation for something amazing. - \U0001F9EA\
+  \ **Testing** - Fine-tune your agent to perfection. - \U0001F91D **Delegating**\
+  \ - Let AI work for you, and have your ideas come to life.\n\nBe part of the revolution!\
+  \ **AutoGPT** is here to stay, at the forefront of AI innovation.\n\n**\U0001F4D6\
+  \ Documentation** | **\U0001F680 Contributing**\n\n--- \U0001F916 AutoGPT Classic\
+  \ > Below is information about the classic version of AutoGPT.\n\n**\U0001F6E0\uFE0F\
+  \ Build your own Agent - Quickstart**\n\n\U0001F3D7\uFE0F Forge\n\n**Forge your\
+  \ own agent!** \u2013 Forge is a ready-to-go toolkit to build your own agent application.\
+  \ It handles most of the boilerplate code, letting you channel all your creativity\
+  \ into the things that set *your* agent apart. All tutorials are located here. Components\
+  \ from `forge` can also be used individually to speed up development and reduce\
+  \ boilerplate in your agent project.\n\n\U0001F680 **Getting Started with Forge**\
+  \ \u2013 This guide will walk you through the process of creating your own agent\
+  \ and using the benchmark and user interface.\n\n\U0001F4D8 Learn More about Forge\n\
+  \n\U0001F3AF Benchmark\n\n**Measure your agent's performance!** The `agbenchmark`\
+  \ can be used with any agent that supports the agent protocol, and the integration\
+  \ with the project's [CLI] makes it even easier to use with AutoGPT and forge-based\
+  \ agents. The benchmark offers a stringent testing environment. Our framework allows\
+  \ for autonomous, objective performance evaluations, ensuring your agents are primed\
+  \ for real-world action.\n\n\U0001F4E6 `agbenchmark` on Pypi | \U0001F4D8 Learn\
+  \ More about the Benchmark\n\n\U0001F4BB UI\n\n**Makes agents easy to use!** The\
+  \ `frontend` gives you a user-friendly interface to control and monitor your agents.\
+  \ It connects to agents through the agent protocol, ensuring compatibility with\
+  \ many agents from both inside and outside of our ecosystem.\n\nThe frontend works\
+  \ out-of-the-box with all agents in the repo. Just use the [CLI] to run your agent\
+  \ of choice!\n\n\U0001F4D8 Learn More about the Frontend\n\n\u2328\uFE0F CLI\n\n\
+  [CLI]: #-cli\n\nTo make it as easy as possible to use all of the tools offered by\
+  \ the repository, a CLI is included at the root of the repo:\n\nJust clone the repo,\
+  \ install dependencies with `./run setup`, and you should be good to go!\n\n\U0001F914\
+  \ Questions? Problems? Suggestions?\n\nGet help - Discord \U0001F4AC\n\nTo report\
+  \ a bug or request a feature, create a GitHub Issue. Please ensure someone else\
+  \ hasn't created an issue for the same topic.\n\n\U0001F91D Sister projects\n\n\U0001F504\
+  \ Agent Protocol\n\nTo maintain a uniform standard and ensure seamless compatibility\
+  \ with many current and future applications, AutoGPT employs the agent protocol\
+  \ standard by the AI Engineer Foundation. This standardizes the communication pathways\
+  \ from your agent to the frontend and benchmark."
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-04-03'
+    window_end: '2026-04-07'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-04-03..2026-04-07
+    external_id: '614765452'
+    canonical_url: https://github.com/Significant-Gravitas/AutoGPT
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: network_error
+  error_message: 'Relay network error: [Errno -2] Name or service not known'
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: 'boundary with internal tooling unclear; Repository presents a
+  clearly productized AI agent platform (build/deploy/run, frontend/server, workflow
+  blocks, monitoring), but inclusion boundaries need human confirmation due to mixed
+  licensing (Polyform Shield + MIT), closed-beta cloud status, and legacy/toolkit
+  content in the same repo. Treat this as a platform/productization candidate first,
+  not a pure research or model repo. Boundary to validate: whether partially source-available
+  licensing and multi-project monorepo structure still satisfy your product catalog
+  criteria. evidence_strength=medium review_source=fresh_llm_review'
+human_reviewed_at: '2026-04-03T07:43:36.234483Z'
+staging_handoff:
+  status: blocked
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items:
+  - candidate first-pass review resolved to on_hold
+  last_attempted_at: '2026-04-03T07:43:36.234504Z'

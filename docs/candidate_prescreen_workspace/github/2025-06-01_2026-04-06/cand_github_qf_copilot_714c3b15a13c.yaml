@@ -1,0 +1,197 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_714c3b15a13c
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-06-01_2026-04-06
+created_at: '2026-04-06T12:41:17.779573Z'
+updated_at: '2026-04-06T13:04:30.989301Z'
+source: github
+source_id: src_github
+source_window: 2025-06-01..2026-04-06
+time_field: pushed_at
+external_id: '37164878'
+canonical_url: https://github.com/Copilot-Language/copilot
+title: copilot
+summary: A stream-based runtime-verification framework for generating hard real-time
+  C code.
+raw_evidence_excerpt: "A stream-based runtime-verification framework for generating\
+  \ hard real-time C code.\n\nCopilot\n\nCopilot is a runtime verification framework\
+  \ for hard real-time systems. Programs can be interpreted for testing, or translated\
+  \ into C99 code to be incorporated in a project or standalone application. The C99\
+  \ code generated is constant in memory and time, making it suitable for systems\
+  \ with hard real-time requirements.\n\nInstallation \u2022 Examples \u2022 Related\
+  \ projects \u2022 Documentation \u2022 Contributions \u2022 Acknowledgements\n\n\
+  Features\n\n- Write simple, high-level specifications using a stream-based language.\n\
+  \n- Produce hard real-time C99 runtime monitors that run in constant memory and\
+  \ time.\n\n- Catch errors in specifications early using expressive static type system.\n\
+  \n- Prove properties about specifications using theorem proving extensions.\n\n\
+  - Interpret specifications for testing and debugging purposes.\n\n- Obtain proofs\
+  \ of correctness of the generated code.\n\nTable of Contents\n\n- Installation -\
+  \ Linux installation - Mac installation - Troubleshooting - Examples - Related projects\
+  \ - Documentation - API documentation and tutorials - Publications - Website - Contributions\
+  \ - Acknowledgements - The Copilot team - Institutional support\n\nInstallation\
+  \ (Back to top)\n\nLinux installation (Back to top)\n\nDebian Bookworm / Ubuntu\
+  \ 23.04\n\nOn Debian Bookworm / Ubuntu 23.04 or newer, Copilot can be installed\
+  \ directly from the package repositories with:\n\nTo test that Copilot is available,\
+  \ execute the following:\n\nIt should end with a line like the following and not\
+  \ print any error messages:\n\nFedora 40\n\nOn Fedora 40 or newer, Copilot can be\
+  \ installed directly from the package repositories with:\n\nTo test that Copilot\
+  \ is available, execute the following:\n\nIt should end with a line like the following\
+  \ and not print any error messages:\n\nOther Linux distributions\n\nOn other Linux\
+  \ distributions or older Debian-based distributions, to use Copilot you must install\
+  \ a Haskell compiler (GHC) and the package manager Cabal. We currently support all\
+  \ versions of GHC from 8.6.5 to modern versions (9.10 as of this writing). You can\
+  \ install the toolchain using ghcup or, if you are on Debian/Ubuntu, you can use\
+  \ `apt-get` to install all dependencies as follows:\n\nOnce the compiler is installed,\
+  \ install Copilot from Hackage with:\n\nTo test that Copilot is available, execute\
+  \ the following:\n\nIt should end with a line like the following and not print any\
+  \ error messages:\n\nMac installation (Back to top)\n\nTo use Copilot you must have\
+  \ a Haskell compiler (GHC) and the package manager Cabal. We currently support all\
+  \ versions of GHC from 8.6.5 to modern versions (9.6 as of this writing). You can\
+  \ install the toolchain using ghcup, as well as with Homebrew:\n\nOnce the compiler\
+  \ is installed, install Copilot from Hackage with:\n\nTo test that Copilot is available,\
+  \ execute the following:\n\nIt should end with a line like the following and not\
+  \ print any error messages:\n\nTroubleshooting (Back to top)\n\nFeel free to open\
+  \ an issue if you are unable to install Copilot following these instructions.\n\n\
+  There is a TravisCI file at the root of the repository that may help with troubleshooting\
+  \ the installation. Our issues often include comments with Dockerfiles listing the\
+  \ steps necessary to install Copilot from scratch.\n\nExamples (Back to top)\n\n\
+  Here follows a simple example of a heating system. More examples can be found in\
+  \ the examples directory of the main repository.\n\nIf you save this example in\
+  \ a file `Heater.hs` and run:\n\nit will produce the files `heater.c`, `heater.h`\
+  \ and `heater_types.h`, containing, respectively, the implementation of the monitors,\
+  \ the interface, and a declaration of any types declared in the specification (empty\
+  \ in this case).\n\nIf you clone the repository, the examples in the `examples/`\
+  \ directory can be run from the root of the project. As a rule of thumb, each example\
+  \ is named after the filename (without extension) in lowercase letters, and directory\
+  \ separators replaced with a '-'. For example:\n\nRelated projects (Back to top)\n\
+  \n_Disclaimer: The following projects are not part of Copilot. Their mention here\
+  \ does not constitute any form of endorsement._\n\n- Ogma is a NASA tool to facilitate\
+  \ the integration of safe runtime monitors into other systems, including those built\
+  \ using NASA's Core Flight System or the Robot Operating System (ROS 2).\n\n- arduino-copilot\
+  \ facilitates building copilot applications that run on Arduino.\n\n- sketch-frp-copilot\
+  \ extends Copilot with an FRP-like interface.\n\n- zephyr-copilot facilitates building\
+  \ copilot applications that run on boards supported by the Zephyr project.\n\nDocumentation\
+  \ (Back to top)\n\nAPI documentation and tutorials (Back to top)\n\nA tutorial on\
+  \ Copilot can be found here.\n\nThe API is documented throughout the different libraries\
+  \ and published on Hackage:\n\n- copilot - copilot-c99 - copilot-core - copilot-interpreter\
+  \ - copilot-language - copilot-libraries - copilot-prettyprinter - copilot-theorem\n\
+  \nPublications (Back to top)\n\nThe best introduction to the fundamentals of Copilot\
+  \ apart from the tutorial is:\n\n- Copilot 3\n\nOther relevant papers include:\n\
+  \n- Runtime Verification in Real-Time with the Copilot Language: A Tutorial\n\n\
+  - Trustworthy Runtime Verification via Bisimulation (Experience Report)\n\n- An\
+  \ Introduction to Copilot\n\n- Assuring the Guardians\n\n- Experience report: a\
+  \ do-it-yourself high-assurance compiler\n\n- Compiling an Haskell EDSL to C: A\
+  \ new C back-end for the Copilot runtime verification framework\n\n- Challenges\
+  \ in High-Assurance Runtime Verification\n\n- Runtime Monitoring On Hard Real-Time\
+  \ Operating Systems\n\n- Design and Testing of an Approach to Automated In-Flight\
+  \ Safety Risk Management for sUAS Operations\n\n- The Essence of Reactivity\n\n\
+  - Types that Change: The Extensible Type Design Pattern\n\n- Automated Translation\
+  \ of Natural Language Requirements to Runtime Monitors\n\n- Copilot: A Hard Real-Time\
+  \ Runtime Monitor\n\n- Copilot: monitoring embedded systems\n\n- From Requirements\
+  \ to Autonomous Flight: An Overview of the Monitoring ICAROUS Project\n\n- Integrating\
+  \ FRET with Copilot: Automated Translation of Natural Language Requirements to Runtime\
+  \ Monitors\n\n- Monitoring Distributed Real-Time Systems: A Survey and Future Directions\n\
+  \n- Monitoring ROS2: from Requirements to Autonomous Robots\n\nWebsite (Back to\
+  \ top)\n\nFor further information, including links to more documentation and the\
+  \ tutorial, please visit the Copilot website:\n\nContributions (Back to top)\n\n\
+  We'd love to receive your contributions, be it code fixes, new features, bug reports,\
+  \ discussions, or anything else that can help the Copilot project.\n\nIf you have\
+  \ any comments, questions, ideas, or other topics that you think may be of interest,\
+  \ start a new discussion here.\n\nIf you would like to contribute a fix for an issue,\
+  \ please comment on the issue indicating that you want to fix it so that we can\
+  \ assign it to you and track the status on our end. If the issue does not exist,\
+  \ create it first or ask that an existing discussion be promoted to an issue.\n\n\
+  If you are unsure about whether your submission should be filed as an issue or as\
+  \ a discussion, file it as a discussion. We can always move it later.\n\nTo facilitate\
+  \ merging any pull requests that you send, please: - Reference the issue you are\
+  \ addressing with the text `Refs # .` at the end of the subject line of each commit\
+  \ message, in *every commit*. Replace ` ` with the number of the specific issue\
+  \ that your pull request is addressing. - Describe what each commit does individually\
+  \ *in the commit's message*. It's best to err on the side of being more descriptive\
+  \ than less. - Update the CHANGELOGs in the *last commit(s)*.\n\nYou can take a\
+  \ look at the repository's commit history to better understand the process we follow.\
+  \ Click on each commit to see how we write commit messages.\n\nAcknowledgements\
+  \ (Back to top)\n\nThe Copilot team (Back to top)"
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-06-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-06-01..2026-04-06
+    external_id: '37164878'
+    canonical_url: https://github.com/Copilot-Language/copilot
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: 'clear end-user product signal; evidence sufficient for staging;
+  Low re-read needed: evidence is explicit and repeated; human reviewer mainly needs
+  a quick policy check on whether non-AI formal methods belong in this pipeline. Strong
+  risk of false positive due to the project name "Copilot." Content indicates a Haskell
+  EDSL/runtime-monitor compiler targeting C99 for deterministic real-time constraints,
+  with no explicit ML/LLM model usage, training, inference APIs, or AI-agent behavior.
+  evidence_strength=low review_source=fresh_llm_review'
+human_reviewed_at: '2026-04-06T13:04:30.067564Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
+  sample_slot_id: GS300-066
+  sample_id: cand_github_qf_copilot_714c3b15a13c
+  blocking_items: []
+  last_attempted_at: '2026-04-06T13:04:30.989285Z'

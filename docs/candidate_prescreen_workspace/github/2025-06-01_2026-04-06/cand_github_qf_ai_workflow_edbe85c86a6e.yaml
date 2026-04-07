@@ -1,0 +1,250 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_edbe85c86a6e
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-06-01_2026-04-06
+created_at: '2026-04-06T15:00:54.410414Z'
+updated_at: '2026-04-06T15:02:56.493315Z'
+source: github
+source_id: src_github
+source_window: 2025-06-01..2026-04-06
+time_field: pushed_at
+external_id: '1078079172'
+canonical_url: https://github.com/ComposioHQ/awesome-claude-skills
+title: awesome-claude-skills
+summary: A curated list of awesome Claude Skills, resources, and tools for customizing
+  Claude AI workflows
+raw_evidence_excerpt: "A curated list of awesome Claude Skills, resources, and tools\
+  \ for customizing Claude AI workflows\n\nAwesome Claude Skills\n\nA curated list\
+  \ of practical Claude Skills for enhancing productivity across Claude.ai, Claude\
+  \ Code, and the Claude API.\n\n> **Want skills that do more than generate text?**\
+  \ Claude can send emails, create issues, post to Slack, and take actions across\
+  \ 1000+ apps. See how \u2192\n\n---\n\nQuickstart: Connect Claude to 500+ Apps\n\
+  \nThe **connect-apps** plugin lets Claude perform real actions - send emails, create\
+  \ issues, post to Slack. It handles auth and connects to 500+ apps using Composio\
+  \ under the hood.\n\n1. Install the Plugin\n\n2. Run Setup\n\nPaste your API key\
+  \ when asked. (Get a free key at platform.composio.dev)\n\n3. Restart & Try It\n\
+  \n> **Want skills that do more than generate text?** Claude can send emails, create\
+  \ issues, post to Slack, and take actions across 1000+ apps. See how \u2192\n\n\
+  If you receive the email, Claude is now connected to 500+ apps.\n\n**See all supported\
+  \ apps \u2192**\n\n---\n\nContents\n\n- What Are Claude Skills? - Skills - Document\
+  \ Processing - Development & Code Tools - Data & Analysis - Business & Marketing\
+  \ - Communication & Writing - Creative & Media - Productivity & Organization - Collaboration\
+  \ & Project Management - Security & Systems - App Automation via Composio - Getting\
+  \ Started - Creating Skills - Contributing - Resources - License\n\nWhat Are Claude\
+  \ Skills?\n\nClaude Skills are customizable workflows that teach Claude how to perform\
+  \ specific tasks according to your unique requirements. Skills enable Claude to\
+  \ execute tasks in a repeatable, standardized manner across all Claude platforms.\n\
+  \nSkills\n\nDocument Processing\n\n- docx - Create, edit, analyze Word docs with\
+  \ tracked changes, comments, formatting. - pdf - Extract text, tables, metadata,\
+  \ merge & annotate PDFs. - pptx - Read, generate, and adjust slides, layouts, templates.\
+  \ - xlsx - Spreadsheet manipulation: formulas, charts, data transformations. - Markdown\
+  \ to EPUB Converter - Converts markdown documents and chat summaries into professional\
+  \ EPUB ebook files. *By @smerchek*\n\nDevelopment & Code Tools\n\n- artifacts-builder\
+  \ - Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts\
+  \ using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). - aws-skills\
+  \ - AWS development with CDK best practices, cost optimization MCP servers, and\
+  \ serverless/event-driven architecture patterns. - Changelog Generator - Automatically\
+  \ creates user-facing changelogs from git commits by analyzing history and transforming\
+  \ technical commits into customer-friendly release notes. - Claude Code Terminal\
+  \ Title - Gives each Claud-Code terminal window a dynamic title that describes the\
+  \ work being done so you don't lose track of what window is doing what. - D3.js\
+  \ Visualization - Teaches Claude to produce D3 charts and interactive data visualizations.\
+  \ *By @chrisvoncsefalvay* - FFUF Web Fuzzing - Integrates the ffuf web fuzzer so\
+  \ Claude can run fuzzing tasks and analyze results for vulnerabilities. *By @jthack*\
+  \ - finishing-a-development-branch - Guides completion of development work by presenting\
+  \ clear options and handling chosen workflow. - iOS Simulator - Enables Claude to\
+  \ interact with iOS Simulator for testing and debugging iOS applications. *By @conorluddy*\
+  \ - jules - Delegate coding tasks to Google Jules AI agent for async bug fixes,\
+  \ documentation, tests, and feature implementation on GitHub repos. *By @sanjay3290*\
+  \ - LangSmith Fetch - Debug LangChain and LangGraph agents by automatically fetching\
+  \ and analyzing execution traces from LangSmith Studio. First AI observability skill\
+  \ for Claude Code. *By @OthmanAdi* - MCP Builder - Guides creation of high-quality\
+  \ MCP (Model Context Protocol) servers for integrating external APIs and services\
+  \ with LLMs using Python or TypeScript. - move-code-quality-skill - Analyzes Move\
+  \ language packages against the official Move Book Code Quality Checklist for Move\
+  \ 2024 Edition compliance and best practices. - Playwright Browser Automation -\
+  \ Model-invoked Playwright automation for testing and validating web applications.\
+  \ *By @lackeyjb* - prompt-engineering - Teaches well-known prompt engineering techniques\
+  \ and patterns, including Anthropic best practices and agent persuasion principles.\
+  \ - pypict-claude-skill - Design comprehensive test cases using PICT (Pairwise Independent\
+  \ Combinatorial Testing) for requirements or code, generating optimized test suites\
+  \ with pairwise coverage. - reddit-fetch - Fetches Reddit content via Gemini CLI\
+  \ when WebFetch is blocked or returns 403 errors. - Skill Creator - Provides guidance\
+  \ for creating effective Claude Skills that extend capabilities with specialized\
+  \ knowledge, workflows, and tool integrations. - Skill Seekers - Automatically converts\
+  \ any documentation website into a Claude AI skill in minutes. *By @yusufkaraaslan*\
+  \ - software-architecture - Implements design patterns including Clean Architecture,\
+  \ SOLID principles, and comprehensive software design best practices. - subagent-driven-development\
+  \ - Dispatches independent subagents for individual tasks with code review checkpoints\
+  \ between iterations for rapid, controlled development. - test-driven-development\
+  \ - Use when implementing any feature or bugfix, before writing implementation code.\
+  \ - using-git-worktrees - Creates isolated git worktrees with smart directory selection\
+  \ and safety verification. - Connect - Connect Claude to any app. Send emails, create\
+  \ issues, post messages, update databases - take real actions across Gmail, Slack,\
+  \ GitHub, Notion, and 1000+ services. - Webapp Testing - Tests local web applications\
+  \ using Playwright for verifying frontend functionality, debugging UI behavior,\
+  \ and capturing screenshots.\n\nData & Analysis\n\n- CSV Data Summarizer - Automatically\
+  \ analyzes CSV files and generates comprehensive insights with visualizations without\
+  \ requiring user prompts. *By @coffeefuelbump* - deep-research - Execute autonomous\
+  \ multi-step research using Gemini Deep Research Agent for market analysis, competitive\
+  \ landscaping, and literature reviews. *By @sanjay3290* - postgres - Execute safe\
+  \ read-only SQL queries against PostgreSQL databases with multi-connection support\
+  \ and defense-in-depth security. *By @sanjay3290* - root-cause-tracing - Use when\
+  \ errors occur deep in execution and you need to trace back to find the original\
+  \ trigger.\n\nBusiness & Marketing\n\n- Brand Guidelines - Applies Anthropic's official\
+  \ brand colors and typography to artifacts for consistent visual identity and professional\
+  \ design standards. - Competitive Ads Extractor - Extracts and analyzes competitors'\
+  \ ads from ad libraries to understand messaging and creative approaches that resonate.\
+  \ - Domain Name Brainstormer - Generates creative domain name ideas and checks availability\
+  \ across multiple TLDs including .com, .io, .dev, and .ai extensions. - Internal\
+  \ Comms - Helps write internal communications including 3P updates, company newsletters,\
+  \ FAQs, status reports, and project updates using company-specific formats. - Lead\
+  \ Research Assistant - Identifies and qualifies high-quality leads by analyzing\
+  \ your product, searching for target companies, and providing actionable outreach\
+  \ strategies.\n\nCommunication & Writing"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-06-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-06-01..2026-04-06
+    external_id: '1078079172'
+    canonical_url: https://github.com/ComposioHQ/awesome-claude-skills
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: 'If in doubt, split into two records for human review: (1) this repo as
+    a curated ecosystem index, (2) Composio/connect-apps as a potential productized
+    automation platform.'
+  decision_snapshot: 'Recommend candidate_pool because If in doubt, split into two
+    records for human review: (1) this repo as a curated ecosystem index, (2) Composio/connect-apps
+    as a potential productized automation platform.'
+  scope_boundary_note: Treat this as a community curation and enablement hub (skills
+    catalog + plugin setup) unless human review confirms it represents a distinct
+    deployable product with owned functionality beyond listing third-party skills.
+  source_evidence_summary:
+  - A curated list of awesome Claude Skills, resources, and tools for customizing
+    Claude AI workflows
+  - A curated list of practical Claude Skills for enhancing productivity across Claude.ai,
+    Claude Code, and the Claude API.
+  - 'Quickstart: Connect Claude to 500+ Apps'
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: A curated list of awesome Claude Skills, resources, and tools for
+      customizing Claude AI workflows
+    evidence_source_field: candidate_input
+    why_it_matters: Directly frames the repo as a curated list/resource collection.
+  - anchor_rank: 2
+    evidence_text: A curated list of practical Claude Skills for enhancing productivity
+      across Claude.ai, Claude Code, and the Claude API.
+    evidence_source_field: candidate_input
+    why_it_matters: Reinforces directory-style positioning across platforms rather
+      than one product boundary.
+  - anchor_rank: 3
+    evidence_text: 'Quickstart: Connect Claude to 500+ Apps'
+    evidence_source_field: candidate_input
+    why_it_matters: Shows an onboarding workflow that may indicate productized integration,
+      but could be promotional context inside the list.
+  - anchor_rank: 4
+    evidence_text: The connect-apps plugin lets Claude perform real actions... using
+      Composio under the hood.
+    evidence_source_field: candidate_input
+    why_it_matters: Suggests underlying platform tie-in (Composio), creating a lookalike
+      with integration products.
+  - anchor_rank: 5
+    evidence_text: Contents ... Document Processing ... Development & Code Tools ...
+      Data & Analysis ... Business & Marketing ...
+    evidence_source_field: candidate_input
+    why_it_matters: Broad taxonomy of many entries indicates aggregator/catalog behavior.
+  review_focus_points:
+  - Decide if observatory scope includes curated 'awesome' repositories or only first-party
+    productized apps.
+  - Verify whether 'connect-apps' is the actual candidate (Composio integration product)
+    versus this repo being marketing/distribution.
+  - 'Check ownership boundary: how much functionality is native to this repo vs links
+    to external skills/tools.'
+  - Assess maintenance signal (recent commits, contributor activity) only if directories
+    are in-scope.
+  uncertainty_points: []
+  recommend_candidate_pool: true
+  recommended_action: candidate_pool
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: candidate_pool
+    rationale: 'If in doubt, split into two records for human review: (1) this repo
+      as a curated ecosystem index, (2) Composio/connect-apps as a potential productized
+      automation platform.'
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: 'If in doubt, split into two records for human review: (1) this repo
+      as a curated ecosystem index, (2) Composio/connect-apps as a potential productized
+      automation platform.'
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI workflow resource directory / skills catalog
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI workflow resource directory / skills catalog
+      rationale: 'If in doubt, split into two records for human review: (1) this repo
+        as a curated ecosystem index, (2) Composio/connect-apps as a potential productized
+        automation platform.'
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: LLM app-integration automation platform
+      rationale_for_similarity: LLM app-integration automation platform
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: "The provided evidence centers on a curated\
+      \ list repository; platform capabilities appear referenced via external plugin/under-the-hood\
+      \ service rather than fully embodied as this repo\u2019s own product."
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: low
+    unresolved_risk: low
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: 'clear end-user product signal; evidence sufficient for staging;
+  If in doubt, split into two records for human review: (1) this repo as a curated
+  ecosystem index, (2) Composio/connect-apps as a potential productized automation
+  platform. Treat this as a community curation and enablement hub (skills catalog
+  + plugin setup) unless human review confirms it represents a distinct deployable
+  product with owned functionality beyond listing third-party skills. evidence_strength=low
+  review_source=existing_llm_prescreen'
+human_reviewed_at: '2026-04-06T15:02:55.659958Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+  sample_slot_id: GS300-049
+  sample_id: cand_github_qf_ai_workflow_edbe85c86a6e
+  blocking_items: []
+  last_attempted_at: '2026-04-06T15:02:56.493295Z'

@@ -1,0 +1,278 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_640f23c39640
+candidate_batch_id: candidate_batch_github_qf_agent_2026-03-29_2026-04-02
+created_at: '2026-04-03T06:58:20.769556Z'
+updated_at: '2026-04-03T06:58:59.911585Z'
+source: github
+source_id: src_github
+source_window: 2026-03-29..2026-04-02
+time_field: pushed_at
+external_id: '224021526'
+canonical_url: https://github.com/grafana/agent
+title: agent
+summary: Vendor-neutral programmable observability pipelines.
+raw_evidence_excerpt: 'Vendor-neutral programmable observability pipelines.
+
+
+  > Grafana Agent has reached End-of-Life (EOL) on November 1, 2025. > We recommend
+  migrating to the [Grafana Alloy] > collector, which is built on the foundation of
+  Grafana Agent Flow. > > For more information, read our blog posts about Alloy and
+  how to easily > migrate from Agent to Alloy: > > * Alloy announcement blog post
+  > * Alloy FAQ > * Migrate to Alloy > > [Grafana Alloy]: https://github.com/grafana/alloy
+
+
+  Grafana Agent is an OpenTelemetry Collector distribution with configuration inspired
+  by [Terraform][]. It is designed to be flexible, performant, and compatible with
+  multiple ecosystems such as Prometheus and OpenTelemetry.
+
+
+  Grafana Agent is based around **components**. Components are wired together to form
+  programmable observability **pipelines** for telemetry collection, processing, and
+  delivery.
+
+
+  > **NOTE**: This page focuses mainly on "[Flow mode][Grafana Agent Flow]," the >
+  Terraform-inspired revision of Grafana Agent.
+
+
+  Grafana Agent can collect, transform, and send data to:
+
+
+  * The [Prometheus][] ecosystem * The [OpenTelemetry][] ecosystem * The Grafana open
+  source ecosystem ([Loki][], [Grafana][], [Tempo][], [Mimir][], [Pyroscope][])
+
+
+  [Terraform]: https://terraform.io [Grafana Agent Flow]: https://grafana.com/docs/agent/latest/flow/
+  [Prometheus]: https://prometheus.io [OpenTelemetry]: https://opentelemetry.io [Loki]:
+  https://github.com/grafana/loki [Grafana]: https://github.com/grafana/grafana [Tempo]:
+  https://github.com/grafana/tempo [Mimir]: https://github.com/grafana/mimir [Pyroscope]:
+  https://github.com/grafana/pyroscope
+
+
+  Why use Grafana Agent?
+
+
+  * **Vendor-neutral**: Fully compatible with the Prometheus, OpenTelemetry, and Grafana
+  open source ecosystems. * **Every signal**: Collect telemetry data for metrics,
+  logs, traces, and continuous profiles. * **Scalable**: Deploy on any number of machines
+  to collect millions of active series and terabytes of logs. * **Battle-tested**:
+  Grafana Agent extends the existing battle-tested code from the Prometheus and OpenTelemetry
+  Collector projects. * **Powerful**: Write programmable pipelines with ease, and
+  debug them using a [built-in UI][UI]. * **Batteries included**: Integrate with systems
+  like MySQL, Kubernetes, and Apache to get telemetry that''s immediately useful.
+
+
+  [UI]: https://grafana.com/docs/agent/latest/flow/monitoring/debugging/#grafana-agent-flow-ui
+
+
+  Getting started
+
+
+  Check out our [documentation][] to see:
+
+
+  * [Installation instructions][] for Grafana Agent Flow * Details about [Grafana
+  Agent Flow][] * Steps for [Getting started][] with Grafana Agent Flow * The list
+  of Grafana Agent Flow [Components][]
+
+
+  [documentation]: https://grafana.com/docs/agent/latest/ [Installation instructions]:
+  https://grafana.com/docs/agent/latest/flow/setup/install/ [Grafana Agent Flow]:
+  https://grafana.com/docs/agent/latest/flow/ [Getting started]: https://grafana.com/docs/agent/latest/flow/getting_started/
+  [Components]: https://grafana.com/docs/agent/latest/flow/reference/components/
+
+
+  Example
+
+
+  We maintain an example [Docker Compose environment][] that can be used to launch
+  dependencies to play with Grafana Agent locally.
+
+
+  [Docker Compose environment]: ./example/docker-compose/
+
+
+  Release cadence
+
+
+  A new minor release is planned every six weeks.
+
+
+  The release cadence is best-effort: if necessary, releases may be performed outside
+  of this cadence, or a scheduled release date can be moved forwards or backwards.
+
+
+  Minor releases published on cadence include updating dependencies for upstream OpenTelemetry
+  Collector code if new versions are available. Minor releases published outside of
+  the release cadence may not include these dependency updates.
+
+
+  Patch and security releases may be created at any time.
+
+
+  Community
+
+
+  To engage with the Grafana Agent community:
+
+
+  * Chat with us on our community Slack channel. To invite yourself to the Grafana
+  Slack, visit and join the `#agent` channel. * Ask questions on the [Discussions
+  page][]. * [File an issue][] for bugs, issues, and feature suggestions. * Attend
+  the monthly [community call][].
+
+
+  [Discussions page]: https://github.com/grafana/agent/discussions [File an issue]:
+  https://github.com/grafana/agent/issues/new [community call]: https://docs.google.com/document/d/1TqaZD1JPfNadZ4V81OCBPCG_TksDYGlNlGdMnTWUSpo
+
+
+  Contribute
+
+
+  Refer to our [contributors guide][] to learn how to contribute.
+
+
+  [contributors guide]: ./docs/developer/contributing.md'
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-29'
+    window_end: '2026-04-02'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-29..2026-04-02
+    external_id: '224021526'
+    canonical_url: https://github.com/grafana/agent
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: 'High readiness for quick human triage: likely close as out-of-scope for
+    AI applications/products unless rubric intentionally includes AI-adjacent infra
+    observability.'
+  decision_snapshot: 'Recommend candidate_pool because High readiness for quick human
+    triage: likely close as out-of-scope for AI applications/products unless rubric
+    intentionally includes AI-adjacent infra observability.'
+  scope_boundary_note: This appears to be infrastructure observability middleware
+    (metrics/logs/traces/profiles collection and routing), not an AI-native application
+    or AI product feature. It may be relevant only under a broader infra/tooling taxonomy,
+    not core AI applications.
+  source_evidence_summary:
+  - '> Grafana Agent has reached End-of-Life (EOL) on November 1, 2025. > We recommend
+    migrating to the [Grafana Alloy] collector'
+  - Grafana Agent is an OpenTelemetry Collector distribution... compatible with multiple
+    ecosystems such as Prometheus and OpenTelemetry.
+  - Components are wired together to form programmable observability pipelines for
+    telemetry collection, processing, and delivery.
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: '> Grafana Agent has reached End-of-Life (EOL) on November 1, 2025.
+      > We recommend migrating to the [Grafana Alloy] collector'
+    evidence_source_field: candidate_input
+    why_it_matters: Lifecycle status reduces productization relevance and points to
+      a successor project for any current evaluation.
+  - anchor_rank: 2
+    evidence_text: Grafana Agent is an OpenTelemetry Collector distribution... compatible
+      with multiple ecosystems such as Prometheus and OpenTelemetry.
+    evidence_source_field: candidate_input
+    why_it_matters: Describes telemetry collection infrastructure, not an AI-specific
+      product or model capability.
+  - anchor_rank: 3
+    evidence_text: Components are wired together to form programmable observability
+      pipelines for telemetry collection, processing, and delivery.
+    evidence_source_field: candidate_input
+    why_it_matters: Core functionality is observability pipeline orchestration; indicates
+      platform instrumentation use case.
+  - anchor_rank: 4
+    evidence_text: Collect telemetry data for metrics, logs, traces, and continuous
+      profiles.
+    evidence_source_field: candidate_input
+    why_it_matters: Signals covered are standard observability domains; no explicit
+      AI inference/training workflow scope in excerpt.
+  review_focus_points:
+  - Confirm whether program scope admits non-AI infrastructure enablers (observability
+    tooling).
+  - If yes, evaluate successor project Grafana Alloy instead of EOL Agent.
+  - Check for any AI/LLM-specific components or integrations not present in excerpt
+    before hard exclusion.
+  uncertainty_points: []
+  recommend_candidate_pool: true
+  recommended_action: candidate_pool
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: candidate_pool
+    rationale: 'High readiness for quick human triage: likely close as out-of-scope
+      for AI applications/products unless rubric intentionally includes AI-adjacent
+      infra observability.'
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: 'High readiness for quick human triage: likely close as out-of-scope
+      for AI applications/products unless rubric intentionally includes AI-adjacent
+      infra observability.'
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: Observability & Telemetry Pipeline Infrastructure
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: Observability & Telemetry Pipeline Infrastructure
+      rationale: 'High readiness for quick human triage: likely close as out-of-scope
+        for AI applications/products unless rubric intentionally includes AI-adjacent
+        infra observability.'
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: AI Application / AI Product
+      rationale_for_similarity: AI Application / AI Product
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Provided evidence contains no AI-model-driven
+      feature, AI agent behavior, or AI end-user workflow; project is generic observability
+      middleware and is EOL.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: low
+    unresolved_risk: low
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: 'clear end-user product signal; evidence sufficient for staging;
+  High readiness for quick human triage: likely close as out-of-scope for AI applications/products
+  unless rubric intentionally includes AI-adjacent infra observability. This appears
+  to be infrastructure observability middleware (metrics/logs/traces/profiles collection
+  and routing), not an AI-native application or AI product feature. It may be relevant
+  only under a broader infra/tooling taxonomy, not core AI applications. evidence_strength=low
+  review_source=existing_llm_prescreen'
+human_reviewed_at: '2026-04-03T06:58:59.227895Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_03_samples_031_045.yaml
+  sample_slot_id: GS300-043
+  sample_id: cand_github_qf_agent_640f23c39640
+  blocking_items: []
+  last_attempted_at: '2026-04-03T06:58:59.911561Z'

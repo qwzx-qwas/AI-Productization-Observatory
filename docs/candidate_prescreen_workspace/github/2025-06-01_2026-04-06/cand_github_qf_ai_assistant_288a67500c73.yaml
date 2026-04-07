@@ -1,0 +1,267 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_288a67500c73
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-06-01_2026-04-06
+created_at: '2026-04-06T15:17:27.324104Z'
+updated_at: '2026-04-06T15:17:52.856111Z'
+source: github
+source_id: src_github
+source_window: 2025-06-01..2026-04-06
+time_field: pushed_at
+external_id: '612344730'
+canonical_url: https://github.com/ChatGPTNextWeb/NextChat
+title: NextChat
+summary: "\u2728 Light and Fast AI Assistant. Support: Web | iOS | MacOS | Android\
+  \ |  Linux | Windows"
+raw_evidence_excerpt: "\u2728 Light and Fast AI Assistant. Support: Web | iOS | MacOS\
+  \ | Android | Linux | Windows\n\nNextChat\n\nEnglish / \u7B80\u4F53\u4E2D\u6587\n\
+  \n\u2728 Light and Fast AI Assistant,with Claude, DeepSeek, GPT4 & Gemini Pro support.\n\
+  \nNextChatAI / iOS APP / Web App Demo / Desktop App / Enterprise Edition\n\n[saas-url]:\
+  \ https://nextchat.club?utm_source=readme\n\n[web-url]: https://app.nextchat.club/\
+  \ [download-url]: https://github.com/Yidadaa/ChatGPT-Next-Web/releases\n\n\u2764\
+  \uFE0F Sponsor AI API\n\n302.AI is a pay-as-you-go AI application platform that\
+  \ offers the most comprehensive AI APIs and online applications available.\n\n\U0001F973\
+  \ Cheer for NextChat iOS Version Online!\n\n> \U0001F449 Click Here to Install Now\n\
+  \n> \u2764\uFE0F Source Code Coming Soon\n\n\U0001FAE3 NextChat Support MCP !\n\n\
+  > Before build, please set env ENABLE_MCP=true\n\nEnterprise Edition\n\nMeeting\
+  \ Your Company's Privatization and Customization Deployment Requirements:\n\n- **Brand\
+  \ Customization**: Tailored VI/UI to seamlessly align with your corporate brand\
+  \ image. - **Resource Integration**: Unified configuration and management of dozens\
+  \ of AI resources by company administrators, ready for use by team members. - **Permission\
+  \ Control**: Clearly defined member permissions, resource permissions, and knowledge\
+  \ base permissions, all controlled via a corporate-grade Admin Panel. - **Knowledge\
+  \ Integration**: Combining your internal knowledge base with AI capabilities, making\
+  \ it more relevant to your company's specific business needs compared to general\
+  \ AI. - **Security Auditing**: Automatically intercept sensitive inquiries and trace\
+  \ all historical conversation records, ensuring AI adherence to corporate information\
+  \ security standards. - **Private Deployment**: Enterprise-level private deployment\
+  \ supporting various mainstream private cloud solutions, ensuring data security\
+  \ and privacy protection. - **Continuous Updates**: Ongoing updates and upgrades\
+  \ in cutting-edge capabilities like multimodal AI, ensuring consistent innovation\
+  \ and advancement.\n\nFor enterprise inquiries, please contact: **business@nextchat.dev**\n\
+  \nScreenshots\n\nFeatures\n\n- **Deploy for free with one-click** on Vercel in under\
+  \ 1 minute - Compact client (~5MB) on Linux/Windows/MacOS, download it now - Fully\
+  \ compatible with self-deployed LLMs, recommended for use with RWKV-Runner or LocalAI\
+  \ - Privacy first, all data is stored locally in the browser - Markdown support:\
+  \ LaTex, mermaid, code highlight, etc. - Responsive design, dark mode and PWA -\
+  \ Fast first screen loading speed (~100kb), support streaming response - New in\
+  \ v2: create, share and debug your chat tools with prompt templates (mask) - Awesome\
+  \ prompts powered by awesome-chatgpt-prompts-zh and awesome-chatgpt-prompts - Automatically\
+  \ compresses chat history to support long conversations while also saving your tokens\
+  \ - I18n: English, \u7B80\u4F53\u4E2D\u6587, \u7E41\u4F53\u4E2D\u6587, \u65E5\u672C\
+  \u8A9E, Fran\xE7ais, Espa\xF1ol, Italiano, T\xFCrk\xE7e, Deutsch, Ti\u1EBFng Vi\u1EC7\
+  t, \u0420\u0443\u0441\u0441\u043A\u0438\u0439, \u010Ce\u0161tina, \uD55C\uAD6D\uC5B4\
+  , Indonesia\n\nRoadmap\n\n- [x] System Prompt: pin a user defined prompt as system\
+  \ prompt #138 - [x] User Prompt: user can edit and save custom prompts to prompt\
+  \ list - [x] Prompt Template: create a new chat with pre-defined in-context prompts\
+  \ #993 - [x] Share as image, share to ShareGPT #1741 - [x] Desktop App with tauri\
+  \ - [x] Self-host Model: Fully compatible with RWKV-Runner, as well as server deployment\
+  \ of LocalAI: llama/gpt4all/rwkv/vicuna/koala/gpt4all-j/cerebras/falcon/dolly etc.\
+  \ - [x] Artifacts: Easily preview, copy and share generated content/webpages through\
+  \ a separate window #5092 - [x] Plugins: support network search, calculator, any\
+  \ other apis etc. #165 #5353 - [x] network search, calculator, any other apis etc.\
+  \ #165 #5353 - [x] Supports Realtime Chat #5672 - [ ] local knowledge base\n\nWhat's\
+  \ New\n\n- \U0001F680 v2.15.8 Now supports Realtime Chat #5672 - \U0001F680 v2.15.4\
+  \ The Application supports using Tauri fetch LLM API, MORE SECURITY! #5379 - \U0001F680\
+  \ v2.15.0 Now supports Plugins! Read this: NextChat-Awesome-Plugins - \U0001F680\
+  \ v2.14.0 Now supports Artifacts & SD - \U0001F680 v2.10.1 support Google Gemini\
+  \ Pro model. - \U0001F680 v2.9.11 you can use azure endpoint now. - \U0001F680 v2.8\
+  \ now we have a client that runs across all platforms! - \U0001F680 v2.7 let's share\
+  \ conversations as image, or share to ShareGPT! - \U0001F680 v2.0 is released, now\
+  \ you can create prompt templates, turn your ideas into reality! Read this: ChatGPT\
+  \ Prompt Engineering Tips: Zero, One and Few Shot Prompting.\n\nGet Started\n\n\
+  1. Get OpenAI API Key; 2. Click\n\n3. Enjoy :)\n\nFAQ\n\nEnglish > FAQ\n\nKeep Updated\n\
+  \nIf you have deployed your own project with just one click following the steps\
+  \ above, you may encounter the issue of \"Updates Available\" constantly showing\
+  \ up. This is because Vercel will create a new project for you by default instead\
+  \ of forking this project, resulting in the inability to detect updates correctly.\n\
+  \nWe recommend that you follow the steps below to re-deploy:\n\n- Delete the original\
+  \ repository; - Use the fork button in the upper right corner of the page to fork\
+  \ this project; - Choose and deploy in Vercel again, please see the detailed tutorial.\n\
+  \nEnable Automatic Updates\n\n> If you encounter a failure of Upstream Sync execution,\
+  \ please manually update code.\n\nAfter forking the project, due to the limitations\
+  \ imposed by GitHub, you need to manually enable Workflows and Upstream Sync Action\
+  \ on the Actions page of the forked project. Once enabled, automatic updates will\
+  \ be scheduled every hour:\n\nManually Updating Code\n\nIf you want to update instantly,\
+  \ you can check out the GitHub documentation to learn how to synchronize a forked\
+  \ project with upstream code.\n\nYou can star or watch this project or follow author\
+  \ to get release notifications in time.\n\nAccess Password\n\nThis project provides\
+  \ limited access control. Please add an environment variable named `CODE` on the\
+  \ vercel environment variables page. The value should be passwords separated by\
+  \ comma like this:\n\nAfter adding or modifying this environment variable, please\
+  \ redeploy the project for the changes to take effect.\n\nEnvironment Variables\n\
+  \n`CODE` (optional)\n\nAccess password, separated by comma.\n\n`OPENAI_API_KEY`\
+  \ (required)\n\nYour openai api key, join multiple api keys with comma.\n\n`BASE_URL`\
+  \ (optional)\n\n> Default: `https://api.openai.com`\n\n> Examples: `http://your-openai-proxy.com`\n\
+  \nOverride openai api request base url.\n\n`OPENAI_ORG_ID` (optional)\n\nSpecify\
+  \ OpenAI organization ID.\n\n`AZURE_URL` (optional)\n\n> Example: https://{azure-resource-url}/openai\n\
+  \nAzure deploy url.\n\n`AZURE_API_KEY` (optional)\n\nAzure Api Key.\n\n`AZURE_API_VERSION`\
+  \ (optional)\n\nAzure Api Version, find it at Azure Documentation.\n\n`GOOGLE_API_KEY`\
+  \ (optional)\n\nGoogle Gemini Pro Api Key.\n\n`GOOGLE_URL` (optional)\n\nGoogle\
+  \ Gemini Pro Api Url.\n\n`ANTHROPIC_API_KEY` (optional)\n\nanthropic claude Api\
+  \ Key.\n\n`ANTHROPIC_API_VERSION` (optional)\n\nanthropic claude Api version.\n\n\
+  `ANTHROPIC_URL` (optional)\n\nanthropic claude Api Url.\n\n`BAIDU_API_KEY` (optional)\n\
+  \nBaidu Api Key.\n\n`BAIDU_SECRET_KEY` (optional)\n\nBaidu Secret Key.\n\n`BAIDU_URL`\
+  \ (optional)\n\nBaidu Api Url.\n\n`BYTEDANCE_API_KEY` (optional)\n\nByteDance Api\
+  \ Key.\n\n`BYTEDANCE_URL` (optional)\n\nByteDance Api Url.\n\n`ALIBABA_API_KEY`\
+  \ (optional)\n\nAlibaba Cloud Api Key.\n\n`ALIBABA_URL` (optional)\n\nAlibaba Cloud\
+  \ Api Url.\n\n`IFLYTEK_URL` (Optional)\n\niflytek Api Url.\n\n`IFLYTEK_API_KEY`\
+  \ (Optional)\n\niflytek Api Key.\n\n`IFLYTEK_API_SECRET` (Optional)\n\niflytek Api\
+  \ Secret.\n\n`CHATGLM_API_KEY` (optional)\n\nChatGLM Api Key.\n\n`CHATGLM_URL` (optional)\n\
+  \nChatGLM Api Url.\n\n`DEEPSEEK_API_KEY` (optional)\n\nDeepSeek Api Key.\n\n`DEEPSEEK_URL`\
+  \ (optional)\n\nDeepSeek Api Url.\n\n`HIDE_USER_API_KEY` (optional)\n\n> Default:\
+  \ Empty\n\nIf you do not want users to input their own API key, set this value to\
+  \ 1.\n\n`DISABLE_GPT4` (optional)\n\n> Default: Empty\n\nIf you do not want users\
+  \ to use GPT-4, set this value to 1.\n\n`ENABLE_BALANCE_QUERY` (optional)\n\n> Default:\
+  \ Empty\n\nIf you do want users to query balance, set this value to 1.\n\n`DISABLE_FAST_LINK`\
+  \ (optional)\n\n> Default: Empty\n\nIf you want to disable parse settings from url,\
+  \ set this to 1.\n\n`CUSTOM_MODELS` (optional)"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-06-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-06-01..2026-04-06
+    external_id: '612344730'
+    canonical_url: https://github.com/ChatGPTNextWeb/NextChat
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Human reviewer should quickly inspect repo activity metrics, release artifacts,
+    enterprise docs/screens, and any independent usage signals before deciding candidate_pool
+    inclusion.
+  decision_snapshot: Recommend hold because Human reviewer should quickly inspect
+    repo activity metrics, release artifacts, enterprise docs/screens, and any independent
+    usage signals before deciding candidate_pool inclusion.
+  scope_boundary_note: Treat this as a productized AI assistant interface layer (web/mobile/desktop
+    + deployment + integrations), not as a foundation model provider or core model-serving
+    infrastructure. Keep review focused on shipped application capabilities, deployment
+    model, and enterprise controls; exclude judging underlying model quality.
+  source_evidence_summary:
+  - "\u201C\u2728 Light and Fast AI Assistant. Support: Web | iOS | MacOS | Android\
+    \ | Linux | Windows\u201D"
+  - "\u201Cwith Claude, DeepSeek, GPT4 & Gemini Pro support.\u201D"
+  - "\u201CEnterprise Edition\u2026 Brand Customization\u2026 Permission Control\u2026\
+    \ Security Auditing\u2026 Private Deployment\u2026\u201D"
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: "\u201C\u2728 Light and Fast AI Assistant. Support: Web | iOS |\
+      \ MacOS | Android | Linux | Windows\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Directly establishes end-user AI application positioning and cross-platform
+      product surface.
+  - anchor_rank: 2
+    evidence_text: "\u201Cwith Claude, DeepSeek, GPT4 & Gemini Pro support.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Confirms multi-model orchestration at app layer rather than single-provider
+      lock-in.
+  - anchor_rank: 3
+    evidence_text: "\u201CEnterprise Edition\u2026 Brand Customization\u2026 Permission\
+      \ Control\u2026 Security Auditing\u2026 Private Deployment\u2026\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates explicit enterprise productization claims beyond hobby
+      OSS usage.
+  - anchor_rank: 4
+    evidence_text: "\u201CDeploy for free with one-click on Vercel in under 1 minute\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Signals deployability and operational accessibility, relevant
+      to product readiness.
+  - anchor_rank: 5
+    evidence_text: "\u201CPrivacy first, all data is stored locally in the browser\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Shows a concrete architectural/privacy stance often important
+      for adoption screening.
+  review_focus_points:
+  - Validate whether Enterprise Edition capabilities are generally available product
+    features or mostly marketing claims.
+  - Check recency/consistency of maintenance and release cadence in the source window,
+    not just README changelog claims.
+  - Confirm if this is primarily an AI assistant product versus a customizable open-source
+    shell with limited opinionated workflows.
+  - Assess security/compliance depth (auditability, access control robustness) for
+    enterprise suitability.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: Human reviewer should quickly inspect repo activity metrics, release
+      artifacts, enterprise docs/screens, and any independent usage signals before
+      deciding candidate_pool inclusion.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Human reviewer should quickly inspect repo activity metrics, release
+      artifacts, enterprise docs/screens, and any independent usage signals before
+      deciding candidate_pool inclusion.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI Applications > AI Assistant Clients (multi-model chat
+      product)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI Applications > AI Assistant Clients (multi-model chat product)
+      rationale: Human reviewer should quickly inspect repo activity metrics, release
+        artifacts, enterprise docs/screens, and any independent usage signals before
+        deciding candidate_pool inclusion.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: Developer Tools > LLM Frameworks/SDKs
+      rationale_for_similarity: Developer Tools > LLM Frameworks/SDKs
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Repository presents a user-facing assistant
+      product and deployment package, not a primary SDK/framework for building other
+      AI apps.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear; Human reviewer should
+  quickly inspect repo activity metrics, release artifacts, enterprise docs/screens,
+  and any independent usage signals before deciding candidate_pool inclusion. Treat
+  this as a productized AI assistant interface layer (web/mobile/desktop + deployment
+  + integrations), not as a foundation model provider or core model-serving infrastructure.
+  Keep review focused on shipped application capabilities, deployment model, and enterprise
+  controls; exclude judging underlying model quality. evidence_strength=low review_source=existing_llm_prescreen
+human_reviewed_at: '2026-04-06T15:17:52.856087Z'
+staging_handoff:
+  status: blocked
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items:
+  - candidate first-pass review resolved to on_hold
+  last_attempted_at: '2026-04-06T15:17:52.856106Z'

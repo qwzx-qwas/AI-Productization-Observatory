@@ -1,0 +1,257 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_fdc462fa4747
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2026-03-31_2026-04-06
+created_at: '2026-04-06T09:18:15.611098Z'
+updated_at: '2026-04-06T11:28:58.954856Z'
+source: github
+source_id: src_github
+source_window: 2026-03-31..2026-04-06
+time_field: pushed_at
+external_id: '1103012935'
+canonical_url: https://github.com/openclaw/openclaw
+title: openclaw
+summary: "Your own personal AI assistant. Any OS. Any Platform. The lobster way. \U0001F99E\
+  \ "
+raw_evidence_excerpt: "Your own personal AI assistant. Any OS. Any Platform. The lobster\
+  \ way. \U0001F99E\n\n\U0001F99E OpenClaw \u2014 Personal AI Assistant\n\nEXFOLIATE!\
+  \ EXFOLIATE!\n\n**OpenClaw** is a _personal AI assistant_ you run on your own devices.\
+  \ It answers you on the channels you already use (WhatsApp, Telegram, Slack, Discord,\
+  \ Google Chat, Signal, iMessage, BlueBubbles, IRC, Microsoft Teams, Matrix, Feishu,\
+  \ LINE, Mattermost, Nextcloud Talk, Nostr, Synology Chat, Tlon, Twitch, Zalo, Zalo\
+  \ Personal, WeChat, WebChat). It can speak and listen on macOS/iOS/Android, and\
+  \ can render a live Canvas you control. The Gateway is just the control plane \u2014\
+  \ the product is the assistant.\n\nIf you want a personal, single-user assistant\
+  \ that feels local, fast, and always-on, this is it.\n\nWebsite \xB7 Docs \xB7 Vision\
+  \ \xB7 DeepWiki \xB7 Getting Started \xB7 Updating \xB7 Showcase \xB7 FAQ \xB7 Onboarding\
+  \ \xB7 Nix \xB7 Docker \xB7 Discord\n\nPreferred setup: run `openclaw onboard` in\
+  \ your terminal. OpenClaw Onboard guides you step by step through setting up the\
+  \ gateway, workspace, channels, and skills. It is the recommended CLI setup path\
+  \ and works on **macOS, Linux, and Windows (via WSL2; strongly recommended)**. Works\
+  \ with npm, pnpm, or bun. New install? Start here: Getting started\n\nSponsors\n\
+  \n**Subscriptions (OAuth):**\n\n- **OpenAI** (ChatGPT/Codex)\n\nModel note: while\
+  \ many providers/models are supported, for the best experience and lower prompt-injection\
+  \ risk use the strongest latest-generation model available to you. See Onboarding.\n\
+  \nModels (selection + auth)\n\n- Models config + CLI: Models - Auth profile rotation\
+  \ (OAuth vs API keys) + fallbacks: Model failover\n\nInstall (recommended)\n\nRuntime:\
+  \ **Node 24 (recommended) or Node 22.16+**.\n\nOpenClaw Onboard installs the Gateway\
+  \ daemon (launchd/systemd user service) so it stays running.\n\nQuick start (TL;DR)\n\
+  \nRuntime: **Node 24 (recommended) or Node 22.16+**.\n\nFull beginner guide (auth,\
+  \ pairing, channels): Getting started\n\nUpgrading? Updating guide (and run `openclaw\
+  \ doctor`).\n\nDevelopment channels\n\n- **stable**: tagged releases (`vYYYY.M.D`\
+  \ or `vYYYY.M.D- `), npm dist-tag `latest`. - **beta**: prerelease tags (`vYYYY.M.D-beta.N`),\
+  \ npm dist-tag `beta` (macOS app may be missing). - **dev**: moving head of `main`,\
+  \ npm dist-tag `dev` (when published).\n\nSwitch channels (git + npm): `openclaw\
+  \ update --channel stable|beta|dev`. Details: Development channels.\n\nFrom source\
+  \ (development)\n\nPrefer `pnpm` for builds from source. Bun is optional for running\
+  \ TypeScript directly.\n\nNote: `pnpm openclaw ...` runs TypeScript directly (via\
+  \ `tsx`). `pnpm build` produces `dist/` for running via Node / the packaged `openclaw`\
+  \ binary.\n\nSecurity defaults (DM access)\n\nOpenClaw connects to real messaging\
+  \ surfaces. Treat inbound DMs as **untrusted input**.\n\nFull security guide: Security\n\
+  \nDefault behavior on Telegram/WhatsApp/Signal/iMessage/Microsoft Teams/Discord/Google\
+  \ Chat/Slack:\n\n- **DM pairing** (`dmPolicy=\"pairing\"` / `channels.discord.dmPolicy=\"\
+  pairing\"` / `channels.slack.dmPolicy=\"pairing\"`; legacy: `channels.discord.dm.policy`,\
+  \ `channels.slack.dm.policy`): unknown senders receive a short pairing code and\
+  \ the bot does not process their message. - Approve with: `openclaw pairing approve\
+  \ ` (then the sender is added to a local allowlist store). - Public inbound DMs\
+  \ require an explicit opt-in: set `dmPolicy=\"open\"` and include `\"*\"` in the\
+  \ channel allowlist (`allowFrom` / `channels.discord.allowFrom` / `channels.slack.allowFrom`;\
+  \ legacy: `channels.discord.dm.allowFrom`, `channels.slack.dm.allowFrom`).\n\nRun\
+  \ `openclaw doctor` to surface risky/misconfigured DM policies.\n\nHighlights\n\n\
+  - **Local-first Gateway** \u2014 single control plane for sessions, channels, tools,\
+  \ and events. - **Multi-channel inbox** \u2014 WhatsApp, Telegram, Slack, Discord,\
+  \ Google Chat, Signal, BlueBubbles (iMessage), iMessage (legacy), IRC, Microsoft\
+  \ Teams, Matrix, Feishu, LINE, Mattermost, Nextcloud Talk, Nostr, Synology Chat,\
+  \ Tlon, Twitch, Zalo, Zalo Personal, WeChat, WebChat, macOS, iOS/Android. - **Multi-agent\
+  \ routing** \u2014 route inbound channels/accounts/peers to isolated agents (workspaces\
+  \ + per-agent sessions). - **Voice Wake + Talk Mode** \u2014 wake words on macOS/iOS\
+  \ and continuous voice on Android (ElevenLabs + system TTS fallback). - **Live Canvas**\
+  \ \u2014 agent-driven visual workspace with A2UI. - **First-class tools** \u2014\
+  \ browser, canvas, nodes, cron, sessions, and Discord/Slack actions. - **Companion\
+  \ apps** \u2014 macOS menu bar app + iOS/Android nodes. - **Onboarding + skills**\
+  \ \u2014 onboarding-driven setup with bundled/managed/workspace skills.\n\nStar\
+  \ History\n\nEverything we built so far\n\nCore platform\n\n- Gateway WS control\
+  \ plane with sessions, presence, config, cron, webhooks, Control UI, and Canvas\
+  \ host. - CLI surface: gateway, agent, send, onboarding, and doctor. - Pi agent\
+  \ runtime in RPC mode with tool streaming and block streaming. - Session model:\
+  \ `main` for direct chats, group isolation, activation modes, queue modes, reply-back.\
+  \ Group rules: Groups. - Media pipeline: images/audio/video, transcription hooks,\
+  \ size caps, temp file lifecycle. Audio details: Audio.\n\nChannels\n\n- Channels:\
+  \ WhatsApp (Baileys), Telegram (grammY), Slack (Bolt), Discord (discord.js), Google\
+  \ Chat (Chat API), Signal (signal-cli), BlueBubbles (iMessage, recommended), iMessage\
+  \ (legacy imsg), IRC, Microsoft Teams, Matrix, Feishu, LINE, Mattermost, Nextcloud\
+  \ Talk, Nostr, Synology Chat, Tlon, Twitch, Zalo, Zalo Personal, WeChat (`@tencent-weixin/openclaw-weixin`),\
+  \ WebChat. - Group routing: mention gating, reply tags, per-channel chunking and\
+  \ routing. Channel rules: Channels.\n\nApps + nodes\n\n- macOS app: menu bar control\
+  \ plane, Voice Wake/PTT, Talk Mode overlay, WebChat, debug tools, remote gateway\
+  \ control. - iOS node: Canvas, Voice Wake, Talk Mode, camera, screen recording,\
+  \ Bonjour + device pairing. - Android node: Connect tab (setup code/manual), chat\
+  \ sessions, voice tab, Canvas, camera/screen recording, and Android device commands\
+  \ (notifications/location/SMS/photos/contacts/calendar/motion/app update). - macOS\
+  \ node mode: system.run/notify + canvas/camera exposure.\n\nTools + automation\n\
+  \n- Browser control: dedicated openclaw Chrome/Chromium, snapshots, actions, uploads,\
+  \ profiles. - Canvas: A2UI push/reset, eval, snapshot. - Nodes: camera snap/clip,\
+  \ screen record, location.get, notifications. - Cron + wakeups; webhooks; Gmail\
+  \ Pub/Sub. - Skills platform: bundled, managed, and workspace skills with install\
+  \ gating + UI.\n\nRuntime + safety\n\n- Channel routing, retry policy, and streaming/chunking.\
+  \ - Presence, typing indicators, and usage tracking. - Models, model failover, and\
+  \ session pruning. - Security and troubleshooting.\n\nOps + packaging\n\n- Control\
+  \ UI + WebChat served directly from the Gateway. - Tailscale Serve/Funnel or SSH\
+  \ tunnels with token/password auth. - Nix mode for declarative config; Docker-based\
+  \ installs. - Doctor migrations, logging.\n\nHow it works (short)\n\nKey subsystems\n\
+  \n- **Gateway WebSocket network** \u2014 single WS control plane for clients, tools,\
+  \ and events (plus ops: Gateway runbook). - **Tailscale exposure** \u2014 Serve/Funnel\
+  \ for the Gateway dashboard + WS (remote access: Remote). - **Browser control**\
+  \ \u2014 openclaw\u2011managed Chrome/Chromium with CDP control. - **Canvas + A2UI**\
+  \ \u2014 agent\u2011driven visual workspace (A2UI host: Canvas/A2UI). - **Voice\
+  \ Wake + Talk Mode** \u2014 wake words on macOS/iOS plus continuous voice on Android.\
+  \ - **Nodes** \u2014 Canvas, camera snap/clip, screen record, `location.get`, notifications,\
+  \ plus macOS\u2011only `system.run`/`system.notify`.\n\nTailscale access (Gateway\
+  \ dashboard)\n\nOpenClaw can auto-configure Tailscale **Serve** (tailnet-only) or\
+  \ **Funnel** (public) while the Gateway stays bound to loopback. Configure `gateway.tailscale.mode`:\n\
+  \n- `off`: no Tailscale automation (default). - `serve`: tailnet-only HTTPS via\
+  \ `tailscale serve` (uses Tailscale identity headers by default). - `funnel`: public\
+  \ HTTPS via `tailscale funnel` (requires shared password auth).\n\nNotes:"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-31'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-31..2026-04-06
+    external_id: '1103012935'
+    canonical_url: https://github.com/openclaw/openclaw
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Ready for human first-pass with moderate priority; reviewer should validate
+    maturity claims and narrow to actually maintained assistant capabilities.
+  decision_snapshot: Recommend hold because Ready for human first-pass with moderate
+    priority; reviewer should validate maturity claims and narrow to actually maintained
+    assistant capabilities.
+  scope_boundary_note: 'Treat this as an end-user AI assistant product candidate (self-hosted
+    personal assistant) rather than a generic developer framework. Boundary: include
+    user-facing assistant behavior, channel integrations, onboarding/ops safety; exclude
+    over-crediting underlying infra components as standalone platform leadership without
+    separate proof.'
+  source_evidence_summary:
+  - '"OpenClaw is a personal AI assistant you run on your own devices."'
+  - '"It answers you on the channels you already use (WhatsApp, Telegram, Slack, Discord,
+    Google Chat, Signal, iMessage...)"'
+  - '"Preferred setup: run `openclaw onboard`... guides you step by step through setting
+    up the gateway, workspace, channels, and skills."'
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: '"OpenClaw is a personal AI assistant you run on your own devices."'
+    evidence_source_field: candidate_input
+    why_it_matters: Direct product identity statement; strongest indicator of intended
+      persona and category.
+  - anchor_rank: 2
+    evidence_text: '"It answers you on the channels you already use (WhatsApp, Telegram,
+      Slack, Discord, Google Chat, Signal, iMessage...)"'
+    evidence_source_field: candidate_input
+    why_it_matters: Clear user-facing delivery surface across messaging ecosystems,
+      consistent with assistant productization.
+  - anchor_rank: 3
+    evidence_text: '"Preferred setup: run `openclaw onboard`... guides you step by
+      step through setting up the gateway, workspace, channels, and skills."'
+    evidence_source_field: candidate_input
+    why_it_matters: Onboarding workflow indicates productized installation path beyond
+      raw code.
+  - anchor_rank: 4
+    evidence_text: '"Security defaults (DM access)... Treat inbound DMs as untrusted
+      input... DM pairing... allowlist"'
+    evidence_source_field: candidate_input
+    why_it_matters: Operational safety defaults are explicit, suggesting deployment
+      realism.
+  - anchor_rank: 5
+    evidence_text: '"OpenClaw Onboard installs the Gateway daemon (launchd/systemd
+      user service) so it stays running."'
+    evidence_source_field: candidate_input
+    why_it_matters: Persistent service behavior supports always-on assistant use case.
+  review_focus_points:
+  - Verify shipped-vs-aspirational status of long channel/tool matrix (especially
+    legacy vs recommended paths).
+  - Check whether single-user personal assistant is truly the primary usage pattern
+    versus a dev automation framework.
+  - Confirm security posture in practice (default DM pairing, auth modes, exposure
+    via Tailscale funnel/serve).
+  - 'Assess evidence of operational maturity: release cadence, issue responsiveness,
+    install success signals.'
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: Ready for human first-pass with moderate priority; reviewer should
+      validate maturity claims and narrow to actually maintained assistant capabilities.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Ready for human first-pass with moderate priority; reviewer should
+      validate maturity claims and narrow to actually maintained assistant capabilities.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI Applications > Personal AI Assistant (self-hosted, multi-channel)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI Applications > Personal AI Assistant (self-hosted, multi-channel)
+      rationale: Ready for human first-pass with moderate priority; reviewer should
+        validate maturity claims and narrow to actually maintained assistant capabilities.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: AI Developer Infrastructure > Agent Runtime / Orchestration Gateway
+      rationale_for_similarity: AI Developer Infrastructure > Agent Runtime / Orchestration
+        Gateway
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Although it includes gateway/control-plane
+      and tooling internals, the excerpt positions the user-facing assistant as the
+      product ('the product is the assistant'), with onboarding and channel UX centered
+      on end-user interaction.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: 'clear end-user product signal; evidence sufficient for staging;
+  manual override: user requested to promote all non-duplicate active candidates into
+  gold staging'
+human_reviewed_at: '2026-04-06T11:28:58.106161Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+  sample_slot_id: GS300-059
+  sample_id: cand_github_qf_ai_assistant_fdc462fa4747
+  blocking_items: []
+  last_attempted_at: '2026-04-06T11:28:58.954837Z'

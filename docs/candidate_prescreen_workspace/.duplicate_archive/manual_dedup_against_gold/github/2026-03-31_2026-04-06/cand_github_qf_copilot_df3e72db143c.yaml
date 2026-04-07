@@ -1,0 +1,212 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_df3e72db143c
+candidate_batch_id: candidate_batch_github_qf_copilot_2026-03-31_2026-04-06
+created_at: '2026-04-06T09:20:48.717861Z'
+updated_at: '2026-04-06T09:21:20.261513Z'
+source: github
+source_id: src_github
+source_window: 2026-03-31..2026-04-06
+time_field: pushed_at
+external_id: '655515393'
+canonical_url: https://github.com/CopilotKit/CopilotKit
+title: CopilotKit
+summary: The Frontend Stack for Agents & Generative UI. React + Angular.  Makers of
+  the AG-UI Protocol
+raw_evidence_excerpt: "The Frontend Stack for Agents & Generative UI. React + Angular.\
+  \ Makers of the AG-UI Protocol\n\nCopilotKit\n\nDocs \xB7 Examples \xB7 Copilot\
+  \ Cloud \xB7 Discord\n\nBuild **agent-native applications** with generative UI,\
+  \ shared state, and human-in-the-loop workflows.\n\n---\n\nWhat is CopilotKit\n\n\
+  CopilotKit is a best-in-class SDK for building full-stack agentic applications,\
+  \ Generative UI, and chat applications.\n\nWe are the company behind the **AG-UI\
+  \ Protocol**, adopted by Google, LangChain, AWS, Microsoft, Mastra, PydanticAI,\
+  \ and more!\n\n**Features:**\n\n- **Chat UI** \u2013 A React-based chat interface\
+  \ that supports message streaming, tool calls, and agent responses. - **Backend\
+  \ Tool Rendering** \u2013 Enables agents to call backend tools that return UI components\
+  \ rendered directly in the client. - **Generative UI** \u2013 Allows agents to generate\
+  \ and update UI components dynamically at runtime based on user intent and agent\
+  \ state. - **Shared State** \u2013 A synchronized state layer that both agents and\
+  \ UI components can read from and write to in real time. - **Human-in-the-Loop**\
+  \ \u2013 Lets agents pause execution to request user input, confirmation, or edits\
+  \ before continuing.\n\nQuick Start\n\nNew projects:\n\nExisting projects:\n\nWhat\
+  \ this gives you:\n\n- **CopilotKit installed** \u2013 Core packages are fully set\
+  \ up in your app - **Provider configured** \u2013 Context, state, and hooks ready\
+  \ to use - **Agent <> UI connected** \u2013 Agents can stream actions and render\
+  \ UI immediately - **Deployment-ready** \u2013 Your app is ready to deploy\n\nComplete\
+  \ getting started guide \u2192\n\nHow it works:\n\nCopilotKit connects your UI,\
+  \ agents, and tools into a single interaction loop.\n\nThis enables:\n\n- Agents\
+  \ that ask users for input - Tools that render UI - Stateful workflows across steps\
+  \ and sessions\n\n\u2B50\uFE0F useAgent Hook\n\nThe `useAgent` hook is a proper\
+  \ superset of `useCoAgent` and sits directly on AG-UI, giving more control over\
+  \ the agent connection.\n\nCheck out the useAgent docs to learn more.\n\nGenerative\
+  \ UI\n\nGenerative UI is a core CopilotKit pattern that allows agents to dynamically\
+  \ render UI as part of their workflow.\n\nCompare the Three Types\n\nExplore:\n\n\
+  - Static (AG-UI Protocol) - Declarative (A2UI) - Open-Ended (MCP Apps & Open JSON)\n\
+  \nGenerative UI educational repo \u2192\n\n\U0001F5A5\uFE0F AG-UI: The Agent\u2013\
+  User Interaction Protocol\n\nConnect agent workflow to user-facing apps, with deep\
+  \ partnerships and 1st-party integrations across the agentic stack\u2014including\
+  \ LangGraph, CrewAI, and more.\n\n---\n\nLearn more in the AG-UI README \u2192\n\
+  \n\U0001F91D Community\n\n- What's New Have questions or need help?\n\nJoin our\
+  \ Discord \u2192\n\nRead the Docs \u2192\n\nTry Copilot Cloud \u2192\n\nStay up\
+  \ to date with our latest releases!\n\nFollow us on LinkedIn \u2192\n\nFollow us\
+  \ on X \u2192\n\n\U0001F64B\U0001F3FD\u200D\u2642\uFE0F Contributing\n\nThanks for\
+  \ your interest in contributing to CopilotKit! \U0001F49C\n\nWe value all contributions,\
+  \ whether it's through code, documentation, creating demo apps, or just spreading\
+  \ the word.\n\nHere are a few useful resources to help you get started:\n\n- For\
+  \ code contributions, CONTRIBUTING.md. - For documentation-related contributions,\
+  \ check out the documentation contributions guide.\n\n- Want to contribute but not\
+  \ sure how? Join our Discord and we'll help you out!\n\n\U0001F4C4 License\n\nThis\
+  \ repository's source code is available under the MIT License."
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-31'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-31..2026-04-06
+    external_id: '655515393'
+    canonical_url: https://github.com/CopilotKit/CopilotKit
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Ready for first-pass human triage with emphasis on taxonomy placement and
+    claim verification; likely relevant, but avoid automatic elevation without external
+    corroboration.
+  decision_snapshot: Recommend candidate_pool because Ready for first-pass human triage
+    with emphasis on taxonomy placement and claim verification; likely relevant, but
+    avoid automatic elevation without external corroboration.
+  scope_boundary_note: In-scope if the observatory includes AI application productization
+    layers (developer SDKs enabling agent UX, human-in-the-loop flows, and deployable
+    app scaffolding). Out-of-scope if the target is only model providers, pure research
+    repos, or non-AI UI libraries without agent/workflow integration.
+  source_evidence_summary:
+  - The Frontend Stack for Agents & Generative UI. React + Angular. Makers of the
+    AG-UI Protocol
+  - CopilotKit is a best-in-class SDK for building full-stack agentic applications,
+    Generative UI, and chat applications.
+  - Build agent-native applications with generative UI, shared state, and human-in-the-loop
+    workflows.
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: The Frontend Stack for Agents & Generative UI. React + Angular.
+      Makers of the AG-UI Protocol
+    evidence_source_field: candidate_input
+    why_it_matters: 'Directly states product thesis: frontend infrastructure specifically
+      for AI agents and generative interfaces.'
+  - anchor_rank: 2
+    evidence_text: CopilotKit is a best-in-class SDK for building full-stack agentic
+      applications, Generative UI, and chat applications.
+    evidence_source_field: candidate_input
+    why_it_matters: Positions repo as an SDK intended for building AI applications,
+      not just demos.
+  - anchor_rank: 3
+    evidence_text: Build agent-native applications with generative UI, shared state,
+      and human-in-the-loop workflows.
+    evidence_source_field: candidate_input
+    why_it_matters: Highlights concrete productization primitives (state sync + HITL
+      workflows) relevant to deployable AI apps.
+  - anchor_rank: 4
+    evidence_text: 'Features: Chat UI ... Backend Tool Rendering ... Generative UI
+      ... Shared State ... Human-in-the-Loop'
+    evidence_source_field: candidate_input
+    why_it_matters: Feature list indicates end-to-end application layer capabilities
+      beyond a single component.
+  - anchor_rank: 5
+    evidence_text: We are the company behind the AG-UI Protocol, adopted by Google,
+      LangChain, AWS, Microsoft, Mastra, PydanticAI, and more!
+    evidence_source_field: candidate_input
+    why_it_matters: Suggests ecosystem significance, but requires independent verification
+      due to marketing-style claim.
+  review_focus_points:
+  - Verify whether AG-UI protocol adoption claims are externally corroborated (docs,
+    partner repos, releases).
+  - 'Confirm primary classification: application-layer SDK vs protocol standard vs
+    cloud product.'
+  - Check current maintenance/velocity signals in repo activity and issue responsiveness
+    within the source window.
+  - Assess whether this should be tracked as infrastructure enabling AI products rather
+    than as a standalone end-user AI app.
+  uncertainty_points: []
+  recommend_candidate_pool: true
+  recommended_action: candidate_pool
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: candidate_pool
+    rationale: Ready for first-pass human triage with emphasis on taxonomy placement
+      and claim verification; likely relevant, but avoid automatic elevation without
+      external corroboration.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Ready for first-pass human triage with emphasis on taxonomy placement
+      and claim verification; likely relevant, but avoid automatic elevation without
+      external corroboration.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI Application Productization Infrastructure (Agent UI/Frontend
+      SDK)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI Application Productization Infrastructure (Agent UI/Frontend
+        SDK)
+      rationale: Ready for first-pass human triage with emphasis on taxonomy placement
+        and claim verification; likely relevant, but avoid automatic elevation without
+        external corroboration.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: Agent Orchestration Framework
+      rationale_for_similarity: Agent Orchestration Framework
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: CopilotKit evidence is centered on frontend
+      interaction layer (chat UI, generative UI rendering, shared state, HITL), not
+      primarily backend agent planning/execution orchestration.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: low
+    unresolved_risk: low
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  Ready for first-pass human triage with emphasis on taxonomy placement and claim
+  verification; likely relevant, but avoid automatic elevation without external corroboration.
+  In-scope if the observatory includes AI application productization layers (developer
+  SDKs enabling agent UX, human-in-the-loop flows, and deployable app scaffolding).
+  Out-of-scope if the target is only model providers, pure research repos, or non-AI
+  UI libraries without agent/workflow integration. evidence_strength=low review_source=existing_llm_prescreen
+human_reviewed_at: '2026-04-06T09:21:19.440874Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+  sample_slot_id: GS300-050
+  sample_id: cand_github_qf_copilot_df3e72db143c
+  blocking_items: []
+  last_attempted_at: '2026-04-06T09:21:20.261495Z'

@@ -1,0 +1,140 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_4004089b4380
+candidate_batch_id: candidate_batch_github_qf_agent_2025-06-01_2026-04-06
+created_at: '2026-04-07T02:53:37.668632Z'
+updated_at: '2026-04-07T09:04:37.684396Z'
+source: github
+source_id: src_github
+source_window: 2025-06-01..2026-04-06
+time_field: pushed_at
+external_id: '167165701'
+canonical_url: https://github.com/dwservice/agent
+title: agent
+summary: DWService agent for Linux, Mac and Windows
+raw_evidence_excerpt: 'DWService agent for Linux, Mac and Windows
+
+
+  DWService - Agent
+
+
+  This is DWService agent for operative systems Linux, Mac and Windows. The code is
+  written in python2 and several libraries are written c++.
+
+
+  Start the agent
+
+
+  If you prefer you can start the agent from the sources but you keep in mind in this
+  mode the agent does not update automatically, so you need to update sources manually
+  every time. Before to start the agent you need to: - Install python3 - Install g++/make
+  (if Windows download Mingw-w64 version 64bit or 32bit) - To compile Wayland support
+  on Linux, install libraries: `libpipewire-0.3-dev`, `libdbus-1-3`, and `libdbus-1-dev`
+  - Download agent source code (zip or git clone) - Execute these commands from agent/make:
+
+
+  Now you are ready to start the agent by execute this command from agent/core:
+
+
+  If the agent still tries setting up a Xorg session on client connect, with Wayland
+  active and even environment `XDG_SESSION_TYPE=wayland` set, try forcing Wayland
+  in the agent configuration:
+
+
+  Setup the agent for development
+
+
+  Thanks Eclipse + Pydev and CDT you can develop the agent with only one IDE from
+  your prefer operative system. You also need of python3 and g++/make (if Windows
+  download Mingw-w64 version 64bit or 32bit) installed on your system. After configuring
+  the IDE and importing the source code, you need to execute same scripts of **"Start
+  the agent"** section.
+
+
+  You can read the guide on the wiki to learn how to setup the agent for development.
+
+
+  License Agreement
+
+
+  This software is free and open source. It consists of one core component released
+  under the MPLv2 license, and several libraries and components defined "app" that
+  could be governed by different licenses. you can read the "LICENSE" file in each
+  folder.'
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-06-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-06-01..2026-04-06
+    external_id: '167165701'
+    canonical_url: https://github.com/dwservice/agent
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: schema_drift
+  error_message: OpenAI-compatible response must provide message.content text
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

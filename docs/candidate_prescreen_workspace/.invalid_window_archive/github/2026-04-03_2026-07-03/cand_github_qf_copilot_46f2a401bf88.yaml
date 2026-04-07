@@ -1,0 +1,143 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_46f2a401bf88
+candidate_batch_id: candidate_batch_github_qf_copilot_2026-04-03_2026-07-03
+created_at: '2026-04-03T11:05:07.151922Z'
+updated_at: '2026-04-03T11:54:47.206392Z'
+source: github
+source_id: src_github
+source_window: 2026-04-03..2026-07-03
+time_field: pushed_at
+external_id: '655515393'
+canonical_url: https://github.com/CopilotKit/CopilotKit
+title: CopilotKit
+summary: The Frontend Stack for Agents & Generative UI. React + Angular.  Makers of
+  the AG-UI Protocol
+raw_evidence_excerpt: "The Frontend Stack for Agents & Generative UI. React + Angular.\
+  \ Makers of the AG-UI Protocol\n\nCopilotKit\n\nDocs \xB7 Examples \xB7 Copilot\
+  \ Cloud \xB7 Discord\n\nBuild **agent-native applications** with generative UI,\
+  \ shared state, and human-in-the-loop workflows.\n\n---\n\nWhat is CopilotKit\n\n\
+  CopilotKit is a best-in-class SDK for building full-stack agentic applications,\
+  \ Generative UI, and chat applications.\n\nWe are the company behind the **AG-UI\
+  \ Protocol**, adopted by Google, LangChain, AWS, Microsoft, Mastra, PydanticAI,\
+  \ and more!\n\n**Features:**\n\n- **Chat UI** \u2013 A React-based chat interface\
+  \ that supports message streaming, tool calls, and agent responses. - **Backend\
+  \ Tool Rendering** \u2013 Enables agents to call backend tools that return UI components\
+  \ rendered directly in the client. - **Generative UI** \u2013 Allows agents to generate\
+  \ and update UI components dynamically at runtime based on user intent and agent\
+  \ state. - **Shared State** \u2013 A synchronized state layer that both agents and\
+  \ UI components can read from and write to in real time. - **Human-in-the-Loop**\
+  \ \u2013 Lets agents pause execution to request user input, confirmation, or edits\
+  \ before continuing.\n\nQuick Start\n\nNew projects:\n\nExisting projects:\n\nWhat\
+  \ this gives you:\n\n- **CopilotKit installed** \u2013 Core packages are fully set\
+  \ up in your app - **Provider configured** \u2013 Context, state, and hooks ready\
+  \ to use - **Agent <> UI connected** \u2013 Agents can stream actions and render\
+  \ UI immediately - **Deployment-ready** \u2013 Your app is ready to deploy\n\nComplete\
+  \ getting started guide \u2192\n\nHow it works:\n\nCopilotKit connects your UI,\
+  \ agents, and tools into a single interaction loop.\n\nThis enables:\n\n- Agents\
+  \ that ask users for input - Tools that render UI - Stateful workflows across steps\
+  \ and sessions\n\n\u2B50\uFE0F useAgent Hook\n\nThe `useAgent` hook is a proper\
+  \ superset of `useCoAgent` and sits directly on AG-UI, giving more control over\
+  \ the agent connection.\n\nCheck out the useAgent docs to learn more.\n\nGenerative\
+  \ UI\n\nGenerative UI is a core CopilotKit pattern that allows agents to dynamically\
+  \ render UI as part of their workflow.\n\nCompare the Three Types\n\nExplore:\n\n\
+  - Static (AG-UI Protocol) - Declarative (A2UI) - Open-Ended (MCP Apps & Open JSON)\n\
+  \nGenerative UI educational repo \u2192\n\n\U0001F5A5\uFE0F AG-UI: The Agent\u2013\
+  User Interaction Protocol\n\nConnect agent workflow to user-facing apps, with deep\
+  \ partnerships and 1st-party integrations across the agentic stack\u2014including\
+  \ LangGraph, CrewAI, and more.\n\n---\n\nLearn more in the AG-UI README \u2192\n\
+  \n\U0001F91D Community\n\n- What's New Have questions or need help?\n\nJoin our\
+  \ Discord \u2192\n\nRead the Docs \u2192\n\nTry Copilot Cloud \u2192\n\nStay up\
+  \ to date with our latest releases!\n\nFollow us on LinkedIn \u2192\n\nFollow us\
+  \ on X \u2192\n\n\U0001F64B\U0001F3FD\u200D\u2642\uFE0F Contributing\n\nThanks for\
+  \ your interest in contributing to CopilotKit! \U0001F49C\n\nWe value all contributions,\
+  \ whether it's through code, documentation, creating demo apps, or just spreading\
+  \ the word.\n\nHere are a few useful resources to help you get started:\n\n- For\
+  \ code contributions, CONTRIBUTING.md. - For documentation-related contributions,\
+  \ check out the documentation contributions guide.\n\n- Want to contribute but not\
+  \ sure how? Join our Discord and we'll help you out!\n\n\U0001F4C4 License\n\nThis\
+  \ repository's source code is available under the MIT License."
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-04-03'
+    window_end: '2026-07-03'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-04-03..2026-07-03
+    external_id: '655515393'
+    canonical_url: https://github.com/CopilotKit/CopilotKit
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: network_error
+  error_message: 'Relay network error: [Errno -2] Name or service not known'
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: 'boundary with internal tooling unclear; High-value README evidence
+  is sufficient for a fast human first-pass; reviewer should spend effort on taxonomy
+  placement and claim verification rather than basic relevance screening. Treat this
+  as an application-layer developer product (frontend/UX orchestration for agents),
+  not as a foundation model, benchmark, or pure research artifact. Boundary check:
+  include if taxonomy accepts AI app enablement stacks (SDK/protocol for agent UX);
+  exclude if scope is limited to end-user AI apps only. evidence_strength=low review_source=fresh_llm_review'
+human_reviewed_at: '2026-04-03T11:54:47.206364Z'
+staging_handoff:
+  status: blocked
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items:
+  - candidate first-pass review resolved to on_hold
+  last_attempted_at: '2026-04-03T11:54:47.206387Z'

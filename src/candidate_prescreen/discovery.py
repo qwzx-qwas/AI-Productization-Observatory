@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import base64
 import json
+import re
 import ssl
 import urllib.error
 import urllib.parse
@@ -11,13 +12,16 @@ import urllib.request
 from datetime import date, timedelta
 from pathlib import Path
 from socket import timeout as SocketTimeout
-from typing import Any
+from time import sleep
+from typing import Any, Callable
 
 from src.candidate_prescreen.config import query_slice_config, source_config
 from src.candidate_prescreen.relay import clean_raw_evidence_excerpt
 from src.common.config import require_environment_variable
 from src.common.errors import ContractValidationError, ProcessingError
 from src.common.files import load_json
+from src.common.logging_utils import get_logger
+from src.common.request_timing import wait_for_request_interval
 
 
 def _parse_window(window: str) -> tuple[date, date]:
@@ -44,6 +48,8 @@ def _json_request(
     headers: dict[str, str] | None = None,
     payload: dict[str, Any] | None = None,
     timeout_seconds: int = 30,
+    request_interval_seconds: int = 0,
+    sleep_fn: Callable[[float], None] = sleep,
 ) -> dict[str, Any]:
     body = None
     request_headers = dict(headers or {})
@@ -51,6 +57,25 @@ def _json_request(
         body = json.dumps(payload).encode("utf-8")
         request_headers.setdefault("Content-Type", "application/json")
     request = urllib.request.Request(url, data=body, headers=request_headers, method=method)
+    logger = get_logger("candidate_prescreen_discovery", task_id="candidate_prescreen_discovery", resolution_status="running")
+    waited_seconds = wait_for_request_interval(
+        "candidate_prescreen_discovery",
+        request_interval_seconds,
+        sleep_fn=sleep_fn,
+    )
+    if waited_seconds > 0:
+        logger.info(
+            json.dumps(
+                {
+                    "event": "wait",
+                    "wait_kind": "request_interval",
+                    "wait_scope": "candidate_discovery",
+                    "wait_seconds": waited_seconds,
+                    "request_url": url,
+                },
+                ensure_ascii=True,
+            )
+        )
     try:
         with urllib.request.urlopen(request, timeout=timeout_seconds, context=ssl.create_default_context()) as response:
             raw = response.read().decode("utf-8")
@@ -70,7 +95,7 @@ def _json_request(
     return decoded
 
 
-def _read_github_readme(full_name: str, token: str, timeout_seconds: int) -> str:
+def _read_github_readme(full_name: str, token: str, timeout_seconds: int, request_interval_seconds: int) -> str:
     url = f"https://api.github.com/repos/{full_name}/readme"
     headers = {
         "Accept": "application/vnd.github+json",
@@ -79,7 +104,12 @@ def _read_github_readme(full_name: str, token: str, timeout_seconds: int) -> str
         "X-GitHub-Api-Version": "2022-11-28",
     }
     try:
-        payload = _json_request(url, headers=headers, timeout_seconds=timeout_seconds)
+        payload = _json_request(
+            url,
+            headers=headers,
+            timeout_seconds=timeout_seconds,
+            request_interval_seconds=request_interval_seconds,
+        )
     except ProcessingError:
         return ""
     content = payload.get("content")
@@ -121,6 +151,118 @@ def _normalize_fixture_item(
     return normalized
 
 
+def _require_candidate_gate_config(workflow_config: dict[str, Any], *, source_code: str) -> dict[str, Any]:
+    source = source_config(workflow_config, source_code)
+    gate = source.get("candidate_gate")
+    if not isinstance(gate, dict):
+        raise ContractValidationError(f"candidate_prescreen_workflow.yaml:{source_code}:candidate_gate must be a mapping")
+    return gate
+
+
+def _require_gate_string_list(value: Any, field_name: str) -> list[str]:
+    if not isinstance(value, list) or not value:
+        raise ContractValidationError(f"{field_name} must be a non-empty list")
+    normalized: list[str] = []
+    for entry in value:
+        if not isinstance(entry, str) or not entry.strip():
+            raise ContractValidationError(f"{field_name} must contain non-empty strings")
+        normalized.append(entry.strip().lower())
+    return normalized
+
+
+def _signal_matches(text: str, signal_terms: list[str]) -> list[str]:
+    matches: list[str] = []
+    for term in signal_terms:
+        pattern = r"(?<![a-z0-9])" + re.escape(term) + r"(?![a-z0-9])"
+        if re.search(pattern, text):
+            matches.append(term)
+    return matches
+
+
+def _github_candidate_gate_decision(
+    item: dict[str, Any],
+    *,
+    workflow_config: dict[str, Any],
+) -> tuple[bool, str | None]:
+    gate = _require_candidate_gate_config(workflow_config, source_code="github")
+    title = str(item.get("title") or "").strip()
+    summary = str(item.get("summary") or "").strip()
+    raw_excerpt = str(item.get("raw_evidence_excerpt") or "").strip()
+    topics = item.get("topics")
+    topic_text = " ".join(str(topic).strip() for topic in topics if isinstance(topic, str)) if isinstance(topics, list) else ""
+    combined_text = " ".join(part for part in [title, summary, raw_excerpt, topic_text] if part).lower()
+    modality_matches = _signal_matches(
+        combined_text,
+        _require_gate_string_list(gate.get("modality_signal_terms"), "candidate_gate.modality_signal_terms"),
+    )
+    product_context_matches = _signal_matches(
+        combined_text,
+        _require_gate_string_list(
+            gate.get("product_context_signal_terms"),
+            "candidate_gate.product_context_signal_terms",
+        ),
+    )
+    exclusion_matches = _signal_matches(
+        combined_text,
+        _require_gate_string_list(gate.get("exclusion_signal_terms"), "candidate_gate.exclusion_signal_terms"),
+    )
+    try:
+        min_summary_chars = int(gate.get("min_summary_chars"))
+        min_evidence_chars = int(gate.get("min_evidence_chars"))
+    except (TypeError, ValueError) as exc:
+        raise ContractValidationError("candidate_gate min_summary_chars/min_evidence_chars must be integers") from exc
+    if min_summary_chars < 0 or min_evidence_chars < 0:
+        raise ContractValidationError("candidate_gate min_summary_chars/min_evidence_chars must be non-negative")
+    has_homepage = isinstance(item.get("linked_homepage_url"), str) and bool(str(item.get("linked_homepage_url")).strip())
+    if len(summary) < min_summary_chars and len(raw_excerpt) < min_evidence_chars:
+        return False, "insufficient_source_text"
+    if not modality_matches:
+        return False, "missing_modality_signal"
+    if not product_context_matches and not has_homepage:
+        return False, "missing_product_context_signal"
+    if exclusion_matches and not product_context_matches:
+        return False, "developer_tooling_signal"
+    if len(exclusion_matches) > len(product_context_matches) + (1 if has_homepage else 0):
+        return False, "developer_tooling_signal"
+    return True, None
+
+
+def _filter_github_candidates(
+    workflow_config: dict[str, Any],
+    *,
+    window: str,
+    query_slice_id: str | None,
+    items: list[dict[str, Any]],
+    limit: int,
+) -> list[dict[str, Any]]:
+    accepted: list[dict[str, Any]] = []
+    rejected_reason_counts: dict[str, int] = {}
+    for item in items:
+        accepted_item, reason = _github_candidate_gate_decision(item, workflow_config=workflow_config)
+        if accepted_item:
+            accepted.append(item)
+            continue
+        if reason is not None:
+            rejected_reason_counts[reason] = rejected_reason_counts.get(reason, 0) + 1
+    logger = get_logger("candidate_prescreen_discovery", task_id="candidate_prescreen_discovery", resolution_status="running")
+    logger.info(
+        json.dumps(
+            {
+                "event": "candidate_gate",
+                "source": "github",
+                "window": window,
+                "query_slice_id": query_slice_id,
+                "raw_candidate_count": len(items),
+                "accepted_candidate_count": len(accepted),
+                "rejected_candidate_count": sum(rejected_reason_counts.values()),
+                "rejected_reason_counts": rejected_reason_counts,
+            },
+            ensure_ascii=True,
+        )
+    )
+    return accepted
+
+
 def discover_candidates(
     workflow_config: dict[str, Any],
     *,
@@ -130,20 +272,37 @@ def discover_candidates(
     limit: int,
     fixture_path: Path | None,
     timeout_seconds: int = 30,
+    request_interval_seconds: int = 0,
 ) -> list[dict[str, Any]]:
     slice_config = query_slice_config(workflow_config, source_code, query_slice_id)
     if fixture_path is not None:
         fixture_payload = load_json(fixture_path)
         if not isinstance(fixture_payload, dict):
             raise ContractValidationError(f"Fixture {fixture_path} must be a JSON object")
-        return _normalize_fixture_item(
+        normalized_items = _normalize_fixture_item(
             fixture_payload,
             source_code=source_code,
             window=window,
             expected_query_slice_id=slice_config.get("query_slice_id"),
-        )[:limit]
+        )
+        if source_code == "github":
+            return _filter_github_candidates(
+                workflow_config,
+                window=window,
+                query_slice_id=slice_config.get("query_slice_id"),
+                items=normalized_items,
+                limit=limit,
+            )
+        return normalized_items[:limit]
     if source_code == "github":
-        return _discover_github_live(workflow_config, window=window, slice_config=slice_config, limit=limit, timeout_seconds=timeout_seconds)
+        return _discover_github_live(
+            workflow_config,
+            window=window,
+            slice_config=slice_config,
+            limit=limit,
+            timeout_seconds=timeout_seconds,
+            request_interval_seconds=request_interval_seconds,
+        )
     if source_code == "product_hunt":
         return _discover_product_hunt_live(
             workflow_config,
@@ -151,6 +310,7 @@ def discover_candidates(
             slice_config=slice_config,
             limit=limit,
             timeout_seconds=timeout_seconds,
+            request_interval_seconds=request_interval_seconds,
         )
     raise ContractValidationError(f"Unsupported source_code for candidate prescreen discovery: {source_code}")
 
@@ -162,6 +322,7 @@ def _discover_github_live(
     slice_config: dict[str, Any],
     limit: int,
     timeout_seconds: int,
+    request_interval_seconds: int,
 ) -> list[dict[str, Any]]:
     token = require_environment_variable("GITHUB_TOKEN")
     start_date, end_date = _parse_window(window)
@@ -173,6 +334,7 @@ def _discover_github_live(
         end_date=end_date,
         limit=limit,
         timeout_seconds=timeout_seconds,
+        request_interval_seconds=request_interval_seconds,
     )
 
 
@@ -185,14 +347,16 @@ def _discover_github_window(
     end_date: date,
     limit: int,
     timeout_seconds: int,
+    request_interval_seconds: int,
 ) -> list[dict[str, Any]]:
     if limit <= 0:
         return []
+    raw_search_limit = min(100, max(limit * 20, 50))
     query_text = str(slice_config.get("query_text_template", "")).replace("WINDOW_START", start_date.isoformat()).replace(
         "WINDOW_END",
         end_date.isoformat(),
     )
-    params = urllib.parse.urlencode({"q": query_text, "per_page": min(100, limit), "page": 1})
+    params = urllib.parse.urlencode({"q": query_text, "per_page": raw_search_limit, "page": 1})
     url = f"https://api.github.com/search/repositories?{params}"
     headers = {
         "Accept": "application/vnd.github+json",
@@ -200,7 +364,12 @@ def _discover_github_window(
         "User-Agent": "ai-productization-observatory",
         "X-GitHub-Api-Version": "2022-11-28",
     }
-    payload = _json_request(url, headers=headers, timeout_seconds=timeout_seconds)
+    payload = _json_request(
+        url,
+        headers=headers,
+        timeout_seconds=timeout_seconds,
+        request_interval_seconds=request_interval_seconds,
+    )
     total_count = payload.get("total_count")
     incomplete_results = payload.get("incomplete_results")
     if (total_count == 1000 or incomplete_results is True) and start_date < end_date:
@@ -213,6 +382,7 @@ def _discover_github_window(
             end_date=split_point,
             limit=limit,
             timeout_seconds=timeout_seconds,
+            request_interval_seconds=request_interval_seconds,
         )
         remaining = max(0, limit - len(left))
         right_start = split_point + timedelta(days=1)
@@ -224,17 +394,22 @@ def _discover_github_window(
             end_date=end_date,
             limit=remaining,
             timeout_seconds=timeout_seconds,
+            request_interval_seconds=request_interval_seconds,
         )
         return (left + right)[:limit]
     items = payload.get("items")
     if not isinstance(items, list):
         raise ProcessingError("schema_drift", "GitHub search response is missing items[]")
     normalized: list[dict[str, Any]] = []
-    for item in items[:limit]:
+    for item in items[:raw_search_limit]:
         if not isinstance(item, dict):
             continue
         full_name = item.get("full_name")
-        readme_excerpt = _read_github_readme(full_name, token, timeout_seconds) if isinstance(full_name, str) and full_name else ""
+        readme_excerpt = (
+            _read_github_readme(full_name, token, timeout_seconds, request_interval_seconds)
+            if isinstance(full_name, str) and full_name
+            else ""
+        )
         summary = item.get("description") or ""
         readable_excerpt = clean_raw_evidence_excerpt("\n\n".join(part for part in [summary, readme_excerpt] if part))
         normalized.append(
@@ -258,7 +433,13 @@ def _discover_github_window(
                 },
             }
         )
-    return normalized
+    return _filter_github_candidates(
+        workflow_config,
+        window=_window_text(start_date, end_date),
+        query_slice_id=slice_config.get("query_slice_id"),
+        items=normalized,
+        limit=limit,
+    )
 
 
 def _discover_product_hunt_live(
@@ -268,6 +449,7 @@ def _discover_product_hunt_live(
     slice_config: dict[str, Any],
     limit: int,
     timeout_seconds: int,
+    request_interval_seconds: int,
 ) -> list[dict[str, Any]]:
     token = require_environment_variable("PRODUCT_HUNT_TOKEN")
     start_date, end_date = _parse_window(window)
@@ -322,6 +504,7 @@ def _discover_product_hunt_live(
             },
         },
         timeout_seconds=timeout_seconds,
+        request_interval_seconds=request_interval_seconds,
     )
     data = payload.get("data")
     posts = ((data or {}).get("posts") if isinstance(data, dict) else None)

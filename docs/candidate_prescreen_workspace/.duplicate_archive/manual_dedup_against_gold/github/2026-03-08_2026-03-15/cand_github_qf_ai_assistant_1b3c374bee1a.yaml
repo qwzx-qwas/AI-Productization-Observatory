@@ -1,0 +1,250 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_1b3c374bee1a
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2026-03-08_2026-03-15
+created_at: '2026-04-02T09:14:29.220269Z'
+updated_at: '2026-04-07T09:37:28.194093Z'
+source: github
+source_id: src_github
+source_window: 2026-03-08..2026-03-15
+time_field: pushed_at
+external_id: '956842312'
+canonical_url: https://github.com/idosal/git-mcp
+title: git-mcp
+summary: Put an end to code hallucinations! GitMCP is a free, open-source, remote
+  MCP server for any GitHub project
+raw_evidence_excerpt: "Put an end to code hallucinations! GitMCP is a free, open-source,\
+  \ remote MCP server for any GitHub project\n\nGitMCP\n\nWhat is GitMCP \u2022 Features\
+  \ \u2022 Getting Started \u2022 How It Works \u2022 Badge \u2022 Examples \u2022\
+  \ FAQ \u2022 Privacy \u2022 Contributing \u2022 License\n\n\U0001F914 What is GitMCP?\
+  \ **Stop vibe-hallucinating and start vibe-coding!**\n\nGitMCP is a free, open-source,\
+  \ remote Model Context Protocol (MCP) server that transforms **any** GitHub project\
+  \ (repositories or GitHub pages) into a documentation hub. It enables AI tools like\
+  \ Cursor to access up-to-date documentation and code, even if the LLM has never\
+  \ encountered them, thereby eliminating code hallucinations seamlessly.\n\nGitMCP\
+  \ supports **two flavors** -\n\n* **Specific Repository (`gitmcp.io/{owner}/{repo}`\
+  \ or `{owner}.gitmcp.io/{repo}`):** Use these when you primarily work with a select\
+  \ number of libraries. This ensures your AI assistant always targets the correct\
+  \ project, enhancing security and relevance by preventing access to unintended repositories.\
+  \ * **Generic Server (`gitmcp.io/docs`):** Use this for maximum flexibility when\
+  \ you need to switch between different repositories frequently. The AI assistant\
+  \ will prompt you (or decide based on context) which repository to access for each\
+  \ request. Be mindful that this relies on correctly identifying the target repository\
+  \ each time.\n\n**With GitMCP:**\n\n* AI assistants access the *latest* documentation\
+  \ and code directly from the source. * Get accurate API usage and reliable code\
+  \ examples. * Work effectively even with niche, new, or rapidly changing libraries.\
+  \ * Significantly reduced hallucinations and improved code correctness.\n\nFor example,\
+  \ this side-by-side comparison shows the result for the same one-shot prompt in\
+  \ Cursor when creating a three.js scene -\n\n\u2728 Features\n\n- \U0001F60E **Latest\
+  \ Documentation on ANY GitHub Project**: Grant your AI assistant seamless access\
+  \ to the GitHub project's documentation and code. The built-in smart search capabilities\
+  \ help find exactly what the AI needs without using too many tokens! - \U0001F9E0\
+  \ **No More Hallucinations**: With GitMCP, your AI assistant can provide accurate\
+  \ and relevant answers to your questions. - \u2601\uFE0F **Zero Setup**: GitMCP\
+  \ runs in the cloud. Simply add the chosen GitMCP URL as an MCP server in your IDE\
+  \ \u2014 no downloads, installations, signups, or changes are required. - \U0001F4AC\
+  \ **Embedded Chat**: Start quickly by chatting directly with the repository's documentation\
+  \ through our in-browser chat! - \u2705 **Open, Free, and Private**: GitMCP is open-source\
+  \ and completely free to use. It doesn't collect personal information or store queries.\
+  \ You can even self-host it!\n\n\U0001F680 Getting Started\n\nUsing GitMCP is easy!\
+  \ Simply follow these steps:\n\nStep 1: Choose the type of server you want\n\nChoose\
+  \ one of these URL formats depending on what you want to connect to:\n\n- For GitHub\
+  \ repositories: `gitmcp.io/{owner}/{repo}` - For GitHub Pages sites: `{owner}.gitmcp.io/{repo}`\
+  \ - For a generic tool that supports any repository (dynamic): `gitmcp.io/docs`\n\
+  \nReplace `{owner}` with the GitHub username or organization name, and `{repo}`\
+  \ with the repository name.\n\nFor your convenience, you can also use the conversion\
+  \ tool on the landing page to format the GitHub URL into an MCP URL!\n\nStep 2:\
+  \ Connect your AI assistant\n\nSelect your AI assistant from the options below and\
+  \ follow the configuration instructions:\n\nConnecting Cursor\n\nUpdate your Cursor\
+  \ configuration file at `~/.cursor/mcp.json`:\n\nConnecting Claude Desktop\n\n1.\
+  \ In Claude Desktop, go to Settings > Developer > Edit Config 2. Replace the configuration\
+  \ with:\n\nConnecting Windsurf\n\nUpdate your Windsurf configuration file at `~/.codeium/windsurf/mcp_config.json`:\n\
+  \nConnecting VSCode\n\nUpdate your VSCode configuration file at `.vscode/mcp.json`:\n\
+  \nConnecting Cline\n\nUpdate your Cline configuration file at `~/Library/Application\
+  \ Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`:\n\
+  \nConnecting Highlight AI\n\n1. Open Highlight AI and click the plugins icon (@\
+  \ symbol) in the sidebar 2. Click **Installed Plugins** at the top of the sidebar\
+  \ 3. Select **Custom Plugin** 4. Click **Add a plugin using a custom SSE URL**\n\
+  \nPlugin name: `gitmcp` SSE URL: `https://gitmcp.io/{owner}/{repo}`\n\nFor more\
+  \ details on adding custom MCP servers to HighlightAI, refer to the documentation.\n\
+  \nConnecting Augment Code\n\n1. Open Augment Code settings 2. Navigate to the MCP\
+  \ section 3. Add a new MCP server with the following details:\n\nName the MCP server:\
+  \ `git-mcp Docs`\n\nUse this command:\n\nOr use the following configuration:\n\n\
+  Connecting Msty AI 1. Open Msty Studio 2. Go to Tools > Import Tools from JSON Clipboard\
+  \ 3. Paste the following configuration:\n\nFor more details on configuring MCP servers\
+  \ in Augment Code, visit the Augment Code documentation.\n\n> **Note:** Remember\
+  \ to replace `{owner}` and `{repo}` with the actual GitHub username/organization\
+  \ and repository name. You can also use the dynamic endpoint `https://gitmcp.io/docs`\
+  \ to allow your AI to access any repository on demand.\n\n\u2699 How It Works\n\n\
+  GitMCP connects your AI assistant to GitHub repositories using the Model Context\
+  \ Protocol (MCP), a standard that lets AI tools request additional information from\
+  \ external sources.\n\nWhat happens when you use GitMCP:\n\n1. **You provide the\
+  \ GitMCP URL** to your AI assistant (e.g., `gitmcp.io/microsoft/typescript`). GitMCP\
+  \ exposes tools like documentation fetching, smart search, code search, etc. 2.\
+  \ **Prompt the AI assistant** on documentation/code-related questions. 3. **Your\
+  \ AI sends requests** to GitMCP to use its tools (with your approval). 4. **GitMCP\
+  \ executes the AI's request** and returns the requested data. 5. **Your AI receives\
+  \ the information** and generates a more accurate, grounded response without hallucinations.\n\
+  \nSupported Documentation\n\nGitMCP currently supports the following documents (in\
+  \ order of priority): 1. llms.txt 2. AI-optimized version of the project's documentation\
+  \ 3. `README.md`/root\n\n\U0001F4A1 Examples\n\nHere are some examples of how to\
+  \ use GitMCP with different AI assistants and repositories:\n\nExample 1: Using\
+  \ Windsurf with a specific repository\n\nFor the GitHub repository `https://github.com/microsoft/playwright-mcp`,\
+  \ add `https://gitmcp.io/microsoft/playwright-mcp` as an MCP server to Windsurf.\n\
+  \n**Prompt to Claude:** > \"How do I use the Playwright MCP\"\n\nWindsurf will pull\
+  \ the relevant documentation from GitMCP to implement the memory feature correctly.\n\
+  \nExample 2: Using Cursor with a GitHub Pages site\n\nFor the GitHub Pages site\
+  \ `langchain-ai.github.io/langgraph`, add `https://langchain-ai.gitmcp.io/langgraph`\
+  \ as an MCP server to Cursor.\n\n**Prompt to Cursor:** > \"Add memory to my LangGraph\
+  \ agent\"\n\nCursor will pull the relevant documentation and code from GitMCP to\
+  \ correctly implement the memory feature.\n\nExample 3: Using Claude Desktop with\
+  \ the dynamic endpoint\n\nYou don't have to pick specific repositories. The generic\
+  \ `gitmcp.io/docs` endpoint allows AI to pick the GitHub project on the fly!\n\n\
+  **Prompt to any AI assistant:** > \"I want to learn about the OpenAI Whisper speech\
+  \ recognition model. Explain how it works.\"\n\nClaude will pull the data from GitMCP\
+  \ and answer the question.\n\n\U0001F6E0\uFE0F Tools\n\nGitMCP provides AI assistants\
+  \ with several valuable tools to help them access, understand, and query GitHub\
+  \ repositories.\n\n`fetch_ _documentation`\n\nThis tool gets the primary documentation\
+  \ from a GitHub repository. It works by retrieving relevant documentation (e.g.,\
+  \ `llms.txt`). This gives the AI a good overview of what the project is about\n\n\
+  **When it's useful:** For general questions about a project's purpose, features,\
+  \ or how to get started\n\n`search_ _documentation`\n\nThis tool lets the AI search\
+  \ through a repository's documentation by providing a specific search query. Instead\
+  \ of loading all the documentation (which could be very large), it uses intelligent\
+  \ search to find just the relevant parts.\n\n**When it's useful:** For specific\
+  \ questions about particular features, functions, or concepts within a project\n\
+  \n`fetch_url_content`"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-08'
+    window_end: '2026-03-15'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-08..2026-03-15
+    external_id: '956842312'
+    canonical_url: https://github.com/idosal/git-mcp
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Human reviewer can make a fast pass by checking live endpoint behavior,
+    repo activity, and presence of objective evaluation evidence.
+  decision_snapshot: Recommend hold because Human reviewer can make a fast pass by
+    checking live endpoint behavior, repo activity, and presence of objective evaluation
+    evidence.
+  scope_boundary_note: Treat as AI product infrastructure (context-serving layer for
+    coding assistants), not as a generic GitHub docs viewer. In scope if reviewer
+    accepts MCP-based grounding tools for LLM assistants as AI application/productization
+    infrastructure.
+  source_evidence_summary:
+  - GitMCP is a free, open-source, remote Model Context Protocol (MCP) server that
+    transforms any GitHub project ... into a documentation hub.
+  - It enables AI tools like Cursor to access up-to-date documentation and code ...
+    thereby eliminating code hallucinations.
+  - 'Zero Setup: GitMCP runs in the cloud. Simply add the chosen GitMCP URL as an
+    MCP server in your IDE.'
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: GitMCP is a free, open-source, remote Model Context Protocol (MCP)
+      server that transforms any GitHub project ... into a documentation hub.
+    evidence_source_field: candidate_input
+    why_it_matters: Direct product definition and technical mechanism.
+  - anchor_rank: 2
+    evidence_text: It enables AI tools like Cursor to access up-to-date documentation
+      and code ... thereby eliminating code hallucinations.
+    evidence_source_field: candidate_input
+    why_it_matters: Explicit AI-assistant use case and claimed value proposition.
+  - anchor_rank: 3
+    evidence_text: 'Zero Setup: GitMCP runs in the cloud. Simply add the chosen GitMCP
+      URL as an MCP server in your IDE.'
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates productized delivery model (hosted endpoint + integration
+      workflow).
+  - anchor_rank: 4
+    evidence_text: GitMCP connects your AI assistant to GitHub repositories using
+      the Model Context Protocol ... GitMCP exposes tools like documentation fetching,
+      smart search, code search.
+    evidence_source_field: candidate_input
+    why_it_matters: Confirms tool-layer functionality beyond static documentation
+      hosting.
+  review_focus_points:
+  - Validate that hosted MCP endpoints are operational and not only README-described.
+  - Check evidence for claimed hallucination reduction (benchmarks, demos, or comparative
+    evals).
+  - Verify privacy claim ('doesn't collect personal information or store queries')
+    against implementation/policy artifacts.
+  - Assess maintenance signals (recent commits/issues/releases) for production reliability.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: Human reviewer can make a fast pass by checking live endpoint behavior,
+      repo activity, and presence of objective evaluation evidence.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Human reviewer can make a fast pass by checking live endpoint behavior,
+      repo activity, and presence of objective evaluation evidence.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI Developer Tooling & LLM Context Infrastructure (MCP
+      server)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI Developer Tooling & LLM Context Infrastructure (MCP server)
+      rationale: Human reviewer can make a fast pass by checking live endpoint behavior,
+        repo activity, and presence of objective evaluation evidence.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: Documentation Search/Knowledge Base Tool (non-AI-first)
+      rationale_for_similarity: Documentation Search/Knowledge Base Tool (non-AI-first)
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Core framing, interfaces, and workflows are
+      explicitly MCP-to-AI-assistant integrations rather than standalone human documentation
+      browsing.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  user confirmed and requested pool admission.
+human_reviewed_at: '2026-04-02T10:02:37.123383Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_03_samples_031_045.yaml
+  sample_slot_id: GS300-033
+  sample_id: cand_github_qf_ai_assistant_1b3c374bee1a
+  blocking_items: []
+  last_attempted_at: '2026-04-07T09:37:28.194072Z'

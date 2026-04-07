@@ -1,0 +1,202 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_bf4b52017416
+candidate_batch_id: candidate_batch_github_qf_agent_2026-04-03_2026-07-03
+created_at: '2026-04-03T10:47:45.631626Z'
+updated_at: '2026-04-03T10:50:11.526070Z'
+source: github
+source_id: src_github
+source_window: 2026-04-03..2026-07-03
+time_field: pushed_at
+external_id: '515642286'
+canonical_url: https://github.com/nginx/agent
+title: agent
+summary: NGINX Agent provides an administrative entry point to remotely manage, configure
+  and collect metrics and events from NGINX instances
+raw_evidence_excerpt: 'NGINX Agent provides an administrative entry point to remotely
+  manage, configure and collect metrics and events from NGINX instances
+
+
+  F5 NGINX Agent
+
+
+  F5 NGINX Agent is a companion application designed to efficiently manage NGINX instances.
+  Key features include:
+
+
+  - Remote management: Easily control and configure NGINX instances remotely. - Real-time
+  metrics: Monitor and analyze performance data for NGINX and the underlying operating
+  system.
+
+
+  Discover more advanced features and capabilities by visiting Try NGINX One: Free
+  Enterprise Trial.
+
+
+  Installation
+
+
+  You can install **NGINX Agent** using one of the following methods:
+
+
+  1. **Official documentation** Follow the step-by-step guide to add and configure
+  instances: How to add an instance
+
+
+  2. **GitHub releases** Download the latest binaries or packages directly from the
+  GitHub releases page: NGINX Agent GitHub releases
+
+
+  3. **Installation and upgrade guide** Access detailed instructions to install or
+  upgrade NGINX Agent from the official NGINX documentation: NGINX Agent Installation
+  Guide
+
+
+  Useful links
+
+
+  * v2 - Official NGINX Agent documentation * v3 - Official NGINX Agent documentation
+  * F5 Support
+
+
+  Community If you have any questions please reach out using the NGINX Community'
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-04-03'
+    window_end: '2026-07-03'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-04-03..2026-07-03
+    external_id: '515642286'
+    canonical_url: https://github.com/nginx/agent
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Repository content describes infrastructure management for NGINX instances
+    (remote config, metrics, events) without explicit AI/ML model, inference, LLM,
+    or autonomous decisioning functionality.
+  decision_snapshot: Recommend candidate_pool because Repository content describes
+    infrastructure management for NGINX instances (remote config, metrics, events)
+    without explicit AI/ML model, inference, LLM, or autonomous decisioning functionality.
+  scope_boundary_note: This appears to be a DevOps/observability control-plane agent
+    for web server fleet management. It may integrate into broader platforms where
+    AI exists, but the provided evidence does not show AI as a core product capability.
+  source_evidence_summary:
+  - '"NGINX Agent provides an administrative entry point to remotely manage, configure
+    and collect metrics and events from NGINX instances"'
+  - '"F5 NGINX Agent is a companion application designed to efficiently manage NGINX
+    instances."'
+  - '"Remote management: Easily control and configure NGINX instances remotely."'
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: '"NGINX Agent provides an administrative entry point to remotely
+      manage, configure and collect metrics and events from NGINX instances"'
+    evidence_source_field: candidate_input
+    why_it_matters: Defines core value proposition as administration and telemetry,
+      not AI functionality.
+  - anchor_rank: 2
+    evidence_text: '"F5 NGINX Agent is a companion application designed to efficiently
+      manage NGINX instances."'
+    evidence_source_field: candidate_input
+    why_it_matters: Positions product as companion management software for existing
+      infrastructure.
+  - anchor_rank: 3
+    evidence_text: '"Remote management: Easily control and configure NGINX instances
+      remotely."'
+    evidence_source_field: candidate_input
+    why_it_matters: Highlights operational control-plane capability typical of DevOps
+      tooling.
+  - anchor_rank: 4
+    evidence_text: '"Real-time metrics: Monitor and analyze performance data for NGINX
+      and the underlying operating system."'
+    evidence_source_field: candidate_input
+    why_it_matters: Metrics/monitoring language suggests observability tooling; no
+      AI method indicated.
+  review_focus_points:
+  - Confirm whether any unrevealed modules add ML/AI-driven analytics beyond basic
+    monitoring.
+  - Check linked NGINX One materials for explicit AI features vs standard enterprise
+    observability.
+  - Verify if repository contains model artifacts, inference services, or AI-specific
+    dependencies (not shown in excerpt).
+  uncertainty_points: []
+  recommend_candidate_pool: true
+  recommended_action: candidate_pool
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: candidate_pool
+    rationale: Ready for quick human confirmation; likely a fast out-of-scope disposition
+      unless external docs reveal explicit AI features.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository content describes infrastructure management for NGINX instances
+      (remote config, metrics, events) without explicit AI/ML model, inference, LLM,
+      or autonomous decisioning functionality.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: Infrastructure Operations Agent (non-AI)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: Infrastructure Operations Agent (non-AI)
+      rationale: Repository content describes infrastructure management for NGINX
+        instances (remote config, metrics, events) without explicit AI/ML model, inference,
+        LLM, or autonomous decisioning functionality.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: AI Ops / Intelligent Observability Product
+      rationale_for_similarity: AI Ops / Intelligent Observability Product
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Evidence mentions metrics collection and remote
+      management, but no claims of ML-driven anomaly detection, predictive optimization,
+      model usage, or AI-assisted operations.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: low
+    unresolved_risk: low
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  Repository content describes infrastructure management for NGINX instances (remote
+  config, metrics, events) without explicit AI/ML model, inference, LLM, or autonomous
+  decisioning functionality. This appears to be a DevOps/observability control-plane
+  agent for web server fleet management. It may integrate into broader platforms where
+  AI exists, but the provided evidence does not show AI as a core product capability.
+  evidence_strength=low review_source=existing_llm_prescreen
+human_reviewed_at: '2026-04-03T10:50:10.735761Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+  sample_slot_id: GS300-048
+  sample_id: cand_github_qf_agent_bf4b52017416
+  blocking_items: []
+  last_attempted_at: '2026-04-03T10:50:11.526049Z'

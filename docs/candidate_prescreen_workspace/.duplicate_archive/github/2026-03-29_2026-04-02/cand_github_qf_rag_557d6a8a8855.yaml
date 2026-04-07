@@ -1,0 +1,199 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_557d6a8a8855
+candidate_batch_id: candidate_batch_github_qf_rag_2026-03-29_2026-04-02
+created_at: '2026-04-03T06:47:09.209329Z'
+updated_at: '2026-04-03T07:38:28.339472Z'
+source: github
+source_id: src_github
+source_window: 2026-03-29..2026-04-02
+time_field: pushed_at
+external_id: '902093146'
+canonical_url: https://github.com/NVIDIA-AI-Blueprints/rag
+title: rag
+summary: This NVIDIA RAG blueprint serves as a reference solution for a foundational
+  Retrieval Augmented Generation (RAG) pipeline.
+raw_evidence_excerpt: "This NVIDIA RAG blueprint serves as a reference solution for\
+  \ a foundational Retrieval Augmented Generation (RAG) pipeline.\n\nNVIDIA RAG Blueprint\n\
+  \nRetrieval-Augmented Generation (RAG) combines the reasoning power of large language\
+  \ models (LLMs) with real-time retrieval from trusted data sources. It grounds AI\
+  \ responses in enterprise knowledge, reducing hallucinations and ensuring accuracy,\
+  \ compliance, and freshness.\n\nOverview\n\nThe NVIDIA RAG Blueprint is a reference\
+  \ solution and foundational starting point for building Retrieval-Augmented Generation\
+  \ (RAG) pipelines with NVIDIA NIM microservices. It enables enterprises to deliver\
+  \ natural language question answering grounded in their own data, while meeting\
+  \ governance, latency, and scalability requirements. Designed to be decomposable\
+  \ and configurable, the blueprint integrates GPU-accelerated components with NeMo\
+  \ Retriever models, Multimodal and Vision Language Models, and guardrailing services,\
+  \ to provide an enterprise-ready framework. With a pre-built reference UI, open-source\
+  \ code, and multiple deployment options \u2014 including local docker (with and\
+  \ without NVIDIA Hosted endpoints) and Kubernetes \u2014 it serves as a flexible\
+  \ starting point that developers can adapt and extend to their specific needs.\n\
+  \nKey Features\n\nData Ingestion\n\nMultimodal content extraction - Documents with\
+  \ text, tables, charts, infographics, and audio. For the full list of supported\
+  \ file types, see NeMo Retriever Extraction Overview. Custom metadata support\n\n\
+  Search and Retrieval\n\nMulti-collection searchability Hybrid search with dense\
+  \ and sparse search Reranking to further improve accuracy GPU-accelerated Index\
+  \ creation and search Pluggable vector database\n\nQuery Processing\n\nQuery decomposition\
+  \ Dynamic filter expression creation\n\nGeneration and Enrichment\n\nOpt-in for\
+  \ Multimodal and Vision Language Model Support in the answer generation pipeline.\
+  \ Document summarization with multiple strategies, flexible page filtering, and\
+  \ real-time progress tracking Improve accuracy with optional reflection Optional\
+  \ programmable guardrails for content safety\n\nEvaluation\n\nEvaluation scripts\
+  \ (RAGAS framework)\n\nUser Experience\n\nSample user interface Multi-turn conversations\
+  \ Multi-session support\n\nDeployment and Operations\n\nTelemetry and observability\
+  \ Decomposable and customizable NIM Operator support Python library mode support\
+  \ OpenAI-compatible APIs\n\nSoftware Components\n\nThe RAG blueprint is built from\
+  \ the following complementary categories of software:\n\n- **NVIDIA NIM microservices**\
+  \ \u2013 Deliver the core AI functionality. Large-scale inference (e.g. for example,\
+  \ Nemotron LLM models for response generation), retrieval and reranking models,\
+  \ and specialized extractors for text, tables, charts, and graphics. Optional NIMs\
+  \ extend these capabilities with OCR, content safety, topic control, and multimodal\
+  \ embeddings.\n\n- **The integration and orchestration layer** \u2013 Acts as the\
+  \ glue that binds the system into a complete solution.\n\nThis modular design ensures\
+  \ efficient query processing, accurate retrieval of information, and easy customization.\n\
+  \nNVIDIA NIM Microservices\n\n- Response Generation (Inference)\n\n- NVIDIA NIM\
+  \ llama-3.3-nemotron-super-49b-v1.5\n\n- Retriever and Extraction Models\n\n- NVIDIA\
+  \ NIM llama-3_2-nv-embedqa-1b-v2 - NVIDIA NIM llama-3_2-nv-rerankqa-1b-v2 - NeMo\
+  \ Retriever Page Elements NIM - NeMo Retriever Table Structure NIM - NeMo Retriever\
+  \ Graphic Elements NIM - NeMo Retriever OCR NIM\n\n- Optional NIMs\n\n- Llama 3.1\
+  \ NemoGuard 8B Content Safety NIM - Llama 3.1 NemoGuard 8B Topic Control NIM - Llama-3.1\
+  \ Nemotron-nano-12b-v2-vl NIM - NeMo Retriever Parse NIM - PaddleOCR NIM - llama-3.2-nemoretriever-1b-vlm-embed-v1\
+  \ (Early Access)\n\nIntegration and orchestration layer\n\n- **RAG Orchestrator\
+  \ Server** \u2013 Coordinates interactions between the user, retrievers, vector\
+  \ database, and inference models, ensuring multi-turn and context-aware query handling.\
+  \ This is LangChain-based.\n\n- **Vector Database (accelerated with NVIDIA cuVS)**\
+  \ \u2013 Stores and searches embeddings at scale with GPU-accelerated indexing and\
+  \ retrieval for low-latency performance. You can use Milvus Vector Database or Elasticsearch.\n\
+  \n- **NeMo Retriever Extraction** \u2013 A high-performance ingestion microservice\
+  \ for parsing multimodal content. For more information about the ingestion pipeline,\
+  \ see NeMo Retriever Extraction Overview\n\n- **RAG User Interface (rag-frontend)**\
+  \ \u2013 A lightweight user interface that demonstrates end-to-end query, retrieval,\
+  \ and response workflows for developers and end users. For more information, refer\
+  \ to RAG UI.\n\nTechnical Diagram\n\nThe following image represents the architecture\
+  \ and workflow.\n\nWorkflow\n\nThe following is a step-by-step explanation of the\
+  \ workflow from the end-user perspective:\n\n1. **Data Ingestion & Extraction Pipeline**\
+  \ \u2013 Multimodal enterprise documents (text, images, tables, charts, infographics,\
+  \ and audio) are ingested.\n\n2. **User Query** \u2013 The user interacts with the\
+  \ system through the UI or APIs, submitting a question. An optional NeMo Guardrails\
+  \ module can filter or reshape the query for safety and compliance before it enters\
+  \ the retrieval pipeline.\n\n3. **Query Processing** \u2013 The query is processed\
+  \ by the Query Processing service, which may also leverage reflection (an optional\
+  \ LLM step) to improve query understanding or reformulation for better retrieval\
+  \ results.\n\n4. **Retrieval from Enterprise Data** \u2013 The processed query is\
+  \ converted into embeddings using NeMo Retriever Embedding and matched against enterprise\
+  \ data stored in a cuVS accelerated Vector Database (CuVS) and associated object\
+  \ store(minIO). Relevant results are identified based on similarity.\n\n5. **Reranking\
+  \ for Precision** \u2013 An optional NeMo Retriever Reranker reorders the retrieved\
+  \ passages, ensuring the most relevant chunks are selected to ground the response.\n\
+  \n6. **Response Generation** \u2013 The selected context is passed into the LLM\
+  \ inference service (e.g., Llama Nemotron models). An optional reflection step can\
+  \ further validate or refine the answer against the retrieved context. Guardrails\
+  \ may also be applied to enforce safety before delivery.\n\n7. **User Response**\
+  \ \u2013 The generated, grounded response is sent back to the user interface, often\
+  \ with citations to retrieved documents for transparency.\n\nAI Agent Skill\n\n\
+  An agent skill is included that enables AI coding assistants (Claude Code, Cursor,\
+  \ etc.) to deploy, configure, troubleshoot, and manage the RAG Blueprint autonomously.\n\
+  \nInstall\n\nThis installs the `rag-blueprint` skill from `skill-source/`. After\
+  \ installation, the agent handles requests like:\n\n- *\"Deploy RAG on Docker with\
+  \ NVIDIA-hosted models\"* - *\"Enable VLM image captioning and restart the ingestor\"\
+  * - *\"Ingestion failed for 3 files, can you check why?\"* - *\"Switch from Docker\
+  \ to library mode\"* - *\"Shut down all RAG services\"*\n\n> **Note:** If the agent\
+  \ doesn't pick up the skill automatically (e.g., for short or ambiguous queries),\
+  \ invoke it explicitly with `/rag-blueprint `.\n\nFor skill architecture details,\
+  \ see `skill-source/README.md`.\n\nGet Started With NVIDIA RAG Blueprint\n\nThe\
+  \ recommended way to get started is to deploy the NVIDIA RAG Blueprint with Docker\
+  \ Compose for a single node deployment, and using self-hosted on-premises models.\
+  \ For details, refer to Get Started.\n\nRefer to the full documentation to learn\
+  \ about the following:\n\n- Minimum Requirements - Deployment Options - Configuration\
+  \ Settings - Common Customizations - Available Notebooks - Troubleshooting - Additional\
+  \ Resources\n\nBlog Posts\n\n- NVIDIA NeMo Retriever Delivers Accurate Multimodal\
+  \ PDF Data Extraction 15x Faster - Finding the Best Chunking Strategy for Accurate\
+  \ AI Responses\n\nInviting the community to contribute\n\nWe're posting these examples\
+  \ on GitHub to support the NVIDIA LLM community and facilitate feedback. We invite\
+  \ contributions! To open a GitHub issue or pull request, see the contributing guidelines.\n\
+  \nLicense"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-29'
+    window_end: '2026-04-02'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-29..2026-04-02
+    external_id: '902093146'
+    canonical_url: https://github.com/NVIDIA-AI-Blueprints/rag
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: network_error
+  error_message: 'Relay network error: [Errno -2] Name or service not known'
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear; Repository appears to
+  be an enterprise-ready RAG reference solution (not just a model release), but includes
+  adjacent infra/deployment content that warrants human categorization validation.
+  Treat this as an AI application blueprint/reference implementation for Retrieval-Augmented
+  Generation pipelines. Do not over-scope it as a general MLOps platform or pure model
+  card; the core value is end-to-end grounded QA workflow assembly with deployment
+  options. evidence_strength=low review_source=fresh_llm_review
+human_reviewed_at: '2026-04-03T07:38:28.339446Z'
+staging_handoff:
+  status: blocked
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items:
+  - candidate first-pass review resolved to on_hold
+  last_attempted_at: '2026-04-03T07:38:28.339466Z'

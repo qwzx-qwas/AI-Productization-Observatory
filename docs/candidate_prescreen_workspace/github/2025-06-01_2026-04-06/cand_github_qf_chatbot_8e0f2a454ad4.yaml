@@ -1,0 +1,217 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_8e0f2a454ad4
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-06-01_2026-04-06
+created_at: '2026-04-06T15:23:32.050643Z'
+updated_at: '2026-04-06T15:23:56.607538Z'
+source: github
+source_id: src_github
+source_window: 2025-06-01..2026-04-06
+time_field: pushed_at
+external_id: '854337508'
+canonical_url: https://github.com/alibaba/spring-ai-alibaba
+title: spring-ai-alibaba
+summary: Agentic AI Framework for Java Developers
+raw_evidence_excerpt: "Agentic AI Framework for Java Developers\n\nSpring AI Alibaba\n\
+  \nA production-ready framework for building Agentic, Workflow, and Multi-agent applications.\n\
+  \nAgent Framework Docs , Graph Docs , Spring AI , Examples .\n\nArchitecture\n\n\
+  **Spring AI Alibaba Admin** is a one-stop Agent platform that supports visualized\
+  \ Agent development, observability, evaluation, and MCP management, etc. It also\
+  \ integrates with open-source low-code platforms like Dify, enabling rapid migration\
+  \ from DSL to Spring AI Alibaba project.\n\n**Spring AI Alibaba Agent Framework**\
+  \ is an agent development framework that can quickly develop agents with builtin\
+  \ **Context Engineering** and **Human In The Loop** support. For scenarios requiring\
+  \ more complex process control, Agent Framework offers built-in workflows like `SequentialAgent`,\
+  \ `ParallelAgent`, `RoutingAgent`, `LoopAgent`.\n\n**Spring AI Alibaba Graph** serves\
+  \ as the underlying runtime of the Agent Framework, providing essential capabilities\
+  \ such as persistence, workflow orchestration, and streaming required for long-running\
+  \ stateful agents. Compared to the Agent Framework, users can build more flexible\
+  \ multi-agent workflows based on the Graph API.\n\nCore Features\n\n* **Multi-Agent\
+  \ Orchestration**: Compose multiple agents with built-in patterns including `SequentialAgent`,\
+  \ `ParallelAgent`, `RoutingAgent`, and `LoopAgent` for complex task execution.\n\
+  \n* **Multimodal Support**: ReactAgent with text and media input (image understanding).\
+  \ ReactAgent with tool based image or audio generation.\n\n* **Voice Agent**: WebSocket-based\
+  \ real-time voice agent that supports streaming audio or text input and responds\
+  \ with generated audio.\n\n* **Context Engineering**: Built-in best practices for\
+  \ context engineering policies to improve agent reliability and performance, including\
+  \ human-in-the-loop, context compaction, context editing, model & tool call limit,\
+  \ tool retry, planning, dynamic tool selection.\n\n* **Graph-based Workflow**: Graph\
+  \ based workflow runtime and api for conditional routing, nested graphs, parallel\
+  \ execution, and state management. Export workflows to PlantUML and Mermaid formats.\n\
+  \n* **A2A Support**: Agent-to-Agent communication support with Nacos integration,\
+  \ enabling distributed agent coordination and collaboration across services.\n\n\
+  * **Rich Model, Tool and MCP Support**: Leveraging core concepts of Spring AI, supports\
+  \ multiple LLM providers (DashScope, OpenAI, etc.), tool calling, and Model Context\
+  \ Protocol (MCP).\n\n* **One-stop Agent Platform**: Build agent in a visualized\
+  \ way, deploy agent without code or export as a standalone java project.\n\nGetting\
+  \ Started\n\nPrerequisites\n\n* Requires JDK 17+. * Choose your LLM provider and\
+  \ get the API-KEY.\n\nQuickly Run a ChatBot\n\nThere's a ChatBot example provided\
+  \ by the community at examples/chatbot.\n\n1. Download the code.\n\n2. Start the\
+  \ ChatBot.\n\nBefore starting, set API-KEY first (visit Aliyun Bailian to get API-KEY):\n\
+  \n3. Chat with ChatBot.\n\nOpen the browser and visit http://localhost:8080/chatui/index.html\
+  \ to chat with the ChatBot.\n\nChatbot Code Explained\n\n1. Add dependencies\n\n\
+  2. Define Chatbot\n\nFor more details of how to write a Chatbot, please check the\
+  \ Quick Start on our official website.\n\n\U0001F4DA Documentation * Overview -\
+  \ High level overview of the framework * Quick Start - Get started with a simple\
+  \ agent * Agent Framework Tutorials - Step by step tutorials * Use Graph API to\
+  \ Build Complex Workflows - In-depth user guide for building multi-agent and workflows\
+  \ * Spring AI Basics - Ai Application basic concepts, including ChatModel, MCP,\
+  \ Tool, Messages, etc.\n\nProject Structure\n\nThis project consists of several\
+  \ core components:\n\n* spring-ai-alibaba-agent-framework: A multi-agent framework\
+  \ designed for building intelligent agents with built-in context engineering best\
+  \ practices. * spring-ai-alibaba-graph: The underlying runtime for Agent Framework.\
+  \ We recommend developers to use Agent Framework but it's totally fine to use the\
+  \ Graph API directly. * spring-ai-alibaba-admin: A one-stop Agent platform that\
+  \ supports visualized Agent development, observability, evaluation, and MCP management,\
+  \ etc. * spring-ai-alibaba-studio: The embedded ui for quickly debugging agent in\
+  \ a visualized way. * spring-boot-starters: Starters integrating Agent Framework\
+  \ with Nacos to provide A2A and dynamic config features.\n\nSpring AI Alibaba Ecosystem\
+  \ Repository | Description | \u2B50 --- | --- | ---\n\nContact Us\n\n* Dingtalk\
+  \ Group (\u9489\u9489\u7FA4), search `94405033092` and join.\n\n* WeChat Group (\u5FAE\
+  \u4FE1\u516C\u4F17\u53F7), scan the QR code below and follow us.\n\nResources *\
+  \ AI-Native Application Architecture White Paper\uFF1ACo-authored by 40 frontline\
+  \ engineers and endorsed by 15 industry experts, this 200,000+ word white paper\
+  \ is the first comprehensive guide dedicated to the full DevOps lifecycle of AI-native\
+  \ applications. It systematically breaks down core concepts and key challenges,\
+  \ offering practical problem-solving approaches and architectural insights.\n\n\
+  Star History\n\n---\n\nMade with \u2764\uFE0F by the Spring AI Alibaba Team"
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-06-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-06-01..2026-04-06
+    external_id: '854337508'
+    canonical_url: https://github.com/alibaba/spring-ai-alibaba
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: 'Needs a quick taxonomy decision first: include as AI app framework candidate
+    or exclude from chatbot slice as supporting infrastructure.'
+  decision_snapshot: 'Recommend hold because Needs a quick taxonomy decision first:
+    include as AI app framework candidate or exclude from chatbot slice as supporting
+    infrastructure.'
+  scope_boundary_note: Treat this as an AI app-enablement framework (SDK/runtime/admin
+    tooling) unless human review finds clear proof of a specific production chatbot/application
+    artifact owned by this repo.
+  source_evidence_summary:
+  - A production-ready framework for building Agentic, Workflow, and Multi-agent applications.
+  - '**Spring AI Alibaba Agent Framework** is an agent development framework ...'
+  - '**Spring AI Alibaba Admin** is a one-stop Agent platform that supports visualized
+    Agent development, observability, evaluation, and MCP management ...'
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: A production-ready framework for building Agentic, Workflow, and
+      Multi-agent applications.
+    evidence_source_field: candidate_input
+    why_it_matters: Directly frames the project as a framework, not a single packaged
+      chatbot product.
+  - anchor_rank: 2
+    evidence_text: '**Spring AI Alibaba Agent Framework** is an agent development
+      framework ...'
+    evidence_source_field: candidate_input
+    why_it_matters: Confirms primary value is developer tooling for building agents.
+  - anchor_rank: 3
+    evidence_text: '**Spring AI Alibaba Admin** is a one-stop Agent platform that
+      supports visualized Agent development, observability, evaluation, and MCP management
+      ...'
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates platform capabilities for development/operations rather
+      than an end-user app.
+  - anchor_rank: 4
+    evidence_text: There's a ChatBot example provided by the community at examples/chatbot.
+    evidence_source_field: candidate_input
+    why_it_matters: Chatbot presence is presented as an example, suggesting reference/demo
+      scope.
+  - anchor_rank: 5
+    evidence_text: spring-ai-alibaba-agent-framework ... spring-ai-alibaba-graph ...
+      spring-ai-alibaba-admin ... spring-ai-alibaba-studio
+    evidence_source_field: candidate_input
+    why_it_matters: Multi-module architecture aligns with ecosystem/framework positioning.
+  review_focus_points:
+  - Check whether repo publishes a production chatbot/app (not just examples, starters,
+    or docs).
+  - Verify if evaluation target includes developer frameworks/platforms or only end-user
+    AI applications.
+  - Look for packaged deliverables (hosted service, downloadable app, SLA-backed product)
+    versus code libraries.
+  - Confirm recency and adoption signals if infrastructure-category inclusion is allowed.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: 'Needs a quick taxonomy decision first: include as AI app framework
+      candidate or exclude from chatbot slice as supporting infrastructure.'
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: 'Needs a quick taxonomy decision first: include as AI app framework
+      candidate or exclude from chatbot slice as supporting infrastructure.'
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI application framework / agent development platform
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI application framework / agent development platform
+      rationale: 'Needs a quick taxonomy decision first: include as AI app framework
+        candidate or exclude from chatbot slice as supporting infrastructure.'
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: End-user chatbot application
+      rationale_for_similarity: End-user chatbot application
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Evidence points to chatbot only as an example
+      module; repository centers on framework/runtime/admin components for building
+      many agentic apps.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: 'boundary with internal tooling unclear; Needs a quick taxonomy
+  decision first: include as AI app framework candidate or exclude from chatbot slice
+  as supporting infrastructure. Treat this as an AI app-enablement framework (SDK/runtime/admin
+  tooling) unless human review finds clear proof of a specific production chatbot/application
+  artifact owned by this repo. evidence_strength=low review_source=existing_llm_prescreen'
+human_reviewed_at: '2026-04-06T15:23:56.607515Z'
+staging_handoff:
+  status: blocked
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items:
+  - candidate first-pass review resolved to on_hold
+  last_attempted_at: '2026-04-06T15:23:56.607532Z'

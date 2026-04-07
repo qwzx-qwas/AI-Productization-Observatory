@@ -1,0 +1,213 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_ae6506662683
+candidate_batch_id: candidate_batch_github_qf_rag_2026-03-31_2026-04-06
+created_at: '2026-04-06T09:15:34.996101Z'
+updated_at: '2026-04-06T11:29:01.830583Z'
+source: github
+source_id: src_github
+source_window: 2026-03-31..2026-04-06
+time_field: pushed_at
+external_id: '793375104'
+canonical_url: https://github.com/Shubhamsaboo/awesome-llm-apps
+title: awesome-llm-apps
+summary: Collection of awesome LLM apps with AI Agents and RAG using OpenAI, Anthropic,
+  Gemini and opensource models.
+raw_evidence_excerpt: "Collection of awesome LLM apps with AI Agents and RAG using\
+  \ OpenAI, Anthropic, Gemini and opensource models.\n\nDeutsch | Espa\xF1ol | fran\xE7\
+  ais | \u65E5\u672C\u8A9E | \uD55C\uAD6D\uC5B4 | Portugu\xEAs | \u0420\u0443\u0441\
+  \u0441\u043A\u0438\u0439 | \u4E2D\u6587\n\n\U0001F31F Awesome LLM Apps\n\nA curated\
+  \ collection of **Awesome LLM apps built with RAG, AI Agents, Multi-agent Teams,\
+  \ MCP, Voice Agents, and more.** This repository features LLM apps that use models\
+  \ from **OpenAI** , **Anthropic**, **Google**, **xAI** and open-source models like\
+  \ **Qwen** or **Llama** that you can run locally on your computer.\n\n\U0001F914\
+  \ Why Awesome LLM Apps?\n\n- \U0001F4A1 Discover practical and creative ways LLMs\
+  \ can be applied across different domains, from code repositories to email inboxes\
+  \ and more. - \U0001F525 Explore apps that combine LLMs from OpenAI, Anthropic,\
+  \ Gemini, and open-source alternatives with AI Agents, Agent Teams, MCP & RAG. -\
+  \ \U0001F393 Learn from well-documented projects and contribute to the growing open-source\
+  \ ecosystem of LLM-powered applications.\n\n\U0001F64F Thanks to our sponsors\n\n\
+  TinyFish\n\nTiger Data MCP\n\nSpeechmatics\n\nBecome a Sponsor\n\n\U0001F4C2 Featured\
+  \ AI Projects\n\nAI Agents\n\n\U0001F331 Starter AI Agents\n\n* \U0001F399\uFE0F\
+  \ AI Blog to Podcast Agent * \u2764\uFE0F\u200D\U0001FA79 AI Breakup Recovery Agent\
+  \ * \U0001F4CA AI Data Analysis Agent * \U0001FA7B AI Medical Imaging Agent * \U0001F602\
+  \ AI Meme Generator Agent (Browser) * \U0001F3B5 AI Music Generator Agent * \U0001F6EB\
+  \ AI Travel Agent (Local & Cloud) * \u2728 Gemini Multimodal Agent * \U0001F504\
+  \ Mixture of Agents * \U0001F4CA xAI Finance Agent * \U0001F50D OpenAI Research\
+  \ Agent * \U0001F578\uFE0F Web Scraping AI Agent (Local & Cloud SDK)\n\n\U0001F680\
+  \ Advanced AI Agents * \U0001F3DA\uFE0F \U0001F34C AI Home Renovation Agent with\
+  \ Nano Banana Pro * \U0001F9E0 DevPulse AI \u2014 Multi-Agent Signal Intelligence\
+  \ * \U0001F50D AI Deep Research Agent * \U0001F4CA AI VC Due Diligence Agent Team\
+  \ * \U0001F52C AI Research Planner & Executor (Google Interactions API) * \U0001F91D\
+  \ AI Consultant Agent * \U0001F3D7\uFE0F AI System Architect Agent * \U0001F4B0\
+  \ AI Financial Coach Agent * \U0001F3AC AI Movie Production Agent * \U0001F4C8 AI\
+  \ Investment Agent * \U0001F3CB\uFE0F\u200D\u2642\uFE0F AI Health & Fitness Agent\
+  \ * \U0001F680 AI Product Launch Intelligence Agent * \U0001F50D AI Fraud Investigation\
+  \ Agent * \U0001F5DE\uFE0F AI Journalist Agent * \U0001F9E0 AI Mental Wellbeing\
+  \ Agent * \U0001F4D1 AI Meeting Agent * \U0001F9EC AI Self-Evolving Agent * \U0001F468\
+  \U0001F3FB\u200D\U0001F4BC AI Sales Intelligence Agent Team * \U0001F3A7 AI Social\
+  \ Media News and Podcast Agent * \U0001F310 Openwork - Open Browser Automation Agent\n\
+  \n\U0001F3AE Autonomous Game Playing Agents\n\n* \U0001F3AE AI 3D Pygame Agent *\
+  \ \u265C AI Chess Agent * \U0001F3B2 AI Tic-Tac-Toe Agent\n\n\U0001F91D Multi-agent\
+  \ Teams\n\n* \U0001F9F2 AI Competitor Intelligence Agent Team * \U0001F4B2 AI Finance\
+  \ Agent Team * \U0001F3A8 AI Game Design Agent Team * \U0001F9ED AG2 Adaptive Research\
+  \ Team * \U0001F468\u200D\u2696\uFE0F AI Legal Agent Team (Cloud & Local) * \U0001F4BC\
+  \ AI Recruitment Agent Team * \U0001F3E0 AI Real Estate Agent Team * \U0001F468\u200D\
+  \U0001F4BC AI Services Agency (CrewAI) * \U0001F468\u200D\U0001F3EB AI Teaching\
+  \ Agent Team * \U0001F4BB Multimodal Coding Agent Team * \u2728 Multimodal Design\
+  \ Agent Team * \U0001F3A8 \U0001F34C Multimodal UI/UX Feedback Agent Team with Nano\
+  \ Banana * \U0001F30F AI Travel Planner Agent Team\n\n\U0001F5E3\uFE0F Voice AI\
+  \ Agents\n\n* \U0001F5E3\uFE0F AI Audio Tour Agent * \U0001F4DE Customer Support\
+  \ Voice Agent * \U0001F50A Voice RAG Agent (OpenAI SDK) * \U0001F399\uFE0F OpenSource\
+  \ Voice Dictation Agent (like Wispr Flow\n\nMCP AI Agents\n\n* \u267E\uFE0F Browser\
+  \ MCP Agent * \U0001F419 GitHub MCP Agent * \U0001F4D1 Notion MCP Agent * \U0001F30D\
+  \ AI Travel Planner MCP Agent * \U0001F500 Multi-MCP Agent Router\n\n\U0001F4C0\
+  \ RAG (Retrieval Augmented Generation) * \U0001F525 Agentic RAG with Embedding Gemma\
+  \ * \U0001F9D0 Agentic RAG with Reasoning * \U0001F4F0 AI Blog Search (RAG) * \U0001F50D\
+  \ Autonomous RAG * \U0001F504 Contextual AI RAG Agent * \U0001F504 Corrective RAG\
+  \ (CRAG) * \U0001F40B Deepseek Local RAG Agent * \U0001F914 Gemini Agentic RAG *\
+  \ \U0001F440 Hybrid Search RAG (Cloud) * \U0001F504 Llama 3.1 Local RAG * \U0001F5A5\
+  \uFE0F Local Hybrid Search RAG * \U0001F999 Local RAG Agent * \U0001F9E9 RAG-as-a-Service\
+  \ * \u2728 RAG Agent with Cohere * \u26D3\uFE0F Basic RAG Chain * \U0001F4E0 RAG\
+  \ with Database Routing * \U0001F5BC\uFE0F Vision RAG * \U0001FA7A RAG Failure Diagnostics\
+  \ Clinic * \U0001F578\uFE0F Knowledge Graph RAG with Citations\n\n\U0001F4BE LLM\
+  \ Apps with Memory Tutorials\n\n* \U0001F4BE AI ArXiv Agent with Memory * \U0001F6E9\
+  \uFE0F AI Travel Agent with Memory * \U0001F4AC Llama3 Stateful Chat * \U0001F4DD\
+  \ LLM App with Personalized Memory * \U0001F5C4\uFE0F Local ChatGPT Clone with Memory\
+  \ * \U0001F9E0 Multi-LLM Application with Shared Memory\n\n\U0001F4AC Chat with\
+  \ X Tutorials\n\n* \U0001F4AC Chat with GitHub (GPT & Llama3) * \U0001F4E8 Chat\
+  \ with Gmail * \U0001F4C4 Chat with PDF (GPT & Llama3) * \U0001F4DA Chat with Research\
+  \ Papers (ArXiv) (GPT & Llama3) * \U0001F4DD Chat with Substack * \U0001F4FD\uFE0F\
+  \ Chat with YouTube Videos\n\n\U0001F3AF LLM Optimization Tools\n\n* \U0001F3AF\
+  \ Toonify Token Optimization - Reduce LLM API costs by 30-60% using TOON format\
+  \ * \U0001F9E0 Headroom Context Optimization - Reduce LLM API costs by 50-90% format\n\
+  \n\U0001F527 LLM Fine-tuning Tutorials\n\n* Gemma 3 Fine-tuning * Llama 3.2 Fine-tuning\n\
+  \n\U0001F9D1\u200D\U0001F3EB AI Agent Framework Crash Course\n\nGoogle ADK Crash\
+  \ Course - Starter agent; model\u2011agnostic (OpenAI, Claude) - Structured outputs\
+  \ (Pydantic) - Tools: built\u2011in, function, third\u2011party, MCP tools - Memory;\
+  \ callbacks; Plugins - Simple multi\u2011agent; Multi\u2011agent patterns\n\nOpenAI\
+  \ Agents SDK Crash Course - Starter agent; function calling; structured outputs\
+  \ - Tools: built\u2011in, function, third\u2011party integrations - Memory; callbacks;\
+  \ evaluation - Multi\u2011agent patterns; agent handoffs - Swarm orchestration;\
+  \ routing logic\n\n\U0001F9E9 Awesome Agent Skills\n\n* \u267E\uFE0F Self-Improving\
+  \ Agent Skills - Automatically optimize agent skills using Gemini and ADK\n\n\U0001F680\
+  \ Getting Started\n\n1. **Clone the repository**\n\n2. **Navigate to the desired\
+  \ project directory**\n\n3. **Install the required dependencies**\n\n4. **Follow\
+  \ the project-specific instructions** in each project's `README.md` file to set\
+  \ up and run the app.\n\nThank You, Community, for the Support! \U0001F64F\n\n\U0001F31F\
+  \ **Don\u2019t miss out on future updates! Star the repo now and be the first to\
+  \ know about new and exciting LLM apps with RAG and AI Agents.**"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-31'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-31..2026-04-06
+    external_id: '793375104'
+    canonical_url: https://github.com/Shubhamsaboo/awesome-llm-apps
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Ready for quick human triage on scope policy; low need to reread full raw
+    text if policy excludes non-single-product repositories.
+  decision_snapshot: Recommend hold because Ready for quick human triage on scope
+    policy; low need to reread full raw text if policy excludes non-single-product
+    repositories.
+  scope_boundary_note: Treat this as an ecosystem map/learning hub unless a human
+    reviewer confirms that curated repositories are in scope. Do not treat each listed
+    subproject as independently prescreened from this single record.
+  source_evidence_summary:
+  - Treat this as an ecosystem map/learning hub unless a human reviewer confirms that
+    curated repositories are in scope. Do not treat each listed subproject as independently
+    prescreened from this single record.
+  - Confirm whether observatory taxonomy accepts curated repositories as first-class
+    candidates.
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: Ready for quick human triage on scope policy; low need to reread
+      full raw text if policy excludes non-single-product repositories.
+    evidence_source_field: candidate_input
+    why_it_matters: This fallback anchor preserves a minimally explainable first-pass
+      review card when the provider omits structured evidence anchors.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - Confirm whether observatory taxonomy accepts curated repositories as first-class
+    candidates.
+  - If accepted, classify at repository-level only (not as a single deployable app).
+  - Check maintenance quality signals (recency, contribution activity, broken links/examples).
+  - Assess whether there is unique productization methodology vs a list of demos/tutorials.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: Ready for quick human triage on scope policy; low need to reread full
+      raw text if policy excludes non-single-product repositories.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Ready for quick human triage on scope policy; low need to reread full
+      raw text if policy excludes non-single-product repositories.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: Curated AI application repository / educational resource
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: Curated AI application repository / educational resource
+      rationale: Ready for quick human triage on scope policy; low need to reread
+        full raw text if policy excludes non-single-product repositories.
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_candidate:
+      category_code: Production AI application (single product)
+      rationale_for_similarity: Production AI application (single product)
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: Evidence describes many heterogeneous projects
+      and tutorials, not one specific end-user product with singular functionality.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: 'clear end-user product signal; evidence sufficient for staging;
+  manual override: user requested to promote all non-duplicate active candidates into
+  gold staging'
+human_reviewed_at: '2026-04-06T11:29:00.886323Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
+  sample_slot_id: GS300-062
+  sample_id: cand_github_qf_rag_ae6506662683
+  blocking_items: []
+  last_attempted_at: '2026-04-06T11:29:01.830563Z'

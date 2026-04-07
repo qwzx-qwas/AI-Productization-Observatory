@@ -1,0 +1,191 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_f8924585188a
+candidate_batch_id: candidate_batch_github_qf_chatbot_2026-03-31_2026-04-06
+created_at: '2026-04-06T09:23:26.225334Z'
+updated_at: '2026-04-06T11:29:00.814024Z'
+source: github
+source_id: src_github
+source_window: 2026-03-31..2026-04-06
+time_field: pushed_at
+external_id: '429736266'
+canonical_url: https://github.com/baptisteArno/typebot.io
+title: typebot.io
+summary: "\U0001F4AC Typebot is a powerful chatbot builder that you can self-host."
+raw_evidence_excerpt: "\U0001F4AC Typebot is a powerful chatbot builder that you can\
+  \ self-host.\n\nTypebot is a Fair Source chatbot builder. It allows you to create\
+  \ advanced chatbots visually, embed them anywhere on your web/mobile apps, and collect\
+  \ results in real-time\n\nTry Typebot \u2022 Docs\n\n---\n\nBuilder demo\n\nFeatures\n\
+  \nTypebot makes it easy to create advanced chatbots. It provides the building blocks\
+  \ that are adaptable to any business use case. I improve Typebot regularly with\
+  \ bug fixes, new features, and performance improvements.\n\n**Chat builder** with\
+  \ 34+ building blocks such as:\n\n- \U0001F4AC Bubbles: Text, Image / GIF, video,\
+  \ audio, embed. - \U0001F524 Inputs: Text, email, phone number, buttons, picture\
+  \ choice, date picker, payment (Stripe), file picker... - \U0001F9E0 Logic: Conditional\
+  \ branching, URL redirections, scripting (Javascript), A/B testing. - \U0001F50C\
+  \ Integrations: Webhook / HTTP requests, OpenAI, Google Sheets, Google Analytics,\
+  \ Meta Pixel, Zapier, Make.com, Chatwoot, More to come...\n\n**Theme** your chatbot\
+  \ to match your brand identity:\n\n- \U0001F3A8 Customize the fonts, background,\
+  \ colors, roundness, shadows, and more - \U0001F4AA Advanced theming with custom\
+  \ CSS - \U0001F4BE Reusable theme templates\n\n**Share** your typebot anywhere:\n\
+  \n- \U0001F517 Custom domain - \U0001F468\u200D\U0001F4BB Embed as a container,\
+  \ popup, or chat bubble easily with the native JS library - \u26A1 Blazing-fast\
+  \ embed lib. No iframe, no external dependencies, no performance impact - \U0001F4BB\
+  \ Executable with HTTP requests\n\nCollect your **Results** and get insights:\n\n\
+  - \U0001F4CA In-depth analytics with drop-off rates, completion rates, and more\
+  \ - \U0001F4E5 Export results to CSV\n\nBuilt for **developers**:\n\n- \U0001F513\
+  \ No vendor-locking. Features built with flexibility in mind. - \U0001F4BB Easy-to-use\
+  \ APIs.\n\nGetting started with Typebot\n\nThe easiest way to get started with Typebot\
+  \ is with the official managed service in the Cloud. You'll have high availability,\
+  \ backups, security, and maintenance all managed for you by me, Baptiste, Typebot's\
+  \ founder.\n\nThe cloud version can save a substantial amount of developer time\
+  \ and resources. For most sites, this ends up being the best value option and the\
+  \ revenue goes to funding the maintenance and further development of Typebot. So\
+  \ you\u2019ll be supporting Fair Source software and getting a great service! \U0001F499\
+  \n\nSupport & Community\n\nYou'll find a lot of resources to help you get started\
+  \ with Typebot in the documentation.\n\n- Have a question? Join the Discord server\
+  \ and get instant help. - Found a bug? Create an issue\n\nSelf-hosting\n\nInterested\
+  \ in self-hosting Typebot on your server? Take a look at the self-hosting installation\
+  \ instructions.\n\nHow to Contribute\n\nYou are awesome, let's build great software\
+  \ together. Head over to the Contribute docs to get started. \U0001F4AA\n\nRun the\
+  \ project locally\n\nFollow the Local installation section of in the Contributing\
+  \ docs.\n\nTop contributors\n\nMade with contrib.rocks.\n\nLicense\n\nTypebot's\
+  \ code is protected under a Functional Source License. You will find more information\
+  \ about the license and how to comply with it here."
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-31'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-31..2026-04-06
+    external_id: '429736266'
+    canonical_url: https://github.com/baptisteArno/typebot.io
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Repository clearly matches the chatbot product slice, but AI appears as
+    an integration feature rather than the unequivocal core engine in the provided
+    evidence.
+  decision_snapshot: Repository clearly matches the chatbot product slice, but AI
+    appears as an integration feature rather than the unequivocal core engine in the
+    provided evidence.
+  scope_boundary_note: Treat this as a chatbot-builder product first; include in AI
+    product scope only if human review confirms that AI-driven behavior (e.g., OpenAI
+    blocks) is materially central to typical user outcomes rather than optional workflow
+    automation.
+  source_evidence_summary:
+  - "\u201CTypebot is a powerful chatbot builder that you can self-host.\u201D"
+  - "\u201CTypebot is a Fair Source chatbot builder... create advanced chatbots visually,\
+    \ embed them anywhere... and collect results in real-time\u201D"
+  - "\u201CIntegrations: Webhook / HTTP requests, OpenAI, Google Sheets... Zapier...\u201D"
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: "\u201CTypebot is a powerful chatbot builder that you can self-host.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Directly establishes product type and deployment model.
+  - anchor_rank: 2
+    evidence_text: "\u201CTypebot is a Fair Source chatbot builder... create advanced\
+      \ chatbots visually, embed them anywhere... and collect results in real-time\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Shows this is a production product platform, not a demo project.
+  - anchor_rank: 3
+    evidence_text: "\u201CIntegrations: Webhook / HTTP requests, OpenAI, Google Sheets...\
+      \ Zapier...\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: AI capability is present, but positioned as one integration among
+      many.
+  - anchor_rank: 4
+    evidence_text: "\u201CNo vendor-locking... Easy-to-use APIs.\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Signals developer-oriented productization and extensibility.
+  - anchor_rank: 5
+    evidence_text: "\u201CThe easiest way to get started... official managed service\
+      \ in the Cloud... Self-hosting...\u201D"
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates mature go-to-market packaging (managed + self-hosted).
+  review_focus_points:
+  - Verify whether AI/LLM blocks are first-class workflow primitives or optional add-ons.
+  - 'Check docs/examples for default bot logic: deterministic flow-builder vs AI-native
+    conversation behavior.'
+  - Confirm license constraints (Functional Source License) against observatory inclusion
+    policy.
+  - Assess evidence of real AI productization outcomes (AI-driven support, qualification,
+    generation) beyond generic chatbot forms.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: 'Good candidate for quick human triage: inspect docs for AI-first templates/use
+      cases and confirm license-policy compatibility before any candidate_pool promotion.'
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository clearly matches the chatbot product slice, but AI appears
+      as an integration feature rather than the unequivocal core engine in the provided
+      evidence.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: Chatbot Builder Platform (conversational workflow product)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: Chatbot Builder Platform (conversational workflow product)
+      rationale: Repository clearly matches the chatbot product slice, but AI appears
+        as an integration feature rather than the unequivocal core engine in the provided
+        evidence.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: LLM Agent Platform
+      rationale_for_similarity: LLM Agent Platform
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Provided evidence emphasizes visual flow-building
+      and general integrations; AI/agent behavior is not demonstrated as the dominant
+      architectural core.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: 'clear end-user product signal; evidence sufficient for staging;
+  manual override: user requested to promote all non-duplicate active candidates into
+  gold staging'
+human_reviewed_at: '2026-04-06T11:28:59.921707Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
+  sample_slot_id: GS300-061
+  sample_id: cand_github_qf_chatbot_f8924585188a
+  blocking_items: []
+  last_attempted_at: '2026-04-06T11:29:00.814003Z'

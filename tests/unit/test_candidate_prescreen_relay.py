@@ -1,10 +1,19 @@
 from __future__ import annotations
 
 import json
+import urllib.error
 import unittest
 from unittest.mock import patch
 
-from src.candidate_prescreen.relay import PAYLOAD_BUILDER_VERSION, README_EXCERPT_MAX_CHARS, _build_relay_input, screen_candidate
+from src.candidate_prescreen.relay import (
+    PAYLOAD_BUILDER_VERSION,
+    README_EXCERPT_MAX_CHARS,
+    _build_relay_input,
+    relay_preflight,
+    screen_candidate,
+)
+from src.common.errors import ProcessingError
+from src.common.request_timing import reset_request_timing_state, wait_for_request_interval
 
 
 class _FakeRelayResponse:
@@ -23,6 +32,9 @@ class _FakeRelayResponse:
 
 
 class CandidatePrescreenRelayUnitTests(unittest.TestCase):
+    def setUp(self) -> None:
+        reset_request_timing_state()
+
     def test_build_relay_input_trims_excerpt_to_normalized_excerpt_contract(self) -> None:
         noisy_excerpt = "\n".join(
             [
@@ -278,3 +290,109 @@ class CandidatePrescreenRelayUnitTests(unittest.TestCase):
         payload = captured_request["body"]
         self.assertEqual(payload["messages"][0]["content"][0]["type"], "text")
         self.assertEqual(payload["messages"][1]["content"][0]["type"], "text")
+
+    def test_screen_candidate_waits_between_retryable_attempts(self) -> None:
+        candidate_input = {
+            "source": "github",
+            "source_id": "src_github",
+            "source_window": "2026-03-01..2026-03-08",
+            "time_field": "pushed_at",
+            "external_id": "123",
+            "canonical_url": "https://github.com/example/product",
+            "title": "Product Name",
+            "summary": "AI support workspace.",
+            "raw_evidence_excerpt": "Useful product evidence.",
+            "query_family": "ai_applications_and_products",
+            "query_slice_id": "qf_agent",
+            "selection_rule_version": "github_qsv1",
+        }
+        slept: list[float] = []
+
+        with patch("src.candidate_prescreen.relay.RelayConfig.from_env") as mock_from_env:
+            mock_from_env.return_value.base_url = "https://relay.example.test"
+            mock_from_env.return_value.token = "test-token"
+            mock_from_env.return_value.model = "test-model"
+            mock_from_env.return_value.timeout_seconds = 30
+            mock_from_env.return_value.client_version = "relay_candidate_prescreener_v1"
+            mock_from_env.return_value.api_style = "relay_json"
+            mock_from_env.return_value.auth_style = "bearer"
+            mock_from_env.return_value.message_content_style = "string"
+            with patch(
+                "src.candidate_prescreen.relay.urllib.request.urlopen",
+                side_effect=[
+                    urllib.error.URLError("temporary relay outage"),
+                    _FakeRelayResponse({"result": {}}),
+                ],
+            ):
+                result = screen_candidate(
+                    candidate_input,
+                    prompt_version="candidate_prescreener_v1",
+                    routing_version="route_candidate_prescreener_v1",
+                    relay_transport="http_json_relay",
+                    relay_client_version="relay_candidate_prescreener_v1",
+                    prompt_contract={"prompt_spec_ref": "10_prompt_specs/candidate_prescreener_v1.md"},
+                    fixture_path=None,
+                    timeout_seconds=30,
+                    max_retries=1,
+                    request_interval_seconds=0,
+                    retry_sleep_seconds=12,
+                    sleep_fn=slept.append,
+                )
+
+        self.assertEqual(slept, [12])
+        self.assertEqual(result["channel_metadata"]["request_id"], "req_test_123")
+
+    def test_wait_for_request_interval_sleeps_until_interval_boundary(self) -> None:
+        slept: list[float] = []
+
+        first_now = iter([0.0])
+        second_now = iter([5.0, 60.0])
+
+        wait_for_request_interval("candidate_prescreen_relay", 60, sleep_fn=slept.append, now_fn=lambda: next(first_now))
+        waited = wait_for_request_interval("candidate_prescreen_relay", 60, sleep_fn=slept.append, now_fn=lambda: next(second_now))
+
+        self.assertEqual(waited, 55.0)
+        self.assertEqual(slept, [55.0])
+
+    def test_relay_preflight_resolves_openai_compatible_host(self) -> None:
+        with patch("src.candidate_prescreen.relay.RelayConfig.from_env") as mock_from_env:
+            mock_from_env.return_value.base_url = "https://api.third-party.example/v1"
+            mock_from_env.return_value.token = "test-token"
+            mock_from_env.return_value.model = "test-model"
+            mock_from_env.return_value.timeout_seconds = 30
+            mock_from_env.return_value.client_version = "relay_candidate_prescreener_v1"
+            mock_from_env.return_value.api_style = "openai_compatible"
+            mock_from_env.return_value.auth_style = "bearer"
+            mock_from_env.return_value.message_content_style = "string"
+            with patch("src.candidate_prescreen.relay.socket.getaddrinfo", return_value=[object()]) as getaddrinfo_mock:
+                status = relay_preflight(
+                    default_timeout_seconds=30,
+                    default_client_version="relay_candidate_prescreener_v1",
+                )
+
+        getaddrinfo_mock.assert_called_once_with("api.third-party.example", 443, proto=6)
+        self.assertEqual(status["request_url"], "https://api.third-party.example/v1/chat/completions")
+        self.assertEqual(status["host"], "api.third-party.example")
+        self.assertEqual(status["model"], "test-model")
+
+    def test_relay_preflight_raises_processing_error_when_host_cannot_resolve(self) -> None:
+        with patch("src.candidate_prescreen.relay.RelayConfig.from_env") as mock_from_env:
+            mock_from_env.return_value.base_url = "https://broken-relay.example/v1"
+            mock_from_env.return_value.token = "test-token"
+            mock_from_env.return_value.model = "test-model"
+            mock_from_env.return_value.timeout_seconds = 30
+            mock_from_env.return_value.client_version = "relay_candidate_prescreener_v1"
+            mock_from_env.return_value.api_style = "openai_compatible"
+            mock_from_env.return_value.auth_style = "bearer"
+            mock_from_env.return_value.message_content_style = "string"
+            with patch(
+                "src.candidate_prescreen.relay.socket.getaddrinfo",
+                side_effect=OSError("Name or service not known"),
+            ):
+                with self.assertRaises(ProcessingError) as ctx:
+                    relay_preflight(
+                        default_timeout_seconds=30,
+                        default_client_version="relay_candidate_prescreener_v1",
+                    )
+
+        self.assertEqual(ctx.exception.error_type, "network_error")

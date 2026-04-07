@@ -1,0 +1,176 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_30b87c3359e4
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2026-04-07_2027-02-10
+created_at: '2026-04-07T04:16:13.886804Z'
+updated_at: '2026-04-07T04:17:40.191495Z'
+source: github
+source_id: src_github
+source_window: 2026-04-07..2027-02-10
+time_field: pushed_at
+external_id: '626805178'
+canonical_url: https://github.com/langgenius/dify
+title: dify
+summary: Production-ready platform for agentic workflow development.
+raw_evidence_excerpt: "Production-ready platform for agentic workflow development.\n\
+  \nDify Cloud \xB7 Self-hosting \xB7 Documentation \xB7 Dify edition overview\n\n\
+  alt=\"chat on Discord\">\n\nalt=\"join Reddit\">\n\nalt=\"follow on X(Twitter)\"\
+  >\n\nDify is an open-source LLM app development platform. Its intuitive interface\
+  \ combines AI workflow, RAG pipeline, agent capabilities, model management, observability\
+  \ features (including Opik, Langfuse, and Arize Phoenix) and more, letting you quickly\
+  \ go from prototype to production. Here's a list of the core features:\n\nQuick\
+  \ start\n\n> Before installing Dify, make sure your machine meets the following\
+  \ minimum system requirements: > > - CPU >= 2 Core > - RAM >= 4 GiB\n\nThe easiest\
+  \ way to start the Dify server is through Docker Compose. Before running Dify with\
+  \ the following commands, make sure that Docker and Docker Compose are installed\
+  \ on your machine:\n\nAfter running, you can access the Dify dashboard in your browser\
+  \ at http://localhost/install and start the initialization process.\n\nSeeking help\n\
+  \nPlease refer to our FAQ if you encounter problems setting up Dify. Reach out to\
+  \ the community and us if you are still having issues.\n\n> If you'd like to contribute\
+  \ to Dify or do additional development, refer to our guide to deploying from source\
+  \ code\n\nKey features\n\n**1. Workflow**: Build and test powerful AI workflows\
+  \ on a visual canvas, leveraging all the following features and beyond.\n\n**2.\
+  \ Comprehensive model support**: Seamless integration with hundreds of proprietary\
+  \ / open-source LLMs from dozens of inference providers and self-hosted solutions,\
+  \ covering GPT, Mistral, Llama3, and any OpenAI API-compatible models. A full list\
+  \ of supported model providers can be found here.\n\n**3. Prompt IDE**: Intuitive\
+  \ interface for crafting prompts, comparing model performance, and adding additional\
+  \ features such as text-to-speech to a chat-based app.\n\n**4. RAG Pipeline**: Extensive\
+  \ RAG capabilities that cover everything from document ingestion to retrieval, with\
+  \ out-of-box support for text extraction from PDFs, PPTs, and other common document\
+  \ formats.\n\n**5. Agent capabilities**: You can define agents based on LLM Function\
+  \ Calling or ReAct, and add pre-built or custom tools for the agent. Dify provides\
+  \ 50+ built-in tools for AI agents, such as Google Search, DALL\xB7E, Stable Diffusion\
+  \ and WolframAlpha.\n\n**6. LLMOps**: Monitor and analyze application logs and performance\
+  \ over time. You could continuously improve prompts, datasets, and models based\
+  \ on production data and annotations.\n\n**7. Backend-as-a-Service**: All of Dify's\
+  \ offerings come with corresponding APIs, so you could effortlessly integrate Dify\
+  \ into your own business logic.\n\nUsing Dify\n\n- **Cloud ** We host a Dify Cloud\
+  \ service for anyone to try with zero setup. It provides all the capabilities of\
+  \ the self-deployed version, and includes 200 free GPT-4 calls in the sandbox plan.\n\
+  \n- **Self-hosting Dify Community Edition ** Quickly get Dify running in your environment\
+  \ with this starter guide. Use our documentation for further references and more\
+  \ in-depth instructions.\n\n- **Dify for enterprise / organizations ** We provide\
+  \ additional enterprise-centric features. Send us an email to discuss your enterprise\
+  \ needs.\n\n> For startups and small businesses using AWS, check out Dify Premium\
+  \ on AWS Marketplace and deploy it to your own AWS VPC with one click. It's an affordable\
+  \ AMI offering with the option to create apps with custom logo and branding.\n\n\
+  Staying ahead\n\nStar Dify on GitHub and be instantly notified of new releases.\n\
+  \nAdvanced Setup\n\nCustom configurations\n\nIf you need to customize the configuration,\
+  \ please refer to the comments in our .env.example file and update the corresponding\
+  \ values in your `.env` file. Additionally, you might need to make adjustments to\
+  \ the `docker-compose.yaml` file itself, such as changing image versions, port mappings,\
+  \ or volume mounts, based on your specific deployment environment and requirements.\
+  \ After making any changes, please re-run `docker compose up -d`. You can find the\
+  \ full list of available environment variables here.\n\nCustomizing Suggested Questions\n\
+  \nYou can now customize the \"Suggested Questions After Answer\" feature to better\
+  \ fit your use case. For example, to generate longer, more technical questions:\n\
+  \nSee the Suggested Questions Configuration Guide for detailed examples and usage\
+  \ instructions.\n\nMetrics Monitoring with Grafana\n\nImport the dashboard to Grafana,\
+  \ using Dify's PostgreSQL database as data source, to monitor metrics in granularity\
+  \ of apps, tenants, messages, and more.\n\n- Grafana Dashboard by @bowenliang123\n\
+  \nDeployment with Kubernetes\n\nIf you'd like to configure a highly-available setup,\
+  \ there are community-contributed Helm Charts and YAML files which allow Dify to\
+  \ be deployed on Kubernetes.\n\n- Helm Chart by @LeoQuote - Helm Chart by @BorisPolonsky\
+  \ - Helm Chart by @magicsong - YAML file by @Winson-030 - YAML file by @wyy-holding\
+  \ - \U0001F680 NEW! YAML files (Supports Dify v1.6.0) by @Zhoneym\n\nUsing Terraform\
+  \ for Deployment\n\nDeploy Dify to Cloud Platform with a single click using terraform\n\
+  \nAzure Global\n\n- Azure Terraform by @nikawang\n\nGoogle Cloud\n\n- Google Cloud\
+  \ Terraform by @sotazum\n\nUsing AWS CDK for Deployment\n\nDeploy Dify to AWS with\
+  \ CDK\n\nAWS\n\n- AWS CDK by @KevinZhao (EKS based) - AWS CDK by @tmokmss (ECS based)\n\
+  \nUsing Alibaba Cloud Computing Nest\n\nQuickly deploy Dify to Alibaba cloud with\
+  \ Alibaba Cloud Computing Nest\n\nUsing Alibaba Cloud Data Management\n\nOne-Click\
+  \ deploy Dify to Alibaba Cloud with Alibaba Cloud Data Management\n\nDeploy to AKS\
+  \ with Azure Devops Pipeline\n\nOne-Click deploy Dify to AKS with Azure Devops Pipeline\
+  \ Helm Chart by @LeoZhang\n\nContributing\n\nFor those who'd like to contribute\
+  \ code, see our Contribution Guide. At the same time, please consider supporting\
+  \ Dify by sharing it on social media and at events and conferences.\n\n> We are\
+  \ looking for contributors to help translate Dify into languages other than Mandarin\
+  \ or English. If you are interested in helping, please see the i18n README for more\
+  \ information, and leave us a comment in the `global-users` channel of our Discord\
+  \ Community Server.\n\nCommunity & contact\n\n- GitHub Discussion. Best for: sharing\
+  \ feedback and asking questions. - GitHub Issues. Best for: bugs you encounter using\
+  \ Dify.AI, and feature proposals. See our Contribution Guide. - Discord. Best for:\
+  \ sharing your applications and hanging out with the community. - X(Twitter). Best\
+  \ for: sharing your applications and hanging out with the community.\n\n**Contributors**\n\
+  \nStar history\n\nSecurity disclosure\n\nTo protect your privacy, please avoid posting\
+  \ security issues on GitHub. Instead, report issues to security@dify.ai, and our\
+  \ team will respond with detailed answer.\n\nLicense\n\nThis repository is licensed\
+  \ under the Dify Open Source License, based on Apache 2.0 with additional conditions."
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-04-07'
+    window_end: '2027-02-10'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-04-07..2027-02-10
+    external_id: '626805178'
+    canonical_url: https://github.com/langgenius/dify
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: schema_drift
+  error_message: OpenAI-compatible response must provide message.content text
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

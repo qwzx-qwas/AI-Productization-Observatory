@@ -1,0 +1,152 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_c9cdf911f234
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2026-03-01_2026-03-08
+created_at: '2026-04-02T04:54:49.377826Z'
+updated_at: '2026-04-07T09:37:16.805628Z'
+source: github
+source_id: src_github
+source_window: 2026-03-01..2026-03-08
+time_field: pushed_at
+external_id: '880012'
+canonical_url: https://github.com/demo/meeting-assistant-internal
+title: meeting-assistant-internal
+summary: Internal meeting assistant for notes, action items, and team recap delivery.
+raw_evidence_excerpt: The repo highlights rollout scripts, org-level retention controls,
+  and internal deployment steps more than broad product packaging.
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: fixture
+  selection_basis:
+    window_start: '2026-03-01'
+    window_end: '2026-03-08'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-01..2026-03-08
+    external_id: '880012'
+    canonical_url: https://github.com/demo/meeting-assistant-internal
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: true
+  reason: The product signal is plausible, but the repo still needs human review to
+    resolve a boundary question.
+  decision_snapshot: Recommend hold because internal meeting assistant for notes,
+    action items, and team recap delivery. but the scope boundary is still ambiguous.
+  scope_boundary_note: There may be user-facing value, but the repo currently reads
+    like an internal deployment artifact.
+  source_evidence_summary:
+  - Internal meeting assistant for notes, action items, and team recap delivery.
+  - The repo highlights rollout scripts, org-level retention controls, and internal
+    deployment steps more than broad product packaging
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: Internal meeting assistant for notes, action items, and team recap
+      delivery.
+    evidence_source_field: summary
+    why_it_matters: This is the clearest concise statement of the product scope and
+      likely primary user job.
+    applies_to:
+    - scope
+    - persona
+    - recommended_action
+  - anchor_rank: 2
+    evidence_text: The repo highlights rollout scripts, org-level retention controls,
+      and internal deployment steps more than broad product packaging
+    evidence_source_field: raw_evidence_excerpt
+    why_it_matters: This excerpt describes the concrete workflow behavior that supports
+      the main category choice.
+    applies_to:
+    - taxonomy
+    - recommended_action
+  - anchor_rank: 3
+    evidence_text: ai-assistant
+    evidence_source_field: candidate_input
+    why_it_matters: The query/topic context explains why this repo was discovered
+      in the current candidate slice.
+    applies_to:
+    - scope
+  review_focus_points:
+  - Check whether the intended day-to-day user matches the proposed primary persona.
+  - Confirm the public repo describes a real product workflow rather than only setup
+    or framework details.
+  - Verify the main category is stronger than the adjacent category before any pool
+    promotion.
+  uncertainty_points:
+  - Human review should verify whether the repository is truly packaged as a user-facing
+    product.
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: medium
+    taxonomy_confidence: medium
+    persona_confidence: medium
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: Resolve the scope ambiguity before promotion.
+  persona_candidates:
+  - persona_code: general_business_user
+    confidence_rank: 1
+    rationale: The summary and excerpt both point to this as the most likely operating
+      persona.
+    supporting_evidence_anchors:
+    - 1
+    - 2
+  - persona_code: general_business_user
+    confidence_rank: 2
+    rationale: The product language could still support a broader business-user audience.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: JTBD_PRODUCTIVITY_AUTOMATION
+    secondary_category_code: null
+    primary_persona_code: general_business_user
+    delivery_form_code: desktop_app
+    main_category_candidate:
+      category_code: JTBD_PRODUCTIVITY_AUTOMATION
+      rationale: The workflow description in the public source most strongly matches
+        this primary job-to-be-done.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: JTBD_DEV_TOOLS
+      rationale_for_similarity: Some of the workflow language could also fit this
+        nearby category.
+      supporting_evidence_anchors:
+      - 2
+      - 3
+    adjacent_category_rejected_reason: The adjacent category is plausible, but the
+      strongest public evidence still points to the proposed main category.
+  assessment_hints:
+    evidence_strength: medium
+    build_evidence_band: medium
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: fixture-llm-generated
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  user confirmed and requested pool admission.
+human_reviewed_at: '2026-04-02T10:02:37.123383Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_02_samples_016_030.yaml
+  sample_slot_id: GS300-023
+  sample_id: cand_github_qf_ai_assistant_c9cdf911f234
+  blocking_items: []
+  last_attempted_at: '2026-04-07T09:37:16.805609Z'

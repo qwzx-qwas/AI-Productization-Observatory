@@ -1,0 +1,193 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_39cab9febf4c
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-06-01_2026-04-06
+created_at: '2026-04-06T14:58:45.737390Z'
+updated_at: '2026-04-06T14:59:13.465768Z'
+source: github
+source_id: src_github
+source_window: 2025-06-01..2026-04-06
+time_field: pushed_at
+external_id: '90620882'
+canonical_url: https://github.com/dbpedia/chatbot
+title: chatbot
+summary: DBpedia Chatbot
+raw_evidence_excerpt: "DBpedia Chatbot\n\n** NOTE: THIS PROJECT IS DEPRECATED AND\
+  \ WILL NOT BE MAINTAINED **\n\nDBpedia Chatbot\n\n**Final Application**\n\nFor more\
+  \ information about this project and **GSoC Progress** please refer to **GSoC Wiki**\n\
+  \nEnvironment Configurations\n\nWhen running locally or in development, include\
+  \ the following configuration as a properties file in the `src/main/resources` folder.\n\
+  \nIn case you do not have a proper CouchDB instance or API key,s please use the\
+  \ following **dummy configuration file**.\n\n_Please note that using the dummy configuration\
+  \ file can result in some features being unavailable since they may require the\
+  \ requisite API services._\n\nDevelopment Only Configurations\n\nDeployment\n\n\
+  Development\n\nEmbed Code\n\nAdd the following snippet to the ` ` section of the\
+  \ webpage where you want to embed the ChatBot.\n\nAPI Usage The chatbot exposes\
+  \ a REST API that allows developers to integrate chatbot functionality into their\
+  \ applications.\n\nEndpoint\n\n**Note:** This is a public webhook endpoint that\
+  \ does not require authentication. Currently, no application-level rate limiting\
+  \ is configured. For production deployments, consider implementing rate limiting\
+  \ via an API gateway or reverse proxy (e.g., nginx, AWS API Gateway) to prevent\
+  \ abuse.\n\nRequest Format\n\n| Field | Type | Description | |-------|------|-------------|\
+  \ | userId | string | Unique identifier for the user/session | | messageType | string\
+  \ | `text` for queries, `parameter` for button responses | | messageData | array\
+  \ | Array containing message objects with `text` field |\n\nResponse Format The\
+  \ API returns an array of response objects:\n\n| Field | Type | Description | |-------|------|-------------|\
+  \ | messageType | string | Type of response (typically `text`) | | messageData |\
+  \ array | Array of response objects | | title | string | Title/subject of the response\
+  \ | | text | string | Main response content | | image | string | URL to related\
+  \ image (optional, may be empty) | | buttons | array | Interactive buttons for follow-up\
+  \ actions (optional) |\n\nExample\n\n**Request:**\n\n**Response:**\n\nSample Queries\
+  \ - \"Who is Albert Einstein?\" - \"What is the capital of France?\" - \"Tell me\
+  \ about DBpedia\" - \"Where is Paris?\"\n\nLimitations & Notes\n\n- **Supported\
+  \ messageType values:** Only `text` and `parameter` are currently supported - **Query\
+  \ length:** For optimal results, keep queries concise (under 200 characters recommended)\
+  \ - **Character encoding:** UTF-8 is fully supported, including special characters\
+  \ (\xB2, \u20AC, etc.) - **Error responses:** Invalid messageType or malformed requests\
+  \ may return HTTP 500 errors\n\nTesting Locally\n\nIf running the chatbot locally:\n\
+  \nCitation"
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-06-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-06-01..2026-04-06
+    external_id: '90620882'
+    canonical_url: https://github.com/dbpedia/chatbot
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: 'Ready for quick human first-pass: likely exclude from active candidate
+    pool unless reviewer is intentionally collecting legacy/reference chatbot implementations.'
+  decision_snapshot: 'Recommend candidate_pool because Ready for quick human first-pass:
+    likely exclude from active candidate pool unless reviewer is intentionally collecting
+    legacy/reference chatbot implementations.'
+  scope_boundary_note: Treat this as a deprecated, publicly documented chatbot artifact
+    (historical/reference scope), not an actively maintained production AI product.
+    Include only if the review goal allows legacy exemplars or API-pattern baselines.
+  source_evidence_summary:
+  - '** NOTE: THIS PROJECT IS DEPRECATED AND WILL NOT BE MAINTAINED **'
+  - API Usage The chatbot exposes a REST API that allows developers to integrate chatbot
+    functionality into their applications.
+  - Add the following snippet to the ` ` section of the webpage where you want to
+    embed the ChatBot.
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: '** NOTE: THIS PROJECT IS DEPRECATED AND WILL NOT BE MAINTAINED
+      **'
+    evidence_source_field: candidate_input
+    why_it_matters: Direct lifecycle signal; strongly reduces candidacy for active
+      product pool.
+  - anchor_rank: 2
+    evidence_text: API Usage The chatbot exposes a REST API that allows developers
+      to integrate chatbot functionality into their applications.
+    evidence_source_field: candidate_input
+    why_it_matters: Confirms productized interface (integration-oriented API), not
+      just a demo notebook.
+  - anchor_rank: 3
+    evidence_text: Add the following snippet to the ` ` section of the webpage where
+      you want to embed the ChatBot.
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates deployable/embed-ready application behavior typical
+      of chatbot products.
+  - anchor_rank: 4
+    evidence_text: '**Note:** This is a public webhook endpoint that does not require
+      authentication. Currently, no application-level rate limiting is configured.'
+    evidence_source_field: candidate_input
+    why_it_matters: Shows production-hardening gaps and security/abuse risk; supports
+      conservative action.
+  - anchor_rank: 5
+    evidence_text: For more information about this project and **GSoC Progress** please
+      refer to **GSoC Wiki**
+    evidence_source_field: candidate_input
+    why_it_matters: Suggests student/incubator origin, often useful historically but
+      not necessarily sustained productization.
+  review_focus_points:
+  - Verify recency from repo metadata (last push/release) to confirm true inactivity
+    vs stale README wording.
+  - Check whether an actively maintained successor repo exists under DBpedia org before
+    final exclusion.
+  - Assess if legacy API/embedding patterns are still valuable for comparative taxonomy
+    examples.
+  - Confirm whether inclusion policy permits deprecated systems as historical AI productization
+    cases.
+  uncertainty_points: []
+  recommend_candidate_pool: true
+  recommended_action: candidate_pool
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: candidate_pool
+    rationale: 'Ready for quick human first-pass: likely exclude from active candidate
+      pool unless reviewer is intentionally collecting legacy/reference chatbot implementations.'
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: 'Ready for quick human first-pass: likely exclude from active candidate
+      pool unless reviewer is intentionally collecting legacy/reference chatbot implementations.'
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI application - knowledge-graph QA chatbot (web/API-embeddable)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI application - knowledge-graph QA chatbot (web/API-embeddable)
+      rationale: 'Ready for quick human first-pass: likely exclude from active candidate
+        pool unless reviewer is intentionally collecting legacy/reference chatbot
+        implementations.'
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: Developer tooling/API framework
+      rationale_for_similarity: Developer tooling/API framework
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: The evidence emphasizes a complete chatbot
+      application interface (sample end-user queries, embed snippet, response schema)
+      rather than a general-purpose SDK/framework.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: low
+    unresolved_risk: low
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: 'clear end-user product signal; evidence sufficient for staging;
+  Ready for quick human first-pass: likely exclude from active candidate pool unless
+  reviewer is intentionally collecting legacy/reference chatbot implementations. Treat
+  this as a deprecated, publicly documented chatbot artifact (historical/reference
+  scope), not an actively maintained production AI product. Include only if the review
+  goal allows legacy exemplars or API-pattern baselines. evidence_strength=low review_source=existing_llm_prescreen'
+human_reviewed_at: '2026-04-06T14:59:12.658295Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+  sample_slot_id: GS300-047
+  sample_id: cand_github_qf_chatbot_39cab9febf4c
+  blocking_items: []
+  last_attempted_at: '2026-04-06T14:59:13.465746Z'

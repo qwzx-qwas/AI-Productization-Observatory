@@ -1,0 +1,197 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_79d470bb524e
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-06-01_2026-04-06
+created_at: '2026-04-06T14:54:23.960159Z'
+updated_at: '2026-04-06T14:54:48.191021Z'
+source: github
+source_id: src_github
+source_window: 2025-06-01..2026-04-06
+time_field: pushed_at
+external_id: '656099147'
+canonical_url: https://github.com/mem0ai/mem0
+title: mem0
+summary: Universal memory layer for AI Agents
+raw_evidence_excerpt: "Universal memory layer for AI Agents\n\nLearn more \xB7 Join\
+  \ Discord \xB7 Demo\n\n\U0001F4C4 Building Production-Ready AI Agents with Scalable\
+  \ Long-Term Memory \u2192\n\n\u26A1 +26% Accuracy vs. OpenAI Memory \u2022 \U0001F680\
+  \ 91% Faster \u2022 \U0001F4B0 90% Fewer Tokens\n\n> **\U0001F389 mem0ai v1.0.0\
+  \ is now available!** This major release includes API modernization, improved vector\
+  \ store support, and enhanced GCP integration. See migration guide \u2192\n\n\U0001F525\
+  \ Research Highlights - **+26% Accuracy** over OpenAI Memory on the LOCOMO benchmark\
+  \ - **91% Faster Responses** than full-context, ensuring low-latency at scale -\
+  \ **90% Lower Token Usage** than full-context, cutting costs without compromise\
+  \ - Read the full paper\n\nIntroduction\n\nMem0 (\"mem-zero\") enhances AI assistants\
+  \ and agents with an intelligent memory layer, enabling personalized AI interactions.\
+  \ It remembers user preferences, adapts to individual needs, and continuously learns\
+  \ over time\u2014ideal for customer support chatbots, AI assistants, and autonomous\
+  \ systems.\n\nKey Features & Use Cases\n\n**Core Capabilities:** - **Multi-Level\
+  \ Memory**: Seamlessly retains User, Session, and Agent state with adaptive personalization\
+  \ - **Developer-Friendly**: Intuitive API, cross-platform SDKs, and a fully managed\
+  \ service option\n\n**Applications:** - **AI Assistants**: Consistent, context-rich\
+  \ conversations - **Customer Support**: Recall past tickets and user history for\
+  \ tailored help - **Healthcare**: Track patient preferences and history for personalized\
+  \ care - **Productivity & Gaming**: Adaptive workflows and environments based on\
+  \ user behavior\n\n\U0001F680 Quickstart Guide\n\nChoose between our hosted platform\
+  \ or self-hosted package:\n\nHosted Platform\n\nGet up and running in minutes with\
+  \ automatic updates, analytics, and enterprise security.\n\n1. Sign up on Mem0 Platform\
+  \ 2. Embed the memory layer via SDK or API keys\n\nSelf-Hosted (Open Source)\n\n\
+  Install the sdk via pip:\n\nInstall sdk via npm:\n\nCLI\n\nManage memories from\
+  \ your terminal:\n\nSee the CLI documentation for the full command reference.\n\n\
+  Basic Usage\n\nMem0 requires an LLM to function, with `gpt-4.1-nano-2025-04-14 from\
+  \ OpenAI as the default. However, it supports a variety of LLMs; for details, refer\
+  \ to our Supported LLMs documentation.\n\nFirst step is to instantiate the memory:\n\
+  \nFor detailed integration steps, see the Quickstart and API Reference.\n\n\U0001F517\
+  \ Integrations & Demos\n\n- **ChatGPT with Memory**: Personalized chat powered by\
+  \ Mem0 (Live Demo) - **Browser Extension**: Store memories across ChatGPT, Perplexity,\
+  \ and Claude (Chrome Extension) - **Langgraph Support**: Build a customer bot with\
+  \ Langgraph + Mem0 (Guide) - **CrewAI Integration**: Tailor CrewAI outputs with\
+  \ Mem0 (Example)\n\n\U0001F4DA Documentation & Support\n\n- Full docs: https://docs.mem0.ai\
+  \ - Community: Discord \xB7 X (formerly Twitter) - Contact: founders@mem0.ai\n\n\
+  Citation\n\nWe now have a paper you can cite:\n\n\u2696\uFE0F License\n\nApache\
+  \ 2.0 \u2014 see the LICENSE file for details."
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-06-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-06-01..2026-04-06
+    external_id: '656099147'
+    canonical_url: https://github.com/mem0ai/mem0
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Strong fit as AI-agent memory infrastructure with concrete productization
+    signals (SDK/API, hosted + self-hosted, integrations), but performance claims
+    are self-reported and should be verified before candidate_pool promotion.
+  decision_snapshot: Recommend hold because Strong fit as AI-agent memory infrastructure
+    with concrete productization signals (SDK/API, hosted + self-hosted, integrations),
+    but performance claims are self-reported and should be verified before candidate_pool
+    promotion.
+  scope_boundary_note: Likely in scope as an enabling AI application component (memory
+    layer for agents), not as a standalone end-user assistant product. Treat benchmark
+    and speed/token claims as provisional until independently corroborated.
+  source_evidence_summary:
+  - Universal memory layer for AI Agents
+  - Building Production-Ready AI Agents with Scalable Long-Term Memory
+  - Choose between our hosted platform or self-hosted package
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: Universal memory layer for AI Agents
+    evidence_source_field: candidate_input
+    why_it_matters: Directly states product type as agent infrastructure.
+  - anchor_rank: 2
+    evidence_text: Building Production-Ready AI Agents with Scalable Long-Term Memory
+    evidence_source_field: candidate_input
+    why_it_matters: Signals production orientation, not just research prototype.
+  - anchor_rank: 3
+    evidence_text: Choose between our hosted platform or self-hosted package
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates deployment maturity and productization pathways.
+  - anchor_rank: 4
+    evidence_text: mem0ai v1.0.0 is now available! This major release includes API
+      modernization, improved vector store support, and enhanced GCP integration.
+    evidence_source_field: candidate_input
+    why_it_matters: Versioned release + integration improvements suggest active operational
+      development.
+  - anchor_rank: 5
+    evidence_text: "+26% Accuracy vs. OpenAI Memory \u2022 91% Faster \u2022 90% Fewer\
+      \ Tokens"
+    evidence_source_field: candidate_input
+    why_it_matters: High-impact claims relevant for ranking, but currently vendor-asserted
+      and requires validation.
+  review_focus_points:
+  - Validate claimed benchmark improvements (+26% accuracy, 91% faster, 90% fewer
+    tokens) against paper/methodology quality.
+  - Confirm real adoption signals (stars, contributors, recent commits, issue responsiveness,
+    downstream integrations in production).
+  - Clarify whether categorization should treat this as AI application infrastructure
+    vs developer tooling only.
+  - Check hosted platform maturity/security claims (enterprise security, analytics,
+    GCP integration) with independent evidence.
+  uncertainty_points:
+  - Evidence is primarily README marketing text.
+  - No independent validation included in provided excerpt.
+  - Limited visibility into actual usage/adoption from the snippet alone.
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: 'Ready for quick human first-pass: classify as memory infrastructure
+      candidate, then decide promotion based on independent verification of performance
+      and market traction.'
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Strong fit as AI-agent memory infrastructure with concrete productization
+      signals (SDK/API, hosted + self-hosted, integrations), but performance claims
+      are self-reported and should be verified before candidate_pool promotion.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI Agent Infrastructure - Memory/Context Layer
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI Agent Infrastructure - Memory/Context Layer
+      rationale: Strong fit as AI-agent memory infrastructure with concrete productization
+        signals (SDK/API, hosted + self-hosted, integrations), but performance claims
+        are self-reported and should be verified before candidate_pool promotion.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: Conversational AI Assistant Application
+      rationale_for_similarity: Conversational AI Assistant Application
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Project provides a reusable memory backend
+      and integration layer rather than a primary end-user assistant experience.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear; Strong fit as AI-agent
+  memory infrastructure with concrete productization signals (SDK/API, hosted + self-hosted,
+  integrations), but performance claims are self-reported and should be verified before
+  candidate_pool promotion. Likely in scope as an enabling AI application component
+  (memory layer for agents), not as a standalone end-user assistant product. Treat
+  benchmark and speed/token claims as provisional until independently corroborated.
+  evidence_strength=low review_source=existing_llm_prescreen
+human_reviewed_at: '2026-04-06T14:54:48.190996Z'
+staging_handoff:
+  status: blocked
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items:
+  - candidate first-pass review resolved to on_hold
+  last_attempted_at: '2026-04-06T14:54:48.191015Z'

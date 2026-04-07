@@ -5,7 +5,7 @@ REPLAY_SOURCE ?= product_hunt
 PRESCREEN_SOURCE ?= github
 QUERY_SLICE ?=
 
-.PHONY: install lint format typecheck test validate-schemas validate-configs validate-gold-set validate-candidate-workspace validate-env replay-window build-mart-window migrate-plan run-candidate-prescreen handoff-candidates-to-staging
+.PHONY: install lint format typecheck test validate-schemas validate-configs validate-gold-set validate-candidate-workspace archive-duplicate-candidate-records validate-env replay-window build-mart-window migrate-plan run-candidate-prescreen handoff-candidates-to-staging fill-gold-set-staging-until-complete
 
 install:
 	$(PYTHON) -m src.cli install
@@ -34,6 +34,9 @@ validate-gold-set:
 validate-candidate-workspace:
 	$(PYTHON) -m src.cli validate-candidate-workspace
 
+archive-duplicate-candidate-records:
+	$(PYTHON) -m src.cli archive-duplicate-candidate-records
+
 validate-env:
 	$(PYTHON) -m src.cli validate-env --require APO_CONFIG_DIR APO_SCHEMA_DIR
 
@@ -53,3 +56,6 @@ run-candidate-prescreen:
 
 handoff-candidates-to-staging:
 	$(PYTHON) -m src.cli handoff-candidates-to-staging
+
+fill-gold-set-staging-until-complete:
+	$(PYTHON) -m src.cli fill-gold-set-staging-until-complete $(if $(SOURCE),--source $(SOURCE),) $(if $(WINDOW),--initial-window $(WINDOW),) $(if $(QUERY_SLICE),--query-slice $(QUERY_SLICE),)

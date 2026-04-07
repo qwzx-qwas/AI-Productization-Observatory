@@ -1,0 +1,259 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_f4818c7c3570
+candidate_batch_id: candidate_batch_github_qf_chatbot_2026-01-01_2026-04-06
+created_at: '2026-04-06T11:52:36.529693Z'
+updated_at: '2026-04-06T11:53:02.872613Z'
+source: github
+source_id: src_github
+source_window: 2026-01-01..2026-04-06
+time_field: pushed_at
+external_id: '24561828'
+canonical_url: https://github.com/gunthercox/ChatterBot
+title: ChatterBot
+summary: ChatterBot is a machine learning, conversational dialog engine for creating
+  chat bots
+raw_evidence_excerpt: 'ChatterBot is a machine learning, conversational dialog engine
+  for creating chat bots
+
+
+  ChatterBot
+
+
+  ChatterBot is a machine-learning based conversational dialog engine built in Python
+  which makes it possible to generate responses based on collections of known conversations.
+  The language independent design of ChatterBot allows it to be trained to speak any
+  language.
+
+
+  An example of typical input would be something like this:
+
+
+  > **user:** Good morning! How are you doing? > **bot:** I am doing very well, thank
+  you for asking. > **user:** You''re welcome. > **bot:** Do you like hats?
+
+
+  How it works
+
+
+  An untrained instance of ChatterBot starts off with no knowledge of how to communicate.
+  Each time a user enters a statement, the library saves the text that they entered
+  and the text that the statement was in response to. As ChatterBot receives more
+  input the number of responses that it can reply to, and the accuracy of each response
+  in relation to the input statement increases. The program selects the closest matching
+  response by searching for the closest matching known statement that matches the
+  input, it then returns the most likely response to that statement based on how frequently
+  each response is issued by the people the bot communicates with.
+
+
+  Documentation
+
+
+  View the documentation for ChatterBot.
+
+
+  Installation
+
+
+  This package can be installed from PyPi by running:
+
+
+  Basic Usage
+
+
+  Training data
+
+
+  ChatterBot comes with a data utility module that can be used to train chat bots.
+  At the moment there is training data for over a dozen languages in this module.
+  Contributions of additional training data or training data in other languages would
+  be greatly appreciated. Take a look at the data files in the chatterbot-corpus package
+  if you are interested in contributing.
+
+
+  **Corpus contributions are welcome! Please make a pull request.**
+
+
+  Examples
+
+
+  For examples, see the examples section of the documentation.
+
+
+  History
+
+
+  See release notes for changes https://github.com/gunthercox/ChatterBot/releases
+
+
+  Contributing
+
+
+  Contributions are welcomed, to help ensure a smooth process please start with the
+  contributing guidelines in our documentation:
+
+
+  Sponsors
+
+
+  ChatterBot is sponsored by:
+
+
+  License
+
+
+  ChatterBot is licensed under the BSD 3-clause license.'
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-01-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-01-01..2026-04-06
+    external_id: '24561828'
+    canonical_url: https://github.com/gunthercox/ChatterBot
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: Repository evidence strongly indicates a developer-facing Python chatbot
+    engine/library, not a standalone AI product. It appears relevant to chatbot infrastructure
+    discovery but may be legacy/non-LLM architecture and needs recency/activity verification
+    within the requested time window.
+  decision_snapshot: Repository evidence strongly indicates a developer-facing Python
+    chatbot engine/library, not a standalone AI product. It appears relevant to chatbot
+    infrastructure discovery but may be legacy/non-LLM architecture and needs recency/activity
+    verification within the requested time window.
+  scope_boundary_note: Treat this as a conversational AI development library (component/tooling)
+    rather than an end-user chatbot application. Keep evaluation focused on productization
+    signals (active maintenance, adoption, deployment fit) and avoid counting it as
+    a finished AI assistant product without additional evidence.
+  source_evidence_summary:
+  - ChatterBot is a machine-learning based conversational dialog engine built in Python
+  - making it possible to generate responses based on collections of known conversations
+  - The language independent design of ChatterBot allows it to be trained to speak
+    any language.
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: ChatterBot is a machine-learning based conversational dialog engine
+      built in Python
+    evidence_source_field: candidate_input
+    why_it_matters: Directly defines artifact type as a Python engine/library for
+      developers.
+  - anchor_rank: 2
+    evidence_text: making it possible to generate responses based on collections of
+      known conversations
+    evidence_source_field: candidate_input
+    why_it_matters: Describes retrieval/training-data style response generation, useful
+      for capability classification.
+  - anchor_rank: 3
+    evidence_text: The language independent design of ChatterBot allows it to be trained
+      to speak any language.
+    evidence_source_field: candidate_input
+    why_it_matters: Signals multilingual training orientation and configurable framework
+      behavior.
+  - anchor_rank: 4
+    evidence_text: This package can be installed from PyPi
+    evidence_source_field: candidate_input
+    why_it_matters: Confirms package/distribution model consistent with developer
+      tooling.
+  - anchor_rank: 5
+    evidence_text: ChatterBot comes with a data utility module that can be used to
+      train chat bots.
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates training utilities and corpus-driven setup rather than
+      turnkey SaaS chatbot service.
+  review_focus_points:
+  - Verify repository activity in 2026-01-01..2026-04-06 (actual pushes/releases),
+    since excerpt does not prove current maintenance.
+  - Confirm whether inclusion criteria accept classic ML/retrieval chatbot frameworks
+    vs only modern LLM-native products.
+  - 'Check real-world productization signals: recent installs, dependent projects,
+    issue responsiveness, release cadence.'
+  - Validate whether this should be indexed as infrastructure/tooling instead of an
+    end-user conversational product.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: Ready for quick human first-pass if reviewer can check recency metrics
+      and taxonomy fit; no blocking ambiguity on basic artifact type.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository evidence strongly indicates a developer-facing Python chatbot
+      engine/library, not a standalone AI product. It appears relevant to chatbot
+      infrastructure discovery but may be legacy/non-LLM architecture and needs recency/activity
+      verification within the requested time window.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: Conversational AI Framework/Library (Developer Tooling)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: Conversational AI Framework/Library (Developer Tooling)
+      rationale: Repository evidence strongly indicates a developer-facing Python
+        chatbot engine/library, not a standalone AI product. It appears relevant to
+        chatbot infrastructure discovery but may be legacy/non-LLM architecture and
+        needs recency/activity verification within the requested time window.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: End-user Chatbot Application/Product
+      rationale_for_similarity: End-user Chatbot Application/Product
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Repository text describes an SDK/engine to
+      build bots, not a packaged user-facing chatbot service or deployed assistant
+      experience.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear; Repository evidence strongly
+  indicates a developer-facing Python chatbot engine/library, not a standalone AI
+  product. It appears relevant to chatbot infrastructure discovery but may be legacy/non-LLM
+  architecture and needs recency/activity verification within the requested time window.
+  Treat this as a conversational AI development library (component/tooling) rather
+  than an end-user chatbot application. Keep evaluation focused on productization
+  signals (active maintenance, adoption, deployment fit) and avoid counting it as
+  a finished AI assistant product without additional evidence. evidence_strength=low
+  review_source=existing_llm_prescreen
+human_reviewed_at: '2026-04-06T11:53:02.872582Z'
+staging_handoff:
+  status: blocked
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items:
+  - candidate first-pass review resolved to on_hold
+  last_attempted_at: '2026-04-06T11:53:02.872607Z'

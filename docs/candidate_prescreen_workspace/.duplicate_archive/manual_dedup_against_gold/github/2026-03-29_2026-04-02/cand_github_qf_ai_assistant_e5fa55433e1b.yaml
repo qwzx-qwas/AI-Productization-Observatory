@@ -1,0 +1,178 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_e5fa55433e1b
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2026-03-29_2026-04-02
+created_at: '2026-04-03T06:47:45.170251Z'
+updated_at: '2026-04-03T06:52:02.244386Z'
+source: github
+source_id: src_github
+source_window: 2026-03-29..2026-04-02
+time_field: pushed_at
+external_id: '100361775'
+canonical_url: https://github.com/coreui/coreui-free-vue-admin-template
+title: coreui-free-vue-admin-template
+summary: Free Vue Admin & Dashboard Template Built for AI-Assisted Development
+raw_evidence_excerpt: "Free Vue Admin & Dashboard Template Built for AI-Assisted Development\n\
+  \n[npm-coreui]: https://www.npmjs.com/package/@coreui/coreui\n\n[npm-coreui-vue]:\
+  \ https://www.npmjs.com/package/@coreui/vue\n\n[npm]: https://www.npmjs.com/package/@coreui/vue\n\
+  \nCoreUI is meant to be the UX game changer. Pure & transparent code is devoid of\
+  \ redundant components, so the app is light enough to offer ultimate user experience.\
+  \ This means mobile devices also, where the navigation is just as easy and intuitive\
+  \ as on a desktop or laptop. The CoreUI Layout API lets you customize your project\
+  \ for almost any device \u2013 be it Mobile, Web or WebApp \u2013 CoreUI covers\
+  \ them all!\n\nTable of Contents\n\n* Versions * CoreUI PRO * CoreUI PRO Vue Admin\
+  \ Templates * Quick Start * Installation * Basic usage * What's included * AI-Friendly\
+  \ Development * Documentation * Components * Versioning * Creators * Community *\
+  \ Support CoreUI Development * Copyright and License\n\nVersions\n\n* CoreUI Free\
+  \ Bootstrap Admin Template * CoreUI Free Angular Admin Template * CoreUI Free React.js\
+  \ Admin Template * CoreUI Free Vue.js Admin Template\n\nCoreUI PRO\n\n* \U0001F4AA\
+  \ CoreUI PRO Angular Admin Template * \U0001F4AA CoreUI PRO Bootstrap Admin Template\
+  \ * \U0001F4AA CoreUI PRO Next.js Admin Template * \U0001F4AA CoreUI PRO React Admin\
+  \ Template * \U0001F4AA CoreUI PRO Vue Admin Template\n\nCoreUI PRO Vue Admin Templates\n\
+  \n| Default Theme | Light Theme | | --- | --- | | !CoreUI PRO Vue Admin Template\
+  \ | !CoreUI PRO Vue Admin Template|\n\n| Modern Theme | Bright Theme | | --- | ---\
+  \ | | !CoreUI PRO Vue Admin Template | !CoreUI PRO Vue Admin Template|\n\nQuick\
+  \ Start\n\n- Download the latest release - Clone the repo: `git clone https://github.com/coreui/coreui-free-vue-admin-template.git`\n\
+  \nInstalation\n\nor\n\nBasic usage\n\nor\n\nNavigate to http://localhost:3000. The\
+  \ app will automatically reload if you change any of the source files.\n\nBuild\n\
+  \nRun `build` to build the project. The build artifacts will be stored in the `dist/`\
+  \ directory.\n\nor\n\nWhat's included\n\nWithin the download you'll find the following\
+  \ directories and files, logically grouping common assets and providing both compiled\
+  \ and minified variations. You'll see something like this:\n\nAI-Friendly Development\n\
+  \nThis template is designed to work seamlessly with AI coding assistants like Cursor,\
+  \ GitHub Copilot, and Claude Code. We've included comprehensive documentation and\
+  \ configuration files to help AI understand the project structure and conventions.\n\
+  \nFeatures for AI Development\n\n- **`.cursorrules`**: Complete AI assistant configuration\
+  \ with project conventions, technology stack, and coding patterns - **`ARCHITECTURE.md`**:\
+  \ Detailed technical architecture documentation covering components, routing, state\
+  \ management, and build system - **`DEVELOPMENT.md`**: Comprehensive development\
+  \ guide with setup instructions, workflows, and best practices - **JSDoc Comments**:\
+  \ Main Vue components include documentation for better AI understanding\n\nGetting\
+  \ Started with AI Assistants\n\n1. **Open the project** in your AI-powered IDE (VS\
+  \ Code with Cursor, GitHub Copilot, or Claude Code) 2. **Review `.cursorrules`**\
+  \ to understand the project conventions 3. **Ask your AI assistant** to help you\
+  \ build features - it will automatically follow the project patterns 4. **Use natural\
+  \ language** to describe components, pages, or features you want to add\n\nWhat\
+  \ AI Assistants Know About This Project\n\nYour AI assistant understands: - **Component\
+  \ Library**: Always use CoreUI Vue components (never Tailwind, Vuetify, or other\
+  \ libraries) - **Code Style**: Vue 3 Composition API with ` ` syntax, Prettier formatting,\
+  \ ESLint rules - **Architecture**: Single Page Application with Vue Router, Pinia\
+  \ for state management, Vite for building - **File Organization**: Where to create\
+  \ components, views, routes, and styles - **Common Patterns**: Lazy loading, composables,\
+  \ navigation configuration, theming\n\nExample AI Prompts\n\nTry asking your AI\
+  \ assistant: - \"Create a new products page with a table showing product name, price,\
+  \ and status\" - \"Add a user profile form with validation\" - \"Create a chart\
+  \ showing monthly sales data\" - \"Add a new navigation item for the settings page\"\
+  \n\nFor more information, see the DEVELOPMENT.md guide.\n\nDocumentation\n\nThe\
+  \ documentation for the CoreUI Admin Template is hosted at our website CoreUI for\
+  \ Vue\n\nComponents\n\nCoreUI Vue.js Admin Templates are built on top of CoreUI\
+  \ and CoreUI PRO UI components libraries, including all of these components.\n\n\
+  - Vue Accordion - Vue Alert - Vue Autocomplete **PRO** - Vue Avatar - Vue Badge\
+  \ - Vue Breadcrumb - Vue Button - Vue Button Group - Vue Callout - Vue Card - Vue\
+  \ Carousel - Vue Checkbox - Vue Chip - Vue Chip Input - Vue Close Button - Vue Collapse\
+  \ - Vue Date Picker **PRO** - Vue Date Range Picker **PRO** - Vue Dropdown - Vue\
+  \ Floating Labels - Vue Footer - Vue Header - Vue Image - Vue Input - Vue Input\
+  \ Group - Vue List Group - Vue Loading Button **PRO** - Vue Modal - Vue Multi Select\
+  \ **PRO** - Vue Navs & Tabs - Vue Navbar - Vue Offcanvas - Vue Pagination - Vue\
+  \ Password Input **PRO** - Vue Placeholder - Vue Popover - Vue Progress - Vue Radio\
+  \ - Vue Range - Vue Range Slider **PRO** - Vue Rating **PRO** - Vue Select - Vue\
+  \ Sidebar - Vue Smart Pagination **PRO** - Vue Smart Table **PRO** - Vue Spinner\
+  \ - Vue Stepper **PRO** - Vue Switch - Vue Table - Vue Textarea - Vue Time Picker\
+  \ **PRO** - Vue Toast - Vue Tooltip\n\nVersioning\n\nFor transparency into our release\
+  \ cycle and in striving to maintain backward compatibility, CoreUI Free Admin Template\
+  \ is maintained under the Semantic Versioning guidelines.\n\nSee the Releases section\
+  \ of our project for changelogs for each release version.\n\nCreators\n\n**\u0141\
+  ukasz Holeczek**\n\n* *\n\n**Andrzej Kopa\u0144ski**\n\n*\n\n**CoreUI Team**\n\n\
+  * * *\n\nCommunity\n\nGet updates on CoreUI's development and chat with the project\
+  \ maintainers and community members.\n\n- Follow @core_ui on Twitter. - Read and\
+  \ subscribe to CoreUI Blog.\n\nSupport CoreUI Development\n\nCoreUI is an MIT-licensed\
+  \ open source project and is completely free to use. However, the amount of effort\
+  \ needed to maintain and develop new features for the project is not sustainable\
+  \ without proper financial backing. You can support development by buying the CoreUI\
+  \ PRO or by becoming a sponsor via Open Collective.\n\nCopyright and License\n\n\
+  copyright 2026 creativeLabs \u0141ukasz Holeczek.\n\nCode released under the MIT\
+  \ license."
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-29'
+    window_end: '2026-04-02'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-29..2026-04-02
+    external_id: '100361775'
+    canonical_url: https://github.com/coreui/coreui-free-vue-admin-template
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: network_error
+  error_message: 'Relay network error: [Errno -2] Name or service not known'
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  Repository appears to be a Vue admin dashboard template with explicit AI-assistant
+  usage guidance, but evidence does not show a shipped AI feature in the product itself
+  (no model inference, agent runtime, or end-user AI workflow). Treat this candidate
+  as a frontend template project that documents how to work with coding assistants.
+  Include only if your scope allows AI-enabled developer productivity artifacts; exclude
+  if scope requires an application whose primary user-facing function is AI. evidence_strength=low
+  review_source=fresh_llm_review
+human_reviewed_at: '2026-04-03T06:52:01.537159Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_03_samples_031_045.yaml
+  sample_slot_id: GS300-044
+  sample_id: cand_github_qf_ai_assistant_e5fa55433e1b
+  blocking_items: []
+  last_attempted_at: '2026-04-03T06:52:02.244364Z'

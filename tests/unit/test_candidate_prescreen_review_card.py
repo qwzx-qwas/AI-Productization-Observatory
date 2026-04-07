@@ -161,3 +161,77 @@ class CandidatePrescreenReviewCardUnitTests(unittest.TestCase):
 
         normalized = normalize_llm_result(provider_result)
         self.assertGreaterEqual(len(normalized["evidence_anchors"]), 1)
+
+    def test_normalize_llm_result_corrects_contradictory_reject_candidate_pool_flag(self) -> None:
+        provider_result = {
+            "recommended_action": "reject",
+            "recommend_candidate_pool": True,
+            "reason": "Repository is clearly out of observatory scope.",
+            "scope_boundary_note": "It is a generic utility rather than an AI application/product.",
+            "evidence_anchors": [
+                {
+                    "anchor_rank": 1,
+                    "quote": "\"A lightweight shell utility\"",
+                    "why_it_matters": "The evidence points away from an AI product/application.",
+                }
+            ],
+            "review_focus_points": [
+                "Verify there is no hidden AI product surface in the README.",
+                "Confirm the repository is not a user-facing AI workflow tool.",
+            ],
+            "confidence_summary": {
+                "overall_confidence": "high"
+            },
+            "handoff_readiness_hint": {
+                "suggested_action": "candidate_pool",
+                "rationale": "Provider drifted here, but the rejection rationale is otherwise clear.",
+            },
+            "taxonomy_hints": {
+                "main_category_candidate": "Generic utility",
+                "adjacent_category_candidate": "AI workflow tool",
+                "adjacent_category_rejected_reason": "No AI-specific product evidence appears in the payload.",
+            },
+        }
+
+        normalized = normalize_llm_result(provider_result)
+
+        self.assertEqual(normalized["recommended_action"], "reject")
+        self.assertFalse(normalized["recommend_candidate_pool"])
+        self.assertEqual(normalized["handoff_readiness_hint"]["suggested_action"], "reject")
+
+    def test_normalize_llm_result_corrects_contradictory_hold_candidate_pool_flag(self) -> None:
+        provider_result = {
+            "recommended_action": "hold",
+            "recommend_candidate_pool": True,
+            "reason": "Evidence is too sparse for candidate-pool promotion.",
+            "scope_boundary_note": "The repository may be in scope, but current evidence is insufficient.",
+            "evidence_anchors": [
+                {
+                    "anchor_rank": 1,
+                    "quote": "\"summary\": \"\"",
+                    "why_it_matters": "The empty summary leaves the scope judgment unresolved.",
+                }
+            ],
+            "review_focus_points": [
+                "Inspect the README before deciding whether this is an end-user AI product.",
+                "Confirm there is concrete product behavior, not just a broad AI label.",
+            ],
+            "confidence_summary": {
+                "overall_confidence": "low"
+            },
+            "handoff_readiness_hint": {
+                "suggested_action": "whitelist_candidate",
+                "rationale": "Provider drifted here, but the hold rationale is otherwise clear.",
+            },
+            "taxonomy_hints": {
+                "main_category_candidate": "Tentative category",
+                "adjacent_category_candidate": "Adjacent category",
+                "adjacent_category_rejected_reason": "More evidence is needed before promotion.",
+            },
+        }
+
+        normalized = normalize_llm_result(provider_result)
+
+        self.assertEqual(normalized["recommended_action"], "hold")
+        self.assertFalse(normalized["recommend_candidate_pool"])
+        self.assertEqual(normalized["handoff_readiness_hint"]["suggested_action"], "hold")

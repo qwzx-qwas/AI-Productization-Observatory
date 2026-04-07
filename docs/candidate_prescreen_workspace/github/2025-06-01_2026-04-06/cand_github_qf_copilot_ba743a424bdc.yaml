@@ -1,0 +1,182 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_ba743a424bdc
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-06-01_2026-04-06
+created_at: '2026-04-06T15:19:42.171171Z'
+updated_at: '2026-04-06T15:21:41.484432Z'
+source: github
+source_id: src_github
+source_window: 2025-06-01..2026-04-06
+time_field: pushed_at
+external_id: '655515393'
+canonical_url: https://github.com/CopilotKit/CopilotKit
+title: CopilotKit
+summary: The Frontend Stack for Agents & Generative UI. React + Angular.  Makers of
+  the AG-UI Protocol
+raw_evidence_excerpt: "The Frontend Stack for Agents & Generative UI. React + Angular.\
+  \ Makers of the AG-UI Protocol\n\nCopilotKit\n\nDocs \xB7 Examples \xB7 Copilot\
+  \ Cloud \xB7 Discord\n\nBuild **agent-native applications** with generative UI,\
+  \ shared state, and human-in-the-loop workflows.\n\n---\n\nWhat is CopilotKit\n\n\
+  CopilotKit is a best-in-class SDK for building full-stack agentic applications,\
+  \ Generative UI, and chat applications.\n\nWe are the company behind the **AG-UI\
+  \ Protocol**, adopted by Google, LangChain, AWS, Microsoft, Mastra, PydanticAI,\
+  \ and more!\n\n**Features:**\n\n- **Chat UI** \u2013 A React-based chat interface\
+  \ that supports message streaming, tool calls, and agent responses. - **Backend\
+  \ Tool Rendering** \u2013 Enables agents to call backend tools that return UI components\
+  \ rendered directly in the client. - **Generative UI** \u2013 Allows agents to generate\
+  \ and update UI components dynamically at runtime based on user intent and agent\
+  \ state. - **Shared State** \u2013 A synchronized state layer that both agents and\
+  \ UI components can read from and write to in real time. - **Human-in-the-Loop**\
+  \ \u2013 Lets agents pause execution to request user input, confirmation, or edits\
+  \ before continuing.\n\nQuick Start\n\nNew projects:\n\nExisting projects:\n\nWhat\
+  \ this gives you:\n\n- **CopilotKit installed** \u2013 Core packages are fully set\
+  \ up in your app - **Provider configured** \u2013 Context, state, and hooks ready\
+  \ to use - **Agent <> UI connected** \u2013 Agents can stream actions and render\
+  \ UI immediately - **Deployment-ready** \u2013 Your app is ready to deploy\n\nComplete\
+  \ getting started guide \u2192\n\nHow it works:\n\nCopilotKit connects your UI,\
+  \ agents, and tools into a single interaction loop.\n\nThis enables:\n\n- Agents\
+  \ that ask users for input - Tools that render UI - Stateful workflows across steps\
+  \ and sessions\n\n\u2B50\uFE0F useAgent Hook\n\nThe `useAgent` hook is a proper\
+  \ superset of `useCoAgent` and sits directly on AG-UI, giving more control over\
+  \ the agent connection.\n\nCheck out the useAgent docs to learn more.\n\nGenerative\
+  \ UI\n\nGenerative UI is a core CopilotKit pattern that allows agents to dynamically\
+  \ render UI as part of their workflow.\n\nCompare the Three Types\n\nExplore:\n\n\
+  - Static (AG-UI Protocol) - Declarative (A2UI) - Open-Ended (MCP Apps & Open JSON)\n\
+  \nGenerative UI educational repo \u2192\n\n\U0001F5A5\uFE0F AG-UI: The Agent\u2013\
+  User Interaction Protocol\n\nConnect agent workflow to user-facing apps, with deep\
+  \ partnerships and 1st-party integrations across the agentic stack\u2014including\
+  \ LangGraph, CrewAI, and more.\n\n---\n\nLearn more in the AG-UI README \u2192\n\
+  \n\U0001F91D Community\n\n- What's New Have questions or need help?\n\nJoin our\
+  \ Discord \u2192\n\nRead the Docs \u2192\n\nTry Copilot Cloud \u2192\n\nStay up\
+  \ to date with our latest releases!\n\nFollow us on LinkedIn \u2192\n\nFollow us\
+  \ on X \u2192\n\n\U0001F64B\U0001F3FD\u200D\u2642\uFE0F Contributing\n\nThanks for\
+  \ your interest in contributing to CopilotKit! \U0001F49C\n\nWe value all contributions,\
+  \ whether it's through code, documentation, creating demo apps, or just spreading\
+  \ the word.\n\nHere are a few useful resources to help you get started:\n\n- For\
+  \ code contributions, CONTRIBUTING.md. - For documentation-related contributions,\
+  \ check out the documentation contributions guide.\n\n- Want to contribute but not\
+  \ sure how? Join our Discord and we'll help you out!\n\n\U0001F4C4 License\n\nThis\
+  \ repository's source code is available under the MIT License."
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-06-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-06-01..2026-04-06
+    external_id: '655515393'
+    canonical_url: https://github.com/CopilotKit/CopilotKit
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: 'Ready for quick human first-pass: high signal repo, but requires boundary
+    decision and adoption verification before candidate_pool consideration.'
+  decision_snapshot: 'Recommend hold because Ready for quick human first-pass: high
+    signal repo, but requires boundary decision and adoption verification before candidate_pool
+    consideration.'
+  scope_boundary_note: Treat this as AI product infrastructure (developer-facing SDK
+    + protocol) rather than a standalone end-user AI application. Keep review scoped
+    to whether the observatory includes enabling stacks/frameworks and protocol-led
+    ecosystems, not just consumer/copilot apps.
+  source_evidence_summary:
+  - Treat this as AI product infrastructure (developer-facing SDK + protocol) rather
+    than a standalone end-user AI application. Keep review scoped to whether the observatory
+    includes enabling stacks/frameworks and protocol-led ecosystems, not just consumer/copilot
+    apps.
+  - Validate whether observatory scope includes developer infrastructure/frameworks
+    (vs only end-user AI products).
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: 'Ready for quick human first-pass: high signal repo, but requires
+      boundary decision and adoption verification before candidate_pool consideration.'
+    evidence_source_field: candidate_input
+    why_it_matters: This fallback anchor preserves a minimally explainable first-pass
+      review card when the provider omits structured evidence anchors.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - Validate whether observatory scope includes developer infrastructure/frameworks
+    (vs only end-user AI products).
+  - Check recency/maintenance signals in the source window (release cadence, active
+    commits, issue responsiveness).
+  - Verify external adoption claims for AG-UI protocol through neutral sources.
+  - Confirm uniqueness vs overlap with adjacent agent-framework repos to avoid duplicate
+    category inflation.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: 'Ready for quick human first-pass: high signal repo, but requires boundary
+      decision and adoption verification before candidate_pool consideration.'
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: 'Ready for quick human first-pass: high signal repo, but requires boundary
+      decision and adoption verification before candidate_pool consideration.'
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI developer tooling & infrastructure (agent UI SDK/protocol)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI developer tooling & infrastructure (agent UI SDK/protocol)
+      rationale: 'Ready for quick human first-pass: high signal repo, but requires
+        boundary decision and adoption verification before candidate_pool consideration.'
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_candidate:
+      category_code: AI application product (end-user copilot/chat app)
+      rationale_for_similarity: AI application product (end-user copilot/chat app)
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: Repository primarily provides building blocks
+      (SDK, hooks, protocol, rendering/state workflow) for other teams to build apps,
+      rather than shipping a single end-user application as the core artifact.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: 'boundary with internal tooling unclear; Ready for quick human
+  first-pass: high signal repo, but requires boundary decision and adoption verification
+  before candidate_pool consideration. Treat this as AI product infrastructure (developer-facing
+  SDK + protocol) rather than a standalone end-user AI application. Keep review scoped
+  to whether the observatory includes enabling stacks/frameworks and protocol-led
+  ecosystems, not just consumer/copilot apps. evidence_strength=low review_source=existing_llm_prescreen'
+human_reviewed_at: '2026-04-06T15:21:41.484407Z'
+staging_handoff:
+  status: blocked
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items:
+  - candidate first-pass review resolved to on_hold
+  last_attempted_at: '2026-04-06T15:21:41.484426Z'

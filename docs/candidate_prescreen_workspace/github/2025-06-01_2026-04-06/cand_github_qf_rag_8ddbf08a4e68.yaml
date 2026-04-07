@@ -1,0 +1,182 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_8ddbf08a4e68
+candidate_batch_id: candidate_batch_github_qf_rag_2025-06-01_2026-04-06
+created_at: '2026-04-07T02:57:05.360432Z'
+updated_at: '2026-04-07T09:09:50.022117Z'
+source: github
+source_id: src_github
+source_window: 2025-06-01..2026-04-06
+time_field: pushed_at
+external_id: '828268839'
+canonical_url: https://github.com/NirDiamant/RAG_Techniques
+title: RAG_Techniques
+summary: This repository showcases various advanced techniques for Retrieval-Augmented
+  Generation (RAG) systems. RAG systems combine information retrieval with generative
+  models to provide accurate and contextually rich responses.
+raw_evidence_excerpt: "This repository showcases various advanced techniques for Retrieval-Augmented\
+  \ Generation (RAG) systems. RAG systems combine information retrieval with generative\
+  \ models to provide accurate and contextually rich responses.\n\n> \U0001F31F **Support\
+  \ This Project:** Your sponsorship fuels innovation in RAG technologies. **Become\
+  \ a sponsor** to help maintain and expand this valuable resource!\n\nSponsors \u2764\
+  \uFE0F\n\nWe gratefully acknowledge the organizations and individuals who have made\
+  \ significant contributions to this project.\n\n**Company Sponsors**\n\n**Individual\
+  \ Sponsors**\n\nAdvanced RAG Techniques: Elevating Your Retrieval-Augmented Generation\
+  \ Systems \U0001F680\n\nWelcome to one of the most comprehensive and dynamic collections\
+  \ of Retrieval-Augmented Generation (RAG) tutorials available today. This repository\
+  \ serves as a hub for cutting-edge techniques aimed at enhancing the accuracy, efficiency,\
+  \ and contextual richness of RAG systems.\n\n\U0001F4EB Stay Updated!\n\n\U0001F680\
+  \ Cutting-edge Updates \U0001F4A1 Expert Insights \U0001F3AF Top 0.1% Content\n\n\
+  *Join over 50,000 AI enthusiasts getting unique cutting-edge insights and free tutorials!*\
+  \ ***Plus, subscribers get exclusive early access and special 33% discounts to my\
+  \ book and the upcoming RAG Techniques course!***\n\nIntroduction\n\nRetrieval-Augmented\
+  \ Generation (RAG) is revolutionizing the way we combine information retrieval with\
+  \ generative AI. This repository showcases a curated collection of advanced techniques\
+  \ designed to supercharge your RAG systems, enabling them to deliver more accurate,\
+  \ contextually relevant, and comprehensive responses.\n\nOur goal is to provide\
+  \ a valuable resource for researchers and practitioners looking to push the boundaries\
+  \ of what's possible with RAG. By fostering a collaborative environment, we aim\
+  \ to accelerate innovation in this exciting field.\n\nRelated Projects\n\n\U0001F680\
+  \ Level up with my **Agents Towards Production** repository. It delivers horizontal,\
+  \ code-first tutorials that cover every tool and step in the lifecycle of building\
+  \ production-grade GenAI agents, guiding you from spark to scale with proven patterns\
+  \ and reusable blueprints for real-world launches, making it the smartest place\
+  \ to start if you're serious about shipping agents to production.\n\n\U0001F916\
+  \ Explore my **GenAI Agents Repository** to discover a variety of AI agent implementations\
+  \ and tutorials, showcasing how different AI technologies can be combined to create\
+  \ powerful, interactive systems.\n\n\U0001F58B\uFE0F Check out my **Prompt Engineering\
+  \ Techniques guide** for a comprehensive collection of prompting strategies, from\
+  \ basic concepts to advanced techniques, enhancing your ability to interact effectively\
+  \ with AI language models.\n\nA Community-Driven Knowledge Hub\n\n**This repository\
+  \ grows stronger with your contributions!** Join our vibrant communities - the central\
+  \ hubs for shaping and advancing this project together \U0001F91D\n\n**Educational\
+  \ AI Subreddit**\n\n**RAG Techniques Discord Community**\n\nWhether you're an expert\
+  \ or just starting out, your insights can shape the future of RAG. Join us to propose\
+  \ ideas, get feedback, and collaborate on innovative techniques. For contribution\
+  \ guidelines, please refer to our **CONTRIBUTING.md** file. Let's advance RAG technology\
+  \ together!\n\n\U0001F517 For discussions on GenAI, RAG, or custom agents, or to\
+  \ explore knowledge-sharing opportunities, feel free to **connect on LinkedIn**.\n\
+  \nKey Features\n\n- \U0001F9E0 State-of-the-art RAG enhancements - \U0001F4DA Comprehensive\
+  \ documentation for each technique - \U0001F6E0\uFE0F Practical implementation guidelines\
+  \ - \U0001F31F Regular updates with the latest advancements\n\nAdvanced Techniques\n\
+  \nExplore our extensive list of cutting-edge RAG techniques:\n\n| # | Category |\
+  \ Technique | View | |---|----------|-----------|------|\n\n\U0001F331 Foundational\
+  \ RAG Techniques\n\n1. Simple RAG \U0001F331\n\n- **Runnable Script**\n\nOverview\
+  \ \U0001F50E Introducing basic RAG techniques ideal for newcomers.\n\nImplementation\
+  \ \U0001F6E0\uFE0F Start with basic retrieval queries and integrate incremental\
+  \ learning mechanisms.\n\n2. Simple RAG using a CSV file \U0001F9E9\n\nOverview\
+  \ \U0001F50E Introducing basic RAG using CSV files.\n\nImplementation \U0001F6E0\
+  \uFE0F This uses CSV files to create basic retrieval and integrates with openai\
+  \ to create question and answering system.\n\nOverview \U0001F50E Enhances the Simple\
+  \ RAG by adding validation and refinement to ensure the accuracy and relevance of\
+  \ retrieved information.\n\nImplementation \U0001F6E0\uFE0F Check for retrieved\
+  \ document relevancy and highlight the segment of docs used for answering.\n\n4.\
+  \ Choose Chunk Size \U0001F4CF\n\n- **Runnable Script**\n\nOverview \U0001F50E Selecting\
+  \ an appropriate fixed size for text chunks to balance context preservation and\
+  \ retrieval efficiency.\n\nImplementation \U0001F6E0\uFE0F Experiment with different\
+  \ chunk sizes to find the optimal balance between preserving context and maintaining\
+  \ retrieval speed for your specific use case.\n\nOverview \U0001F50E Breaking down\
+  \ the text into concise, complete, meaningful sentences allowing for better control\
+  \ and handling of specific queries (especially extracting knowledge).\n\nImplementation\
+  \ \U0001F6E0\uFE0F - \U0001F4AA **Proposition Generation:** The LLM is used in conjunction\
+  \ with a custom prompt to generate factual statements from the document chunks.\
+  \ - \u2705 **Quality Checking:** The generated propositions are passed through a\
+  \ grading system that evaluates accuracy, clarity, completeness, and conciseness.\n\
+  \nAdditional Resources \U0001F4DA - **The Propositions Method: Enhancing Information\
+  \ Retrieval for AI Systems** - A comprehensive blog post exploring the benefits\
+  \ and implementation of proposition chunking in RAG systems.\n\n\U0001F50D Query\
+  \ Enhancement\n\n6. Query Transformations \U0001F504\n\n- **Runnable Script**\n\n\
+  Overview \U0001F50E Modifying and expanding queries to improve retrieval effectiveness.\n\
+  \nImplementation \U0001F6E0\uFE0F - \u270D\uFE0F **Query Rewriting:** Reformulate\
+  \ queries to improve retrieval. - \U0001F519 **Step-back Prompting:** Generate broader\
+  \ queries for better context retrieval. - \U0001F9E9 **Sub-query Decomposition:**\
+  \ Break complex queries into simpler sub-queries.\n\n7. Hypothetical Questions (HyDE\
+  \ Approach) \u2753\n\n- **Runnable Script**\n\nOverview \U0001F50E Generating hypothetical\
+  \ questions to improve alignment between queries and data.\n\nImplementation \U0001F6E0\
+  \uFE0F Create hypothetical questions that point to relevant locations in the data,\
+  \ enhancing query-data matching.\n\nAdditional Resources \U0001F4DA - **HyDE: Exploring\
+  \ Hypothetical Document Embeddings for AI Retrieval** - A short blog post explaining\
+  \ this method clearly.\n\n\U0001F4DA Context and Content Enrichment\n\n8. Hypothetical\
+  \ Prompt Embeddings (HyPE) \u2753\U0001F680\n\n- **Runnable Script**\n\nOverview\
+  \ \U0001F50E HyPE (Hypothetical Prompt Embeddings) is an enhancement to traditional\
+  \ RAG retrieval that **precomputes hypothetical prompts at the indexing stage**,\
+  \ but inseting the chunk in their place. This transforms retrieval into a **question-question\
+  \ matching task**. This avoids the need for runtime synthetic answer generation,\
+  \ reducing inference-time computational overhead while **improving retrieval alignment**."
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-06-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-06-01..2026-04-06
+    external_id: '828268839'
+    canonical_url: https://github.com/NirDiamant/RAG_Techniques
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: schema_drift
+  error_message: OpenAI-compatible response must provide message.content text
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

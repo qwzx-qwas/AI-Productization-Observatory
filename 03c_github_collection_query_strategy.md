@@ -167,6 +167,12 @@ GitHub discovery 的最终时间字段冻结为 `pushed_at`。
 - 只有触发本文件定义的升版条件时，才允许从 `github_qsv1` 升到新 `selection_rule_version`。
 - Phase1 首版不另行冻结独立白名单 / 黑名单；若后续需要引入，必须与 `selection_rule_version` 一并版本化登记。
 
+命中后资格闸门：
+
+- `github_qsv1` 冻结的是 query slices，不等于“所有 search 命中都直接进入 LLM”。
+- 当前实现允许在 query 命中之后、LLM 预筛之前执行版本化的 product/application 资格闸门，用于剔除明显的 `template / starter / SDK / framework / library / blueprint / reference solution` 噪音。
+- 该闸门只能收紧进入 `candidate_prescreen_record` 的候选资格，不能绕过或偷偷改写 `query_slice_id / query_text / fixed filters / pushed window`。
+
 升版触发条件：
 
 - 任一 slice 连续 `2` 个周周期 `incomplete_results = true`

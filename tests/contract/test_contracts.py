@@ -238,9 +238,24 @@ class ContractCommandTests(unittest.TestCase):
     def test_cli_help(self) -> None:
         result = self.run_cli("--help")
         self.assertEqual(result.returncode, 0)
+        self.assertIn("dedupe-staging-semantic-duplicates", result.stdout)
+        self.assertIn("fill-gold-set-staging-until-complete", result.stdout)
         self.assertIn("replay-window", result.stdout)
         self.assertIn("run-candidate-prescreen", result.stdout)
+        self.assertIn("archive-duplicate-candidate-records", result.stdout)
         self.assertIn("validate-candidate-workspace", result.stdout)
+
+    def test_fill_cli_help_includes_wait_controls(self) -> None:
+        result = self.run_cli("fill-gold-set-staging-until-complete", "--help")
+        self.assertEqual(result.returncode, 0)
+        self.assertIn("--provider-request-interval-seconds", result.stdout)
+        self.assertIn("--retry-sleep-seconds", result.stdout)
+
+    def test_candidate_prescreen_cli_help_includes_wait_controls(self) -> None:
+        result = self.run_cli("run-candidate-prescreen", "--help")
+        self.assertEqual(result.returncode, 0)
+        self.assertIn("--provider-request-interval-seconds", result.stdout)
+        self.assertIn("--retry-sleep-seconds", result.stdout)
 
     def test_validate_schemas(self) -> None:
         result = self.run_cli("validate-schemas")
@@ -430,6 +445,21 @@ class ContractCommandTests(unittest.TestCase):
             result = self.run_cli("validate-configs", env={"APO_CONFIG_DIR": str(config_dir)})
             self.assertEqual(result.returncode, 2)
             self.assertIn("note templates", result.stderr)
+
+    def test_validate_configs_rejects_candidate_prescreen_gate_drift(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            config_dir = root / "configs"
+            shutil.copytree(REPO_ROOT / "configs", config_dir)
+
+            workflow_path = config_dir / "candidate_prescreen_workflow.yaml"
+            workflow = yaml.safe_load(workflow_path.read_text(encoding="utf-8"))
+            workflow["sources"][0]["candidate_gate"]["exclusion_signal_terms"].append("agents")
+            workflow_path.write_text(yaml.safe_dump(workflow, sort_keys=False, allow_unicode=True), encoding="utf-8")
+
+            result = self.run_cli("validate-configs", env={"APO_CONFIG_DIR": str(config_dir)})
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("candidate_gate", result.stderr)
 
     def test_validate_configs_rejects_score_schema_required_field_drift(self) -> None:
         with TemporaryDirectory() as tmp_dir:

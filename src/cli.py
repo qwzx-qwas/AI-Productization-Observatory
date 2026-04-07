@@ -3,11 +3,20 @@
 from __future__ import annotations
 
 import argparse
+import json
 import sys
+from datetime import date
 from pathlib import Path
 
 from src.candidate_prescreen.config import load_candidate_prescreen_config
+from src.candidate_prescreen.fill_controller import fill_gold_set_staging_until_complete
+from src.candidate_prescreen.prompt_contract import candidate_prescreener_prompt_contract
+from src.candidate_prescreen.relay import relay_preflight
+from src.candidate_prescreen.relay import screen_candidate as relay_screen_candidate
+from src.candidate_prescreen.staging import dedupe_staging_semantic_duplicates
 from src.candidate_prescreen.workflow import (
+    archive_duplicate_candidate_records as workflow_archive_duplicate_candidate_records,
+    archive_future_window_candidate_records as workflow_archive_future_window_candidate_records,
     handoff_candidates_to_staging as workflow_handoff_candidates_to_staging,
     run_candidate_prescreen,
     validate_candidate_workspace as workflow_validate_candidate_workspace,
@@ -684,6 +693,105 @@ def _validate_candidate_prescreen_config(config_dir: Path, schema_dir: Path) -> 
         raise ContractValidationError("candidate prescreen github source must stay bound to src_github + pushed_at")
     if github_source.get("selection_rule_version") != "github_qsv1":
         raise ContractValidationError("candidate prescreen github selection_rule_version must stay github_qsv1")
+    github_candidate_gate = _require_mapping(
+        github_source.get("candidate_gate"),
+        "candidate_prescreen_workflow.yaml:github:candidate_gate",
+    )
+    if github_candidate_gate.get("gate_version") != "github_candidate_gate_v1":
+        raise ContractValidationError("candidate prescreen github candidate_gate must stay github_candidate_gate_v1")
+    expected_candidate_gate_lists = {
+        "modality_signal_terms": [
+            "agent",
+            "agents",
+            "assistant",
+            "assistants",
+            "copilot",
+            "copilots",
+            "chatbot",
+            "chatbots",
+            "rag",
+            "workflow",
+            "workflows",
+        ],
+        "product_context_signal_terms": [
+            "workspace",
+            "workbench",
+            "dashboard",
+            "portal",
+            "app",
+            "application",
+            "service",
+            "platform",
+            "saas",
+            "team",
+            "teams",
+            "customer",
+            "customers",
+            "sales",
+            "support",
+            "finance",
+            "legal",
+            "hr",
+            "marketing",
+            "recruiting",
+            "recruiter",
+            "operations",
+            "field service",
+            "meeting",
+            "meetings",
+            "notes",
+            "follow-up",
+            "follow up",
+            "intake",
+            "dispatch",
+            "inbox",
+            "helpdesk",
+            "ticket",
+            "tickets",
+            "case",
+            "cases",
+            "crm",
+            "budget",
+            "document",
+            "documents",
+            "knowledge",
+        ],
+        "exclusion_signal_terms": [
+            "sdk",
+            "framework",
+            "library",
+            "boilerplate",
+            "starter",
+            "template",
+            "plugin",
+            "toolkit",
+            "scaffold",
+            "example",
+            "tutorial",
+            "course",
+            "benchmark",
+            "eval",
+            "evaluation",
+            "reference solution",
+            "blueprint",
+            "api client",
+            "wrapper",
+            "orchestration",
+            "observability",
+            "adapter",
+            "demo",
+            "sample app",
+        ],
+    }
+    for field_name, expected_terms in expected_candidate_gate_lists.items():
+        actual_terms = _require_list(
+            github_candidate_gate.get(field_name),
+            f"candidate_prescreen_workflow.yaml:github:candidate_gate:{field_name}",
+        )
+        if actual_terms != expected_terms:
+            raise ContractValidationError(f"candidate prescreen github {field_name} drifted from github_candidate_gate_v1")
+    if github_candidate_gate.get("min_summary_chars") != 24 or github_candidate_gate.get("min_evidence_chars") != 80:
+        raise ContractValidationError("candidate prescreen github candidate_gate threshold drifted from github_candidate_gate_v1")
     github_filters = _require_list(github_source.get("fixed_filters"), "candidate_prescreen_workflow.yaml:github:fixed_filters")
     if github_filters != ["is:public", "fork:false", "archived:false", "mirror:false"]:
         raise ContractValidationError("candidate prescreen github fixed_filters drifted from github_qsv1")
@@ -940,6 +1048,28 @@ def build_parser() -> argparse.ArgumentParser:
     gold_set_parser = subparsers.add_parser("validate-gold-set", help="Validate the gold_set/ directory contract and sample asset completeness.")
     gold_set_parser.add_argument("--require-implemented", action="store_true")
     subparsers.add_parser("validate-candidate-workspace", help="Validate candidate prescreen YAML documents outside gold_set/.")
+    subparsers.add_parser(
+        "archive-duplicate-candidate-records",
+        help="Archive duplicate candidate prescreen records by semantic key while keeping the preferred active document.",
+    )
+    archive_future_window_parser = subparsers.add_parser(
+        "archive-future-window-candidate-records",
+        help="Archive candidate prescreen records whose source_window extends too far into the future.",
+    )
+    archive_future_window_parser.add_argument("--today")
+    archive_future_window_parser.add_argument("--grace-days", type=int, default=7)
+    subparsers.add_parser(
+        "check-candidate-prescreen-relay",
+        help="Validate relay configuration and DNS resolution before live candidate prescreen runs.",
+    )
+    subparsers.add_parser(
+        "dedupe-staging-semantic-duplicates",
+        help="Clear duplicate staging slots that point at the same source_id + external_id semantic sample.",
+    )
+    subparsers.add_parser(
+        "probe-candidate-prescreen-relay",
+        help="Send one minimal candidate-prescreener request to the relay to verify real API traffic.",
+    )
 
     candidate_parser = subparsers.add_parser(
         "run-candidate-prescreen",
@@ -951,12 +1081,30 @@ def build_parser() -> argparse.ArgumentParser:
     candidate_parser.add_argument("--limit", type=int, default=10)
     candidate_parser.add_argument("--discovery-fixture-path")
     candidate_parser.add_argument("--llm-fixture-path")
+    candidate_parser.add_argument("--discovery-request-interval-seconds", type=int)
+    candidate_parser.add_argument("--provider-request-interval-seconds", type=int)
+    candidate_parser.add_argument("--retry-sleep-seconds", type=int)
 
     staging_handoff_parser = subparsers.add_parser(
         "handoff-candidates-to-staging",
         help="Write only human-approved candidate prescreen records into the external staging carrier.",
     )
     staging_handoff_parser.add_argument("--candidate-id", action="append", default=[])
+
+    fill_parser = subparsers.add_parser(
+        "fill-gold-set-staging-until-complete",
+        help="Keep looping through candidate review and staging handoff until all 300 staging slots are filled.",
+    )
+    fill_parser.add_argument("--source")
+    fill_parser.add_argument("--initial-window")
+    fill_parser.add_argument("--query-slice")
+    fill_parser.add_argument("--live-limit", type=int, default=1)
+    fill_parser.add_argument("--discovery-fixture-path")
+    fill_parser.add_argument("--llm-fixture-path")
+    fill_parser.add_argument("--max-iterations", type=int)
+    fill_parser.add_argument("--discovery-request-interval-seconds", type=int)
+    fill_parser.add_argument("--provider-request-interval-seconds", type=int)
+    fill_parser.add_argument("--retry-sleep-seconds", type=int)
 
     env_parser = subparsers.add_parser(
         "validate-env",
@@ -1049,6 +1197,93 @@ def main(argv: list[str] | None = None) -> int:
             logger.info(f"validated candidate workspace document_count={count}")
             return 0
 
+        if args.command == "archive-duplicate-candidate-records":
+            summary = workflow_archive_duplicate_candidate_records(config)
+            logger.info(
+                "archive-duplicate-candidate-records "
+                f"archived_record_count={summary['archived_record_count']} skipped_group_count={summary['skipped_group_count']} "
+                f"active_candidate_document_count={summary['active_candidate_document_count']}"
+            )
+            print(json.dumps(summary, ensure_ascii=True))
+            return 0
+
+        if args.command == "archive-future-window-candidate-records":
+            summary = workflow_archive_future_window_candidate_records(
+                config,
+                today=date.fromisoformat(args.today) if args.today else None,
+                grace_days=args.grace_days,
+            )
+            logger.info(
+                "archive-future-window-candidate-records "
+                f"archived_record_count={summary['archived_record_count']} skipped_record_count={summary['skipped_record_count']} "
+                f"active_candidate_document_count={summary['active_candidate_document_count']}"
+            )
+            print(json.dumps(summary, ensure_ascii=True))
+            return 0
+
+        if args.command == "check-candidate-prescreen-relay":
+            workflow = load_candidate_prescreen_config(config.config_dir)
+            llm_prescreen = _require_mapping(workflow.get("llm_prescreen"), "candidate_prescreen_workflow.yaml:llm_prescreen")
+            status = relay_preflight(
+                default_timeout_seconds=int(llm_prescreen["timeout_seconds_default"]),
+                default_client_version=str(llm_prescreen["relay_client_version"]),
+            )
+            logger.info(
+                "check-candidate-prescreen-relay "
+                f"host={status['host']} model={status['model']} api_style={status['api_style']}"
+            )
+            print(json.dumps(status, ensure_ascii=True))
+            return 0
+
+        if args.command == "dedupe-staging-semantic-duplicates":
+            summary = dedupe_staging_semantic_duplicates(config.gold_set_staging_dir)
+            logger.info(
+                "dedupe-staging-semantic-duplicates "
+                f"duplicate_group_count={summary['duplicate_group_count']} "
+                f"cleared_slot_count={summary['cleared_slot_count']} "
+                f"staging_total_filled={summary['staging_total_filled']}"
+            )
+            print(json.dumps(summary, ensure_ascii=True))
+            return 0
+
+        if args.command == "probe-candidate-prescreen-relay":
+            workflow = load_candidate_prescreen_config(config.config_dir)
+            llm_prescreen = _require_mapping(workflow.get("llm_prescreen"), "candidate_prescreen_workflow.yaml:llm_prescreen")
+            result = relay_screen_candidate(
+                {
+                    "source": "github",
+                    "source_id": "src_github",
+                    "source_window": "2026-04-01..2026-04-06",
+                    "time_field": "pushed_at",
+                    "external_id": "relay-probe-smoke-test",
+                    "canonical_url": "https://github.com/example/relay-probe-smoke-test",
+                    "title": "Relay Probe Smoke Test",
+                    "summary": "Synthetic candidate used only to verify relay connectivity.",
+                    "raw_evidence_excerpt": "Synthetic evidence for relay smoke testing. Not a real candidate.",
+                    "query_family": "ai_applications_and_products",
+                    "query_slice_id": "qf_agent",
+                    "selection_rule_version": "github_qsv1",
+                },
+                prompt_version=str(llm_prescreen["prompt_version"]),
+                routing_version=str(llm_prescreen["routing_version"]),
+                relay_transport=str(llm_prescreen["relay_transport"]),
+                relay_client_version=str(llm_prescreen["relay_client_version"]),
+                prompt_contract=candidate_prescreener_prompt_contract(
+                    prompt_spec_ref=str(llm_prescreen.get("prompt_spec_ref") or "")
+                ),
+                fixture_path=None,
+                timeout_seconds=int(llm_prescreen["timeout_seconds_default"]),
+                max_retries=0,
+                request_interval_seconds=0,
+                retry_sleep_seconds=0,
+            )
+            logger.info(
+                "probe-candidate-prescreen-relay "
+                f"request_id={result['channel_metadata'].get('request_id')} model={result['channel_metadata'].get('model')}"
+            )
+            print(json.dumps(result["channel_metadata"], ensure_ascii=True))
+            return 0
+
         if args.command == "run-candidate-prescreen":
             written_paths = run_candidate_prescreen(
                 config,
@@ -1058,6 +1293,9 @@ def main(argv: list[str] | None = None) -> int:
                 limit=args.limit,
                 discovery_fixture_path=Path(args.discovery_fixture_path) if args.discovery_fixture_path else None,
                 llm_fixture_path=Path(args.llm_fixture_path) if args.llm_fixture_path else None,
+                discovery_request_interval_seconds=args.discovery_request_interval_seconds,
+                request_interval_seconds=args.provider_request_interval_seconds,
+                retry_sleep_seconds=args.retry_sleep_seconds,
             )
             logger.info(f"candidate prescreen wrote {len(written_paths)} documents")
             for path in written_paths:
@@ -1069,6 +1307,28 @@ def main(argv: list[str] | None = None) -> int:
             logger.info(f"candidate-to-staging handoff wrote {len(results)} entries")
             for candidate_path, staging_document_path, slot_id in results:
                 print(f"{candidate_path} -> {staging_document_path} [{slot_id}]")
+            return 0
+
+        if args.command == "fill-gold-set-staging-until-complete":
+            summary = fill_gold_set_staging_until_complete(
+                config,
+                source_code=args.source,
+                initial_window=args.initial_window,
+                query_slice_id=args.query_slice,
+                live_limit=args.live_limit,
+                discovery_fixture_path=Path(args.discovery_fixture_path) if args.discovery_fixture_path else None,
+                llm_fixture_path=Path(args.llm_fixture_path) if args.llm_fixture_path else None,
+                max_iterations=args.max_iterations,
+                discovery_request_interval_seconds=args.discovery_request_interval_seconds,
+                provider_request_interval_seconds=args.provider_request_interval_seconds,
+                retry_sleep_seconds=args.retry_sleep_seconds,
+            )
+            logger.info(
+                "fill-gold-set-staging-until-complete "
+                f"status={summary['status']} iterations={summary['iterations']} total_filled={summary['total_filled']} "
+                f"audit_log_path={summary['audit_log_path']}"
+            )
+            print(json.dumps(summary, ensure_ascii=True))
             return 0
 
         if args.command == "validate-env":

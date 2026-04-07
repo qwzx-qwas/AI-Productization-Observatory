@@ -1,0 +1,122 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_895adf196550
+candidate_batch_id: candidate_batch_github_qf_agent_2026-04-07_2027-02-10
+created_at: '2026-04-07T03:30:34.494299Z'
+updated_at: '2026-04-07T03:32:00.615385Z'
+source: github
+source_id: src_github
+source_window: 2026-04-07..2027-02-10
+time_field: pushed_at
+external_id: '399217549'
+canonical_url: https://github.com/superblocksteam/agent
+title: agent
+summary: This is the entrypoint repository for the Superblocks Agent Platform
+raw_evidence_excerpt: "This is the entrypoint repository for the Superblocks Agent\
+  \ Platform\n\nThe Superblocks Agent\n\n----\n\nThe Superblocks On-Premise Agent\
+  \ is a stateless service that securely connects the Superblocks platform to your\
+  \ data without leaving your network. It is the execution engine that powers Superblocks\
+  \ Application APIs, Workflows, and Scheduled Jobs. Here's how it works.\n\nWhen\
+  \ your developers build apps in Superblocks and write SQL statements or API calls,\
+  \ your customer data flows from your Database to the On-premise Agent to the browser\
+  \ directly; never to Superblocks Cloud. In addition, the Superblocks Cloud cannot\
+  \ make any inbound network calls to the customer\u2019s network.\n\nThe Browser\
+  \ will call out to the Superblocks Cloud only for Authentication, Permissions, App\
+  \ UI Definitions and App Integration Definitions. This approach keeps Superblocks\
+  \ components and functionality up-to-date for your developers with each release\
+  \ and bug fix, without needing to upgrade the On-Premise Agent.\n\nWhen the Developer\
+  \ is ready to go to production, they click \u201CDeploy\u201D (Superblocks can alternatively\
+  \ integrate into your version control system) and the application will be accessible\
+  \ on a URL.\n\nIn the deployed app, when a user clicks a button to trigger an API\
+  \ call, the call is routed to the On-Premise Agent and the App Integration Definition\
+  \ will be fetched from Superblocks Cloud (Optionally customers can connect to their\
+  \ version control system so API Integration Definitions are fetched directly from\
+  \ a branch). This round-trip restricts end users from running arbitrary APIs, only\
+  \ APIs from the App Integration Definition approved by Developers with the right\
+  \ permissions can be triggered. The On-Premise Agent will execute the API logic\
+  \ based on the definition and all customer data flows from the data sources to the\
+  \ agent to the browser directly, never leaving the customer\u2019s network and never\
+  \ going to the Superblocks Cloud.\n\n---\n\nQuick Start\n\nBuild and run the agent\
+  \ from source. You can create an agent key access token here.\n\nUsage\n\nThe agent\
+  \ exposes HTTP and gRPC interfaces to run APIs. A full OpenAPI specification is\
+  \ under development. Here is an exmaple that runs a basic API.\n\n> NOTE: To avoid\
+  \ authentication errors, run the docker container with `-e SB_AUTH_JWT_ENABLED=false`.\n\
+  \nDevelopment\n\nLearn how to develop locally with our guide.\n\nContributing\n\n\
+  Learn how to contribute with our guide.\n\nSupport\n\nSend an email to help@superblocks.com."
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-04-07'
+    window_end: '2027-02-10'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-04-07..2027-02-10
+    external_id: '399217549'
+    canonical_url: https://github.com/superblocksteam/agent
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: schema_drift
+  error_message: OpenAI-compatible response must provide message.content text
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -1,0 +1,263 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_99c9d1b25d3e
+candidate_batch_id: candidate_batch_github_qf_rag_2026-03-08_2026-03-15
+created_at: '2026-04-02T09:09:30.346916Z'
+updated_at: '2026-04-07T09:37:30.263666Z'
+source: github
+source_id: src_github
+source_window: 2026-03-08..2026-03-15
+time_field: pushed_at
+external_id: '644715009'
+canonical_url: https://github.com/PromtEngineer/localGPT
+title: localGPT
+summary: 'Chat with your documents on your local device using GPT models. No data
+  leaves your device and 100% private. '
+raw_evidence_excerpt: "Chat with your documents on your local device using GPT models.\
+  \ No data leaves your device and 100% private.\n\nLocalGPT - Private Document Intelligence\
+  \ Platform\n\n\U0001F680 What is LocalGPT?\n\nLocalGPT is a **fully private, on-premise\
+  \ Document Intelligence platform**. Ask questions, summarise, and uncover insights\
+  \ from your files with state-of-the-art AI\u2014no data ever leaves your machine.\n\
+  \nMore than a traditional RAG (Retrieval-Augmented Generation) tool, LocalGPT features\
+  \ a **hybrid search engine** that blends semantic similarity, keyword matching,\
+  \ and Late Chunking for long-context precision. A **smart router** automatically\
+  \ selects between RAG and direct LLM answering for every query, while **contextual\
+  \ enrichment** and sentence-level Context Pruning surface only the most relevant\
+  \ content. An independent **verification** pass adds an extra layer of accuracy.\n\
+  \nThe architecture is **modular and lightweight**\u2014enable only the components\
+  \ you need. With a pure-Python core and minimal dependencies, LocalGPT is simple\
+  \ to deploy, run, and maintain on any infrastructure.The system has minimal dependencies\
+  \ on frameworks and libraries, making it easy to deploy and maintain. The RAG system\
+  \ is pure python and does not require any additional dependencies.\n\n\u25B6\uFE0F\
+  \ Video Watch this video to get started with LocalGPT.\n\n| Home | Create Index\
+  \ | Chat | |------|--------------|------| | ![](Documentation/images/Home.png) |\
+  \ ![](Documentation/images/Index%20Creation.png) | ![](Documentation/images/Retrieval%20Process.png)\
+  \ |\n\n\u2728 Features\n\n- **Utmost Privacy**: Your data remains on your computer,\
+  \ ensuring 100% security. - **Versatile Model Support**: Seamlessly integrate a\
+  \ variety of open-source models via Ollama. - **Diverse Embeddings**: Choose from\
+  \ a range of open-source embeddings. - **Reuse Your LLM**: Once downloaded, reuse\
+  \ your LLM without the need for repeated downloads. - **Chat History**: Remembers\
+  \ your previous conversations (in a session). - **API**: LocalGPT has an API that\
+  \ you can use for building RAG Applications. - **GPU, CPU, HPU & MPS Support**:\
+  \ Supports multiple platforms out of the box, Chat with your data using `CUDA`,\
+  \ `CPU`, `HPU (Intel\xAE Gaudi\xAE)` or `MPS` and more!\n\n\U0001F4D6 Document Processing\
+  \ - **Multi-format Support**: PDF, DOCX, TXT, Markdown, and more (Currently only\
+  \ PDF is supported) - **Contextual Enrichment**: Enhanced document understanding\
+  \ with AI-generated context, inspired by Contextual Retrieval - **Batch Processing**:\
+  \ Handle multiple documents simultaneously\n\n\U0001F916 AI-Powered Chat - **Natural\
+  \ Language Queries**: Ask questions in plain English - **Source Attribution**: Every\
+  \ answer includes document references - **Smart Routing**: Automatically chooses\
+  \ between RAG and direct LLM responses - **Query Decomposition**: Breaks complex\
+  \ queries into sub-questions for better answers - **Semantic Caching**: TTL-based\
+  \ caching with similarity matching for faster responses - **Session-Aware History**:\
+  \ Maintains conversation context across interactions - **Answer Verification**:\
+  \ Independent verification pass for accuracy - **Multiple AI Models**: Ollama for\
+  \ inference, HuggingFace for embeddings and reranking\n\n\U0001F6E0\uFE0F Developer-Friendly\
+  \ - **RESTful APIs**: Complete API access for integration - **Real-time Progress**:\
+  \ Live updates during document processing - **Flexible Configuration**: Customize\
+  \ models, chunk sizes, and search parameters - **Extensible Architecture**: Plugin\
+  \ system for custom components\n\n\U0001F3A8 Modern Interface - **Intuitive Web\
+  \ UI**: Clean, responsive design - **Session Management**: Organize conversations\
+  \ by topic - **Index Management**: Easy document collection management - **Real-time\
+  \ Chat**: Streaming responses for immediate feedback\n\n---\n\n\U0001F680 Quick\
+  \ Start\n\nNote: The installation is currently only tested on macOS.\n\nPrerequisites\
+  \ - Python 3.8 or higher (tested with Python 3.11.5) - Node.js 16+ and npm (tested\
+  \ with Node.js 23.10.0, npm 10.9.2) - Docker (optional, for containerized deployment)\
+  \ - 8GB+ RAM (16GB+ recommended) - Ollama (required for both deployment approaches)\n\
+  \n***NOTE*** Before this brach is moved to the main branch, please clone this branch\
+  \ for instalation:\n\nOption 1: Docker Deployment\n\n**Docker Management Commands:**\n\
+  \nOption 2: Direct Development (Recommended for Development)\n\n**System Management:**\n\
+  \n**Service Architecture:** The `run_system.py` launcher manages four key services:\
+  \ - **Ollama Server** (port 11434): AI model serving - **RAG API Server** (port\
+  \ 8001): Document processing and retrieval - **Backend Server** (port 8000): Session\
+  \ management and API endpoints - **Frontend Server** (port 3000): React/Next.js\
+  \ web interface\n\nOption 3: Manual Component Startup\n\n---\n\nDetailed Installation\n\
+  \n1. Install System Dependencies\n\n**Ubuntu/Debian:**\n\n**macOS:**\n\n**Windows:**\n\
+  \n2. Install AI Models\n\n**Install Ollama (Recommended):**\n\n3. Configure Environment\n\
+  \n**Key Configuration Options:**\n\n4. Initialize the System\n\n---\n\n\U0001F3AF\
+  \ Getting Started\n\n1. Create Your First Index\n\nAn **index** is a collection\
+  \ of processed documents that you can chat with.\n\nUsing the Web Interface: 1.\
+  \ Open http://localhost:3000 2. Click \"Create New Index\" 3. Upload your documents\
+  \ (PDF, DOCX, TXT) 4. Configure processing options 5. Click \"Build Index\"\n\n\
+  Using Scripts:\n\nUsing API:\n\n2. Start Chatting\n\nOnce your index is built:\n\
+  \n1. **Create a Chat Session**: Click \"New Chat\" or use an existing session 2.\
+  \ **Select Your Index**: Choose which document collection to query 3. **Ask Questions**:\
+  \ Type natural language questions about your documents 4. **Get Answers**: Receive\
+  \ AI-generated responses with source citations\n\n3. Advanced Features\n\nCustom\
+  \ Model Configuration\n\nBatch Document Processing\n\nAPI Integration\n\n---\n\n\
+  \U0001F527 Configuration\n\nModel Configuration\n\nLocalGPT supports multiple AI\
+  \ model providers with centralized configuration:\n\nOllama Models (Local Inference)\n\
+  \nExternal Models (HuggingFace Direct)\n\nPipeline Configuration\n\nLocalGPT offers\
+  \ two main pipeline configurations:\n\nDefault Pipeline (Production-Ready)\n\nFast\
+  \ Pipeline (Speed-Optimized)\n\nSearch Configuration\n\n---\n\n\U0001F6E0\uFE0F\
+  \ Troubleshooting\n\nCommon Issues\n\nInstallation Problems\n\nModel Loading Issues\n\
+  \nDatabase Issues\n\nPerformance Issues\n\nGetting Help\n\n1. **Check Logs**: The\
+  \ system creates structured logs in the `logs/` directory: - `logs/system.log`:\
+  \ Main system events and errors - `logs/ollama.log`: Ollama server logs - `logs/rag-api.log`:\
+  \ RAG API processing logs - `logs/backend.log`: Backend server logs - `logs/frontend.log`:\
+  \ Frontend build and runtime logs\n\n2. **System Health**: Run comprehensive diagnostics:\n\
+  \n3. **Health Endpoints**: Check individual service health: - Backend: `http://localhost:8000/health`\
+  \ - RAG API: `http://localhost:8001/health` - Ollama: `http://localhost:11434/api/tags`\n\
+  \n4. **Documentation**: Check the Technical Documentation 5. **GitHub Issues**:\
+  \ Report bugs and request features 6. **Community**: Join our Discord/Slack community\n\
+  \n---\n\n\U0001F517 API Reference\n\nCore Endpoints\n\nChat API\n\nIndex Management\n\
+  \nSession Management\n\nAdvanced Features\n\nQuery Decomposition The system can\
+  \ break complex queries into sub-questions for better answers:\n\nAnswer Verification\
+  \ Independent verification pass for accuracy using a separate verification model:\n\
+  \nContextual Enrichment Document context enrichment during indexing for better understanding:\n\
+  \nLate Chunking Better context preservation by chunking after embedding:\n\nStreaming\
+  \ Chat\n\nBatch Processing\n\nFor complete API documentation, see API_REFERENCE.md.\n\
+  \n---\n\n\U0001F3D7\uFE0F Architecture\n\nLocalGPT is built with a modular, scalable\
+  \ architecture:\n\nOverview of the Retrieval Agent\n\n---\n\n\U0001F91D Contributing\n\
+  \nWe welcome contributions from developers of all skill levels! LocalGPT is an open-source\
+  \ project that benefits from community involvement.\n\n\U0001F680 Quick Start for\
+  \ Contributors\n\n\U0001F4CB How to Contribute\n\n1. **\U0001F41B Report Bugs**:\
+  \ Use our bug report template 2. **\U0001F4A1 Request Features**: Use our feature\
+  \ request template 3. **\U0001F527 Submit Code**: Follow our development workflow\
+  \ 4. **\U0001F4DA Improve Docs**: Help make our documentation better"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-08'
+    window_end: '2026-03-15'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-08..2026-03-15
+    external_id: '644715009'
+    canonical_url: https://github.com/PromtEngineer/localGPT
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: High-value candidate for first-pass human review if the goal is OSS AI productization
+    in private/on-prem RAG. Human reviewer should quickly validate real feature completeness
+    before any promotion.
+  decision_snapshot: Recommend hold because High-value candidate for first-pass human
+    review if the goal is OSS AI productization in private/on-prem RAG. Human reviewer
+    should quickly validate real feature completeness before any promotion.
+  scope_boundary_note: In-scope as an AI application/product candidate (self-hosted
+    RAG/document chat platform). Out-of-scope for model-training/foundation-model
+    categories. Treat as productized OSS app rather than pure research repo.
+  source_evidence_summary:
+  - '"LocalGPT is a fully private, on-premise Document Intelligence platform... no
+    data ever leaves your machine."'
+  - '"More than a traditional RAG tool, LocalGPT features a hybrid search engine...
+    smart router... verification pass"'
+  - '"LocalGPT has an API that you can use for building RAG Applications."'
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: '"LocalGPT is a fully private, on-premise Document Intelligence
+      platform... no data ever leaves your machine."'
+    evidence_source_field: candidate_input
+    why_it_matters: Strong product positioning and privacy-first deployment model.
+  - anchor_rank: 2
+    evidence_text: '"More than a traditional RAG tool, LocalGPT features a hybrid
+      search engine... smart router... verification pass"'
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates differentiated retrieval/answering pipeline beyond basic
+      chat wrapper.
+  - anchor_rank: 3
+    evidence_text: '"LocalGPT has an API that you can use for building RAG Applications."'
+    evidence_source_field: candidate_input
+    why_it_matters: Signals platform/API utility, not only a demo UI.
+  - anchor_rank: 4
+    evidence_text: '"Service Architecture: run_system.py launcher manages four key
+      services... Ollama, RAG API, Backend, Frontend"'
+    evidence_source_field: candidate_input
+    why_it_matters: Shows operationally productized multi-service architecture.
+  - anchor_rank: 5
+    evidence_text: '"Multi-format Support: PDF, DOCX, TXT... (Currently only PDF is
+      supported)"'
+    evidence_source_field: candidate_input
+    why_it_matters: Important inconsistency requiring human validation of actual capability
+      maturity.
+  review_focus_points:
+  - Verify current production-ready feature set vs aspirational README claims (especially
+    document formats and advanced pipeline features).
+  - Confirm maintenance health and adoption signals (recent commits, issues/PR responsiveness,
+    release discipline).
+  - Check deployability across environments beyond macOS test note (Linux/Windows
+    reliability).
+  - Assess whether privacy claims are technically enforced by default configuration
+    (local-only inference/data paths).
+  uncertainty_points:
+  - Potential feature-claim mismatch in README (broad multi-format claims vs current
+    support note)
+  - Installation/test coverage appears limited (explicitly tested on macOS)
+  - Branch/readiness ambiguity ('before this branch is moved to main')
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: High-value candidate for first-pass human review if the goal is OSS
+      AI productization in private/on-prem RAG. Human reviewer should quickly validate
+      real feature completeness before any promotion.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: High-value candidate for first-pass human review if the goal is OSS
+      AI productization in private/on-prem RAG. Human reviewer should quickly validate
+      real feature completeness before any promotion.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI Application/Product - Self-hosted Document Intelligence
+      (RAG-based knowledge chat)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI Application/Product - Self-hosted Document Intelligence (RAG-based
+        knowledge chat)
+      rationale: High-value candidate for first-pass human review if the goal is OSS
+        AI productization in private/on-prem RAG. Human reviewer should quickly validate
+        real feature completeness before any promotion.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: AI Developer Framework/Toolkit
+      rationale_for_similarity: AI Developer Framework/Toolkit
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Despite modular architecture, the repo is presented
+      as a runnable end-product (UI, backend, indexing/chat workflows, operational
+      services) rather than a narrow SDK/library for embedding into other apps.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  user confirmed and requested pool admission.
+human_reviewed_at: '2026-04-02T10:02:37.123383Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_03_samples_031_045.yaml
+  sample_slot_id: GS300-036
+  sample_id: cand_github_qf_rag_99c9d1b25d3e
+  blocking_items: []
+  last_attempted_at: '2026-04-07T09:37:30.263648Z'

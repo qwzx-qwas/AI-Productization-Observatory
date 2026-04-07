@@ -1,0 +1,222 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_79d47f808a83
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-06-01_2026-04-06
+created_at: '2026-04-06T14:56:36.718402Z'
+updated_at: '2026-04-06T14:57:00.459101Z'
+source: github
+source_id: src_github
+source_window: 2025-06-01..2026-04-06
+time_field: pushed_at
+external_id: '1008111368'
+canonical_url: https://github.com/spring-ai-alibaba/copilot
+title: copilot
+summary: The copilot for generating Spring AI Alibaba based projects.
+raw_evidence_excerpt: "The copilot for generating Spring AI Alibaba based projects.\n\
+  \nAI\u7F16\u7801\u52A9\u624B (Alibaba Copilot)\n\n\u57FA\u4E8ESpring AI Alibaba\u6846\
+  \u67B6\u6784\u5EFA\u7684\u667A\u80FD\u7F16\u7801\u52A9\u624B\uFF0C\u96C6\u6210MCP\u5DE5\
+  \u5177\u534F\u8BAE\uFF0C\u652F\u6301\u9879\u76EE\u5206\u6790\u3001\u4EE3\u7801\u751F\
+  \u6210\u3001\u667A\u80FD\u7F16\u8F91\u548C\u9879\u76EE\u811A\u624B\u67B6\u7B49\u529F\
+  \u80FD\u3002\u901A\u8FC7\u81EA\u7136\u8BED\u8A00\u4EA4\u4E92\uFF0C\u5E2E\u52A9\u5F00\
+  \u53D1\u8005\u5FEB\u901F\u5B8C\u6210\u5404\u79CD\u7F16\u7A0B\u4EFB\u52A1\u3002\n\
+  \n\U0001F4FA \u6F14\u793A\u89C6\u9891\n\n\u6280\u672F\u67B6\u6784 - **Spring Boot\
+  \ 3.4.5**: \u5E94\u7528\u6846\u67B6 - **Spring AI 1.0.0**: AI\u96C6\u6210\u6846\u67B6\
+  \uFF0C\u652F\u6301\u591A\u79CDLLM\u6A21\u578B - **MCP Client**: Model Context Protocol\u5BA2\
+  \u6237\u7AEF\u96C6\u6210 - **AspectJ**: AOP\u5207\u9762\u7F16\u7A0B\uFF0C\u7528\u4E8E\
+  \u5DE5\u5177\u8C03\u7528\u76D1\u63A7 - **Jackson**: JSON\u5904\u7406 - **Java Diff\
+  \ Utils**: \u6587\u4EF6\u5DEE\u5F02\u6BD4\u8F83\n\n\u7CFB\u7EDF\u8981\u6C42 - **Java\
+  \ 17+**: \u6838\u5FC3\u8FD0\u884C\u73AF\u5883 - **Maven 3.6+**: \u9879\u76EE\u6784\
+  \u5EFA\u5DE5\u5177 - **Node.js 20+**: \u524D\u7AEF\u5F00\u53D1\u73AF\u5883 - **MySQL\
+  \ 8.0+**: \u6570\u636E\u5E93 - **Git**: \u7248\u672C\u63A7\u5236\uFF08\u53EF\u9009\
+  \uFF09 - **\u963F\u91CC\u4E91\u901A\u4E49\u5343\u95EE API Key**\uFF08\u6216 OpenAI\
+  \ API Key\uFF09\n\n\U0001F680 \u5FEB\u901F\u5165\u95E8\n\n\u7B2C\u4E00\u6B65\uFF1A\
+  \u514B\u9686\u9879\u76EE\n\n\u7B2C\u4E8C\u6B65\uFF1A\u914D\u7F6E\u6570\u636E\u5E93\
+  \n\n\u7B2C\u4E09\u6B65\uFF1A\u914D\u7F6E\u540E\u7AEF\n\n\u7F16\u8F91 `copilot-admin/src/main/resources/application.yml`\uFF1A\
+  \n\n\u7B2C\u56DB\u6B65\uFF1A\u542F\u52A8\u540E\u7AEF\n\n\u770B\u5230\u4EE5\u4E0B\
+  \u4FE1\u606F\u8868\u793A\u542F\u52A8\u6210\u529F\uFF1A\n\n\u540E\u7AEF\u5730\u5740\
+  \uFF1A`http://localhost:6039`\n\n\u7B2C\u4E94\u6B65\uFF1A\u542F\u52A8\u524D\u7AEF\
+  \n\n\u524D\u7AEF\u5730\u5740\uFF1A`http://localhost:5173`\n\n**\u9ED8\u8BA4\u767B\
+  \u5F55\u8D26\u53F7\uFF1A** - \u7528\u6237\u540D\uFF1A`admin` - \u5BC6\u7801\uFF1A\
+  `admin123`\n\n\U0001F4C1 \u9879\u76EE\u7ED3\u6784\n\n\U0001F41B \u5E38\u89C1\u95EE\
+  \u9898\n\nQ1: \u540E\u7AEF\u542F\u52A8\u5931\u8D25\uFF0C\u63D0\u793A\u6570\u636E\
+  \u5E93\u8FDE\u63A5\u9519\u8BEF\n\n**A:** \u68C0\u67E5\u4EE5\u4E0B\u51E0\u70B9\uFF1A\
+  \ 1. MySQL \u662F\u5426\u5DF2\u542F\u52A8 2. \u6570\u636E\u5E93\u540D\u79F0\u3001\
+  \u7528\u6237\u540D\u3001\u5BC6\u7801\u662F\u5426\u6B63\u786E 3. \u6570\u636E\u5E93\
+  \u662F\u5426\u5DF2\u521B\u5EFA\n\nQ2: \u524D\u7AEF\u65E0\u6CD5\u8FDE\u63A5\u540E\
+  \u7AEF\n\n**A:** \u786E\u8BA4\uFF1A 1. \u540E\u7AEF\u662F\u5426\u5DF2\u542F\u52A8\
+  \uFF08\u8BBF\u95EE http://localhost:6039\uFF09 2. \u68C0\u67E5\u6D4F\u89C8\u5668\
+  \u63A7\u5236\u53F0\u662F\u5426\u6709 CORS \u9519\u8BEF 3. \u68C0\u67E5 `.env.local`\
+  \ \u914D\u7F6E\n\nQ3: AI \u4E0D\u54CD\u5E94\u6216\u54CD\u5E94\u5F88\u6162\n\n**A:**\
+  \ \u53EF\u80FD\u539F\u56E0\uFF1A 1. API Key \u65E0\u6548\u6216\u989D\u5EA6\u4E0D\
+  \u8DB3 2. \u7F51\u7EDC\u8FDE\u63A5\u95EE\u9898 3. \u6A21\u578B\u670D\u52A1\u7E41\
+  \u5FD9\n\n\u68C0\u67E5\u65E5\u5FD7\uFF1A\n\nQ4: WebContainer \u65E0\u6CD5\u542F\u52A8\
+  \n\n**A:** WebContainer \u9700\u8981\uFF1A 1. \u4F7F\u7528 Chrome/Edge \u6D4F\u89C8\
+  \u5668\uFF08\u6700\u65B0\u7248\u672C\uFF09 2. \u542F\u7528 SharedArrayBuffer\uFF08\
+  \u9700\u8981\u7279\u5B9A\u7684 HTTP headers\uFF09\n\n\u5F00\u53D1\u73AF\u5883\u5DF2\
+  \u914D\u7F6E\uFF0C\u5982\u679C\u4ECD\u6709\u95EE\u9898\uFF0C\u68C0\u67E5\u6D4F\u89C8\
+  \u5668\u63A7\u5236\u53F0\u9519\u8BEF\u3002\n\n\u8D21\u732E\u6307\u5357\n\n\u8D21\
+  \u732E\u6D41\u7A0B 1. Fork \u9879\u76EE\u5230\u60A8\u7684GitHub\u8D26\u6237 2. \u521B\
+  \u5EFA\u7279\u6027\u5206\u652F (`git checkout -b feature/AmazingFeature`) 3. \u63D0\
+  \u4EA4\u66F4\u6539 (`git commit -m 'Add some AmazingFeature'`) 4. \u63A8\u9001\u5230\
+  \u5206\u652F (`git push origin feature/AmazingFeature`) 5. \u521B\u5EFA Pull Request\n\
+  \n\u8BB8\u53EF\u8BC1\n\n\u672C\u9879\u76EE\u91C7\u7528 Apache License 2.0 \u8BB8\
+  \u53EF\u8BC1 - \u67E5\u770B LICENSE \u6587\u4EF6\u4E86\u89E3\u8BE6\u60C5\u3002\n\
+  \n\u81F4\u8C22\n\n- Spring AI - AI\u96C6\u6210\u6846\u67B6 - Model Context Protocol\
+  \ - \u5DE5\u5177\u534F\u8BAE\u6807\u51C6\n\n---\n\n\U0001F31F \u5982\u679C\u8FD9\
+  \u4E2A\u9879\u76EE\u5BF9\u60A8\u6709\u5E2E\u52A9\uFF0C\u8BF7\u7ED9\u6211\u4EEC\u4E00\
+  \u4E2AStar\uFF01"
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-06-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-06-01..2026-04-06
+    external_id: '1008111368'
+    canonical_url: https://github.com/spring-ai-alibaba/copilot
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: 'High-value next step: inspect repository tree and recent commits for actual
+    implementation modules (agent/tool orchestration, code edit pipeline, scaffold
+    generation) before any promotion decision.'
+  decision_snapshot: 'Recommend hold because High-value next step: inspect repository
+    tree and recent commits for actual implementation modules (agent/tool orchestration,
+    code edit pipeline, scaffold generation) before any promotion decision.'
+  scope_boundary_note: Treat this as an AI-enabled developer product candidate (coding
+    assistant/scaffolding tool), not as a foundational model or pure framework library.
+    Prescreen should focus on whether it is a usable product experience versus a reference/demo
+    wrapper around Spring AI Alibaba.
+  source_evidence_summary:
+  - The copilot for generating Spring AI Alibaba based projects.
+  - "\u57FA\u4E8ESpring AI Alibaba\u6846\u67B6\u6784\u5EFA\u7684\u667A\u80FD\u7F16\
+    \u7801\u52A9\u624B\uFF0C\u96C6\u6210MCP\u5DE5\u5177\u534F\u8BAE\uFF0C\u652F\u6301\
+    \u9879\u76EE\u5206\u6790\u3001\u4EE3\u7801\u751F\u6210\u3001\u667A\u80FD\u7F16\
+    \u8F91\u548C\u9879\u76EE\u811A\u624B\u67B6\u7B49\u529F\u80FD\u3002"
+  - "\u901A\u8FC7\u81EA\u7136\u8BED\u8A00\u4EA4\u4E92\uFF0C\u5E2E\u52A9\u5F00\u53D1\
+    \u8005\u5FEB\u901F\u5B8C\u6210\u5404\u79CD\u7F16\u7A0B\u4EFB\u52A1\u3002"
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: The copilot for generating Spring AI Alibaba based projects.
+    evidence_source_field: candidate_input
+    why_it_matters: 'Direct product intent: positioned as a copilot application for
+      project generation.'
+  - anchor_rank: 2
+    evidence_text: "\u57FA\u4E8ESpring AI Alibaba\u6846\u67B6\u6784\u5EFA\u7684\u667A\
+      \u80FD\u7F16\u7801\u52A9\u624B\uFF0C\u96C6\u6210MCP\u5DE5\u5177\u534F\u8BAE\uFF0C\
+      \u652F\u6301\u9879\u76EE\u5206\u6790\u3001\u4EE3\u7801\u751F\u6210\u3001\u667A\
+      \u80FD\u7F16\u8F91\u548C\u9879\u76EE\u811A\u624B\u67B6\u7B49\u529F\u80FD\u3002"
+    evidence_source_field: candidate_input
+    why_it_matters: Explicit capability set matches AI coding assistant behavior (analysis,
+      generation, editing, scaffolding).
+  - anchor_rank: 3
+    evidence_text: "\u901A\u8FC7\u81EA\u7136\u8BED\u8A00\u4EA4\u4E92\uFF0C\u5E2E\u52A9\
+      \u5F00\u53D1\u8005\u5FEB\u901F\u5B8C\u6210\u5404\u79CD\u7F16\u7A0B\u4EFB\u52A1\
+      \u3002"
+    evidence_source_field: candidate_input
+    why_it_matters: Confirms LLM-style natural-language interaction as core UX.
+  - anchor_rank: 4
+    evidence_text: "\u6280\u672F\u67B6\u6784 - Spring Boot 3.4.5 ... Spring AI 1.0.0\
+      \ ... MCP Client ..."
+    evidence_source_field: candidate_input
+    why_it_matters: Shows concrete implementation stack beyond concept-only description.
+  - anchor_rank: 5
+    evidence_text: "\u540E\u7AEF\u5730\u5740\uFF1Ahttp://localhost:6039 ... \u524D\
+      \u7AEF\u5730\u5740\uFF1Ahttp://localhost:5173 ... \u9ED8\u8BA4\u767B\u5F55\u8D26\
+      \u53F7\uFF1Aadmin / admin123"
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates runnable full-stack app with authentication and local
+      deployment workflow.
+  review_focus_points:
+  - Verify this is an end-user AI product workflow (not only template generation scripts).
+  - Check repo structure/commits for substantive implementation of MCP-integrated
+    coding actions.
+  - Confirm whether security defaults (e.g., admin/admin123) are demo-only and not
+    production posture.
+  - Assess project activity and maintenance recency beyond README claims.
+  uncertainty_points:
+  - Single-source evidence (README excerpt) may overstate implemented capabilities
+  - No direct verification of release quality, activity depth, or user traction in
+    provided snippet
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: 'High-value next step: inspect repository tree and recent commits for
+      actual implementation modules (agent/tool orchestration, code edit pipeline,
+      scaffold generation) before any promotion decision.'
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: 'High-value next step: inspect repository tree and recent commits for
+      actual implementation modules (agent/tool orchestration, code edit pipeline,
+      scaffold generation) before any promotion decision.'
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: AI Application - Developer Copilot / Coding Assistant
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: AI Application - Developer Copilot / Coding Assistant
+      rationale: 'High-value next step: inspect repository tree and recent commits
+        for actual implementation modules (agent/tool orchestration, code edit pipeline,
+        scaffold generation) before any promotion decision.'
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: AI Framework / SDK Integration Project
+      rationale_for_similarity: AI Framework / SDK Integration Project
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: Although built on Spring AI Alibaba and MCP,
+      the repo is framed as a runnable assistant product with frontend/backend UX
+      and user tasks, not primarily as a reusable framework package.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: 'boundary with internal tooling unclear; High-value next step:
+  inspect repository tree and recent commits for actual implementation modules (agent/tool
+  orchestration, code edit pipeline, scaffold generation) before any promotion decision.
+  Treat this as an AI-enabled developer product candidate (coding assistant/scaffolding
+  tool), not as a foundational model or pure framework library. Prescreen should focus
+  on whether it is a usable product experience versus a reference/demo wrapper around
+  Spring AI Alibaba. evidence_strength=low review_source=existing_llm_prescreen'
+human_reviewed_at: '2026-04-06T14:57:00.459076Z'
+staging_handoff:
+  status: blocked
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items:
+  - candidate first-pass review resolved to on_hold
+  last_attempted_at: '2026-04-06T14:57:00.459095Z'

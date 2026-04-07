@@ -332,6 +332,16 @@ def _normalize_handoff_hint(value: Any, *, recommended_action: str | None) -> di
     return normalized
 
 
+def _canonical_recommend_candidate_pool(recommended_action: str | None, current_value: Any) -> bool | None:
+    if recommended_action in {"candidate_pool", "whitelist_candidate"}:
+        return True
+    if recommended_action in {"reject", "hold"}:
+        return False
+    if isinstance(current_value, bool):
+        return current_value
+    return None
+
+
 def _normalize_persona_candidates(value: Any, *, anchor_refs: list[int]) -> tuple[list[dict[str, Any]], str | None]:
     if not isinstance(value, list):
         return [], None
@@ -504,7 +514,8 @@ def normalize_llm_result(result: dict[str, Any]) -> dict[str, Any]:
         anchor_refs=anchor_refs,
     )
     assessment_hints = _normalize_assessment_hints(result.get("assessment_hints"), confidence_summary=confidence_summary, recommended_action=recommended_action)
-    handoff_hint["suggested_action"] = handoff_hint.get("suggested_action") or recommended_action
+    recommend_candidate_pool = _canonical_recommend_candidate_pool(recommended_action, recommend_candidate_pool)
+    handoff_hint["suggested_action"] = recommended_action or handoff_hint.get("suggested_action")
     normalized = {
         "in_observatory_scope": result.get("in_observatory_scope"),
         "reason": reason,

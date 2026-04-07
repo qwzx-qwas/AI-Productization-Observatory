@@ -6,18 +6,24 @@ import html
 import json
 import os
 import re
+import socket
 import ssl
 import urllib.error
+import urllib.parse
 import urllib.request
 from dataclasses import dataclass
 from pathlib import Path
 from socket import timeout as SocketTimeout
-from typing import Any
+from time import sleep
+from typing import Any, Callable
 
 from src.candidate_prescreen.review_card import normalize_llm_result
 from src.common.config import require_environment_variable
+from src.common.constants import RETRY_POLICY
 from src.common.errors import ConfigError, ProcessingError
 from src.common.files import load_json
+from src.common.logging_utils import get_logger
+from src.common.request_timing import wait_for_request_interval
 
 PAYLOAD_BUILDER_VERSION = "candidate_prescreen_payload_v1"
 README_EXCERPT_MAX_CHARS = 8000
@@ -311,6 +317,41 @@ def _authorization_header(relay_config: RelayConfig) -> str:
     return f"Bearer {relay_config.token}"
 
 
+def relay_preflight(
+    *,
+    default_timeout_seconds: int,
+    default_client_version: str,
+) -> dict[str, Any]:
+    """Validate that the configured relay endpoint is structurally usable before a long fill run."""
+
+    relay_config = RelayConfig.from_env(default_timeout_seconds, default_client_version)
+    request_url = (
+        _openai_request_url(relay_config.base_url)
+        if relay_config.api_style == "openai_compatible"
+        else relay_config.base_url.rstrip("/")
+    )
+    parsed = urllib.parse.urlparse(request_url)
+    if not parsed.scheme or not parsed.hostname:
+        raise ConfigError("APO_LLM_RELAY_BASE_URL must include a valid scheme and hostname")
+    port = parsed.port or (443 if parsed.scheme == "https" else 80)
+    try:
+        socket.getaddrinfo(parsed.hostname, port, proto=socket.IPPROTO_TCP)
+    except OSError as exc:
+        raise ProcessingError(
+            "network_error",
+            f"Relay preflight could not resolve {parsed.hostname}:{port}: {exc}",
+        ) from exc
+    return {
+        "request_url": request_url,
+        "host": parsed.hostname,
+        "port": port,
+        "model": relay_config.model,
+        "api_style": relay_config.api_style,
+        "auth_style": relay_config.auth_style,
+        "client_version": relay_config.client_version,
+    }
+
+
 def _extract_result_object(body: dict[str, Any], *, api_style: str) -> dict[str, Any]:
     if api_style == "openai_compatible":
         return _parse_openai_message_content(body)
@@ -335,6 +376,9 @@ def screen_candidate(
     fixture_path: Path | None,
     timeout_seconds: int,
     max_retries: int,
+    request_interval_seconds: int = 0,
+    retry_sleep_seconds: int = 0,
+    sleep_fn: Callable[[float], None] = sleep,
 ) -> dict[str, Any]:
     fixture_key = f"{candidate_input['source']}:{candidate_input['external_id']}"
     if fixture_path is not None:
@@ -357,6 +401,12 @@ def screen_candidate(
         return normalized
 
     relay_config = RelayConfig.from_env(timeout_seconds, relay_client_version)
+    logger = get_logger(
+        "candidate_prescreen_relay",
+        source_id=f"src_{candidate_input.get('source', 'unknown')}",
+        task_id="candidate_prescreen_relay",
+        resolution_status="running",
+    )
     request_url, payload = _request_payload(
         relay_config=relay_config,
         prompt_version=prompt_version,
@@ -364,8 +414,30 @@ def screen_candidate(
         candidate_input=candidate_input,
         prompt_contract=prompt_contract,
     )
+
+    def _wait_before_retry(error: ProcessingError, attempt_index: int) -> None:
+        if retry_sleep_seconds <= 0 or attempt_index >= max_retries:
+            return
+        if RETRY_POLICY.get(error.error_type, {}).get("retryable") is not True:
+            return
+        logger.info(
+            json.dumps(
+                {
+                    "event": "wait",
+                    "wait_kind": "retry_backoff",
+                    "wait_scope": "relay_retry",
+                    "wait_seconds": retry_sleep_seconds,
+                    "candidate_external_id": candidate_input.get("external_id"),
+                    "attempt": attempt_index + 1,
+                    "error_type": error.error_type,
+                },
+                ensure_ascii=True,
+            )
+        )
+        sleep_fn(retry_sleep_seconds)
+
     last_error: ProcessingError | None = None
-    for _attempt in range(max_retries + 1):
+    for attempt in range(max_retries + 1):
         request = urllib.request.Request(
             request_url,
             data=json.dumps(payload).encode("utf-8"),
@@ -376,6 +448,25 @@ def screen_candidate(
             },
             method="POST",
         )
+        waited_seconds = wait_for_request_interval(
+            "candidate_prescreen_relay",
+            request_interval_seconds,
+            sleep_fn=sleep_fn,
+        )
+        if waited_seconds > 0:
+            logger.info(
+                json.dumps(
+                    {
+                        "event": "wait",
+                        "wait_kind": "request_interval",
+                        "wait_scope": "relay_provider_request",
+                        "wait_seconds": waited_seconds,
+                        "candidate_external_id": candidate_input.get("external_id"),
+                        "attempt": attempt + 1,
+                    },
+                    ensure_ascii=True,
+                )
+            )
         try:
             with urllib.request.urlopen(
                 request,
@@ -387,13 +478,17 @@ def screen_candidate(
         except urllib.error.HTTPError as exc:
             error_type = "api_429" if exc.code == 429 else "dependency_unavailable"
             last_error = ProcessingError(error_type, f"Relay returned HTTP {exc.code}")
+            _wait_before_retry(last_error, attempt)
             continue
         except urllib.error.URLError as exc:
             last_error = ProcessingError("network_error", f"Relay network error: {exc.reason}")
+            _wait_before_retry(last_error, attempt)
             continue
         except SocketTimeout as exc:
             last_error = ProcessingError("provider_timeout", "Relay timed out")
+            _wait_before_retry(last_error, attempt)
             continue
+        last_error = None
         try:
             body = json.loads(raw_body)
         except json.JSONDecodeError as exc:

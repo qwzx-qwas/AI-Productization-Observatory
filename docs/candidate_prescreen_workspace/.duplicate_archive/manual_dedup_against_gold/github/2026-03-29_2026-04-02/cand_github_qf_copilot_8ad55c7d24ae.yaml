@@ -1,0 +1,159 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_8ad55c7d24ae
+candidate_batch_id: candidate_batch_github_qf_copilot_2026-03-29_2026-04-02
+created_at: '2026-04-03T06:48:24.587352Z'
+updated_at: '2026-04-06T11:28:57.119081Z'
+source: github
+source_id: src_github
+source_window: 2026-03-29..2026-04-02
+time_field: pushed_at
+external_id: '664836912'
+canonical_url: https://github.com/socfortress/CoPilot
+title: CoPilot
+summary: SOCFortress CoPilot
+raw_evidence_excerpt: "SOCFortress CoPilot\n\nSOCFortress CoPilot focuses on providing\
+  \ a single pane of glass for all your security operations needs. Simplify your open\
+  \ source security stack with a single platform focused on making open source security\
+  \ tools easier to use and more accessible.\n\nTable of contents\n\n- Getting Started\
+  \ - Install / Upgrade - Connectors - Help - License - Sponsoring\n\nGetting started\n\
+  \n\U0001F4DA **Documentation:** https://docs.socfortress.co\n\nCoPilot's true power\
+  \ comes from the ability to integrate with your existing security stack. We have\
+  \ built-in integrations with the following tools:\n\n- Wazuh - Graylog - Velociraptor\
+  \ - Grafana - InfluxDB\n\n\u2757\uFE0F **Note:** CoPilot is currently in beta. We\
+  \ are actively working on adding more integrations and features. If you have any\
+  \ suggestions or feedback, please let us know!\n\nInstall / Upgrade\n\nAll install\
+  \ + upgrade instructions live in the docs site (so the README doesn\u2019t drift):\n\
+  \n- **Docs home:** https://docs.socfortress.co - **Install / Upgrade:** https://docs.socfortress.co/getting-started/install-upgrade\
+  \ - (Source file) `docs/getting-started/install-upgrade.mdx`\n\nQuick upgrade reminder\
+  \ (from your CoPilot directory):\n\nConnectors\n\nCoPilot is designed to be a single\
+  \ pane of glass for your security operations. Think of it as a hub for all your\
+  \ security tools. CoPilot Connectors are the glue that binds your security tools\
+  \ to CoPilot. We take advantage of the APIs and webhooks provided by your security\
+  \ tools to provide a seamless integration.\n\nHelp\n\nYou can reach us on Discord\
+  \ or by \U0001F4E7 if you have any question, issue or idea!\n\nLicense\n\nThe contents\
+  \ of this repository is available under AGPL-3.0 license.\n\nSponsoring\n\nIf you\
+  \ like this project and want to support it, you can consider becoming a sponsor\
+  \ to help us continue maintaining it and adding new features."
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-03-29'
+    window_end: '2026-04-02'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-03-29..2026-04-02
+    external_id: '664836912'
+    canonical_url: https://github.com/socfortress/CoPilot
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: null
+  reason: High readiness for a quick human decision after one targeted docs pass focused
+    on AI claims; current excerpt alone is insufficient for candidate_pool promotion.
+  decision_snapshot: Recommend hold because High readiness for a quick human decision
+    after one targeted docs pass focused on AI claims; current excerpt alone is insufficient
+    for candidate_pool promotion.
+  scope_boundary_note: Current evidence supports classification as a SOC tool orchestration
+    hub ('single pane of glass' with connectors). It does not yet establish AI-native
+    behavior (e.g., LLM workflows, model inference, agentic automation, prompt interfaces,
+    or ML-backed detection).
+  source_evidence_summary:
+  - Current evidence supports classification as a SOC tool orchestration hub ('single
+    pane of glass' with connectors). It does not yet establish AI-native behavior
+    (e.g., LLM workflows, model inference, agentic automation, prompt interfaces,
+    or ML-backed detection).
+  - Check docs.socfortress.co for explicit AI/LLM features (chat analyst, summarization,
+    autonomous triage, model-backed detections).
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: High readiness for a quick human decision after one targeted docs
+      pass focused on AI claims; current excerpt alone is insufficient for candidate_pool
+      promotion.
+    evidence_source_field: candidate_input
+    why_it_matters: This fallback anchor preserves a minimally explainable first-pass
+      review card when the provider omits structured evidence anchors.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - Check docs.socfortress.co for explicit AI/LLM features (chat analyst, summarization,
+    autonomous triage, model-backed detections).
+  - Verify whether 'CoPilot' is naming-only vs actual AI assistant functionality.
+  - Inspect architecture/docs for model providers, inference endpoints, prompt templates,
+    or agent frameworks.
+  - If no AI-specific implementation exists, route to security tooling watchlist rather
+    than AI product candidate pool.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: hold
+  confidence_summary:
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: hold
+    rationale: High readiness for a quick human decision after one targeted docs pass
+      focused on AI claims; current excerpt alone is insufficient for candidate_pool
+      promotion.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: High readiness for a quick human decision after one targeted docs pass
+      focused on AI claims; current excerpt alone is insufficient for candidate_pool
+      promotion.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: Security Operations Platform / Integration Hub (non-AI-first)
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: Security Operations Platform / Integration Hub (non-AI-first)
+      rationale: High readiness for a quick human decision after one targeted docs
+        pass focused on AI claims; current excerpt alone is insufficient for candidate_pool
+        promotion.
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_candidate:
+      category_code: AI Security Copilot / LLM Analyst Assistant
+      rationale_for_similarity: AI Security Copilot / LLM Analyst Assistant
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: No explicit mention of AI models, LLM interactions,
+      inference pipelines, or autonomous AI-driven workflows in the provided evidence.
+  assessment_hints:
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: high
+    unresolved_risk: high
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: gpt-5.3-codex
+    transport: http_json_relay
+    request_id: null
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: 'clear end-user product signal; evidence sufficient for staging;
+  manual override: user requested to promote all non-duplicate active candidates into
+  gold staging'
+human_reviewed_at: '2026-04-06T11:28:56.332841Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+  sample_slot_id: GS300-057
+  sample_id: cand_github_qf_copilot_8ad55c7d24ae
+  blocking_items: []
+  last_attempted_at: '2026-04-06T11:28:57.119059Z'
