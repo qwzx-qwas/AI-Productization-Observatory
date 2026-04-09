@@ -1,0 +1,172 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_2c15495c6caf
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-02-01_2025-02-28
+created_at: '2026-04-08T14:02:33.211639Z'
+updated_at: '2026-04-09T03:01:31.610916Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '888140814'
+canonical_url: https://github.com/microsoft/Powerful-Devs-Hack-Together
+title: Powerful-Devs-Hack-Together
+summary: Landing page for hack together
+raw_evidence_excerpt: "Landing page for hack together\n\nPowerful Devs Hack Together:\
+  \ Build Scalable, Secure Solutions, Innovate with AI, and become #PowerfulDevs!\n\
+  \n\U0001F6E0\uFE0F Build, innovate, and #Hacktogether! \U0001F6E0\uFE0F\n\nIt's\
+  \ time to start developing secure solutions at enterprise scale using the power\
+  \ of AI and the Power Platform! \U0001F916 + \U0001F4DA = \U0001F525\n\nThe Power\
+  \ Platform (Power Apps, Copilot Studio, Power Automate, and Power Pages) are powerful\
+  \ tools to help any maker build any app, flow, site or agent they need, but how\
+  \ can professional developers get the most out of what the Power Platform has to\
+  \ offer? Through the Powerful Devs Conference and corresponding Hack Together, you\
+  \ will learn about ways you can use the Power Platform to enhance your productivity\
+  \ as a professional developer. Through these sessions, you'll learn about using\
+  \ gen AI in Copilot Studio, Managed Identities in Dataverse, how to extend your\
+  \ solutions as a developer by using external connectors using Visual Studio Code,\
+  \ and so much more. The Powerful Devs: Hack Together is your opportunity to apply\
+  \ what you've learned and build a solution yourself, using all the new tools in\
+  \ your toolkit. Across 14 sessions in both the conference and hackathon, you will\
+  \ learn all about how to be a Powerful Developer by using the Power Platform. The\
+  \ possibilities are endless for what you can create... plus you can submit your\
+  \ hack for a chance to win exciting prizes! \U0001F973\n\nThe conference is on February\
+  \ 12th and the corresponding hackathon runs from February 13th to February 28th.\
+  \ Hack submissions are due February 28th, 11:59 PM PST. Join us!\n\nRegister\n\n\
+  Register for the hackathon using any of the sessions linked on the Reactor Series\
+  \ page. This will register you for both the selected session and the hackathon.\n\
+  \nIntroduce yourself and look for teammates here on GitHub Discussions.\n\nOfficial\
+  \ Rules\n\nRead the official rules \U0001F4C3\n\nStream Schedule\n\nEnglish\n\n\
+  Week 1: February 17-21st\n\n| Day/Time | Topic | | --------------------- | ------------------------\
+  \ | | 2/18, 04:00 PM UTC / 09:00 AM PT | Powerful Devs Hack Kickoff: All About AI\
+  \ | | 2/19, 04:00 PM UTC / 09:00 AM PT | The Developer's Approach to Power Automate\
+  \ |\n\nWeek 2: February 24th-28th\n\n| Day/Time | Topic | | ---------------------\
+  \ | ------------------------ | | 2/24, 04:00 PM UTC / 09:00 AM PT | Securing Microsoft\
+  \ Copilot Studio Integration with External Connectors | | 2/26, 04:00 PM UTC / 09:00\
+  \ AM PT | Powerful Devs Hack Overview: Building Powerful Solutions |\n\nOffice Hours\n\
+  \nFor additional help with your hacks, you can drop by Office Hours or in GitHub\
+  \ Discussions. Week 1: February 17-21st\n\n| Day/Time | Link | | ---------------------\
+  \ | ------------------------ | | 2/18, 10:00 PM UTC / 02:00 PM PT | 2/18 Office\
+  \ Hours | | 2/20, 9:00 AM UTC / 12:00 AM PT | 2/20 Office Hours |\n\nThere are no\
+  \ remaining Office Hours.\n\nProject Submission\n\nHack submissions are due February\
+  \ 28th, 11:59 PM PST. Submit your project here in GitHub Issues when it's ready\U0001F680\
+  \ **\U0001F680 Project Submission Form**\n\nCheck out this video for step by step\
+  \ project submission guidance: **Project Submission Video**\n\nPrizes and Categories\
+  \ \U0001F3C5\n\nProjects will be evaluated by a panel of judges, including Microsoft\
+  \ engineers, product managers, and developer advocates. Judging criteria will include\
+  \ innovation, impact, technical usability, and alignment with corresponding hackathon\
+  \ category. Each winning team in the categories below will receive a cash prize\
+  \ of $550. \U0001F4B8\n\n* Best Overall * Best in Power * Best in Integrations *\
+  \ Best in Automation * Best in Applications * Best in Agents * Best in Pages * Best\
+  \ in AI\n\nAll hackathon participants who submit a project will receive a digital\
+  \ badge. In order to recieve the digital badge, all participants must submit this\
+  \ form: **Badge Submission Form** by Feb 28th, 11:59PM PST. The GitHub handle must\
+  \ match the handle submitted in the Project Submission Form.\n\nPowerful Devs Resources:\
+  \ Samples Below are samples recommended by the Powerful Devs Conference and Hack\
+  \ Together team. Use these to get inspired for your hack project!\n\n* Power Platform\
+  \ Snippets * Power Platform Prompts Library * Adaptive Cards Samples and Templates\
+  \ * Power Platform Creator Kit * Pnp Power Platform Samples\n\nPowerful Devs Session-Specific\
+  \ Resources Below are resources curated by the speakers of the Powerful Devs Conference.\
+  \ Use this to continue your learning journey!\n\n| Session Title | Resources | Speaker(s)\
+  \ | | --------------------- | ---------------------- | ------ | | Maximizing the\
+  \ value of Generative AI in Copilot Studio | Knowledge Sources Overview Natual Language\
+  \ Topic Authoring Generative Orchestration Generative Orchestration Tips for authoring\
+  \ descriptions | Lauren Mills| | No more secrets! Using Managed Identities in Dataverse\
+  \ Plugins | Sample Project | Magnus S\xF8rensen | | Get Your Code Together! | Documentation\
+  \ for Canvas Source Code Documentation for GIT Integration Sample Repo | Albert-Jan\
+  \ Schot; Marcel Ferreira | | The different flavors of ALM in the Power Platform:\
+  \ which one is right for you? | ALM in Power Platform Pipelines in Power Platform\
+  \ Extend Pipelines ALM Accelerator Automated testing, Test Studio in Azure DevOps\
+  \ | Feline Parein | | Building cross platform desktop apps with Dataverse and .NET\
+  \ MAUI | Build Your First App [.NET MAUI for Beginners YouTube]() .NET MAUI Resources\
+  \ by Javier Su\xE1rez [.NET Conf 2024 Videos]() .NET Core SDK Microsoft Dataverse\
+  \ Web API | Carl Cookson | | Extend your Copilot with connectors | Extend Microsoft\
+  \ 365 Copilot or Copilot agents with connector actions Extend Microsoft 365 Copilot\
+  \ with Copilot agents | Mankirat Kaur Bajwa; Nathan Helgren | | 5 ways to leverage\
+  \ Power Pages VS Code Copilot to increase productivity | Zero to Hero: Power Pages\
+  \ & AI Mentorship Power Pages Plus: Free Templates Power Pages Online Workshop |\
+  \ Victor Dantas | | Mastering automated testing in Power Platform: From unit tests\
+  \ to CI/CD integration | Power Apps Test Engine Getting Started Business Learn Module\
+  \ Architecture Learn Module Technical Learn Module Learning Playground Discussion\
+  \ | Grant Archibald | | Building mega apps with the Power Platform | D365 and M65\
+  \ compliance center The Power Platform guidance documentation D365 Guidance documentation\
+  \ D365 Fast Track Website | Rami Mounla\n\nPowerful Devs Additional Learning Materials\
+  \ * AI in Action: Powering up with Power Automate * AI in Action: Building with\
+  \ Copilot Studio * Microsoft 365 Agents SDK"
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '888140814'
+    canonical_url: https://github.com/microsoft/Powerful-Devs-Hack-Together
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

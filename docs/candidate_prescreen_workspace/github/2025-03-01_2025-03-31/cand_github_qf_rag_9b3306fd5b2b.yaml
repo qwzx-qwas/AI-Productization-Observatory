@@ -1,0 +1,166 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_9b3306fd5b2b
+candidate_batch_id: candidate_batch_github_qf_rag_2025-03-01_2025-03-31
+created_at: '2026-04-08T14:47:30.815082Z'
+updated_at: '2026-04-09T03:08:20.514799Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '697100198'
+canonical_url: https://github.com/stanford-futuredata/ARES
+title: ARES
+summary: Automated Evaluation of RAG Systems
+raw_evidence_excerpt: "Automated Evaluation of RAG Systems\n\nARES: An Automated Evaluation\
+  \ Framework for Retrieval-Augmented Generation Systems\n\nTable of Contents: Installation\
+  \ | Requirements | Quick Start | Citation\n\nARES is a groundbreaking framework\
+  \ for evaluating Retrieval-Augmented Generation (RAG) models. The automated process\
+  \ combines synthetic data generation with fine-tuned classifiers to efficiently\
+  \ assess context relevance, answer faithfulness, and answer relevance, minimizing\
+  \ the need for extensive human annotations. ARES employs synthetic query generation\
+  \ and Prediction-Powered Inference (PPI), providing accurate evaluations with statistical\
+  \ confidence.\n\n\U0001F4AC Mini Q&A\n\n**What does ARES assess in RAG models?**\n\
+  \nARES conducts a comprehensive evaluation of Retrieval-Augmented Generation (RAG)\
+  \ models, assessing the systems for context relevance, answer faithfulness, and\
+  \ answer relevance. This thorough assessment ensures a complete understanding of\
+  \ the performance of the RAG system.\n\n**How does ARES automate the evaluation\
+  \ process?**\n\nARES minimizes the need for human labeling by leveraging fine-tuned\
+  \ classifiers and synthetic data. Its PPI component, Prediction-Powered inference,\
+  \ refines evaluations considering model response variability and provides statistical\
+  \ confidence in the results. By using fine-tuned classifiers and synthetically generated\
+  \ data, ARES cuts down on human labeling needs while providing accurate assessments.\n\
+  \n**Can ARES handle my custom RAG model?**\n\nYes, ARES is a model-agnostic tool\
+  \ that enables you to generate synthetic queries and answers from your documents.\
+  \ With ARES, you can evaluate these generated queries and answers from your RAG\
+  \ model. \u200B \u2699\uFE0F Installation\n\n\u200B To install ARES, run the following\
+  \ commands: \u200B\n\n\u200B *Optional: Initalize OpenAI or TogetherAI API key with\
+  \ the following command:*\n\n\U0001F4DD Requirements\n\nTo implement ARES for scoring\
+  \ your RAG system and comparing to other RAG configurations, you need three components:\u200B\
+  \n\n* A human preference validation set of annotated query, document, and answer\
+  \ triples for the evaluation criteria (e.g. context relevance, answer faithfulness,\
+  \ and/or answer relevance). There should be at least 50 examples but several hundred\
+  \ examples is ideal. * A set of few-shot examples for scoring context relevance,\
+  \ answer faithfulness, and/or answer relevance in your system * A much larger set\
+  \ of unlabeled query-document-answer triples outputted by your RAG system for scoring\n\
+  \nTo get started with ARES, you'll need to set up your configuration. Below is an\
+  \ example of a configuration for ARES!\n\nCopy-paste each step to see ARES in action!\n\
+  \n\U0001F4E5 Download datasets\n\nUse the following command to quickly obtain the\
+  \ necessary files for getting started! This includes the 'few_shot_prompt' file\
+  \ for judge scoring and synthetic query generation, as well as both labeled and\
+  \ unlabeled datasets.\n\nOPTIONAL: You can run the following command to get the\
+  \ full NQ dataset! (37.3 GB)\n\n\U0001F680 Quick Start - #1\n\nTo get started with\
+  \ ARES's PPI, you'll need to set up your configuration. Below is an example of a\
+  \ configuration for ARES!\n\nJust copy-paste as you go to see ARES in action!\n\n\
+  Step 1) Run the following to retrieve the UES/IDP scores with GPT3.5!\n\nStep 2)\
+  \ Run the following to retrive ARES's PPI scores with GPT3.5!\n\n\U0001F680 Quick\
+  \ Start - #2\n\nStep 1) Run the following to see GPT 3.5's accuracy on the NQ unlabeled\
+  \ dataset!\n\nStep 2) Run the following to see ARES's synthetic generation in action!\n\
+  \nStep 3) Run the following to see ARES's training classifier in action!\n\nNote:\
+  \ This code creates a checkpoint for the trained classifier. Training may take some\
+  \ time. You can download our jointly trained checkpoint on context relevance here!:\
+  \ Download Checkpoint\n\nStep 4) Run the following to see ARES's PPI in action!\n\
+  \n\U0001F680 Local Model Execution with vLLM\n\nARES supports vLLM, allowing for\
+  \ local execution of LLM models, offering enhanced privacy and the ability to operate\
+  \ ARES offline. Below are steps to vLLM for ARES's UES/IDP and PPI!\n\n1) UES/IDP\
+  \ w/ vLLM\n\n2) PPI w/ vLLM\n\nFor more details, refer to our documentation.\n\n\
+  Results Replication\n\nWe include synthetic datasets for key experimental results\
+  \ in `synthetic_datasets`. The few-shot prompts used for generation and evaluation\
+  \ are included in `datasets`. We also include instructions for fine-tuning LLM judges\
+  \ in the paper itself. Please reach out to jonsaadfalcon@stanford.edu or manihani@stanford.edu\
+  \ if you have any further questions.\n\nCitation\n\nTo cite our work, please use\
+  \ the following Bibtex:\n\nAppendix Machine requirements and setup when not using\
+  \ OpenAI API **Machine requirements**\n\n- Over ~100 GB of available disk space\
+  \ - GPU - Should work: A100 (e.g. `Standard_NC24ads_A100_v4` on Azure) - Does not\
+  \ work: - Tested on 2023-12-17 with both `Standard_NC6s_v3` and `Standard_NC12s_v3`,\
+  \ and ran into this error: `torch.cuda.OutOfMemoryError: CUDA out of memory. Tried\
+  \ to allocate 160.00 MiB (GPU 0; 15.77 GiB total capacity; 15.12 GiB already allocated;\
+  \ 95.44 MiB free; 15.12 GiB reserved in total by PyTorch)`\n\n**Machine setup**\n\
+  \nFor example, on an Azure VM running Linux (ubuntu 20.04), you will need to do\
+  \ the following: - Install conda - First set of commands (can copy-paste multiple\
+  \ lines) - `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh`\
+  \ - `chmod +x Miniconda3-latest-Linux-x86_64.sh` - `./Miniconda3-latest-Linux-x86_64.sh\
+  \ -b` - Second set of commands (can copy-paste multiple lines) - `export PATH=\"\
+  ~/miniconda3/bin:$PATH\"` - `conda init` - Install gcc - `sudo apt-get -y update`\
+  \ - `sudo apt-get -y upgrade` - `sudo apt-get -y install build-essential` - `sudo\
+  \ apt-get -y install libpcre3-dev` - Install NVIDIA drivers - `sudo apt install\
+  \ ubuntu-drivers-common -y` - `sudo ubuntu-drivers autoinstall` - `sudo reboot`\
+  \ - SSH in again and confirm the installation was successful by running `nvidia-smi`\
+  \ - `cd` to ARES folder and follow the rest of the README"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '697100198'
+    canonical_url: https://github.com/stanford-futuredata/ARES
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

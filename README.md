@@ -183,10 +183,12 @@ git rm --cached .env
 - `make validate-candidate-workspace` 当前会校验 `docs/candidate_prescreen_workspace/` 下的候选预筛 YAML 是否仍在正式 gold set 目录之外、字段是否满足 schema、以及 `candidate_id` 是否重复。
 - `make validate-candidate-workspace` 还会校验 candidate prescreen review-card 约束，例如 evidence anchor 排序、rank-1 persona 回填、main/adjacent category 关系，以及 `human_review_notes` 是否遵循标准模板前缀。
 - `run-candidate-prescreen` 会把候选发现、LLM 预筛与中间文档落盘限制在 `docs/candidate_prescreen_workspace/`；它不会直接写 `gold_set/gold_set_300/`。
+- candidate prescreen 运行时会内部计算稳定 `sample_key` 与特定分析输入的 `analysis_run_key`；当前它们主要用于去重与幂等，不要求 legacy workspace 记录都已持久化带出。
 - `handoff-candidates-to-staging` 只会转写 `human_review_status = approved_for_staging` 的候选到现有 `docs/gold_set_300_real_asset_staging/`，并保留空位与 `blocking_items` 等待后续双标 / adjudication。
 - `fill-gold-set-staging-until-complete` 会先读取磁盘上的 staging 真实进度，再循环执行 “消化已有 workspace -> 必要时 live prescreen -> API LLM 受约束一审 -> approved handoff -> validate + 审计日志” 直到 `docs/gold_set_300_real_asset_staging/` 达到 `300/300`。默认审计日志会追加到 `docs/candidate_prescreen_workspace/fill_gold_set_staging_audit.jsonl`。
 - `fill-gold-set-staging-until-complete` 默认不会写 `gold_set/gold_set_300/`；它只更新 `docs/candidate_prescreen_workspace/` 与 `docs/gold_set_300_real_asset_staging/`，formal gold set 仍保持 stub 边界。
 - `fill-gold-set-staging-until-complete` 若未传 `--query-slice`，会按 `candidate_prescreen_workflow.yaml` 中启用的 GitHub query slices 顺序循环；每一轮会重新从 staging YAML 读盘统计，而不是信任内存态或单次 LLM 回复。
+- relay/provider 响应当前会先收敛为 canonical outcome envelope；只有 transport / provider_response / content / schema / business 五层均成功时，`llm_prescreen.status` 才会写成 `succeeded`。`provider_empty_completion` 当前按 retryable `dependency_unavailable` 处理，而 `schema_drift` / `json_schema_validation_failed` / `parse_failure` 仍会把 fill loop 拉入 `blocked`。
 - live discovery / relay 请求之间会按配置执行固定节流等待；retryable technical failure 命中后，fill loop 会先写审计日志，再等待一个 backoff 窗口后继续下一轮。
 - 若 live discovery 命中 `schema_drift`、`json_schema_validation_failed`、`parse_failure` 或 `resume_state_invalid` 这类 terminal technical failure，`fill-gold-set-staging-until-complete` 会停止并返回 `status = blocked`，而不是无休止自旋。
 - 若你想覆盖默认路径，仍然可以先导出对应环境变量，例如：

@@ -53,6 +53,8 @@ def _prefill_remaining_slots(staging_dir: Path, *, keep_empty_slots: int) -> Non
             sample["candidate_prescreen_ref"]["candidate_id"] = synthetic_sample_id
             sample["source_record_refs"] = [dict(template_source_ref)]
             sample["source_record_refs"][0]["candidate_id"] = synthetic_sample_id
+            sample["source_record_refs"][0]["external_id"] = f"prefill_external_{synthetic_counter:03d}"
+            sample["source_record_refs"][0]["canonical_url"] = f"https://example.com/prefill/{synthetic_counter:03d}"
         dump_yaml(staging_path, payload)
 
 
@@ -278,6 +280,59 @@ class FixturePipelineIntegrationTests(unittest.TestCase):
                 self.assertEqual(status, "stub")
                 self.assertEqual(sample_count, 0)
 
+    def test_candidate_handoff_to_staging_blocks_duplicate_normalized_url(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            candidate_workspace = root / "candidate_workspace"
+            staging_dir = root / "staging"
+            shutil.copytree(REPO_ROOT / "docs" / "gold_set_300_real_asset_staging", staging_dir)
+
+            with temp_config(candidate_workspace_dir=candidate_workspace, gold_set_staging_dir=staging_dir) as config:
+                paths = run_candidate_prescreen(
+                    config,
+                    source_code="github",
+                    window="2026-03-01..2026-03-08",
+                    query_slice_id="qf_agent",
+                    limit=1,
+                    discovery_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "github_qf_agent_window.json",
+                    llm_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "llm_prescreen_responses.json",
+                )
+
+                first_record = load_yaml(paths[0])
+                first_record["human_review_status"] = "approved_for_staging"
+                first_record["human_review_note_template_key"] = "approved"
+                first_record["human_review_notes"] = "clear end-user product signal; evidence sufficient for staging"
+                first_record["human_reviewed_at"] = utc_now_iso()
+                dump_yaml(paths[0], first_record)
+
+                duplicate_path = candidate_workspace / "github" / "2026-03-08_2026-03-15" / "cand_github_qf_agent_duplicate_url.yaml"
+                duplicate_record = dict(first_record)
+                duplicate_record["candidate_id"] = "cand_github_qf_agent_duplicate_url"
+                duplicate_record["candidate_batch_id"] = "candidate_batch_github_qf_agent_2026-03-08_2026-03-15"
+                duplicate_record["source_window"] = "2026-03-08..2026-03-15"
+                duplicate_record["external_id"] = "different_external_id_same_url"
+                duplicate_record["canonical_url"] = str(first_record["canonical_url"]).replace("https://", "HTTPS://").rstrip("/") + "/#fragment"
+                duplicate_record["staging_handoff"] = {
+                    "status": "not_started",
+                    "staging_document_path": None,
+                    "sample_slot_id": None,
+                    "sample_id": None,
+                    "blocking_items": [],
+                    "last_attempted_at": None,
+                }
+                duplicate_path.parent.mkdir(parents=True, exist_ok=True)
+                dump_yaml(duplicate_path, duplicate_record)
+
+                results = handoff_candidates_to_staging(config, candidate_ids=None)
+
+                self.assertEqual(len(results), 1)
+                duplicate_after = load_yaml(duplicate_path)
+                self.assertEqual(duplicate_after["staging_handoff"]["status"], "blocked")
+                self.assertIn(
+                    "Semantic duplicate source URL already present in staging",
+                    duplicate_after["staging_handoff"]["blocking_items"][0],
+                )
+
     def test_run_one_fill_iteration_consumes_existing_workspace_candidate_first(self) -> None:
         with TemporaryDirectory() as tmp_dir:
             root = Path(tmp_dir)
@@ -318,7 +373,7 @@ class FixturePipelineIntegrationTests(unittest.TestCase):
                 self.assertEqual(candidate_record["staging_handoff"]["status"], "written")
                 self.assertEqual(summary["progress_after"]["total_filled"], summary["progress_before"]["total_filled"] + 1)
 
-    def test_run_one_fill_iteration_keeps_going_after_review_contract_failure(self) -> None:
+    def test_run_one_fill_iteration_blocks_and_keeps_failed_candidate_traceable_after_terminal_prescreen_failure(self) -> None:
         with TemporaryDirectory() as tmp_dir:
             root = Path(tmp_dir)
             candidate_workspace = root / "candidate_workspace"
@@ -348,26 +403,7 @@ class FixturePipelineIntegrationTests(unittest.TestCase):
                     initial_window="2026-03-01..2026-03-08",
                     query_slice_id="qf_agent",
                 )
-                live_review_result = {
-                    "review_source": "fresh_llm_review",
-                    "suggested_review_status": "approved_for_staging",
-                    "note_template_key": "approved",
-                    "human_review_notes": None,
-                    "reason": "fixture live candidate is acceptable for staging",
-                    "boundary_notes": None,
-                    "evidence_sufficiency": "high",
-                    "whitelist_reason": None,
-                }
-                with patch(
-                    "src.candidate_prescreen.fill_controller.run_candidate_prescreen",
-                    wraps=run_candidate_prescreen,
-                ) as run_prescreen_mock, patch(
-                    "src.candidate_prescreen.fill_controller.review_candidate_with_llm",
-                    side_effect=[
-                        ContractValidationError("recommend_candidate_pool must be false when recommended_action is reject or hold"),
-                        live_review_result,
-                    ],
-                ):
+                with patch("src.candidate_prescreen.fill_controller.run_candidate_prescreen") as run_prescreen_mock:
                     summary = run_one_fill_iteration(
                         config,
                         cursor=cursor,
@@ -376,15 +412,18 @@ class FixturePipelineIntegrationTests(unittest.TestCase):
                         llm_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "llm_prescreen_responses.json",
                     )
 
-                self.assertIsNotNone(summary["live_discovery"])
-                self.assertIsNotNone(summary["handoff"])
-                self.assertEqual(summary["handoff"]["status"], "written")
-                self.assertEqual(summary["progress_after"]["total_filled"], summary["progress_before"]["total_filled"] + 1)
-                self.assertTrue(run_prescreen_mock.called)
-                failure_result = next(
-                    result for result in summary["review_results"] if result["review_source"] == "llm_review_processing_error"
-                )
+                run_prescreen_mock.assert_not_called()
+                self.assertIsNone(summary["handoff"])
+                self.assertEqual(summary["progress_after"]["total_filled"], summary["progress_before"]["total_filled"])
+                self.assertEqual(summary["live_discovery"]["failure"]["error_type"], "schema_drift")
+                self.assertEqual(summary["live_discovery"]["failure"]["failed_step"], "existing_workspace_llm_review")
+                failure_result = summary["review_results"][0]
                 self.assertEqual(failure_result["review_status"], "pending_first_pass")
+                self.assertEqual(failure_result["review_source"], "terminal_prescreen_failure")
+                self.assertEqual(validate_candidate_workspace(config), 1)
+                refreshed_record = load_yaml(paths[0])
+                self.assertEqual(refreshed_record["llm_prescreen"]["status"], "failed")
+                self.assertEqual(refreshed_record["llm_prescreen"]["error_type"], "schema_drift")
 
     def test_fill_gold_set_staging_until_complete_stops_at_300_without_writing_formal_gold_set(self) -> None:
         with TemporaryDirectory() as tmp_dir:

@@ -1,0 +1,156 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_d435178c6114
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-01-01_2025-01-31
+created_at: '2026-04-08T13:22:59.715430Z'
+updated_at: '2026-04-09T02:53:08.720158Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '810681653'
+canonical_url: https://github.com/luandev/ComfyUI-CrewAI
+title: ComfyUI-CrewAI
+summary: This project aims to integrate Crew AI's multi-agent collaboration framework
+  into the ComfyUI environment. By combining the strengths of Crew AI's role-based,
+  collaborative AI agent system with ComfyUI's intuitive interface, we will create
+  a robust platform for managing and executing complex AI tasks seamlessly
+raw_evidence_excerpt: "This project aims to integrate Crew AI's multi-agent collaboration\
+  \ framework into the ComfyUI environment. By combining the strengths of Crew AI's\
+  \ role-based, collaborative AI agent system with ComfyUI's intuitive interface,\
+  \ we will create a robust platform for managing and executing complex AI tasks seamlessly\n\
+  \n\U0001F4CEComfyUI-CrewAI\n\nCrafting high-quality prompts is essential for generating\
+  \ images or other content, but it can be challenging and time-consuming to find\
+  \ the right words, structure, or variations to achieve the desired result.\n\nIntegrating\
+  \ CrewAI into ComfyUI allows users to automate and refine the prompt creation process\
+  \ using intelligent agents. CrewAI can generate, analyze, and iteratively improve\
+  \ text prompts based on user input or specific goals, streamlining the creative\
+  \ workflow.\n\nNodes Demo\n\nThis project integrates CrewAI's multi-agent collaboration\
+  \ framework into the ComfyUI environment, combining the robust capabilities of CrewAI's\
+  \ role-based AI agent system with ComfyUI's intuitive drag-and-drop interface. The\
+  \ goal is to create a platform that simplifies the management and execution of complex\
+  \ AI tasks.\n\nComfyUI? CrewAI?\n\nAbout ComfyUI\n\nComfyUI is The most powerful\
+  \ and modular stable diffusion GUI and backend. It also has an innovative and user-friendly\
+  \ interface designed to streamline the creation and management of image and video\
+  \ creation workflows. Utilizing a drag-and-drop system, ComfyUI allows users to\
+  \ effortlessly design, visualize, and iterate over complex multi-agent tasks without\
+  \ deep technical knowledge. It supports a wide range of custom nodes and models,\
+  \ making it highly versatile for various AI applications.\n\nAbout CrewAI\n\nCrewAI\
+  \ is an advanced framework that facilitates the collaboration of AI agents. It enables\
+  \ agents to assume specific roles, share common objectives, and function as a cohesive\
+  \ unit. This setup is ideal for building smart assistant platforms, automated customer\
+  \ service systems, and multi-agent research teams.\n\nKey Features - **Role-Based\
+  \ Agent Design:** Customize agents with specific roles, goals, and tools. - **Autonomous\
+  \ Inter-Agent Delegation:** Agents can delegate tasks and request assistance from\
+  \ peers. - **Flexible Task Management:** Define and dynamically assign tasks to\
+  \ agents. - **Integration with Various LLMs:** Supports local and remote language\
+  \ models like OpenAI, Mistral, and others. - **Sequential and Hierarchical Processes:**\
+  \ Offers structured task execution models.\n\nIntegration with ComfyUI\n\nIntegrating\
+  \ CrewAI with ComfyUI provides a powerful, user-friendly interface for prototyping\
+  \ and deploying AI agent workflows. ComfyUI's drag-and-drop system makes it easy\
+  \ to design and visualize complex multi-agent tasks.\n\nBenefits of Integration\
+  \ - **Streamlined Workflow Design:** Easily create and manage AI workflows. - **Enhanced\
+  \ Collaboration:** Leverage CrewAI's collaborative AI capabilities. - **Seamless\
+  \ Model Integration:** Support for various LLMs, including local models via Ollama.\
+  \ - **Scalable and Flexible:** Ideal for prototyping and scaling AI solutions.\n\
+  \nHow It Works\n\n1. **Create Agents:** Define agents with specific roles and backstories.\
+  \ 2. **Define Tasks:** Set tasks with clear descriptions and expected outputs. 3.\
+  \ **Setup the Crew:** Use the Crew node to manage agents and tasks, choose the execution\
+  \ process (sequential or hierarchical). 4. **Run and Monitor:** Execute the workflow\
+  \ and monitor progress through verbose logging. Adjust settings and parameters to\
+  \ optimize performance.\n\nInstallation \U0001F6E0\uFE0F\n\n**Easy Install**: Use\
+  \ the ComfyUI Manager to automate the installation process.\n\n**Manual Install**:\
+  \ 1. Clone the repository into the custom_nodes directory:\n\n2. Install the requirements\
+  \ (ensure your virtual environment is activated if using one):\n\nLinting and Code\
+  \ Quality To maintain code quality, we use `flake8` for linting. We use pre-commit\
+  \ hooks to lint the staged files before committing:\n\n1. **To run `pre-commit`\
+  \ manually**:\n\n2. **Run `flake8` manually**:\n\nCurrent Nodes - **Agent Node:**\
+  \ Defines an agent with a specific role and goal. - *Usage:* Customize the agent\
+  \ by setting attributes such as role, goal, backstory, and tools. - **Task Node:**\
+  \ Specifies a task for an agent to perform. - *Usage:* Define the task description,\
+  \ expected output, and assign it to an agent. - **Crew Node:** Manages a group of\
+  \ agents and tasks, coordinating their execution. - *Usage:* Set up the crew with\
+  \ defined agents and tasks, and choose the process type (sequential or hierarchical).\
+  \ - **Text Node:** Can display and safe text strings, good for debugging\n\nContributing\
+  \ \U0001F91D\n\nContributions are welcome! Please read the contributing guidelines\
+  \ first.\n\nLicense \U0001F4C4\n\nThis project is licensed under the MIT License\
+  \ - see the LICENSE file for details.\n\nAcknowledgements\n\nSpecial thanks to the\
+  \ developers of ComfyUI and CrewAI for their amazing tools.\n\n---\n\nFeel free\
+  \ to suggest improvements or report issues here."
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '810681653'
+    canonical_url: https://github.com/luandev/ComfyUI-CrewAI
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

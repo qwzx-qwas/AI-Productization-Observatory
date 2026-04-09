@@ -1,12 +1,12 @@
 document_type: candidate_prescreen_record
 document_version: candidate_prescreen_v1
-candidate_id: cand_github_qf_ai_assistant_2200558eb92d
-candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-06-01_2026-04-06
-created_at: '2026-04-07T03:01:48.967316Z'
-updated_at: '2026-04-07T09:05:36.944661Z'
+candidate_id: cand_github_qf_ai_assistant_9c0144ef6286
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-01-01_2026-04-06
+created_at: '2026-04-08T10:46:45.970834Z'
+updated_at: '2026-04-09T02:56:25.348190Z'
 source: github
 source_id: src_github
-source_window: 2025-06-01..2026-04-06
+source_window: 2025-01-01..2026-04-06
 time_field: pushed_at
 external_id: '107417113'
 canonical_url: https://github.com/cookieY/Yearning
@@ -69,7 +69,7 @@ selection_rule_version: github_qsv1
 source_trace:
   discovery_mode: live
   selection_basis:
-    window_start: '2025-06-01'
+    window_start: '2025-01-01'
     window_end: '2026-04-06'
     query_family: ai_applications_and_products
     query_slice_id: qf_ai_assistant
@@ -77,7 +77,7 @@ source_trace:
   source_item_ref:
     source: github
     source_id: src_github
-    source_window: 2025-06-01..2026-04-06
+    source_window: 2025-01-01..2026-04-06
     external_id: '107417113'
     canonical_url: https://github.com/cookieY/Yearning
 llm_prescreen:
@@ -126,8 +126,8 @@ llm_prescreen:
     model: null
     transport: http_json_relay
     request_id: null
-  error_type: schema_drift
-  error_message: OpenAI-compatible response must provide message.content text
+  error_type: provider_timeout
+  error_message: Relay timed out
 whitelist_reason: null
 human_review_status: pending_first_pass
 human_review_note_template_key: null

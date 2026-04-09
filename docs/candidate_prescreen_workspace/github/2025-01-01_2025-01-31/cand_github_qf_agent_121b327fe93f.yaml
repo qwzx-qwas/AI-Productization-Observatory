@@ -1,0 +1,143 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_121b327fe93f
+candidate_batch_id: candidate_batch_github_qf_agent_2025-01-01_2025-01-31
+created_at: '2026-04-08T12:40:59.992732Z'
+updated_at: '2026-04-09T02:50:23.668714Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '640182997'
+canonical_url: https://github.com/TransformerOptimus/SuperAGI
+title: SuperAGI
+summary: "<\u26A1\uFE0F> SuperAGI - A dev-first open source autonomous AI agent framework.\
+  \ Enabling developers to build, manage & run useful autonomous agents quickly and\
+  \ reliably."
+raw_evidence_excerpt: "SuperAGI - A dev-first open source autonomous AI agent framework.\
+  \ Enabling developers to build, manage & run useful autonomous agents quickly and\
+  \ reliably.\n\nOpen-source framework to build, manage and run useful Autonomous\
+  \ AI Agents\n\nFollow SuperAGI\n\nConnect with the Creator\n\nShare SuperAGI Repository\n\
+  \n\" target=\"blank\">\n\nWhat are we ?\n\nA dev-first open source autonomous AI\
+  \ agent framework enabling developers to build, manage & run useful autonomous agents.\
+  \ You can run concurrent agents seamlessly, extend agent capabilities with tools.\
+  \ The agents efficiently perform a variety of tasks and continually improve their\
+  \ performance with each subsequent run.\n\n\U0001F4A1 Features\n\n- Provision, Spawn\
+  \ & Deploy Autonomous AI Agents - Create production-ready & scalable autonomous\
+  \ agents. - Extend Agent Capabilities with Toolkits - Add Toolkits from our marketplace\
+  \ to your agent workflows. - Graphical User Interface - Access your agents through\
+  \ a graphical user interface. - Action Console - Interact with agents by giving\
+  \ them input and permissions. - Multiple Vector DBs - Connect to multiple Vector\
+  \ DBs to enhance your agent\u2019s performance. - Performance Telemetry - Get insights\
+  \ into your agent\u2019s performance and optimize accordingly. - Optimized Token\
+  \ Usage - Control token usage to manage costs effectively. - Agent Memory Storage\
+  \ - Enable your agents to learn and adapt by storing their memory. - Models - Custom\
+  \ fine tuned models for business specific usecases. - Workflows - Automate tasks\
+  \ with ease using ReAct LLM's predefined steps.\n\n\U0001F6E0 Toolkits Toolkits\
+  \ allow SuperAGI Agents to interact with external systems and third-party plugins.\n\
+  \n\u2699\uFE0F Installation\n\nYou can install superAGI using one of the following\
+  \ three approaches.\n\n\u2601\uFE0F SuperAGI cloud\n\nTo quickly start experimenting\
+  \ with agents without the hassle of setting up the system, try Superagi Cloud\n\n\
+  1. Visit Superagi Cloud and log in using your github account.\n\n2. In your account\
+  \ settings, go to \"Model Providers\" and add your API key.\n\nYou're all set! Start\
+  \ running your agents effortlessly.\n\n\U0001F5A5\uFE0F Local\n\n1. Open your terminal\
+  \ and clone the SuperAGI repository.\n\n2. Navigate to the cloned repository directory\
+  \ using the command:\n\n3. Create a copy of config_template.yaml, and name it config.yaml.\n\
+  \n4. Ensure that Docker is installed on your system. You can download and install\
+  \ it from here.\n\n5. Once you have Docker Desktop running, run the following command\
+  \ in the SuperAGI directory:\n\na. For regular usage:\n\nb. If you want to use SuperAGI\
+  \ with Local LLMs and have GPU, run the following command:\n\n6. Open your web browser\
+  \ and navigate to http://localhost:3000 to access SuperAGI.\n\n\U0001F300 Digital\
+  \ Ocean\n\nDeploy SuperAGI to DigitalOcean with one click.\n\n\U0001F310 Architecture\n\
+  \nSuperAGI Architecture\n\nAgent Architecture\n\nAgent Workflow Architecture\n\n\
+  Tools Architecture\n\nER Diagram\n\n\U0001F4DA Resources\n\n* Documentation * YouTube\
+  \ Channel\n\n\U0001F4D6 Need Help?\n\nJoin our Discord community for support and\
+  \ discussions.\n\nIf you have questions or encounter issues, please don't hesitate\
+  \ to create a new issue to get support.\n\n\U0001F4BB Contribution We \u2764\uFE0F\
+  \ our contributors. We\u2019re committed to fostering an open, welcoming, and safe\
+  \ environment in the community.\n\nIf you'd like to contribute, start by reading\
+  \ our Contribution Guide.\n\nWe expect everyone participating in the community to\
+  \ abide by our Code of Conduct.\n\nTo get more idea on where we are heading, checkout\
+  \ our roadmap here.\n\nExplore some good first issues to start contributing.\n\n\
+  \U0001F469\u200D\U0001F4BB Contributors\n\n\u26A0\uFE0F Under Development! This\
+  \ project is under active development and may still have issues. We appreciate your\
+  \ understanding and patience. If you encounter any problems, please check the open\
+  \ issues first. If your issue is not listed, kindly create a new issue detailing\
+  \ the error or problem you experienced. Thank you for your support!"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '640182997'
+    canonical_url: https://github.com/TransformerOptimus/SuperAGI
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

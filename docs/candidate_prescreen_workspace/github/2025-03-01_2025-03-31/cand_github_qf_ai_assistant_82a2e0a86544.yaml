@@ -1,0 +1,120 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_82a2e0a86544
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-03-01_2025-03-31
+created_at: '2026-04-08T14:55:32.854470Z'
+updated_at: '2026-04-09T03:04:25.108093Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '915617195'
+canonical_url: https://github.com/hasan-py/Ai-Assistant-Chrome-Extension
+title: Ai-Assistant-Chrome-Extension
+summary: This Chrome extension allows you to easily select any text from any webpage
+  and instantly use GPT, Gemini, Grok, Local LLMs with Ollama to perform a variety
+  of tasks with just a few clicks
+raw_evidence_excerpt: "This Chrome extension allows you to easily select any text\
+  \ from any webpage and instantly use GPT, Gemini, Grok, Local LLMs with Ollama to\
+  \ perform a variety of tasks with just a few clicks\n\nWatch the full tutorial video\
+  \ from YouTube:\n\nHow to install this chrome extension locally Follow these steps\
+  \ to install the Chrome extension on your browser:\n\nStep 1: Download the Extension\
+  \ Files - Download the extension files as a folder or a .zip file. - If it's a `.zip`\
+  \ file, extract it to get the folder containing the extension files.\n\nStep 2:\
+  \ Open the Chrome Extensions Page - Open Google Chrome. - Type the following URL\
+  \ in the address bar and press Enter:\n\nStep 3: Enable Developer Mode - At the\
+  \ top-right corner of the Extensions page, toggle the Developer mode switch to turn\
+  \ it on.\n\nStep 4: Load the Extension - Click the \"Load unpacked\" button. - In\
+  \ the file browser, navigate to the folder where you have saved the extension files.\
+  \ - Select the folder and click \"Open\" or \"Select Folder\".\n\nStep 5: Verify\
+  \ Installation\n\n- Once loaded, the extension will appear in the list of installed\
+  \ extensions on the Extensions page. - If there are any errors, Chrome will show\
+  \ a warning. Make sure your files (especially manifest.json) are configured correctly.\n\
+  \nHow to use this chrome extension? Follow these steps to use the Chrome extension\
+  \ on your browser:\n\nStep 1: Please collect your api key from: GPT or Gemini or\
+  \ Grok - Goto the tools website's dashboard and generate api key - Note your api\
+  \ key and api endpoint\n\nStep 2: Open the extension popup from extension icon from\
+  \ the extension list - Add the api endpoint - Add api key - Fillup other input field\
+  \ with any text to pass validations - Select which tool you want to use\n\nStep\
+  \ 3: Copy any text from any website - Right click from the mouse - Choose the desire\
+  \ menu and clicked\n\nStep 4: After the loading complete you will result like this\
+  \ - Click copy button to copy ta raw text\n\nTroubleshoot? - Please reach out to\
+  \ me on X: https://x.com/hasan_py or Linkedin: https://www.linkedin.com/in/hasan-py\n\
+  \n----- Build with \u2764\uFE0F by Hasan"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '915617195'
+    canonical_url: https://github.com/hasan-py/Ai-Assistant-Chrome-Extension
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_agent_4935f53a3168
 candidate_batch_id: candidate_batch_github_qf_agent_2025-06-01_2026-04-06
 created_at: '2026-04-06T14:49:33.594801Z'
-updated_at: '2026-04-06T14:50:03.703793Z'
+updated_at: '2026-04-09T03:11:35.323891Z'
 source: github
 source_id: src_github
 source_window: 2025-06-01..2026-04-06
@@ -244,21 +244,16 @@ llm_prescreen:
   error_type: null
   error_message: null
 whitelist_reason: null
-human_review_status: on_hold
-human_review_note_template_key: hold
-human_review_notes: boundary with internal tooling unclear; Ready for quick human
-  first-pass with emphasis on validating actual LLM execution and autonomy claims
-  from repository artifacts (code, configs, release notes, issues). In-scope as an
-  AI application/product if the agent meaningfully uses LLMs to perform DevOps tasks
-  in production-like workflows. Out-of-scope if it is primarily a thin CLI wrapper,
-  MCP plumbing, or infrastructure tooling with minimal AI dependence. evidence_strength=low
-  review_source=existing_llm_prescreen
-human_reviewed_at: '2026-04-06T14:50:03.703768Z'
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: 'clear end-user product signal; evidence sufficient for staging;
+  manual override: user requested to stage analyzed samples that are semantically
+  non-duplicate against existing staging and against each other'
+human_reviewed_at: '2026-04-09T02:32:24.751437Z'
 staging_handoff:
-  status: blocked
-  staging_document_path: null
-  sample_slot_id: null
-  sample_id: null
-  blocking_items:
-  - candidate first-pass review resolved to on_hold
-  last_attempted_at: '2026-04-06T14:50:03.703787Z'
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+  sample_slot_id: GS300-050
+  sample_id: cand_github_qf_agent_4935f53a3168
+  blocking_items: []
+  last_attempted_at: '2026-04-09T03:11:35.323869Z'

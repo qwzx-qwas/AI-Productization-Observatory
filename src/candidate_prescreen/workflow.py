@@ -8,15 +8,29 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
-from src.candidate_prescreen.config import candidate_batch_id, candidate_id, load_candidate_prescreen_config
+from src.candidate_prescreen.config import (
+    build_analysis_run_key,
+    build_sample_key,
+    candidate_batch_id,
+    candidate_id,
+    load_candidate_prescreen_config,
+)
 from src.candidate_prescreen.discovery import discover_candidates, discovery_metadata
 from src.candidate_prescreen.prompt_contract import candidate_prescreener_prompt_contract
 from src.candidate_prescreen.review_card import empty_llm_prescreen, validate_candidate_review_card
-from src.candidate_prescreen.relay import screen_candidate
+from src.candidate_prescreen.relay import (
+    PAYLOAD_BUILDER_VERSION,
+    build_relay_candidate_input,
+    screen_candidate,
+    screen_candidate_outcome_succeeded,
+)
 from src.candidate_prescreen.staging import handoff_candidate_to_staging
+from src.candidate_prescreen.url_utils import candidate_url_dedupe_key, normalize_candidate_url
 from src.common.config import AppConfig
+from src.common.constants import RETRY_POLICY
 from src.common.errors import ContractValidationError, ProcessingError
 from src.common.files import dump_yaml, load_yaml, utc_now_iso
+from src.common.logging_utils import get_logger
 from src.common.request_timing import (
     resolve_discovery_request_interval_seconds,
     resolve_request_interval_seconds,
@@ -97,7 +111,7 @@ def _candidate_input(item: dict[str, Any], metadata: dict[str, Any], window: str
         "source_window": window,
         "time_field": metadata["time_field"],
         "external_id": str(item["external_id"]),
-        "canonical_url": item["canonical_url"],
+        "canonical_url": normalize_candidate_url(item.get("canonical_url"), field_name="candidate_discovery_item.canonical_url"),
         "title": item["title"],
         "summary": _source_summary(item),
         "raw_evidence_excerpt": _raw_excerpt(item),
@@ -209,7 +223,67 @@ def _parse_iso_timestamp(value: Any) -> datetime:
 
 
 def semantic_candidate_key_from_record(record: dict[str, Any]) -> tuple[str, str]:
-    return str(record["source_id"]), str(record["external_id"])
+    return candidate_url_dedupe_key(
+        record.get("source_id"),
+        record.get("canonical_url"),
+        source_field_name="candidate_prescreen_record.source_id",
+        url_field_name="candidate_prescreen_record.canonical_url",
+    )
+
+
+def sample_key_from_record(record: dict[str, Any]) -> str:
+    return build_sample_key(
+        str(record.get("source_id") or ""),
+        str(record.get("canonical_url") or ""),
+    )
+
+
+def _candidate_input_from_record(record: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "source": record["source"],
+        "source_id": record["source_id"],
+        "source_window": record["source_window"],
+        "time_field": record["time_field"],
+        "external_id": record["external_id"],
+        "canonical_url": record["canonical_url"],
+        "title": record["title"],
+        "summary": record.get("summary") or "",
+        "raw_evidence_excerpt": record.get("raw_evidence_excerpt") or "",
+        "query_family": record.get("query_family"),
+        "query_slice_id": record.get("query_slice_id"),
+        "selection_rule_version": record.get("selection_rule_version"),
+    }
+
+
+def _analysis_run_key_for_candidate(candidate_input: dict[str, Any], *, llm_defaults: dict[str, Any]) -> str:
+    sample_key = build_sample_key(candidate_input["source_id"], candidate_input["canonical_url"])
+    return build_analysis_run_key(
+        sample_key=sample_key,
+        cleaned_candidate_input=build_relay_candidate_input(candidate_input),
+        prompt_version=str(llm_defaults["prompt_version"]),
+        routing_version=str(llm_defaults["routing_version"]),
+        relay_client_version=str(llm_defaults["relay_client_version"]),
+        payload_builder_version=PAYLOAD_BUILDER_VERSION,
+    )
+
+
+def _workspace_sample_index(config: AppConfig) -> dict[str, tuple[Path, dict[str, Any]]]:
+    if not config.candidate_workspace_dir.exists():
+        return {}
+    preferred_by_key: dict[str, tuple[Path, dict[str, Any]]] = {}
+    for candidate_path in candidate_record_paths(config):
+        payload = load_yaml(candidate_path)
+        if not isinstance(payload, dict):
+            raise ContractValidationError(f"Candidate prescreen document must be a mapping: {candidate_path}")
+        validate_candidate_record(config, payload)
+        sample_key = sample_key_from_record(payload)
+        existing = preferred_by_key.get(sample_key)
+        if existing is None or candidate_record_preference_key(payload, candidate_path) > candidate_record_preference_key(
+            existing[1],
+            existing[0],
+        ):
+            preferred_by_key[sample_key] = (candidate_path, payload)
+    return preferred_by_key
 
 
 def candidate_record_preference_key(record: dict[str, Any], candidate_path: Path) -> tuple[int, int, int, datetime, str]:
@@ -247,13 +321,47 @@ def _workspace_semantic_index(config: AppConfig) -> dict[tuple[str, str], tuple[
     return preferred_by_key
 
 
-def _should_refresh_existing_record(record: dict[str, Any]) -> bool:
+def _retry_cooldown_active(record: dict[str, Any], *, retry_sleep_seconds: int) -> bool:
+    if retry_sleep_seconds <= 0:
+        return False
+    llm_prescreen = record.get("llm_prescreen")
+    if not isinstance(llm_prescreen, dict):
+        return False
+    error_type = llm_prescreen.get("error_type")
+    if RETRY_POLICY.get(error_type, {}).get("retryable") is not True:
+        return False
+    updated_at = _parse_iso_timestamp(record.get("updated_at"))
+    elapsed_seconds = (datetime.now(timezone.utc) - updated_at).total_seconds()
+    return elapsed_seconds < retry_sleep_seconds
+
+
+def _should_refresh_existing_record(
+    record: dict[str, Any],
+    *,
+    current_analysis_run_key: str,
+    llm_defaults: dict[str, Any],
+    retry_sleep_seconds: int,
+) -> bool:
     if record.get("human_review_status") != "pending_first_pass":
         return False
     llm_prescreen = record.get("llm_prescreen")
     if not isinstance(llm_prescreen, dict):
         return True
-    return llm_prescreen.get("status") != "succeeded"
+    existing_analysis_run_key = _analysis_run_key_for_candidate(
+        _candidate_input_from_record(record),
+        llm_defaults=llm_defaults,
+    )
+    if existing_analysis_run_key != current_analysis_run_key:
+        return True
+    status = llm_prescreen.get("status")
+    if status == "succeeded":
+        return False
+    if status != "failed":
+        return True
+    if _retry_cooldown_active(record, retry_sleep_seconds=retry_sleep_seconds):
+        return False
+    error_type = llm_prescreen.get("error_type")
+    return RETRY_POLICY.get(error_type, {}).get("retryable") is True
 
 
 def _archive_audit_path(config: AppConfig) -> Path:
@@ -343,7 +451,8 @@ def archive_duplicate_candidate_records(config: AppConfig) -> dict[str, Any]:
         if len(written_entries) > 1:
             skipped = {
                 "source_id": semantic_key[0],
-                "external_id": semantic_key[1],
+                "normalized_canonical_url": semantic_key[1],
+                "dedupe_basis": "source_id + normalized canonical_url",
                 "reason": "multiple_written_staging_records",
                 "candidate_ids": [record["candidate_id"] for _, record in entries],
                 "candidate_paths": [str(candidate_path) for candidate_path, _ in entries],
@@ -373,11 +482,16 @@ def archive_duplicate_candidate_records(config: AppConfig) -> dict[str, Any]:
             os.replace(candidate_path, destination)
             archived_entry = {
                 "source_id": semantic_key[0],
-                "external_id": semantic_key[1],
+                "normalized_canonical_url": semantic_key[1],
+                "dedupe_basis": "source_id + normalized canonical_url",
                 "archived_candidate_id": record["candidate_id"],
+                "archived_external_id": record["external_id"],
+                "archived_canonical_url": record["canonical_url"],
                 "archived_from": str(candidate_path),
                 "archived_to": str(destination),
                 "kept_candidate_id": kept_record["candidate_id"],
+                "kept_external_id": kept_record["external_id"],
+                "kept_canonical_url": kept_record["canonical_url"],
                 "kept_candidate_path": str(kept_path),
             }
             archived_records.append(archived_entry)
@@ -472,6 +586,7 @@ def archive_future_window_candidate_records(
 
 def validate_candidate_record(config: AppConfig, record: dict[str, Any]) -> None:
     validate_instance(record, _schema_path(config))
+    normalize_candidate_url(record.get("canonical_url"), field_name="candidate_prescreen_record.canonical_url")
     workflow_config = load_candidate_prescreen_config(config.config_dir)
     workspace = workflow_config.get("workspace")
     if not isinstance(workspace, dict):
@@ -494,6 +609,7 @@ def run_candidate_prescreen(
     discovery_request_interval_seconds: int | None = None,
     request_interval_seconds: int | None = None,
     retry_sleep_seconds: int | None = None,
+    run_id: str | None = None,
 ) -> list[Path]:
     workflow_config = load_candidate_prescreen_config(config.config_dir)
     llm_defaults = workflow_config["llm_prescreen"]
@@ -510,6 +626,7 @@ def run_candidate_prescreen(
         fixture_path=discovery_fixture_path,
         timeout_seconds=int(llm_defaults["timeout_seconds_default"]),
         request_interval_seconds=resolved_discovery_request_interval_seconds,
+        run_id=run_id,
     )
     metadata = discovery_metadata(
         workflow_config,
@@ -518,18 +635,56 @@ def run_candidate_prescreen(
         query_slice_id=query_slice_id,
         discovery_mode=discovery_mode,
     )
+    logger = get_logger(
+        "candidate_prescreen_workflow",
+        source_id=str(metadata["source_id"]),
+        task_id="run_candidate_prescreen",
+        resolution_status="running",
+        run_id=run_id,
+    )
     batch_id = candidate_batch_id(source_code, window, metadata["query_slice_id"])
-    preferred_by_key = _workspace_semantic_index(config)
+    preferred_by_key = _workspace_sample_index(config)
     written_paths: list[Path] = []
     for item in items:
         if len(written_paths) >= limit:
             break
-        candidate_input = _candidate_input(item, metadata, window)
-        semantic_key = (candidate_input["source_id"], candidate_input["external_id"])
-        existing_entry = preferred_by_key.get(semantic_key)
+        try:
+            candidate_input = _candidate_input(item, metadata, window)
+        except ContractValidationError as exc:
+            logger.info(
+                {
+                    "event": "candidate_rejected",
+                    "window": window,
+                    "query_slice_id": metadata["query_slice_id"],
+                    "candidate_external_id": str(item.get("external_id") or ""),
+                    "candidate_canonical_url": item.get("canonical_url"),
+                    "reason": str(exc),
+                    "rejection_reason": "invalid_canonical_url",
+                }
+            )
+            continue
+        sample_key = build_sample_key(
+            candidate_input["source_id"],
+            candidate_input["canonical_url"],
+        )
+        current_analysis_run_key = _analysis_run_key_for_candidate(
+            candidate_input,
+            llm_defaults=llm_defaults,
+        )
+        existing_entry = preferred_by_key.get(sample_key)
         if existing_entry is not None:
             output_path, record = existing_entry
-            if not _should_refresh_existing_record(record):
+            if (
+                record.get("source_window") != candidate_input["source_window"]
+                or record.get("query_slice_id") != candidate_input["query_slice_id"]
+            ):
+                continue
+            if not _should_refresh_existing_record(
+                record,
+                current_analysis_run_key=current_analysis_run_key,
+                llm_defaults=llm_defaults,
+                retry_sleep_seconds=resolved_retry_sleep_seconds,
+            ):
                 continue
             _apply_candidate_snapshot(record, candidate_input, metadata=metadata, discovery_mode=discovery_mode)
             record["candidate_batch_id"] = batch_id
@@ -545,7 +700,7 @@ def run_candidate_prescreen(
             )
             output_path = _candidate_doc_path(config, source_code, window, candidate_identifier)
         try:
-            llm_result = screen_candidate(
+            llm_outcome = screen_candidate(
                 candidate_input,
                 prompt_version=str(llm_defaults["prompt_version"]),
                 routing_version=str(llm_defaults["routing_version"]),
@@ -559,6 +714,7 @@ def run_candidate_prescreen(
                 max_retries=int(llm_defaults["max_retries_default"]),
                 request_interval_seconds=resolved_request_interval_seconds,
                 retry_sleep_seconds=resolved_retry_sleep_seconds,
+                run_id=run_id,
             )
         except (ProcessingError, ContractValidationError) as exc:
             record["llm_prescreen"]["status"] = "failed"
@@ -568,29 +724,38 @@ def run_candidate_prescreen(
                 record["llm_prescreen"]["error_type"] = "schema_drift"
             record["llm_prescreen"]["error_message"] = str(exc)
         else:
-            record["llm_prescreen"]["status"] = "succeeded"
-            record["llm_prescreen"]["in_observatory_scope"] = llm_result["in_observatory_scope"]
-            record["llm_prescreen"]["reason"] = llm_result["reason"]
-            record["llm_prescreen"]["decision_snapshot"] = llm_result["decision_snapshot"]
-            record["llm_prescreen"]["scope_boundary_note"] = llm_result["scope_boundary_note"]
-            record["llm_prescreen"]["source_evidence_summary"] = llm_result["source_evidence_summary"]
-            record["llm_prescreen"]["evidence_anchors"] = llm_result["evidence_anchors"]
-            record["llm_prescreen"]["review_focus_points"] = llm_result["review_focus_points"]
-            record["llm_prescreen"]["uncertainty_points"] = llm_result["uncertainty_points"]
-            record["llm_prescreen"]["recommend_candidate_pool"] = llm_result["recommend_candidate_pool"]
-            record["llm_prescreen"]["recommended_action"] = llm_result["recommended_action"]
-            record["llm_prescreen"]["confidence_summary"] = llm_result["confidence_summary"]
-            record["llm_prescreen"]["handoff_readiness_hint"] = llm_result["handoff_readiness_hint"]
-            record["llm_prescreen"]["persona_candidates"] = llm_result["persona_candidates"]
-            record["llm_prescreen"]["taxonomy_hints"] = llm_result["taxonomy_hints"]
-            record["llm_prescreen"]["assessment_hints"] = llm_result["assessment_hints"]
-            record["llm_prescreen"]["channel_metadata"] = llm_result["channel_metadata"]
-            record["llm_prescreen"]["error_type"] = None
-            record["llm_prescreen"]["error_message"] = None
+            if not screen_candidate_outcome_succeeded(llm_outcome):
+                record["llm_prescreen"]["status"] = "failed"
+                record["llm_prescreen"]["error_type"] = llm_outcome.get("mapped_error_type")
+                record["llm_prescreen"]["error_message"] = (
+                    llm_outcome.get("failure_message")
+                    or llm_outcome.get("failure_code")
+                )
+            else:
+                llm_result = llm_outcome["normalized_result"]
+                record["llm_prescreen"]["status"] = "succeeded"
+                record["llm_prescreen"]["in_observatory_scope"] = llm_result["in_observatory_scope"]
+                record["llm_prescreen"]["reason"] = llm_result["reason"]
+                record["llm_prescreen"]["decision_snapshot"] = llm_result["decision_snapshot"]
+                record["llm_prescreen"]["scope_boundary_note"] = llm_result["scope_boundary_note"]
+                record["llm_prescreen"]["source_evidence_summary"] = llm_result["source_evidence_summary"]
+                record["llm_prescreen"]["evidence_anchors"] = llm_result["evidence_anchors"]
+                record["llm_prescreen"]["review_focus_points"] = llm_result["review_focus_points"]
+                record["llm_prescreen"]["uncertainty_points"] = llm_result["uncertainty_points"]
+                record["llm_prescreen"]["recommend_candidate_pool"] = llm_result["recommend_candidate_pool"]
+                record["llm_prescreen"]["recommended_action"] = llm_result["recommended_action"]
+                record["llm_prescreen"]["confidence_summary"] = llm_result["confidence_summary"]
+                record["llm_prescreen"]["handoff_readiness_hint"] = llm_result["handoff_readiness_hint"]
+                record["llm_prescreen"]["persona_candidates"] = llm_result["persona_candidates"]
+                record["llm_prescreen"]["taxonomy_hints"] = llm_result["taxonomy_hints"]
+                record["llm_prescreen"]["assessment_hints"] = llm_result["assessment_hints"]
+                record["llm_prescreen"]["channel_metadata"] = llm_result["channel_metadata"]
+                record["llm_prescreen"]["error_type"] = None
+                record["llm_prescreen"]["error_message"] = None
         record["updated_at"] = utc_now_iso()
         validate_candidate_record(config, record)
         dump_yaml(output_path, record)
-        preferred_by_key[semantic_key] = (output_path, record)
+        preferred_by_key[sample_key] = (output_path, record)
         written_paths.append(output_path)
     return written_paths
 
@@ -633,11 +798,27 @@ def handoff_candidates_to_staging(
             continue
         if payload["human_review_status"] != "approved_for_staging":
             continue
-        staging_document_path, slot_id = handoff_candidate_to_staging(
-            payload,
-            candidate_path=path,
-            staging_dir=config.gold_set_staging_dir,
-        )
+        try:
+            staging_document_path, slot_id = handoff_candidate_to_staging(
+                payload,
+                candidate_path=path,
+                staging_dir=config.gold_set_staging_dir,
+            )
+        except ContractValidationError as exc:
+            if "Semantic duplicate source URL already present in staging" not in str(exc):
+                raise
+            payload["staging_handoff"] = {
+                "status": "blocked",
+                "staging_document_path": None,
+                "sample_slot_id": None,
+                "sample_id": None,
+                "blocking_items": [str(exc)],
+                "last_attempted_at": utc_now_iso(),
+            }
+            payload["updated_at"] = utc_now_iso()
+            validate_candidate_record(config, payload)
+            dump_yaml(path, payload)
+            continue
         payload["staging_handoff"] = {
             "status": "written",
             "staging_document_path": staging_document_path,

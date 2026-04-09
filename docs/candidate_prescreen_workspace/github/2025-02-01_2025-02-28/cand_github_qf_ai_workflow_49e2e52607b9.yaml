@@ -1,0 +1,130 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_49e2e52607b9
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-02-01_2025-02-28
+created_at: '2026-04-08T14:22:42.939181Z'
+updated_at: '2026-04-09T02:59:20.903113Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '738425296'
+canonical_url: https://github.com/craftgen/craftgen
+title: craftgen
+summary: Integrating AI into every workflow with our open-source, no-code platform,
+  powered by the actor model for dynamic, graph-based solutions.
+raw_evidence_excerpt: "Integrating AI into every workflow with our open-source, no-code\
+  \ platform, powered by the actor model for dynamic, graph-based solutions.\n\nHomepage\
+  \ | Examples | Discord\n\nCraftgen.ai: Open-source AI agent platform with intuitive\
+  \ workflows, graph-based solutions, agent capabilities, model management, and real-time\
+  \ monitoring for fast prototyping to production. Key features include:\n\n**1. Workflow**:\
+  \ Build and test powerful AI workflows on a visual canvas, leveraging all the following\
+  \ features and beyond.\n\n**2. Comprehensive model support**: Seamless integration\
+  \ with hundreds of proprietary / open-source LLMs from dozens of inference providers\
+  \ and self-hosted solutions, covering GPT, Mistral, Llama3, Ollama and any OpenAI\
+  \ API-compatible models.\n\n**3. Agent capabilities**: You can define agents based\
+  \ on LLM Function Calling or ReAct, and add pre-built or custom tools for the agent.\
+  \ Or you can create tools on demand.\n\nWhat is CraftGen?\n\nCraftgen.ai is an AI\
+  \ platform designed for both technical and non-technical users. Built on a scalable\
+  \ graph architecture and the Actor Model, it allows users to customize AI components\
+  \ to fit their needs.\n\nThe platform features an event-driven architecture for\
+  \ reliable data processing and universal access via web technologies. It supports\
+  \ dynamic tool and workflow generation, with offline capabilities for secure environments\
+  \ and plans for desktop integration.\n\nCraftgen.ai uses JSON schema for industry-standard\
+  \ alignment, enabling seamless integration with any API following the OpenAPI spec.\
+  \ This allows for a broad range of applications, from automating data analysis to\
+  \ streamlining content management.\n\nThe platform is designed to bridge the gap\
+  \ between advanced AI technology and practical usability. It's a flexible, secure,\
+  \ and intuitive platform that empowers users, from developers seeking to create\
+  \ custom AI solutions to businesses looking to automate routine tasks. Craftgen.ai's\
+  \ goal is to make AI technology an integral, seamless part of everyday problem-solving\
+  \ and innovation, providing a platform where modular AI and a thriving marketplace\
+  \ converge to meet the diverse needs of its users.\n\nFeature comparison\n\nFeature\
+  \ CraftGen LangChain Flowise OpenAI Assistants API\n\nProgramming Approach API +\
+  \ App-oriented Python Code App-oriented API-oriented\n\nSupported LLMs Rich Variety\
+  \ Rich Variety Rich Variety OpenAI-only\n\nRAG Engine \u2705 \u2705 \u2705 \u2705\
+  \n\nAgent \u2705 \u2705 \u274C \u2705\n\nWorkflow \u2705 \u274C \u2705 \u274C\n\n\
+  Observability \u2705 \u2705 \u274C \u274C\n\nCode Interpreter \u2705 \u274C \u274C\
+  \ \u274C\n\nLocal Deployment \u2705 \u2705 \u2705 \u274C\n\nStaying ahead\n\nStar\
+  \ CraftGen on GitHub and be instantly notified of new releases.\n\n> **Note:** >\
+  \ This project is a dynamic work in progress, evolving in the open. Stay updated\
+  \ with our journey on Twitter @CraftgenAI.\n\nStuck? Got Questions? We're Here!\n\
+  \nHit a snag? Pondering how to start? Reach out on Discord. We're all ears and ready\
+  \ to assist."
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '738425296'
+    canonical_url: https://github.com/craftgen/craftgen
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

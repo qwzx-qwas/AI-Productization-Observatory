@@ -1,0 +1,142 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_2200558eb92d
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-01-01_2026-04-06
+created_at: '2026-04-07T03:01:48.967316Z'
+updated_at: '2026-04-07T14:35:41.850635Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2026-04-06
+time_field: pushed_at
+external_id: '107417113'
+canonical_url: https://github.com/cookieY/Yearning
+title: Yearning
+summary: "\U0001F433 A most popular sql audit platform for mysql "
+raw_evidence_excerpt: "\U0001F433 A most popular sql audit platform for mysql\n\n\
+  Yearning\n\nA robust, locally deployed platform designed for seamless SQL detection\
+  \ and query auditing, tailored specifically for DBAs and developers. Focused on\
+  \ privacy and efficiency, it provides an intuitive and secure environment for MYSQL\
+  \ auditing.\n\n---\n\nEnglish | \u7B80\u4F53\u4E2D\u6587 | \u65E5\u672C\u8A9E\n\n\
+  \u2728 Features\n\n- **AI Assistant**: Our AI assistant offers real-time SQL optimization\
+  \ suggestions, enhancing SQL performance. It also supports text-to-SQL conversion,\
+  \ allowing users to input natural language and receive optimized SQL statements.\n\
+  \n- **SQL Audit**: Create SQL audit tickets with approval workflows and automated\
+  \ syntax checks. Validate SQL statements for correctness, security, and compliance.\
+  \ Rollback statements are automatically generated for DDL/DML operations, with a\
+  \ comprehensive history log for traceability.\n\n- **Query Audit**: Audit user queries,\
+  \ restrict data sources and databases, and anonymize sensitive fields. Query records\
+  \ are saved for future reference.\n\n- **Check Rules**: Our automated syntax checker\
+  \ supports a wide range of check rules, suitable for most automatic checking scenarios.\n\
+  \n- **Privacy Focused**: Yearning is a locally deployable, open-source solution\
+  \ that ensures the security of your database and SQL statements. It includes encryption\
+  \ mechanisms to protect sensitive data, ensuring it remains secure even if unauthorized\
+  \ access occurs.\n\n- **RBAC (Role-Based Access Control)**: Create and manage roles\
+  \ with specific permissions, restricting access to query work orders, auditing functions,\
+  \ and other sensitive operations based on user roles.\n\n> \\[!TIP] > For more detailed\
+  \ information, visit our Yearning Guide\n\n\u2699\uFE0F Installation\n\nDownload\
+  \ the latest release and extract it. Ensure you have configured `./config.toml`\
+  \ before proceeding.\n\nManual Installation\n\n\U0001F680 Deploying with Docker\n\
+  \n\U0001F916 AI Assistance\n\nOur AI Assistant leverages a large language model\
+  \ to provide SQL optimization suggestions and text-to-SQL conversion. Whether using\
+  \ default or custom prompts, the AI Assistant enhances SQL performance by optimizing\
+  \ statements and converting natural language inputs into SQL queries.\n\n\U0001F516\
+  \ Automatic SQL Checker\n\nThe automatic SQL checker evaluates SQL statements against\
+  \ predefined rules and syntax. It ensures that statements adhere to specific coding\
+  \ standards, best practices, and security requirements, providing a robust layer\
+  \ of validation.\n\n\U0001F4A1 SQL Syntax Highlighting and Auto-completion\n\nEnhance\
+  \ your query writing efficiency with SQL syntax highlighting and auto-completion.\
+  \ These features help users visually distinguish different components of a SQL query,\
+  \ such as keywords, table names, column names, and operators, making it easier to\
+  \ read and understand the query structure.\n\n\u23FA\uFE0F Order/Query Record\n\n\
+  Our platform supports the auditing of user order and query statements. This feature\
+  \ allows you to track and record all query operations, including data sources, databases,\
+  \ and the handling of sensitive fields, ensuring compliance with regulations and\
+  \ providing traceability for query history.\n\nBy focusing on these key features,\
+  \ Yearning enhances user experience, optimizes SQL performance, and ensures robust\
+  \ compliance and traceability in database operations.\n\n\U0001F6E0\uFE0F Recommended\
+  \ Tools\n\n- Spug - Open Source Lightweight Automation Operations Platform\n\n\u260E\
+  \uFE0F Contact\n\nFor inquiries, please email us at: henry@yearning.io\n\n\U0001F4CB\
+  \ License\n\nYearning is licensed under the AGPL license. See LICENSE for details.\n\
+  \n2024 \xA9 Henry Yee\n\n---\n\nWith Yearning, experience a streamlined, secure,\
+  \ and efficient approach to SQL auditing and optimization.\n\n[docker-pulls-link]:\
+  \ https://hub.docker.com/r/yeelabs/yearning\n\n[docker-release-link]: https://hub.docker.com/r/yeelabs/yearning\n\
+  \n[docker-size-link]: https://hub.docker.com/r/yeelabs/yearning\n\n[github-forks-link]:\
+  \ https://github.com/cookieY/Yearning/network/members [github-stars-link]: https://github.com/cookieY/Yearning/network/stargazers\n\
+  \n[github-license-link]: https://github.com/cookieY/Yearning/blob/main/LICENSE"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2026-04-06
+    external_id: '107417113'
+    canonical_url: https://github.com/cookieY/Yearning
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: schema_drift
+  error_message: OpenAI-compatible response must provide message.content text
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

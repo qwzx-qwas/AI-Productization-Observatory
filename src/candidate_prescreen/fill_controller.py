@@ -19,7 +19,12 @@ from typing import Any, Callable
 
 from src.candidate_prescreen.config import load_candidate_prescreen_config, query_slice_config, source_config
 from src.candidate_prescreen.prompt_contract import candidate_prescreener_prompt_contract
-from src.candidate_prescreen.relay import clean_raw_evidence_excerpt, relay_preflight, screen_candidate
+from src.candidate_prescreen.relay import (
+    clean_raw_evidence_excerpt,
+    relay_preflight,
+    screen_candidate,
+    screen_candidate_outcome_succeeded,
+)
 from src.candidate_prescreen.staging import EXPECTED_TOTAL_SLOTS, handoff_candidate_to_staging, staging_progress, validate_staging_workspace
 from src.candidate_prescreen.workflow import (
     archive_future_window_candidate_records,
@@ -344,6 +349,18 @@ def _review_error_result(candidate_id: str, exc: ProcessingError | ContractValid
     }
 
 
+def _review_error_result_from_outcome(candidate_id: str, outcome: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "candidate_id": candidate_id,
+        "suggested_review_status": "pending_first_pass",
+        "reason": str(outcome.get("failure_message") or outcome.get("failure_code") or "candidate prescreen failed"),
+        "review_source": "llm_review_processing_error",
+        "error_type": str(outcome.get("mapped_error_type") or "dependency_unavailable"),
+        "failure_code": outcome.get("failure_code"),
+        "llm_outcome": outcome,
+    }
+
+
 def _review_failure_result_from_record(record: dict[str, Any], *, review_source: str, include_error_type: bool) -> dict[str, Any]:
     llm_prescreen = record.get("llm_prescreen")
     error_type = llm_prescreen.get("error_type") if isinstance(llm_prescreen, dict) else None
@@ -390,6 +407,56 @@ def _persist_review_failure(
     _write_candidate_record(config, candidate_path, record)
 
 
+def _persist_review_failure_outcome(
+    config: AppConfig,
+    candidate_path: Path,
+    record: dict[str, Any],
+    outcome: dict[str, Any],
+) -> None:
+    llm_prescreen = record.get("llm_prescreen")
+    if not isinstance(llm_prescreen, dict):
+        raise ContractValidationError(f"candidate prescreen record is missing llm_prescreen mapping: {candidate_path}")
+    llm_prescreen["status"] = "failed"
+    llm_prescreen["error_type"] = outcome.get("mapped_error_type")
+    llm_prescreen["error_message"] = str(outcome.get("failure_message") or outcome.get("failure_code") or "candidate prescreen failed")
+    _write_candidate_record(config, candidate_path, record)
+
+
+def _apply_successful_prescreen_snapshot(record: dict[str, Any], review_card: dict[str, Any]) -> None:
+    llm_prescreen = record.get("llm_prescreen")
+    if not isinstance(llm_prescreen, dict):
+        raise ContractValidationError("candidate prescreen record is missing llm_prescreen mapping")
+    llm_prescreen["status"] = "succeeded"
+    llm_prescreen["in_observatory_scope"] = review_card["in_observatory_scope"]
+    llm_prescreen["reason"] = review_card["reason"]
+    llm_prescreen["decision_snapshot"] = review_card["decision_snapshot"]
+    llm_prescreen["scope_boundary_note"] = review_card["scope_boundary_note"]
+    llm_prescreen["source_evidence_summary"] = review_card["source_evidence_summary"]
+    llm_prescreen["evidence_anchors"] = review_card["evidence_anchors"]
+    llm_prescreen["review_focus_points"] = review_card["review_focus_points"]
+    llm_prescreen["uncertainty_points"] = review_card["uncertainty_points"]
+    llm_prescreen["recommend_candidate_pool"] = review_card["recommend_candidate_pool"]
+    llm_prescreen["recommended_action"] = review_card["recommended_action"]
+    llm_prescreen["confidence_summary"] = review_card["confidence_summary"]
+    llm_prescreen["handoff_readiness_hint"] = review_card["handoff_readiness_hint"]
+    llm_prescreen["persona_candidates"] = review_card["persona_candidates"]
+    llm_prescreen["taxonomy_hints"] = review_card["taxonomy_hints"]
+    llm_prescreen["assessment_hints"] = review_card["assessment_hints"]
+    llm_prescreen["channel_metadata"] = review_card["channel_metadata"]
+    llm_prescreen["error_type"] = None
+    llm_prescreen["error_message"] = None
+
+
+def _persist_successful_prescreen_snapshot(
+    config: AppConfig,
+    candidate_path: Path,
+    record: dict[str, Any],
+    review_card: dict[str, Any],
+) -> None:
+    _apply_successful_prescreen_snapshot(record, review_card)
+    _write_candidate_record(config, candidate_path, record)
+
+
 def review_candidate_with_llm(
     config: AppConfig,
     record: dict[str, Any],
@@ -397,6 +464,7 @@ def review_candidate_with_llm(
     llm_fixture_path: Path | None,
     request_interval_seconds: int,
     retry_sleep_seconds: int,
+    run_id: str | None = None,
 ) -> dict[str, Any]:
     existing = record.get("llm_prescreen")
     if isinstance(existing, dict) and existing.get("status") == "succeeded":
@@ -418,7 +486,7 @@ def review_candidate_with_llm(
         prompt_spec_ref=str(llm_defaults.get("prompt_spec_ref") or ""),
     )
     try:
-        review_card = screen_candidate(
+        review_outcome = screen_candidate(
             _candidate_input_from_record(record),
             prompt_version=str(llm_defaults["prompt_version"]),
             routing_version=str(llm_defaults["routing_version"]),
@@ -430,12 +498,18 @@ def review_candidate_with_llm(
             max_retries=int(llm_defaults["max_retries_default"]),
             request_interval_seconds=request_interval_seconds,
             retry_sleep_seconds=retry_sleep_seconds,
+            run_id=run_id,
         )
     except (ConfigError, ContractValidationError, ProcessingError):
         if not isinstance(existing, dict) or existing.get("status") != "succeeded":
             raise
         return _review_result_from_prescreen(existing, review_source="existing_llm_prescreen_fallback")
-    return _review_result_from_prescreen(review_card, review_source="fresh_llm_review")
+    if not screen_candidate_outcome_succeeded(review_outcome):
+        return _review_error_result_from_outcome(record["candidate_id"], review_outcome)
+    review_result = _review_result_from_prescreen(review_outcome["normalized_result"], review_source="fresh_llm_review")
+    review_result["llm_review_card"] = review_outcome["normalized_result"]
+    review_result["llm_outcome"] = review_outcome
+    return review_result
 
 
 def _apply_review_decision(
@@ -504,7 +578,7 @@ def _handoff_candidate(
             staging_dir=config.gold_set_staging_dir,
         )
     except ContractValidationError as exc:
-        if "Semantic duplicate source already present in staging" not in str(exc):
+        if "Semantic duplicate source URL already present in staging" not in str(exc):
             raise
         record["staging_handoff"] = _blocked_handoff([str(exc)])
         _write_candidate_record(config, candidate_path, record)
@@ -554,12 +628,53 @@ def _future_window_failure(cursor: LiveDiscoveryCursor) -> dict[str, Any]:
         "failed_step": "live_window_cursor",
         "error_type": "future_window_exhausted",
         "reason": (
-            "Live discovery cursor advanced beyond the current date "
+            "Live discovery cursor advanced into a window that extends beyond the current date "
             f"({cursor.current_window()} while today is {today.isoformat()}); "
             "stopping instead of scanning empty future windows."
         ),
         "safe_to_retry": False,
     }
+
+
+def _terminal_review_failure_from_record(
+    record: dict[str, Any],
+    *,
+    review_source: str = "terminal_prescreen_failure",
+) -> dict[str, Any] | None:
+    llm_prescreen = record.get("llm_prescreen")
+    if not isinstance(llm_prescreen, dict) or llm_prescreen.get("status") != "failed":
+        return None
+    error_type = llm_prescreen.get("error_type")
+    if not _is_terminal_fill_error(error_type):
+        return None
+    return _review_failure_result_from_record(
+        record,
+        review_source=review_source,
+        include_error_type=True,
+    )
+
+
+def _terminal_review_failure_payload(
+    review_results: list[dict[str, Any]],
+    *,
+    live_candidate_ids: set[str] | None = None,
+) -> dict[str, Any] | None:
+    live_ids = live_candidate_ids or set()
+    for result in review_results:
+        error_type = result.get("error_type")
+        if not _is_terminal_fill_error(error_type):
+            continue
+        candidate_id = str(result.get("candidate_id") or "candidate_llm_review")
+        failed_step = "live_candidate_llm_review" if candidate_id in live_ids else "existing_workspace_llm_review"
+        return {
+            "failed_step": failed_step,
+            "error_type": str(error_type),
+            "failure_code": result.get("failure_code"),
+            "reason": str(result.get("reason") or ""),
+            "candidate_id": candidate_id,
+            "safe_to_retry": False,
+        }
+    return None
 
 
 def _try_handoff_existing_approved_candidate(
@@ -585,6 +700,7 @@ def _process_existing_workspace_candidates(
     note_templates: dict[str, str],
     request_interval_seconds: int,
     retry_sleep_seconds: int,
+    run_id: str | None = None,
 ) -> tuple[list[dict[str, Any]], dict[str, Any] | None]:
     review_results: list[dict[str, Any]] = []
     for candidate_path, record in _scan_workspace_candidates(config):
@@ -602,6 +718,11 @@ def _process_existing_workspace_candidates(
         repaired = _repair_candidate_excerpt(record)
         if repaired:
             _write_candidate_record(config, candidate_path, record)
+
+        terminal_failure = _terminal_review_failure_from_record(record)
+        if terminal_failure is not None:
+            review_results.append(terminal_failure)
+            return review_results, None
 
         if not _review_input_is_sufficient(record):
             review_result = {
@@ -631,12 +752,29 @@ def _process_existing_workspace_candidates(
                 llm_fixture_path=llm_fixture_path,
                 request_interval_seconds=request_interval_seconds,
                 retry_sleep_seconds=retry_sleep_seconds,
+                run_id=run_id,
             )
         except (ProcessingError, ContractValidationError) as exc:
             _persist_review_failure(config, candidate_path, record, exc)
-            review_results.append(_review_error_result(record["candidate_id"], exc))
+            error_result = _review_error_result(record["candidate_id"], exc)
+            review_results.append(error_result)
+            if _is_terminal_fill_error(error_result.get("error_type")):
+                return review_results, None
             continue
         review_result["candidate_id"] = record["candidate_id"]
+        review_outcome = review_result.get("llm_outcome")
+        if isinstance(review_outcome, dict) and not screen_candidate_outcome_succeeded(review_outcome):
+            _persist_review_failure_outcome(config, candidate_path, record, review_outcome)
+            review_results.append(review_result)
+            if _is_terminal_fill_error(review_result.get("error_type")):
+                return review_results, None
+            continue
+        if review_result.get("review_source") == "fresh_llm_review":
+            review_card = review_result.get("llm_review_card")
+            if not isinstance(review_card, dict):
+                raise ContractValidationError("fresh_llm_review must provide llm_review_card before review derivation")
+            _persist_successful_prescreen_snapshot(config, candidate_path, record, review_card)
+            record = _load_candidate_record(config, candidate_path)
         review_results.append(
             _apply_review_decision(
                 config,
@@ -666,6 +804,7 @@ def _process_live_candidates(
     discovery_request_interval_seconds: int,
     request_interval_seconds: int,
     retry_sleep_seconds: int,
+    run_id: str | None = None,
 ) -> tuple[dict[str, Any], list[dict[str, Any]], dict[str, Any] | None]:
     current_window = cursor.current_window()
     current_slice_id = cursor.current_query_slice_id()
@@ -677,7 +816,7 @@ def _process_live_candidates(
         "new_candidate_document_paths": [],
         "new_candidate_ids": [],
     }
-    if discovery_fixture_path is None and cursor.window_start > _current_date():
+    if discovery_fixture_path is None and cursor.window_end > _current_date():
         live_summary["failure"] = _future_window_failure(cursor)
         return live_summary, [], None
 
@@ -711,6 +850,7 @@ def _process_live_candidates(
             discovery_request_interval_seconds=discovery_request_interval_seconds,
             request_interval_seconds=request_interval_seconds,
             retry_sleep_seconds=retry_sleep_seconds,
+            run_id=run_id,
         )
     except ProcessingError as exc:
         live_summary["failure"] = {
@@ -730,6 +870,10 @@ def _process_live_candidates(
         repaired = _repair_candidate_excerpt(record)
         if repaired:
             _write_candidate_record(config, candidate_path, record)
+        terminal_failure = _terminal_review_failure_from_record(record)
+        if terminal_failure is not None:
+            review_results.append(terminal_failure)
+            return live_summary, review_results, None
         if not _review_input_is_sufficient(record):
             review_results.append(
                 {
@@ -757,12 +901,29 @@ def _process_live_candidates(
                 llm_fixture_path=llm_fixture_path,
                 request_interval_seconds=request_interval_seconds,
                 retry_sleep_seconds=retry_sleep_seconds,
+                run_id=run_id,
             )
         except (ProcessingError, ContractValidationError) as exc:
             _persist_review_failure(config, candidate_path, record, exc)
-            review_results.append(_review_error_result(record["candidate_id"], exc))
+            error_result = _review_error_result(record["candidate_id"], exc)
+            review_results.append(error_result)
+            if _is_terminal_fill_error(error_result.get("error_type")):
+                return live_summary, review_results, None
             continue
         review_result["candidate_id"] = record["candidate_id"]
+        review_outcome = review_result.get("llm_outcome")
+        if isinstance(review_outcome, dict) and not screen_candidate_outcome_succeeded(review_outcome):
+            _persist_review_failure_outcome(config, candidate_path, record, review_outcome)
+            review_results.append(review_result)
+            if _is_terminal_fill_error(review_result.get("error_type")):
+                return live_summary, review_results, None
+            continue
+        if review_result.get("review_source") == "fresh_llm_review":
+            review_card = review_result.get("llm_review_card")
+            if not isinstance(review_card, dict):
+                raise ContractValidationError("fresh_llm_review must provide llm_review_card before review derivation")
+            _persist_successful_prescreen_snapshot(config, candidate_path, record, review_card)
+            record = _load_candidate_record(config, candidate_path)
         review_results.append(
             _apply_review_decision(
                 config,
@@ -800,6 +961,7 @@ def run_one_fill_iteration(
     discovery_request_interval_seconds: int = 0,
     request_interval_seconds: int = 0,
     retry_sleep_seconds: int = 0,
+    run_id: str | None = None,
 ) -> dict[str, Any]:
     if live_limit < 1 or live_limit > MAX_LIVE_LIMIT:
         raise ContractValidationError(f"live_limit must be between 1 and {MAX_LIVE_LIMIT}")
@@ -833,9 +995,13 @@ def run_one_fill_iteration(
         note_templates=note_templates,
         request_interval_seconds=request_interval_seconds,
         retry_sleep_seconds=retry_sleep_seconds,
+        run_id=run_id,
     )
     live_discovery: dict[str, Any] | None = None
-    if handoff_result is None:
+    terminal_review_failure = _terminal_review_failure_payload(review_results)
+    if handoff_result is None and terminal_review_failure is not None:
+        live_discovery = {"failure": terminal_review_failure}
+    if handoff_result is None and terminal_review_failure is None:
         live_discovery, live_review_results, handoff_result = _process_live_candidates(
             config,
             cursor=cursor,
@@ -846,8 +1012,16 @@ def run_one_fill_iteration(
             discovery_request_interval_seconds=discovery_request_interval_seconds,
             request_interval_seconds=request_interval_seconds,
             retry_sleep_seconds=retry_sleep_seconds,
+            run_id=run_id,
         )
         review_results.extend(live_review_results)
+        if handoff_result is None and isinstance(live_discovery, dict) and not isinstance(live_discovery.get("failure"), dict):
+            terminal_review_failure = _terminal_review_failure_payload(
+                live_review_results,
+                live_candidate_ids=set(live_discovery.get("new_candidate_ids") or []),
+            )
+            if terminal_review_failure is not None:
+                live_discovery["failure"] = terminal_review_failure
 
     candidate_workspace_count = validate_candidate_workspace(config)
     progress_after = validate_staging_workspace(config.gold_set_staging_dir)
@@ -1030,6 +1204,13 @@ def fill_gold_set_staging_until_complete(
     )
     _reconcile_unfinished_run(config, logger)
     run_id = f"fill_run_{utc_now_iso()}"
+    run_logger = get_logger(
+        "fill_gold_set_staging_until_complete",
+        source_id=f"src_{effective_source_code}",
+        task_id="fill_gold_set_staging_until_complete",
+        resolution_status="running",
+        run_id=run_id,
+    )
 
     initial_progress = validate_staging_workspace(config.gold_set_staging_dir)
     initial_entry = {
@@ -1046,7 +1227,7 @@ def fill_gold_set_staging_until_complete(
         "retry_sleep_seconds": resolved_retry_sleep_seconds,
     }
     _append_audit_log(config, initial_entry)
-    logger.info(json.dumps(initial_entry, ensure_ascii=True))
+    run_logger.info(json.dumps(initial_entry, ensure_ascii=True))
     if initial_progress["is_complete"]:
         completed_entry = {
             "event": "completed",
@@ -1056,7 +1237,7 @@ def fill_gold_set_staging_until_complete(
             "progress": _compact_progress(initial_progress),
         }
         _append_audit_log(config, completed_entry)
-        logger.info(json.dumps(completed_entry, ensure_ascii=True))
+        run_logger.info(json.dumps(completed_entry, ensure_ascii=True))
         return {
             "status": "completed",
             "iterations": 0,
@@ -1076,7 +1257,7 @@ def fill_gold_set_staging_until_complete(
                 "progress": _compact_progress(latest_progress),
             }
             _append_audit_log(config, max_iterations_entry)
-            logger.info(json.dumps(max_iterations_entry, ensure_ascii=True))
+            run_logger.info(json.dumps(max_iterations_entry, ensure_ascii=True))
             return {
                 "status": "max_iterations_reached",
                 "iterations": iteration,
@@ -1094,6 +1275,7 @@ def fill_gold_set_staging_until_complete(
             discovery_request_interval_seconds=resolved_discovery_request_interval_seconds,
             request_interval_seconds=resolved_request_interval_seconds,
             retry_sleep_seconds=resolved_retry_sleep_seconds,
+            run_id=run_id,
         )
         audit_entry = {
             "event": "iteration",
@@ -1103,7 +1285,7 @@ def fill_gold_set_staging_until_complete(
             **summary,
         }
         _append_audit_log(config, audit_entry)
-        logger.info(json.dumps(audit_entry, ensure_ascii=True))
+        run_logger.info(json.dumps(audit_entry, ensure_ascii=True))
         latest_progress = staging_progress(config.gold_set_staging_dir)
         terminal_failure = _terminal_iteration_failure(summary)
         if terminal_failure is not None and summary["handoff"] is None:
@@ -1116,7 +1298,7 @@ def fill_gold_set_staging_until_complete(
                 **terminal_failure,
             }
             _append_audit_log(config, blocked_entry)
-            logger.info(json.dumps(blocked_entry, ensure_ascii=True))
+            run_logger.info(json.dumps(blocked_entry, ensure_ascii=True))
             return {
                 "status": "blocked",
                 "iterations": iteration,
@@ -1133,7 +1315,7 @@ def fill_gold_set_staging_until_complete(
             )
             _wait_with_audit(
                 config,
-                logger,
+                run_logger,
                 run_id=run_id,
                 iteration=iteration,
                 wait_kind="failure_backoff",
@@ -1152,7 +1334,7 @@ def fill_gold_set_staging_until_complete(
         "progress": _compact_progress(latest_progress),
     }
     _append_audit_log(config, completed_entry)
-    logger.info(json.dumps(completed_entry, ensure_ascii=True))
+    run_logger.info(json.dumps(completed_entry, ensure_ascii=True))
     return {
         "status": "completed",
         "iterations": iteration,

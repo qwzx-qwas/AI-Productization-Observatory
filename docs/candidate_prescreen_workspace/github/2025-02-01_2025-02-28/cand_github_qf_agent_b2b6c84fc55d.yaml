@@ -1,0 +1,195 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_b2b6c84fc55d
+candidate_batch_id: candidate_batch_github_qf_agent_2025-02-01_2025-02-28
+created_at: '2026-04-08T13:34:24.860116Z'
+updated_at: '2026-04-09T02:57:57.567245Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '674158658'
+canonical_url: https://github.com/Paitesanshi/LLM-Agent-Survey
+title: LLM-Agent-Survey
+summary: ''
+raw_evidence_excerpt: "A Survey on LLM-based Autonomous Agents\n\nAutonomous agents\
+  \ are designed to achieve specific objectives through self-guided instructions.\
+  \ With the emergence and growth of large language models (LLMs), there is a growing\
+  \ trend in utilizing LLMs as fundamental controllers for these autonomous agents.\
+  \ While previous studies in this field have achieved remarkable successes, they\
+  \ remain independent proposals with little effort devoted to a systematic analysis.\
+  \ To bridge this gap, we conduct a comprehensive survey study, focusing on the construction,\
+  \ application, and evaluation of LLM-based autonomous agents. In particular, we\
+  \ first explore the essential components of an AI agent, including a profile module,\
+  \ a memory module, a planning module, and an action module. We further investigate\
+  \ the application of LLM-based autonomous agents in the domains of natural sciences,\
+  \ social sciences, and engineering. Subsequently, we delve into a discussion of\
+  \ the evaluation strategies employed in this field, encompassing both subjective\
+  \ and objective methods. Our survey aims to serve as a resource for researchers\
+  \ and practitioners, providing insights, related references, and continuous updates\
+  \ on this exciting and rapidly evolving field.\n\n**\U0001F4CD This is the first\
+  \ released and published survey paper in the field of LLM-based autonomous agents.**\n\
+  \nPaper link: A Survey on Large Language Model based Autonomous Agents\n\nUpdate\
+  \ Records - \U0001F525 [25/3/2024] Our survey paper has been accepted by Frontiers\
+  \ of Computer Science, which is the first published survey paper in the field of\
+  \ LLM-based agents.\n\n- \U0001F525 [9/8/2023] The second version of our survey\
+  \ has been released on arXiv.\n\nUpdated contents\n\n- **\U0001F4DA Additional References**\
+  \ - We have added 31 new works until 9/1/2023 to make the survey more comprehensive\
+  \ and up-to-date.\n\n- **\U0001F4CA New Figures** - **Figure 3:** This is a new\
+  \ figure illustrating the differences and similarities between various planning\
+  \ approaches. This helps in gaining a clearer understanding of the comparisons between\
+  \ different planning methods.\n\n- **Figure 4:** This is a new figure that describes\
+  \ the evolutionary path of model capability acquisition from the \"Machine Learning\
+  \ era\" to the \"Large Language Model era\" and then to the \"Agent era.\" Specifically,\
+  \ a new concept, \"mechanism engineering,\" has been introduced, which, along with\
+  \ \"parameter learning\" and \"prompt engineering,\" forms part of this evolutionary\
+  \ path.\n\n- **\U0001F50D Optimized Classification System** - We have slightly modified\
+  \ the classification system in our survey to make it more logical and organized.\n\
+  \n- \U0001F525 [8/23/2023] The first version of our survey has been released on\
+  \ arXiv.\n\nTable of Content\n\n- \U0001F916 Construction of LLM-based Autonomous\
+  \ Agent - \U0001F4CD Applications of LLM-based Autonomous Agent - \U0001F4CA Evaluation\
+  \ on LLM-based Autonomous Agent - \U0001F310 More Comprehensive Summarization -\
+  \ \U0001F468\u200D\U0001F468\u200D\U0001F467\u200D\U0001F466 Maintainers - \U0001F4DA\
+  \ Citation - \U0001F4AA How to Contribute - \U0001FAE1 Acknowledgement - \U0001F4E7\
+  \ Contact Us\n\n\U0001F916 Construction of LLM-based Autonomous Agent\n\nModel Profile\
+  \ Memory Planning Action CA Paper Code\n\nOperation Structure\n\nWebGPT - - - -\
+  \ w/ tools w/ fine-tuning Paper -\n\nSayCan - - - w/o feedback w/o tools w/o fine-tuning\
+  \ Paper Code\n\nMRKL - - - w/o feedback w/ tools - Paper -\n\nInner Monologue -\
+  \ - - w/ feedback w/o tools w/o fine-tuning Paper Code\n\nSocial Simulacra GPT-Generated\
+  \ - - - w/o tools - Paper -\n\nReAct - - - w/ feedback w/ tools w/ fine-tuning Paper\
+  \ Code\n\nLLM Planner - - - w/ feedback w/o tools Environment feedback Paper Code\n\
+  \nMALLM - Read/Write Hybrid - w/o tools - Paper -\n\naiflows - Read/Write/ Reflection\
+  \ Hybrid w/ feedback w/ tools - Paper Code\n\nDEPS - - - w/ feedback w/o tools w/o\
+  \ fine-tuning Paper Code\n\nToolformer - - - w/o feedback w/ tools w/ fine-tuning\
+  \ Paper Code\n\nReflexion - Read/Write/ Reflection Hybrid w/ feedback w/o tools\
+  \ w/o fine-tuning Paper Code\n\nCAMEL Handcrafting & GPT-Generated - - w/ feedback\
+  \ w/o tools - Paper Code\n\nAPI-Bank - - - w/ feedback w/ tools w/o fine-tuning\
+  \ Paper -\n\nChameleon - - - w/o feedback w/ tools - Paper Code\n\nViperGPT - -\
+  \ - - w/ tools - Paper Code\n\nHuggingGPT - - Unified w/o feedback w/ tools - Paper\
+  \ Code\n\nGenerative Agents Handcrafting Read/Write/ Reflection Hybrid w/ feedback\
+  \ w/o tools - Paper Code\n\nLLM+P - - - w/o feedback w/o tools - Paper -\n\nChemCrow\
+  \ - - - w/ feedback w/ tools - Paper Code\n\nOpenAGI - - - w/ feedback w/ tools\
+  \ w/ fine-tuning Paper Code\n\nAutoGPT - Read/Write Hybrid w/ feedback w/ tools\
+  \ w/o fine-tuning - Code\n\nSCM - Read/Write Hybrid - w/o tools - Paper Code\n\n\
+  Socially Alignment - Read/Write Hybrid - w/o tools Example Paper Code\n\nGITM -\
+  \ Read/Write/ Reflection Hybrid w/ feedback w/o tools w/ fine-tuning Paper Code\n\
+  \nVoyager - Read/Write/ Reflection Hybrid w/ feedback w/o tools w/o fine-tuning\
+  \ Paper Code\n\nIntrospective Tips - - - w/ feedback w/o tools w/o fine-tuning Paper\
+  \ -\n\nRET-LLM - Read/Write Hybrid - w/o tools w/ fine-tuning Paper -\n\nChatDB\
+  \ - Read/Write Hybrid w/ feedback w/ tools - Paper -\n\nS3 Dataset alignment Read/Write/\
+  \ Reflection Hybrid - w/o tools w/ fine-tuning Paper -\n\nChatDev Handcrafting Read/Write/\
+  \ Reflection Hybrid w/ feedback w/o tools w/o fine-tuning Paper Code\n\nToolLLM\
+  \ - - - w/ feedback w/ tools w/ fine-tuning Paper Code\n\nMemoryBank - Read/Write/\
+  \ Reflection Hybrid - w/o tools - Paper Code\n\nMetaGPT Handcrafting Read/Write/\
+  \ Reflection Hybrid w/ feedback w/ tools - Paper Code\n\nL2MAC Handcrafting Read/Write/\
+  \ Reflection Hybrid w/ feedback w/ tools - Paper Code\n\nLEO - - - w/ feedback w/o\
+  \ tools w/ fine-tuning Paper Code\n\nJARVIS-1 - Read/Write/ Reflection Hybrid w/\
+  \ feedback w/ tools w/o fine-tuning Paper Code\n\nCLOVA - Read/Write/ Reflection\
+  \ Hybrid w/ feedback w/ tools w/ fine-tuning Paper Code\n\nLearnAct - - - w/ feedback\
+  \ w/ tools w/ fine-tuning Paper Code\n\nAgentSquare - Read/Write Hybrid w/ feedback\
+  \ w/ tools - Paper Code\n\n* More papers can be found at More comprehensive Summarization.\
+  \ * CA means the strategy of model capability acquisition.\n\n\U0001F4CD Applications\
+  \ of LLM-based Autonomous Agent\n\nTitle Social Science Natural Science Engineering\
+  \ Paper Code\n\nDrori et al. - Science Education - Paper -\n\nSayCan - - Robotics\
+  \ & Embodied AI Paper Code\n\nInner monologue - - Robotics & Embodied AI Paper Code\n\
+  \nLanguage-Planners - - Robotics & Embodied AI Paper Code\n\nSocial Simulacra Social\
+  \ Simulation - - Paper -\n\nTE Psychology - - Paper Code\n\nOut of One Political\
+  \ Science and Economy - - Paper -\n\nLIBRO CS&SE - - Paper -\n\nBlind Judgement\
+  \ Jurisprudence - - Paper -\n\nHorton Political Science and Economy - - Paper -\n\
+  \nDECKARD - - Robotics & Embodied AI Paper Code\n\nPlanner-Actor-Reporter - - Robotics\
+  \ & Embodied AI Paper -\n\nDEPS - - Robotics & Embodied AI Paper -\n\nRCI - - CS&SE\
+  \ Paper Code\n\nGenerative Agents Social Simulation - - Paper Code\n\nSCG - - CS&SE\
+  \ Paper -\n\nIGLU - - Civil Engineering Paper -\n\nIELLM - - Industrial Automation\
+  \ Paper -\n\nChemCrow - Document and Data Management; Documentation, Data Managent;\
+  \ Science Education - Paper -\n\nBoiko et al. - Document and Data Management; Documentation,\
+  \ Data Managent; Science Education - Paper -\n\nGPT4IA - - Industrial Automation\
+  \ Paper Code\n\nSelf-collaboration - - CS&SE Paper -\n\nE2WM - - Robotics & Embodied\
+  \ AI Paper Code\n\nAkata et al. Psychology - - Paper -\n\nZiems et al. Psychology;\
+  \ Political Science and Economy; Research Assistant - - Paper -\n\nAgentVerse Social\
+  \ Simulation - - Paper Code\n\nSmolModels - - CS&SE - Code\n\nTidyBot - - Robotics\
+  \ & Embodied AI Paper Code\n\nPET - - Robotics & Embodied AI Paper -\n\nVoyager\
+  \ - - Robotics & Embodied AI Paper Code\n\nGITM - - Robotics & Embodied AI Paper\
+  \ Code\n\nNLSOM - Science Education - Paper -\n\nLLM4RL - - Robotics & Embodied\
+  \ AI Paper -\n\nGPT Engineer - - CS&SE - Code\n\nGrossman et al. - Experiment Assistant;\
+  \ Science Education - Paper -\n\nSQL-PALM - - CS&SE Paper -\n\nREMEMBER - - Robotics\
+  \ & Embodied AI Paper -\n\nDemoGPT - - CS&SE - Code\n\nChatlaw Jurisprudence - -\
+  \ Paper Code\n\nRestGPT - - CS&SE Paper Code\n\nDialogue shaping - - Robotics &\
+  \ Embodied AI Paper -\n\nTaPA - - Robotics & Embodied AI Paper -\n\nMa et al. Psychology\
+  \ - - Paper -"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '674158658'
+    canonical_url: https://github.com/Paitesanshi/LLM-Agent-Survey
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

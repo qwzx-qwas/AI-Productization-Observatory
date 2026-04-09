@@ -50,6 +50,8 @@ def _json_request(
     timeout_seconds: int = 30,
     request_interval_seconds: int = 0,
     sleep_fn: Callable[[float], None] = sleep,
+    source_id: str | None = None,
+    run_id: str | None = None,
 ) -> dict[str, Any]:
     body = None
     request_headers = dict(headers or {})
@@ -57,7 +59,13 @@ def _json_request(
         body = json.dumps(payload).encode("utf-8")
         request_headers.setdefault("Content-Type", "application/json")
     request = urllib.request.Request(url, data=body, headers=request_headers, method=method)
-    logger = get_logger("candidate_prescreen_discovery", task_id="candidate_prescreen_discovery", resolution_status="running")
+    logger = get_logger(
+        "candidate_prescreen_discovery",
+        task_id="candidate_prescreen_discovery",
+        resolution_status="running",
+        source_id=source_id,
+        run_id=run_id,
+    )
     waited_seconds = wait_for_request_interval(
         "candidate_prescreen_discovery",
         request_interval_seconds,
@@ -95,7 +103,14 @@ def _json_request(
     return decoded
 
 
-def _read_github_readme(full_name: str, token: str, timeout_seconds: int, request_interval_seconds: int) -> str:
+def _read_github_readme(
+    full_name: str,
+    token: str,
+    timeout_seconds: int,
+    request_interval_seconds: int,
+    *,
+    run_id: str | None,
+) -> str:
     url = f"https://api.github.com/repos/{full_name}/readme"
     headers = {
         "Accept": "application/vnd.github+json",
@@ -109,6 +124,8 @@ def _read_github_readme(full_name: str, token: str, timeout_seconds: int, reques
             headers=headers,
             timeout_seconds=timeout_seconds,
             request_interval_seconds=request_interval_seconds,
+            source_id="src_github",
+            run_id=run_id,
         )
     except ProcessingError:
         return ""
@@ -234,6 +251,7 @@ def _filter_github_candidates(
     query_slice_id: str | None,
     items: list[dict[str, Any]],
     limit: int,
+    run_id: str | None,
 ) -> list[dict[str, Any]]:
     accepted: list[dict[str, Any]] = []
     rejected_reason_counts: dict[str, int] = {}
@@ -244,7 +262,13 @@ def _filter_github_candidates(
             continue
         if reason is not None:
             rejected_reason_counts[reason] = rejected_reason_counts.get(reason, 0) + 1
-    logger = get_logger("candidate_prescreen_discovery", task_id="candidate_prescreen_discovery", resolution_status="running")
+    logger = get_logger(
+        "candidate_prescreen_discovery",
+        task_id="candidate_prescreen_discovery",
+        resolution_status="running",
+        source_id="src_github",
+        run_id=run_id,
+    )
     logger.info(
         json.dumps(
             {
@@ -273,6 +297,7 @@ def discover_candidates(
     fixture_path: Path | None,
     timeout_seconds: int = 30,
     request_interval_seconds: int = 0,
+    run_id: str | None = None,
 ) -> list[dict[str, Any]]:
     slice_config = query_slice_config(workflow_config, source_code, query_slice_id)
     if fixture_path is not None:
@@ -292,6 +317,7 @@ def discover_candidates(
                 query_slice_id=slice_config.get("query_slice_id"),
                 items=normalized_items,
                 limit=limit,
+                run_id=run_id,
             )
         return normalized_items[:limit]
     if source_code == "github":
@@ -302,6 +328,7 @@ def discover_candidates(
             limit=limit,
             timeout_seconds=timeout_seconds,
             request_interval_seconds=request_interval_seconds,
+            run_id=run_id,
         )
     if source_code == "product_hunt":
         return _discover_product_hunt_live(
@@ -311,6 +338,7 @@ def discover_candidates(
             limit=limit,
             timeout_seconds=timeout_seconds,
             request_interval_seconds=request_interval_seconds,
+            run_id=run_id,
         )
     raise ContractValidationError(f"Unsupported source_code for candidate prescreen discovery: {source_code}")
 
@@ -323,6 +351,7 @@ def _discover_github_live(
     limit: int,
     timeout_seconds: int,
     request_interval_seconds: int,
+    run_id: str | None,
 ) -> list[dict[str, Any]]:
     token = require_environment_variable("GITHUB_TOKEN")
     start_date, end_date = _parse_window(window)
@@ -335,6 +364,7 @@ def _discover_github_live(
         limit=limit,
         timeout_seconds=timeout_seconds,
         request_interval_seconds=request_interval_seconds,
+        run_id=run_id,
     )
 
 
@@ -348,6 +378,7 @@ def _discover_github_window(
     limit: int,
     timeout_seconds: int,
     request_interval_seconds: int,
+    run_id: str | None,
 ) -> list[dict[str, Any]]:
     if limit <= 0:
         return []
@@ -369,6 +400,8 @@ def _discover_github_window(
         headers=headers,
         timeout_seconds=timeout_seconds,
         request_interval_seconds=request_interval_seconds,
+        source_id="src_github",
+        run_id=run_id,
     )
     total_count = payload.get("total_count")
     incomplete_results = payload.get("incomplete_results")
@@ -383,6 +416,7 @@ def _discover_github_window(
             limit=limit,
             timeout_seconds=timeout_seconds,
             request_interval_seconds=request_interval_seconds,
+            run_id=run_id,
         )
         remaining = max(0, limit - len(left))
         right_start = split_point + timedelta(days=1)
@@ -395,6 +429,7 @@ def _discover_github_window(
             limit=remaining,
             timeout_seconds=timeout_seconds,
             request_interval_seconds=request_interval_seconds,
+            run_id=run_id,
         )
         return (left + right)[:limit]
     items = payload.get("items")
@@ -406,7 +441,7 @@ def _discover_github_window(
             continue
         full_name = item.get("full_name")
         readme_excerpt = (
-            _read_github_readme(full_name, token, timeout_seconds, request_interval_seconds)
+            _read_github_readme(full_name, token, timeout_seconds, request_interval_seconds, run_id=run_id)
             if isinstance(full_name, str) and full_name
             else ""
         )
@@ -439,6 +474,7 @@ def _discover_github_window(
         query_slice_id=slice_config.get("query_slice_id"),
         items=normalized,
         limit=limit,
+        run_id=run_id,
     )
 
 
@@ -450,6 +486,7 @@ def _discover_product_hunt_live(
     limit: int,
     timeout_seconds: int,
     request_interval_seconds: int,
+    run_id: str | None,
 ) -> list[dict[str, Any]]:
     token = require_environment_variable("PRODUCT_HUNT_TOKEN")
     start_date, end_date = _parse_window(window)
@@ -505,6 +542,8 @@ def _discover_product_hunt_live(
         },
         timeout_seconds=timeout_seconds,
         request_interval_seconds=request_interval_seconds,
+        source_id="src_product_hunt",
+        run_id=run_id,
     )
     data = payload.get("data")
     posts = ((data or {}).get("posts") if isinstance(data, dict) else None)

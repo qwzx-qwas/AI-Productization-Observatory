@@ -7,9 +7,11 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
+from src.candidate_prescreen.config import build_analysis_run_key, build_sample_key
+from src.candidate_prescreen.relay import PAYLOAD_BUILDER_VERSION, build_relay_candidate_input
 from src.candidate_prescreen.workflow import archive_duplicate_candidate_records, archive_future_window_candidate_records, run_candidate_prescreen
 from src.candidate_prescreen.review_card import normalize_llm_result
-from src.common.files import dump_yaml, load_yaml
+from src.common.files import dump_yaml, load_yaml, utc_now_iso
 from tests.helpers import temp_config
 
 
@@ -19,6 +21,140 @@ def _write_json(path: Path, payload: dict[str, object]) -> None:
 
 
 class CandidatePrescreenWorkflowUnitTests(unittest.TestCase):
+    def test_build_sample_key_is_stable_across_windows_and_query_slices(self) -> None:
+        first = build_sample_key("src_github", "https://GitHub.com/example/product/?b=2&a=1#readme")
+        second = build_sample_key("src_github", "https://github.com/example/product/?a=1&b=2")
+
+        self.assertEqual(first, second)
+
+    def test_build_analysis_run_key_is_stable_for_the_same_cleaned_input(self) -> None:
+        sample_key = build_sample_key("src_github", "https://github.com/example/product")
+        cleaned_candidate_input = build_relay_candidate_input(
+            {
+                "source": "github",
+                "source_window": "2026-03-01..2026-03-08",
+                "external_id": "123",
+                "canonical_url": "https://github.com/example/product",
+                "title": "Example Product",
+                "summary": "AI assistant for support teams.",
+                "raw_evidence_excerpt": "Useful product evidence.",
+                "query_family": "ai_applications_and_products",
+                "query_slice_id": "qf_agent",
+                "selection_rule_version": "github_qsv1",
+                "time_field": "pushed_at",
+            }
+        )
+
+        first = build_analysis_run_key(
+            sample_key=sample_key,
+            cleaned_candidate_input=cleaned_candidate_input,
+            prompt_version="candidate_prescreener_v1",
+            routing_version="route_candidate_prescreener_v1",
+            relay_client_version="relay_candidate_prescreener_v1",
+            payload_builder_version=PAYLOAD_BUILDER_VERSION,
+        )
+        second = build_analysis_run_key(
+            sample_key=sample_key,
+            cleaned_candidate_input=cleaned_candidate_input,
+            prompt_version="candidate_prescreener_v1",
+            routing_version="route_candidate_prescreener_v1",
+            relay_client_version="relay_candidate_prescreener_v1",
+            payload_builder_version=PAYLOAD_BUILDER_VERSION,
+        )
+
+        self.assertEqual(first, second)
+
+    def test_run_candidate_prescreen_dedupes_by_normalized_url_across_external_ids(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            candidate_workspace = root / "candidate_workspace"
+            first_fixture = root / "fixtures" / "candidate_window_1.json"
+            second_fixture = root / "fixtures" / "candidate_window_2.json"
+            llm_fixture = root / "fixtures" / "llm_fixture.json"
+            repo_llm_fixture = json.loads(
+                (Path(__file__).resolve().parents[2] / "fixtures" / "candidate_prescreen" / "llm_prescreen_responses.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            fixture_response = next(iter(repo_llm_fixture["responses"].values()))
+            first_item = {
+                "external_id": "123",
+                "canonical_url": "https://GitHub.com/example/product/?b=2&a=1#readme",
+                "title": "Example Product",
+                "summary": "AI assistant for sales teams and meeting follow-up workflows.",
+                "raw_evidence_excerpt": "Assistant workspace for sales call prep, notes, and follow-up tasks.",
+                "author_name": "example",
+                "linked_homepage_url": "https://example.com",
+                "linked_repo_url": None,
+                "published_at": None,
+                "pushed_at": "2026-03-08T00:00:00Z",
+                "topics": ["agent"],
+                "language": "Python",
+                "current_metrics_json": {"star_count": 10},
+            }
+            second_item = dict(first_item)
+            second_item["external_id"] = "456"
+            second_item["canonical_url"] = "https://github.com/example/product/?a=1&b=2"
+            second_item["summary"] = "Updated summary should not create a second candidate doc."
+            _write_json(
+                first_fixture,
+                {
+                    "source": "github",
+                    "window": "2026-03-01..2026-03-08",
+                    "query_slice_id": "qf_agent",
+                    "items": [first_item],
+                },
+            )
+            _write_json(
+                second_fixture,
+                {
+                    "source": "github",
+                    "window": "2026-03-08..2026-03-15",
+                    "query_slice_id": "qf_agent",
+                    "items": [second_item],
+                },
+            )
+            _write_json(
+                llm_fixture,
+                {
+                    "prompt_version": "candidate_prescreener_v1",
+                    "routing_version": "route_candidate_prescreener_v1",
+                    "relay_client_version": "relay_candidate_prescreener_v1",
+                    "model": "fixture-relay",
+                    "responses": {
+                        "github:123": fixture_response,
+                    },
+                },
+            )
+
+            with temp_config(candidate_workspace_dir=candidate_workspace) as config:
+                first_paths = run_candidate_prescreen(
+                    config,
+                    source_code="github",
+                    window="2026-03-01..2026-03-08",
+                    query_slice_id="qf_agent",
+                    limit=1,
+                    discovery_fixture_path=first_fixture,
+                    llm_fixture_path=llm_fixture,
+                )
+                second_paths = run_candidate_prescreen(
+                    config,
+                    source_code="github",
+                    window="2026-03-08..2026-03-15",
+                    query_slice_id="qf_agent",
+                    limit=1,
+                    discovery_fixture_path=second_fixture,
+                    llm_fixture_path=llm_fixture,
+                )
+
+            candidate_docs = sorted(candidate_workspace.rglob("*.yaml"))
+            self.assertEqual(len(first_paths), 1)
+            self.assertEqual(second_paths, [])
+            self.assertEqual(candidate_docs, first_paths)
+            record = load_yaml(candidate_docs[0])
+            self.assertEqual(record["external_id"], "123")
+            self.assertEqual(record["canonical_url"], "https://github.com/example/product?a=1&b=2")
+
     def test_run_candidate_prescreen_reuses_existing_semantic_candidate_across_windows(self) -> None:
         with TemporaryDirectory() as tmp_dir:
             root = Path(tmp_dir)
@@ -112,6 +248,90 @@ class CandidatePrescreenWorkflowUnitTests(unittest.TestCase):
             self.assertEqual(record["source_window"], "2026-03-01..2026-03-08")
             self.assertEqual(record["summary"], "AI assistant for sales teams and meeting follow-up workflows.")
             self.assertEqual(record["raw_evidence_excerpt"], "Assistant workspace for sales call prep, notes, and follow-up tasks.")
+
+    def test_run_candidate_prescreen_rejects_invalid_url_before_writing_candidate_doc(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            candidate_workspace = root / "candidate_workspace"
+            discovery_fixture = root / "fixtures" / "candidate_window.json"
+            llm_fixture = root / "fixtures" / "llm_fixture.json"
+            repo_llm_fixture = json.loads(
+                (Path(__file__).resolve().parents[2] / "fixtures" / "candidate_prescreen" / "llm_prescreen_responses.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            fixture_response = next(iter(repo_llm_fixture["responses"].values()))
+            _write_json(
+                discovery_fixture,
+                {
+                    "source": "github",
+                    "window": "2026-03-01..2026-03-08",
+                    "query_slice_id": "qf_agent",
+                    "items": [
+                        {
+                            "external_id": "100",
+                            "canonical_url": "   ",
+                            "title": "Broken URL Candidate",
+                            "summary": "Should be rejected before any candidate doc is written.",
+                            "raw_evidence_excerpt": "Workspace with empty URL should never enter the writable path.",
+                            "author_name": "example",
+                            "linked_homepage_url": None,
+                            "linked_repo_url": None,
+                            "published_at": None,
+                            "pushed_at": "2026-03-08T00:00:00Z",
+                            "topics": ["agent"],
+                            "language": "Python",
+                            "current_metrics_json": {"star_count": 10},
+                        },
+                        {
+                            "external_id": "101",
+                            "canonical_url": "https://github.com/example/valid-product",
+                            "title": "Valid Product",
+                            "summary": "AI assistant for support teams.",
+                            "raw_evidence_excerpt": "Support workspace with valid URL should continue through the workflow.",
+                            "author_name": "example",
+                            "linked_homepage_url": "https://example.com",
+                            "linked_repo_url": None,
+                            "published_at": None,
+                            "pushed_at": "2026-03-08T00:00:00Z",
+                            "topics": ["agent"],
+                            "language": "Python",
+                            "current_metrics_json": {"star_count": 10},
+                        },
+                    ],
+                },
+            )
+            _write_json(
+                llm_fixture,
+                {
+                    "prompt_version": "candidate_prescreener_v1",
+                    "routing_version": "route_candidate_prescreener_v1",
+                    "relay_client_version": "relay_candidate_prescreener_v1",
+                    "model": "fixture-relay",
+                    "responses": {
+                        "github:101": fixture_response,
+                    },
+                },
+            )
+
+            with temp_config(candidate_workspace_dir=candidate_workspace) as config:
+                with self.assertLogs("candidate_prescreen_workflow", level="INFO") as captured:
+                    written_paths = run_candidate_prescreen(
+                        config,
+                        source_code="github",
+                        window="2026-03-01..2026-03-08",
+                        query_slice_id="qf_agent",
+                        limit=2,
+                        discovery_fixture_path=discovery_fixture,
+                        llm_fixture_path=llm_fixture,
+                    )
+
+            self.assertEqual(len(written_paths), 1)
+            record = load_yaml(written_paths[0])
+            self.assertEqual(record["external_id"], "101")
+            joined_logs = "\n".join(captured.output)
+            self.assertIn("candidate_rejected", joined_logs)
+            self.assertIn("invalid_canonical_url", joined_logs)
 
     def test_archive_duplicate_candidate_records_moves_non_preferred_duplicates_out_of_active_workspace(self) -> None:
         with TemporaryDirectory() as tmp_dir:
@@ -504,7 +724,19 @@ class CandidatePrescreenWorkflowUnitTests(unittest.TestCase):
             with temp_config(candidate_workspace_dir=candidate_workspace) as config:
                 with patch("src.candidate_prescreen.workflow.discover_candidates", return_value=[fixture_item]) as discover_mock, patch(
                     "src.candidate_prescreen.workflow.screen_candidate",
-                    return_value=llm_result,
+                    return_value={
+                        "transport_status": "succeeded",
+                        "provider_response_status": "succeeded",
+                        "content_status": "succeeded",
+                        "schema_status": "succeeded",
+                        "business_status": "succeeded",
+                        "request_id": None,
+                        "http_status": 200,
+                        "mapped_error_type": None,
+                        "failure_code": None,
+                        "failure_message": None,
+                        "normalized_result": llm_result,
+                    },
                 ) as screen_mock:
                     run_candidate_prescreen(
                         config,
@@ -520,3 +752,88 @@ class CandidatePrescreenWorkflowUnitTests(unittest.TestCase):
 
             self.assertEqual(discover_mock.call_args.kwargs["request_interval_seconds"], 0)
             self.assertEqual(screen_mock.call_args.kwargs["request_interval_seconds"], 60)
+
+    def test_run_candidate_prescreen_skips_retryable_duplicate_analysis_within_cooldown(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            candidate_workspace = root / "candidate_workspace"
+            discovery_fixture = root / "fixtures" / "candidate_window.json"
+            llm_fixture = root / "fixtures" / "llm_fixture.json"
+            repo_llm_fixture = json.loads(
+                (Path(__file__).resolve().parents[2] / "fixtures" / "candidate_prescreen" / "llm_prescreen_responses.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            fixture_response = next(iter(repo_llm_fixture["responses"].values()))
+            fixture_item = {
+                "external_id": "123",
+                "canonical_url": "https://github.com/example/product",
+                "title": "Example Product",
+                "summary": "AI assistant for sales teams and meeting follow-up workflows.",
+                "raw_evidence_excerpt": "Assistant workspace for sales call prep, notes, and follow-up tasks.",
+                "author_name": "example",
+                "linked_homepage_url": "https://example.com",
+                "linked_repo_url": None,
+                "published_at": None,
+                "pushed_at": "2026-03-08T00:00:00Z",
+                "topics": ["assistant"],
+                "language": "Python",
+                "current_metrics_json": {"star_count": 10},
+            }
+            _write_json(
+                discovery_fixture,
+                {
+                    "source": "github",
+                    "window": "2026-03-01..2026-03-08",
+                    "query_slice_id": "qf_agent",
+                    "items": [fixture_item],
+                },
+            )
+            _write_json(
+                llm_fixture,
+                {
+                    "prompt_version": "candidate_prescreener_v1",
+                    "routing_version": "route_candidate_prescreener_v1",
+                    "relay_client_version": "relay_candidate_prescreener_v1",
+                    "model": "fixture-relay",
+                    "responses": {
+                        "github:123": fixture_response,
+                    },
+                },
+            )
+
+            with temp_config(candidate_workspace_dir=candidate_workspace) as config:
+                first_paths = run_candidate_prescreen(
+                    config,
+                    source_code="github",
+                    window="2026-03-01..2026-03-08",
+                    query_slice_id="qf_agent",
+                    limit=1,
+                    discovery_fixture_path=discovery_fixture,
+                    llm_fixture_path=llm_fixture,
+                )
+                record = load_yaml(first_paths[0])
+                record["llm_prescreen"]["status"] = "failed"
+                record["llm_prescreen"]["error_type"] = "network_error"
+                record["llm_prescreen"]["error_message"] = "temporary relay outage"
+                record["human_review_status"] = "pending_first_pass"
+                record["human_review_note_template_key"] = None
+                record["human_review_notes"] = None
+                record["human_reviewed_at"] = None
+                record["updated_at"] = utc_now_iso()
+                dump_yaml(first_paths[0], record)
+
+                with patch("src.candidate_prescreen.workflow.screen_candidate") as screen_mock:
+                    second_paths = run_candidate_prescreen(
+                        config,
+                        source_code="github",
+                        window="2026-03-01..2026-03-08",
+                        query_slice_id="qf_agent",
+                        limit=1,
+                        discovery_fixture_path=discovery_fixture,
+                        llm_fixture_path=llm_fixture,
+                        retry_sleep_seconds=30,
+                    )
+
+            screen_mock.assert_not_called()
+            self.assertEqual(second_paths, [])

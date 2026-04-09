@@ -1,0 +1,156 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_4330fca82522
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-02-01_2025-02-28
+created_at: '2026-04-08T14:00:57.386911Z'
+updated_at: '2026-04-09T03:01:42.916050Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '838559876'
+canonical_url: https://github.com/microsoft/aitour-repo-principal-list
+title: aitour-repo-principal-list
+summary: ''
+raw_evidence_excerpt: "Microsoft AI Tour\n\nThe Microsoft AI Tour kicks off on September\
+  \ 24, 2024, in Mexico City and spans over 60 cities around the world, from Sao Paulo\
+  \ to Johannesburg, Mumbai to Sydney, Seoul to Berlin, and many more.\n\nThis free,\
+  \ one-day and in-person experience offers AI thought leadership, sessions to help\
+  \ build AI skills, hands-on workshops, and connection opportunities designed to\
+  \ inspire attendees, while providing practical approaches for using the power of\
+  \ AI. We\u2019ll also showcase local customer and partner stories at each stop.\n\
+  \nReady to join this innovation revolution? Visit the Microsoft AI Tour website\
+  \ and request to attend the Tour when it comes to your city.\n\nMicrosoft AI Discord\
+  \ Community Join our Microsoft AI Discord community to continue the discussion and\
+  \ learning\n\nBreakout Sessions and Workshops\n\nWhether you\u2019re a senior business\
+  \ leader or a technical practitioner, you\u2019ll find valuable insights and actionable\
+  \ solutions.\n\nFor senior business leaders, we offer expert-led presentations into\
+  \ how to best leverage AI to solve complex problems and create lasting value. Plus,\
+  \ dive deep into how AI fits into the Microsoft roadmap, which will help attendees\
+  \ align their AI strategies with the latest technologies and best practices.\n\n\
+  For technical practitioners, we offer immersive workshops on the latest AI technologies,\
+  \ hands-on experience with Microsoft and partner experts, and a vibrant community\
+  \ ready to exchange ideas. We\u2019ll also provide insight into the future of AI,\
+  \ helping attendees stay updated on the rapidly evolving tech landscape.\n\nEach\
+  \ individual session and workshop below is hyperlinked to it's own GitHub repository\
+  \ where you can find more information.\n\n| Content Type | Abbreviaton | |----------|:-------------:|\
+  \ | Decision Maker Breakout Sessions | DM | | Technical Breakout Sessions | TECH\
+  \ | | Workshops | WKSH |\n\nMicrosoft Copilot\n\n- #### (DM) BRK310: AI at Work:\
+  \ Unlock value and opportunity with Microsoft Copilot - #### (TECH) BRK410: Copilot\
+  \ Implementation Essentials - #### (WKSH) WRK510: Data, security and compliance\
+  \ practices for Copilot\n\nAI Safety and Security\n\n- #### (DM) BRK320: Secure\
+  \ your future in the age of AI - #### (TECH) BRK420: Securing AI applications on\
+  \ Azure - #### (TECH) BRK421: Data security for AI - #### (TECH) BRK422: GitHub\
+  \ Advanced Security: Securing your Workflow - #### (TECH) BRK423: Forging modern\
+  \ security with Copilot for Security\u200B\u200B\n\nCopilot Extensibility\n\n- ####\
+  \ (DM) BRK330: Innovate with AI and Low Code: Power Platform - #### (DM) BRK331:\
+  \ Applying the functional blueprint to transform your business - #### (TECH) BRK430:\
+  \ Build and customize copilots with Copilot Studio - #### (TECH) BRK431: Essential\
+  \ prompting for GitHub Copilot in VS Code - #### (TECH) BRK432: Advanced Coding:\
+  \ Visual Studio & GitHub Copilot - #### (TECH) BRK433: Developers guide to customizing\
+  \ Microsoft Copilot - #### (WKSH) WRK530: Build and extend agents with Microsoft\
+  \ Copilot Studio\n\nIntroduction: AI Orchestration, Tooling, and Foundation\n\n\
+  - #### (TECH) BRK440: Getting started with Generative AI in Azure - #### (TECH)\
+  \ BRK441: Build AI Solutions with Azure AI Foundry - #### (TECH) BRK443: Build your\
+  \ code-first app with Azure AI Agent Service - #### (TECH) BRK444: Getting started\
+  \ with AI Agents in Azure - #### (WKSH) WRK540: Interacting with models and agents\
+  \ in Azure AI Foundry\n\nAdvanced: Taking AI Orchestration, Tooling, and Foundations\
+  \ to Production\n\n- #### (DM) BRK350: Delivering AI with impact through intelligent\
+  \ apps - #### (DM) BRK351: Azure Open AI Service: Customizing trustworthy Gen AI\
+  \ systems at scale - #### (TECH) BRK450: Prompty, AI Foundry and practical E2E development\
+  \ - #### (TECH) BRK451: Code-first GenAIOps from prototype to production - ####\
+  \ (TECH) BRK452: Trustworthy AI: Advanced AI risk evaluation and mitigation - ####\
+  \ (TECH) BRK453: Explore cutting-edge models: LLMs, SLMs and more - #### (WKSH)\
+  \ WRK550: Build a copilot code-first with Azure AI Foundry - #### (WKSH) WRK552:\
+  \ Build Your First Agent with Azure AI Agent Service\n\nYour Data\n\n- #### (DM)\
+  \ BRK360: Activate your data and analytics for AI innovation - #### (TECH) BRK460:\
+  \ Microsoft Fabric: What's new and what's next - #### (TECH) BRK461: Next gen AI\
+  \ apps with databases at scale anywhere - #### (TECH) BRK462: Microsoft Fabric:\
+  \ Reimagine Real-Time Intelligence - #### (TECH) BRK463: Production-ready RAG with\
+  \ Azure AI Search - #### (WKSH) WRK560: Microsoft Fabric: Start with Real-Time Intelligence\n\
+  \nAI Infrastructure\n\n- #### (DM) BRK370: Cloud infrastructure for AI transformation\
+  \ - #### (TECH) BRK470: Leverage cloud native infra for intelligent apps - ####\
+  \ (TECH) BRK471: Leverage AI for infrastructure management - #### (TECH) BRK472:\
+  \ Preparing for your organization's AI workloads\u200B - #### (TECH) BRK473: Optimizing\
+  \ your AI costs\u200B\n\nTheatre Sessions\n\n- #### (TECH) DIS188: Azure AI Foundry\
+  \ Models as a Service 15-minute theatre talk - #### (TECH) DIS192: Azure AI Agent\
+  \ Service Introduction 15-minute theatre talk\n\nDeprecated Sessions - #### (WKSH)\
+  \ WRK551: Build a multi-tasking assistant with Azure OpenAI - #### (TECH) BRK442:\
+  \ Infusing an eCommerce app with AI\u200B"
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '838559876'
+    canonical_url: https://github.com/microsoft/aitour-repo-principal-list
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

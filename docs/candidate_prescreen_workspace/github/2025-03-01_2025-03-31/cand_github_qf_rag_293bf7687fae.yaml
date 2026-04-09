@@ -1,0 +1,142 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_293bf7687fae
+candidate_batch_id: candidate_batch_github_qf_rag_2025-03-01_2025-03-31
+created_at: '2026-04-08T14:44:54.325956Z'
+updated_at: '2026-04-09T03:08:08.811654Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '687282258'
+canonical_url: https://github.com/run-llama/sec-insights
+title: sec-insights
+summary: A real world full-stack application using LlamaIndex
+raw_evidence_excerpt: "A real world full-stack application using LlamaIndex\n\nSEC\
+  \ Insights \U0001F3E6\n\nSEC Insights uses the Retrieval Augmented Generation (RAG)\
+  \ capabilities of LlamaIndex to answer questions about SEC 10-K & 10-Q documents.\n\
+  \nYou can start using the application now at secinsights.ai\n\nYou can also check\
+  \ out our End-to-End tutorial guide on YouTube for this project! This video covers\
+  \ product features, system architecture, development environment setup, and how\
+  \ to use this application with your own custom documents *(beyond just SEC filings!)*.\
+  \ The video has chapters so you can skip to the section most relevant to you.\n\n\
+  Why did we make this? \U0001F914 As RAG applications look to move increasingly from\
+  \ prototype to production, we thought our developer community would find value in\
+  \ having a complete example of a working real-world RAG application.\n\nSEC Insights\
+  \ works as well locally as it does in the cloud. It also comes with many product\
+  \ features that will be immediately applicable to most RAG applications.\n\nUse\
+  \ this repository as a reference when building out your own RAG application or fork\
+  \ it entirely to start your project off with a solid foundation.\n\nProduct Features\
+  \ \U0001F60E - Chat-based Document Q&A against a pool of documents - Citation of\
+  \ source data that LLM response was based on - PDF Viewer with highlighting of citations\
+  \ - Use of API-based tools (polygon.io) for answering quantitative questions - Token-level\
+  \ streaming of LLM responses via Server-Sent Events - Streaming of Reasoning Steps\
+  \ (Sub-Questions) within Chat\n\nDevelopment Features \U0001F913 - Infrastructure-as-code\
+  \ for deploying directly to Vercel & Render - Continuous deployments provided by\
+  \ Vercel & Render.com. Shipping changes is as easy as merging into your `main` branch.\
+  \ - Production & Preview environments for both Frontend & Backend deployments! Easily\
+  \ try your changes before release. - Robust local environment setup making use of\
+  \ LocalStack & Docker compose - Monitoring & Profiling provided by Sentry - Load\
+  \ Testing provided by Loader.io - LLM Observability by Arize Phoenix - Variety of\
+  \ python scripts for REPL-based chat & data management\n\nTech Stack \u2692\uFE0F\
+  \ - Frontend - React / Next.js - Tailwind CSS - Backend - FastAPI - Docker - SQLAlchemy\
+  \ - OpenAI (gpt-3.5-turbo + text-embedding-ada-002) - PGVector - LlamaIndex \U0001F999\
+  \ - Infrastructure - Render.com - Backend hosting - Postgres 15 - Vercel - Frontend\
+  \ Hosting - AWS - Cloudfront - S3\n\nSystem Architecture\n\nUsage \U0001F4BB See\
+  \ `README.md` files in `frontend/` & `backend/` folders for individual setup instructions\
+  \ for each. As mentioned above, we also have a YouTube tutorial here that covers\
+  \ how to setup this project's development environment.\n\nWe've also included a\
+  \ config for a GitHub Codespace in `.devcontainer/devcontainer.json`. If you choose\
+  \ to use GitHub Codespaces, your codespace will come pre-configured with a lot of\
+  \ the libraries and system dependencies that are needed to run this project. This\
+  \ is probably the fastest way to get this project up and running! Having said that,\
+  \ developers have successfully set-up this project in Linux, macOS, and Windows\
+  \ environments!\n\nIf you have any questions when trying to run this project, you\
+  \ may find your answer quickly by reviewing our FAQ or by searching through our\
+  \ GitHub issues! If you don't see a satisfactory answer to your question, feel free\
+  \ to open a GitHub issue so we may assist you!\n\nWe also have a dedicated #sec-insights\
+  \ channel on our Discord where we may be able to assist with smaller issues more\
+  \ instantaneously.\n\nCaveats \U0001F9D0 - The frontend currently doesn't support\
+  \ Mobile - Our main goal with this project is to provide a solid foundation for\
+  \ full-stack RAG apps. There is still room for improvement in terms of RAG performance!\n\
+  \nContributing \U0001F4A1 We remain very open to contributions! We're looking forward\
+  \ to seeing the ideas and improvements the LlamaIndex community is able to provide.\n\
+  \nHuge shoutout to **@Evanc123** for his fantastic work building the frontend for\
+  \ this project!"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '687282258'
+    canonical_url: https://github.com/run-llama/sec-insights
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -1,0 +1,190 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_5895c2d15c8a
+candidate_batch_id: candidate_batch_github_qf_agent_2025-02-01_2025-02-28
+created_at: '2026-04-08T13:31:11.045428Z'
+updated_at: '2026-04-09T02:57:33.887778Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '734457830'
+canonical_url: https://github.com/OSU-NLP-Group/SeeAct
+title: SeeAct
+summary: '[ICML''24] SeeAct is a system for generalist web agents that autonomously
+  carry out tasks on any given website, with a focus on large multimodal models (LMMs)
+  such as GPT-4V(ision).'
+raw_evidence_excerpt: "[ICML'24] SeeAct is a system for generalist web agents that\
+  \ autonomously carry out tasks on any given website, with a focus on large multimodal\
+  \ models (LMMs) such as GPT-4V(ision).\n\n[//]: # (# SeeAct GPT-4V(ision) is a Generalist\
+  \ Web Agent, if Grounded)\n\nSeeAct GPT-4V(ision) is a Generalist Web Agent, if\
+  \ Grounded\n\nSeeAct is a system for generalist web agents that autonomously carry\
+  \ out tasks on any given website, with a focus on large multimodal models (LMMs)\
+  \ such as GPT-4V(ision). It consists of two main components: (1) A robust codebase\
+  \ that supports running web agents on live websites, and (2) an innovative framework\
+  \ that utilizes LMMs as generalist web agents.\n\nWebsite \u2022 Paper \u2022 Dataset\
+  \ \u2022 Twitter\n\nUpdates\n\n- 2024/11/10: We have open-sourced SeeAct Chrome\
+  \ Extension source code! Try and have fun at SeeActChromeExtension!\n\n- 2024/9/30:\
+  \ WebOlympus: An Open Platform for Web Agents on Live Websites has been accepted\
+  \ to EMNLP'24 Demo Track!\n\n- 2024/8/17: Crawler mode added!\n\n- 2024/7/9: Support\
+  \ SoM (Set-of-Mark) grounding strategy!\n\n- 2024/5/18: Support for Gemini and LLaVA!\n\
+  \n- 2024/5/1: SeeAct has been accepted to ICML'24!\n\n- 2024/4/28: Released SeeAct\
+  \ Python Package, with many updates and many features on the way. Have a try with\
+  \ `pip install seeact`\n\n- 2024/3/18: Multimodal-Mind2Web dataset released. We\
+  \ have paired each HTML document with the corresponding webpage screenshot image\
+  \ and saved the trouble of downloading Mind2Web Raw Dump.\n\nSeeAct Tool\n\nThe\
+  \ SeeAct tool enables running web agents on live websites through PlayWright, serving\
+  \ as an interface between an agent and a web browser. It efficiently tunnels inputs\
+  \ from the browser to the agent, and translates predicted actions of the agent into\
+  \ browser events for execution. This tool can be used for running web agent demos\
+  \ and evaluating their performance on live websites.\n\nSetup\n\n1. Create a conda\
+  \ environment and install dependency:\n\n2. Set up PlayWright and install the browser\
+  \ kernels.\n\nUsage\n\nSeeActAgent Main Inputs\n\n| Name | Description | Type |\
+  \ Default | Required | |------|-------------|------|---------|:--------:| | model\
+  \ | Prefered LLM model to run the task | str | gpt-4o | no | | default_task | Default\
+  \ task to run | str | Find the pdf of the paper \"GPT-4V(ision) is a Generalist\
+  \ Web Agent, if Grounded\" | no | | default_website | Default starting website |\
+  \ str | https://www.google.com/ | no | | grounding_strategy | Grounding strategy\
+  \ `text_choice`: use text choices `text_choice_som`: use text choices with set of\
+  \ marks | str | text_choice_som | no | | config_path | Configuration file path |\
+  \ str | None | no | | save_file_dir | Folder to save output files | str | seeact_agent_files\
+  \ | no | | temperature | Termperature passed to LLM | num | 0.9 | no | | crawler_mode\
+  \ | Flag to enable crawler mode | bool | False | no | | crawler_max_steps | Max\
+  \ step to allow crawler to travel | int | 10 | no |\n\nSupported Models SeeAct starts\
+  \ with using OpenAI GPT4-V, and now it supports some other models. Below is the\
+  \ list of currently supported models, to use any one of the model below, simpliy\
+  \ use `SeeActAgent(model=\"gpt-4-turbo\")`, and specify the API key if needed. |\
+  \ Provider | Model | Compatibility | API KEY | Note |----------|-------|---------------|---------|:-----------:|\
+  \ | OpenAI | gpt-4-vision-preview | High | OPENAI_API_KEY in env | | | OpenAI |\
+  \ gpt-4-turbo | High | OPENAI_API_KEY in env | | | OpenAI | gpt-4o | High | OPENAI_API_KEY\
+  \ in env | | | Google | gemini-1.5-pro-latest | High | GEMINI_API_KEY in env | Rate\
+  \ limitting at 2 RPM by Google, need to add wait time in the code to work | | Ollama\
+  \ | llava | Low | N/A | Install Ollama, start Ollama, pull llava |\n\nAPI Keys If\
+  \ you plan to use OpenAI family models, pass in the API Key in python or by environment\
+  \ variable\n\nYour OpenAI API key is available at OpenAI account page.\n\nTo use\
+  \ Gemini, pass in the API Key in python or by environment variable\n\nYour Google\
+  \ API key is available at Google AI Studio.\n\nConfiguration File An alternative\
+  \ to provide SeeActAgent input parameters is to use a config file, once the config\
+  \ file is provided, it will override all other input paramters.\n\nSample configuration\
+  \ files are available at `src/config/`.\n\nCrawler Mode In the new introduced crawler\
+  \ mode, SeeAct could randomly click any links on the given starting web page, and\
+  \ travel steps defined by `crawler_max_steps`.\n\nDemo Mode\n\nIn the demo mode,\
+  \ SeeAct takes `task` and `website` from user terminal input. Run SeeAct in demo\
+  \ mode with the following command:\n\nDemo mode will use the default configuration\
+  \ file at `src/config/demo_mode.toml`.\n\nConfiguration SeeAct is configurable through\
+  \ TOML files in `src/config/`. These files enable you to customize various aspects\
+  \ of the system's behavior via the following parameters: - `is_demo`: Set `true`\
+  \ to allow task and website from user terminal input, set `false` to run tasks and\
+  \ websites from a JSON file (useful for batch evaluation). - `default_task` and\
+  \ `default_website`: Default task and website used in the demo mode. - `max_op`:\
+  \ Maximum number of actions the agent can take for a task. - `save_file_dir`: Directory\
+  \ path to save output results, including terminal logs and screenshot images.\n\n\
+  Terminal User Input After starting SeeAct, you'll be required to enter a `task description`\
+  \ or you can press `Enter` to use the default task of finding our paper on arXiv.\n\
+  \nNext, you need to input the `website URL` (please ensure it includes all necessary\
+  \ prefixes (https, www)) or you can press `Enter` to use the default Google homepage\
+  \ (https://www.google.com/).\n\nAuto Mode\n\nYou can also automatically run SeeAct\
+  \ on a list of tasks and websites in a JSON file. Run SeeAct with the following\
+  \ command:\n\nIn the configuration file, `task_file_path` defines the path of the\
+  \ JSON file. It is default to `../data/online_tasks/sample_tasks.json`, which contains\
+  \ a variety of task examples.\n\nCustomized Usage For custom scenarios, modify the\
+  \ configuration files to adapt the tool to your specific requirements. This includes\
+  \ setting up custom tasks, adjusting experiment parameters, and configuring Playwright\
+  \ options for more precise control over the web browsing experience.\n\nSafety and\
+  \ Monitoring\n\nThe current version is research/experimental in nature and by no\
+  \ means perfect. Please always be very cautious of safety risks and closely monitor\
+  \ the agent. In the default setting (`monitor = true`), the agent will prompt for\
+  \ confirmation before executing every operation. This setting pauses the agent before\
+  \ each operation, allowing for close examination, action rejection, and other human\
+  \ intervention like manually doing some operation when needed.\n\n**You should always\
+  \ monitor the agent's predictions before execution to prevent harmful outcomes.\
+  \ Please reject any action that may cause any potential harm.**\n\nYou can monitor\
+  \ and intervene actions through terminal input before each execution: - `Y` or `Enter`:\
+  \ Accept this action. - `n`: Reject this action and record it in the action history.\
+  \ - `i`: Reject this action and pause for human intervention. - During the pause,\
+  \ you can do anything, such as opening or closing tabs, opening another link, and\
+  \ so on, except for directly closing the browser. If the current active tab is closed,\
+  \ the active tab will default to the last tab in the browser. If all tabs are closed,\
+  \ the browser will reopen a Google page. - You can leave a message after manual\
+  \ operations, which will be injected into the prompt of the agent, for better human-agent\
+  \ cooperation. - `e`: Terminate the session and save results.\n\nWe do not support\
+  \ direct login actions to safeguard your personal information and prevent exposure\
+  \ to potential safety and legal risks. **To prevent unintended consequential errors,\
+  \ we advise against using SeeAct for tasks that require account login.**"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '734457830'
+    canonical_url: https://github.com/OSU-NLP-Group/SeeAct
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

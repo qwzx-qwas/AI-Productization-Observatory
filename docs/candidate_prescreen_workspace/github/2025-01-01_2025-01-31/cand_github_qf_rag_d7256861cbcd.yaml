@@ -1,0 +1,219 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_d7256861cbcd
+candidate_batch_id: candidate_batch_github_qf_rag_2025-01-01_2025-01-31
+created_at: '2026-04-08T12:50:42.729073Z'
+updated_at: '2026-04-09T02:56:02.730465Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '863811129'
+canonical_url: https://github.com/guyernest/advanced-rag
+title: advanced-rag
+summary: Jupyter Notebooks for Mastering LLM with Advanced RAG Course
+raw_evidence_excerpt: 'Jupyter Notebooks for Mastering LLM with Advanced RAG Course
+
+
+  Mastering Large Language Models (LLM) with Retrieval Augmented Generation (RAG)
+
+
+  This repository includes a set of assets that are used in the above course, which
+  dives deeper into the various problems and solutions when building a RAG system
+  in enterprise environments.
+
+
+  The course is available on edX.
+
+
+  Simple RAG Flow
+
+
+  Jupyter Notebooks
+
+
+  2. Embedding Model: This notebook examines the role of embedding models in RAG systems,
+  including their applications and limitations. 3. Semantic Chunking: This notebook
+  investigates the process of semantic chunking in RAG systems, focusing on its significance
+  in information retrieval. 4. Contextual Retrieval: This notebook delves into the
+  strategies for contextual retrieval in RAG systems, emphasizing the effective handling
+  of numerical data and tables. 5. Reverse Hyde: This notebook explores the Reverse
+  Hyde technique in RAG systems, highlighting its importance in addressing contextual
+  relevance and query ambiguity. 6. Hybrid Search: This notebook discusses the integration
+  of hybrid search capabilities in RAG systems, encompassing both temporal relevance
+  and multi-lingual support. 7. Reranking: This notebook discusses the importance
+  of reranking in RAG systems, focusing on techniques to refine the initial retrieval
+  results for more accurate and relevant outputs. 8. Multi Modal Retrieval: This notebook
+  explore the possibilities of retrieval from images and not limited to text.
+
+
+  Common Problems in RAG Systems and Their Solutions
+
+
+  The problematic part of a RAG application is usually the retrieval part. The system
+  might retrieve the wrong documents, or only part of them and lead to wrong replies.
+  This is the classical problem in machine learning of the precision-recall-tradeoff.
+
+
+  The following list of complexity factors in real-life documents can lead to a decrease
+  in overall retrieval accuracy, and the various techniques that can improve the retrieval
+  performance.
+
+
+  1. **Long Documents** - Problem: Difficulty in processing and retrieving information
+  from lengthy documents. - Solutions: - Chunking options - Sentence-based chunking
+  - Paragraph-based chunking - Fixed-size chunking with overlap - Statistical chunking
+  (see: 03_semantic_chunking.ipynb) - Hierarchical retrieval (e.g., parent-child chunks)
+  - Contextual retrieval (see: 05_contextual_retrieval.ipynb)
+
+
+  2. **Mismatch Between Questions and Document Formats** - Problem: User queries may
+  not align with the way information is structured in documents. - Solutions: - Hypothetical
+  Document Embeddings (HyDE) - Reverse HyDE (see: 04_reverse_hyde.ipynb)
+
+
+  3. **Domain-Specific Jargon** - Problem: General LLMs may struggle with specialized
+  vocabulary. - Solutions: - Incorporating domain-specific embeddings (see: 02_embedding_model.ipynb)
+  - Hybrid Search (see: 06_hybrid_search.ipynb) - Fine-tuning on domain-specific corpora
+
+
+  4. **Complex Documents** - Problem: Handling documents with complex structures,
+  such as scanned documents, which can be challenging for traditional text-based retrieval
+  methods. - Solutions: - Multi-modal retrieval (see: 07_multimodal_pdf.ipynb) - Utilizing
+  computer vision techniques to extract information from images and other non-textual
+  elements within documents. - Integrating this information with text-based retrieval
+  methods for a more comprehensive search capability.
+
+
+  Advanced RAG System
+
+
+  Set Up Local Jupyter
+
+
+  To set up the project, you have two options: using `uv` or traditional `pip`.
+
+
+  **Using `uv`**
+
+
+  If the virtual environment doesn''t find `pip` or other modules:
+
+
+  To execute the notebooks in a Jupyter lab environment, you need to add the following
+  commands
+
+
+  And select the `Python (.venv)` from the kernel list.
+
+
+  **Using traditional `pip`**
+
+
+  1. Create a virtual environment using your preferred method (e.g., `python -m venv
+  myenv`). 2. Activate the virtual environment. 3. Install the project dependencies
+  using `pip install -r requirements.txt`.
+
+
+  Note: The `uv` method is recommended for its speed, ease of use and management of
+  project dependencies. However, the traditional `pip` method is also supported for
+  those familiar with it.
+
+
+  Setup in Google Colab
+
+
+  Before the first cells add the following commands
+
+
+  You might need to restart the Colab runtime at the end of the dependencies installation.
+  Remember to change back to the course folder:
+
+
+  Setup in SageMaker Studio Lab
+
+
+  Follow the link to the first hands-on lab: ![Open In SageMaker Studio Lab](https://studiolab.sagemaker.aws/import/github/guyernest/advanced-rag/blob/main/01_simple_rag.ipynb)
+
+
+  Clone the GitHub repository when prompted by the service.
+
+
+  Before the first cells add the following commands:'
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '863811129'
+    canonical_url: https://github.com/guyernest/advanced-rag
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

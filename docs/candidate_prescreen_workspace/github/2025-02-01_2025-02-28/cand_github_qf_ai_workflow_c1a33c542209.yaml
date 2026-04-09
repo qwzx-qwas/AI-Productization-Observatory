@@ -1,0 +1,176 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_c1a33c542209
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-02-01_2025-02-28
+created_at: '2026-04-08T14:23:47.785805Z'
+updated_at: '2026-04-09T02:59:55.264113Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '929851058'
+canonical_url: https://github.com/tuyenhm68/self-hosted-ai-starter-kit-2
+title: self-hosted-ai-starter-kit-2
+summary: ''
+raw_evidence_excerpt: "Self-hosted AI starter kit (by the n8n team)\n\n**Self-hosted\
+  \ AI Starter Kit** is an open, docker compose template that quickly bootstraps a\
+  \ fully featured Local AI and Low Code development environment including Open WebUI\
+  \ for an interface to chat with your N8N agents.\n\nThis is Cole's version with\
+  \ a couple of improvements and the addition of Open WebUI and Flowise! Also, the\
+  \ local RAG AI Agent workflow from the video will be automatically in your n8n instance\
+  \ if you use this setup instead of the base one provided by n8n!\n\nOriginal Local\
+  \ AI Starter Kit\n\nDownload N8N + OpenWebUI integration directly on the Open WebUI\
+  \ site. (more instructions below)\n\nCurated by and , it combines the self-hosted\
+  \ n8n platform with a curated list of compatible AI products and components to quickly\
+  \ get started with building self-hosted AI workflows.\n\nWhat\u2019s included\n\n\
+  \u2705 **Self-hosted n8n** - Low-code platform with over 400 integrations and advanced\
+  \ AI components\n\n\u2705 **Ollama** - Cross-platform LLM platform to install and\
+  \ run the latest local LLMs\n\n\u2705 **Open WebUI** - ChatGPT-like interface to\
+  \ privately interact with your local models and N8N agents\n\n\u2705 **Flowise**\
+  \ - No/low code AI agent builder that pairs very well with n8n\n\n\u2705 **Qdrant**\
+  \ - Open-source, high performance vector store with an comprehensive API\n\n\u2705\
+  \ **PostgreSQL** - Workhorse of the Data Engineering world, handles large amounts\
+  \ of data safely.\n\nInstallation\n\nFor Nvidia GPU users\n\n> [!NOTE] > If you\
+  \ have not used your Nvidia GPU with Docker before, please follow the > Ollama Docker\
+  \ instructions.\n\nFor Mac / Apple Silicon users\n\nIf you\u2019re using a Mac with\
+  \ an M1 or newer processor, you can't expose your GPU to the Docker instance, unfortunately.\
+  \ There are two options in this case:\n\n1. Run the starter kit fully on CPU, like\
+  \ in the section \"For everyone else\" below 2. Run Ollama on your Mac for faster\
+  \ inference, and connect to that from the n8n instance\n\nIf you want to run Ollama\
+  \ on your mac, check the Ollama homepage for installation instructions, and run\
+  \ the starter kit as follows:\n\nAfter you followed the quick start set-up below,\
+  \ change the Ollama credentials by using `http://host.docker.internal:11434/` as\
+  \ the host.\n\nFor everyone else\n\n\u26A1\uFE0F Quick start and usage\n\nThe main\
+  \ component of the self-hosted AI starter kit is a docker compose file pre-configured\
+  \ with network and disk so there isn\u2019t much else you need to install. After\
+  \ completing the installation steps above, follow the steps below to get started.\n\
+  \n1. Open in your browser to set up n8n. You\u2019ll only have to do this once.\
+  \ You are NOT creating an account with n8n in the setup here, it is only a local\
+  \ account for your instance! 2. Open the included workflow:\n\n3. Create credentials\
+  \ for every service:\n\nOllama URL: http://ollama:11434\n\nPostgres: use DB, username,\
+  \ and password from .env. Host is postgres\n\nQdrant URL: http://qdrant:6333 (API\
+  \ key can be whatever since this is running locally)\n\nGoogle Drive: Follow this\
+  \ guide from n8n. Don't use localhost for the redirect URI, just use another domain\
+  \ you have, it will still work! Alternatively, you can set up local file triggers.\
+  \ 4. Select **Test workflow** to start running the workflow. 5. If this is the first\
+  \ time you\u2019re running the workflow, you may need to wait until Ollama finishes\
+  \ downloading Llama3.1. You can inspect the docker console logs to check on the\
+  \ progress. 6. Make sure to toggle the workflow as active and copy the \"Production\"\
+  \ webhook URL! 7. Open in your browser to set up Open WebUI. You\u2019ll only have\
+  \ to do this once. You are NOT creating an account with Open WebUI in the setup\
+  \ here, it is only a local account for your instance! 8. Go to Workspace -> Functions\
+  \ -> Add Function -> Give name + description then paste in the code from `n8n_pipe.py`\n\
+  \nThe function is also published here on Open WebUI's site.\n\n9. Click on the gear\
+  \ icon and set the n8n_url to the production URL for the webhook you copied in a\
+  \ previous step. 10. Toggle the function on and now it will be available in your\
+  \ model dropdown in the top left!\n\nTo open n8n at any time, visit in your browser.\
+  \ To open Open WebUI at any time, visit .\n\nWith your n8n instance, you\u2019ll\
+  \ have access to over 400 integrations and a suite of basic and advanced AI nodes\
+  \ such as AI Agent, Text classifier, and Information Extractor nodes. To keep everything\
+  \ local, just remember to use the Ollama node for your language model and Qdrant\
+  \ as your vector store.\n\n> [!NOTE] > This starter kit is designed to help you\
+  \ get started with self-hosted AI > workflows. While it\u2019s not fully optimized\
+  \ for production environments, it > combines robust components that work well together\
+  \ for proof-of-concept > projects. You can customize it to meet your specific needs\n\
+  \nUpgrading\n\nFor Nvidia GPU users\n\nFor Mac / Apple Silicon users\n\nFor everyone\
+  \ else\n\n\U0001F453 Recommended reading\n\nn8n is full of useful content for getting\
+  \ started quickly with its AI concepts and nodes. If you run into an issue, go to\
+  \ support.\n\n- AI agents for developers: from theory to practice with n8n - Tutorial:\
+  \ Build an AI workflow in n8n - Langchain Concepts in n8n - Demonstration of key\
+  \ differences between agents and chains - What are vector databases?\n\n\U0001F3A5\
+  \ Video walkthrough\n\n- Cole's Guide to the Local AI Starter Kit\n\n\U0001F6CD\uFE0F\
+  \ More AI templates\n\nFor more AI workflow ideas, visit the [**official n8n AI\
+  \ template gallery**](https://n8n.io/workflows/?categories=AI). From each workflow,\
+  \ select the **Use workflow** button to automatically import the workflow into your\
+  \ local n8n instance.\n\nLearn AI key concepts\n\n- AI Agent Chat - AI chat with\
+  \ any data source (using the n8n workflow too) - Chat with OpenAI Assistant (by\
+  \ adding a memory) - Use an open-source LLM (via HuggingFace) - Chat with PDF docs\
+  \ using AI (quoting sources) - AI agent that can scrape webpages\n\nLocal AI templates\n\
+  \n- Tax Code Assistant - Breakdown Documents into Study Notes with MistralAI and\
+  \ Qdrant - Financial Documents Assistant using Qdrant and Mistral.ai - Recipe Recommendations\
+  \ with Qdrant and Mistral\n\nTips & tricks\n\nAccessing local files\n\nThe self-hosted\
+  \ AI starter kit will create a shared folder (by default, located in the same directory)\
+  \ which is mounted to the n8n container and allows n8n to access files on disk.\
+  \ This folder within the n8n container is located at `/data/shared` -- this is the\
+  \ path you\u2019ll need to use in nodes that interact with the local filesystem.\n\
+  \n**Nodes that interact with the local filesystem**\n\n- Read/Write Files from Disk\
+  \ - Local File Trigger - Execute Command\n\n\U0001F4DC License\n\nThis project (originally\
+  \ created by the n8n team, link at the top of the README) is licensed under the\
+  \ Apache License 2.0 - see the LICENSE file for details."
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '929851058'
+    canonical_url: https://github.com/tuyenhm68/self-hosted-ai-starter-kit-2
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -1,0 +1,253 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_e4f1e07e00fa
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-03-01_2025-03-31
+created_at: '2026-04-08T14:53:01.366021Z'
+updated_at: '2026-04-09T03:04:59.791403Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '957258614'
+canonical_url: https://github.com/coleam00/supabase-mcp
+title: supabase-mcp
+summary: Supabase MCP server created in Python.
+raw_evidence_excerpt: 'Supabase MCP server created in Python.
+
+
+  Supabase MCP Server
+
+
+  A Model Context Protocol (MCP) server that provides tools for interacting with a
+  Supabase database. This server enables AI assistants to perform database operations
+  through a standardized interface.
+
+
+  NOTE: This Supabase MCP server was created as a demonstration of my AI IDE coding
+  workflow. It is still a work in progress which I will expand on in future videos
+  on my channel.
+
+
+  Features
+
+
+  - **Read Table Rows**: Query data from Supabase tables with optional filtering,
+  pagination, and column selection - **Create Table Records**: Insert new records
+  into Supabase tables - **Update Table Records**: Modify existing records in Supabase
+  tables based on filters - **Delete Table Records**: Remove records from Supabase
+  tables based on filters
+
+
+  Prerequisites
+
+
+  - Docker or Docker Desktop - Supabase account and project
+
+
+  Installation
+
+
+  1. Clone the repository:
+
+
+  Docker Setup
+
+
+  1. Build the Docker image:
+
+
+  Usage
+
+
+  Running as an MCP Server with Docker
+
+
+  The Supabase MCP server can be integrated with AI assistants using the Model Context
+  Protocol.
+
+
+  1. Include the below configuration in your MCP config (in Claude Desktop, Windsurf,
+  etc.)
+
+
+  Be sure to build the container with the installation steps first!
+
+
+  2. Replace `YOUR-SUPABASE-URL` and `YOUR-SUPABASE-SERVICE-ROLE-KEY` with your actual
+  Supabase credentials.
+
+
+  3. The AI assistant can now access the Supabase database through the MCP server
+  using the provided tools.
+
+
+  For more information on the Model Context Protocol, visit modelcontextprotocol.io.
+
+
+  Available Tools
+
+
+  Read Table Rows
+
+
+  Example:
+
+
+  Create Table Records
+
+
+  Example:
+
+
+  Update Table Records
+
+
+  Example:
+
+
+  Delete Table Records
+
+
+  Example:
+
+
+  Development
+
+
+  Project Structure
+
+
+  Running Tests
+
+
+  Model Context Protocol Integration
+
+
+  The Supabase MCP server implements the Model Context Protocol, which allows AI assistants
+  to interact with Supabase databases in a standardized way.
+
+
+  How It Works
+
+
+  1. The MCP server exposes tools for database operations (read, create, update, delete)
+  2. AI assistants connect to the MCP server using the stdio transport 3. The AI assistant
+  can invoke the tools to perform database operations 4. The MCP server handles the
+  communication with Supabase and returns the results
+
+
+  MCP Configuration
+
+
+  The `example_mcp_config.json` file shows how to configure an AI assistant to use
+  the Supabase MCP server:
+
+
+  This configuration tells the AI assistant: - To use Docker to run the MCP server
+  - To pass the Supabase credentials as environment variables - To use the `mcp/supabase`
+  Docker image
+
+
+  Using with AI Assistants
+
+
+  AI assistants that support the Model Context Protocol can use this server to:
+
+
+  1. Query data from Supabase tables 2. Insert new records into tables 3. Update existing
+  records 4. Delete records
+
+
+  The assistant will have access to the tools documented in the "Available Tools"
+  section above.
+
+
+  Environment Variables
+
+
+  | Variable | Description | |----------|-------------| | `SUPABASE_URL` | URL of
+  your Supabase project | | `SUPABASE_SERVICE_KEY` | Service role key for Supabase
+  authentication |
+
+
+  License
+
+
+  This project is licensed under the MIT License - see the LICENSE file for details.'
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '957258614'
+    canonical_url: https://github.com/coleam00/supabase-mcp
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

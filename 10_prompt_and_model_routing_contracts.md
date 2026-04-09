@@ -196,6 +196,7 @@ last_frozen_version: prompt_contracts_v1
 
 - 上述 routing 冻结的是抽象能力契约，不是具体 vendor 绑定
 - `configs/model_routing.yaml` 当前只表达 vendor-neutral provisional default
+- `Candidate Prescreener` 的 runtime adapter 必须把 provider 原始响应先收敛为 canonical outcome envelope，再做独立的 post-normalization validation；provider 返回一个可被 normalize 的 dict 并不自动等于 success
 - 当 extractor / profiler / classifier 的 fixture 集合达到最小评估规模后，再通过小样本 eval 选择最终 provider vendor
 - provider eval gate 的触发条件与最小检查项见 `10a_provider_eval_gate.md`
 

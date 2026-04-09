@@ -1,0 +1,161 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_b2f27d93be37
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-03-01_2025-03-31
+created_at: '2026-04-08T15:23:31.883745Z'
+updated_at: '2026-04-09T03:05:35.446716Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '902697897'
+canonical_url: https://github.com/nascarjake/luminary
+title: luminary
+summary: AI Workflow builder with support for OpenAI
+raw_evidence_excerpt: "AI Workflow builder with support for OpenAI\n\n!Luminary Logo\n\
+  \nAI Pipeline Tool A visual development platform for creating complex AI workflows\
+  \ using OpenAI assistants.\n\nDemo \xB7 Presentation \xB7 Discord\n\n---\n\nTable\
+  \ of Contents - Introduction - Key Features - Screenshots - Installation - Getting\
+  \ Started - Building - Environment Setup (Optional) - OpenAI Integration - Building\
+  \ a Pipeline - Profiles - Projects - Scheduling - Functions - Roadmap - Community\
+  \ - Credits - License\n\n---\n\nIntroduction\n\nLuminary provides tools for building\
+  \ workflows where multiple AI assistants can collaborate. It also supports custom\
+  \ code integration for more advanced data processing. By splitting complex tasks\
+  \ into smaller roles, you can reduce errors and hallucinations, and keep your projects\
+  \ organized and maintainable.\n\n> **Note** > **Download for free** from the Releases,\
+  \ check out the Demo Video, and explore the Overview Presentation. Join our community\
+  \ on Discord!\n\n---\n\nLuminary Builds Businesses\n\n**Want to start a merch shop?**\
+  \ - Create a pipeline that generates images, sends them to teespring - Create merch\
+  \ items on teespring like shirts and mugs using the images (via api) - Select and\
+  \ buy a domain and connect it to your teespring site (via cloudflare api or something\
+  \ like that) - Create seo metadata for your site - Create social media posts of\
+  \ your products and schedule them to post.\n\n**Want to start a survey website/app?**\
+  \ - Create an ai that asks the user what type of survey they want to build - Collect\
+  \ information about what type of recommednations or call to actions need to be made\
+  \ - Generate a data object that can be plugged into an app you are building which\
+  \ provides a great survey experience.\n\nIf you are building an app or tool that\
+  \ lets people make their own guide, website, flyer, schedule, trading bot, anything....\
+  \ then you can use AI to make a pipeline that will make using your tool as easy\
+  \ as talking.\n\nYou design that AI pipeline in luminary, then export it to the\
+  \ standalone luminary pipeline engine library which can be imported into your project.\
+  \ This means you use the luminary tool to build and test the pipeline, then use\
+  \ it to run your own app or business.\n\n---\n\nKey Features - **Multiple AI Assistants**\
+  \ \u2014 Build complex AI workflows by orchestrating specialized assistants. - **Visual\
+  \ Graph Editor** \u2014 Drag-and-drop nodes to design AI pipelines without tangling\
+  \ in code. - **Custom Code Integration** \u2014 Extend functionality with Node.js,\
+  \ Python, or any language via command line. - **Profile & Project Management** \u2014\
+  \ Keep everything from pipeline configurations to custom functions neatly organized.\
+  \ - **Scheduling & Automation** \u2014 Run pipelines at set times, perfect for routine\
+  \ tasks or batch processes. - **Desktop App & NPM Library** \u2014 Use the visual\
+  \ environment or integrate workflows directly into your own Node.js projects.\n\n\
+  ---\n\nScreenshots\n\n---\n\nInstallation\n\nTo get started with Luminary, follow\
+  \ these steps:\n\nDesktop Application 1. **Download the latest version** for your\
+  \ platform from the GitHub releases page. - **Windows**: `.exe` installer - **macOS**:\
+  \ `.zip` file - **Linux**: `.deb` package\n\n2. **Install** for your platform: -\
+  \ **Windows**: Run the `.exe` and follow the setup. - **macOS**: - Extract the zip\
+  \ - Double-click `install.command` - Drag Luminary to `Applications` - *App is not\
+  \ signed/notarized, so Gatekeeper may prompt you* - *If you get an error about the\
+  \ app being damaged, run:*\n\n- **Linux**: - ```bash sudo dpkg -i luminary_x.x.x_\
+  \ .deb\n\nsudo apt-get install -f\n\nnpm run electron:dev\n\nnpm run electron:build:win\n\
+  \nnpm run electron:build:mac\n\n!/usr/bin/env node\n\nfunction finalOutput(output)\
+  \ { console.log('$%*%$Output:' + JSON.stringify(output)); }\n\nasync function main()\
+  \ { try { const inputs = JSON.parse(await new Promise(resolve => process.stdin.once('data',\
+  \ resolve)));\n\nconst { title, content } = inputs;\n\n// Your function logic here\
+  \ const processedContent = content.toUpperCase();\n\nconst result = { title: title,\
+  \ processedContent: processedContent };\n\nfinalOutput(result); } catch (error)\
+  \ { console.error(JSON.stringify({ error: error.message })); process.exit(1); }\
+  \ }\n\nmain();\n\n!/usr/bin/env python3 import sys import json\n\ndef final_output(output):\
+  \ print('$%*%$Output:' + json.dumps(output))\n\ntry: inputs = json.loads(sys.stdin.read())\n\
+  \ntitle = inputs['title'] content = inputs['content']\n\nYour function logic here\
+  \ processed_content = content.upper()\n\nresult = { 'title': title, 'processedContent':\
+  \ processed_content }\n\nfinal_output(result) except Exception as e: print(json.dumps({'error':\
+  \ str(e)}), file=sys.stderr) sys.exit(1)\n\n{ \"type\": \"object\", \"properties\"\
+  : { \"title\": { \"type\": \"string\" }, \"content\": { \"type\": \"string\" } },\
+  \ \"required\": [\"title\", \"content\"] }\n\n{ \"type\": \"object\", \"properties\"\
+  : { \"title\": { \"type\": \"string\" }, \"processedContent\": { \"type\": \"string\"\
+  \ } }, \"required\": [\"title\", \"processedContent\"] }\n\nconsole.log('$%*%$Output:'\
+  \ + JSON.stringify({ title: \"My Processed Content\", processedContent: \"THIS IS\
+  \ THE UPPERCASE CONTENT\" }));\n\nconsole.log('$%*%$Output:' + JSON.stringify({\
+  \ video: { id: \"123\", url: \"https://example.com/video.mp4\" }, pictoryRequest:\
+  \ { content: \"Original content here\" }, pictoryRender: { status: \"complete\"\
+  , progress: 100 }, pictoryJob: { id: \"job123\", status: \"finished\" } }));\n\n\
+  console.log('$%*%$Output:' + JSON.stringify({ processedItems: [ { id: 1, content:\
+  \ \"FIRST ITEM\" }, { id: 2, content: \"SECOND ITEM\" }, { id: 3, content: \"THIRD\
+  \ ITEM\" } ] }));"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '902697897'
+    canonical_url: https://github.com/nascarjake/luminary
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

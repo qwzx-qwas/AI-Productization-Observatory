@@ -2,8 +2,8 @@ document_type: candidate_prescreen_record
 document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_agent_8a59393a88e0
 candidate_batch_id: candidate_batch_github_qf_agent_2025-01-01_2026-04-06
-created_at: '2026-04-07T08:14:31.715813Z'
-updated_at: '2026-04-07T09:02:01.445372Z'
+created_at: '2026-04-08T10:37:50.701124Z'
+updated_at: '2026-04-09T02:56:14.231447Z'
 source: github
 source_id: src_github
 source_window: 2025-01-01..2026-04-06
@@ -237,8 +237,8 @@ llm_prescreen:
     model: null
     transport: http_json_relay
     request_id: null
-  error_type: schema_drift
-  error_message: OpenAI-compatible response must provide message.content text
+  error_type: provider_timeout
+  error_message: Relay timed out
 whitelist_reason: null
 human_review_status: pending_first_pass
 human_review_note_template_key: null

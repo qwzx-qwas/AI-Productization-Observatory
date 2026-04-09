@@ -1,0 +1,201 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_6d2d7db65662
+candidate_batch_id: candidate_batch_github_qf_agent_2025-03-01_2025-03-31
+created_at: '2026-04-08T14:34:34.411301Z'
+updated_at: '2026-04-09T03:03:27.431233Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '595921199'
+canonical_url: https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero
+title: Jenkins-Zero-To-Hero
+summary: Install Jenkins, configure Docker as slave, set up cicd, deploy applications
+  to k8s using Argo CD in GitOps way.
+raw_evidence_excerpt: 'Install Jenkins, configure Docker as slave, set up cicd, deploy
+  applications to k8s using Argo CD in GitOps way.
+
+
+  Jenkins-Zero-To-Hero
+
+
+  Are you looking forward to learn Jenkins right from Zero(installation) to Hero(Build
+  end to end pipelines)? then you are at the right place.
+
+
+  Installation on EC2 Instance
+
+
+  YouTube Video ->
+
+
+  Install Jenkins, configure Docker as agent, set up cicd, deploy applications to
+  k8s and much more.
+
+
+  AWS EC2 Instance
+
+
+  - Go to AWS Console - Instances(running) - Launch instances
+
+
+  Install Jenkins.
+
+
+  Pre-Requisites: - Java (JDK)
+
+
+  Run the below commands to install Java and Jenkins
+
+
+  Install Java
+
+
+  Verify Java is Installed
+
+
+  Now, you can proceed with installing Jenkins
+
+
+  **Note: ** By default, Jenkins will not be accessible to the external world due
+  to the inbound traffic restriction by AWS. Open port 8080 in the inbound traffic
+  rules as show below.
+
+
+  - EC2 > Instances > Click on - In the bottom tabs -> Click on Security - Security
+  groups - Add inbound traffic rules as shown in the image (you can just allow TCP
+  8080 as well, in my case, I allowed `All traffic`).
+
+
+  Login to Jenkins using the below URL:
+
+
+  http:// :8080 [You can get the ec2-instance-public-ip-address from your AWS EC2
+  console page]
+
+
+  Note: If you are not interested in allowing `All Traffic` to your EC2 instance 1.
+  Delete the inbound traffic rule for your instance 2. Edit the inbound traffic rule
+  to only allow custom TCP port `8080`
+
+
+  After you login to Jenkins, - Run the command to copy the Jenkins Admin Password
+  - `sudo cat /var/lib/jenkins/secrets/initialAdminPassword` - Enter the Administrator
+  password
+
+
+  Click on Install suggested plugins
+
+
+  Wait for the Jenkins to Install suggested plugins
+
+
+  Create First Admin User or Skip the step [If you want to use this Jenkins instance
+  for future use-cases as well, better to create admin user]
+
+
+  Jenkins Installation is Successful. You can now starting using the Jenkins
+
+
+  Install the Docker Pipeline plugin in Jenkins:
+
+
+  - Log in to Jenkins. - Go to Manage Jenkins > Manage Plugins. - In the Available
+  tab, search for "Docker Pipeline". - Select the plugin and click the Install button.
+  - Restart Jenkins after the plugin is installed.
+
+
+  Wait for the Jenkins to be restarted.
+
+
+  Docker Slave Configuration
+
+
+  Run the below command to Install Docker
+
+
+  Grant Jenkins user and Ubuntu user permission to docker deamon.
+
+
+  Once you are done with the above steps, it is better to restart Jenkins.
+
+
+  The docker agent configuration is now successful.'
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '595921199'
+    canonical_url: https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

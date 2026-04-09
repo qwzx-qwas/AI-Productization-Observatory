@@ -189,6 +189,16 @@ last_frozen_version: error_policy_v1
   - 技术级短重试可做
   - 输出 contract 失败默认停止当前对象路径
 
+### candidate prescreener / relay adapter
+
+- provider/runtime failure_code 与当前映射口径：
+  - `provider_empty_completion` -> `mapped_error_type = dependency_unavailable`；当前按 retryable technical failure 处理，不得写成 succeeded
+  - `provider_schema_drift` -> `mapped_error_type = schema_drift`
+  - `parse_failure` -> `mapped_error_type = parse_failure`
+  - `output_schema_validation_failed` -> `mapped_error_type = json_schema_validation_failed`
+- `normalize_llm_result()` 只负责可读性补全；post-normalization validation 未通过时，必须停在失败路径，不得把 normalize 结果伪装成成功预筛
+- same-window rerun 若拿到新的成功结果，必须先写回最新 `llm_prescreen` 成功快照，再派生人工一审与 staging 流程
+
 ## 6. Resume Policy
 
 - partial success 必须保留成功结果

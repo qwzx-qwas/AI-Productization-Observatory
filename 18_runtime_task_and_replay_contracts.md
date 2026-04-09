@@ -169,6 +169,7 @@ v0 runtime task 统一覆盖：
   - `payload_json.query_slice_id`
 - Product Hunt pull replay 还必须保留：
   - `payload_json.window_key = published_at`
+- 对 candidate prescreener / first-pass fill 这类同窗 replay，新的成功结果必须先写回最新 durable prescreen snapshot，再允许下游 review / handoff 消费；不得从仅存在于内存的 fresh result 直接派生有效下游状态
 
 ### replay gating
 

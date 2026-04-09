@@ -1,0 +1,144 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_e2bed3469764
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-01-01_2025-01-31
+created_at: '2026-04-08T13:09:50.563032Z'
+updated_at: '2026-04-09T02:55:05.880341Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '699063859'
+canonical_url: https://github.com/ldynia/workshop-github-copilot-chat
+title: workshop-github-copilot-chat
+summary: ''
+raw_evidence_excerpt: 'Workshop Github Copilot Chat
+
+
+  Installation Local
+
+
+  1. GitHub Copilot is not free. It costs $10 per month for individuals. 1. DISCONNECT
+  VPN - GitHub Copilot doesn''t work with VPN.
+
+
+  Github Copilot X
+
+
+  1. Copilot 1. Copilot Chat 1. Copilot CLI 1. ~~Copilot Labs~~
+
+
+  Copilot Shortcuts Linux
+
+
+  | Shortcut | Description | | -------- | ----------- | | `tab` | Accept suggestion
+  | | `alt+enter` | Show 10 suggestions | | `alt+/` | Show suggestions | | `alt+[`
+  | Show previous suggestions | | `alt+]` | Show next suggestions | | `ctrl+alt+i`,
+  `ctrl+shift+c` | Chat | | `ctrl+i` | Chat inline | | `ctrl+l` | Clear the session
+  | | `ctrl+enter` | Insert into code | | `ctrl+alt+enter` | Insert into terminal
+  |
+
+
+  Links
+
+
+  2024 - https://code.visualstudio.com/docs/editor/github-copilot#_chat-view - https://docs.github.com/en/copilot/configuring-github-copilot/configuring-github-copilot-in-your-environment?tool=vscode
+  - https://docs.github.com/en/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vscode
+  - https://www.youtube.com/watch?v=SZVCJRUADc4 - https://resources.github.com/learn/pathways/?utm_source=learning-pathways&utm_medium=Resources&utm_campaign=copilot-banner
+  - https://resources.github.com/learn/pathways/copilot/essentials/essentials-of-github-copilot/?utm_campaign=copilot-banner&utm_medium=Resources&utm_source=learning-pathways
+  - https://learn.microsoft.com/en-us/legal/cognitive-services/openai/customer-copyright-commitment
+  - https://github.com/features/copilot/getting-started
+
+
+  2025
+
+
+  - https://github.blog/news-insights/product-news/bringing-developer-choice-to-copilot/
+  - TODO: https://github.com/marketplace?type=apps&copilot_app=true - TODO: https://docs.github.com/en/copilot/using-github-copilot/code-review/using-copilot-code-review?tool=vscode
+  - TODO: https://docs.github.com/en/copilot/building-copilot-extensions/about-building-copilot-extensions
+  - TODO: https://github.com/github-copilot/workspace_waitlist_signup - TODO: https://github.blog/changelog/2024-10-29-refine-and-validate-code-review-suggestions-with-copilot-workspace-public-preview/
+  - TODO: https://github.blog/changelog/2024-10-29-multi-file-editing-code-review-custom-instructions-and-more-for-github-copilot-in-vs-code-october-release-v0-22/
+  - TODO: https://githubnext.com/projects/github-spark - TODO: https://githubnext.com/projects/learning-sandbox/
+
+
+  Setup Local
+
+
+  Setup Codespaces'
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '699063859'
+    canonical_url: https://github.com/ldynia/workshop-github-copilot-chat
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -17,10 +17,11 @@ from socket import timeout as SocketTimeout
 from time import sleep
 from typing import Any, Callable
 
-from src.candidate_prescreen.review_card import normalize_llm_result
+from src.candidate_prescreen.review_card import normalize_llm_result, validate_normalized_llm_prescreen
+from src.candidate_prescreen.url_utils import normalize_candidate_url
 from src.common.config import require_environment_variable
 from src.common.constants import RETRY_POLICY
-from src.common.errors import ConfigError, ProcessingError
+from src.common.errors import ConfigError, ContractValidationError, ProcessingError
 from src.common.files import load_json
 from src.common.logging_utils import get_logger
 from src.common.request_timing import wait_for_request_interval
@@ -30,6 +31,8 @@ README_EXCERPT_MAX_CHARS = 8000
 RELAY_API_STYLE_OPTIONS = {"relay_json", "openai_compatible"}
 RELAY_AUTH_STYLE_OPTIONS = {"bearer", "raw"}
 RELAY_MESSAGE_CONTENT_STYLE_OPTIONS = {"string", "parts_list"}
+OUTCOME_SUCCEEDED = "succeeded"
+OUTCOME_FAILED = "failed"
 _BADGE_MARKERS = (
     "img.shields.io",
     "shields.io",
@@ -85,6 +88,18 @@ class RelayConfig:
             auth_style=auth_style,
             message_content_style=message_content_style,
         )
+
+
+@dataclass(frozen=True)
+class RelayOutcomeError(Exception):
+    mapped_error_type: str
+    failure_code: str
+    failure_message: str
+    transport_status: str = OUTCOME_SUCCEEDED
+    provider_response_status: str = OUTCOME_FAILED
+    content_status: str = OUTCOME_FAILED
+    schema_status: str = OUTCOME_FAILED
+    business_status: str = OUTCOME_FAILED
 
 
 def _normalize_prompt_text(value: Any) -> str:
@@ -174,7 +189,7 @@ def _build_relay_input(candidate_input: dict[str, Any]) -> dict[str, Any]:
         "source": _normalize_prompt_text(candidate_input.get("source")),
         "source_window": _normalize_prompt_text(candidate_input.get("source_window")),
         "external_id": _normalize_prompt_text(candidate_input.get("external_id")),
-        "canonical_url": _normalize_prompt_text(candidate_input.get("canonical_url")),
+        "canonical_url": normalize_candidate_url(candidate_input.get("canonical_url"), field_name="candidate_input.canonical_url"),
         "title": _normalize_prompt_text(candidate_input.get("title")),
         "summary": _normalize_prompt_text(candidate_input.get("summary")),
         "raw_evidence_excerpt": clean_raw_evidence_excerpt(candidate_input.get("raw_evidence_excerpt")),
@@ -183,6 +198,10 @@ def _build_relay_input(candidate_input: dict[str, Any]) -> dict[str, Any]:
         "selection_rule_version": _normalize_prompt_text(candidate_input.get("selection_rule_version")),
         "time_field": _normalize_prompt_text(candidate_input.get("time_field")),
     }
+
+
+def build_relay_candidate_input(candidate_input: dict[str, Any]) -> dict[str, Any]:
+    return _build_relay_input(candidate_input)
 
 
 def _openai_request_url(base_url: str) -> str:
@@ -254,27 +273,94 @@ def _build_openai_compatible_payload(
 def _parse_openai_message_content(body: dict[str, Any]) -> dict[str, Any]:
     choices = body.get("choices")
     if not isinstance(choices, list) or not choices:
-        raise ProcessingError("schema_drift", "OpenAI-compatible response is missing choices[]")
+        raise RelayOutcomeError(
+            mapped_error_type="schema_drift",
+            failure_code="provider_schema_drift",
+            failure_message="OpenAI-compatible response is missing choices[]",
+        )
     first_choice = choices[0]
     if not isinstance(first_choice, dict):
-        raise ProcessingError("schema_drift", "OpenAI-compatible choices[0] must be an object")
+        raise RelayOutcomeError(
+            mapped_error_type="schema_drift",
+            failure_code="provider_schema_drift",
+            failure_message="OpenAI-compatible choices[0] must be an object",
+        )
     message = first_choice.get("message")
     if not isinstance(message, dict):
-        raise ProcessingError("schema_drift", "OpenAI-compatible choices[0].message must be an object")
+        raise RelayOutcomeError(
+            mapped_error_type="schema_drift",
+            failure_code="provider_schema_drift",
+            failure_message="OpenAI-compatible choices[0].message must be an object",
+        )
     content = message.get("content")
-    if not isinstance(content, str) or not content.strip():
-        raise ProcessingError("schema_drift", "OpenAI-compatible response must provide message.content text")
-    cleaned = content.strip()
+    cleaned = _openai_message_content_text(content)
+    if cleaned is None:
+        raise RelayOutcomeError(
+            mapped_error_type="dependency_unavailable",
+            failure_code="provider_empty_completion",
+            failure_message="OpenAI-compatible response must provide non-empty message.content text",
+            provider_response_status=OUTCOME_SUCCEEDED,
+        )
     if cleaned.startswith("```"):
         cleaned = re.sub(r"^```[a-zA-Z0-9_-]*\n?", "", cleaned)
         cleaned = re.sub(r"\n?```$", "", cleaned).strip()
     try:
         parsed = json.loads(cleaned)
     except json.JSONDecodeError as exc:
-        raise ProcessingError("parse_failure", "OpenAI-compatible response content must be valid JSON") from exc
+        raise RelayOutcomeError(
+            mapped_error_type="parse_failure",
+            failure_code="parse_failure",
+            failure_message="OpenAI-compatible response content must be valid JSON",
+            provider_response_status=OUTCOME_SUCCEEDED,
+        ) from exc
     if not isinstance(parsed, dict):
-        raise ProcessingError("schema_drift", "OpenAI-compatible response content must decode to an object")
+        raise RelayOutcomeError(
+            mapped_error_type="schema_drift",
+            failure_code="provider_schema_drift",
+            failure_message="OpenAI-compatible response content must decode to an object",
+            provider_response_status=OUTCOME_SUCCEEDED,
+        )
     return parsed
+
+
+def _openai_message_content_text(content: Any) -> str | None:
+    if isinstance(content, str):
+        cleaned = content.strip()
+        return cleaned or None
+    if not isinstance(content, list):
+        return None
+    text_parts: list[str] = []
+    for part in content:
+        text = _openai_message_content_part_text(part)
+        if text is not None:
+            text_parts.append(text)
+    if not text_parts:
+        return None
+    return "\n".join(text_parts).strip() or None
+
+
+def _openai_message_content_part_text(part: Any) -> str | None:
+    if isinstance(part, str):
+        cleaned = part.strip()
+        return cleaned or None
+    if not isinstance(part, dict):
+        return None
+    direct_text = part.get("text")
+    if isinstance(direct_text, str):
+        cleaned = direct_text.strip()
+        return cleaned or None
+    if isinstance(direct_text, dict):
+        for key in ("value", "text"):
+            nested = direct_text.get(key)
+            if isinstance(nested, str):
+                cleaned = nested.strip()
+                if cleaned:
+                    return cleaned
+    value = part.get("value")
+    if isinstance(value, str):
+        cleaned = value.strip()
+        return cleaned or None
+    return None
 
 
 def _request_payload(
@@ -315,6 +401,118 @@ def _authorization_header(relay_config: RelayConfig) -> str:
     if relay_config.auth_style == "raw":
         return relay_config.token
     return f"Bearer {relay_config.token}"
+
+
+def _response_http_status(response: Any) -> int | None:
+    status = getattr(response, "status", None)
+    if isinstance(status, int):
+        return status
+    getcode = getattr(response, "getcode", None)
+    if callable(getcode):
+        try:
+            code = getcode()
+        except Exception:
+            return None
+        if isinstance(code, int):
+            return code
+    return None
+
+
+def _screen_outcome(
+    *,
+    transport_status: str,
+    provider_response_status: str,
+    content_status: str,
+    schema_status: str,
+    business_status: str,
+    request_id: str | None,
+    http_status: int | None,
+    mapped_error_type: str | None,
+    failure_code: str | None,
+    failure_message: str | None,
+    normalized_result: dict[str, Any] | None,
+) -> dict[str, Any]:
+    return {
+        "transport_status": transport_status,
+        "provider_response_status": provider_response_status,
+        "content_status": content_status,
+        "schema_status": schema_status,
+        "business_status": business_status,
+        "request_id": request_id,
+        "http_status": http_status,
+        "mapped_error_type": mapped_error_type,
+        "failure_code": failure_code,
+        "failure_message": failure_message,
+        "normalized_result": normalized_result,
+    }
+
+
+def _successful_screen_outcome(
+    *,
+    request_id: str | None,
+    http_status: int | None,
+    normalized_result: dict[str, Any],
+) -> dict[str, Any]:
+    return _screen_outcome(
+        transport_status=OUTCOME_SUCCEEDED,
+        provider_response_status=OUTCOME_SUCCEEDED,
+        content_status=OUTCOME_SUCCEEDED,
+        schema_status=OUTCOME_SUCCEEDED,
+        business_status=OUTCOME_SUCCEEDED,
+        request_id=request_id,
+        http_status=http_status,
+        mapped_error_type=None,
+        failure_code=None,
+        failure_message=None,
+        normalized_result=normalized_result,
+    )
+
+
+def _failed_screen_outcome(
+    *,
+    request_id: str | None,
+    http_status: int | None,
+    mapped_error_type: str,
+    failure_code: str,
+    failure_message: str,
+    transport_status: str = OUTCOME_SUCCEEDED,
+    provider_response_status: str = OUTCOME_FAILED,
+    content_status: str = OUTCOME_FAILED,
+    schema_status: str = OUTCOME_FAILED,
+    business_status: str = OUTCOME_FAILED,
+) -> dict[str, Any]:
+    return _screen_outcome(
+        transport_status=transport_status,
+        provider_response_status=provider_response_status,
+        content_status=content_status,
+        schema_status=schema_status,
+        business_status=business_status,
+        request_id=request_id,
+        http_status=http_status,
+        mapped_error_type=mapped_error_type,
+        failure_code=failure_code,
+        failure_message=failure_message,
+        normalized_result=None,
+    )
+
+
+def screen_candidate_outcome_succeeded(outcome: dict[str, Any]) -> bool:
+    return all(
+        outcome.get(field_name) == OUTCOME_SUCCEEDED
+        for field_name in (
+            "transport_status",
+            "provider_response_status",
+            "content_status",
+            "schema_status",
+            "business_status",
+        )
+    )
+
+
+def screen_candidate_outcome_to_error(outcome: dict[str, Any]) -> ProcessingError:
+    error_type = str(outcome.get("mapped_error_type") or "dependency_unavailable")
+    message = str(outcome.get("failure_message") or outcome.get("failure_code") or "candidate prescreen relay failed")
+    return ProcessingError(error_type, message)
 
 
 def relay_preflight(
@@ -361,7 +559,18 @@ def _extract_result_object(body: dict[str, Any], *, api_style: str) -> dict[str,
     elif isinstance(body.get("output"), dict):
         result = body["output"]
     if not isinstance(result, dict):
-        raise ProcessingError("schema_drift", "Relay response must provide a result object")
+        raise RelayOutcomeError(
+            mapped_error_type="schema_drift",
+            failure_code="provider_schema_drift",
+            failure_message="Relay response must provide a result object",
+        )
+    if not result:
+        raise RelayOutcomeError(
+            mapped_error_type="dependency_unavailable",
+            failure_code="provider_empty_completion",
+            failure_message="Relay response returned an empty result object",
+            provider_response_status=OUTCOME_SUCCEEDED,
+        )
     return result
 
 
@@ -379,6 +588,7 @@ def screen_candidate(
     request_interval_seconds: int = 0,
     retry_sleep_seconds: int = 0,
     sleep_fn: Callable[[float], None] = sleep,
+    run_id: str | None = None,
 ) -> dict[str, Any]:
     fixture_key = f"{candidate_input['source']}:{candidate_input['external_id']}"
     if fixture_path is not None:
@@ -398,14 +608,32 @@ def screen_candidate(
             "transport": relay_transport,
             "request_id": None,
         }
-        return normalized
+        try:
+            validate_normalized_llm_prescreen(normalized)
+        except ContractValidationError as exc:
+            return _failed_screen_outcome(
+                request_id=None,
+                http_status=None,
+                mapped_error_type="json_schema_validation_failed",
+                failure_code="output_schema_validation_failed",
+                failure_message=str(exc),
+                transport_status=OUTCOME_SUCCEEDED,
+                provider_response_status=OUTCOME_SUCCEEDED,
+                content_status=OUTCOME_SUCCEEDED,
+            )
+        return _successful_screen_outcome(
+            request_id=None,
+            http_status=None,
+            normalized_result=normalized,
+        )
 
     relay_config = RelayConfig.from_env(timeout_seconds, relay_client_version)
     logger = get_logger(
         "candidate_prescreen_relay",
-        source_id=f"src_{candidate_input.get('source', 'unknown')}",
+        source_id=str(candidate_input.get("source_id") or f"src_{candidate_input.get('source', 'unknown')}"),
         task_id="candidate_prescreen_relay",
         resolution_status="running",
+        run_id=run_id,
     )
     request_url, payload = _request_payload(
         relay_config=relay_config,
@@ -475,6 +703,7 @@ def screen_candidate(
             ) as response:
                 raw_body = response.read().decode("utf-8")
                 request_id = response.headers.get("X-Request-Id")
+                http_status = _response_http_status(response)
         except urllib.error.HTTPError as exc:
             error_type = "api_429" if exc.code == 429 else "dependency_unavailable"
             last_error = ProcessingError(error_type, f"Relay returned HTTP {exc.code}")
@@ -489,13 +718,52 @@ def screen_candidate(
             _wait_before_retry(last_error, attempt)
             continue
         last_error = None
+        if not raw_body.strip():
+            return _failed_screen_outcome(
+                request_id=request_id,
+                http_status=http_status,
+                mapped_error_type="dependency_unavailable",
+                failure_code="provider_empty_completion",
+                failure_message="Relay returned an empty HTTP 200 body",
+                transport_status=OUTCOME_SUCCEEDED,
+                provider_response_status=OUTCOME_SUCCEEDED,
+            )
         try:
             body = json.loads(raw_body)
         except json.JSONDecodeError as exc:
-            raise ProcessingError("parse_failure", "Relay returned invalid JSON") from exc
+            return _failed_screen_outcome(
+                request_id=request_id,
+                http_status=http_status,
+                mapped_error_type="parse_failure",
+                failure_code="parse_failure",
+                failure_message="Relay returned invalid JSON",
+                transport_status=OUTCOME_SUCCEEDED,
+                provider_response_status=OUTCOME_SUCCEEDED,
+            )
         if not isinstance(body, dict):
-            raise ProcessingError("schema_drift", "Relay response body must be an object")
-        result = _extract_result_object(body, api_style=relay_config.api_style)
+            return _failed_screen_outcome(
+                request_id=request_id,
+                http_status=http_status,
+                mapped_error_type="schema_drift",
+                failure_code="provider_schema_drift",
+                failure_message="Relay response body must be an object",
+                transport_status=OUTCOME_SUCCEEDED,
+            )
+        try:
+            result = _extract_result_object(body, api_style=relay_config.api_style)
+        except RelayOutcomeError as exc:
+            return _failed_screen_outcome(
+                request_id=request_id,
+                http_status=http_status,
+                mapped_error_type=exc.mapped_error_type,
+                failure_code=exc.failure_code,
+                failure_message=exc.failure_message,
+                transport_status=exc.transport_status,
+                provider_response_status=exc.provider_response_status,
+                content_status=exc.content_status,
+                schema_status=exc.schema_status,
+                business_status=exc.business_status,
+            )
         normalized = normalize_llm_result(result)
         normalized["channel_metadata"] = {
             "prompt_version": prompt_version,
@@ -505,7 +773,31 @@ def screen_candidate(
             "transport": relay_transport,
             "request_id": request_id,
         }
-        return normalized
+        try:
+            validate_normalized_llm_prescreen(normalized)
+        except ContractValidationError as exc:
+            return _failed_screen_outcome(
+                request_id=request_id,
+                http_status=http_status,
+                mapped_error_type="json_schema_validation_failed",
+                failure_code="output_schema_validation_failed",
+                failure_message=str(exc),
+                transport_status=OUTCOME_SUCCEEDED,
+                provider_response_status=OUTCOME_SUCCEEDED,
+                content_status=OUTCOME_SUCCEEDED,
+            )
+        return _successful_screen_outcome(
+            request_id=request_id,
+            http_status=http_status,
+            normalized_result=normalized,
+        )
     if last_error is None:
-        raise ProcessingError("dependency_unavailable", "Relay request failed before any response was received")
-    raise last_error
+        last_error = ProcessingError("dependency_unavailable", "Relay request failed before any response was received")
+    return _failed_screen_outcome(
+        request_id=None,
+        http_status=None,
+        mapped_error_type=last_error.error_type,
+        failure_code=last_error.error_type,
+        failure_message=str(last_error),
+        transport_status=OUTCOME_FAILED,
+    )

@@ -1,0 +1,137 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_bb61f9ef26c6
+candidate_batch_id: candidate_batch_github_qf_agent_2025-01-01_2025-01-31
+created_at: '2026-04-08T12:44:37.290603Z'
+updated_at: '2026-04-09T02:50:59.998181Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '650600874'
+canonical_url: https://github.com/PKU-YuanGroup/ChatLaw
+title: ChatLaw
+summary: "ChatLaw\uFF1AA Powerful LLM Tailored for Chinese Legal. \u4E2D\u6587\u6CD5\
+  \u5F8B\u5927\u6A21\u578B"
+raw_evidence_excerpt: "ChatLaw\uFF1AA Powerful LLM Tailored for Chinese Legal. \u4E2D\
+  \u6587\u6CD5\u5F8B\u5927\u6A21\u578B\n\nChatlaw: A Large Language Model-based Multi-Agent\
+  \ Legal Assistant Enhanced by Knowledge Graph and Mixture-of-Experts.\n\narXiv \xB7\
+  \ HuggingFace\n\nChatLaw Models\n\nChatLaw2-MoE\n\n- **Latest Version**: Based on\
+  \ the InternLM architecture with a 4x7B Mixture of Experts (MoE) design.\n\n- **Specialization**:\
+  \ Tailored for Chinese legal language processing\u3001\n\nChatLaw-13B\n\n- **Demo\
+  \ Version**: Built on the Ziya-LLaMA-13B-v1 model. - **Performance**: Excels in\
+  \ general Chinese tasks but requires a larger model for complex legal QA.\n\nChatLaw-33B\n\
+  \n- **Demo Version**: Utilizes the Anima-33B model. - **Enhancements**: Improved\
+  \ logical reasoning over the 13B version. - **Challenge**: Occasionally defaults\
+  \ to English responses due to limited Chinese training data in Anima.\n\nChatLaw-Text2Vec\n\
+  \n- **Function**: A text similarity model trained on 93,000 court case decisions.\
+  \ - **Capability**: Matches user queries to pertinent legal statutes, offering contextual\
+  \ relevance. - **Example**: Connects questions about loan repayment to the appropriate\
+  \ sections of contract law.\n\nIntroduction\n\nAI legal assistants, powered by Large\
+  \ Language Models (LLMs), offer accessible legal consulting. However, the risk of\
+  \ hallucination in AI responses is a concern. This paper introduces ChatLaw, an\
+  \ innovative assistant that employs a Mixture-of-Experts (MoE) model and a multi-agent\
+  \ system to enhance reliability and accuracy in AI legal services. By integrating\
+  \ knowledge graphs and artificial screening, we've created a high-quality legal\
+  \ dataset for training the MoE model. This model leverages various experts to address\
+  \ a range of legal issues, optimizing legal response accuracy. Standardized Operating\
+  \ Procedures (SOPs), inspired by law firm workflows, significantly minimize errors\
+  \ and hallucinations.\n\nOur MoE model outperforms GPT-4 in the Lawbench and Unified\
+  \ Qualification Exam for Legal Professionals, achieving a 7.73% higher accuracy\
+  \ and an 11-point lead, respectively. It also surpasses other models in real-case\
+  \ consultations across multiple dimensions, showcasing robust legal consultation\
+  \ capabilities.\n\n---\n\nMulti-Agents Collaboration Process and Legal Consultation\
+  \ Report\n\nThe diagram below illustrates the collaborative process of multiple\
+  \ agents in providing legal consultation services, exemplified by a divorce consultation.\
+  \ The process involves gathering information, legal research, comprehensive advice,\
+  \ and culminates in a detailed Legal Consultation Report.\n\nDataset\n\nData Visualization\
+  \ and Performance Comparison\n\n(a) Our legal dataset covers a diverse range of\
+  \ tasks, from case classification to public opinion analysis.\n\n(b) ChatLaw demonstrates\
+  \ superior performance across multiple legal categories compared to other models.\n\
+  \n(c) ChatLaw consistently outperforms other models in legal cognitive tasks, as\
+  \ shown in the Lawbench comparison.\n\n(d) ChatLaw maintains high performance across\
+  \ five years on the Unified Qualification Exam for Legal Professionals.\n\nExperiments\n\
+  \nEvaluation of Legal Consultation Quality and Model Performance\n\n(a) Legal consultation\
+  \ quality is assessed based on Completeness, Logic, Correctness, Language Quality,\
+  \ Guidance, and Authority.\n\n(b) ChatLaw achieves the highest scores across all\
+  \ criteria, particularly excelling in Completeness, Guidance, and Authority.\n\n\
+  (c) ChatLaw shows a higher win rate compared to other models, indicating superior\
+  \ capability in providing high-quality legal consultations.\n\nTruthful QA Evaluation\n\
+  \nUsage\n\nFind the model at: ChatLaw2-MoE\n\nStar History"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '650600874'
+    canonical_url: https://github.com/PKU-YuanGroup/ChatLaw
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

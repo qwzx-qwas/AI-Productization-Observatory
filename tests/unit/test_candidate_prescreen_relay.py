@@ -20,6 +20,7 @@ class _FakeRelayResponse:
     def __init__(self, payload: dict[str, object]) -> None:
         self._payload = json.dumps(payload).encode("utf-8")
         self.headers = {"X-Request-Id": "req_test_123"}
+        self.status = 200
 
     def read(self) -> bytes:
         return self._payload
@@ -29,6 +30,9 @@ class _FakeRelayResponse:
 
     def __exit__(self, exc_type, exc, tb) -> None:
         return None
+
+    def getcode(self) -> int:
+        return self.status
 
 
 class CandidatePrescreenRelayUnitTests(unittest.TestCase):
@@ -118,7 +122,72 @@ class CandidatePrescreenRelayUnitTests(unittest.TestCase):
 
         def _fake_urlopen(request, timeout, context):
             captured_request["body"] = json.loads(request.data.decode("utf-8"))
-            return _FakeRelayResponse({"result": {}})
+            return _FakeRelayResponse(
+                {
+                    "result": {
+                        "in_observatory_scope": True,
+                        "reason": "clear product evidence",
+                        "decision_snapshot": "Recommend candidate_pool because the product workflow is explicit.",
+                        "scope_boundary_note": "Evidence supports an end-user product interpretation.",
+                        "source_evidence_summary": ["Useful product evidence."],
+                        "evidence_anchors": [
+                            {
+                                "anchor_rank": 1,
+                                "evidence_text": "Useful product evidence.",
+                                "evidence_source_field": "raw_evidence_excerpt",
+                                "why_it_matters": "Shows concrete workflow evidence.",
+                            }
+                        ],
+                        "review_focus_points": [
+                            "Confirm README still matches the shipped workflow.",
+                            "Verify the main category remains product-facing.",
+                        ],
+                        "uncertainty_points": [],
+                        "recommend_candidate_pool": True,
+                        "recommended_action": "candidate_pool",
+                        "confidence_summary": {
+                            "scope_confidence": "high",
+                            "taxonomy_confidence": "medium",
+                            "persona_confidence": "medium",
+                        },
+                        "handoff_readiness_hint": {
+                            "suggested_action": "candidate_pool",
+                            "rationale": "Enough evidence is present for first-pass review.",
+                        },
+                        "persona_candidates": [
+                            {
+                                "persona_code": "support_agent",
+                                "confidence_rank": 1,
+                                "rationale": "Targets support workflows.",
+                                "supporting_evidence_anchors": [1],
+                            }
+                        ],
+                        "taxonomy_hints": {
+                            "primary_category_code": "JTBD_SALES_SUPPORT",
+                            "secondary_category_code": None,
+                            "primary_persona_code": "support_agent",
+                            "delivery_form_code": None,
+                            "main_category_candidate": {
+                                "category_code": "JTBD_SALES_SUPPORT",
+                                "rationale": "Fits support usage.",
+                                "supporting_evidence_anchors": [1],
+                            },
+                            "adjacent_category_candidate": {
+                                "category_code": "JTBD_KNOWLEDGE_ASSISTANCE",
+                                "rationale_for_similarity": "The assistant also has knowledge-like behavior.",
+                                "supporting_evidence_anchors": [1],
+                            },
+                            "adjacent_category_rejected_reason": "Support workflow evidence is stronger than the adjacent category signal.",
+                        },
+                        "assessment_hints": {
+                            "evidence_strength": "high",
+                            "build_evidence_band": "high",
+                            "need_clarity_band": "low",
+                            "unresolved_risk": "low",
+                        },
+                    }
+                }
+            )
 
         with patch("src.candidate_prescreen.relay.RelayConfig.from_env") as mock_from_env:
             mock_from_env.return_value.base_url = "https://relay.example.test"
@@ -144,7 +213,9 @@ class CandidatePrescreenRelayUnitTests(unittest.TestCase):
         self.assertEqual(payload["input"]["source"], "github")
         self.assertEqual(payload["input"]["time_field"], "pushed_at")
         self.assertEqual(payload["input"]["raw_evidence_excerpt"], "Useful product evidence.")
-        self.assertEqual(result["channel_metadata"]["request_id"], "req_test_123")
+        self.assertEqual(result["request_id"], "req_test_123")
+        self.assertEqual(result["business_status"], "succeeded")
+        self.assertEqual(result["normalized_result"]["channel_metadata"]["request_id"], "req_test_123")
 
     def test_screen_candidate_supports_openai_compatible_api(self) -> None:
         candidate_input = {
@@ -197,7 +268,133 @@ class CandidatePrescreenRelayUnitTests(unittest.TestCase):
         self.assertEqual(payload["messages"][0]["role"], "system")
         self.assertEqual(payload["messages"][1]["role"], "user")
         self.assertIn("candidate_input", payload["messages"][1]["content"])
-        self.assertEqual(result["channel_metadata"]["request_id"], "req_test_123")
+        self.assertEqual(result["request_id"], "req_test_123")
+        self.assertEqual(result["business_status"], "failed")
+        self.assertEqual(result["failure_code"], "output_schema_validation_failed")
+
+    def test_screen_candidate_supports_openai_compatible_content_parts_in_response(self) -> None:
+        candidate_input = {
+            "source": "github",
+            "source_id": "src_github",
+            "source_window": "2026-03-01..2026-03-08",
+            "time_field": "pushed_at",
+            "external_id": "123",
+            "canonical_url": "https://github.com/example/product",
+            "title": "Product Name",
+            "summary": "AI support workspace.",
+            "raw_evidence_excerpt": "Useful product evidence.",
+            "query_family": "ai_applications_and_products",
+            "query_slice_id": "qf_agent",
+            "selection_rule_version": "github_qsv1",
+        }
+
+        content_json = json.dumps(
+            {
+                "in_observatory_scope": True,
+                "reason": "clear end-user product signal",
+                "decision_snapshot": "candidate_pool",
+                        "scope_boundary_note": "Evidence supports an end-user product interpretation.",
+                "source_evidence_summary": ["specific workflow"],
+                "evidence_anchors": [
+                    {
+                        "anchor_rank": 1,
+                        "evidence_text": "Useful product evidence.",
+                        "evidence_source_field": "raw_evidence_excerpt",
+                        "why_it_matters": "Shows real product workflow.",
+                    }
+                ],
+                "review_focus_points": [
+                    "Confirm README reflects shipped product.",
+                    "Verify the main category stays support-oriented instead of developer-tooling oriented.",
+                ],
+                "uncertainty_points": [],
+                "recommend_candidate_pool": True,
+                "recommended_action": "candidate_pool",
+                "confidence_summary": {
+                    "scope_confidence": "high",
+                    "taxonomy_confidence": "medium",
+                    "persona_confidence": "medium",
+                },
+                "handoff_readiness_hint": {
+                    "suggested_action": "candidate_pool",
+                    "rationale": "Enough evidence for staging.",
+                },
+                "persona_candidates": [
+                    {
+                        "persona_code": "support_agent",
+                        "confidence_rank": 1,
+                        "rationale": "Targets support workflows.",
+                        "supporting_evidence_anchors": [1],
+                    }
+                ],
+                "taxonomy_hints": {
+                    "primary_category_code": "JTBD_SALES_SUPPORT",
+                    "secondary_category_code": None,
+                    "primary_persona_code": "support_agent",
+                    "delivery_form_code": None,
+                    "main_category_candidate": {
+                        "category_code": "JTBD_SALES_SUPPORT",
+                        "rationale": "Fits support usage.",
+                        "supporting_evidence_anchors": [1],
+                    },
+                    "adjacent_category_candidate": {
+                        "category_code": "JTBD_KNOWLEDGE_ASSISTANCE",
+                        "rationale_for_similarity": "The assistant also exposes knowledge-style retrieval behavior.",
+                        "supporting_evidence_anchors": [1],
+                    },
+                    "adjacent_category_rejected_reason": "The clearer signal is support execution rather than general knowledge assistance.",
+                },
+                "assessment_hints": {
+                    "evidence_strength": "high",
+                    "build_evidence_band": "high",
+                    "need_clarity_band": "low",
+                    "unresolved_risk": "low",
+                },
+            },
+            ensure_ascii=True,
+        )
+
+        def _fake_urlopen(request, timeout, context):
+            return _FakeRelayResponse(
+                {
+                    "choices": [
+                        {
+                            "message": {
+                                "content": [
+                                    {"type": "text", "text": content_json},
+                                ]
+                            }
+                        }
+                    ]
+                }
+            )
+
+        with patch("src.candidate_prescreen.relay.RelayConfig.from_env") as mock_from_env:
+            mock_from_env.return_value.base_url = "https://api.third-party.example/v1"
+            mock_from_env.return_value.token = "test-token"
+            mock_from_env.return_value.model = "test-model"
+            mock_from_env.return_value.timeout_seconds = 30
+            mock_from_env.return_value.client_version = "relay_candidate_prescreener_v1"
+            mock_from_env.return_value.api_style = "openai_compatible"
+            mock_from_env.return_value.auth_style = "bearer"
+            mock_from_env.return_value.message_content_style = "string"
+            with patch("src.candidate_prescreen.relay.urllib.request.urlopen", side_effect=_fake_urlopen):
+                result = screen_candidate(
+                    candidate_input,
+                    prompt_version="candidate_prescreener_v1",
+                    routing_version="route_candidate_prescreener_v1",
+                    relay_transport="http_json_relay",
+                    relay_client_version="relay_candidate_prescreener_v1",
+                    prompt_contract={"prompt_spec_ref": "10_prompt_specs/candidate_prescreener_v1.md"},
+                    fixture_path=None,
+                    timeout_seconds=30,
+                    max_retries=0,
+                )
+
+        self.assertEqual(result["business_status"], "succeeded")
+        self.assertTrue(result["normalized_result"]["in_observatory_scope"])
+        self.assertEqual(result["normalized_result"]["recommended_action"], "candidate_pool")
+        self.assertEqual(result["normalized_result"]["channel_metadata"]["request_id"], "req_test_123")
 
     def test_screen_candidate_supports_raw_authorization_header(self) -> None:
         candidate_input = {
@@ -340,7 +537,192 @@ class CandidatePrescreenRelayUnitTests(unittest.TestCase):
                 )
 
         self.assertEqual(slept, [12])
-        self.assertEqual(result["channel_metadata"]["request_id"], "req_test_123")
+        self.assertEqual(result["business_status"], "failed")
+        self.assertEqual(result["failure_code"], "provider_empty_completion")
+        self.assertEqual(result["mapped_error_type"], "dependency_unavailable")
+        self.assertEqual(result["request_id"], "req_test_123")
+
+    def test_screen_candidate_marks_empty_relay_result_as_provider_empty_completion(self) -> None:
+        candidate_input = {
+            "source": "github",
+            "source_id": "src_github",
+            "source_window": "2026-03-01..2026-03-08",
+            "time_field": "pushed_at",
+            "external_id": "123",
+            "canonical_url": "https://github.com/example/product",
+            "title": "Product Name",
+            "summary": "AI support workspace.",
+            "raw_evidence_excerpt": "Useful product evidence.",
+            "query_family": "ai_applications_and_products",
+            "query_slice_id": "qf_agent",
+            "selection_rule_version": "github_qsv1",
+        }
+
+        with patch("src.candidate_prescreen.relay.RelayConfig.from_env") as mock_from_env:
+            mock_from_env.return_value.base_url = "https://relay.example.test"
+            mock_from_env.return_value.token = "test-token"
+            mock_from_env.return_value.model = "test-model"
+            mock_from_env.return_value.timeout_seconds = 30
+            mock_from_env.return_value.client_version = "relay_candidate_prescreener_v1"
+            mock_from_env.return_value.api_style = "relay_json"
+            mock_from_env.return_value.auth_style = "bearer"
+            mock_from_env.return_value.message_content_style = "string"
+            with patch(
+                "src.candidate_prescreen.relay.urllib.request.urlopen",
+                return_value=_FakeRelayResponse({"result": {}}),
+            ):
+                result = screen_candidate(
+                    candidate_input,
+                    prompt_version="candidate_prescreener_v1",
+                    routing_version="route_candidate_prescreener_v1",
+                    relay_transport="http_json_relay",
+                    relay_client_version="relay_candidate_prescreener_v1",
+                    prompt_contract={"prompt_spec_ref": "10_prompt_specs/candidate_prescreener_v1.md"},
+                    fixture_path=None,
+                    timeout_seconds=30,
+                    max_retries=0,
+                )
+
+        self.assertEqual(result["content_status"], "failed")
+        self.assertEqual(result["business_status"], "failed")
+        self.assertEqual(result["failure_code"], "provider_empty_completion")
+        self.assertEqual(result["mapped_error_type"], "dependency_unavailable")
+        self.assertIsNone(result["normalized_result"])
+
+    def test_screen_candidate_marks_empty_openai_message_content_as_provider_empty_completion(self) -> None:
+        candidate_input = {
+            "source": "github",
+            "source_id": "src_github",
+            "source_window": "2026-03-01..2026-03-08",
+            "time_field": "pushed_at",
+            "external_id": "123",
+            "canonical_url": "https://github.com/example/product",
+            "title": "Product Name",
+            "summary": "AI support workspace.",
+            "raw_evidence_excerpt": "Useful product evidence.",
+            "query_family": "ai_applications_and_products",
+            "query_slice_id": "qf_agent",
+            "selection_rule_version": "github_qsv1",
+        }
+
+        with patch("src.candidate_prescreen.relay.RelayConfig.from_env") as mock_from_env:
+            mock_from_env.return_value.base_url = "https://api.third-party.example/v1"
+            mock_from_env.return_value.token = "test-token"
+            mock_from_env.return_value.model = "test-model"
+            mock_from_env.return_value.timeout_seconds = 30
+            mock_from_env.return_value.client_version = "relay_candidate_prescreener_v1"
+            mock_from_env.return_value.api_style = "openai_compatible"
+            mock_from_env.return_value.auth_style = "bearer"
+            mock_from_env.return_value.message_content_style = "string"
+            with patch(
+                "src.candidate_prescreen.relay.urllib.request.urlopen",
+                return_value=_FakeRelayResponse({"choices": [{"message": {"content": "   "}}]}),
+            ):
+                result = screen_candidate(
+                    candidate_input,
+                    prompt_version="candidate_prescreener_v1",
+                    routing_version="route_candidate_prescreener_v1",
+                    relay_transport="http_json_relay",
+                    relay_client_version="relay_candidate_prescreener_v1",
+                    prompt_contract={"prompt_spec_ref": "10_prompt_specs/candidate_prescreener_v1.md"},
+                    fixture_path=None,
+                    timeout_seconds=30,
+                    max_retries=0,
+                )
+
+        self.assertEqual(result["content_status"], "failed")
+        self.assertEqual(result["failure_code"], "provider_empty_completion")
+        self.assertEqual(result["mapped_error_type"], "dependency_unavailable")
+
+    def test_screen_candidate_marks_non_json_openai_message_content_as_parse_failure(self) -> None:
+        candidate_input = {
+            "source": "github",
+            "source_id": "src_github",
+            "source_window": "2026-03-01..2026-03-08",
+            "time_field": "pushed_at",
+            "external_id": "123",
+            "canonical_url": "https://github.com/example/product",
+            "title": "Product Name",
+            "summary": "AI support workspace.",
+            "raw_evidence_excerpt": "Useful product evidence.",
+            "query_family": "ai_applications_and_products",
+            "query_slice_id": "qf_agent",
+            "selection_rule_version": "github_qsv1",
+        }
+
+        with patch("src.candidate_prescreen.relay.RelayConfig.from_env") as mock_from_env:
+            mock_from_env.return_value.base_url = "https://api.third-party.example/v1"
+            mock_from_env.return_value.token = "test-token"
+            mock_from_env.return_value.model = "test-model"
+            mock_from_env.return_value.timeout_seconds = 30
+            mock_from_env.return_value.client_version = "relay_candidate_prescreener_v1"
+            mock_from_env.return_value.api_style = "openai_compatible"
+            mock_from_env.return_value.auth_style = "bearer"
+            mock_from_env.return_value.message_content_style = "string"
+            with patch(
+                "src.candidate_prescreen.relay.urllib.request.urlopen",
+                return_value=_FakeRelayResponse({"choices": [{"message": {"content": "not-json"}}]}),
+            ):
+                result = screen_candidate(
+                    candidate_input,
+                    prompt_version="candidate_prescreener_v1",
+                    routing_version="route_candidate_prescreener_v1",
+                    relay_transport="http_json_relay",
+                    relay_client_version="relay_candidate_prescreener_v1",
+                    prompt_contract={"prompt_spec_ref": "10_prompt_specs/candidate_prescreener_v1.md"},
+                    fixture_path=None,
+                    timeout_seconds=30,
+                    max_retries=0,
+                )
+
+        self.assertEqual(result["content_status"], "failed")
+        self.assertEqual(result["failure_code"], "parse_failure")
+        self.assertEqual(result["mapped_error_type"], "parse_failure")
+
+    def test_screen_candidate_marks_missing_provider_result_envelope_as_schema_drift(self) -> None:
+        candidate_input = {
+            "source": "github",
+            "source_id": "src_github",
+            "source_window": "2026-03-01..2026-03-08",
+            "time_field": "pushed_at",
+            "external_id": "123",
+            "canonical_url": "https://github.com/example/product",
+            "title": "Product Name",
+            "summary": "AI support workspace.",
+            "raw_evidence_excerpt": "Useful product evidence.",
+            "query_family": "ai_applications_and_products",
+            "query_slice_id": "qf_agent",
+            "selection_rule_version": "github_qsv1",
+        }
+
+        with patch("src.candidate_prescreen.relay.RelayConfig.from_env") as mock_from_env:
+            mock_from_env.return_value.base_url = "https://relay.example.test"
+            mock_from_env.return_value.token = "test-token"
+            mock_from_env.return_value.model = "test-model"
+            mock_from_env.return_value.timeout_seconds = 30
+            mock_from_env.return_value.client_version = "relay_candidate_prescreener_v1"
+            mock_from_env.return_value.api_style = "relay_json"
+            mock_from_env.return_value.auth_style = "bearer"
+            mock_from_env.return_value.message_content_style = "string"
+            with patch(
+                "src.candidate_prescreen.relay.urllib.request.urlopen",
+                return_value=_FakeRelayResponse({"unexpected": "shape"}),
+            ):
+                result = screen_candidate(
+                    candidate_input,
+                    prompt_version="candidate_prescreener_v1",
+                    routing_version="route_candidate_prescreener_v1",
+                    relay_transport="http_json_relay",
+                    relay_client_version="relay_candidate_prescreener_v1",
+                    prompt_contract={"prompt_spec_ref": "10_prompt_specs/candidate_prescreener_v1.md"},
+                    fixture_path=None,
+                    timeout_seconds=30,
+                    max_retries=0,
+                )
+
+        self.assertEqual(result["provider_response_status"], "failed")
+        self.assertEqual(result["failure_code"], "provider_schema_drift")
+        self.assertEqual(result["mapped_error_type"], "schema_drift")
 
     def test_wait_for_request_interval_sleeps_until_interval_boundary(self) -> None:
         slept: list[float] = []

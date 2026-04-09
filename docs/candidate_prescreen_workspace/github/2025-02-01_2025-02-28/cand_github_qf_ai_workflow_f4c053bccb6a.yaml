@@ -1,0 +1,144 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_f4c053bccb6a
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-02-01_2025-02-28
+created_at: '2026-04-08T14:21:10.522643Z'
+updated_at: '2026-04-09T03:00:07.106203Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '913708108'
+canonical_url: https://github.com/Ejb503/multimodal-mcp-client
+title: multimodal-mcp-client
+summary: A Multi-modal MCP client for voice powered agentic workflows
+raw_evidence_excerpt: "A Multi-modal MCP client for voice powered agentic workflows\n\
+  \nSystemprompt Multimodal MCP Client\n\nWebsite \u2022 Documentation \u2022 Blog\
+  \ \u2022 Get API Key\n\nA modern voice-controlled AI interface powered by Google\
+  \ Gemini and Anthropic MCP (Model Control Protocol). Transform how you interact\
+  \ with AI through natural speech and multimodal inputs.\n\n> **\u26A0\uFE0F Important\
+  \ Note**: This open source project is currently in development and in early access.\
+  \ It is not currently compatible with Safari but has been tested on Chrome with\
+  \ Linux, Windows, and MacOS. If you have any problems, please let us know on Discord\
+  \ or GitHub.\n\nIf you find this project useful, please consider:\n\n- \u2B50 Starring\
+  \ it on GitHub - \U0001F504 Sharing it with others - \U0001F4AC Joining our Discord\
+  \ community\n\n\U0001F31F Overview\n\nA modern Vite + TypeScript application that\
+  \ enables voice-controlled AI workflows through MCP (Model Control Protocol). This\
+  \ project revolutionizes how you interact with AI systems by combining Google Gemini's\
+  \ multimodal capabilities with MCP's extensible tooling system.\n\nThe Client supports\
+  \ both custom (user provided and configured) and Systemprompt MCP servers. Systemprompt\
+  \ MCP servers can be installed through the UX with a Systemprompt API key (free).\n\
+  \nCustom MCP servers are not pre-configured and require a custom configuration file.\n\
+  \nCreate a local file `mcp.config.custom.json` in the `config` directory and add\
+  \ your MCP server configuration.\n\n\U0001F3AF Why Systemprompt MCP?\n\nTransform\
+  \ your AI interactions with a powerful voice-first interface that combines:\n\n\
+  | Feature | Description | | ----------------------------------- | -------------------------------------------------------------------------------\
+  \ | | \U0001F5E3\uFE0F **Multimodal AI** | Understand and process text, voice, and\
+  \ visual inputs naturally | | \U0001F6E0\uFE0F **MCP (Model Control Protocol)**\
+  \ | Execute complex AI workflows with a robust tooling system | | \U0001F399\uFE0F\
+  \ **Voice-First Design** | Control everything through natural speech, making AI\
+  \ interaction more intuitive |\n\n**Perfect for**: Developers building voice-controlled\
+  \ AI applications and looking for innovative ways to use multimodal AI.\n\n\u2728\
+  \ Core Features\n\n\U0001F399\uFE0F Voice & Multimodal Intelligence\n\n- **Natural\
+  \ Voice Control**: Speak naturally to control AI workflows and execute commands\
+  \ - **Multimodal Understanding**: Process text, voice, and visual inputs simultaneously\
+  \ - **Real-time Voice Synthesis**: Get instant audio responses from your AI interactions\n\
+  \n\U0001F504 AI Workflow Orchestration\n\n- **Extensible Tool System**: Add custom\
+  \ tools and workflows through MCP - **Workflow Automation**: Chain multiple AI operations\
+  \ with voice commands - **State Management**: Robust handling of complex, multi-step\
+  \ AI interactions\n\n\U0001F4BB Developer Experience\n\n- **Modern Tech Stack**:\
+  \ Built with Vite, React, TypeScript, and NextUI - **Type Safety**: Full TypeScript\
+  \ support with comprehensive type definitions - **Hot Module Replacement**: Fast\
+  \ development with instant feedback - **Comprehensive Testing**: Built-in testing\
+  \ infrastructure with high coverage\n\n\U0001F680 Getting Started\n\nPrerequisites\n\
+  \n- Node.js 16.x or higher - npm 7.x or higher - A modern browser with Web Speech\
+  \ API support\n\nQuick Start\n\n1. **Clone the repository**\n\n2. **Install dependencies**\n\
+  \n3. **Configure the application**\n\nRequired API Keys:\n\n- Google AI Studio -\
+  \ Gemini API key - systemprompt.io/console - Systemprompt API key\n\nAdd keys to\
+  \ `.env` (see `.env.example` for reference). note that the `VITE_` prefix is required\
+  \ to share the keys with the MCP server and client.\n\n4. **Start development server**\n\
+  \nAccess the development server at `http://localhost:5173`\n\n\U0001F91D Support\
+  \ & Community\n\n| Resource | Link | | ---------- | -----------------------------------------------------------------------\
+  \ | | \U0001F4AC Discord | Join our community | | \U0001F41B Issues | GitHub Issues\
+  \ | | \U0001F4DA Docs | Documentation |\n\n\U0001F4C4 License\n\nThis project is\
+  \ licensed under the MIT License - see the LICENSE file for details.\n\n\U0001F52E\
+  \ Future Development\n\nWe're actively working on expanding the capabilities of\
+  \ Systemprompt MCP Client with exciting new features and extensions. Stay tuned\
+  \ for updates!"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '913708108'
+    canonical_url: https://github.com/Ejb503/multimodal-mcp-client
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

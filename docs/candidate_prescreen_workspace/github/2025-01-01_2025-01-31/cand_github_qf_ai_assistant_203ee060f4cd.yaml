@@ -1,0 +1,111 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_203ee060f4cd
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-01-01_2025-01-31
+created_at: '2026-04-08T13:00:53.690077Z'
+updated_at: '2026-04-09T02:51:23.816506Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '908868990'
+canonical_url: https://github.com/liuyoshio/mcp-compass
+title: mcp-compass
+summary: MCP Discovery & Recommendation Service - Find the right MCP server for your
+  needs
+raw_evidence_excerpt: "MCP Discovery & Recommendation Service - Find the right MCP\
+  \ server for your needs\n\nMCP Compass \U0001F9ED\n\nMCP Discovery & Recommendation\n\
+  \nExperience MCP Compass \U0001F310\n\nYou can now experience MCP discovery directly\
+  \ on our website! \U0001F449 **Explore MCP Compass** \U0001F448\n\nDive in to discover\
+  \ the power of MCP services in action with real-time recommendations and insights.\n\
+  \n---\n\nWhat is this? \U0001F914\n\nMCP Compass is a discovery & recommendation\
+  \ service that helps you explore Model Context Protocol servers. It acts as a smart\
+  \ guide that helps AI assistants find and understand available MCP services out\
+  \ there based on **natural language queries**, making it easier to discover and\
+  \ utilize the right tools for specific tasks.\n\nQuick Example\n\nFeatures \U0001F31F\
+  \n\n- \U0001F50D **Smart Search**: Find MCP services using natural language queries\
+  \ - \U0001F4DA **Rich Metadata**: Get detailed information about each service\n\n\
+  - \U0001F91D **Easy Integration**: Simple to integrate with any MCP-compatible AI\
+  \ assistant\n\nQuick Start \U0001F680\n\nUsage\n\n1. Clone the repository\n\nor\n\
+  \n2. Use `npx`\n\nInstallation\n\nFor Claude Desktop, edit your `claude_desktop_config.json`\
+  \ file:\n\nMacOS/Linux\n\nWindows\n\n1. **As an MCP Service**:\n\nAdd to your AI\
+  \ assistant's MCP configuration to enable service discovery capabilities.\n\nor\n\
+  \nLicense \U0001F4DD\n\nMIT License - See LICENSE file for details.\n\nSupport \U0001F4AC\
+  \n\n- \U0001F41B Report issues - \U0001F4A1 Feature requests - \U0001F4D6 Documentation"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '908868990'
+    canonical_url: https://github.com/liuyoshio/mcp-compass
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

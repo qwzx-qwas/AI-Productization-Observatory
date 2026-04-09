@@ -1,0 +1,216 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_d329944e4f65
+candidate_batch_id: candidate_batch_github_qf_agent_2025-02-01_2025-02-28
+created_at: '2026-04-08T13:32:16.192233Z'
+updated_at: '2026-04-09T02:58:08.906860Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '675073310'
+canonical_url: https://github.com/e2b-dev/awesome-ai-sdks
+title: awesome-ai-sdks
+summary: A database of SDKs, frameworks, libraries, and tools for creating, monitoring,
+  debugging and deploying autonomous AI agents
+raw_evidence_excerpt: 'A database of SDKs, frameworks, libraries, and tools for creating,
+  monitoring, debugging and deploying autonomous AI agents
+
+
+  :gift: Awesome SDKs For AI Agents
+
+
+  Welcome to our list of AI agents SDKs. A database of SDKs, frameworks, libraries,
+  and tools for creating, monitoring, debugging and deploying autonomous AI agents
+
+
+  The list is done according to our best knowledge, although definitely not comprehensive.
+  Discussion and feedback appreciated! :heart:
+
+
+  Have anything to add? You have something to add or improve about our list? Do it
+  via pull request.
+
+
+  Who''s behind this? This list is made by the team behind e2b. E2b is building an
+  operation system of AI agents - that is, a set of tools, environments, SDKs and
+  APIs. E2b is agnostic to your tech stack and aims to work with any tooling for building
+  AI agents.
+
+
+  Join the community - Follow us on Twitter - Join Twitter community for AI agents
+  - Join our Discord - Want to discuss anything about AI agents? Schedule a call with
+  us
+
+
+  Feel free to reach out to us at hello@e2b.dev. Check out also our database of AI
+  agents.
+
+
+  E2B E2b is an operating system for AI agents, that is, a set of tools, APIs, and
+  cloud environments for agents.
+
+
+  Links - Web - GitHub - e2b Dashboard - The Agent Protocol - ChatGPT Pluhin - Twitter
+  - Vasek Mlejnsky (CEO, founder) - Tomas Valenta (CEO, founder) - Tereza Tizkova
+  (Growth & Community) - Jakub Novak (Software Engineer) - Discord
+
+
+  AgentOps AgentOps create tools to make agents actually work, e.g., graphs, monitoring,
+  and replay analytics.
+
+
+  Links - Web
+
+
+  Chidori Chidori is a reactive runtime for building AI agents. It provides a framework
+  for building AI agents that are reactive, observable, and robust. It supports building
+  agents with Node.js, Python, and Rust. It is currently in alpha, and is not yet
+  ready for production use.
+
+
+  Links - Web - GitHub - Discord
+
+
+  [Fixie]()
+
+
+  Fixie is a platform for conversational AI that enables to build agents in any language.
+  They have their own agent protocol.
+
+
+  Links - Web
+
+
+  Helicone An open-source observability platform for GPT-3. Allows to track usage,
+  costs, and latency with one line of code.
+
+
+  Links - Web - GitHub - Linkedin
+
+
+  Langchain LangChain is a framework designed to simplify the creation of applications
+  using large language models.
+
+
+  Links - Web - GitHub
+
+
+  Langfuse Langfuse is an open-source analytics for LLM apps. The analytics is currently
+  in a closed alph
+
+
+  Links - Web - GitHub
+
+
+  LangSmith A unified platform for debugging, testing, evaluating, and monitoring
+  LLM applications. LangSmith is now in closed beta.
+
+
+  Links - Web
+
+
+  SID
+
+
+  SID is a YC S23 company that makes data infrastructure for AI easy by letting AI
+  devs connect to all of their customer''s data with a single button and API.
+
+
+  Links - Web - Twitter
+
+
+  Steamship Steamship is a platform that allows to build, scale, and monitor AI agents
+  with serverless cloud hosting, vector search, webhooks, callbacks, and more.
+
+
+  -
+
+
+  Links - Web - GitHub - Twitter - Discord
+
+
+  Vercel AI SDK
+
+
+  An open source library for building AI-powered user interfaces.
+
+
+  Links - Web - GitHub'
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '675073310'
+    canonical_url: https://github.com/e2b-dev/awesome-ai-sdks
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

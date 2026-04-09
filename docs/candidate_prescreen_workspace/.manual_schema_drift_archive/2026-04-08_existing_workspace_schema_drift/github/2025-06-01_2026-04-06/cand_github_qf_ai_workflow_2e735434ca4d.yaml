@@ -1,12 +1,12 @@
 document_type: candidate_prescreen_record
 document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_ai_workflow_2e735434ca4d
-candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-06-01_2026-04-06
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-01-01_2026-04-06
 created_at: '2026-04-07T03:21:52.159726Z'
-updated_at: '2026-04-07T09:06:43.528348Z'
+updated_at: '2026-04-07T14:36:46.958897Z'
 source: github
 source_id: src_github
-source_window: 2025-06-01..2026-04-06
+source_window: 2025-01-01..2026-04-06
 time_field: pushed_at
 external_id: '1088947514'
 canonical_url: https://github.com/vercel-labs/workflow-builder-template
@@ -230,7 +230,7 @@ selection_rule_version: github_qsv1
 source_trace:
   discovery_mode: live
   selection_basis:
-    window_start: '2025-06-01'
+    window_start: '2025-01-01'
     window_end: '2026-04-06'
     query_family: ai_applications_and_products
     query_slice_id: qf_ai_workflow
@@ -238,7 +238,7 @@ source_trace:
   source_item_ref:
     source: github
     source_id: src_github
-    source_window: 2025-06-01..2026-04-06
+    source_window: 2025-01-01..2026-04-06
     external_id: '1088947514'
     canonical_url: https://github.com/vercel-labs/workflow-builder-template
 llm_prescreen:

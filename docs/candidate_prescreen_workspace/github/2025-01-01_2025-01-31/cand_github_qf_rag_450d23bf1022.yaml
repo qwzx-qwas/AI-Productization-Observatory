@@ -1,0 +1,153 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_450d23bf1022
+candidate_batch_id: candidate_batch_github_qf_rag_2025-01-01_2025-01-31
+created_at: '2026-04-08T12:51:38.151779Z'
+updated_at: '2026-04-09T02:55:28.527088Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '819613072'
+canonical_url: https://github.com/postgresml/korvus
+title: korvus
+summary: Korvus is a search SDK that unifies the entire RAG pipeline in a single database
+  query. Built on top of Postgres with bindings for Python, JavaScript, Rust and C.
+raw_evidence_excerpt: "Korvus is a search SDK that unifies the entire RAG pipeline\
+  \ in a single database query. Built on top of Postgres with bindings for Python,\
+  \ JavaScript, Rust and C.\n\nOne query to rule them all\n\n| Documentation | Blog\
+  \ | Discord |\n\n---\n\nKorvus is a search SDK that unifies the entire RAG pipeline\
+  \ in a single database query. Built on top of Postgres with bindings for Python,\
+  \ JavaScript and Rust, Korvus delivers high-performance, customizable search capabilities\
+  \ with minimal infrastructure concerns.\n\n\U0001F4D5 Table of Contents\n\n- \U0001F985\
+  \ What is Korvus? - \U0001F520 Languages - \U0001F3C6 Why Korvus? - \u26A1 Key Features\
+  \ - \U0001F9E9 System Architecture - \U0001F680 Get Started - \U0001F50D The Power\
+  \ of SQL - \U0001F4D8 Documentation - \U0001F310 Community - \U0001F91D Contributing\n\
+  \n\U0001F985 What is Korvus?\n\nKorvus is an all-in-one, open-source RAG (Retrieval-Augmented\
+  \ Generation) pipeline built for Postgres. It combines LLMs, vector memory, embedding\
+  \ generation, reranking, summarization and custom models into a single query, maximizing\
+  \ performance and simplifying your search architecture.\n\n\U0001F520 Languages\
+  \ Korvus provides SDK support for multiple programming languages, allowing you to\
+  \ integrate it seamlessly into your existing tech stack:\n\n- Python: PyPI Package\
+  \ - JavaScript: npm Package - Rust: Crates.io Package - C: Build from source\n\n\
+  \U0001F3C6 Why Korvus?\n\nKorvus stands out by harnessing the full power of Postgres\
+  \ for RAG operations:\n\n1. **Postgres-Native RAG**: Korvus leverages Postgres'\
+  \ robust capabilities, allowing you to perform complex RAG operations directly within\
+  \ your database. This approach eliminates the need for external services and API\
+  \ calls, significantly reducing latency and complexity many times over.\n\n2. **Single\
+  \ Query Efficiency**: With Korvus, your entire RAG pipeline - from embedding generation\
+  \ to text generation - is executed in a single SQL query. This \"one query to rule\
+  \ them all\" approach simplifies your architecture and boosts performance.\n\n3.\
+  \ **Scalability and Performance**: By building on Postgres, Korvus inherits its\
+  \ excellent scalability and performance characteristics. As your data grows, Korvus\
+  \ grows with it, maintaining high performance even with large datasets.\n\n\u26A1\
+  \ Key Features\n\n- **Simplified Architecture**: Replace complex service oriented\
+  \ architectures with a single, powerful query. - **High Performance**: Eliminates\
+  \ API calls and data movement for faster processing and greater reliability. - **Open\
+  \ Source**: Improve your developer experience with open source software and models\
+  \ that run locally in Docker too. - **Multi-Language Support**: Use Korvus with\
+  \ Python, JavaScript and Rust. Open an issue to vote for other language support.\
+  \ - **Unified Pipeline**: Combine embedding generation, vector search, reranking,\
+  \ and text generation in one query. - **Postgres-Powered**: Under the hood, Korvus\
+  \ operations are powered by efficient SQL queries on a time-tested database platform.\n\
+  \n\U0001F9E9 System Architecture\n\nKorvus utilizes PostgresML's pgml extension\
+  \ and the pgvector extension to compress the entire RAG pipeline inside of Postgres.\n\
+  \n\U0001F680 Get Started\n\n\U0001F4CB Prerequisites\n\nTo use Korvus, you need\
+  \ a Postgres database with pgml and pgvector installed. You have two options:\n\n\
+  1. **Self-hosted**: Set up your own database with pgml and pgvector. - For instructions,\
+  \ see our self-hosting guide.\n\n2. **Hosted Service**: Use our managed Postgres\
+  \ service with pgml and pgvector pre-installed. - Sign up for PostgresML Cloud.\n\
+  \n\U0001F3C1 Quick Start\n\n1. Install Korvus:\n\n2. Set the `KORVUS_DATABASE_URL`\
+  \ env variable:\n\n3. Initialize a Collection and Pipeline:\n\n4. Insert documents:\n\
+  \n5. Perform RAG\n\n\U0001F50D The Power of SQL\n\nWhile Korvus provides a high-level\
+  \ interface in multiple programming languages, its core operations are built on\
+  \ optimized SQL queries. This approach offers several advantages:\n\n- **Transparency**:\
+  \ Advanced users can inspect and understand the underlying queries. - **Customizability**:\
+  \ Extend Korvus's capabilities by modifying or adding to its SQL operations. - **Performance**:\
+  \ Benefit from PostgreSQL's advanced query optimization capabilities.\n\nDon't worry\
+  \ if you're not a SQL expert - Korvus's intuitive API abstracts away the complexity\
+  \ while still allowing you to harness the full power of SQL-based operations.\n\n\
+  \U0001F4D8 Documentation\n\nFor comprehensive documentation, including API references,\
+  \ tutorials, and best practices, visit our official documentation.\n\n\U0001F310\
+  \ Community\n\nJoin our community to get help, share ideas, and contribute:\n\n\
+  - Discord - Twitter\n\n\U0001F91D Contributing\n\nWe welcome contributions to Korvus!\
+  \ Please read our Contribution Guidelines before submitting pull requests.\n\n---\n\
+  \nKorvus is maintained by PostgresML. For enterprise support and consulting services,\
+  \ please contact us."
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '819613072'
+    canonical_url: https://github.com/postgresml/korvus
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -1,0 +1,118 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_d49a69201309
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-01-01_2025-01-31
+created_at: '2026-04-08T13:08:47.750180Z'
+updated_at: '2026-04-09T02:54:54.102715Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '593161342'
+canonical_url: https://github.com/builtbybel/Bloatynosy
+title: Bloatynosy
+summary: 'The Bloaty and the Nosy: No Bloat, No Problem!'
+raw_evidence_excerpt: "The Bloaty and the Nosy: No Bloat, No Problem!\n\nThe Bloaty\
+  \ and the Nosy - No Bloat, No Problem!\n\nYou probably remember my classic BloatynosyApp,\
+  \ which had to go through some renaming and eventually got discontinued. Everything\
+  \ that came after, like the web-based \"Winpilot,\" didn't last long either. Honestly,\
+  \ I thought I was done with Bloatynosy-well, at least with the name. But then, during\
+  \ a recent visit to a well-known company, I saw an employee Googling the app and\
+  \ trying to download it, and I had to stifle a laugh. Apparently, the legend lives\
+  \ on. The employee and I had a good laugh about it, and he even called it the epitome\
+  \ of debloating.\n\nSometimes, I think a little too long about things, and then\
+  \ a useful project just pops out. Bloatynosy was one of those projects. Sure, the\
+  \ name wasn't for everyone, but it was the go-to tool for cleaning up and debloating\
+  \ Windows. Recently, I added an OOBE assistant called \"Fresh11\" to the FlybyScript\u2014\
+  basically, an all-in-one solution and I figured, why not use the same foundation\
+  \ to bring Bloatynosy back to life?\n\nI had a hard time committing to it, but in\
+  \ the end, I went for it. Now I can proudly say that after Bloatynosy, there won\u2019\
+  t be anything newer or better. This time, it'll be even leaner, more efficient,\
+  \ smaller, and faster. A simple .exe that anyone can understand, doing exactly what\
+  \ bugs us after installing Windows 11. The reborn Bloatynosy carries the \"Nue\"\
+  \ extension, not \"New\" ;) The last solid, classic version was 0.85, and that's\
+  \ where Im picking up (with a fresh new interface). The build carries a small 11.x\
+  \ version number.\n\nIts primarily designed for Windows 11, but it can also be used\
+  \ on Windows 10, though not all settings are applicable there.\n\nDownload Latest\
+  \ release: Goto releases page\n\nFeatures\n\n- Native stuff (no web app crap) -\
+  \ Back to basics: efficient and user-friendly - No AI/Copilot integration - Focused\
+  \ on the essentials\n\nWhat's next - Localizations coming soon for a global reach\n\
+  \nAnd much more to come, stay tuned. Feel free to vote for or suggest new features,\
+  \ including those that were part of the classic Bloatynosy but are still missing"
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '593161342'
+    canonical_url: https://github.com/builtbybel/Bloatynosy
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

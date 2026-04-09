@@ -1,0 +1,140 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_51f11ad6d4a8
+candidate_batch_id: candidate_batch_github_qf_rag_2025-02-01_2025-02-28
+created_at: '2026-04-08T13:40:34.151418Z'
+updated_at: '2026-04-09T03:02:29.487671Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '939085000'
+canonical_url: https://github.com/D3villl/shubhamsaboo-llm-apps
+title: shubhamsaboo-llm-apps
+summary: ''
+raw_evidence_excerpt: "\U0001F31F Awesome LLM Apps\n\nA curated collection of awesome\
+  \ LLM apps built with RAG and AI agents. This repository features LLM apps that\
+  \ use models from OpenAI, Anthropic, Google, and open-source models like DeepSeek,\
+  \ Qwen or Llama that you can run locally on your computer.\n\n\U0001F914 Why Awesome\
+  \ LLM Apps?\n\n- \U0001F4A1 Discover practical and creative ways LLMs can be applied\
+  \ across different domains, from code repositories to email inboxes and more. -\
+  \ \U0001F525 Explore apps that combine LLMs from OpenAI, Anthropic, Gemini, and\
+  \ open-source alternatives with RAG and AI Agents. - \U0001F393 Learn from well-documented\
+  \ projects and contribute to the growing open-source ecosystem of LLM-powered applications.\n\
+  \n\U0001F4C2 Featured AI Projects\n\nAI Agents - \U0001F4BC AI Customer Support\
+  \ Agent - \U0001F4C8 AI Investment Agent - \U0001F468\u200D\u2696\uFE0F AI Legal\
+  \ Agent Team - \U0001F4BC AI Recruitment Agent Team - \U0001F468\u200D\U0001F4BC\
+  \ AI Services Agency - \U0001F9F2 AI Competitor Intelligence Agent Team - \U0001F3CB\
+  \uFE0F\u200D\u2642\uFE0F AI Health & Fitness Planner Agent - \U0001F4C8 AI Startup\
+  \ Trend Analysis Agent - \U0001F5DE\uFE0F AI Journalist Agent - \U0001F4B2 AI Finance\
+  \ Agent Team - \U0001F9F2 AI Competitor Intelligence Agent Team - \U0001F3AF AI\
+  \ Lead Generation Agent - \U0001F4B0 AI Personal Finance Agent - \U0001FA7B AI Medical\
+  \ Scan Diagnosis Agent - \U0001F468\u200D\U0001F3EB AI Teaching Agent Team - \U0001F6EB\
+  \ AI Travel Agent - \U0001F3AC AI Movie Production Agent - \U0001F4F0 Multi-Agent\
+  \ AI Researcher - \U0001F4BB Multimodal AI Coding Agent Team with o3-mini and Gemini\
+  \ - \U0001F4D1 AI Meeting Agent - \u265C AI Chess Agent Game - \U0001F3E0 AI Real\
+  \ Estate Agent - \U0001F310 Local News Agent OpenAI Swarm - \U0001F4CA AI Finance\
+  \ Agent with xAI Grok - \U0001F3AE AI 3D PyGame Visualizer with DeepSeek R1 - \U0001F9E0\
+  \ AI Reasoning Agent - \U0001F9EC Multimodal AI Agent\n\nRAG (Retrieval Augmented\
+  \ Generation) - \U0001F50D Autonomous RAG - \U0001F517 Agentic RAG - \U0001F914\
+  \ Agentic RAG with Gemini Flash Thinking - \U0001F40B Deepseek Local RAG Reasoning\
+  \ Agent - \U0001F504 Llama3.1 Local RAG - \U0001F9E9 RAG-as-a-Service - \U0001F999\
+  \ Local RAG Agent - \U0001F440 RAG App with Hybrid Search - \U0001F5A5\uFE0F Local\
+  \ RAG App with Hybrid Search - \U0001F4E0 RAG Agent with Database Routing - \U0001F504\
+  \ Corrective RAG Agent\n\nLLM Apps with Memory - \U0001F4BE AI Arxiv Agent with\
+  \ Memory - \U0001F4DD LLM App with Personalized Memory - \U0001F6E9\uFE0F AI Travel\
+  \ Agent with Memory - \U0001F5C4\uFE0F Local ChatGPT with Memory\n\nChat with X\
+  \ - \U0001F4AC Chat with GitHub Repo - \U0001F4E8 Chat with Gmail - \U0001F4C4 Chat\
+  \ with PDF - \U0001F4DA Chat with Research Papers - \U0001F4DD Chat with Substack\
+  \ Newsletter - \U0001F4FD\uFE0F Chat with YouTube Videos\n\nLLM Finetuning - \U0001F310\
+  \ Llama3.2 Finetuning\n\nAdvanced Tools and Frameworks - \U0001F9EA Gemini Multimodal\
+  \ Chatbot - \U0001F504 Mixture of Agents - \U0001F310 MultiLLM Chat Playground -\
+  \ \U0001F517 LLM Router App - \U0001F4AC Local ChatGPT Clone - \U0001F30D Web Scraping\
+  \ AI Agent - \U0001F50D Web Search AI Assistant - \U0001F9EA Cursor AI Experiments\n\
+  \n\U0001F680 Getting Started\n\n1. **Clone the repository**\n\n2. **Navigate to\
+  \ the desired project directory**\n\n3. **Install the required dependencies**\n\n\
+  4. **Follow the project-specific instructions** in each project's `README.md` file\
+  \ to set up and run the app.\n\n\U0001F91D Contributing to Open Source\n\nContributions\
+  \ are welcome! If you have any ideas, improvements, or new apps to add, please create\
+  \ a new GitHub Issue or submit a pull request. Make sure to follow the existing\
+  \ project structure and include a detailed `README.md` for each new app.\n\nThank\
+  \ You, Community, for the Support! \U0001F64F\n\n\U0001F31F **Don\u2019t miss out\
+  \ on future updates! Star the repo now and be the first to know about new and exciting\
+  \ LLM apps with RAG and AI Agents.**"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '939085000'
+    canonical_url: https://github.com/D3villl/shubhamsaboo-llm-apps
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -1,0 +1,158 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_6cc195dca41f
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-02-01_2025-02-28
+created_at: '2026-04-08T13:52:50.524202Z'
+updated_at: '2026-04-09T02:58:21.287965Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '881815257'
+canonical_url: https://github.com/flexpilot-ai/vscode-extension
+title: vscode-extension
+summary: Flexpilot - Open-Source, Native and a True GitHub Copilot Alternative for
+  VS Code
+raw_evidence_excerpt: "Flexpilot - Open-Source, Native and a True GitHub Copilot Alternative\
+  \ for VS Code\n\nFlexpilot AI - Your Open-Source AI Assistant\n\n> _\"Open-Source,\
+  \ Native and a True GitHub Copilot Alternative for VS Code\"_\n\n> [!WARNING] >\
+  \ The **Flexpilot VS Code extension** is no longer actively maintained. We will\
+  \ still try to address any issues or pull requests, but will not be adding new features.\
+  \ > > We have created `Flexpilot IDE` as its successor - a fork of VS Code with\
+  \ the Flexpilot extension pre-installed, along with powerful new features such as\
+  \ multi-file editing, an online web IDE, and more. > > \U0001F680 Click here to\
+  \ experience it instantly Online. > > \U0001F4E5 Click here to download the latest\
+  \ version of Flexpilot Desktop IDE for the best experience.\n\nFlexpilot is your\
+  \ gateway to truly flexible AI-powered development. Unlike other AI assistants,\
+  \ Flexpilot puts **you** in control, letting you use your preferred AI providers\
+  \ and models directly in VS Code. Native integration, unparalleled flexibility,\
+  \ and open-source freedom - all in one powerful package.\n\n\U0001F680 Getting Started\n\
+  \n1. Install Flexpilot from the VS Code Marketplace and restart VS Code once installation\
+  \ is complete. 2. Configure your preferred Language model providers as explained\
+  \ here in the official documentation. 3. Start coding with AI-powered completions,\
+  \ chat, and more!\n\n\u2728 Why Flexpilot?\n\n- \U0001F3AF **100% Native VS Code\
+  \ Experience** - No clunky webviews, just pure coding bliss - \U0001F511 **Your\
+  \ Keys, Your Control** - Use your own API keys with top AI providers - \U0001F3A8\
+  \ **Ultimate Flexibility** - Mix and match AI models for different tasks - \U0001F31F\
+  \ **Open Source Freedom** - Fully transparent, customizable, and community-driven\
+  \ - \U0001F48E **GitHub Copilot Compatible** - Leverage your existing skills seamlessly\n\
+  \n\U0001F6E0\uFE0F Supercharged Features\n\n\U0001F916 Code Completions\n\nEffortlessly\
+  \ code with **AI-powered autocomplete** that provides context-aware suggestions\
+  \ and natural language guidance tailored to your project.\n\n\U0001F4AC Panel Chat\n\
+  \nExperience **context-aware, interactive AI conversations** directly within your\
+  \ VSCode workspace. Flexpilot\u2019s panel chat keeps you focused on problem-solving\
+  \ without ever leaving your codebase.\n\n\u270D\uFE0F Inline Chat\n\nRefactor, debug,\
+  \ or gain instant clarity with **Inline Chat**. Whether you need error handling\
+  \ suggestions or code explanations, Flexpilot\u2019s inline chat feature lets you\
+  \ make changes directly in your editor.\n\n\u26A1 Quick Chat\n\nStay in the zone\
+  \ with **Quick Chat** \u2013 instant answers from your AI assistant with a single\
+  \ shortcut. No more breaking your workflow to find answers; just quick solutions\
+  \ at your fingertips.\n\n\U0001F3AF Smart Variables\n\nGet precision in your AI\
+  \ interactions with **Smart Variables**. Flexpilot references elements from your\
+  \ code and editor data, allowing for more tailored and relevant assistance.\n\n\U0001F399\
+  \uFE0F Voice Chat\n\nHave a question? Just ask! **Voice Chat** enables you to speak\
+  \ directly to your AI assistant and receive code suggestions in real time, allowing\
+  \ you to stay hands-free while coding.\n\n\U0001F4C4 Dynamic Chat Titles\n\nMaintain\
+  \ clarity in your AI-assisted conversations with **Dynamic Chat Titles**. Flexpilot\
+  \ automatically generates concise, relevant titles for each chat, making it easy\
+  \ to revisit previous conversations.\n\n\U0001F4BB Commit Messages\n\nSimplify your\
+  \ workflow with **AI-generated commit messages** and PR descriptions. Flexpilot\
+  \ crafts detailed and context-aware commit messages to make your code contributions\
+  \ clearer and more descriptive.\n\n\U0001F4CA Token Usage Insights\n\nGain transparency\
+  \ with **Token Usage Insights**. Track real-time token consumption across all AI\
+  \ interactions, helping you manage your usage and costs more effectively.\n\n\U0001F3AF\
+  \ Supported AI Providers\n\n- Anthropic - OpenAI - Azure OpenAI - Groq - Google\
+  \ Gemini - Mistral AI - Ollama - Anyscale - KoboldCpp - text-gen-webui - FastChat\
+  \ - LocalAI - llama-cpp-python - TensorRT-LLM - vLLM - _Any many more!_\n\n\U0001F5FA\
+  \uFE0F Roadmap\n\n- \u2728 **Multi-File Chat Edits** - Seamlessly manage AI-assisted\
+  \ changes across multiple files. - \U0001F9D1\u200D\U0001F4BB **@Workspace Agent**\
+  \ - Contextual AI support for your entire project workspace. - \U0001F50C **Extended\
+  \ Copilot Extensions** - Integrate and leverage GitHub Copilot Extensions. - _Any\
+  \ many more!_\n\n\U0001F91D Open Source Community\n\nFlexpilot is proudly open source\
+  \ under the GNU GPLv3 license. We believe in:\n\n- \U0001F31F **Community-First\
+  \ Development** - \U0001F6E0\uFE0F **Transparent Architecture** - \U0001F91D **Collaborative\
+  \ Innovation** - \U0001F680 **Continuous Improvement**\n\n\U0001F91D Contributing\n\
+  \nWe love contributions! Whether it's:\n\n- \U0001F41B Bug Reports - \u2728 Feature\
+  \ Requests - \U0001F4DD Documentation - \U0001F4BB Code Contributions\n\nCheck our\
+  \ Contributing Guide to get started!\n\n\U0001F4DC License\n\nFlexpilot is open\
+  \ source under the GNU GPLv3 License.\n\n\U0001F31F Star Us on GitHub!\n\nIf you\
+  \ love Flexpilot, show your support here by starring us on GitHub! Every star motivates\
+  \ us to make Flexpilot even better.\n\nMade with \u2764\uFE0F by developers, for\
+  \ developers\n\n\xA9 2024 Flexpilot AI Inc."
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '881815257'
+    canonical_url: https://github.com/flexpilot-ai/vscode-extension
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

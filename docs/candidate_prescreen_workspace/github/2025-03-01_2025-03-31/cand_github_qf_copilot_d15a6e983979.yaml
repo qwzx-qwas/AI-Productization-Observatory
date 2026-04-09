@@ -1,0 +1,130 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_d15a6e983979
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-03-01_2025-03-31
+created_at: '2026-04-08T15:05:09.009997Z'
+updated_at: '2026-04-09T03:07:34.267420Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '931552739'
+canonical_url: https://github.com/instructa/ai-prompts
+title: ai-prompts
+summary: Curated AI Prompts for Cursor Rules, Cline, Windsurf and Github Copilot
+raw_evidence_excerpt: "Curated AI Prompts for Cursor Rules, Cline, Windsurf and Github\
+  \ Copilot\n\nAI Prompts & Rules\n\n**Instructa AI Prompts** is an open-source repository\
+  \ dedicated to collecting and sharing AI prompts, best practices, and curated rules\
+  \ for developers. From project scaffolding to coding standards, our goal is to help\
+  \ you quickly set up and refine your workflow with ready-to-use prompts.\n\nTry\
+  \ it out here or use these prompts directly in your favorite AI coding environment.\n\
+  \nTable of Contents\n\n- \U0001F4D6 Usage - \U0001F91D Contributing - \U0001F6DF\
+  \ Community & Support - \U0001F517 Related Projects - \u2696\uFE0F License\n\n---\n\
+  \nUsage\n\nTo dynamically include prompts in AI-assisted coding tools like Cursor,\
+  \ GitHub Copilot, Zed, Windsurf, and Cline, you can utilize their respective configuration\
+  \ features. This approach ensures that your AI assistant adheres to project-specific\
+  \ coding standards, best practices, and automation workflows.\n\nNeed a Guide? Read\
+  \ the blog post: How to use Cursor Rules | X Post\n\n**How to Use AI Prompts in\
+  \ Different Tools**\n\n| AI Tool | How to Include Prompts | |-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\
+  \ | **Cursor** | Add prompts as project rules inside the `.cursor/rules/` directory\
+  \ (e.g., `.cursor/rules/cursorrules.mdc`). Cursor will automatically detect and\
+  \ apply them. For detailed guidance, refer to the official Cursor rule guide. |\
+  \ | **GitHub Copilot**| Create a `.github/copilot-instructions.md` file in your\
+  \ repository's root directory and add natural language instructions in Markdown\
+  \ format. These instructions will guide Copilot's behavior across your project.\
+  \ More information is available in the GitHub Copilot documentation. | | **Zed**\
+  \ | Store prompts in the `.zed/` directory within your project. You can configure\
+  \ project-specific settings by creating a `.zed/settings.json` file, allowing Zed\
+  \ to apply these configurations accordingly. Consult the Zed documentation for further\
+  \ details. | | **Windsurf** | Add a .windsurfrules file into the project root. Windsurf\
+  \ Getting Started Guide. | | **Cline** | 1. Click Cline extension settings 2. Find\
+  \ \"Custom Instructions\" field 3. Add your instructions Cline GitHub repository.\
+  \ |\n\nBy configuring these settings, you can ensure that your AI tools operate\
+  \ in alignment with your project's specific requirements and standards.\n\n\U0001F91D\
+  \ Contributing Prompts\n\nWe welcome all contributions! Whether you're adding new\
+  \ prompts, improving existing ones, or fixing typos - every bit helps.\n\n**Quick\
+  \ Start**: 1. Create a folder under `prompts/ ` 2. Add metadata in `aiprompt.json`\
+  \ (see example) 3. Include `.mdc` files with YAML front-matter for rules 4. Submit\
+  \ a Pull Request\n\nFor full details, please see our Contribution Guidelines.\n\n\
+  Community & Support\n\n- **Discussions**: Share ideas, get help, or suggest improvements\
+  \ on our GitHub Discussions. - **Issues**: Report bugs or request new prompt categories\
+  \ through GitHub Issues.\n\nSocial\n\n- X/Twitter: @kregenrek - Bluesky: @kevinkern.dev\n\
+  \nLicense\n\nMIT License\n\nThis repository is open-source under the MIT license.\
+  \ You\u2019re free to use, modify, and distribute it under those terms. Enjoy building!"
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '931552739'
+    canonical_url: https://github.com/instructa/ai-prompts
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

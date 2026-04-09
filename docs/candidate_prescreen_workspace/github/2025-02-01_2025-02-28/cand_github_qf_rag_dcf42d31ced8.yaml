@@ -1,0 +1,135 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_dcf42d31ced8
+candidate_batch_id: candidate_batch_github_qf_rag_2025-02-01_2025-02-28
+created_at: '2026-04-08T13:44:22.671786Z'
+updated_at: '2026-04-09T03:02:53.852660Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '928017228'
+canonical_url: https://github.com/Emissary-Tech/legit-rag
+title: legit-rag
+summary: A real production-worthy RAG Pipeline.
+raw_evidence_excerpt: "A real production-worthy RAG Pipeline.\n\nLegit-RAG\n\nA modular\
+  \ Retrieval-Augmented Generation (RAG) system built with FastAPI, Qdrant, and OpenAI.\n\
+  \nSystem Components\n\n- Components - Individual RAG components - Workflow Components\
+  \ - RAG workflow implementation - Logging System - Event logging and visualization\n\
+  \nWorkflow Components\n\nThe system follows a 5-step RAG workflow:\n\n1. **Query\
+  \ Routing** (`router.py`) - Determines if a query can be answered (ANSWER), needs\
+  \ clarification (CLARIFY), or should be rejected (REJECT) - Uses LLM to make intelligent\
+  \ routing decisions - Extensible through `BaseRequestRouter` interface\n\n2. **Query\
+  \ Reformulation** (`reformulator.py`) - Refines the original query for better retrieval\
+  \ - Extracts keywords for hybrid search - Implements `BaseQueryReformulator` for\
+  \ custom reformulation strategies\n\n3. **Context Retrieval** (`retriever.py`) -\
+  \ Performs hybrid search combining: - Semantic search using embeddings - Keyword-based\
+  \ search - Currently uses Qdrant for vector storage - Extensible through `BaseRetriever`\
+  \ interface\n\n4. **Completion Check** (`completion_checker.py`) - Evaluates if\
+  \ retrieved context is sufficient to answer the query - Returns confidence score\
+  \ - Customizable threshold through configuration - Implements `BaseCompletionChecker`\
+  \ interface\n\n5. **Answer Generation** (`answer_generator.py`) - Generates final\
+  \ response using retrieved context - Includes relevant citations - Provides confidence\
+  \ scoring - Extensible through `BaseAnswerGenerator` interface\n\nExtensibility\n\
+  \nThe system is designed for easy extension and modification:\n\n1. **LLM Providers**\
+  \ - Currently uses OpenAI - Can be extended to support other providers (Anthropic,\
+  \ Bedrock, etc.) - Each component uses abstract base classes for provider independence\n\
+  \n2. **Vector Databases** - Currently implements Qdrant - Can be extended to support\
+  \ other vector DBs (Pinecone, Weaviate, etc.) - Abstract `BaseRetriever` interface\
+  \ for new implementations\n\n3. **Document Management** - Flexible document model\
+  \ with metadata support - Extensible for different document types and sources\n\n\
+  4. **Search Strategies** - Hybrid search combining semantic and keyword approaches\
+  \ - Customizable result merging strategies - Extensible for additional search methods\n\
+  \nSetup and Installation\n\nPrerequisites\n\n- Python 3.10+ - Docker and Docker\
+  \ Compose - OpenAI API key\n\nSetup Steps\n\n1. Clone the repository:\n\n2. Create\
+  \ and activate a virtual environment:\n\n3. Install dependencies:\n\n4. Create `.env`\
+  \ file:\n\n5. Edit `.env` and add your OpenAI API key:\n\nRunning the System\n\n\
+  Start our API server and the Qdrant vector database:\n\n- The API will be available\
+  \ at `http://localhost:8000` - The Qdrant db will be available at `http://localhost:6333`\n\
+  \nTo run the API server directly (i.e. in a debugger), note that\u2014after stopping\
+  \ it in Docker\u2014it may be run with:\n\nAPI Endpoints\n\nAdd Documents\n\nQuery\n\
+  \nExample Usage\n\nAPI Documentation\n\nOnce the server is running, you can access\
+  \ the API documentation at: - Swagger UI: `http://localhost:8000/docs` - ReDoc:\
+  \ `http://localhost:8000/redoc`\n\nConfiguration\n\nKey configuration options in\
+  \ `config.py`: - LLM models for each component - Vector DB settings - Completion\
+  \ threshold - API endpoints and ports\n\nFuture Enhancements\n\n1. Provider-agnostic\
+  \ LLM interface 2. Support for streaming responses 3. Additional vector database\
+  \ implementations 4. Enhanced document preprocessing 5. Caching layer for frequent\
+  \ queries 6. Batch document processing 7. Advanced result ranking strategies"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '928017228'
+    canonical_url: https://github.com/Emissary-Tech/legit-rag
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

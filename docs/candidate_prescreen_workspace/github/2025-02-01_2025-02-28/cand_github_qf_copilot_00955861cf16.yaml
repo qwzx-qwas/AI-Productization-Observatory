@@ -1,0 +1,136 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_00955861cf16
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-02-01_2025-02-28
+created_at: '2026-04-08T14:06:15.424596Z'
+updated_at: '2026-04-09T03:01:19.334610Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '927558271'
+canonical_url: https://github.com/ManuOSMx/gh-copilot-bootcamp-python-ai-demo-2025
+title: gh-copilot-bootcamp-python-ai-demo-2025
+summary: ''
+raw_evidence_excerpt: "gh-copilot-bootcamp-python-ai-demo-2025\n\nEl Bootcamp de GitHub\
+  \ Copilot es una serie de clases en vivo de 4 partes dise\xF1ada para equiparte\
+  \ con las herramientas y el conocimiento necesarios para potenciar tu productividad\
+  \ en el desarrollo y aprovechar al m\xE1ximo GitHub Copilot.\n\nEn este bootcamp,\
+  \ aprender\xE1s a optimizar tu flujo de trabajo con GitHub Copilot, dominando todo,\
+  \ desde la creaci\xF3n de prompts efectivos hasta la automatizaci\xF3n de tareas\
+  \ repetitivas como pruebas y documentaci\xF3n. \xA1No pierdas esta oportunidad de\
+  \ llevar tus habilidades de codificaci\xF3n al siguiente nivel!\n\n\U0001F3AF Descripci\xF3\
+  n de la sesi\xF3n\n\n\xA1Ejercita tu creatividad desarrollando una aplicaci\xF3\
+  n web con inteligencia artificial usando Python y Flask! En esta clase, aprender\xE1\
+  s a usar GitHub Copilot para simplificar tareas de programaci\xF3n, implementar\
+  \ modelos de machine learning y crear una interfaz web totalmente funcional. Perfecto\
+  \ para principiantes y entusiastas, este taller pr\xE1ctico te guiar\xE1 desde la\
+  \ concepci\xF3n hasta el lanzamiento del proyecto.\n\nObjetivos\n\n- Introducci\xF3\
+  n a Flask y al desarrollo de aplicaciones web - Integraci\xF3n de IA en aplicaciones\
+  \ web - Aprovechando GitHub Copilot para eficiencia\n\n\U0001F4DA Contenidos\n\n\
+  1. Conoce Python y Flask. 2. Entornos de desarrollo virtual. 3. Integraci\xF3n de\
+  \ la IA en nuestro proyecto. 4. Uso de GitHub Copilot Chat para la asistencia de\
+  \ IA en Visual Studio Code\n\n\U0001F6E0 Requisitos\n\n- Un ordenador con conexi\xF3\
+  n a internet - Un navegador web moderno (recomendamos Microsoft Edge, Google Chrome,\
+  \ Mozilla Firefox o Safari) - Visual Studio Code (editor de c\xF3digo recomendado)\
+  \ con la extensi\xF3n de GitHub Copilot instalada - Ganas de aprender y experimentar\n\
+  \n\U0001F393 C\xF3mo Inscribirse\n\nPara inscribirte en este curso, visita aka.ms/GitHubCopilotBootcampLATAM\
+  \ y sigue las instrucciones de inscripci\xF3n para no perderte esta y las pr\xF3\
+  ximas sesiones.\n\nInstrucciones\n\n> [!TIP] > Para abrir enlaces te recomendamos\
+  \ presionar la tecla **[CTRL]** \xF3 **[command]** y, sin soltar, dar clic en el\
+  \ enlace. Esto abrir\xE1 los enlaces en una nueva pesta\xF1a en tu navegador.\n\n\
+  1. Haz clic en el boton de arriba para hacer **Fork** de este repositorio. En la\
+  \ nueva p\xE1gina coloca el nombre que gustes al repositorio. 2. Cuando hayas creado\
+  \ el fork, puedes editarlo de la siguiente manera: - a) **Clonar** el repositorio:\
+  \ 1. Selecciona una carpeta en tu computadora y ejecuta este comando: `git clone\
+  \ url_de_tu_repo` 2. Entra a la carpeta creada con el mismo nombre de tu repositorio.\
+  \ 3. Accede a la carpeta: `cd nombre-del-repositorio` - b) Usar **github.dev**:\
+  \ 1. En la ra\xEDz de tu repositorio, presiona la tecla: `.`. 3. Una vez clonado\
+  \ el proyecto, ejecuta los siguientes comandos: - Crear el entorno virtual: - Windows:\
+  \ `py -3 -m venv .venv` - MacOS/Linux: `python3 -m venv .venv` - Iniciar el entorno\
+  \ virtual: - Windows: `.venv\\Scripts\\activate` - MacOS/Linux: `. .venv/bin/activate`\n\
+  \n> [!NOTE] > En el caso de Windows los comandos pueden variar segun uses **PowerShell**\
+  \ \xF3 **CMD**.\n\n4. Instala los requerimientos necesarios: `pip install -r requirements.txt`\n\
+  \n5. Debes crear un archivo llamado `.env` - Dentro del archivo `.env` debes colocar\
+  \ lo siguiente:\n\n- Sustituye cada `YourAPIKey`, `your-endpoint.com`, `YourModel`\
+  \ con tus verdaderas credenciales.\n\n6. Ejecuta el proyecto con: `python3 app.py`\
+  \ 7. Salir del entorno virtual: `deactivate`\n\nEstructura del proyecto:\n\nRecursos\n\
+  \n- Azure Open AI Services - Open AI Platform - DeepSeek\n\nContribuidores\n\n-\
+  \ Manuel Ortiz - @ManuOSMx\n\n---\n\nDesarrollado con \u2764\uFE0F para la comunidad"
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '927558271'
+    canonical_url: https://github.com/ManuOSMx/gh-copilot-bootcamp-python-ai-demo-2025
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

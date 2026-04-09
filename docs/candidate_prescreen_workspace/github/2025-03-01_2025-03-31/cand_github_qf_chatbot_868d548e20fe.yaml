@@ -1,0 +1,127 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_868d548e20fe
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-03-01_2025-03-31
+created_at: '2026-04-08T15:13:39.852184Z'
+updated_at: '2026-04-09T03:06:34.870113Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '853758936'
+canonical_url: https://github.com/k0msenapati/bot-verse
+title: bot-verse
+summary: "\U0001F30C Open-source hub for building, managing, and sharing AI chatbots\
+  \ with secure tools, public bot sharing, and ready-to-use system bots"
+raw_evidence_excerpt: "\U0001F30C Open-source hub for building, managing, and sharing\
+  \ AI chatbots with secure tools, public bot sharing, and ready-to-use system bots\n\
+  \nBot Verse \U0001F680\n\n**Bot Verse** is an innovative platform for creating,\
+  \ sharing, and interacting with AI chatbots. Users can manage their own chatbots,\
+  \ explore public and system chatbots, and leverage pre-made solutions for various\
+  \ tasks. This project is open source and welcomes contributions from the community.\n\
+  \n<div align = \"center\"\n\nTable of Contents\n\n- Features \U0001F31F - Authentication\
+  \ \U0001F510 - CRUD for Chatbots \u270D\uFE0F - Public Chatbots \U0001F30D - System\
+  \ Chatbots \U0001F6E0\uFE0F - Search Functionality \U0001F50D - Dark/Light Mode\
+  \ Toggle \U0001F317 - Tech Stack \U0001F6E0\uFE0F - Open Source Programs \U0001F4AA\
+  \ - Ready to Contribute? \u2728 - Valuable Contributors \u2764\uFE0F\u2728 - Show\
+  \ Your Support \u2764\uFE0F - License \U0001F4C4\n\nFeatures \U0001F31F\n\n- **Authentication**\
+  \ \U0001F510: Secure sign-up, login, and logout functionality. - **CRUD for Chatbots**\
+  \ \u270D\uFE0F: Create, update, delete, and manage your chatbots effortlessly. -\
+  \ **Public Chatbots** \U0001F30D: Share your chatbots with the community and discover\
+  \ others' creations. - **System Chatbots** \U0001F6E0\uFE0F: Use pre-made chatbots\
+  \ for common tasks and questions. - **Search Functionality** \U0001F50D: Easily\
+  \ filter chatbots by name or description in the dashboard. - **Dark/Light Mode Toggle**\
+  \ \U0001F317: Switch between light and dark themes using a toggle button, with preferences\
+  \ saved using localStorage.\n\nTech Stack \U0001F6E0\uFE0F\n\nOpen Source Programs\n\
+  \nGSSOC 2024\n\nThis project was part of GirlScript Summer of Code Extd. We welcome\
+  \ contributions from the community.\n\nApertre 2.0\n\nThis project is part of Apertre\
+  \ 2.0. We welcome contributions from the community.\n\n\U0001F680 Repo Activity\n\
+  \nReady to Contribute?\n\nKindly go through CONTRIBUTING.md to understand everything\
+  \ from setup to contributing guidelines and must follow Code of Conduct\n\nIf you\
+  \ would like to contribute to the project, please follow our contribution guidelines.\n\
+  \nFor more detailed development instructions, refer to DEVELOPMENT.md.\n\nTip from\
+  \ us \U0001F607 It always takes time to understand and learn. So, don't worry at\
+  \ all. We know you have got this ! \U0001F4AA\n\nShow Your Support\n\nIf you find\
+  \ this project interesting and inspiring, please consider showing your support by\
+  \ starring it on GitHub! Your star goes a long way in helping us to reach more developers\
+  \ and encourages to keep enhancing the project.\n\nLicense\n\nBot Verse is licensed\
+  \ under the MIT License. See the LICENSE file for more information.\n\nI love connecting\
+  \ with different people , so if you want to say hi, I'll be happy to meet you more!\
+  \ :) Welcome to our community\u2014 join our Discord ."
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '853758936'
+    canonical_url: https://github.com/k0msenapati/bot-verse
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

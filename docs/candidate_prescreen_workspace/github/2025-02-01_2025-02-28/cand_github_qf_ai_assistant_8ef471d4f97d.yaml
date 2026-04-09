@@ -1,0 +1,139 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_8ef471d4f97d
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-02-01_2025-02-28
+created_at: '2026-04-08T13:54:55.803465Z'
+updated_at: '2026-04-09T02:58:45.642500Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '752798324'
+canonical_url: https://github.com/yatendra2001/ai_buddy
+title: ai_buddy
+summary: Your personal free-to-use AI assistant, built with gemini & flutter.
+raw_evidence_excerpt: "Your personal free-to-use AI assistant, built with gemini &\
+  \ flutter.\n\nAI Buddy\n\nYour personal completely open-sourced and free-to-use\
+  \ AI assistant, built with gemini & flutter.\n\nFeatures\n\nAI Buddy is a cross-platform\
+  \ mobile application that leverages the power of AI to provide users with a personal\
+  \ assistant capable of understanding and responding to various queries.\n\n| Chat\
+  \ with PDF | Ask Image | Text Chatbot | | --- | ----------- | ------ | | | | |\n\
+  \nArchitecture\n\nThe architecture of the AI Buddy app is designed to efficiently\
+  \ process and interact with PDF documents. Here's a breakdown of the workflow:\n\
+  \nOverview\n\nThe \"Chat with PDF\" feature of the AI Buddy app allows users to\
+  \ interact with the content of a PDF document in a conversational manner. The app\
+  \ extracts information from the PDF, processes it, and provides relevant responses\
+  \ to user queries.\n\nWorkflow Diagram\n\nWorkflow Steps\n\n1. **PDF Extraction**:\
+  \ The PDF document is processed to extract its pages.\n\n2. **Chunking**: The extracted\
+  \ pages are then split into manageable chunks for processing.\n\n3. **Batching**:\
+  \ Chunks are grouped into batches (e.g., 1 batch = 100 chunks) for parallel processing.\n\
+  \n4. **Embedding Generation**: Each batch is sent to an Embeddings API with the\
+  \ task type set to 'Document'. The API generates a list of vector embeddings for\
+  \ each chunk.\n\n5. **Local Storage**: The generated embeddings for each batch are\
+  \ split into individual chunk embeddings. These embeddings are stored locally using\
+  \ Hive (a key-value database).\n\n6. **User Interaction**: When a user inputs an\
+  \ instruction (e.g., \"Give me an intro to the book\"), the app sends the query\
+  \ to the Embeddings API with the task type set to 'Query' to generate an embedding\
+  \ for the query.\n\n7. **Semantic Search**: The app performs a semantic search by\
+  \ taking the embedding of the user's query and comparing it across the document\
+  \ embeddings stored in Hive.\n\n8. **Ranking Results**: The chunks are ranked based\
+  \ on the Euclidean distance between the query embedding and document embeddings.\
+  \ The top-ranked chunks are used as the context for the language model (LLM).\n\n\
+  9. **Response Generation**: The language model generates an answer based on the\
+  \ context provided by the top-ranked chunks.\n\nTechnologies Used\n\n- **Flutter**:\
+  \ For cross-platform mobile application development. - **Hive**: For local storage\
+  \ of chunk embeddings. - **Gemini Embeddings API**: For generating vector embeddings\
+  \ of text. - **Gemini (LLM)**: For generating responses based on context. - **Riverpod**:\
+  \ For managing states across the app.\n\nGetting Started\n\nPrerequisites\n\nNeed\
+  \ the latest flutter version & a gemini api key from here\n\nInstallation\n\n1.\
+  \ Clone the repository from GitHub:\n\n2. Get all dependencies:\n\n3. Run the app:\n\
+  \nContributing\n\nContributions are what makes the open-source community such an\
+  \ amazing place to learn, inspire, and create. Any contributions you make are **greatly\
+  \ appreciated**.\n\nContribution to the project can be made if you have some improvements\
+  \ for the project or if you find some bugs. You can contribute to the project by\
+  \ reporting issues, forking it, modifying the code and making a pull request to\
+  \ the repository.\n\nPlease make sure you specify the commit type when opening pull\
+  \ requests:\n\nTo know more extensively about how to contribute to this project,\
+  \ read our Contribution Guide.\n\nLicense\n\nDistributed under the AGPL-3.0 license.\
+  \ See `LICENSE` for more information.\n\nContact\n\nTwitter: @iamyatendrak\n\nLinkedIn:\
+  \ linkedin\n\nMake sure to leave us a \u2B50\uFE0F\n\n[contributors-url]: https://github.com/yatendra2001/ai_buddy/graphs/contributors\n\
+  \n[forks-url]: https://github.com/yatendra2001/ai_buddy/network/members\n\n[stars-url]:\
+  \ https://github.com/yatendra2001/ai_buddy/stargazers\n\n[issues-url]: https://github.com/yatendra2001/ai_buddy/issues\n\
+  \n[license-url]: https://github.com/yatendra2001/ai_buddy/blob/main/LICENSE.txt"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '752798324'
+    canonical_url: https://github.com/yatendra2001/ai_buddy
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

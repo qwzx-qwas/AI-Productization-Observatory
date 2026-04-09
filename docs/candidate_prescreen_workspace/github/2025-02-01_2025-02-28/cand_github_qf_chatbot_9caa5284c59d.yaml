@@ -1,0 +1,111 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_9caa5284c59d
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-02-01_2025-02-28
+created_at: '2026-04-08T14:11:14.289818Z'
+updated_at: '2026-04-09T03:00:54.369537Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '904341445'
+canonical_url: https://github.com/LinkedInLearning/build-ai-agents-and-chatbots-with-langgraph-2021112
+title: build-ai-agents-and-chatbots-with-langgraph-2021112
+summary: 'This repo is for the LInkedin Learning course: Build AI Agents and Chatbots
+  with LangGraph'
+raw_evidence_excerpt: "This repo is for the LInkedin Learning course: Build AI Agents\
+  \ and Chatbots with LangGraph\n\nBuild AI Agents and Chatbots with LangGraph This\
+  \ is the repository for the LinkedIn Learning course `Build AI Agents and Chatbots\
+  \ with LangGraph`. The full course is available from [LinkedIn Learning][lil-course-url].\n\
+  \nCourse Description\n\nConversational chatbots are growing in popularity, and nearly\
+  \ every product or service supports one today. Agentic AI provides capabilities\
+  \ that can provide chatbots with higher levels of autonomy and value. In this course,\
+  \ instructor Kumaran Ponnambalam helps you to apply agentic AI to build sophisticated\
+  \ chatbots that can provide the next generation of self-service. Kumaran takes you\
+  \ through the step-by-step process of building a chatbot with agentic capabilities\
+  \ using LangChain and LangGraph, and discusses best practices for building agentic\
+  \ chatbots.\n\nThis course is integrated with GitHub Codespaces, an instant cloud\
+  \ developer environment that offers all the functionality of your favorite IDE without\
+  \ the need for any local machine setup. With GitHub Codespaces, you can get hands-on\
+  \ practice from any machine, at any time\u2014all while using a tool that you\u2019\
+  ll likely encounter in the workplace. Check out \u201CSetting up GitHub Codespaces\"\
+  \ with this course to learn how to get started.\n\n[0]: # (Replace these placeholder\
+  \ URLs with actual course URLs)\n\n[lil-course-url]: https://www.linkedin.com/learning/build-ai-agents-and-chatbots-with-langgraph\
+  \ [lil-thumbnail-url]: https://media.licdn.com/dms/image/v2/D4D0DAQG43w2UoFGhqA/learning-public-crop_675_1200/B4DZSa0e5nG4Ac-/0/1737764237244?e=2147483647&v=beta&t=UXmQzVGx5Bl45kFaiIPMtIv7FGkn5fR8fMOFwfoTF0k"
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '904341445'
+    canonical_url: https://github.com/LinkedInLearning/build-ai-agents-and-chatbots-with-langgraph-2021112
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

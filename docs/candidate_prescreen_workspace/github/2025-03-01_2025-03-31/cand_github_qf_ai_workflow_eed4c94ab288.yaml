@@ -1,0 +1,217 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_eed4c94ab288
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-03-01_2025-03-31
+created_at: '2026-04-08T15:24:39.044856Z'
+updated_at: '2026-04-09T03:05:58.411042Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '942700034'
+canonical_url: https://github.com/potpie-ai/AI-COSS
+title: AI-COSS
+summary: List of Agentic commercial and open-source software in 2025
+raw_evidence_excerpt: 'List of Agentic commercial and open-source software in 2025
+
+
+  Agentic Open Source Companies List
+
+
+  This README contains a curated list of agentic open-source companies, organized
+  by category. For each company, you''ll find links to their GitHub repository, website,
+  and a brief description.
+
+
+  Table of Contents - Data - Dev tools/SDLC - General Purpose - Horizontal Automation
+  - Infrastructure - Productivity - Sales/GTM/Cx - Voice
+
+
+  Categories
+
+
+  Data
+
+
+  | Name | GitHub | Website | Description | |------|--------|---------|-------------|
+  | Dust | dust-tt/dust | dust.tt | Custom AI agent to speed up work. Work automation,
+  Build your team of AI agents: secure, connected to your data and customizable to
+  your needs. Accelerate your entire organization with AI | | Adala | humansignal/Adala
+  | humansignal.github.io/Adala | Autonomous agents specialized in data processing
+  - Labeling data. Adala offers a robust framework for implementing agents specialized
+  in data processing, with an emphasis on diverse data labeling tasks. | | Wren |
+  canner/wrenai | getwren.ai | Open-source GenBI AI Agent that empowers data-driven
+  teams to chat with their data to generate Text-to-SQL, charts, spreadsheets, reports,
+  and BI. | | Bamboo AI | pgalko/BambooAI | github.com/pgalko/BambooAI | An open-source
+  library that lets you analyze and explore data through natural language conversations
+  using LLMs. Works with your local datasets or can fetch data from external sources
+  and APIs. |
+
+
+  Dev tools/SDLC
+
+
+  | Name | GitHub | Website | Description | |------|--------|---------|-------------|
+  | Potpie AI | potpie-ai/potpie | potpie.ai | Potpie is an open-source platform that
+  creates AI agents specialized in your codebase, enabling automated code analysis,
+  testing, and development tasks. | | Botpress | botpress/botpress | botpress.com
+  | The open-source hub to build & deploy GPT/LLM Agents. Botpress is an all-in-one
+  platform for building AI agents powered by the latest LLMs. | | Keploy | keploy/keploy
+  | keploy.io | Unit and Integration Test generation for Developers. Generate tests
+  and stubs for your codebase | | Aider | Aider-AI/aider | aider.chat | Aider lets
+  you pair program with LLMs, to edit code in your local git repository. | | Cline
+  | cline/cline | cline.bot | Autonomous coding agent right in your IDE, capable of
+  creating/editing files, executing commands, using the browser, and more with your
+  permission every step of the way. | | Roo | RooVetGit/Roo-Code | VS Code Marketplace
+  | Roo Code (prev. Roo Cline) gives you a whole dev team of AI agents in your code
+  editor. | | All Hands | All-Hands-AI/OpenHands | all-hands.dev | OpenHands agents
+  can do anything a human developer can: modify code, run commands, browse the web,
+  call APIs, even copy code snippets from StackOverflow. | | ReactAgent | eylonmiz/react-agent
+  | reactagent.io | The open-source React.js Autonomous LLM Agent. Experimental autonomous
+  agent that uses GPT-4 to generate and compose React components from user stories.
+  | | Refact | smallcloudai | refact.ai | Powerful AI coding assistant that combines
+  completion, refactoring, chat, and more. Get work done faster with context-aware
+  code completion, integrated in-IDE chat. | | Codefuse | codefuse-ai/codefuse-chatbot
+  | github.com/codefuse-ai/codefuse-chatbot | An intelligent assistant serving the
+  entire software development lifecycle, powered by a Multi-Agent Framework, working
+  with DevOps Toolkits, Code&Doc Repo RAG, etc. |
+
+
+  General Purpose
+
+
+  | Name | GitHub | Website | Description | |------|--------|---------|-------------|
+  | Fetch AI | fetchai/uAgents | fetch.ai/docs | A fast and lightweight framework
+  for creating decentralized agents with ease. Allows for creating autonomous AI agents
+  in Python. | | Deepwisdom | geekan/MetaGPT | deepwisdom.ai | MetaGPT takes a one
+  line requirement as input and outputs user stories / competitive analysis / requirements
+  / data structures / APIs / documents, etc. | | CollabAI | sjinnovation/CollabAI
+  | collabai.software | CollabAI is an open-source & self-hosted AI operation platform
+  for small and medium-sized businesses with custom AI agents tailored to your business
+  needs. | | Inferable | inferablehq/inferable | inferable.ai | Open-source platform
+  for building secure, distributed AI agents guarded by durable execution. | | SuperAgent
+  | superagent-ai/superagent | superagent.sh | Add superagent to any project whether
+  it''s software development, regulatory compliance, or marketing. It can do tasks,
+  connect to the services you rely on, and process large amounts of data. | | Agent
+  GPT | reworkd/AgentGPT | agentgpt.reworkd.ai | AgentGPT allows you to configure
+  and deploy Autonomous AI agents. Name your own custom AI and have it embark on any
+  goal imaginable. | | Magick | Oneirocom/Magick | magickml.com | Groundbreaking visual
+  AIDE (Artificial Intelligence Development Environment) for no-code data pipelines
+  and multimodal agents. | | DeepPavlov | deeppavlov | deeppavlov.ai/agent | An open
+  source library for deep learning end-to-end dialog systems and chatbots. | | AgentZero
+  | frdel/agent-zero | agent-zero.ai | Agent Zero is not a predefined agentic framework.
+  It is designed to be dynamic, organically growing, and learning as you use it. |
+  | AgentGenesis | DeadmanAbir/AgentGenesis | agentgenesis.dev | Agentgenesis is an
+  open-source web app that provides source for customizable Gen AI code snippets that
+  you can easily copy and paste into your applications. | | Dynamiq | dynamiq-ai/dynamiq
+  | getdynamiq.ai | Dynamiq is your all-in-one Gen AI framework, designed to streamline
+  the development of AI-powered applications, specializing in RAG and LLM agents.
+  | | Agentok | hughlv/agentok | agentok.ai | Agentok Studio is a tool built upon
+  AG2 (Previously AutoGen), a powerful agent framework from Microsoft and a vibrant
+  community of contributors. | | TheAgentic | TheAgenticAI/TheAgenticBench | theagentic.ai
+  | An advanced Digital Worker framework for AI agent-driven research and process
+  automations. | | Agience | ikailo/Agience | agience.ai | An open-source intelligent
+  agent platform that enables anyone to easily build, deploy, and manage intelligent
+  agents. | | AutoAgent | HKUDS/AutoAgent | autoagent-ai.github.io | A Fully-Automated
+  and highly Self-Developing framework that enables users to create and deploy LLM
+  agents through Natural Language Alone. |
+
+
+  Horizontal Automation
+
+
+  | Name | GitHub | Website | Description | |------|--------|---------|-------------|
+  | n8n | n8n-io/n8n | n8n.io | A workflow automation platform that gives technical
+  teams the flexibility of code with the speed of no-code. With 400+ integrations
+  and native AI capabilities. | | Flowise AI | FlowiseAI/Flowise | flowiseai.com |
+  Drag & drop UI to build your customized LLM flow | | Langflow | langflow-ai/langflow
+  | langflow.org | Langflow is a low-code app builder for RAG and multi-agent AI applications.
+  It''s Python-based and agnostic to any model, API, or database. | | Camel AI | camel-ai/camel
+  | camel-ai.org | CAMEL is an open-source community dedicated to finding the scaling
+  laws of agents, implementing and supporting various types of agents, tasks, prompts,
+  models, and simulated environments. | | Controlflow | PrefectHQ/ControlFlow | controlflow.ai
+  | ControlFlow is a Python framework for building agentic AI workflows. | | AgentPilot
+  | jbexta/AgentPilot | agentpilot.ai | A versatile workflow automation platform to
+  create, organize, and execute AI workflows, from a single LLM to complex AI-driven
+  workflows. | | Composio | ComposioHQ/composio | composio.dev | Composio equip''s
+  your AI agents & LLMs with 100+ high-quality integrations via function calling |
+
+
+  Infrastructure'
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '942700034'
+    canonical_url: https://github.com/potpie-ai/AI-COSS
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

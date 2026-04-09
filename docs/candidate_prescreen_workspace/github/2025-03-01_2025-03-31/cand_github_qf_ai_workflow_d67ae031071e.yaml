@@ -1,0 +1,136 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_d67ae031071e
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-03-01_2025-03-31
+created_at: '2026-04-08T15:22:04.783519Z'
+updated_at: '2026-04-09T03:05:46.793831Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '628871493'
+canonical_url: https://github.com/devchat-ai/devchat
+title: devchat
+summary: AI workflows generated with natural language
+raw_evidence_excerpt: "AI workflows generated with natural language\n\nDevChat: AI\
+  \ Workflows Generated with Natural Language\n\n\U0001FA84 Without leaving the IDE,\
+  \ direct AI to perform tasks using natural language.\n\n\U0001F9E9 Bridge the last\
+  \ mile of AI productivity through knowledge engineering.\n\n\U0001F6E0\uFE0F Tailor\
+  \ the AI coding assistant to align perfectly with your specific needs.\n\n***\n\n\
+  While tools like GitHub Copilot, Cursor, and Cline are making coding increasingly\
+  \ intelligent, and platforms like Dify, Flowise, and Coze enable drag-and-drop workflows,\
+  \ we developers still find ourselves wading through vast AI-less seas daily, wearied\
+  \ by the myriad tedious processes in development.\n\nWhile some complex customization\
+  \ demands of enterprises have turned tool adaptation into tar pits, hands-on enthusiasts\
+  \ are busily engaged in various personalized tasks. Every dev team has its own character\
+  \ and deserves tailored AI services, and implementing these shouldn\u2019t be arduous.\n\
+  \nWe\u2019ve built the DevChat open-source community to help every developer effortlessly\
+  \ cross the last mile of LLM productivity!\n\nCore Features\n\n\u2764\uFE0F Simplified\
+  \ Personalization: Create Custom Workflows with a Few Sentences - Say goodbye to\
+  \ the rigid and learning-intensive \u201Cdrag-and-drop\u201D workflow frameworks.\
+  \ With just a few sentences, you can easily generate intelligent workflows that\
+  \ assist or handle various tasks for you \u2014 whether it\u2019s submitting a standardized\
+  \ GitLab MR, generating API automated API test cases, or having the AI provide progress\
+  \ updates via voice notifications. - Through the open-source community, we aim to\
+  \ build a rich collection of intelligent workflows, ranging from plugins that access\
+  \ rich IDE context to various autonomous agents, ensuring there\u2019s always a\
+  \ \u201Cmagical tool\u201D that suits you.\n\n\u2764\uFE0F Deep Understanding of\
+  \ Private Knowledge Through Knowledge Engineering - Integrated knowledge graph capabilities\
+  \ support diverse semantic queries, combining static pre-construction before queries\
+  \ with dynamic construction during queries to balance optimal effectiveness and\
+  \ performance. - Classify knowledge for specific scenarios to enhance AI generations.\
+  \ - For example, by analyzing all interfaces, parameters, and relationships in API\
+  \ documents, our AI autonomous testing tool can use multiple APIs to generate test\
+  \ cases, reducing exploratory steps and improving the quality of test scripts.\n\
+  \nQuick Start\n\n- Visual Studio Code extension: Install from Visual Studio Marketplace.\n\
+  \n- IntelliJ Platform plugin: Install from JetBrains Marketplace.\n\nContributing\n\
+  \n- Repositories: - The core library and CLI: https://github.com/devchat-ai/devchat\
+  \ - System default workflows: https://github.com/devchat-ai/workflows - Visual Studio\
+  \ Code extension: https://github.com/devchat-ai/devchat-vscode - IntelliJ Platform\
+  \ plugin: https://github.com/devchat-ai/devchat-intellij\n\n- Issues and pull requests\
+  \ are welcome: https://github.com/devchat-ai/devchat/issues\n\n- Join our Discord!\n\
+  \nWhat is Prompt-Centric Software Development (PCSD)?\n\n- The traditional code-centric\
+  \ paradigm is evolving. Stay ahead of the curve with DevChat.\n\n- Write prompts\
+  \ to create code. Transform prompts into all the artifacts in software engineering.\n\
+  \n(This image is licensed by devchat.ai under a Creative Commons Attribution-ShareAlike\
+  \ 4.0 International License .)\n\n- We like to call it DevPromptOps\n\n(This image\
+  \ is licensed by devchat.ai under a Creative Commons Attribution-ShareAlike 4.0\
+  \ International License .)\n\nContact\n\nEmail: hello@devchat.ai\n\nWe are creators\
+  \ of Apache DevLake."
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '628871493'
+    canonical_url: https://github.com/devchat-ai/devchat
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

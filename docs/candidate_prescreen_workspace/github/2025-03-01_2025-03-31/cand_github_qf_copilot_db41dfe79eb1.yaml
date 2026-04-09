@@ -1,0 +1,141 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_db41dfe79eb1
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-03-01_2025-03-31
+created_at: '2026-04-08T15:06:05.553588Z'
+updated_at: '2026-04-09T03:07:57.305544Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '778050757'
+canonical_url: https://github.com/latorc/MahjongCopilot
+title: MahjongCopilot
+summary: "\u96C0\u9B42\u6E38\u620F\u5B9E\u65F6 AI \u6307\u5BFC / In-game step-by-step\
+  \ AI Assistant for Maj-soul"
+raw_evidence_excerpt: "\u96C0\u9B42\u6E38\u620F\u5B9E\u65F6 AI \u6307\u5BFC / In-game\
+  \ step-by-step AI Assistant for Maj-soul\n\n\u9EBB\u5C06 Copilot / Mahjong Copilot\n\
+  \n\u9EBB\u5C06 AI \u52A9\u624B\uFF0C\u57FA\u4E8E mjai (Mortal\u6A21\u578B) \u5B9E\
+  \u73B0\u7684\u673A\u5668\u4EBA\u3002\u4F1A\u5BF9\u6E38\u620F\u5BF9\u5C40\u7684\u6BCF\
+  \u4E00\u6B65\u8FDB\u884C\u6307\u5BFC\u3002\u73B0\u652F\u6301\u96C0\u9B42\u4E09\u4EBA\
+  \u3001\u56DB\u4EBA\u9EBB\u5C06\u3002\n\n\u52A0\u5165QQ\u7FA4\uFF1A1031865144\n\n\
+  Click to Join Discord\n\nMahjong AI Assistant for Majsoul, based on mjai (Mortal\
+  \ model) bot impelementaion. When you are in a Majsoul game, AI will give you step-by-step\
+  \ guidance. Now supports Majsoul 3-person and 4-person game modes.\n\n\u4E0B\u8F7D\
+  \u3001\u5E2E\u52A9\u548C\u66F4\u591A\u4FE1\u606F\u8BF7\u8BBF\u95EE\u7F51\u7AD9 Please\
+  \ see website for download, help, and more information \u5E2E\u52A9\u4FE1\u606F\
+  \ Help Info | https://mjcopilot.com\n\n---\n\n\u7279\u6027\uFF1A\n\n- \u5BF9\u5C40\
+  \u6BCF\u4E00\u6B65 AI \u6307\u5BFC\uFF0C\u53EF\u5728\u6E38\u620F\u4E2D\u8986\u76D6\
+  \u663E\u793A - \u81EA\u52A8\u6253\u724C\uFF0C\u81EA\u52A8\u52A0\u5165\u6E38\u620F\
+  \ - \u591A\u8BED\u8A00\u652F\u6301 - \u652F\u6301\u672C\u5730 Mortal \u6A21\u578B\
+  \u548C\u5728\u7EBF\u6A21\u578B\uFF0C\u652F\u6301\u4E09\u9EBB\u548C\u56DB\u9EBB\n\
+  \nFeatures:\n\n- Step-by-step AI guidance for the game, with optional in-game overlay.\
+  \ - Auto play & auto joining next game - Multi-language support - Supports Mortal\
+  \ local models and online models, 3p and 4p mahjong modes.\n\n\u4F7F\u7528\u65B9\
+  \u6CD5 / Instructions\n\n\u5F00\u53D1\n\n1. \u514B\u9686 repo 2. \u5B89\u88C5 Python\
+  \ \u865A\u62DF\u73AF\u5883\u3002Python \u7248\u672C\u63A8\u8350 3.11. 3. \u5B89\u88C5\
+  \ requirements.txt \u4E2D\u7684\u4F9D\u8D56\u3002 4. \u5B89\u88C5 Playwright + Chromium\
+  \ 5. \u4E3B\u7A0B\u5E8F\u5165\u53E3: main.py\n\nTo Develope\n\n1. Clone the repo\
+  \ 2. Install Python virtual environment. Python version 3.11 recommended. 3. Install\
+  \ dependencies from requirements.txt 4. Install Playwright + Chromium 5. Main entry:\
+  \ main.py\n\n\u793A\u4F8B\u811A\u672C Sample script\uFF1A\n\n\u914D\u7F6E\u6A21\u578B\
+  \ \u672C\u7A0B\u5E8F\u652F\u6301\u51E0\u79CD\u6A21\u578B\u6765\u6E90\u3002\u5176\
+  \u4E2D\uFF0C\u672C\u5730\u6A21\u578B\uFF08Local\uFF09\u662F\u57FA\u4E8E Akagi \u517C\
+  \u5BB9\u7684 Mortal \u6A21\u578B\u3002\u8981\u83B7\u53D6 Akagi \u7684\u6A21\u578B\
+  \uFF0C\u8BF7\u53C2\u89C1 Akagi Github \u7684\u8BF4\u660E\u3002 Model Configuration\
+  \ This program supports different types of AI models. The 'Local' Model type uses\
+  \ Mortal models compatible with Akagi. To acquire Akagi's models, please refer to\
+  \ Akagi Github .\n\n\u622A\u56FE / Screenshots\n\n\u754C\u9762 / GUI\n\n\u6E38\u620F\
+  \u4E2D\u8986\u76D6\u663E\u793A (HUD\uFF09/ In-game Overlay (HUD)\n\n\u8BBE\u8BA1\
+  \ / Design\n\n\u76EE\u5F55\u8BF4\u660E Description for folders\uFF1A * gui: tkinter\
+  \ GUI \u76F8\u5173\u7C7B / tkinter GUI related classes * game: \u96C0\u9B42\u6E38\
+  \u620F\u76F8\u5173\u7C7B / classes related to Majsoul game * bot: AI \u6A21\u578B\
+  \u548C\u673A\u5668\u4EBA\u5B9E\u73B0 / implementations for AI models and bots *\
+  \ common: \u5171\u540C\u4F7F\u7528\u7684\u652F\u6301\u4EE3\u7801 commonly used supporting\
+  \ code * libriichi & libriichi3p: \u7F16\u8BD1\u5B8C\u6210\u7684 libriichi \u5E93\
+  \u6587\u4EF6 / For compiled libriichi libraries\n\n\u9E23\u8C22 / Credit\n\n- \u57FA\
+  \u4E8E Mortal \u6A21\u578B\u548C MJAI \u534F\u8BAE Based on Mortal Model an MJAI\
+  \ protocol\n\nMortal: https://github.com/Equim-chan/Mortal - \u8BBE\u8BA1\u548C\u529F\
+  \u80FD\u5B9E\u73B0\u57FA\u4E8E Akagi Design and implementation based on Akagi\n\n\
+  Akagi: https://github.com/shinkuan/Akagi - \u53C2\u8003 Reference Mahjong Soul API:\
+  \ https://github.com/MahjongRepository/mahjong_soul_api - MJAI\u534F\u8BAE\u53C2\
+  \u8003 / MJAI Protocol Reference\n\nMJAI: https://mjai.app\n\n\u8BB8\u53EF / License\
+  \ \u672C\u9879\u76EE\u4F7F\u7528 GNU GPL v3 \u8BB8\u53EF\u534F\u8BAE\u3002 \u534F\
+  \u8BAE\u5168\u6587\u8BF7\u89C1 LICENSE"
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '778050757'
+    canonical_url: https://github.com/latorc/MahjongCopilot
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

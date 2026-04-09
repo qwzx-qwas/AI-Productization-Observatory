@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from src.candidate_prescreen.url_utils import candidate_url_dedupe_key, normalize_candidate_url
 from src.common.errors import ContractValidationError
 from src.common.files import dump_yaml, load_yaml, utc_now_iso
 
@@ -48,7 +49,7 @@ def _parse_iso_timestamp(value: Any) -> datetime:
     return parsed.astimezone(timezone.utc)
 
 
-def _sample_source_semantic_key(sample: dict[str, Any]) -> tuple[str, str] | None:
+def _sample_source_url_key(sample: dict[str, Any]) -> tuple[str, str] | None:
     if not _sample_is_filled(sample):
         return None
     source_record_refs = sample.get("source_record_refs")
@@ -57,13 +58,40 @@ def _sample_source_semantic_key(sample: dict[str, Any]) -> tuple[str, str] | Non
     ref = source_record_refs[0]
     if not isinstance(ref, dict):
         return None
-    source_id = ref.get("source_id")
-    external_id = ref.get("external_id")
-    if not isinstance(source_id, str) or not source_id.strip():
+    return candidate_url_dedupe_key(
+        ref.get("source_id"),
+        ref.get("canonical_url"),
+        source_field_name="staging source_record_refs[0].source_id",
+        url_field_name="staging source_record_refs[0].canonical_url",
+    )
+
+
+def _sample_key(sample: dict[str, Any]) -> str | None:
+    sample_metadata = sample.get("sample_metadata")
+    if isinstance(sample_metadata, dict):
+        sample_key = sample_metadata.get("sample_key")
+        if isinstance(sample_key, str) and sample_key.strip():
+            return sample_key.strip()
+    source_record_refs = sample.get("source_record_refs")
+    if not isinstance(source_record_refs, list) or not source_record_refs:
         return None
-    if not isinstance(external_id, str) or not external_id.strip():
+    ref = source_record_refs[0]
+    if not isinstance(ref, dict):
         return None
-    return source_id, external_id
+    sample_key = ref.get("sample_key")
+    if isinstance(sample_key, str) and sample_key.strip():
+        return sample_key.strip()
+    return None
+
+
+def _sample_identity_key(sample: dict[str, Any]) -> tuple[str, str] | None:
+    sample_key = _sample_key(sample)
+    if sample_key is not None:
+        return ("sample_key", sample_key)
+    url_key = _sample_source_url_key(sample)
+    if url_key is None:
+        return None
+    return ("source_url", f"{url_key[0]}::{url_key[1]}")
 
 
 def _sample_candidate_document_path(sample: dict[str, Any]) -> Path | None:
@@ -157,6 +185,7 @@ def _reset_sample_to_empty(sample: dict[str, Any]) -> None:
     sample_metadata["target_id"] = None
     sample_metadata["source_id"] = None
     sample_metadata["target_type"] = "product"
+    sample_metadata["sample_key"] = None
     sample_metadata["source_record_refs"] = []
     sample_metadata["review_refs"] = []
     sample_metadata["evidence_refs"] = []
@@ -193,7 +222,7 @@ def dedupe_staging_semantic_duplicates(staging_dir: Path) -> dict[str, Any]:
             raise ContractValidationError(f"Staging document must contain samples[]: {staging_path}")
         for sample in samples:
             sample_mapping = _require_mapping(sample, f"{staging_path}:samples[]")
-            semantic_key = _sample_source_semantic_key(sample_mapping)
+            semantic_key = _sample_identity_key(sample_mapping)
             if semantic_key is None:
                 continue
             samples_by_key.setdefault(semantic_key, []).append((staging_path, sample_mapping))
@@ -211,13 +240,20 @@ def dedupe_staging_semantic_duplicates(staging_dir: Path) -> dict[str, Any]:
         for staging_path, sample in entries:
             if staging_path == kept_path and sample is kept_sample:
                 continue
+            source_ref = _require_mapping(sample.get("source_record_refs")[0], "staging source_record_refs[0]")
+            kept_source_ref = _require_mapping(kept_sample.get("source_record_refs")[0], "staging source_record_refs[0]")
             cleared_slots.append(
                 {
-                    "source_id": semantic_key[0],
-                    "external_id": semantic_key[1],
+                    "dedupe_key_type": semantic_key[0],
+                    "dedupe_key_value": semantic_key[1],
+                    "dedupe_basis": "sample_key" if semantic_key[0] == "sample_key" else "source_id + normalized canonical_url",
+                    "cleared_external_id": source_ref.get("external_id"),
+                    "cleared_canonical_url": source_ref.get("canonical_url"),
                     "cleared_staging_document_path": str(staging_path),
                     "cleared_sample_slot_id": str(sample.get("sample_slot_id")),
                     "cleared_sample_id": str(sample.get("sample_id")),
+                    "kept_external_id": kept_source_ref.get("external_id"),
+                    "kept_canonical_url": kept_source_ref.get("canonical_url"),
                     "kept_staging_document_path": str(kept_path),
                     "kept_sample_slot_id": kept_slot_id,
                     "kept_sample_id": kept_sample_id,
@@ -370,13 +406,17 @@ def validate_staging_workspace(staging_dir: Path) -> dict[str, Any]:
                     ref.get("canonical_url"),
                     f"{staging_path}:source_record_refs[{index}].canonical_url",
                 )
-            semantic_key = _sample_source_semantic_key(sample_mapping)
+                normalize_candidate_url(
+                    ref.get("canonical_url"),
+                    field_name=f"{staging_path}:source_record_refs[{index}].canonical_url",
+                )
+            semantic_key = _sample_identity_key(sample_mapping)
             if semantic_key is not None:
                 existing = seen_source_semantics.get(semantic_key)
                 if existing is not None:
                     existing_path, existing_slot_id, existing_sample_id = existing
                     raise ContractValidationError(
-                        "Duplicate source semantic key in staging workspace: "
+                        "Duplicate source URL key in staging workspace: "
                         f"{semantic_key[0]}::{semantic_key[1]} appears in "
                         f"{existing_path} {existing_slot_id} ({existing_sample_id}) and "
                         f"{staging_path} {sample_mapping.get('sample_slot_id')} ({sample_mapping.get('sample_id')})"
@@ -405,6 +445,10 @@ def _candidate_ref(candidate_record: dict[str, Any], candidate_path: Path) -> di
 
 
 def _source_record_refs(candidate_record: dict[str, Any], candidate_path: Path) -> list[dict[str, Any]]:
+    normalized_canonical_url = normalize_candidate_url(
+        candidate_record.get("canonical_url"),
+        field_name="candidate_prescreen_record.canonical_url",
+    )
     return [
         {
             "candidate_id": candidate_record["candidate_id"],
@@ -413,7 +457,8 @@ def _source_record_refs(candidate_record: dict[str, Any], candidate_path: Path) 
             "source_id": candidate_record["source_id"],
             "source_window": candidate_record["source_window"],
             "external_id": candidate_record["external_id"],
-            "canonical_url": candidate_record["canonical_url"],
+            "canonical_url": normalized_canonical_url,
+            "sample_key": candidate_record.get("sample_key"),
         }
     ]
 
@@ -440,11 +485,25 @@ def handoff_candidate_to_staging(
 ) -> tuple[str, str]:
     if candidate_record.get("human_review_status") != "approved_for_staging":
         raise ContractValidationError("Only human_review_status = approved_for_staging may be written into staging")
+    candidate_record["canonical_url"] = normalize_candidate_url(
+        candidate_record.get("canonical_url"),
+        field_name="candidate_prescreen_record.canonical_url",
+    )
     sample_id = str(candidate_record["candidate_id"])
     candidate_batch_id = str(candidate_record["candidate_batch_id"])
     source_record_refs = _source_record_refs(candidate_record, candidate_path)
     candidate_ref = _candidate_ref(candidate_record, candidate_path)
-    candidate_semantic_key = (str(candidate_record["source_id"]), str(candidate_record["external_id"]))
+    candidate_sample_key = candidate_record.get("sample_key")
+    if isinstance(candidate_sample_key, str) and candidate_sample_key.strip():
+        candidate_semantic_key = ("sample_key", candidate_sample_key.strip())
+    else:
+        candidate_url_key = candidate_url_dedupe_key(
+            candidate_record.get("source_id"),
+            candidate_record.get("canonical_url"),
+            source_field_name="candidate_prescreen_record.source_id",
+            url_field_name="candidate_prescreen_record.canonical_url",
+        )
+        candidate_semantic_key = ("source_url", f"{candidate_url_key[0]}::{candidate_url_key[1]}")
     for staging_path in _staging_files(staging_dir):
         payload = load_yaml(staging_path)
         if not isinstance(payload, dict):
@@ -460,10 +519,10 @@ def handoff_candidate_to_staging(
                 _apply_candidate_to_slot(sample, candidate_record, candidate_path, source_record_refs, candidate_ref, candidate_batch_id)
                 dump_yaml(staging_path, payload)
                 return str(staging_path), slot_id
-            semantic_key = _sample_source_semantic_key(sample)
+            semantic_key = _sample_identity_key(sample)
             if semantic_key == candidate_semantic_key:
                 raise ContractValidationError(
-                    "Semantic duplicate source already present in staging: "
+                    "Semantic duplicate source URL already present in staging: "
                     f"{candidate_semantic_key[0]}::{candidate_semantic_key[1]} at "
                     f"{staging_path} {sample.get('sample_slot_id')} ({sample.get('sample_id')})"
                 )
@@ -510,6 +569,7 @@ def _apply_candidate_to_slot(
     sample_metadata["source_record_refs"] = source_record_refs
     sample_metadata["review_refs"] = []
     sample_metadata["evidence_refs"] = []
+    sample_metadata["sample_key"] = candidate_record.get("sample_key")
     pool_trace = sample_metadata.get("pool_trace")
     if not isinstance(pool_trace, dict):
         raise ContractValidationError("staging sample_metadata.pool_trace must be a mapping")

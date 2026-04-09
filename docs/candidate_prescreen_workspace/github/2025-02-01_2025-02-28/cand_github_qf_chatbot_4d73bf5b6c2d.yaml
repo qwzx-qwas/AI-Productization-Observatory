@@ -1,0 +1,181 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_4d73bf5b6c2d
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-02-01_2025-02-28
+created_at: '2026-04-08T14:11:42.339169Z'
+updated_at: '2026-04-09T03:00:30.952921Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '291647773'
+canonical_url: https://github.com/harryadel/AI-ML-Driven-Companies-In-Egypt
+title: AI-ML-Driven-Companies-In-Egypt
+summary: A list of AI/ML driven companies in Egypt
+raw_evidence_excerpt: "A list of AI/ML driven companies in Egypt\n\nAI/ML Driven Companies\
+  \ In Egypt\n\nThis repository is intented to aid aspiring AI/ML enthusiasts by providing\
+  \ a list of companies working in such fields. However, this is a mere starting point,\
+  \ you need to put in your own work and lookup companies thoroughly to grasp the\
+  \ underlying tech used. Cold email people, reach out to the HR or Developers on\
+  \ linkedin. Be creative and most importantly polite!\n\nAI-Driven-Companies-in-Egypt\n\
+  \n> if you want to learn more about the requirements for the AI/Data science related\
+  \ positions in these companies, then simply Google \"Careers in [Company name]\"\
+  \ and you will find a lot of posts, this can somehow tell you what are the requirements\
+  \ they need really.\n\n| **Company** | **Domain** | |---|---| | 3sixtydental | Computer\
+  \ Guided Surgery, Medical Imaging | | ABM Egypt | NLP, Social Media analytics, Search\
+  \ Engine optimization | | Adam.ai | NLP, machine learning, embedded systems | |\
+  \ Advanced Intelligent Technologies | Machine Learning, Deep Learning | | Advansy\
+  \ ESC | Embedded Software, Big data, IoT | | Affectiva | Machine learning, Deep\
+  \ learning, Computer vision, Speech(new project(s)) | | Agolo | NLP, ML, DL | |\
+  \ Aimtechnologies | Data Science, Machine Learning | | Arqamfc | Analytics | | Asas\
+  \ Alqarar | Machine Learning, Deep Learning | | Atomica | Machine Learning, Computer\
+  \ Vision | | Ave labs | Deep learning, Machine learning techniques, Computer vision,\
+  \ Image Processing and Signal Processing, Control theory & Artificial Intelligence\
+  \ | | AvidBeam | Machine learning, OCR, Computer vision, DL | | BBI-Consultancy\
+  \ | Data Science | | Bee Smart Payment Solutions | ML, Big Data | | blnk.ai | Machine\
+  \ Learning | | Botitapp | Data Science, NLP | | Bosta | Data Analytics, Data Science\
+  \ | | Botme | Chatbots, NLP | | Brightskies | Machine Learning, Autonomous Driving\
+  \ | | Beltone | Machine Learning, Finance | | Cammedar Health | Machine Learning\
+  \ | | Cassbana | Machine Learning, Deep Learning | | Cequens | Predictive models,\
+  \ Machine Learning, Chatbots | | Cognitev | ML, DL, Recommendation systems, IR (Information\
+  \ Retrieval), NLP (Natural - Language Processing) | | Comiot | Iot, Computer vision,\
+  \ ML | | Converted.in | Machine Learning | | Crowd Analyzer | Big data, Machine\
+  \ learning, Social Media Analysis, Arabic in Social Media Analytics | | Cyshield\
+  \ | Data Science | | Data Gear BI | Data Mining, Business Intelligence(BI) | | Dataplusme\
+  \ | Data Analytics, Data Science, Big Data Analytics, Data visualization | | Dell\
+  \ EMC | Machine Learning, Big Data | | DevisionX | Deep Learning, Computer Vision\
+  \ | | Digified | Machine Learning, Computer Vision | | Digisay | Machine Learning,\
+  \ Deep Learning | | DXWand | Machine Learning, text and speech analytics, NLP, analytics\
+  \ services | | El menus | Recommendation systems, NLP | | Elves | Chatbots | | Ericsson\
+  \ | Artificial Intelligence, Cognitive Networks, Machine Learning, Data Science\
+  \ | | Etisalat | Machine Learning, Data Science | | Fixed Solutions | Data Science\
+  \ | | Fruitful Solutions | Deep Learning, Computer Vision | | Halan | Data Analysis,\
+  \ Business Intelligence, Data Science | | Henkel | Data Science, Business Intelligence\
+  \ | | Heuro Labs | Artificial Intelligence, Cognitive Computing, Machine Learning,\
+  \ Big Data, Data Fusion and Data Mining | | IBM Egypt | NLP(Watson practice team),\
+  \ ML, DL | | iHub | Machine Learning | | Incorta | Data Analytics, Business Intelligence\
+  \ | | Ingram Micro | Data Science, Business Intelligence | | InnoVision Systems\
+  \ | Robotics, computer vision | | Intouch | Machine Learning, Deep Learning | |\
+  \ Itworx | Big Data | | Intixel | Machine Learning, Image Analysis | | Kazyon |\
+  \ Data Science, ETL, Machine Learning | | Knowledge officer | information retrieval\
+  \ and text summarization for articles on the web. Based mainly for many NLP and\
+  \ recommendation systems | | Koinz | Data Analysis | | Khazna | Machine Learning\
+  \ | | Lenme | Machine Learning | | Lyra | Machine Learning | | Mawdoo3 | Data Science,\
+  \ NLP | | Mendel.ai | Artificial Intelligence in Medicine, Machine learning, OCR,\
+  \ NLP | | MerQ | Chatbots, NLP | | Microsoft ATLc | ML, DL, NLP, OCR, Speech, Search\
+  \ engines(Bing team) | | MobiDev | AI apps | | Mwasalat Misr | Data Analysis, Business\
+  \ Intelligence, Data Science | | Mahaseel| AI ,ML , Image Processing, Computer Vision\
+  \ | | Nawy | Data Science, Business Intelligence | | Optomatica | Machine Learning,\
+  \ AI and Optimization solutions, Analytics | | Oracle | Machine learning, Big data\
+  \ | | Orange Digital Centers | ML, Data Science | | Orange | ML, Big Data, Data\
+  \ Analytics | | Path Solutions | Big Data | | Pegasus | Data Analytics, BI | | Pixellion\
+  \ | Image processing, Machine learning, Deep learning, Computer vision, image recognition\
+  \ in the retail industry | | Pianat.ai | Finance, ML | | Raisa Energy | ML, predictive\
+  \ modeling | | RDI | Machine learning, Deep learning, Arabic/English OCR, Search\
+  \ engines, Information retrieval, Arabic/English NLP and Arabic/English speech recognition/identification\
+  \ | | Rology | Computer Vision, Medical Image Processing, Machine Learning | | Sadeem\xAE\
+  \ | IoT & Business Analytics | | Scopic | Big Data | | Seeloz | Data analytics,\
+  \ ML | | Smart Medical Services | Machine Learning | | Soho Square Solutions | IR\
+  \ (Information Retrieval), ML, NLP (Natural - Language Processing) | | Speakol |\
+  \ ML, DL, Big Data | | Stratochem | Data analysis, Image processing, data mining\
+  \ | | SURE International Technology | Machine Learning, AI | | Swvl | Data Analysis,\
+  \ Business Intelligence, Data Science | | Synapse Analytics | ML, Computer Vision\
+  \ | | Sypron | Big Data, ML, DL, Computer vision, NLP, General AI apps | | TA Telecom\
+  \ | Big Data | | tachyhealth | Machine Learning | | Tactful | Conversational Agents,\
+  \ NLU, DL, Information Retrieval | | Tensorgraph | AI, Voice Recognition | | Teradata\
+  \ | Big Data Analytics, machine learning and data mining | | The D. GmbH | NLP,\
+  \ Chatbots, Computer Vision, Video Analysis | | The Procter & Gamble | Data Science\
+  \ | | TPay Mobile | Data Engineering, Data Analytics | | Tpay | Machine learning\
+  \ | | Usy tech | NLP | | Valeo | ML, DL, reinforcement learning, Computer vision,\
+  \ Autonomous driving | | valify | Machine Learning | | Vodafone | Big data, ML |\
+  \ | Voyance Health | Computer Vision, Image Processing | | Wakeb Data | Business\
+  \ Intelligence, Data Analysis, Artificial Intelligence | | Wego | Data analysis,\
+  \ Machine Learning, Recommendation Systems | | WideBot | Chatbots, NLP | | Wuzzuf\
+  \ | Machine learning, NLP(new project(s)), Search engines, Recommendation/Ranking\
+  \ systems and information retrieval | | Xtrava | Machine learning, Deep learning,\
+  \ Signal processing | | Yaoota! | Search engine, Big data, ML, NLP | | Z2data |\
+  \ Data Analytics | | ztechnium | Machine Learning, Recommendation Systems | | smarteye.se\
+  \ | Machine Learning, Computer Vision | | bydotpy | Machine Learning | | Lumin |\
+  \ Machine Learning, Computer Vision | | Giza Systems | Machine Learning | | datagearbi\
+  \ | Machine Learning | | Aone | Chatbots, NLP |\n\nAdditional Resources\n\n- Use\
+  \ Stackinfo to look up companies per technology. - List of Internships\n\nCredits\
+  \ This repository is nothing but a humble continuation of the great work done by\
+  \ Abdelrahman Radwan. And thanks to Ibrahim Sharaf for pointing out the Quora article.\
+  \ ;)"
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '291647773'
+    canonical_url: https://github.com/harryadel/AI-ML-Driven-Companies-In-Egypt
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

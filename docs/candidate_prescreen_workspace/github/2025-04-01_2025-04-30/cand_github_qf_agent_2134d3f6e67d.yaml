@@ -1,0 +1,133 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_2134d3f6e67d
+candidate_batch_id: candidate_batch_github_qf_agent_2025-04-01_2025-04-30
+created_at: '2026-04-08T15:30:44.618654Z'
+updated_at: '2026-04-09T03:09:09.553383Z'
+source: github
+source_id: src_github
+source_window: 2025-04-01..2025-04-30
+time_field: pushed_at
+external_id: '945344252'
+canonical_url: https://github.com/iam-veeramalla/ai-assisted-devops
+title: ai-assisted-devops
+summary: Learn how DevOps Engineers can use Gen AI to enhance their productivity in
+  day to day tasks.
+raw_evidence_excerpt: "Learn how DevOps Engineers can use Gen AI to enhance their\
+  \ productivity in day to day tasks.\n\nAI-Assisted DevOps - 10-Day Course Syllabus\n\
+  \n---\n\n**Day 1: Introduction to AI for DevOps** \U0001F4CC Topics - Why AI is\
+  \ a game-changer for DevOps - Overview of Generative AI and LLMs (without deep theory)\
+  \ - Popular AI tools for DevOps Engineers.\n\n- Hands-on: Create a GitHub repository\
+  \ that contains a bash script. when executed the bash script confirms the health\
+  \ of a virtual machine by looking at the parameters such as cpu, disk space, memory\
+  \ e.t.c.,. Please note that the bash script should also support a command line argument\
+  \ named \"explain\", when passed, \"explain\" provides the detailed summary of the\
+  \ health status.\n\n\U0001F6E0 Mini-Challenge - Try the hands-on demonstration explained\
+  \ in the video.\n\n---\n\n**Day 2: Prompt Engineering Masterclass** \U0001F4CC Topics\
+  \ - **Fundamentals:** Tokens, temperature and max tokens. - **Techniques:** Zero-shot,\
+  \ few-shot, n-shot, and Chain-of-Thought (CoT) prompting - Writing structured prompts\
+  \ for DevOps use cases - AI-generated regex, Bash scripts, Terraform, and CI/CD\
+  \ configurations\n\n\U0001F6E0 Hands-on - **Live Demo:** Demonstrate an example\
+  \ of few shot prompting in real time.\n\n---\n\n**Day 3: Running LLMs Locally &\
+  \ Making API Calls** \U0001F4CC Topics - Running **LLMs locally** (Ollama, LM Studio,\
+  \ GPT4All) - Calling AI **via APIs (OpenAI, Mistral, LLama, Deepseek e.t.c.,.)**\
+  \ - Python script to invoke ollama api\n\n\U0001F6E0 Hands-on - **Dockerfile Generation**\
+  \ \"Call Ollama endpoint to auto-generate Docker manifests using llama3 model\"\n\
+  \n\U0001F6E0 Mini-Challenge - \"Call an AI API to auto-generate Kubernetes manifests\
+  \ using llama3 model\"\n\n---\n\n**Day 4: AI-Powered Shell Scripting & CLI Automation**\
+  \ \U0001F4CC Topics - Using AI to improve Bash/Python scripting - AI-assisted Shell\
+  \ Scripting\n\n\U0001F6E0 Hands-on - **Mini-Challenge:** \"Generate a shell script\
+  \ to create VPC in AWS with all the best practices\"\n\n---\n\n**Day 5: AI for Observability\
+  \ & Incident Response** \U0001F4CC Topics - Introduction to AIOps - What is AIOps\
+  \ and What is not ? - AI-powered monitoring with **Enterprise Observability Platforms**\n\
+  \n---\n\n**Day 6: AIOps - AI for IT Operations** \U0001F4CC Topics - **AIOps** Recap?\
+  \ - AI-powered **Log Analysis** - Using AI for **anomaly detection** (Python)\n\n\
+  \U0001F6E0 Hands-on - **Demo:** \"Use AI to predict server failures or app failures\
+  \ based on logs\" ---\n\n**Day 7: AI Agents for DevOps (Hands-on)** \U0001F4CC Topics\
+  \ - **What are AI Agents?** How do they work? - Create your very First AI Agent\
+  \ in simple steps.\n\n\U0001F6E0 Hands-on - **Project:** Build a project using **simple\
+  \ AI agents** that performs a research and writes a detailed analysis in blog style.\
+  \ ---\n\n**Day 8: AI Agents for DevOps ** \U0001F4CC Topics - Build an AI Agent\
+  \ for your Internal tools and documentation using CrewAI - In house AI Agents\n\n\
+  \U0001F6E0 Hands-on - Build an AI agent to read internal documentation(PDF) and\
+  \ train it to answer user queries.\n\n**Day 9: AI for Security & FinOps (Cost Optimization)**\
+  \ \U0001F4CC Topics - WIP\n\n---\n\n**Day 10: Capstone Project & Future of AI in\
+  \ DevOps** \U0001F4CC Topics - Build an AI Agent - AI Agent for DevOps usecase -\
+  \ Deploy the AI Agent to Kubernetes\n\n---"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-04-01'
+    window_end: '2025-04-30'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-04-01..2025-04-30
+    external_id: '945344252'
+    canonical_url: https://github.com/iam-veeramalla/ai-assisted-devops
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

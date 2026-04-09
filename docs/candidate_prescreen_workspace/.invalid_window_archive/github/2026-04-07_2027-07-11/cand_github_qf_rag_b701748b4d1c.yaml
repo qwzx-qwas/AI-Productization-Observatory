@@ -1,0 +1,189 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_b701748b4d1c
+candidate_batch_id: candidate_batch_github_qf_rag_2026-04-07_2027-07-11
+created_at: '2026-04-07T14:30:03.998057Z'
+updated_at: '2026-04-07T14:31:38.657237Z'
+source: github
+source_id: src_github
+source_window: 2026-04-07..2027-07-11
+time_field: pushed_at
+external_id: '866513204'
+canonical_url: https://github.com/HKUDS/LightRAG
+title: LightRAG
+summary: '[EMNLP2025] "LightRAG: Simple and Fast Retrieval-Augmented Generation"'
+raw_evidence_excerpt: "[EMNLP2025] \"LightRAG: Simple and Fast Retrieval-Augmented\
+  \ Generation\"\n\n\U0001F680 LightRAG: Simple and Fast Retrieval-Augmented Generation\n\
+  \n---\n\n\U0001F389 News - [2026.03]\U0001F3AF[New Feature]: Integrated **OpenSearch**\
+  \ as a unified storage backend, providing comprehensive support for all four LightRAG\
+  \ storage. - [2026.03]\U0001F3AF[New Feature]: Introduced a setup wizard. Support\
+  \ for local deployment of embedding, reranking, and storage backends via Docker.\
+  \ - [2025.11]\U0001F3AF[New Feature]: Integrated **RAGAS for Evaluation** and **Langfuse\
+  \ for Tracing**. Updated the API to return retrieved contexts alongside query results\
+  \ to support context precision metrics. - [2025.10]\U0001F3AF[Scalability Enhancement]:\
+  \ Eliminated processing bottlenecks to support **Large-Scale Datasets Efficiently**.\
+  \ - [2025.09]\U0001F3AF[New Feature] Enhances knowledge graph extraction accuracy\
+  \ for **Open-Sourced LLMs** such as Qwen3-30B-A3B. - [2025.08]\U0001F3AF[New Feature]\
+  \ **Reranker** is now supported, significantly boosting performance for mixed queries\
+  \ (set as default query mode). - [2025.08]\U0001F3AF[New Feature] Added **Document\
+  \ Deletion** with automatic KG regeneration to ensure optimal query performance.\
+  \ - [2025.06]\U0001F3AF[New Release] Our team has released RAG-Anything \u2014 an\
+  \ **All-in-One Multimodal RAG** system for seamless processing of text, images,\
+  \ tables, and equations. - [2025.06]\U0001F3AF[New Feature] LightRAG now supports\
+  \ comprehensive multimodal data handling through RAG-Anything integration, enabling\
+  \ seamless document parsing and RAG capabilities across diverse formats including\
+  \ PDFs, images, Office documents, tables, and formulas. Please refer to the new\
+  \ multimodal section for details. - [2025.03]\U0001F3AF[New Feature] LightRAG now\
+  \ supports citation functionality, enabling proper source attribution and enhanced\
+  \ document traceability. - [2025.02]\U0001F3AF[New Feature] You can now use MongoDB\
+  \ as an all-in-one storage solution for unified data management. - [2025.02]\U0001F3AF\
+  [New Release] Our team has released VideoRAG-a RAG system for understanding extremely\
+  \ long-context videos - [2025.01]\U0001F3AF[New Release] Our team has released MiniRAG\
+  \ making RAG simpler with small models. - [2025.01]\U0001F3AFYou can now use PostgreSQL\
+  \ as an all-in-one storage solution for data management. - [2024.11]\U0001F3AF[New\
+  \ Resource] A comprehensive guide to LightRAG is now available on LearnOpenCV. \u2014\
+  \ explore in-depth tutorials and best practices. Many thanks to the blog author\
+  \ for this excellent contribution! - [2024.11]\U0001F3AF[New Feature] Introducing\
+  \ the LightRAG WebUI \u2014 an interface that allows you to insert, query, and visualize\
+  \ LightRAG knowledge through an intuitive web-based dashboard. - [2024.11]\U0001F3AF\
+  [New Feature] You can now use Neo4J for Storage-enabling graph database support.\
+  \ - [2024.10]\U0001F3AF[New Feature] We've added a link to a LightRAG Introduction\
+  \ Video. \u2014 a walkthrough of LightRAG's capabilities. Thanks to the author for\
+  \ this excellent contribution! - [2024.10]\U0001F3AF[New Channel] We have created\
+  \ a Discord channel!\U0001F4AC Welcome to join our community for sharing, discussions,\
+  \ and collaboration! \U0001F389\U0001F389\n\nAlgorithm Flowchart\n\n*Figure 1: LightRAG\
+  \ Indexing Flowchart - Img Caption : Source*\n\n*Figure 2: LightRAG Retrieval and\
+  \ Querying Flowchart - Img Caption : Source*\n\nInstallation\n\n**\U0001F4A1 Using\
+  \ uv for Package Management**: This project uses uv for fast and reliable Python\
+  \ package management. Install uv first: `curl -LsSf https://astral.sh/uv/install.sh\
+  \ | sh` (Unix/macOS) or `powershell -c \"irm https://astral.sh/uv/install.ps1 |\
+  \ iex\"` (Windows)\n\n> **Note**: You can also use pip if you prefer, but uv is\
+  \ recommended for better performance and more reliable dependency management. >\
+  \ > **\U0001F4E6 Offline Deployment**: For offline or air-gapped environments, see\
+  \ the Offline Deployment Guide for instructions on pre-installing all dependencies\
+  \ and cache files.\n\nInstall LightRAG Server\n\nThe LightRAG Server is designed\
+  \ to provide Web UI and API support. The Web UI facilitates document indexing, knowledge\
+  \ graph exploration, and a simple RAG query interface. LightRAG Server also provide\
+  \ an Ollama compatible interfaces, aiming to emulate LightRAG as an Ollama chat\
+  \ model. This allows AI chat bot, such as Open WebUI, to access LightRAG easily.\n\
+  \n* Install from PyPI\n\n* Installation from Source\n\n* Launching the LightRAG\
+  \ Server with Docker Compose\n\n> Historical versions of LightRAG docker images\
+  \ can be found here: LightRAG Docker Images\n\nCreate .env File With Setup Tool\n\
+  \nInstead of editing `env.example` by hand, use the interactive setup wizard to\
+  \ generate a configured `.env` and, when needed, `docker-compose.final.yml`:\n\n\
+  For full description of every target see docs/InteractiveSetup.md. The setup wizards\
+  \ update configuration only; run `make env-security-check` separately to audit the\
+  \ current `.env` for security risks before deployment. By default, rerunning the\
+  \ setup preserves unchanged wizard-managed compose service blocks; use a `*-rewrite`\
+  \ target only when you need to rebuild those managed blocks from the bundled templates.\n\
+  \nInstall LightRAG Core\n\n* Install from source (Recommended)\n\n* Install from\
+  \ PyPI\n\nQuick Start\n\nLLM and Technology Stack Requirements for LightRAG\n\n\
+  LightRAG's demands on the capabilities of Large Language Models (LLMs) are significantly\
+  \ higher than those of traditional RAG, as it requires the LLM to perform entity-relationship\
+  \ extraction tasks from documents. Configuring appropriate Embedding and Reranker\
+  \ models is also crucial for improving query performance.\n\n- **LLM Selection**:\
+  \ - It is recommended to use an LLM with at least 32 billion parameters. - The context\
+  \ length should be at least 32KB, with 64KB being recommended. - It is not recommended\
+  \ to choose reasoning models during the document indexing stage. - During the query\
+  \ stage, it is recommended to choose models with stronger capabilities than those\
+  \ used in the indexing stage to achieve better query results. - **Embedding Model**:\
+  \ - A high-performance Embedding model is essential for RAG. - We recommend using\
+  \ mainstream multilingual Embedding models, such as: `BAAI/bge-m3` and `text-embedding-3-large`.\
+  \ - **Important Note**: The Embedding model must be determined before document indexing,\
+  \ and the same model must be used during the document query phase. For certain storage\
+  \ solutions (e.g., PostgreSQL), the vector dimension must be defined upon initial\
+  \ table creation. Therefore, when changing embedding models, it is necessary to\
+  \ delete the existing vector-related tables and allow LightRAG to recreate them\
+  \ with the new dimensions. - **Reranker Model Configuration**: - Configuring a Reranker\
+  \ model can significantly enhance LightRAG's retrieval performance. - When a Reranker\
+  \ model is enabled, it is recommended to set the \"mix mode\" as the default query\
+  \ mode. - We recommend using mainstream Reranker models, such as: `BAAI/bge-reranker-v2-m3`\
+  \ or models provided by services like Jina.\n\nQuick Start for LightRAG Server\n\
+  \nThe LightRAG Server is designed to provide Web UI and API support. The LightRAG\
+  \ Server offers a comprehensive knowledge graph visualization feature. It supports\
+  \ various gravity layouts, node queries, subgraph filtering, and more. For more\
+  \ information about LightRAG Server, please refer to LightRAG Server.\n\nQuick Start\
+  \ for LightRAG core\n\nTo get started with LightRAG core, refer to the sample codes\
+  \ available in the `examples` folder. Additionally, a video demo demonstration is\
+  \ provided to guide you through the local setup process. If you already possess\
+  \ an OpenAI API key, you can run the demo right away:\n\nFor a streaming response\
+  \ implementation example, please see `examples/lightrag_openai_compatible_demo.py`.\
+  \ Prior to execution, ensure you modify the sample code's LLM and embedding configurations\
+  \ accordingly."
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-04-07'
+    window_end: '2027-07-11'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-04-07..2027-07-11
+    external_id: '866513204'
+    canonical_url: https://github.com/HKUDS/LightRAG
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: schema_drift
+  error_message: OpenAI-compatible response must provide message.content text
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

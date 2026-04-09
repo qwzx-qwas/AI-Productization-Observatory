@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_copilot_79d47f808a83
 candidate_batch_id: candidate_batch_github_qf_copilot_2025-06-01_2026-04-06
 created_at: '2026-04-06T14:56:36.718402Z'
-updated_at: '2026-04-06T14:57:00.459101Z'
+updated_at: '2026-04-09T03:11:46.137326Z'
 source: github
 source_id: src_github
 source_window: 2025-06-01..2026-04-06
@@ -202,21 +202,16 @@ llm_prescreen:
   error_type: null
   error_message: null
 whitelist_reason: null
-human_review_status: on_hold
-human_review_note_template_key: hold
-human_review_notes: 'boundary with internal tooling unclear; High-value next step:
-  inspect repository tree and recent commits for actual implementation modules (agent/tool
-  orchestration, code edit pipeline, scaffold generation) before any promotion decision.
-  Treat this as an AI-enabled developer product candidate (coding assistant/scaffolding
-  tool), not as a foundational model or pure framework library. Prescreen should focus
-  on whether it is a usable product experience versus a reference/demo wrapper around
-  Spring AI Alibaba. evidence_strength=low review_source=existing_llm_prescreen'
-human_reviewed_at: '2026-04-06T14:57:00.459076Z'
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: 'clear end-user product signal; evidence sufficient for staging;
+  manual override: user requested to stage analyzed samples that are semantically
+  non-duplicate against existing staging and against each other'
+human_reviewed_at: '2026-04-09T02:32:25.381915Z'
 staging_handoff:
-  status: blocked
-  staging_document_path: null
-  sample_slot_id: null
-  sample_id: null
-  blocking_items:
-  - candidate first-pass review resolved to on_hold
-  last_attempted_at: '2026-04-06T14:57:00.459095Z'
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
+  sample_slot_id: GS300-071
+  sample_id: cand_github_qf_copilot_79d47f808a83
+  blocking_items: []
+  last_attempted_at: '2026-04-09T03:11:46.137303Z'

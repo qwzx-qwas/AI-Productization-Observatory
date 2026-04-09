@@ -1,0 +1,135 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_faf2f6d8a807
+candidate_batch_id: candidate_batch_github_qf_agent_2025-01-01_2025-01-31
+created_at: '2026-04-08T12:41:29.346279Z'
+updated_at: '2026-04-09T02:51:11.601366Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '819113446'
+canonical_url: https://github.com/coleam00/ai-agents-masterclass
+title: ai-agents-masterclass
+summary: Follow along with my AI Agents Masterclass videos! All of the code I create
+  and use in this series on YouTube will be here for you to use and even build on
+  top of!
+raw_evidence_excerpt: "Follow along with my AI Agents Masterclass videos! All of the\
+  \ code I create and use in this series on YouTube will be here for you to use and\
+  \ even build on top of!\n\nAI Agents Masterclass\n\nArtificial Intelligence is the\
+  \ #1 thing for all developers to spend their time on now. The problem is, most developers\
+  \ aren't focusing on AI agents, which is the real way to unleash the full power\
+  \ of AI. This is why I'm creating this AI Agents Masterclass - so I can show YOU\
+  \ how to use AI agents to transform businesses and create incredibly powerful software\
+  \ like I've already done many times! Click the image or link above to go to the\
+  \ masterclass on YouTube.\n\nWhat are AI Agents? \xB7 How this Repo Works \xB7 Instructions\
+  \ to Follow Along\n\nWhat are AI Agents?\n\nAI agents are simply Large Language\
+  \ Models that have been given the ability to interact with the outside world. They\
+  \ can do things like draft emails, book appointments in your CRM, create tasks in\
+  \ your task management software, and really anything you can dream of! I hope that\
+  \ everything I show here can really help you dream big and create incredible things\
+  \ with AI!\n\nAI agents can be very powerful without having to create a lot of code.\
+  \ That doesn't mean there isn't room though to create more complex applications\
+  \ to tie together many different agents to accomplish truly incredible things! That's\
+  \ where we'll be heading with this masterclass and I really look forward to it!\n\
+  \nBelow is a very basic diagram just to get an idea of what an AI agent looks like:\n\
+  \nHow this Repo Works\n\nEach week there will be a new video for my AI Agents Masterclass!\
+  \ Each video will have its own folder in this repo, starting with /1-first-agent/\
+  \ for the first video in the masterclass where I create our very first AI agent!\n\
+  \nAny folder that starts with a number is for a masterclass video. The other folders\
+  \ are for other content on my YouTube channel. The other content goes very well\
+  \ with the masterclass series (think of it as supplemental material) which is why\
+  \ it is here too!\n\nThe code in each folder will be exactly what I used/created\
+  \ in the accompanying masterclass video.\n\nInstructions to Follow Along\n\nThe\
+  \ below instructions assume you already have Git, Python, and Pip installed. If\
+  \ you do not, you can install Python + Pip from here and Git from here.\n\nTo follow\
+  \ along with any of my videos, first clone this GitHub repository, open up a terminal,\
+  \ and change your directory to the folder for the current video you are watching\
+  \ (example: 1st video is /1-first-agent/).\n\nThe below instructions work on any\
+  \ OS - Windows, Linux, or Mac!\n\nYou will need to use the environment variables\
+  \ defined in the .env.example file in the folder (example for the first video: `1-first-agent/.env.example`)\
+  \ to set up your API keys and other configuration. Turn the .env.example file into\
+  \ a `.env` file, and supply the necessary environment variables.\n\nAfter setting\
+  \ up the .env file, run the below commands to create a Python virtual environment\
+  \ and install the necessary Python packages to run the code from the masterclass.\
+  \ Creating a virtual environment is optional but recommended! Creating a virtual\
+  \ environment for the entire masterclass is a one time thing. Make sure to run the\
+  \ pip install for each video though!\n\nThen, you can execute the code in the folder\
+  \ with:"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '819113446'
+    canonical_url: https://github.com/coleam00/ai-agents-masterclass
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

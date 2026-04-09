@@ -1,0 +1,124 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_7294b58d8c3b
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-03-01_2025-03-31
+created_at: '2026-04-08T14:54:30.613999Z'
+updated_at: '2026-04-09T03:04:13.549028Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '940756397'
+canonical_url: https://github.com/maynetee/codeselect
+title: codeselect
+summary: A simple, interactive tool to select and share code with AI assistants like
+  Claude and ChatGPT. Analyzes file relationships and generates context-rich output.
+raw_evidence_excerpt: "A simple, interactive tool to select and share code with AI\
+  \ assistants like Claude and ChatGPT. Analyzes file relationships and generates\
+  \ context-rich output.\n\nCodeSelect\n\n**Easily select and share code with AI assistants**\n\
+  \nCodeSelect is a lightweight tool that helps developers share code with AI assistants\
+  \ like Claude or ChatGPT. It provides a simple interface to select files from a\
+  \ project and exports them in an AI-friendly format with intelligent context about\
+  \ project structure and relationships between files.\n\n\U0001F680 Quick Install\n\
+  \n\u2728 Features\n\n- **Visual File Selection**: Interactive UI to easily select\
+  \ files with checkboxes - **Intelligent Code Analysis**: Automatically detects imports\
+  \ and relationships between files - **Multi-language Support**: Works with Python,\
+  \ C/C++, JavaScript, Java, Go, Ruby, PHP, Rust, Swift and more - **Zero Dependencies**:\
+  \ Works with standard Python libraries only - **Non-admin Installation**: No special\
+  \ privileges required - **Clipboard Integration**: Automatically copies output to\
+  \ clipboard - **AI-optimized Format**: Structures output to help AI assistants understand\
+  \ project context\n\n\U0001F6E0\uFE0F Usage\n\n\U0001F5A5\uFE0F Interface Controls\n\
+  \n- **\u2191/\u2193**: Navigate between files - **Space**: Toggle selection of file/directory\
+  \ - **\u2190/\u2192**: Collapse/expand directories - **A**: Select all files - **N**:\
+  \ Deselect all files - **C**: Toggle clipboard copy - **D** or **Enter**: Complete\
+  \ selection and export - **X** or **Esc**: Exit without saving\n\n\U0001F4C4 Output\
+  \ Formats\n\nCodeSelect offers three output formats:\n\n- **LLM** (default): Optimized\
+  \ for language models with context about file relationships - **Markdown**: GitHub-compatible\
+  \ markdown with syntax highlighting - **TXT**: Plain text format for maximum compatibility\n\
+  \n\u2699\uFE0F Advanced Options\n\n\U0001F50D How It Works\n\n1. **Scan**: CodeSelect\
+  \ scans your project directory structure 2. **Select**: Interactive interface lets\
+  \ you choose which files to include 3. **Analyze**: Automatically detects dependencies\
+  \ between files 4. **Generate**: Creates a specially formatted output optimized\
+  \ for AI assistants 5. **Copy**: Automatically copies result to clipboard for easy\
+  \ pasting\n\n\U0001F4BB Development\n\nCodeSelect was developed in just 30 minutes\
+  \ with the help of Claude, Anthropic's AI assistant. It demonstrates how AI can\
+  \ help create useful developer tools through iterative improvements.\n\nContributions\
+  \ are welcome! Please feel free to submit a Pull Request.\n\n\U0001F5D1\uFE0F Uninstallation\n\
+  \nTo remove CodeSelect from your system:"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '940756397'
+    canonical_url: https://github.com/maynetee/codeselect
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

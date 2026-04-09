@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_agent_4004089b4380
 candidate_batch_id: candidate_batch_github_qf_agent_2025-06-01_2026-04-06
 created_at: '2026-04-07T02:53:37.668632Z'
-updated_at: '2026-04-07T09:04:37.684396Z'
+updated_at: '2026-04-07T14:34:39.326993Z'
 source: github
 source_id: src_github
 source_window: 2025-06-01..2026-04-06

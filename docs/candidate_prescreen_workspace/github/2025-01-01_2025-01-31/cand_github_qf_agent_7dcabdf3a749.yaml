@@ -1,0 +1,135 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_7dcabdf3a749
+candidate_batch_id: candidate_batch_github_qf_agent_2025-01-01_2025-01-31
+created_at: '2026-04-08T12:43:34.140452Z'
+updated_at: '2026-04-09T02:50:48.667937Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '911320064'
+canonical_url: https://github.com/daydy-dev/moon-dev-ai-agents-for-trading
+title: moon-dev-ai-agents-for-trading
+summary: ai agents for trading
+raw_evidence_excerpt: "ai agents for trading\n\n\U0001F916 AI AGENTS FOR TRADING\n\
+  \n**\u26A0\uFE0F IMPORTANT: This is an experimental project. There are NO guarantees\
+  \ of profitability. Trading involves substantial risk of loss.**\n\nThis project\
+  \ explores the potential of artificial financial intelligence - a focused implementation\
+  \ of AI for trading and investing research.\n\n\U0001F3AF Vision We're researching\
+  \ AI agents for trading that may eventually leverage AFI. With 4 years of experience\
+  \ training humans through our bootcamp, we're exploring where AI agents might complement\
+  \ human trading operations. This is experimental research, not a profitable trading\
+  \ solution.\n\n\U0001F4A1 Concept AI agents might help address common trading challenges:\
+  \ - Emotional reactions - Ego-driven decisions - Inconsistent execution - Fatigue\
+  \ effects - Impatience - Fear & Greed cycles\n\nWhile we use the RBI framework for\
+  \ strategy research, we're exploring AI agents as potential tools. We're in early\
+  \ stages with LLM technology, investigating possibilities in the trading space.\n\
+  \n\U0001F5FA\uFE0F Research Roadmap\n\n1. Risk Control Agents Exploring AI agents\
+  \ that could assist with risk management. This is purely experimental research into\
+  \ risk oversight possibilities.\n\n2. Exit Agents Researching potential exit timing\
+  \ assistance. This overlaps with risk management research but focuses on position\
+  \ management concepts.\n\n3. Entry Agents Investigating entry-focused concepts after\
+  \ risk management research.\n\n4. Sentiment Collection Agents Exploring ways to\
+  \ gather market sentiment from Twitter, Discord, and Telegram for research purposes.\n\
+  \n5. Strategy Execution Agents Researching concepts like: - Multi-agent consensus\
+  \ - Strategy validation - Dynamic trade filtering\n\n\u26A0\uFE0F Critical Disclaimers\n\
+  \n**PLEASE READ CAREFULLY:**\n\n1. This is an experimental research project, NOT\
+  \ a trading system 2. There are NO plug-and-play solutions for guaranteed profits\
+  \ 3. We do NOT provide trading strategies 4. Success depends entirely on YOUR: -\
+  \ Trading strategy - Risk management - Market research - Testing and validation\
+  \ - Overall trading approach\n\n5. NO AI agent can guarantee profitable trading\
+  \ 6. You MUST develop and validate your own trading approach 7. Trading involves\
+  \ substantial risk of loss 8. Past performance does not indicate future results\n\
+  \n\U0001F442 Looking for Updates? Project updates will be posted on moondev.com\
+  \ in the AI Agents for Trading Section.\n\n\U0001F4DC Detailed Disclaimer The content\
+  \ presented is for educational and informational purposes only and does not constitute\
+  \ financial advice. All trading involves risk and may not be suitable for all investors.\
+  \ You should carefully consider your investment objectives, level of experience,\
+  \ and risk appetite before investing.\n\nPast performance is not indicative of future\
+  \ results. There is no guarantee that any trading strategy or algorithm discussed\
+  \ will result in profits or will not incur losses.\n\n**CFTC Disclaimer:** Commodity\
+  \ Futures Trading Commission (CFTC) regulations require disclosure of the risks\
+  \ associated with trading commodities and derivatives. There is a substantial risk\
+  \ of loss in trading and investing.\n\nI am not a licensed financial advisor or\
+  \ a registered broker-dealer. Content & code is based on personal research perspectives\
+  \ and should not be relied upon as a guarantee of success in trading.\n\n\U0001F517\
+  \ Links - Trading Education: https://algotradecamp.com - Business\n\n--- *Built\
+  \ with love by Moon Dev - Pioneering the future of AI-powered trading*"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '911320064'
+    canonical_url: https://github.com/daydy-dev/moon-dev-ai-agents-for-trading
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -1,0 +1,139 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_81e4ddc8bf9c
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-01-01_2025-01-31
+created_at: '2026-04-08T12:57:15.462735Z'
+updated_at: '2026-04-09T02:52:10.355318Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '681669747'
+canonical_url: https://github.com/l3vels/team-of-ai-agents
+title: team-of-ai-agents
+summary: Open-source framework to make AI agents' team collaboration as effective
+  as human collaboration.
+raw_evidence_excerpt: "Open-source framework to make AI agents' team collaboration\
+  \ as effective as human collaboration.\n\nOpen-source tool that enables AI Assistants\
+  \ to collaborate together as effectively as human teams.\n\nDocs | Community Discord\n\
+  \nFollow L3AGI\n\nConnect with the Creators\n\nOf course! Here's the revised \"\
+  Features\" section with the requested emojis and in its entirety:\n\n---\n\n\u2728\
+  \ Features\n\nL3AGI offers a robust set of functionalities that empower you to design,\
+  \ supervise, and execute both autonomous AI Assistants and Teams of Assistants.\
+  \ Here's what sets us apart:\n\n- **\U0001F916 Team Of Assistants**: L3AGI pioneers\
+  \ in facilitating the creation and management of Teams of AI Assistants. These are\
+  \ groups of individual AI Assistants that collaborate seamlessly for more complex\
+  \ tasks and simulations.\n\n- **\U0001F527 Autonomous AI Assistants**: Design and\
+  \ oversee standalone AI Assistants that act autonomously based on their configuration.\n\
+  \n- **\U0001F9E0 Assistant Memory**: Equip your AI Assistants with the ability to\
+  \ retain and recall information, enabling them to make more informed decisions.\n\
+  \n- **\U0001F517 Data Sources & Integration**: - Connect your AI Assistants to an\
+  \ array of data sources for efficient information retrieval and processing. - Integrate\
+  \ VectorDBs for enhanced data management and querying capabilities. - Employ the\
+  \ LlamaIndex (GPT Index) to boost the data framework for your LLM application.\n\
+  \nPostgres Mysql Files WebPage Notion Google Analytics Firebase\n\n- **\U0001F6E0\
+  \ Toolkits**: Empower your AI Assistants with our curated sets of tools, tailor-made\
+  \ for specific tasks.\n\nSERP Web Scraper DuckDuckGo Bing Wikipedia Arxiv OpenWeather\n\
+  \nCharts Twilio Twitter Instagram Slack Gmail Google Calendar\n\n- **\U0001F4CA\
+  \ Chart Generator**: Turn your data into insightful visualizations with our intuitive\
+  \ chart generator.\n\n- **\U0001F4C4 Report Generator**: Streamline report creation\
+  \ with our user-friendly report generator tool.\n\n- **\U0001F310 Community Building**:\
+  \ Engage with a dynamic community to collectively enhance and refine your AI Assistants.\n\
+  \n- **\U0001F5A5 User Interface (UI)**: Utilize our sleek, user-friendly interface\
+  \ for building and managing your AI Assistants and their teams.\n\n- **\U0001F4E1\
+  \ APIs**: Robust APIs ensure smooth integration of L3AGI with other systems and\
+  \ support advanced customizations for your specific needs.\n\n\U0001F680 Roadmap\
+  \ here\n\n\u26A1 Quick Start\n\nPre-requisites\n\n- Docker \U0001F433 - Docker Compose\n\
+  \n1. **Clone the repository:**\n\n2. **Navigate to the project directory:**\n\n\
+  3. **Setup Git Hooks**\n\n4. **Create `.env` file from `.env.example` in `apps/server`\
+  \ directory and configure** - **Configure `Azure Web PubSub` using our guide here**\
+  \ 5. **Create `.env` file from `.env.example` in `zep` directory and configure**\n\
+  \n6. \U0001F433 **Run Docker Compose:**\n\nThis will build and start both the React\
+  \ UI and FastAPI services.\n\nAccess the Services\n\n- **React UI**: Open `http://localhost:3000`\
+  \ in your browser. - **FastAPI Server**: Open `http://localhost:4000` in your browser\
+  \ or API client.\n\nDirectory Structure\n\nTech Stack\n\nL3AGI Architecture\n\n\
+  Database Schema\n\nTroubleshooting\n\n- If you encounter issues when starting the\
+  \ services, ensure Docker and Docker Compose are installed and up to date. - Check\
+  \ the logs for any service-specific errors.\n\n\U0001F6A7 In Progress!\n\nThis initiative\
+  \ is currently in its developmental phase and might have some inconsistencies. We\
+  \ value your patience and comprehension. Should you face any challenges, kindly\
+  \ consult our list of existing issues first. If you can't find a relevant one, please\
+  \ open a new issue explaining the concern you faced. Your backing means a lot to\
+  \ us! Thank you!\n\nContributors"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '681669747'
+    canonical_url: https://github.com/l3vels/team-of-ai-agents
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -701,38 +701,44 @@ def _validate_human_review_notes(record: dict[str, Any], *, note_templates: dict
         )
 
 
-def validate_candidate_review_card(record: dict[str, Any], *, note_templates: dict[str, str]) -> None:
-    _validate_human_review_notes(record, note_templates=note_templates)
-    llm_prescreen = _require_mapping(record.get("llm_prescreen"), "llm_prescreen")
-    if llm_prescreen.get("status") != "succeeded":
-        return
-
-    _require_non_empty_string(llm_prescreen.get("reason"), "llm_prescreen.reason")
-    _require_non_empty_string(llm_prescreen.get("decision_snapshot"), "llm_prescreen.decision_snapshot")
-    _require_non_empty_string(llm_prescreen.get("scope_boundary_note"), "llm_prescreen.scope_boundary_note")
-    _require_string_list(llm_prescreen.get("source_evidence_summary"), "llm_prescreen.source_evidence_summary", min_items=1)
+def _validate_consumable_llm_prescreen(llm_prescreen: dict[str, Any], *, prefix: str) -> None:
+    in_observatory_scope = llm_prescreen.get("in_observatory_scope")
+    if in_observatory_scope is not None and not isinstance(in_observatory_scope, bool):
+        raise ContractValidationError(f"{prefix}.in_observatory_scope must be a boolean or null")
+    _require_non_empty_string(llm_prescreen.get("reason"), f"{prefix}.reason")
+    _require_non_empty_string(llm_prescreen.get("decision_snapshot"), f"{prefix}.decision_snapshot")
+    _require_non_empty_string(llm_prescreen.get("scope_boundary_note"), f"{prefix}.scope_boundary_note")
+    _require_string_list(llm_prescreen.get("source_evidence_summary"), f"{prefix}.source_evidence_summary", min_items=1)
     valid_anchor_ranks = _validate_evidence_anchors(llm_prescreen.get("evidence_anchors"))
-    _require_string_list(llm_prescreen.get("review_focus_points"), "llm_prescreen.review_focus_points", min_items=2, max_items=4)
-    _require_string_list(llm_prescreen.get("uncertainty_points"), "llm_prescreen.uncertainty_points")
+    _require_string_list(llm_prescreen.get("review_focus_points"), f"{prefix}.review_focus_points", min_items=2, max_items=4)
+    _require_string_list(llm_prescreen.get("uncertainty_points"), f"{prefix}.uncertainty_points")
     recommended_action = llm_prescreen.get("recommended_action")
     if recommended_action not in RECOMMENDED_ACTIONS:
-        raise ContractValidationError("llm_prescreen.recommended_action must be one of reject|hold|candidate_pool|whitelist_candidate")
+        raise ContractValidationError(
+            f"{prefix}.recommended_action must be one of reject|hold|candidate_pool|whitelist_candidate"
+        )
     recommend_candidate_pool = llm_prescreen.get("recommend_candidate_pool")
     if recommended_action in {"candidate_pool", "whitelist_candidate"} and recommend_candidate_pool is not True:
-        raise ContractValidationError("recommend_candidate_pool must be true when recommended_action routes into the candidate pool")
+        raise ContractValidationError(
+            f"{prefix}.recommend_candidate_pool must be true when recommended_action routes into the candidate pool"
+        )
     if recommended_action in {"reject", "hold"} and recommend_candidate_pool is not False:
-        raise ContractValidationError("recommend_candidate_pool must be false when recommended_action is reject or hold")
+        raise ContractValidationError(
+            f"{prefix}.recommend_candidate_pool must be false when recommended_action is reject or hold"
+        )
 
     _validate_confidence_summary(llm_prescreen.get("confidence_summary"))
-    handoff_hint = _require_mapping(llm_prescreen.get("handoff_readiness_hint"), "llm_prescreen.handoff_readiness_hint")
+    handoff_hint = _require_mapping(llm_prescreen.get("handoff_readiness_hint"), f"{prefix}.handoff_readiness_hint")
     if handoff_hint.get("suggested_action") != recommended_action:
-        raise ContractValidationError("handoff_readiness_hint.suggested_action must match llm_prescreen.recommended_action")
-    _require_non_empty_string(handoff_hint.get("rationale"), "llm_prescreen.handoff_readiness_hint.rationale")
+        raise ContractValidationError(
+            f"{prefix}.handoff_readiness_hint.suggested_action must match {prefix}.recommended_action"
+        )
+    _require_non_empty_string(handoff_hint.get("rationale"), f"{prefix}.handoff_readiness_hint.rationale")
 
-    taxonomy_hints = _require_mapping(llm_prescreen.get("taxonomy_hints"), "llm_prescreen.taxonomy_hints")
+    taxonomy_hints = _require_mapping(llm_prescreen.get("taxonomy_hints"), f"{prefix}.taxonomy_hints")
     primary_persona_code = _require_non_empty_string(
         taxonomy_hints.get("primary_persona_code"),
-        "llm_prescreen.taxonomy_hints.primary_persona_code",
+        f"{prefix}.taxonomy_hints.primary_persona_code",
     )
     _validate_persona_candidates(
         llm_prescreen.get("persona_candidates"),
@@ -740,3 +746,16 @@ def validate_candidate_review_card(record: dict[str, Any], *, note_templates: di
         valid_ranks=valid_anchor_ranks,
     )
     _validate_taxonomy_hints(taxonomy_hints, valid_ranks=valid_anchor_ranks)
+
+
+def validate_normalized_llm_prescreen(normalized_result: dict[str, Any]) -> None:
+    llm_prescreen = _require_mapping(normalized_result, "normalized_llm_prescreen")
+    _validate_consumable_llm_prescreen(llm_prescreen, prefix="normalized_llm_prescreen")
+
+
+def validate_candidate_review_card(record: dict[str, Any], *, note_templates: dict[str, str]) -> None:
+    _validate_human_review_notes(record, note_templates=note_templates)
+    llm_prescreen = _require_mapping(record.get("llm_prescreen"), "llm_prescreen")
+    if llm_prescreen.get("status") != "succeeded":
+        return
+    _validate_consumable_llm_prescreen(llm_prescreen, prefix="llm_prescreen")

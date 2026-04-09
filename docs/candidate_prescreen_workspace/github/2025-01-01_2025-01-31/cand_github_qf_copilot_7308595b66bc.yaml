@@ -1,0 +1,190 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_7308595b66bc
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-01-01_2025-01-31
+created_at: '2026-04-08T13:06:42.810682Z'
+updated_at: '2026-04-09T02:54:31.141590Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '668219074'
+canonical_url: https://github.com/ErikBjare/are-copilots-local-yet
+title: are-copilots-local-yet
+summary: Are Copilots Local Yet? The frontier of local LLM Copilots for code completion,
+  project generation, shell assistance, and more. Find tools shaping tomorrow's developer
+  experience, today!
+raw_evidence_excerpt: "Are Copilots Local Yet? The frontier of local LLM Copilots\
+  \ for code completion, project generation, shell assistance, and more. Find tools\
+  \ shaping tomorrow's developer experience, today!\n\nHey, you! Are you reading this\
+  \ in the generated README.md? Then you're in the wrong place!\n\nThe template and\
+  \ data used to generate the README is in `README.md.in` and `data.json`, respectively.\n\
+  \nThe README.md is generated using the following command: python3 generate_readme.py\n\
+  \n\U0001F6E0\uFE0F Are Copilots Local Yet?\n\nCurrent trends and state of the art\
+  \ for using open & local LLM models as copilots to complete code, generate projects,\
+  \ act as shell assistants, automatically fix bugs, and more.\n\n\U0001F4DD *Help\
+  \ keep this list relevant and up-to-date by [making edits][edit]!*\n\n[edit]: https://github.com/ErikBjare/are-copilots-local-yet/edit/master/data/data.yaml\n\
+  \nTable of Contents\n\n- Summary - Background - Editor Extensions - Tools - Chat\
+  \ Interfaces - Models - Datasets - Misc Tools - Suggested Setup - History - Stats\n\
+  \n\U0001F4CB Summary\n\nLocal Copilots are now fully functional, although with output\
+  \ quality still not on par with those offered by cloud-based services like GitHub\
+  \ Copilot.\n\nThis document is a curated list of local Copilots, shell assistants,\
+  \ and related projects. It is intended to be a resource for those interested in\
+  \ a survey of the existing tools, and to help developers discover the state of the\
+  \ art for projects like these.\n\n\U0001F4DA Background\n\nIn 2021, GitHub released\
+  \ Copilot which quickly became popular among devs. Since then, with the flurry of\
+  \ AI developments around LLMs, local models that can run on consumer machines have\
+  \ become available, and it has seemed only a matter of time before Copilot will\
+  \ go local.\n\nMany perceived limitations of GitHub's Copilot are related to its\
+  \ closed and cloud-hosted nature.\n\nAs an alternative, local Copilots enable:\n\
+  \n- \U0001F310 Offline & private use - \u26A1 Improved responsiveness - \U0001F4DA\
+  \ Better project/context awareness - \U0001F3AF The ability to run models specialized\
+  \ for a particular language/task - \U0001F512 Constraining the LLM output to fit\
+  \ a particular format/syntax.\n\n\U0001F9E9 Editor Extensions\n\nEditor extensions\
+  \ used to complete code using LLMs:\n\n| Name | Editor | :star: | Released | Notes\
+  \ | | ------------- | -------- | ------- | -------- | --------- | | GitHub Copilot\
+  \ | VSCode, vim | 9125 | 2021-6-29 | The GitHub Original, not local or open-source.\
+  \ | | Cursor | VSCode | 27112 | 2023-3-14 | Fork of VSCode, not open-source | |\
+  \ Fauxpilot | VSCode | 14645 | 2022-9-3 | Early local PoC. Stale? | | Tabby | VSCode,\
+  \ vim, IntelliJ | 29074 | 2023-9-30 | Completes the cursor selection | | turbopilot\
+  \ | VSCode | 3818 | 2023-4-10 | Completions with FIM support, inspired by fauxpilot\
+  \ | | HuggingFace-vscode | VSCode | 1255 | 2023-6-19 | Fork of Tabnine, supports\
+  \ Starcoder | | localpilot | VSCode | 3369 | 2023-10-2 | Utility for easily hosting\
+  \ models locally, for use with official Copilot extension using custom API endpoint.\
+  \ | | StarcoderEx | VSCode | 101 | 2023-5-5 | Completes the cursor selection | |\
+  \ WizardCoder-VSC | VSCode | 145 | 2023-6-19 | PoC, article available | | KoboldAIConnect\
+  \ | VSCode | | 2023-10-7 | Copilot clone using local KoboldAI backend | | gen.nvim\
+  \ | vim | 1323 | 2023-10-1 | Edit selection using custom prompts | | uniteai | VSCode,\
+  \ emacs, lsp | 309 | 2023-8-27 | | | Privy | VSCode | 916 | 2024-1-8 | A privacy-first\
+  \ coding assistant. | | twinny | VSCode | 3279 | 2024-1-24 | The most no-nonsense\
+  \ locally hosted AI code completion plugin for VS Code | | continue | | 21966 |\
+  \ 2023-5-24 | VSCode extension with chat, autocomplete, and actions. |\n\n\U0001F6E0\
+  \uFE0F Tools\n\nTools that try to generate projects/features from specification:\n\
+  \n| Name | :star: | Released | Notes | | -------------- | ------- | --------- |\
+  \ ----- | | gpt-engineer | 52940 | 2023-6-6 | Specify what you want it to build,\
+  \ the AI asks for clarification, and then builds it. | | gpt-pilot | 32250 | 2023-7-18\
+  \ | Very similar to gpt-engineer | | aider | 25618 | 2023-6-8 | AI pair programming\
+  \ in your terminal, works well with pre-existing, larger codebases | | rift | 3051\
+  \ | 2023-6-20 | VSCode extension. Lets you write code by chatting, makes your IDE\
+  \ agentic, AI engineer that works alongside you. | | mentat | 2583 | 2023-7-25 |\
+  \ Mentat coordinates edits across multiple locations and files. | | clippinator\
+  \ | 364 | 2023-4-15 | Uses a team of agents to plan, write, debug, and test | |\
+  \ Refact.AI | 1660 | 2023-10-06 | Full self-hostable code completion, chat and training\
+  \ service, complete with VSCode extension. | | LocalCompletion | 27 | 2023-11-15\
+  \ | Inline completion with support for any OpenAI compatible backend |\n\n\U0001F5E8\
+  \uFE0F Chat Interfaces\n\nChat interfaces with shell/REPL/notebook access. Similar\
+  \ to/inspired by ChatGPT's \"Advanced Data Analysis\" feature (previously \"Code\
+  \ Interpreter\").\n\n| Name | :star: | Notes | | -------------- | ------- | ---------\
+  \ | | open-interpreter | 57982 | open-source, locally running implementation of\
+  \ OpenAI's Code Interpreter | | gptme | 3131 | Supporting open models. Developed\
+  \ by me, @ErikBjare | | octogen | 256 | Local Code Interpreter executing in Docker\
+  \ environment. | | terminal-x | 34 | Very early prototype that converts natural\
+  \ language into shell commands, unmaintained since Sept. 2021 | | DODA | >50 | Electron\
+  \ based GUI for a local OpenAI Dev Assistant |\n\n\U0001F916 Models\n\nModels relevant\
+  \ for local Copilot-use. Ordered by most recent first.\n\n| Name | Size | Languages\
+  \ | :star: | Released | Notes | | ------------------------------- | ---------- |\
+  \ ----------- | ------- | ---------- | ------- | | Phind CodeLlama v2 | 34B | Many\
+  \ | 829 | 2023-8-27 | | | WizardCoder-Python | 7/13/34B | Python | 765 | 2023-8\
+  \ | | | CodeLlama | 7/13/34B | Many | 16165 | 2023-8 | | | WizardCoder | 15B | 80+\
+  \ | 750 | 2023-6 | Fine-tuning of Starcoder | | replit-glaive | 3B | 1? | 88 | 2023-7\
+  \ | Small model fine-tuned on high-quality data with impressive performance. | |\
+  \ Starcoder | 15B | 80+ | 7351 | 2023-5 | | | replit-v1-3b | 3B | 20+ | 724 | 2023-5\
+  \ | | | SantaCoder | 1.1B | Python, Java, JavaScript | 331 | 2023-4 | Tiny model\
+  \ selectively trained on 3 languages from 'The Stack' | | Qwen 2.5 Coder | 32b |\
+  \ 92 different languages | 3998 | 2024-11 | | | Deepseek R1 | 671B | Many | 3052\
+  \ | 2025-01 | |\n\n**Note:** due to the pace of new model releases, this section\
+  \ is doomed to be out of date.\n\n\U0001F4DA Datasets\n\nDatasets relevant for training\
+  \ models.\n\n| Name | Size | Languages | :star: | Released | Notes | | -------------------------------\
+  \ | ---------- | ----------- | ------- | ---------- | ------- | | The Stack | 3TB/6TB\
+  \ | 358 | 760 | 2022-10 | Excludes weak-copyleft licenses (MPL, LGPL, EGL) since\
+  \ v1.1 |\n\nTools\n\nMisc relevant useful tools.\n\n| Name | :star: | Released |\
+  \ Notes | | ------------------------------- | ------- | ---------- | ------- | |\
+  \ ollama | 111009 | 2023-8-27 | Easily get up and running with large language models\
+  \ locally. |\n\nSuggested setup\n\nAs you can see above there are many options for\
+  \ models and editor extensions. If you use VS Code or JetBrains and want to get\
+  \ started straight away you can use the following setup:\n\n1. Install LM Studio.\
+  \ 2. Install Continue.dev extension. 3. Download one or several models in LM Studio.\
+  \ As of January 2025, Qwen 2.5 Coder is a good choice for autocomplete and Deepseek\
+  \ R1 is a good choice for chat. Depending on your hardware you'll have to experiment\
+  \ with which model size and quantization level gives you sufficient speed. For example\
+  \ on a Macbook Pro M2 with 32GB RAM, `Qwen2.5-Coder-7B-Instruct-Q4_K_M` works well\
+  \ for autocomplete and `DeepSeek-R1-Distill-Qwen-14B-Q4_0` works well for chat.\
+  \ 4. Go to the Developer tab in LM Studio and start the server. 5. Configure Continue.dev\
+  \ extension with by adding your selected models. For example:"
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '668219074'
+    canonical_url: https://github.com/ErikBjare/are-copilots-local-yet
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

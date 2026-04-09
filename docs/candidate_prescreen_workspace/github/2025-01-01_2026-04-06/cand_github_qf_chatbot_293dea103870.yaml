@@ -1,0 +1,187 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_293dea103870
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-01-01_2026-04-06
+created_at: '2026-04-08T11:00:11.090632Z'
+updated_at: '2026-04-09T02:56:48.462166Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2026-04-06
+time_field: pushed_at
+external_id: '57602001'
+canonical_url: https://github.com/wechaty/wechaty
+title: wechaty
+summary: 'Conversational RPA SDK for Chatbot Makers. Join our Discord: https://discord.gg/7q8NBZbQzt'
+raw_evidence_excerpt: "Conversational RPA SDK for Chatbot Makers. Join our Discord:\
+  \ https://discord.gg/7q8NBZbQzt\n\nShip.Fail PreAngel\n\nElevator Pitch\n\nWechaty\
+  \ is a conversational RPA SDK that simplifies the process of building chatbots.\
+  \ It's like a Swiss Army knife for chatbot development, providing a universal interface\
+  \ to various messaging platforms such as WhatsApp, WeChat, and more. With Wechaty,\
+  \ you write your bot code once, and it runs on any of the supported platforms. This\
+  \ means you can focus on creating engaging conversational experiences without worrying\
+  \ about the underlying complexities of each platform's API. It's open-source, easy\
+  \ to use, and backed by a vibrant community that's ready to help you bring your\
+  \ chatbot ideas to life.\n\nConnecting Chatbots\n\nWechaty is an RPA (Robotic Process\
+  \ Automation) SDK for Chatbot Makers which can help you create a bot in 6 lines\
+  \ of JavaScript, Python, Go, and Java, with cross-platform support including Linux,\
+  \ Windows, MacOS, and Docker.\n\n:spider_web: :octocat: :beetle: :book: :whale:\n\
+  \nBreaking News\n\n- \u91CD\u78C5\uFF1A\u7ED5\u8FC7\u767B\u5F55\u9650\u5236\uFF0C\
+  wechaty\u514D\u8D39\u7248web\u534F\u8BAE\u91CD\u653E\u8363\u5149, @gengchen528,\
+  \ Apr 13, 2021\n\nVoice of Developers\n\n> \"Wechaty is a great solution; I believe\
+  \ there would be much more users who recognize it.\" link > \u2014 @Gcaufy, Tencent\
+  \ Engineer, Author of WePY > > \"\u592A\u597D\u7528\uFF0C\u597D\u7528\u7684\u60F3\
+  \u54ED\" > \u2014 @xinbenlv, Google Engineer, Founder of HaoShiYou.org > > \u201D\
+  \u597D\u7528\u5230\u54ED\u201C\u2014\u2014\u4F60\u4EEC\u5BF9\u5F97\u8D77\u8FD9\u4E2A\
+  \u8BC4\u4EF7\uFF01 link > \u2014 @bigbrother666sh, creator of\u300A\u793E\u957F\u4E0D\
+  \u89C1\u4E86\u300B\u5267\u672C\u6740 NPC DM > > \"\u6700\u597D\u7684\u5FAE\u4FE1\
+  \u5F00\u53D1\u5E93\" link > \u2014 @Jarvis, Baidu Engineer > > \"Wechaty\u8BA9\u8FD0\
+  \u8425\u4EBA\u5458\u66F4\u591A\u7684\u65F6\u95F4\u601D\u8003\u5982\u4F55\u8FDB\u884C\
+  \u6D3B\u52A8\u7B56\u5212\u3001\u7559\u5B58\u7528\u6237\uFF0C\u5546\u4E1A\u53D8\u73B0\
+  \" link > \u2014 @lijiarui, Founder & CEO of Juzi.BOT. > > \"If you know js ...\
+  \ try Wechaty. It's easy to use.\" > \u2014 @Urinx Uri Lee, Author of WeixinBot(Python)\
+  \ > > \"Wechaty is a good project; I hope it can continue! Therefore, I became a\
+  \ contributor in open collective.\" > \u2014 @Simple\n\nSee more at Wiki:Voice Of\
+  \ Developer\n\nJoin Us on Discord\n\nWechaty is used in many ChatBot projects by\
+  \ thousands of developers. To talk with other developers, scan the QR Code below\
+  \ and join our **Wechaty Developer Community**.\n\nScan now because other Wechaty\
+  \ developers want to talk with you, too!\n\nResource\n\nWechaty has already held\
+  \ lots of talks and got a lot of blogs in the past years; here are all of the wechaty\
+  \ resources:\n\n- :video_camera: Youtube Playlist: Watch all of the talk videos\
+  \ related with Wechaty - :page_with_curl: Full Docs - :bulb: Blog: See how developers\
+  \ use wechaty to build fantastic projects! - :beginner: Wechaty-Getting-Started:Wechaty\
+  \ Starter Project Template that Works Out-of-the-Box - :tada: Wechaty Contributor\
+  \ List: Thanks for their contribution! - :gift: Juzibot Support Wechaty: Know everything\
+  \ about Wechaty\n\n:rocket: The World's Shortest ChatBot Code: 6 lines of JavaScript\n\
+  \n> **Notice: Wechaty requires Node.js version >= 16**\n\nThis bot can log all messages\
+  \ to the console after login by the scan.\n\nYou can find Wechaty's Official Examples\
+  \ at examples/ding-dong-bot.ts and more from our Example Directory.\n\n:checkered_flag:\
+  \ Requirements\n\n1. Node.js version 16+ 1. NPM version 7+ 1. TypeScript version\
+  \ 4.4+\n\nGetting Started\n\n- Wechaty Starter Repository -\n\nWe have a Wechaty\
+  \ starter repository for beginners with the simplest setting. It will be **work**\
+  \ out-of-the-box after you `clone` & `npm install` & `npm start`.\n\nIf you are\
+  \ new to Wechaty and want to try it the first time, we'd like to strong recommend\
+  \ you starting from this repository, and using it as your starter template for your\
+  \ project.\n\nOtherwise, please saved the above _The World's Shortest ChatBot Code:\
+  \ 6 lines of JavaScript_ example to a file named `bot.js` before you can use either\
+  \ NPM or Docker to run it.\n\n1. Npm\n\n2. Docker\n\n- Wechaty Starter Repository\
+  \ for Docker -\n\n> Wechaty Docker supports both JavaScript and TypeScript. To use\
+  \ TypeScript just write in TypeScript and save with extension name `.ts`, no need\
+  \ to compile because we use `ts-node` to run it.\n\n2.1. Run JavaScript\n\n2.2.\
+  \ Run TypeScript\n\n> Learn more about Wechaty Docker at Wiki:Docker.\n\n3. Switch\
+  \ Protocol(Puppet)\n\nWechaty is very powerful that it can run over different protocols.\
+  \ You can specify the protocol by set the environment variable `WECHATY_PUPPET`\
+  \ to different puppet provider.\n\nIf you cannot use Web protocol, you can apply\
+  \ other protocols following the instruction here: We provide free token to support\
+  \ developers build a valuable WeChat chatbot.\n\nCurrently we support the following\
+  \ puppet providers :\n\n| Protocol | Puppet Provider | Environment Variable | |\
+  \ --- | --- | --- | | Web | PuppetPuppeteer | `export WECHATY_PUPPET=wechaty-puppet-puppeteer`\
+  \ | | Windows | PuppetWorkPro | `export WECHATY_PUPPET=wechaty-puppet-service` |\
+  \ | Mock | PuppetMock | `export WECHATY_PUPPET=wechaty-puppet-mock` | | Web | PuppetWechat4u\
+  \ | `export WECHATY_PUPPET=wechaty-puppet-wechat4u` | | iPad | PuppetRock | `export\
+  \ WECHATY_PUPPET=wechaty-puppet-service` | | iPad | PuppetPadLocal | `export WECHATY_PUPPET=wechaty-puppet-service`\
+  \ | | Windows | PuppetDonut | `export WECHATY_PUPPET=wechaty-puppet-service` | |\
+  \ iPad | ~~PuppetPadpro~~ **DEPRECATED** | `export WECHATY_PUPPET=wechaty-puppet-padpro`\
+  \ | | iPad | ~~PuppetPadchat~~ **DEPRECATED** | `export WECHATY_PUPPET=wechaty-puppet-padchat`\
+  \ | | iPad | ~~PuppetPadplus~~ **DEPRECATED** | `export WECHATY_PUPPET=wechaty-puppet-padplus`\
+  \ | | Mac | ~~PuppetMacpro~~ **DEPRECATED** | `export WECHATY_PUPPET=wechaty-puppet-macpro`\
+  \ | | Windows | ~~PuppetWxwork~~ **DEPRECATED** | `export WECHATY_PUPPET=wechaty-puppet-service`\
+  \ |\n\nLearn more about Wechaty Puppet from the Puppet Wiki:\n\n1. Puppet Directory:\
+  \ 1. Puppet Compatibility:\n\n:guitar: API\n\nRead the Full Documentation at Wechaty\
+  \ Official API Reference\n\n1 Class `Wechaty`\n\nMain bot class.\n\nA `Bot` is a\
+  \ Wechaty instance that control a specific wechaty-puppet.\n\n- `new Wechaty(options?:\
+  \ WechatyOptions)` 1. `options.name?: string` the name of this bot(optional) 2.\
+  \ `options.puppet?: string` select which puppet provider we want to use. must be\
+  \ one of the: 1. wechaty-puppet-wechat - Angular Hook for Web Wechat 2. wechaty-puppet-wechat4u\
+  \ - HTTP API for Web Wechat 3. wechaty-puppet-padpro - iPad App Protocol 4. wechaty-puppet-ioscat\
+  \ - iPhone App Hook 5. wechaty-puppet-mock - Mock for Testing 3. `options.puppetOptions?:\
+  \ PuppetOptions` options for the puppet provider.\n\n| Wechaty | API | Description\
+  \ | | :--- | :--- | :--- | | event | `login` | emit after bot login full successful\
+  \ | | event | `logout` | emit after the bot log out | | event | `friendship` | emit\
+  \ when someone sends bot a friend request| | event | `message` | emit when there's\
+  \ a new message | | event | `room-join` | emit when anyone join any room | | event\
+  \ | `room-topic` | emit when someone change room topic | | event | `room-leave`\
+  \ | emit when anyone leave the room | | event | `room-invite` | emit when there\
+  \ is a room invitation | | event | `scan` | emit when the bot needs to show you\
+  \ a QR Code for scanning | | method | `start(): Promise ` | start the bot | | method\
+  \ | `stop(): Promise ` | stop the bot | | method | `logonoff(): boolean` | bot login\
+  \ status | | method | `logout(): Promise ` | logout the bot | | method | `currentUser():\
+  \ ContactSelf` | get the login-ed bot contact | | method | `say(text: string): Promise\
+  \ ` | let bot say `text` to itself |\n\n2 Class `Contact`\n\nAll wechat contacts(friends/non-friends)\
+  \ will be encapsulated as a Contact."
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2026-04-06
+    external_id: '57602001'
+    canonical_url: https://github.com/wechaty/wechaty
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

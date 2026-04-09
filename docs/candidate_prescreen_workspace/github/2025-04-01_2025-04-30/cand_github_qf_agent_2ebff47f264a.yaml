@@ -1,0 +1,174 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_2ebff47f264a
+candidate_batch_id: candidate_batch_github_qf_agent_2025-04-01_2025-04-30
+created_at: '2026-04-08T15:32:51.141645Z'
+updated_at: '2026-04-09T03:09:20.547285Z'
+source: github
+source_id: src_github
+source_window: 2025-04-01..2025-04-30
+time_field: pushed_at
+external_id: '842172831'
+canonical_url: https://github.com/business-science/awesome-generative-ai-data-scientist
+title: awesome-generative-ai-data-scientist
+summary: A curated list of 100+ resources for building and deploying generative AI
+  specifically focusing on helping you become a Generative AI Data Scientist with
+  LLMs
+raw_evidence_excerpt: "A curated list of 100+ resources for building and deploying\
+  \ generative AI specifically focusing on helping you become a Generative AI Data\
+  \ Scientist with LLMs\n\n100+ Free Resources On Generative AI for Data Scientists\n\
+  \nAwesome Generative AI Data Scientist ![Awesome](https://awesome.re)\n\n> The Future\
+  \ is using AI and ML Together\n\n\U0001F680\U0001F680 100+ Free Resources On Generative\
+  \ AI for Data Scientists\n\nA curated list of 100+ resources to help you become\
+  \ a Generative AI Data Scientist. This repository includes resources on building\
+  \ GenAI Data Science applications with Large Language Models (LLMs) and deploying\
+  \ LLMs and Generative AI/ML with Cloud-based solutions.\n\n**Please \u2B50 us on\
+  \ GitHub (it takes 2 seconds and means a lot).**\n\nContributing\n\nContributions\
+  \ are welcome! Please submit a pull request or open an issue if you have suggestions\
+  \ for new resources or improvements to existing ones. Thanks for your support!\n\
+  \nTable of Contents\n\n- Awesome Generative AI Data Scientist - \U0001F680\U0001F680\
+  \ 100+ Free Resources On Generative AI for Data Scientists - Contributing - Table\
+  \ of Contents - Awesome Real-World AI Use Cases - Python Libraries - Curated Python\
+  \ AI, Data Science, and ML Compilations - Data Science And AI Agents - Coding Agents\
+  \ - Deep Research Agents - AI Frameworks (Build Your Own) - AI Frameworks (Drag\
+  \ and Drop) - LLM Providers - Open Source LLM Models - LangChain Ecosystem - LangGraph\
+  \ Extensions - Huggingface Ecosystem - Vector Databases (RAG) - Pretraining - Fine-tuning\
+  \ - Testing and Monitoring (Observability) - Document Parsing - Web Parsing (HTML)\
+  \ and Web Crawling - Agents and Tools (Build Your Own) - Agents and Tools (Prebuilt)\
+  \ - LLM Memory - LLMOps - Code Sandbox (Security) - Browser Control Agents - Prompt\
+  \ Improvement - Other - R Libraries - Curated AI, ML, Data Science Lists - Ellmer-Verse\
+  \ - mlverse - Other Popular Interfaces to LLM Models in R - RAG in R - LLM Deployment\
+  \ (Cloud Services) - Examples and Cookbooks - Building AI - Deploying AI - Amazon\
+  \ Web Services (AWS) - Microsoft Azure - Google Cloud Platform (GCP) - NVIDIA -\
+  \ Newsletters - Courses and Training - Free Training - Paid Courses\n\nAwesome Real-World\
+  \ AI Use Cases\n\n| **Project** | **Description** | **Links** | |-------------|------------------|-----------|\
+  \ | \U0001F680\U0001F680 AI-Powered Data Science Team In Python | An AI-powered\
+  \ data science team of copilots that uses agents to help you perform common data\
+  \ science tasks 10X faster. | Apps \\| Examples \\| GitHub | | \U0001F680 Awesome\
+  \ LLM Apps | LLM RAG AI Apps with Step-By-Step Tutorials. | GitHub | | AI Hedge\
+  \ Fund | Proof of concept for an AI-powered hedge fund. | GitHub | | AI Financial\
+  \ Agent | A financial agent for investment research. | GitHub | | Structured Report\
+  \ Generation (LangGraph) | How to build an agent that can orchestrate the end-to-end\
+  \ process of report planning, web research, and writing. Produces reports of varying\
+  \ and easily configurable formats. | Video \\| Blog \\| Code | | Uber QueryGPT |\
+  \ Uber's QueryGPT uses large language models (LLM), vector databases, and similarity\
+  \ search to generate complex queries from English (Natural Language) questions,\
+  \ enhancing productivity for engineers, operations managers, and data scientists.\
+  \ | Blog | | Nir Diamant GenAI Agents Hub | Tutorials and implementations for various\
+  \ Generative AI Agent techniques, from basic to advanced. A comprehensive guide\
+  \ for building intelligent, interactive AI systems. | GitHub | | AI Engineering\
+  \ Hub | Real-world AI agent applications, LLM and RAG tutorials, with examples to\
+  \ implement. | GitHub | | StockChat | An open-source alternative to Perplexity Finance.\
+  \ | GitHub |\n\nPython Libraries\n\nCurated Python AI, Data Science, and ML Compilations\n\
+  \n| **Project** | **Description** | **Links** | |-------------|------------------|-----------|\
+  \ | Awesome Generative AI Data Scientist | A curated list of 100+ resources for\
+  \ building and deploying generative AI specifically focusing on helping you become\
+  \ a Generative AI Data Scientist | GitHub | | LLM Engineer Toolkit | A curated list\
+  \ of 120+ LLM libraries organized by category. | GitHub | | \U0001F680\U0001F680\
+  \ Best of ML Python | A ranked list of awesome machine learning Python libraries.\
+  \ Updated weekly. | GitHub | | \U0001F680\U0001F680 Awesome Python Data Science\
+  \ | Probably the best curated list of data science software in Python. | GitHub\
+  \ | | Awesome Production Machine Learning | A curated list of awesome open source\
+  \ libraries to deploy, monitor, version and scale your machine learning | GitHub\
+  \ | | Awesome AI Agents | A list of AI autonomous agents | GitHub |\n\nData Science\
+  \ And AI Agents\n\n| **Project** | **Description** | **Links** | |-------------|------------------|-----------|\
+  \ | \U0001F680\U0001F680 AI Data Science Team In Python | AI Agents to help you\
+  \ perform common data science tasks 10X faster. | Apps \\| Examples \\| GitHub |\
+  \ | \U0001F680 PandasAI | Open Source AI Agents for Data Analysis. | Documentation\
+  \ \\| GitHub | | Microsoft Data Formulator | Transform data and create rich visualizations\
+  \ iteratively with AI \U0001FA84. | Paper \\| GitHub | | Jupyter Agent | Let a LLM\
+  \ agent write and execute code inside a notebook. | Hugging Face | | Jupyter AI\
+  \ | A generative AI extension for JupyterLab. | Documentation \\| GitHub | | WrenAI\
+  \ | Open-source GenBI AI Agent. Text2SQL made Easy! | Documentation \\| GitHub |\
+  \ | Google GenAI Toolbox for Databases | Gen AI Toolbox for Databases is an open-source\
+  \ server that makes it easier to build Gen AI tools for interacting with databases.\
+  \ | Blog \\| Documentation \\| GitHub | | Vanna AI | The fastest way to get actionable\
+  \ insights from your SQL database just by asking questions. | Documentation \\|\
+  \ GitHub |\n\nCoding Agents\n\n| **Project** | **Description** | **Links** | |-------------|------------------|-----------|\
+  \ | Qwen-Agent | A framework for developing LLM applications based on the instruction\
+  \ following, tool usage, planning, and memory capabilities of Qwen. It also comes\
+  \ with example applications such as Browser Assistant, Code Interpreter, and Custom\
+  \ Assistant. | Documentation \\| Examples \\| GitHub |\n\nDeep Research Agents\n\
+  \n| **Project** | **Description** | **Links** | |-------------|------------------|-----------|\
+  \ | HuggingFace OpenDeepResearch | Open version of OpenAI's Deep Research agent.\
+  \ | Blog \\| Example \\| GitHub | | OpenDeepResearcher | AI researcher that continuously\
+  \ searches for information based on a user query until the system is confident that\
+  \ it has gathered all the necessary details. | GitHub |\n\nAI Frameworks (Build\
+  \ Your Own)"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-04-01'
+    window_end: '2025-04-30'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-04-01..2025-04-30
+    external_id: '842172831'
+    canonical_url: https://github.com/business-science/awesome-generative-ai-data-scientist
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

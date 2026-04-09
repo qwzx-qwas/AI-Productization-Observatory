@@ -1,0 +1,138 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_6c3ba304442b
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-02-01_2025-02-28
+created_at: '2026-04-08T14:24:52.286322Z'
+updated_at: '2026-04-09T02:59:43.773002Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '867149056'
+canonical_url: https://github.com/epuerta9/kitchenai
+title: kitchenai
+summary: Open Source LLMOps tool for AI teams
+raw_evidence_excerpt: "Open Source LLMOps tool for AI teams\n\nKitchenAI\n\n**KitchenAI**\
+  \ is a control plane for AI implementations \u2014 designed to bridge the gap between\
+  \ application developers and AI teams. Our platform simplifies AI integration with\
+  \ a loosely coupled, modular architecture that delivers production-grade reliability\
+  \ while letting your teams focus on what they do best.\n\n---\n\n\U0001F680 Quick\
+  \ Start\n\n- **Explore Our Interactive Playground:** Try KitchenAI in Action - **Take\
+  \ a Guided Tour:** Watch the Guided Tour\n\n---\n\n\U0001F31F What Makes KitchenAI\
+  \ Unique\n\nModular Architecture - **Bento Boxes:** Package your AI workflows into\
+  \ independent \"bento boxes\" that encapsulate complex logic. - **Flexibility:**\
+  \ Update, replace, or scale individual modules without disrupting your overall system.\
+  \ - **Clear Separation:** Let AI teams build advanced logic in a reproducible and\
+  \ swappable space, while app developers enjoy a simple, stable API.\n\nHigh-Performance\
+  \ Messaging - **Powered by NATS:** - Lightning-fast, reliable communication between\
+  \ AI modules - Dynamic service discovery and routing - Robust support for event-driven\
+  \ workflows in distributed environments\n\nFramework Agnostic - **Plug & Play:**\
+  \ - No vendor lock-in\u2014integrate with any AI framework or model - Native support\
+  \ for LangChain, LlamaIndex, and custom implementations - Future-proof your AI infrastructure\
+  \ with flexible integration options\n\n---\n\n\U0001F6E0\uFE0F How It Works\n\n\
+  KitchenAI\u2019s three-layer architecture makes it easy to manage your AI workflows:\n\
+  \n1. **Application Layer:** Your business applications call a simple, unified API\
+  \ (just like using OpenAI\u2019s Chat Completions).\n\n2. **NATS Messaging Layer:**\
+  \ This is our high-performance backbone for routing messages and discovering services\
+  \ dynamically.\n\n3. **Bento Boxes Layer:** Modular AI implementations where your\
+  \ AI team builds the complex logic (be it LLM logic, RAG, agents, or custom workflows).\n\
+  \nFor Application Developers Your code remains clean and simple:\n\nFor AI Teams\
+  \ Focus on building powerful AI code:\n\n--- Self hosting the control plane\n\n\
+  KitchenAI is designed to be self-hosted. You can deploy the control plane and the\
+  \ bento boxes separately.\n\n1. Clone the KitchenAI repository\n\n2. Bring up the\
+  \ control plane and dependencies\n\n4. Creating the Bucket for media. KitchenAI\
+  \ uses S3 for media. For local development, the compose file has a minio container.\
+  \ This only needs to be done the first time.\n\nyou will need to login to the minio\
+  \ container and create a bucket called `kitchenai`.\n\nendpoint: http://localhost:9001\
+  \ username: minioadmin password: minioadmin\n\nbucket name: kitchenai\n\n3. Bring\
+  \ up the bento boxes using this demo demo notebooks ---\n\nSettings\n\navailable\
+  \ environment variables\n\n\U0001F4DA Documentation\n\n- Getting Started - Core\
+  \ Concepts - Deployment Guide - API Reference\n\n---\n\n\U0001F6E0\uFE0F Key Features\n\
+  \n- **Version Control & Rollback:** Safely iterate and revert as needed. - **Monitoring\
+  \ & Observability Hooks:** Integrate with your favorite tools. - **Plugin Ecosystem:**\
+  \ Extend KitchenAI with additional capabilities. - **Security Integrations:** Designed\
+  \ with production-grade best practices.\n\n---\n\n\U0001F64B\u200D\u2642\uFE0F Join\
+  \ the Beta!\n\nKitchenAI is still in beta\u2014we're excited to have early adopters\
+  \ help shape the platform. - **Join the Waitlist:** Get Early Access - **Play in\
+  \ Our Playground:** Try it out now\n\n---\n\n\U0001F517 Quick Links\n\n- Website\
+  \ - Documentation - Interactive Playground - GitHub\n\n---\n\n\U0001F4C4 License\n\
+  \nKitchenAI is released under the Apache 2.0 License.\n\n---\n\n\U0001F64B\u200D\
+  \u2642\uFE0F Support & Community\n\n- Community Forum - GitHub Issues - Email Support\n\
+  \n---\n\nBuilt with \u2764\uFE0F by the KitchenAI Team"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '867149056'
+    canonical_url: https://github.com/epuerta9/kitchenai
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

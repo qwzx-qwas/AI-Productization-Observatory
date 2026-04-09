@@ -1,0 +1,169 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_b19486d5c4ca
+candidate_batch_id: candidate_batch_github_qf_agent_2025-02-01_2025-02-28
+created_at: '2026-04-08T13:33:17.806484Z'
+updated_at: '2026-04-09T02:57:45.910599Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '916376760'
+canonical_url: https://github.com/hrithikkoduri/WebRover
+title: WebRover
+summary: WebRover is an autonomous AI agent designed to interpret user input and execute
+  actions by interacting with web elements to accomplish tasks or answer questions.
+  It leverages advanced language models and web automation tools to navigate the web,
+  gather information, and provide structured responses based on the user's needs.
+raw_evidence_excerpt: "WebRover is an autonomous AI agent designed to interpret user\
+  \ input and execute actions by interacting with web elements to accomplish tasks\
+  \ or answer questions. It leverages advanced language models and web automation\
+  \ tools to navigate the web, gather information, and provide structured responses\
+  \ based on the user's needs.\n\nWebRover\n\nYour AI Co-pilot for Web Navigation\
+  \ \U0001F680\n\nAutonomous Web Agent | Task Automation | Information Retrieval |\
+  \ Deep Research\n\nOverview WebRover is an AI-powered web agent that combines autonomous\
+  \ browsing with advanced research capabilities. While maintaining its core ability\
+  \ to automate web tasks, version 2.0 introduces sophisticated research workflows\
+  \ including multi-source analysis, academic paper generation, and deep topic exploration.\
+  \ The system intelligently routes queries between task automation and research modes,\
+  \ providing a versatile tool for both quick actions and comprehensive research.\n\
+  \nMotivation While traditional web automation tools excel at task execution, and\
+  \ search engines help with information retrieval, there's a growing need for tools\
+  \ that can handle both while specializing in deep research workflows. WebRover bridges\
+  \ this gap by offering task automation alongside intelligent research capabilities,\
+  \ with a particular focus on comprehensive information gathering, analysis, and\
+  \ synthesis. This dual-purpose approach aims to transform how we interact with web\
+  \ content, making both task execution and research more efficient and thorough.\n\
+  \nDemo Video - Deep Research Agent\n\n> Watch as the WebRover Deep Research Agent\
+  \ explores a topic, gathers information, and generates an academic paper.\n\nDemo\
+  \ Video - Task Agent\n\n> Watch as the WebRover Task Agent navigates a website and\
+  \ performs a task.\n\nKey Features\n\nAgent Capabilities - Three specialized agents\
+  \ for different use cases (Task, Research, Deep Research) - Dynamic agent selection\
+  \ based on task complexity - Real-time agent state visualization - Streaming agent\
+  \ actions and thoughts\n\nBrowser Integration - Local browser instance for privacy\
+  \ and control - Multi-tab management - PDF document handling - Secure browsing sessions\n\
+  \nUser Interface - Modern chat interface with real-time updates - Interactive agent\
+  \ selection - Action streaming with visual feedback - Real-time page annotations\
+  \ and highlights\n\nOutput Options - Direct chat responses - One-click Google Docs\
+  \ export - PDF download functionality - Copy to clipboard support\n\nResearch Tools\
+  \ - Vector store for information retention - Multi-source verification - Academic\
+  \ paper generation - Reference management\n\nTechnical Features - State-of-the-art\
+  \ LLM integration (GPT-4o, o3-mini-high, Claude-3.5 sonnet) - RAG pipeline for enhanced\
+  \ responses - LangGraph for state management - Playwright for reliable web automation\n\
+  \nAgent Types\n\n1. Task Agent A specialized automation agent for executing web-based\
+  \ tasks and workflows. - Custom action planning for multi-step tasks - Dynamic element\
+  \ interaction based on context - Real-time task progress monitoring\n\n2. Research\
+  \ Agent An information gathering specialist with smart content processing. - Intelligent\
+  \ source selection and validation - Adaptive search refinement - Single-pass comprehensive\
+  \ information gathering\n\n3. Deep Research Agent (New! \U0001F389) An advanced\
+  \ research agent that produces academic-quality content through systematic topic\
+  \ exploration. - Automatic topic decomposition and structured research - Independent\
+  \ subtopic exploration - Academic paper generation with proper citations - Cross-referenced\
+  \ bibliography compilation\n\nAgent Architecture Diagrams\n\nDeep Research Agent\
+  \ Flow\n\n*Deep Research Agent's workflow for comprehensive research and content\
+  \ generation*\n\nResearch Agent Flow\n\n*Research Agent's workflow for information\
+  \ gathering and synthesis*\n\nTask Agent Flow\n\n*Task Agent's workflow for automating\
+  \ web interactions*\n\nArchitecture\n\nThe system is built on a modern tech stack\
+  \ with three distinct agent types, each powered by:\n\n1. **State Management** -\
+  \ LangGraph for maintaining agent state - Handles complex navigation flows and decision\
+  \ making - Structured workflow management\n\n2. **Browser Automation** - Playwright\
+  \ for reliable web interaction - Custom element detection and interaction system\
+  \ - Automated navigation and content extraction\n\n3. **Content Processing** - RAG\
+  \ (Retrieval Augmented Generation) pipeline - Vector store integration for efficient\
+  \ information storage - PDF and webpage content extraction - Automatic content structuring\
+  \ and organization\n\n4. **AI Decision Making** - Multiple LLM integration (GPT-4,\
+  \ Claude) - Context-aware navigation - Self-review mechanisms - Structured output\
+  \ generation\n\nSetup Instructions\n\nBackend Setup\n\n1. Clone the repository\n\
+  \n2. Install Poetry (if not already installed)\n\nMac/Linux:\n\nWindows:\n\n3. Set\
+  \ Python version for Poetry\n\n4. Activate the Poetry shell: For Unix/Linux/MacOS:\n\
+  \nFor Windows:\n\n5. Install dependencies using Poetry:\n\n6. Set up environment\
+  \ variables in `.env`:\n\n7. Run the backend:\n\nMake sure you are in the backend\
+  \ folder\n\nFor Windows User:\n\n8. Access the API at `http://localhost:8000`\n\n\
+  Frontend Setup\n\n1. Open a new terminal and make sure you are in the WebRover folder:\n\
+  \n2. Install dependencies:\n\n3. Run the frontend:\n\n4. Access the frontend at\
+  \ `http://localhost:3000`\n\nFor mac users:\n\nTry running http://localhost:3000\
+  \ on Safari browser. If you face any with connecting to browser, open terminal and\
+  \ run:\n\nand try again.\n\nIf you still face issues, try changing the websocket\
+  \ port from 9222 to 9223 in the `webrover_browser.py` file in the `backend/Browser`\
+  \ folder.\n\nContributing\n\n1. Fork the repository 2. Create your feature branch\
+  \ (`git checkout -b feature/AmazingFeature`) 3. Commit your changes (`git commit\
+  \ -m 'Add some AmazingFeature'`) 4. Push to the branch (`git push origin feature/AmazingFeature`)\
+  \ 5. Open a Pull Request\n\nLicense\n\nThis project is licensed under the MIT License\
+  \ - see the LICENSE file for details.\n\n---\n\nMade with \u2764\uFE0F by @hrithikkoduri"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '916376760'
+    canonical_url: https://github.com/hrithikkoduri/WebRover
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

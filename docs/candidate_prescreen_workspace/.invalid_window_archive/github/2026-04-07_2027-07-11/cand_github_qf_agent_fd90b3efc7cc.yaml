@@ -1,0 +1,139 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_fd90b3efc7cc
+candidate_batch_id: candidate_batch_github_qf_agent_2026-04-07_2027-07-11
+created_at: '2026-04-07T14:18:43.636870Z'
+updated_at: '2026-04-07T14:20:12.197038Z'
+source: github
+source_id: src_github
+source_window: 2026-04-07..2027-07-11
+time_field: pushed_at
+external_id: '515642286'
+canonical_url: https://github.com/nginx/agent
+title: agent
+summary: NGINX Agent provides an administrative entry point to remotely manage, configure
+  and collect metrics and events from NGINX instances
+raw_evidence_excerpt: 'NGINX Agent provides an administrative entry point to remotely
+  manage, configure and collect metrics and events from NGINX instances
+
+
+  F5 NGINX Agent
+
+
+  F5 NGINX Agent is a companion application designed to efficiently manage NGINX instances.
+  Key features include:
+
+
+  - Remote management: Easily control and configure NGINX instances remotely. - Real-time
+  metrics: Monitor and analyze performance data for NGINX and the underlying operating
+  system.
+
+
+  Discover more advanced features and capabilities by visiting Try NGINX One: Free
+  Enterprise Trial.
+
+
+  Installation
+
+
+  You can install **NGINX Agent** using one of the following methods:
+
+
+  1. **Official documentation** Follow the step-by-step guide to add and configure
+  instances: How to add an instance
+
+
+  2. **GitHub releases** Download the latest binaries or packages directly from the
+  GitHub releases page: NGINX Agent GitHub releases
+
+
+  3. **Installation and upgrade guide** Access detailed instructions to install or
+  upgrade NGINX Agent from the official NGINX documentation: NGINX Agent Installation
+  Guide
+
+
+  Useful links
+
+
+  * v2 - Official NGINX Agent documentation * v3 - Official NGINX Agent documentation
+  * F5 Support
+
+
+  Community If you have any questions please reach out using the NGINX Community'
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2026-04-07'
+    window_end: '2027-07-11'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2026-04-07..2027-07-11
+    external_id: '515642286'
+    canonical_url: https://github.com/nginx/agent
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: schema_drift
+  error_message: OpenAI-compatible response must provide message.content text
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

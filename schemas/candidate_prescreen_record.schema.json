@@ -41,9 +41,21 @@
       "type": "string",
       "minLength": 1
     },
+    "sample_key": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "candidate_batch_id": {
       "type": "string",
       "minLength": 1
+    },
+    "analysis_run_key": {
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "created_at": {
       "type": "string",

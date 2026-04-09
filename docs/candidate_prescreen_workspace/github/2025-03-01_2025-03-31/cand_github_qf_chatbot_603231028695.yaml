@@ -1,0 +1,154 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_603231028695
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-03-01_2025-03-31
+created_at: '2026-04-08T15:14:12.895643Z'
+updated_at: '2026-04-09T03:06:22.852638Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '721748445'
+canonical_url: https://github.com/hao-ai-lab/LookaheadDecoding
+title: LookaheadDecoding
+summary: '[ICML 2024] Break the Sequential Dependency of LLM Inference Using Lookahead
+  Decoding'
+raw_evidence_excerpt: "[ICML 2024] Break the Sequential Dependency of LLM Inference\
+  \ Using Lookahead Decoding\n\nBreak the Sequential Dependency of LLM Inference Using\
+  \ Lookahead Decoding\n\n| Paper | Blog | Roadmap |\n\n--- *News* \U0001F525 - [2024/2]\
+  \ Lookahead Decoding Paper now available on arXiv. Sampling and FlashAttention are\
+  \ supported. Advanced features for better token prediction are updated.\n\n--- Introduction\
+  \ We introduce lookahead decoding: - A parallel decoding algorithm to accelerate\
+  \ LLM inference. - Without the need for a draft model or a data store. - Linearly\
+  \ decreases #decoding steps relative to log(FLOPs) used per decoding step.\n\nBelow\
+  \ is a demo of lookahead decoding accelerating LLaMa-2-Chat 7B generation:\n\nDemo\
+  \ of speedups by lookahead decoding on LLaMA-2-Chat 7B generation. Blue fonts are\
+  \ tokens generated in parallel in a decoding step.\n\nBackground: Parallel LLM Decoding\
+  \ Using Jacobi Iteration\n\nLookahead decoding is motivated by Jacobi decoding,\
+  \ which views autoregressive decoding as solving nonlinear systems and decodes all\
+  \ future tokens simultaneously using a fixed-point iteration method. Below is a\
+  \ Jacobi decoding example.\n\nIllustration of applying Jacobi iteration method for\
+  \ parallel LLM decoding.\n\nHowever, Jacobi decoding can barely see wall-clock speedup\
+  \ in real-world LLM applications.\n\nLookahead Decoding: Make Jacobi Decoding Feasible\n\
+  \nLookahead decoding takes advantage of Jacobi decoding's ability by collecting\
+  \ and caching n-grams generated from Jacobi iteration trajectories.\n\nThe following\
+  \ gif shows the process of collecting 2 grams via Jacobi decoding and verifying\
+  \ them to accelerate decoding.\n\nIllustration of lookahead decoding with 2-grams.\n\
+  \nTo enhance the efficiency of this process, each lookahead decoding step is divided\
+  \ into two parallel branches: the lookahead branch and the verification branch.\
+  \ The lookahead branch maintains a fixed-sized, 2D window to generate n-grams from\
+  \ the Jacobi iteration trajectory. Simultaneously, the verification branch selects\
+  \ and verifies promising n-gram candidates.\n\nLookahead Branch and Verification\
+  \ Branch\n\nThe lookahead branch aims to generate new N-grams. The branch operates\
+  \ with a two-dimensional window defined by two parameters: - Window size W: How\
+  \ far ahead we look in future token positions to conduct parallel decoding. - N-gram\
+  \ size N: How many steps we look back into the past Jacobi iteration trajectory\
+  \ to retrieve n-grams.\n\nIn the verification branch, we identify n-grams whose\
+  \ first token matches the last input token. This is determined via simple string\
+  \ match. Once identified, these n-grams are appended to the current input and subjected\
+  \ to verification via an LLM forward pass through them.\n\nWe implement these branches\
+  \ in one attention mask to further utilize GPU's parallel computing power.\n\nAttention\
+  \ mask for lookahead decoding with 4-grams and window size 5. In this mask, two\
+  \ 4-gram candidates (bottom right) are verified concurrently with parallel decoding.\n\
+  \nExperimental Results\n\nOur study shows lookahead decoding substantially reduces\
+  \ latency, ranging from 1.5x to 2.3x on different datasets on a single GPU. See\
+  \ the figure below.\n\nSpeedup of lookahead decoding on different models and datasets.\n\
+  \nContents - Introduction - Contents - Installation - Install With Pip - Install\
+  \ From The Source - Inference - Use In Your Own Code - Citation - Guidance\n\nInstallation\
+  \ Install with pip\n\nInstall from the source\n\nInference With Lookahead decoding\
+  \ You can run the minimal example to see the speedup that Lookahead decoding brings.\n\
+  \nYou can also enjoy chatting with your own chatbots with Lookahead decoding.\n\n\
+  Use Lookahead decoding in your own code You can import and use Lookahead decoding\
+  \ in your own code in three LoCs. You also need to set ```USE_LADE=1``` in command\
+  \ line or set ```os.environ[\"USE_LADE\"]=\"1\"``` in Python script. Note that Lookahead\
+  \ decoding only support LLaMA yet.\n\nThen you can speedup the decoding process.\
+  \ Here is an example using greedy search:\n\nHere is an example using sampling:\n\
+  \nFlashAttention Support Install the original FlashAttention\n\nTwo ways to install\
+  \ FlashAttention specialized for Lookahead Decoding 1) Download a pre-built package\
+  \ on https://github.com/Viol2000/flash-attention-lookahead/releases/tag/v2.3.3 and\
+  \ install (fast, recommended). For example, I have cuda==11.8, python==3.9 and torch==2.1,\
+  \ I should do the following:\n\n2) Install from the source (slow, not recommended)\n\
+  \nHere is an example script to run the models with FlashAttention:\n\nIn your own\
+  \ code, you need to set ```USE_FLASH=True``` when calling ```config_lade```, and\
+  \ set ```attn_implementation=\"flash_attention_2\"``` when calling ```AutoModelForCausalLM.from_pretrained```.\n\
+  \nWe will integrate FlashAttention directly into this repo for simple installation\
+  \ and usage.\n\nCitation\n\nGuidance The core implementation is in decoding.py.\
+  \ Lookahead decoding requires an adaptation for each specific model. An example\
+  \ is in models/llama.py."
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '721748445'
+    canonical_url: https://github.com/hao-ai-lab/LookaheadDecoding
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

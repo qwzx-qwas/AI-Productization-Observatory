@@ -1,0 +1,193 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_ddd38d33aeb6
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-03-01_2025-03-31
+created_at: '2026-04-08T14:53:30.178468Z'
+updated_at: '2026-04-09T03:04:48.210955Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '758326937'
+canonical_url: https://github.com/Azure-Samples/azureai-assistant-tool
+title: azureai-assistant-tool
+summary: The Azure AI Assistant Tool is experimental Python application and middleware
+  designed to simplify the development, experimentation, testing, and debugging of
+  OpenAI assistants.
+raw_evidence_excerpt: "The Azure AI Assistant Tool is experimental Python application\
+  \ and middleware designed to simplify the development, experimentation, testing,\
+  \ and debugging of OpenAI assistants.\n\n\U0001F916\U0001F6E0\uFE0FAzure AI Assistants\
+  \ Tool\n\n\u26A1Develop AI agents powered by Azure AI Agents, Azure OpenAI Assistants,\
+  \ Chat Completion, and Realtime APIs\u26A1\n\nTable of Contents\n\n- \U0001F916\U0001F6E0\
+  \uFE0F Azure AI Assistants Tool - \U0001F195 Latest News - \U0001F9F1 Assistants\
+  \ from Azure OpenAI Service? - \U0001F680 How does this Tool help? - \U0001F50A\U0001F3A4\
+  \ OpenAI Realtime Support (Experimental) - \u2728 Quick Start: Getting Started with\
+  \ the Tool - \U0001F4D6 License - Contributing - Code of Conduct - Getting Help\n\
+  \n\U0001F916\U0001F6E0\uFE0F Azure AI Assistants tool Azure AI Assistants tool is\
+  \ an experimental Python application and middleware designed to simplify the development,\
+  \ experimentation, testing, and debugging of AI agents created with Azure AI Agents,\
+  \ Azure OpenAI Assistants, Chat Completion and/or Realtime API based technologies.\
+  \ Use this powerful, easy-to-setup low-code playground tool to quickly experiment\
+  \ and build AI agents within your application.\n\n> [!IMPORTANT] > **The Azure AI\
+  \ Assistant Tool is experimental**, created to support your product ideation and\
+  \ experimentation using AI agents. As the tool evolves, expect significant updates\
+  \ and improvements. We welcome feedback and contributions to help shape its future.\n\
+  \n\U0001F195 Latest News\n\n- **March 23, 2025:** Released version 0.5.2 of the\
+  \ tool, introducing support for **Azure AI Agents** with support for Azure Agent\
+  \ tools. Also improved o1 and o3 based model support for assistants and various\
+  \ UI fixes on image input and links handling. Added new LLM function to generate\
+  \ images. - **January 20, 2025:** Released 0.5.1 version of the tool containing\
+  \ **o1 Model Support** which allows to use o1 models with ChatAssistant (with limited\
+  \ completion settings) and **OpenAI Realtime Support**, with real-time audio interaction\
+  \ capabilities. The Azure Cognitive Services for speech input and output has been\
+  \ removed from the tool, however Azure Speech SDK is still used within OpenAI Realtime\
+  \ for keyword based detection. For more detailed information, refer to the OpenAI\
+  \ Realtime Support section below.\n\n\U0001F9F1 Azure AI Agents\n\n\U0001F31F**Azure\
+  \ AI Agents**, a fully managed service from Azure AI, transforms how developers\
+  \ build interactive AI-driven applications by integrating powerful generative models\
+  \ with real-world data sources and tools. This makes it easy to build, deploy, and\
+  \ scale adaptable AI agents with minimal coding. The service provides all the functionalities\
+  \ of Azure OpenAI Assistants, plus:\n\n**Key Features** include:\n\n- **Azure AI\
+  \ Agents Service Tools**: Seamlessly integrate and execute server-side tools like\
+  \ `Bing Grounding`, `Azure AI Search`, `OpenAPI Functions` and `Azure Functions`.\
+  \ - **Azure AI Foundry Project Connections**: Utilizes Azure AI Foundry Projects\
+  \ to get access to different connections, e.g., `Azure Logic Apps`. - **Extensive\
+  \ Model Support**: Utilize a diverse range of AI models including `Azure OpenAI`,\
+  \ `Llama 3`, `Mistral`, and `Cohere` to meet enterprise requirements. - **Enterprise\
+  \ Data Integration**: Leverage secure data interactions across multiple sources\
+  \ and ensure enterprise-grade security and privacy.\n\n**Learn more** about Azure\
+  \ AI Agents:\n\n- Explore detailed documentation and guides on Azure AI Agents Overview.\
+  \ - Engage with Microsoft Q&A for community insights or product feedback.\n\n\U0001F9F1\
+  \ Azure OpenAI Assistants\n\n\U0001F31F**Assistants**, API from Azure OpenAI Service,\
+  \ is a stateful evolution of the Chat Completions API. Assistants makes it easier\
+  \ for developers to create applications with sophisticated copilot-like experiences\
+  \ in their applications and enable developer access to powerful tools like Code\
+  \ Interpreter and File Search. Assistants is built on the same capabilities that\
+  \ power OpenAI\u2019s GPT product and offers unparalleled flexibility for creating\
+  \ a wide range of copilot-like applications. Copilots created with Assistants can\
+  \ sift through data, suggest solutions, and automate tasks and use cases span a\
+  \ wide range: AI-powered product recommender, sales analyst app, coding assistant,\
+  \ employee Q&A chatbot, and more.\n\n**Features** include:\n\n- Inbuilt thread and\
+  \ memory management - Advanced Data Analysis, create data visualizations and solving\
+  \ complex code and math problems with **Code Interpreter** - Retrieval Augmented\
+  \ Generation with **File Search** tool - Build your own tools or call external tools\
+  \ and APIs with **Function Calling**\n\n**Learn more** about Assistants on Azure\
+  \ OpenAI Service:\n\n- Watch a short video about Azure OpenAI Assistants - Read\
+  \ the launch announcement - Get familiar with the Assistants API Quickstart\n\n\U0001F680\
+  \ How Does This Tool Help?\n\n- **Enable Rapid AI Agent Prototyping:** Rapidly create\
+  \ AI agent prototypes using Azure AI and OpenAI's technologies, Agents, Assistants,\
+  \ Chat Completion, and Realtime APIs. This includes user-friendly configurability\
+  \ of different agents, built-in system functions, specific tool configurations,\
+  \ and LLM configurations.\n\n- **Enhance Developer Productivity:** Streamline the\
+  \ agent development process through built-in middleware libraries and tools, utilizing\
+  \ tools in prompt engineering to automate your coding tasks and integrate AI capabilities\
+  \ into your copilot applications more effectively.\n\n\U0001F50A\U0001F3A4 OpenAI\
+  \ Realtime\n\nThis section covers the Realtime capabilities for AI agent prototyping\
+  \ with OpenAI's Realtime APIs, focusing on speech and text input/output through\
+  \ real-time WebSocket communication.\n\nPlease note that these capabilities are\
+  \ offered as an experimental feature. They are intended primarily for exploration,\
+  \ demos, or proof-of-concept usage. We do not recommend using these features in\
+  \ production or business-critical applications until further notice.\n\nKey Features\n\
+  \n- **Real-time Audio Interaction**: Use the Realtime API with speech input using\
+  \ predefined and integrated keyword `Computer` to trigger the conversation. - Using\
+  \ keyword can be helpful to optimize cost and reliability of your application. To\
+  \ create your own keywords, visit Creating the Custom Keyword. Currently only 1\
+  \ keyword is supported. - **Real-time Text Interaction**: Use the Realtime API with\
+  \ text input. The agent can respond back with audio or text. - **Local Voice Activity\
+  \ Detection**: Efficiently manage audio data by detecting speech activities by using\
+  \ local voice activity detection. - **Function Calling**: Customize the realtime\
+  \ agent with your own functions which runs asynchronously in the background. - **Configurable\
+  \ AI Options**: Fine-tune realtime agent responses and behaviors with different\
+  \ options in Realtime API.\n\nDemo Video\n\nCheck out the demo video to see the\
+  \ OpenAI Realtime Support in action!\n\nResources\n\n- Realtime AI GitHub Repository\
+  \ - OpenAI Realtime WebSocket API Documentation - Azure Speech Services Documentation\n\
+  \n\u2728 Quick Start: Getting Started with the Tool\n\nThe Azure AI Assistant Tool\
+  \ supports **Azure AI Agents**, **Azure OpenAI Assistants**, and **OpenAI directly**.\
+  \ Follow the appropriate instructions depending on the setup you'd like to use.\n\
+  \nStep 1: Complete Azure (or OpenAI) prerequisites\n\nSelect the integration option\
+  \ that fits your scenario best:\n\n\u2705 **Option A: Azure AI Agents**\n\n- Create\
+  \ an Azure Subscription for free, if you don't have one yet. - Deploy Azure AI Agents\
+  \ by following the Azure AI Agents Quickstart. - You have the choice between a \"\
+  **Basic**\" or \"**Standard**\" setup option (learn the difference). - For advanced\
+  \ features such as **Azure AI Search**, **Azure Functions**, **Bing Grounding**\
+  \ and more, the **Standard** agent setup option is required. - After deploying your\
+  \ Azure AI Agents resources, note down your project's **Project Connection String**\
+  \ from the Azure Portal's Azure AI Foundry Project Overview page.\n\n\u2705 **Option\
+  \ B: Azure OpenAI**"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '758326937'
+    canonical_url: https://github.com/Azure-Samples/azureai-assistant-tool
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

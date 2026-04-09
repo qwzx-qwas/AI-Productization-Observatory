@@ -1,0 +1,176 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_60f137e8db43
+candidate_batch_id: candidate_batch_github_qf_agent_2025-04-01_2025-04-30
+created_at: '2026-04-08T15:30:19.789072Z'
+updated_at: '2026-04-09T03:09:33.376449Z'
+source: github
+source_id: src_github
+source_window: 2025-04-01..2025-04-30
+time_field: pushed_at
+external_id: '78200488'
+canonical_url: https://github.com/Ne0nd0g/merlin
+title: merlin
+summary: Merlin is a cross-platform post-exploitation HTTP/2 Command & Control  server
+  and agent written in golang.
+raw_evidence_excerpt: 'Merlin is a cross-platform post-exploitation HTTP/2 Command
+  & Control server and agent written in golang.
+
+
+  Merlin
+
+
+  Merlin is a cross-platform post-exploitation Command & Control server and agent
+  written in Go.
+
+
+  Highlighted features:
+
+
+  - merlin-cli command line interface over gRPC to connect to the Merlin Server facilitating
+  multi-user support - Supported Agent C2 Protocols: http/1.1 clear-text, http/1.1
+  over TLS, HTTP/2, HTTP/2 clear-text (h2c), http/3 (http/2 over QUIC) - Peer-to-peer
+  (P2P) communication between Agents with bind or reverse for SMB, TCP, and UDP -
+  Configurable agent data encoding and encryption transforms: AES, Base64, gob, hex,
+  JWE, RC4, and XOR - JWE transform use PBES2_HS512_A256KW PBES2 (RFC 2898) with HMAC
+  SHA-512 as the PRF and AES Key Wrap (RFC 3394) using 256-bit keys for the encryption
+  scheme - Configurable agent authenticators: - None: No authentication - OPAQUE:
+  Asymmetric Password Authenticated Key Exchange (PAKE) - Encrypted JWT for message
+  authentication - Configurable Agent message data padding to combat beaconing detections
+  based on a fixed message size - Execute .NET assemblies in-process with `invoke-assembly`
+  or in a sacrificial process with `execute-assembly` - Execute arbitrary Windows
+  executables (PE) in a sacrificial process with `execute-pe` - Various shellcode
+  execution techniques: CreateThread, CreateRemoteThread, RtlCreateUserThread, QueueUserAPC
+  - Integrated Donut, sRDI, and SharpGen support - Dynamically change the Agent''s
+  JA3 hash - Mythic support - Documentation & Wiki
+
+
+  An introductory blog post can be found here:
+
+
+  Supporting Repositories: - Merlin Agent - Agent source code - Merlin Agent DLL -
+  Agent DLL source code - Merlin CLI - Command line interface for Merlin - Merlin
+  Documentation - Documentation source code - Merlin on Mythic - Merlin agent for
+  Mythic Framework - Merlin Docker - Base Docker image for for Merlin images - Merlin
+  Message - A Go library for Merlin messages exchanged between a Merlin Server and
+  Agent
+
+
+  Quick Start
+
+
+  1. Download the latest version of Merlin Server from the releases section > The
+  Server package contains compiled versions of the CLI and Agent for all the major
+  operating systems in the `data/bin` directory 2. Extract the files with 7zip using
+  the `x` function **The password is: `merlin`** 3. Start Merlin 4. Start the CLI
+  5. Configure a listener 6. Deploy an agent. See Agent Execution Quick Start Guide
+  for examples 7. Pwn, Pivot, Profit
+
+
+  Mythic
+
+
+  Merlin can be integrated and used as an agent with the Mythic a collaborative, multi-platform,
+  red teaming framework.
+
+
+  Visit the Merlin on Mythic repository in the MythicAgents organization to get started.
+
+
+  Misc.
+
+
+  * To compile Merlin from source, view the Custom Build page * For a full list of
+  available commands: * Main Menu * Listener Menu * Agent Menu * Module Menu * View
+  the Frequently Asked Questions page * View the Blog Posts page for additional information
+
+
+  Slack
+
+
+  Join the `#merlin` channel in the BloodHoundGang Slack to ask questions, troubleshoot,
+  or provide feedback.
+
+
+  JetBrains
+
+
+  Thanks to JetBrains for kindly sponsoring Merlin by providing a Goland IDE Open
+  Source license'
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-04-01'
+    window_end: '2025-04-30'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-04-01..2025-04-30
+    external_id: '78200488'
+    canonical_url: https://github.com/Ne0nd0g/merlin
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

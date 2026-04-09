@@ -1,0 +1,241 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_ea2f067193ed
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-02-01_2025-02-28
+created_at: '2026-04-08T14:05:16.343275Z'
+updated_at: '2026-04-09T03:02:06.107175Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '803762461'
+canonical_url: https://github.com/egoist/shell-ask
+title: shell-ask
+summary: Ask LLM directly from your terminal
+raw_evidence_excerpt: 'Ask LLM directly from your terminal
+
+
+  shell-ask
+
+
+  ---
+
+
+  **Shell Ask is sponsored by ChatWise, a free chat app for ChatGPT and many other
+  models.**
+
+
+  Install
+
+
+  This requires Node.js to be installed.
+
+
+  Supported LLMs
+
+
+  - OpenAI - Anthropic Claude - Ollama - Google Gemini - Groq - GitHub Copilot Chat
+
+
+  Configuration
+
+
+  Minimal config to use OpenAI, create a `~/.config/shell-ask/config.json` with the
+  following content:
+
+
+  Check out config documentation for more.
+
+
+  Usage
+
+
+  Ask a question:
+
+
+  Using command output as context:
+
+
+  Interactively select a model:
+
+
+  Select a model by id:
+
+
+  Prompt without quotes:
+
+
+  Piping
+
+
+  You can pipe the output of other programs to `ask`, for example you can use `cat`
+  to add file contents to the LLM context:
+
+
+  If you want to add multiple files, especially when you also want to include filenames
+  in the context, you can use `--files` flag to add files into model context:
+
+
+  Ask Follow-up Questions
+
+
+  Using `-r` or `--reply` flag to ask follow-up questions to the previous answer:
+
+
+  Result Type
+
+
+  Command
+
+
+  Using `-c` or `--command` flag to enforce the output to be a command only:
+
+
+  Using `-b` or `--breakdown` flag to return a command and the breakdown of the command:
+
+
+  Custom Type
+
+
+  Define the type of the result using `-t` or `--type` flag:
+
+
+  Copilot Chat
+
+
+  First you need to login to Copilot Chat:
+
+
+  Then you can ask questions:
+
+
+  To log out, run `ask copilot-logout`.
+
+
+  Web Search
+
+
+  Enable web search by using `-s` or `--search` flag:
+
+
+  Web search is powered by https://s.jina.ai
+
+
+  Fetching Web Pages
+
+
+  For a single page, you can just use `curl`:
+
+
+  For multiple pages, you can use `-u` or `--url` flag:
+
+
+  You may only need the markdown output of the web page, you can use https://r.jina.ai
+  to retrive markdown content instead:
+
+
+  Disable Streaming Output
+
+
+  Using `--no-stream` flag to disable streaming output:
+
+
+  When `--no-stream` is enabled the output markdown will have proper syntax highlighting,
+  when streaming is enabled the output will be plain text because the terminal have
+  trouble clearing the screen when the output is too long
+
+
+  Reusable AI Commands
+
+
+  Shell Ask allows you to define reusable AI commands in the config file, for example
+  the builtin `ask cm` command:
+
+
+  Built-in AI Commands
+
+
+  - `ask cm`: Generate git commit message from stdin - example: `git diff | ask cm`
+
+
+  License
+
+
+  MIT.'
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '803762461'
+    canonical_url: https://github.com/egoist/shell-ask
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

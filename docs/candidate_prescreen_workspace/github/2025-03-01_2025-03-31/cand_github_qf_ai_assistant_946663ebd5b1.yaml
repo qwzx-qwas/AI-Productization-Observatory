@@ -1,0 +1,136 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_946663ebd5b1
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-03-01_2025-03-31
+created_at: '2026-04-08T14:58:07.173655Z'
+updated_at: '2026-04-09T03:04:36.950383Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '951095892'
+canonical_url: https://github.com/JackKuo666/Google-Scholar-MCP-Server
+title: Google-Scholar-MCP-Server
+summary: "A MCP Server for Google Scholar: \U0001F50D Enable AI assistants to search\
+  \ and access Google Scholar papers through a simple MCP interface."
+raw_evidence_excerpt: "A MCP Server for Google Scholar: \U0001F50D Enable AI assistants\
+  \ to search and access Google Scholar papers through a simple MCP interface.\n\n\
+  Google Scholar MCP Server\n\n\U0001F50D Enable AI assistants to search and access\
+  \ Google Scholar papers through a simple MCP interface.\n\nThe Google Scholar MCP\
+  \ Server provides a bridge between AI assistants and Google Scholar through the\
+  \ Model Context Protocol (MCP). It allows AI models to search for academic papers\
+  \ and access their content in a programmatic way.\n\n\u2728 Core Features - \U0001F50E\
+  \ Paper Search: Query Google Scholar papers with custom search strings or advanced\
+  \ search parameters \u2705 - \U0001F680 Efficient Retrieval: Fast access to paper\
+  \ metadata \u2705 - \U0001F464 Author Information: Retrieve detailed information\
+  \ about authors \u2705 - \U0001F4CA Research Support: Facilitate academic research\
+  \ and analysis \u2705\n\n\U0001F680 Quick Start\n\nInstalling Manually Installing\
+  \ via Smithery\n\nTo install google-scholar Server for Claude Desktop automatically\
+  \ via Smithery:\n\nclaude\n\nCursor\n\nPaste the following into Settings \u2192\
+  \ Cursor Settings \u2192 MCP \u2192 Add new server: - Mac/Linux\n\nWindsurf\n\n\
+  CLine\n\n1. Clone the repository:\n\n2. Install the required dependencies:\n\nFor\
+  \ development:\n\n\U0001F4CA Usage\n\nStart the MCP server:\n\nOnce the server is\
+  \ running, you can use the provided MCP tools in your AI assistant or application.\
+  \ Here are some examples of how to use the tools:\n\nExample 1: Search for papers\
+  \ using keywords\n\nExample 2: Perform an advanced search\n\nExample 3: Get author\
+  \ information\n\nThese examples demonstrate how to use the three main tools provided\
+  \ by the Google Scholar MCP Server. Adjust the parameters as needed for your specific\
+  \ use case.\n\nUsage with Claude Desktop\n\nAdd this configuration to your `claude_desktop_config.json`:\n\
+  \n(Mac OS)\n\n(Windows version):\n\nUsing with Cline\n\n\U0001F6E0 MCP Tools\n\n\
+  The Google Scholar MCP Server provides the following tools:\n\nsearch_google_scholar_key_words\n\
+  \nSearch for articles on Google Scholar using key words.\n\n**Parameters:** - `query`\
+  \ (str): Search query string - `num_results` (int, optional): Number of results\
+  \ to return (default: 5)\n\n**Returns:** List of dictionaries containing article\
+  \ information\n\nsearch_google_scholar_advanced\n\nPerform an advanced search for\
+  \ articles on Google Scholar.\n\n**Parameters:** - `query` (str): General search\
+  \ query - `author` (str, optional): Author name - `year_range` (tuple, optional):\
+  \ Tuple containing (start_year, end_year) - `num_results` (int, optional): Number\
+  \ of results to return (default: 5)\n\n**Returns:** List of dictionaries containing\
+  \ article information\n\nget_author_info\n\nGet detailed information about an author\
+  \ from Google Scholar.\n\n**Parameters:** - `author_name` (str): Name of the author\
+  \ to search for\n\n**Returns:** Dictionary containing author information\n\n\U0001F4C1\
+  \ Project Structure\n\n- `google_scholar_server.py`: The main MCP server implementation\
+  \ using FastMCP - `google_scholar_web_search.py`: Contains the web scraping logic\
+  \ for searching Google Scholar\n\n\U0001F527 Dependencies\n\n- Python 3.10+ - mcp[cli]>=1.4.1\
+  \ - scholarly>=1.7.0 - asyncio>=3.4.3\n\nYou can install the required dependencies\
+  \ using:\n\n\U0001F91D Contributing\n\nContributions are welcome! Please feel free\
+  \ to submit a Pull Request.\n\n\U0001F4C4 License\n\nThis project is licensed under\
+  \ the MIT License.\n\n\u26A0\uFE0F Disclaimer\n\nThis tool is for research purposes\
+  \ only. Please respect Google Scholar's terms of service and use this tool responsibly."
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '951095892'
+    canonical_url: https://github.com/JackKuo666/Google-Scholar-MCP-Server
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

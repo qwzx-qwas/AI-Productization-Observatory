@@ -1,0 +1,116 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_cb5c33725061
+candidate_batch_id: candidate_batch_github_qf_rag_2025-03-01_2025-03-31
+created_at: '2026-04-08T14:48:29.286737Z'
+updated_at: '2026-04-09T03:08:44.889628Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '753484777'
+canonical_url: https://github.com/Jenqyang/LLM-Powered-RAG-System
+title: LLM-Powered-RAG-System
+summary: A collection of RAG systems powered by LLM.
+raw_evidence_excerpt: "A collection of RAG systems powered by LLM.\n\nLLM-Powered-RAG-System\n\
+  \n- LLM-Powered-RAG-System - Frameworks - Projects - Components - Chat with Documents\
+  \ - Database - Optimize Method - Others - Evaluation - Papers - Blog - Other Resources\n\
+  \nFrameworks\n\n- pandas-ai - Chat with your data (SQL, CSV, pandas, polars, noSQL,\
+  \ etc). PandasAI makes data analysis conversational using LLMs (GPT 3.5 / 4, Anthropic,\
+  \ VertexAI) and RAG.\n\nProjects\n\n- QAnything - Question and Answer based on Anything.\n\
+  \nComponents\n\nChat with Documents\n\n- privateGPT - Interact with your documents\
+  \ using the power of GPT, 100% privately, no data leaks - localGPT - Chat with your\
+  \ documents on your local device using GPT models. No data leaves your device and\
+  \ 100% private. - ChatFiles - Document Chatbot - pdfGPT - PDF GPT allows you to\
+  \ chat with the contents of your PDF file by using GPT capabilities. The most effective\
+  \ open source solution to turn your pdf files in a chatbot!\n\n- IncarnaMind - Connect\
+  \ and chat with your multiple documents (pdf and txt) through GPT 3.5, GPT-4 Turbo,\
+  \ Claude and Local Open-Source LLMs\n\nDatabase\n\n- lancedb - Developer-friendly,\
+  \ serverless vector database for AI applications. Easily add long-term memory to\
+  \ your LLM apps! -\n\nOptimize Method\n\n- instructor - Your Gateway to Structured\
+  \ Outputs with OpenAI\n\nOthers\n\n- chatgpt-retrieval-plugin - The ChatGPT Retrieval\
+  \ Plugin lets you easily find personal or work documents by asking questions in\
+  \ natural language.\n\nEvaluation\n\nPapers\n\n- Awesome-LLM-RAG - This repo aims\
+  \ to record advanced papers of Retrieval Agumented Generation (RAG) in LLMs.\n\n\
+  Blog\n\n- Building RAG-based LLM Applications for Production - A-Guide-to-Retrieval-Augmented-LLM\
+  \ - \u4E00\u6587\u8BE6\u8C0820\u591A\u79CDRAG\u4F18\u5316\u65B9\u6CD5\n\nOther Resources\n\
+  \n- rag-resources - A collection of curated RAG (Retrieval Augmented Generation)\
+  \ resources. - RAG-Survey - Awesome-LLM-RAG-Application - the resources about the\
+  \ application based on LLM with RAG pattern"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '753484777'
+    canonical_url: https://github.com/Jenqyang/LLM-Powered-RAG-System
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

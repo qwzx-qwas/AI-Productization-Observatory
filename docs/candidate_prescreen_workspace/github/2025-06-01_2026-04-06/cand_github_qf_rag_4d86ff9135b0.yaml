@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_rag_4d86ff9135b0
 candidate_batch_id: candidate_batch_github_qf_rag_2025-06-01_2026-04-06
 created_at: '2026-04-06T15:13:40.234321Z'
-updated_at: '2026-04-06T15:15:35.106455Z'
+updated_at: '2026-04-09T03:11:47.202020Z'
 source: github
 source_id: src_github
 source_window: 2025-06-01..2026-04-06
@@ -221,23 +221,16 @@ llm_prescreen:
   error_type: null
   error_message: null
 whitelist_reason: null
-human_review_status: on_hold
-human_review_note_template_key: hold
-human_review_notes: 'boundary with internal tooling unclear; Repository appears to
-  be a concrete AI application (Streamlit RAG app) with deploy/run instructions and
-  configurable runtime behavior. It is more than a concept note, but human review
-  should verify production maturity, maintenance activity, and whether it meets inclusion
-  thresholds beyond a demo/reference implementation. Treat this as an application-layer
-  RAG productization example (UI + retrieval + LLM orchestration + ingestion), not
-  as a foundation model, benchmark paper, or generic library-only artifact. Boundary
-  risk: it may be a reference/demo app rather than a production-ready product. evidence_strength=low
-  review_source=existing_llm_prescreen'
-human_reviewed_at: '2026-04-06T15:15:35.106429Z'
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: 'clear end-user product signal; evidence sufficient for staging;
+  manual override: user requested to stage analyzed samples that are semantically
+  non-duplicate against existing staging and against each other'
+human_reviewed_at: '2026-04-09T02:32:25.469760Z'
 staging_handoff:
-  status: blocked
-  staging_document_path: null
-  sample_slot_id: null
-  sample_id: null
-  blocking_items:
-  - candidate first-pass review resolved to on_hold
-  last_attempted_at: '2026-04-06T15:15:35.106449Z'
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
+  sample_slot_id: GS300-072
+  sample_id: cand_github_qf_rag_4d86ff9135b0
+  blocking_items: []
+  last_attempted_at: '2026-04-09T03:11:47.201998Z'

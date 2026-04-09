@@ -1,0 +1,129 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_659e6a7bcc2a
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-02-01_2025-02-28
+created_at: '2026-04-08T14:21:34.332535Z'
+updated_at: '2026-04-09T02:59:32.019921Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '879087746'
+canonical_url: https://github.com/codingthefuturewithai/software-dev-prompt-library
+title: software-dev-prompt-library
+summary: Prompt library containing tested reusable gen AI prompts for common software
+  engineering task
+raw_evidence_excerpt: "Prompt library containing tested reusable gen AI prompts for\
+  \ common software engineering task\n\nSoftware Development Prompt Library\n\n> **\u26A0\
+  \uFE0F Work in Progress**: > - The library contains prompts at various stages of\
+  \ development > - Prompts within the Post-Scaffolding Sprint Workflow have been\
+  \ most rigorously tested > - Many individual prompts are not yet part of a defined\
+  \ workflow and have not been fully tested > - Ongoing development and validation\
+  \ is in progress\n\nA collection of AI-powered prompts designed to streamline software\
+  \ development workflows. Each prompt is crafted to work directly with AI coding\
+  \ assistants, providing consistent guidance across different development phases.\n\
+  \nCore Features\n\n- **AI Workflow Chains** - Structured sequences of connected\
+  \ prompts - Input/output dependencies between phases - Verification points for chain\
+  \ integrity - Systematic development processes - Progress tracking and validation\n\
+  \n- **Project Initialization** - Requirements generation and refinement - Technology\
+  \ stack selection with BOM - Architecture design - Project scaffolding\n\n- **Development\
+  \ Support** - Feature story creation - Code health analysis - System visualization\
+  \ - Unit test generation\n\n- **Documentation** - README generation - Code explanation\
+  \ and tutoring\n\nUsing the Library\n\nIndividual Prompts 1. Navigate to the relevant\
+  \ prompt in `/prompts` directory 2. Share the raw URL with your AI assistant 3.\
+  \ Begin using the workflow\n\nEach prompt has two components: - `[prompt-name].md`\
+  \ - AI instructions - `[prompt-name].meta.md` - Usage documentation\n\nWorkflow\
+  \ Chains 1. Review available workflows in `/workflows` directory 2. Choose a workflow\
+  \ that matches your development phase 3. Follow the chain sequence, ensuring each\
+  \ phase's: - Required inputs are available - Outputs are validated - Dependencies\
+  \ are satisfied\n\nProject Structure\n\nKey Benefits\n\n- Streamlined development\
+  \ workflows from project inception to maintenance - Intelligent adaptation to different\
+  \ programming languages and frameworks - Focused, single-purpose prompts that chain\
+  \ together for complex tasks - Built-in validation and best practices - Promotes\
+  \ consistent development patterns across teams - Reduces cognitive load during development\
+  \ tasks - Enables rapid prototyping and iteration\n\nGetting Started\n\n1. Review\
+  \ getting-started.md to understand available workflows 2. Choose your starting point:\
+  \ - New project? Start with requirements generation - Existing project? Begin with\
+  \ code health analysis 3. Follow the workflow guides for your chosen development\
+  \ path 4. Chain prompts together as needed for more complex tasks\n\nContributing\n\
+  \n1. Review prompt-guidelines.md for prompt structure and principles 2. Each prompt\
+  \ needs both implementation (.md) and documentation (.meta.md) 3. Test prompts across\
+  \ different AI models and project types 4. Submit additions that focus on specific\
+  \ development tasks 5. Maintain language and framework agnosticism"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '879087746'
+    canonical_url: https://github.com/codingthefuturewithai/software-dev-prompt-library
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

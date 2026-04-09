@@ -1,0 +1,142 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_5678f5ac73b4
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-02-01_2025-02-28
+created_at: '2026-04-08T14:01:26.688710Z'
+updated_at: '2026-04-09T03:01:54.387600Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '900930947'
+canonical_url: https://github.com/continuous-copilot/modernize-legacy-cobol-app
+title: modernize-legacy-cobol-app
+summary: This is a repository to modernizing a legacy software project written in
+  Cobol using GitHub Copilot
+raw_evidence_excerpt: "This is a repository to modernizing a legacy software project\
+  \ written in Cobol using GitHub Copilot\n\nModernizing a Cobol accounting system\
+  \ to a Node.js application using GitHub Copilot\n\nThis repo contains COBOL code\
+  \ for a simple accounting system. You can use GitHub Copilot to transform this code\
+  \ to a Node.js accounting system.\n\n**Note: Keep in mind GitHub Copilot is an AI\
+  \ pair programmer that helps you write code. It is not a code generator and is using\
+  \ generative models trained on public code. It may provide completions that are\
+  \ not perfect, safe, or otherwise suitable for production. Always review suggestions\
+  \ and take a trust but verify approach.**\n\nPrerequisites\n\n- Basic understanding\
+  \ of programming concepts. - Basic understanding of the COBOL programming language.\
+  \ - GitHub Copilot or GitHub Copilot Chat installed in your IDE or GitHub Codespace.\n\
+  \nSetup the development environment\n\nOption 1: Use an IDE that supports GitHub\
+  \ Copilot\n\n- IDE options for both GitHub Copilot and Copilot Chat: - Visual Studio\
+  \ Code - Visual Studio - JetBrains IDE\n\nFor Visual Studio Code\n\n- Install the\
+  \ GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. - Install\
+  \ the COBOL extension for Visual Studio Code.\n\nOption 2: Use a GitHub codespace\n\
+  \n- Create a new codespace in this repository.\n\n- The configuration for the codespace\
+  \ is already set up with the required extensions. - GitHub Copilot - GitHub Copilot\
+  \ Chat - COBOL - Markdown All in One - Mermaid Markdown - python\n\nAbout the program\n\
+  \nThis COBOL program simulates an account management system. This program will involve\
+  \ multiple COBOL source files and perform various operations like crediting, debiting,\
+  \ viewing the balance, and even exiting the program. Here\u2019s how you its structured:\n\
+  \n- Main Program (main.cob): The main program will handle the user interface and\
+  \ call subprograms for different operations. - Operations Program (operations.cob):\
+  \ This program will handle the actual operations like credit, debit, and view balance.\
+  \ - Data Storage Program (data.cob): This program will manage the storage of the\
+  \ account balance.\n\nSteps to Compile and Run the Program\n\n- Option 1: Install\
+  \ COBOL compiler on MaC If you don't already have a COBOL compiler, you'll need\
+  \ to install one. Common COBOL compiler is GnuCOBOL: An open-source COBOL compiler.\
+  \ To Install , use brew:\n\n- Option 2: Open the terminal in the GitHub codespace\
+  \ or Ubuntu Linux system and run the following command to install the COBOL compiler:\n\
+  \nreference: gnucobol\n\n- Compile, link and create executable: Link the object\
+  \ files together to create the final executable:\n\n- Run the Program: Run the executable\
+  \ to start the account management system:\n\nProgram Interaction Example\n\n- Program\
+  \ starts with user input menu\n\n- User Chooses to View Balance:\n\n- User Chooses\
+  \ to Credit:\n\n- User Chooses to Debit:\n\n- User Chooses to Exit:\n\nExplanation\n\
+  \n- main.cob: This is the main interface where users select operations. - operations.cob:\
+  \ It handles specific operations such as viewing, crediting, and debiting the account\
+  \ balance. - data.cob: This program acts as a simple data storage, handling reading\
+  \ and writing of the balance.\n\nThis multi-file structure introduces modularity,\
+  \ making it easier to manage and extend the program. Each file has a clear responsibility,\
+  \ and the program flow is driven by user interaction.\n\nData flow\n\nGenerate a\
+  \ test plan\n\nNote\n\n*You may still need follow up with another prompt to generate\
+  \ the markdown file format for the test plan.*\n\nConvert files using prompt engineering\
+  \ best practices\n\nCreate the Node.js project directory\n\nUse GitHub Copilot to\
+  \ convert the files iteratively\n\nConvert main.cob to main.js\n\nConvert operations.cob\
+  \ to operations.js\n\nConvert data.cob to data.js\n\nInitialize a new Node.js project\n\
+  \nInstall the Node.js app\n\nRun the Node.js app\n\nGenerate unit and integration\
+  \ tests\n\nLicense\n\nThis project is licensed under the MIT License - see the LICENSE\
+  \ file for details."
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '900930947'
+    canonical_url: https://github.com/continuous-copilot/modernize-legacy-cobol-app
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

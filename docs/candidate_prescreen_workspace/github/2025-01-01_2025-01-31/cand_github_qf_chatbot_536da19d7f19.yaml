@@ -1,0 +1,146 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_536da19d7f19
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-01-01_2025-01-31
+created_at: '2026-04-08T13:17:56.618537Z'
+updated_at: '2026-04-09T02:53:56.948392Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '629922458'
+canonical_url: https://github.com/OpenGVLab/Ask-Anything
+title: Ask-Anything
+summary: '[CVPR2024 Highlight][VideoChatGPT] ChatGPT with video understanding! And
+  many more supported LMs such as miniGPT4, StableLM, and MOSS.'
+raw_evidence_excerpt: "[CVPR2024 Highlight][VideoChatGPT] ChatGPT with video understanding!\
+  \ And many more supported LMs such as miniGPT4, StableLM, and MOSS.\n\n\U0001F99C\
+  \ VideoChat Family: Ask-Anything\n\n|\n\n[VideoChat-7B-8Bit] End2End ChatBOT for\
+  \ video and image. [InternVideo2-Chat-8B-HD]\n\n\u4E2D\u6587 README \u53CA \u4E2D\
+  \u6587\u4EA4\u6D41\u7FA4 | Paper\n\n\u2B50\uFE0F: We are also working on a updated\
+  \ version, stay tuned!\n\n:fire: Updates - **2025/01/18**: We release videochat-flash\
+  \ and videochat-tpo to extend MLLMs' capabilities on both long and accurate video\
+  \ understanding. videochat-flash sets new records in mutiple video benchmarks (for\
+  \ both short and long videos), improving code usability by leveaging LLaVA and others.\
+  \ videochat-tpo exploits classical vision task annotations (e.g. tracking) to optimize\
+  \ MLLMs in a DPO manner, enhancing MLLMs' performance and enabling capabilities\
+  \ in tracking, segmentation, and more. - **2024/06/25**: We release the branch of\
+  \ videochat2 using `vllm`, speed up the inference of videochat2. - **2024/06/19**:\
+  \ \U0001F389\U0001F389 Our VideoChat2 achieves the best performances among the open-sourced\
+  \ VideoLLMs on MLVU, a multi-task long video understanding benchmark. - **2024/06/13**:\
+  \ Fix some bug and give testing scripts/ - :warning: We replace some repeated (~30)\
+  \ QAs in MVBench, which may only affect the results by 0.5%. - :loudspeaker: We\
+  \ give the scripts for testing EgoSchema and Video-MME, please check the demo_mistral.ipynb\
+  \ and demo_mistral_hd.ipynb. - **2024/06/07**: :fire::fire::fire: We release **VideoChat2_HD**,\
+  \ which is fine-tuned with high-resolution data and is capable of handling more\
+  \ diverse tasks. It showcases better performance on different benchmarks, especially\
+  \ for detailed captioning. Furthermore, it achieves **54.8% on Video-MME**, the\
+  \ best score among 7B MLLMs. Have a try! \U0001F3C3\U0001F3FB\u200D\u2640\uFE0F\U0001F3C3\
+  \U0001F3FB - **2024/06/06**: We release **VideoChat2_phi3**, a faster model with\
+  \ robust performaces. - **2024/05/22**: We release **VideoChat2_mistral**, which\
+  \ shows better capacity on diverse tasks (**60.4% on MVBench, 78.6% on NExT-QA,\
+  \ 63.8% on STAR, 46.4% on TVQA, 54.4% on EgoSchema-full and 80.5% on IntentQA**).\
+  \ More details have been updated in the paper. - 2024/04/05 MVBench is selected\
+  \ as Poster (**Highlight**)! - 2024/2/27 MVBench is accepted by CVPR2024. - 2023/11/29\
+  \ VideoChat2 and MVBench are released. - VideoChat2 is a robust baseline built on\
+  \ UMT and Vicuna-v0. - **2M** diverse instruction data are released for effective\
+  \ tuning. - MVBench is a comprehensive benchmark for video understanding.\n\n- 2023/05/11\
+  \ End-to-end VideoChat and its technical report. - VideoChat1: Instruction tuning\
+  \ for video chatting (also supports image one). - Paper: We present how we craft\
+  \ VideoChat with two versions (via text and embed) along with some discussions on\
+  \ its background, applications, and more.\n\n- 2023/04/25 Watch videos longer than\
+  \ one minute with chatGPT - VideoChat LongVideo: Incorporating langchain and whisper\
+  \ into VideoChat.\n\n- 2023/04/21 Chat with MOSS - VideoChat with MOSS: Explicit\
+  \ communication with MOSS.\n\n- 2023/04/20: Chat with StableLM - VideoChat with\
+  \ StableLM: Explicit communication with StableLM.\n\n- 2023/04/19: Code release\
+  \ & Online Demo - VideoChat with ChatGPT: Explicit communication with ChatGPT. Sensitive\
+  \ with time. - MiniGPT-4 for video: Implicit communication with Vicuna. Not sensitive\
+  \ with time. (Simple extension of MiniGPT-4, which will be improved in the future.)\n\
+  \n\U0001F528 Getting Started\n\nBuild video chat with: * End2End * ChatGPT * StableLM\
+  \ * MOSS * MiniGPT-4\n\n:clapper: [\\[End2End ChatBot\\]](https://vchat.opengvlab.com)\n\
+  \nYour browser does not support the video tag.\n\n:movie_camera: [\\[Communication\
+  \ with ChatGPT\\]](https://vchat.opengvlab.com)\n\nYour browser does not support\
+  \ the video tag.\n\n:page_facing_up: Citation\n\nIf you find this project useful\
+  \ in your research, please consider cite:\n\n\U0001F324\uFE0F Discussion Group\n\
+  \nIf you have any questions during the trial, running or deployment, feel free to\
+  \ join our WeChat group discussion! If you have any ideas or suggestions for the\
+  \ project, you are also welcome to join our WeChat group discussion!\n\nWe are hiring\
+  \ researchers, engineers and interns in **General Vision Group, Shanghai AI Lab**.\
+  \ If you are interested in working with us, please contact Yi Wang (`wangyi@pjlab.org.cn`)."
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '629922458'
+    canonical_url: https://github.com/OpenGVLab/Ask-Anything
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

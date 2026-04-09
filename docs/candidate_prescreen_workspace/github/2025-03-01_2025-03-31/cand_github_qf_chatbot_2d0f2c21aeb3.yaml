@@ -1,0 +1,150 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_2d0f2c21aeb3
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-03-01_2025-03-31
+created_at: '2026-04-08T15:15:15.030350Z'
+updated_at: '2026-04-09T03:06:10.526170Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '702011489'
+canonical_url: https://github.com/davidshtian/Bedrock-ChatBot-with-LangChain-and-Streamlit
+title: Bedrock-ChatBot-with-LangChain-and-Streamlit
+summary: A simple and clear example for implement a chatbot with Bedrock (Claude,
+  Nova and DeepSeek) + LangChain + Streamlit.
+raw_evidence_excerpt: "A simple and clear example for implement a chatbot with Bedrock\
+  \ (Claude, Nova and DeepSeek) + LangChain + Streamlit.\n\nBedrock ChatBot with LangChain\
+  \ and Streamlit (New Converse API) \U0001F4AC A simple and clear example for implement\
+  \ a chatbot with Bedrock + LangChain + Streamlit. Know-how and build whatever you\
+  \ want. Just install and run the code~ \U0001F680\n\n25/03/11 Updates DeepSeek R1\
+  \ \u2705 \U0001F389\U0001F389\U0001F389\n\nNow DeepSeek R1 is supported~\n\nThinking/Reasoning\
+  \ Feature\n\n> Note: if you're going to use web search function, add your SERPAPI\
+  \ key and AWS region to bedrock/.env file~\n\n> Tips: you could modify retry mode\
+  \ in AWS profile config for model access in case rate limit > ``` > [default] >\
+  \ max_attempts = 10 > retry_mode = adaptive\n\nUpdates Enhanced RAG (Retrieval-Augmented\
+  \ Generation) Feature\n\nWe have significantly enhanced the RAG feature in our AI\
+  \ model. Now, it allows users to upload their own documents and index them either\
+  \ locally or on a server.\n\nThe uploaded documents are indexed and stored persistently\
+  \ on the chosen location. This means that the indexed documents can be reused anytime\
+  \ without needing to be re-uploaded or re-indexed.\n\nMoreover, you can continually\
+  \ add more documents to the existing index, making the system increasingly robust\
+  \ and knowledgeable over time.\n\nTo use the enhanced RAG feature, select 'RAG'\
+  \ from the 'Options' dropdown in the chatbot interface, and follow the prompts to\
+  \ upload and index your documents.\n\n24/05/12 Updates RAG (Retrieval-Augmented\
+  \ Generation) Feature\n\nWe have added a new feature that allows the AI model to\
+  \ pull in information from a large corpus of documents, providing more detailed\
+  \ and accurate responses. This feature uses the RAG technique, which combines the\
+  \ benefits of extractive and abstractive summarization.\n\nTo use the RAG feature,\
+  \ select 'RAG' from the 'Options' dropdown in the chatbot interface.\n\nIndexing\
+  \ Documents and Using RAG Feature\n\nTo use the RAG (Retrieval-Augmented Generation)\
+  \ feature, you need to index your documents using the `bedrock_indexer.py` script.\
+  \ This script creates a FAISS index from the documents in a directory.\n\nHere's\
+  \ how to use it:\n\n1. Add your documents to the \"documents\" directory. These\
+  \ can be text files or other types of documents that you want the RAG model to use\
+  \ for information retrieval. 2. Run the `bedrock_indexer.py` script:\n\n24/04/15\
+  \ Updates **Add Web Search (via SerpAPI) and role prompt option!** \U0001F389\U0001F389\
+  \U0001F389\n\n24/04/14 Updates **Thanks @madtank for adding PDF/CSV/PY file upload\
+  \ feature!** \U0001F389\U0001F389\U0001F389\n\n24/04/05 Updates **Add Dockfile for\
+  \ container enviroment and remove the packages installation!** \U0001F389\U0001F389\
+  \U0001F389\n\nYou could build your own, and I've also uploaded a public container\
+  \ image at public.ecr.aws for you~\n\n24/03/14 Updates **NEW! Claude 3 Haiku on\
+  \ Bedrock Supported! Let's Go Faster!** \U0001F389\U0001F389\U0001F389\n\nInstall\
+  \ via the command:\n\n24/03/11 Updates **NEW! Claude 3 Sonnet on Bedrock Supported!\
+  \ New Message API Plus Vision Multimodal Chat!** \U0001F389\U0001F389\U0001F389\n\
+  \nAdd system prompt option.\n\n24/03/10 Updates **NEW! Claude 3 Sonnet on Bedrock\
+  \ Supported! New Message API Plus Vision Multimodal Chat!** \U0001F389\U0001F389\
+  \U0001F389\n\nInstall langchain from source, for new Bedrock API support.\n\n> Note:\
+  \ No need to hack in bedrock code! Just change the langchain_messages state of streamlit\
+  \ in the app code. Complete this code with the help of Claude itself :)\n\nThen\
+  \ run the command:\n\nBingo!\n\n> Note: Some details like - smooth history catchup\
+  \ with new message api, support mulitple images in one chat, image keep in the thumbnail\
+  \ in one line, multimodal and text-only mixed chat, no some bump up after rerun\
+  \ and re-initialize, fix lots of format mismatch...\n\n24/03/09 Updates **NEW! Claude\
+  \ 3 Sonnet on Bedrock Supported~ Message API Plus Vision Multimodal!** \U0001F389\
+  \U0001F389\U0001F389\n\nExtra action needed (till now) - install langchain from\
+  \ source.\n\n> Note: A little bit hack for streamlit conversation history format\
+  \ mismatch, and modify langchain community bedrock source code, no impact on BedrockChat\
+  \ invoke ~\n\nThen run the command:\n\nBingo!\n\n24/03/08 Updates **NEW! Claude\
+  \ 3 Sonnet on Bedrock Supported~ Message API**\n\nExtra action needed (till now)\
+  \ - install langchain from source:\n\n> Note: Only text supported now, vision later!\n\
+  \nThen run the command:\n\nThe bot is equipped with chat history using ConversationBufferWindowMemory\
+  \ and StreamlitChatMessageHistory, and provided with both simple(batch) and streaming\
+  \ modes. Demo shown as below:\n\nStreaming mode demo shown as below:"
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '702011489'
+    canonical_url: https://github.com/davidshtian/Bedrock-ChatBot-with-LangChain-and-Streamlit
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

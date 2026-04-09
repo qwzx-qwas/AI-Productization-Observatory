@@ -950,6 +950,7 @@ create index idx_processing_error_module_status on processing_error (module_name
 它至少要稳定支撑以下字段：
 
 - `candidate_id`
+- `sample_key`（可选）
 - `source`
 - `source_window`
 - `external_id`
@@ -960,6 +961,7 @@ create index idx_processing_error_module_status on processing_error (module_name
 - `query_family`
 - `query_slice_id`
 - `selection_rule_version`
+- `analysis_run_key`（可选）
 - `llm_prescreen`
 - `human_review_status`
 - `human_review_notes`
@@ -968,7 +970,9 @@ create index idx_processing_error_module_status on processing_error (module_name
 补充约束：
 
 - 该 schema 只用于候选发现、LLM 预筛与人工一审前后的中间文档，不等于正式 annotation / adjudication。
+- `sample_key` 是跨 `window / query_slice` 的稳定样本键；`analysis_run_key` 是基于清洗后输入与 prompt / routing / relay client / payload builder version 的分析幂等键。当前实现允许它们缺省，以兼容 legacy workspace 记录与 additive-first 演进。
 - 若 `llm_prescreen.status = succeeded`，必须保留 `channel_metadata.prompt_version` 与 `channel_metadata.routing_version`。
+- relay/provider 的 canonical outcome envelope 属于运行时适配结构，不是当前 `candidate_prescreen_record` 的必需持久化字段；只有 transport / provider_response / content / schema / business 五层都成功时，`llm_prescreen.status` 才能写成 `succeeded`。
 - `llm_prescreen` 应优先服务人工第一轮审核：除兼容位外，当前主阅读入口应包括 `decision_snapshot`、`scope_boundary_note`、`evidence_anchors`、`persona_candidates`、`taxonomy_hints.main_category_candidate`、`taxonomy_hints.adjacent_category_candidate`、`taxonomy_hints.adjacent_category_rejected_reason`、`review_focus_points`、`confidence_summary` 与 `handoff_readiness_hint`。
 - `taxonomy_hints.primary_persona_code` 保留兼容位，但应优先回链 `persona_candidates` 的 rank 1。
 - `human_review_notes` 应使用固定模板前缀；若追加自由说明，应在标准短句后以 `; ` 继续补充。

@@ -1,0 +1,183 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_5bbb645c819c
+candidate_batch_id: candidate_batch_github_qf_agent_2025-03-01_2025-03-31
+created_at: '2026-04-08T14:29:48.860443Z'
+updated_at: '2026-04-09T03:03:16.270068Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '761974775'
+canonical_url: https://github.com/openai/swarm
+title: swarm
+summary: Educational framework exploring ergonomic, lightweight multi-agent orchestration.
+  Managed by OpenAI Solution team.
+raw_evidence_excerpt: "Educational framework exploring ergonomic, lightweight multi-agent\
+  \ orchestration. Managed by OpenAI Solution team.\n\nSwarm (experimental, educational)\n\
+  \n> [!IMPORTANT] > Swarm is now replaced by the OpenAI Agents SDK, which is a production-ready\
+  \ evolution of Swarm. The Agents SDK features key improvements and will be actively\
+  \ maintained by the OpenAI team. > > We recommend migrating to the Agents SDK for\
+  \ all production use cases.\n\nInstall\n\nRequires Python 3.10+\n\nor\n\nUsage\n\
+  \nTable of Contents\n\n- Overview - Examples - Documentation - Running Swarm - Agents\
+  \ - Functions - Streaming - Evaluations - Utils\n\nOverview\n\nSwarm focuses on\
+  \ making agent **coordination** and **execution** lightweight, highly controllable,\
+  \ and easily testable.\n\nIt accomplishes this through two primitive abstractions:\
+  \ `Agent`s and **handoffs**. An `Agent` encompasses `instructions` and `tools`,\
+  \ and can at any point choose to hand off a conversation to another `Agent`.\n\n\
+  These primitives are powerful enough to express rich dynamics between tools and\
+  \ networks of agents, allowing you to build scalable, real-world solutions while\
+  \ avoiding a steep learning curve.\n\n> [!NOTE] > Swarm Agents are not related to\
+  \ Assistants in the Assistants API. They are named similarly for convenience, but\
+  \ are otherwise completely unrelated. Swarm is entirely powered by the Chat Completions\
+  \ API and is hence stateless between calls.\n\nWhy Swarm\n\nSwarm explores patterns\
+  \ that are lightweight, scalable, and highly customizable by design. Approaches\
+  \ similar to Swarm are best suited for situations dealing with a large number of\
+  \ independent capabilities and instructions that are difficult to encode into a\
+  \ single prompt.\n\nThe Assistants API is a great option for developers looking\
+  \ for fully-hosted threads and built in memory management and retrieval. However,\
+  \ Swarm is an educational resource for developers curious to learn about multi-agent\
+  \ orchestration. Swarm runs (almost) entirely on the client and, much like the Chat\
+  \ Completions API, does not store state between calls.\n\nExamples\n\nCheck out\
+  \ `/examples` for inspiration! Learn more about each one in its README.\n\n- `basic`:\
+  \ Simple examples of fundamentals like setup, function calling, handoffs, and context\
+  \ variables - `triage_agent`: Simple example of setting up a basic triage step to\
+  \ hand off to the right agent - `weather_agent`: Simple example of function calling\
+  \ - `airline`: A multi-agent setup for handling different customer service requests\
+  \ in an airline context. - `support_bot`: A customer service bot which includes\
+  \ a user interface agent and a help center agent with several tools - `personal_shopper`:\
+  \ A personal shopping agent that can help with making sales and refunding orders\n\
+  \nDocumentation\n\nRunning Swarm\n\nStart by instantiating a Swarm client (which\
+  \ internally just instantiates an `OpenAI` client).\n\n`client.run()`\n\nSwarm's\
+  \ `run()` function is analogous to the `chat.completions.create()` function in the\
+  \ Chat Completions API \u2013 it takes `messages` and returns `messages` and saves\
+  \ no state between calls. Importantly, however, it also handles Agent function execution,\
+  \ hand-offs, context variable references, and can take multiple turns before returning\
+  \ to the user.\n\nAt its core, Swarm's `client.run()` implements the following loop:\n\
+  \n1. Get a completion from the current Agent 2. Execute tool calls and append results\
+  \ 3. Switch Agent if necessary 4. Update context variables, if necessary 5. If no\
+  \ new function calls, return\n\nArguments\n\n| Argument | Type | Description | Default\
+  \ | | --------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------\
+  \ | -------------- | | **agent** | `Agent` | The (initial) agent to be called. |\
+  \ (required) | | **messages** | `List` | A list of message objects, identical to\
+  \ Chat Completions `messages` | (required) | | **context_variables** | `dict` |\
+  \ A dictionary of additional context variables, available to functions and Agent\
+  \ instructions | `{}` | | **max_turns** | `int` | The maximum number of conversational\
+  \ turns allowed | `float(\"inf\")` | | **model_override** | `str` | An optional\
+  \ string to override the model being used by an Agent | `None` | | **execute_tools**\
+  \ | `bool` | If `False`, interrupt execution and immediately returns `tool_calls`\
+  \ message when an Agent tries to call a function | `True` | | **stream** | `bool`\
+  \ | If `True`, enables streaming responses | `False` | | **debug** | `bool` | If\
+  \ `True`, enables debug logging | `False` |\n\nOnce `client.run()` is finished (after\
+  \ potentially multiple calls to agents and tools) it will return a `Response` containing\
+  \ all the relevant updated state. Specifically, the new `messages`, the last `Agent`\
+  \ to be called, and the most up-to-date `context_variables`. You can pass these\
+  \ values (plus new user messages) in to your next execution of `client.run()` to\
+  \ continue the interaction where it left off \u2013 much like `chat.completions.create()`.\
+  \ (The `run_demo_loop` function implements an example of a full execution loop in\
+  \ `/swarm/repl/repl.py`.)\n\n`Response` Fields\n\n| Field | Type | Description |\
+  \ | --------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\
+  \ | | **messages** | `List` | A list of message objects generated during the conversation.\
+  \ Very similar to Chat Completions `messages`, but with a `sender` field indicating\
+  \ which `Agent` the message originated from. | | **agent** | `Agent` | The last\
+  \ agent to handle a message. | | **context_variables** | `dict` | The same as the\
+  \ input variables, plus any changes. |\n\nAgents\n\nAn `Agent` simply encapsulates\
+  \ a set of `instructions` with a set of `functions` (plus some additional settings\
+  \ below), and has the capability to hand off execution to another `Agent`.\n\nWhile\
+  \ it's tempting to personify an `Agent` as \"someone who does X\", it can also be\
+  \ used to represent a very specific workflow or step defined by a set of `instructions`\
+  \ and `functions` (e.g. a set of steps, a complex retrieval, single step of data\
+  \ transformation, etc). This allows `Agent`s to be composed into a network of \"\
+  agents\", \"workflows\", and \"tasks\", all represented by the same primitive.\n\
+  \n`Agent` Fields\n\n| Field | Type | Description | Default | | ----------------\
+  \ | ------------------------ | -----------------------------------------------------------------------------\
+  \ | ---------------------------- | | **name** | `str` | The name of the agent. |\
+  \ `\"Agent\"` | | **model** | `str` | The model to be used by the agent. | `\"gpt-4o\"\
+  ` | | **instructions** | `str` or `func() -> str` | Instructions for the agent,\
+  \ can be a string or a callable returning a string. | `\"You are a helpful agent.\"\
+  ` | | **functions** | `List` | A list of functions that the agent can call. | `[]`\
+  \ | | **tool_choice** | `str` | The tool choice for the agent, if any. | `None`\
+  \ |\n\nInstructions\n\n`Agent` `instructions` are directly converted into the `system`\
+  \ prompt of a conversation (as the first message). Only the `instructions` of the\
+  \ active `Agent` will be present at any given time (e.g. if there is an `Agent`\
+  \ handoff, the `system` prompt will change, but the chat history will not.)\n\n\
+  The `instructions` can either be a regular `str`, or a function that returns a `str`.\
+  \ The function can optionally receive a `context_variables` parameter, which will\
+  \ be populated by the `context_variables` passed into `client.run()`.\n\nFunctions"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '761974775'
+    canonical_url: https://github.com/openai/swarm
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

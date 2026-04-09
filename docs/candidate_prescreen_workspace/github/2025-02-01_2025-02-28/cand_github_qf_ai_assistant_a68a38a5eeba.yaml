@@ -1,0 +1,121 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_a68a38a5eeba
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-02-01_2025-02-28
+created_at: '2026-04-08T13:53:58.864561Z'
+updated_at: '2026-04-09T02:58:57.984466Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '877293804'
+canonical_url: https://github.com/Andaroth/ai-assistant-electron
+title: ai-assistant-electron
+summary: Desktop AI assistant for Windows, Mac and Linux
+raw_evidence_excerpt: "Desktop AI assistant for Windows, Mac and Linux\n\nAI Assistant\
+  \ Electron\n\nDISCLAIMER\n\nThis project is MAINTAINED but is migrating to premium\
+  \ \"Vidy\u0101\" GUI which will be close-sourced.\n\nIf you want to follow and support\
+  \ the project, please join our Discord (it's French).\n\nFeatures\n\n1. #### Session\
+  \ manager to change account easily, 2. #### Streamer mode to hide your name, mail\
+  \ and avatar 3. #### Change assistant (GPT, Copilot, Mistral, more soon) 4. ####\
+  \ Custom CSS themes\n\n| OS | Location of folder for CSS themes | |---|---| | Windows\
+  \ | `C:\\Users\\{username}\\AppData\\Roaming\\chatgpt-electron` | | macOS | `/Users/{username}/Library/Application\
+  \ Support/chatgpt-electron` | | Linux | `/home/{username}/.config/chatgpt-electron`\
+  \ |\n\nRequirements\n\n- NodeJS v20 or +\n\nInstallation\n\nGenerate package\n\n\
+  This will create a folder (ie: `out/chatgpt-electron-linux-x64`) which contains\
+  \ the executable file for your system.\n\nYou can directly run `out/chatgpt-electron-linux-x64/chatgpt-electron`\
+  \ or you may want to use it in a \"widget\":\n\nUse on Windows\n\n1. Move the executable\
+  \ folder `out/chatgpt-electron-win32-x64` anywhere you like it\n\n2. Run `chatgpt-electron.exe`\
+  \ and enjoy!\n\nUse on MacOS\n\n1. Move the executable folder `out/chatgpt-electron-darwin-arm64`\
+  \ anywhere you like it\n\n2. Run `chatgpt-electron.app` and enjoy!\n\nUse on Linux\n\
+  \n1. Move the executable folder `out/chatgpt-electron-linux-x64` anywhere you like\
+  \ it\n\n2. run `chatgpt-electron-linux-x64/chatgpt-electron` and enjoy!\n\nPanel\
+  \ shortcut in XFCE\n\nRequirements\n\n- xdotool `apt install xdotool` - wmctrl `apt\
+  \ install wmctrl`\n\nTo make a shortcut to open a controlled window from your XFCE\
+  \ panel, you need to call your `./open_chatgpt.sh`.\n\nThe goal of `./open_chatgpt.sh`\
+  \ is to find the Electron window then resize it at will.\n\nIt works with a `package`\
+  \ output and I did NOT tested it with deb and rpm.\n\n1. Right click on your XFCE\
+  \ Panel > \"Panel\" > \"Add new items...\"\n\n2. Double-click on \"Launcher\":\n\
+  \n3. In the \"Launcher\" window, press the \"+\" button.\n\n4. In the \"Edit Launcher\"\
+  \ window, configure the Launcher so the command will open your `open_chatgpt.sh`\
+  \ from its path:\n\n5. Optional: Name the shortcut and select an Icon (you can copy\
+  \ it from `GPT.svg`)\n\n6. Save, Close, Enjoy!\n\nCredits\n\nThis was made by Axel\
+  \ Andaroth (aka Anda Pirate) for personal use with Debian 12 XFCE.\n\nSource is\
+  \ open because sharing is caring.\n\nThanks for your support!"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '877293804'
+    canonical_url: https://github.com/Andaroth/ai-assistant-electron
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

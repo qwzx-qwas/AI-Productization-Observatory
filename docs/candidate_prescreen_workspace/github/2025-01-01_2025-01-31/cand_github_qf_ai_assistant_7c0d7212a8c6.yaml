@@ -1,0 +1,143 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_7c0d7212a8c6
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-01-01_2025-01-31
+created_at: '2026-04-08T12:57:41.592748Z'
+updated_at: '2026-04-09T02:51:58.939218Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '635131424'
+canonical_url: https://github.com/Docta-ai/docta
+title: docta
+summary: A Doctor for your data
+raw_evidence_excerpt: "A Doctor for your data\n\nDocta: A Doctor for your Data\n\n\
+  **License: Creative Commons Attribution-NonCommercial 4.0.**\n\n**For commercial\
+  \ use, please contact .**\n\n----------------------\n\nYour data may be unhealthy,\
+  \ resulting in unsatisfactory model performance.\n\n**How healthy is your data?\
+  \ Let Docta treat it!**\n\nDocta is an advanced data-centric AI platform that offers\
+  \ a comprehensive range of services aimed at detecting and rectifying issues in\
+  \ your data. With Docta, you can effortlessly cure your data.\n\nDocta supports\
+  \ a broader range of data, including\n\n- Tabular data - Text data - Image data\
+  \ - Pre-trained model embedding\n\nOpen-Source\n\nDocta aims to provide various\
+  \ automatic service to make your data healthy, including but not limited to data\
+  \ diagnosis, curation, and nutrition. The open-source tool requires no training,\
+  \ making it a premium-free option that can operate on any user's data without additional\
+  \ prerequisites. In this open-source version, we demo the power of Docta in curing\
+  \ and strengthening your data by presenting four demos at `./demo/`. All the demos\
+  \ are \"training-free.\"\n\nDemo 1: Find label errors with Docta (LLM alignment\
+  \ data)\n\nTask: Fix human annotation errors for LLM responses: - Dataset: - Red\
+  \ teaming data from Anthropic https://github.com/anthropics/hh-rlhf - Feature: -\
+  \ Conversation between human adversary and AI assistant - Goal: Attack (red team)\
+  \ AI assistant by asking questions - Topics: Discriminatory language and discussions\
+  \ of abuse, violence, etc - `red-team-attempts`: One paragraph of conversations\
+  \ - `harmless-base` : One pair (two paragraphs) of conversations where the last\
+  \ response from AI assistant is different - Label: - `red-team-attempts`: Ratings\
+  \ of harmlessness, from 0 (not harmful) to 4 (severely harmful) - `harmless-base`:\
+  \ Compare the harmlessness of two paragraphs. The `Rejected` one is more harmful\
+  \ than the `Chosen` one. - Diagnosis report from Docta: - Noise rates: (a/b: found\
+  \ a human annotation errors from b instances) - `red-team-attempts`: 3165/38961\
+  \ \u2248 8% - `harmless-base` : 11959/42537 \u2248 28%. Reversed pairs 484/11959\
+  \ \u2248 4%\n\nDemo: - `red-team-attempts`: See Jupyter Notebook `./demo/docta_rlhf_red_team.ipynb`\
+  \ for the demo. - `harmless-base` See Jupyter Notebook `./demo/docta_rlhf_harmless.ipynb`\
+  \ for the demo. Key Steps: Here is a summary of key steps to diagnose the RLHF data.\
+  \ Step 1: Load Data\n\nStep 2: Extract Embedding\n\nStep 3: Generate & Save Diagnose\
+  \ Report\n\nSampled output:\n\nThe following instance is a sampled cured result\
+  \ from ``anthropics/hh-RLHF/red-team-attempts``. In this instance, Molotov cocktail\
+  \ is a *hand-thrown incendiary weapon*. The response is severely harmful because\
+  \ AI assistant is trying to teach human to make weapons. Docta cures data by adding\
+  \ `suggest_rating` to each instance.\n\nDoctor for your LLM alignment data Use Docta\
+  \ to diagnose and cure your LLM alignment data within one click! Here is one example\
+  \ on anthropics/hh-rlhf:\n\nSampled Results - **Use them at your own risk.** - **Please\
+  \ note that the sampled results are generated automatically by the algorithm and\
+  \ do not represent any viewpoint or position of Docta.**\n\nSee sampled results\
+  \ of anthropics/hh-rlhf here and sampled results of MOSS harmlessness data here\n\
+  \nPlease fill in this form if you need the full version treated by Docta.\n\nDemo\
+  \ 2: Find label errors (Image data with real-world human annotations)\n\nWe show\
+  \ a demo on CIFAR-N, CIFAR with re-collected real-world human annotations. See the\
+  \ demo here.\n\nDemo 3: Find rare patterns (Real-world image data)\n\nDocta is capable\
+  \ of detecting rare patterns (i.e., patterns/features that have a low-frequency\
+  \ in the data), much like detecting largely ignored types of vitamin that could\
+  \ enhance human health. Docta can actively gather and improve your data by collecting\
+  \ these rare patterns.\n\nSee a demo on detecting rare patterns appeared in CIFAR-10\
+  \ and Clothes datasets.\n\nDemo 4: Using Docta to diagnose tabular data\n\nContact:\n\
+  \nFor more information and functions that Docta provides, please email to contact@docta.ai.\n\
+  \nCitation\n\nIf you use Docta in your paper, please cite:"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '635131424'
+    canonical_url: https://github.com/Docta-ai/docta
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

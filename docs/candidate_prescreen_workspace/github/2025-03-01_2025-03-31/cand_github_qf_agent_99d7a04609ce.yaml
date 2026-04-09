@@ -1,0 +1,184 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_99d7a04609ce
+candidate_batch_id: candidate_batch_github_qf_agent_2025-03-01_2025-03-31
+created_at: '2026-04-08T14:35:33.378119Z'
+updated_at: '2026-04-09T03:03:38.659718Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '943009123'
+canonical_url: https://github.com/Onewon/claude-code
+title: claude-code
+summary: claude-code full original source code from source maps
+raw_evidence_excerpt: 'claude-code full original source code from source maps
+
+
+  Claude Code (Research Preview) - 0.2.8 with extracted source maps
+
+
+  NOTE: I''m not working on this repo, this is the original source. Fork is at https://github.com/dnakov/anon-kode
+
+
+  Claude Code is an agentic coding tool that lives in your terminal, understands your
+  codebase, and helps you code faster by executing routine tasks, explaining complex
+  code, and handling git workflows - all through natural language commands.
+
+
+  Some of its key capabilities include:
+
+
+  - Edit files and fix bugs across your codebase - Answer questions about your code''s
+  architecture and logic - Execute and fix tests, lint, and other commands - Search
+  through git history, resolve merge conflicts, and create commits and PRs
+
+
+  **Learn more in the official documentation**.
+
+
+  Get started
+
+
+  Run the following command in your terminal: npm install -g @anthropic-ai/claude-code
+
+
+  Navigate to your project directory and run claude
+
+
+  Complete the one-time OAuth process with your Anthropic Console account.
+
+
+  Research Preview
+
+
+  We''re launching Claude Code as a beta product in research preview to learn directly
+  from developers about their experiences collaborating with AI agents. Our aim is
+  to learn more about how developers prefer to collaborate with AI tools, which development
+  workflows benefit most from working with the agent, and how we can make the agent
+  experience more intuitive.
+
+
+  This is an early version of the product experience, and it''s likely to evolve as
+  we learn more about developer preferences. Claude Code is an early look into what''s
+  possible with agentic coding, and we know there are areas to improve. We plan to
+  enhance tool execution reliability, support for long-running commands, terminal
+  rendering, and Claude''s self-knowledge of its capabilities -- as well as many other
+  product experiences -- over the coming weeks.
+
+
+  Reporting Bugs
+
+
+  We welcome feedback during this beta period. Use the `/bug` command to report issues
+  directly within Claude Code, or file a GitHub issue.
+
+
+  Data collection, usage, and retention
+
+
+  When you use Claude Code, we collect feedback, which includes usage data (such as
+  code acceptance or rejections), associated conversation data, and user feedback
+  submitted via the `/bug` command.
+
+
+  How we use your data
+
+
+  We may use feedback to improve our products and services, but we will not train
+  generative models using your feedback from Claude Code. Given their potentially
+  sensitive nature, we store user feedback transcripts for only 30 days.
+
+
+  If you choose to send us feedback about Claude Code, such as transcripts of your
+  usage, Anthropic may use that feedback to debug related issues and improve Claude
+  Code''s functionality (e.g., to reduce the risk of similar bugs occurring in the
+  future).
+
+
+  Privacy safeguards
+
+
+  We have implemented several safeguards to protect your data, including limited retention
+  periods for sensitive information, restricted access to user session data, and clear
+  policies against using feedback for model training.
+
+
+  For full details, please review our Commercial Terms of Service and Privacy Policy.'
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '943009123'
+    canonical_url: https://github.com/Onewon/claude-code
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

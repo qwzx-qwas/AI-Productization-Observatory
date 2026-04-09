@@ -2,7 +2,11 @@ from __future__ import annotations
 
 import unittest
 
-from src.candidate_prescreen.review_card import normalize_llm_result, validate_candidate_review_card
+from src.candidate_prescreen.review_card import (
+    normalize_llm_result,
+    validate_candidate_review_card,
+    validate_normalized_llm_prescreen,
+)
 
 
 class CandidatePrescreenReviewCardUnitTests(unittest.TestCase):
@@ -235,3 +239,79 @@ class CandidatePrescreenReviewCardUnitTests(unittest.TestCase):
         self.assertEqual(normalized["recommended_action"], "hold")
         self.assertFalse(normalized["recommend_candidate_pool"])
         self.assertEqual(normalized["handoff_readiness_hint"]["suggested_action"], "hold")
+
+    def test_validate_normalized_llm_prescreen_accepts_consumable_review_card(self) -> None:
+        normalized = normalize_llm_result(
+            {
+                "in_observatory_scope": True,
+                "reason": "Clear end-user product workflow is present in the supplied evidence.",
+                "decision_snapshot": "Recommend candidate_pool because the repository describes a shipped AI support workflow.",
+                "scope_boundary_note": "The current evidence supports an end-user AI product interpretation rather than a framework-only interpretation.",
+                "source_evidence_summary": [
+                    "README excerpt describes an AI support workspace for triage and follow-up."
+                ],
+                "evidence_anchors": [
+                    {
+                        "anchor_rank": 1,
+                        "evidence_text": "AI support workspace for triage and follow-up tasks.",
+                        "evidence_source_field": "raw_evidence_excerpt",
+                        "why_it_matters": "Shows user-facing product workflow evidence.",
+                    }
+                ],
+                "review_focus_points": [
+                    "Confirm the README describes a shipped user workflow.",
+                    "Verify the main category remains support-oriented rather than developer tooling.",
+                ],
+                "uncertainty_points": [],
+                "recommend_candidate_pool": True,
+                "recommended_action": "candidate_pool",
+                "confidence_summary": {
+                    "scope_confidence": "high",
+                    "taxonomy_confidence": "medium",
+                    "persona_confidence": "medium",
+                },
+                "handoff_readiness_hint": {
+                    "suggested_action": "candidate_pool",
+                    "rationale": "The current evidence is consumable for first-pass review.",
+                },
+                "persona_candidates": [
+                    {
+                        "persona_code": "support_agent",
+                        "confidence_rank": 1,
+                        "rationale": "The workflow is aimed at support operations.",
+                        "supporting_evidence_anchors": [1],
+                    }
+                ],
+                "taxonomy_hints": {
+                    "primary_category_code": "JTBD_SALES_SUPPORT",
+                    "secondary_category_code": None,
+                    "primary_persona_code": "support_agent",
+                    "delivery_form_code": None,
+                    "main_category_candidate": {
+                        "category_code": "JTBD_SALES_SUPPORT",
+                        "rationale": "Support workflow evidence dominates the payload.",
+                        "supporting_evidence_anchors": [1],
+                    },
+                    "adjacent_category_candidate": {
+                        "category_code": "JTBD_KNOWLEDGE_ASSISTANCE",
+                        "rationale_for_similarity": "The workflow also exposes assistant-like knowledge retrieval.",
+                        "supporting_evidence_anchors": [1],
+                    },
+                    "adjacent_category_rejected_reason": "The stronger evidence points to support execution rather than general knowledge assistance.",
+                },
+                "assessment_hints": {
+                    "evidence_strength": "high",
+                    "build_evidence_band": "high",
+                    "need_clarity_band": "low",
+                    "unresolved_risk": "low",
+                },
+            }
+        )
+
+        validate_normalized_llm_prescreen(normalized)
+
+    def test_validate_normalized_llm_prescreen_rejects_normalized_but_not_consumable_result(self) -> None:
+        normalized = normalize_llm_result({})
+
+        with self.assertRaisesRegex(Exception, "normalized_llm_prescreen.reason"):
+            validate_normalized_llm_prescreen(normalized)

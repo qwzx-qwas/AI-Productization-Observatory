@@ -1,0 +1,183 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_ba336dabf1ff
+candidate_batch_id: candidate_batch_github_qf_rag_2025-03-01_2025-03-31
+created_at: '2026-04-08T14:46:23.045607Z'
+updated_at: '2026-04-09T03:08:33.384442Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '806120483'
+canonical_url: https://github.com/QmiAI/Qmedia
+title: Qmedia
+summary: 'An open-source AI content search engine designed specifically for content
+  creators. Supports extraction of text, images, and short videos. Allows full local
+  deployment (web app, RAG server, LLM server). Supports multi-modal RAG content Q&A. '
+raw_evidence_excerpt: "An open-source AI content search engine designed specifically\
+  \ for content creators. Supports extraction of text, images, and short videos. Allows\
+  \ full local deployment (web app, RAG server, LLM server). Supports multi-modal\
+  \ RAG content Q&A.\n\nQMedia\n\nAI content search engine designed specifically for\
+  \ content creators.\n\n**English** | \u7B80\u4F53\u4E2D\u6587\n\nChangelog - [Report\
+  \ Issues][g-issues-link] - [Request Feature][g-issues-link]\n\n**Key Features**\n\
+  \n- Search for image/text and short video materials. - Efficiently analyze image/text\
+  \ and short video content, integrating scattered information. - Provide content\
+  \ sources and decompose image/text and short video information, presenting information\
+  \ through content cards. - Generate customized search results based on user interests\
+  \ and needs from image/text and short video content. - Local deployment, enabling\
+  \ offline content search and Q&A for private data.\n\nDirectory\n\n- \U0001F44B\U0001F3FB\
+  \ Introduction - \U0001F4AB feature overview - `1` content cards - `2` multimodal\
+  \ content rag - `3` pure local multimodalmodels - \U0001F916 installation instructions\
+  \ - mm_server Installation - mmrag_server Installation - qmedia_web Installation\
+  \ - \u2B50\uFE0F Usage - Combined Usage - Independent model service - pure local\
+  \ multimodal\n\n\U0001F44B\U0001F3FB Introduction\n\n**QMedia** is an open-source\
+  \ multimedia AI content search engine , provides rich information extraction methods\
+  \ for text/image and short video content. It integrates unstructured text/image\
+  \ and short video information to build a multimodal RAG content Q&A system. The\
+  \ aim is to share and exchange ideas on AI content creation in an open-source manner.\
+  \ [issues][g-issues-link]\n\n**Share QMedia with your friends.**\n\n**Spark new\
+  \ ideas for content creation**\n\n| :---------------------------------------- |\
+  \ :------------------------ | | !alt text | **Join our WeChat group !** |\n\n\U0001F4AB\
+  \ Feature Overview\n\n- #### Content Cards\n\n- Display image/text and video content\
+  \ in the form of cards - `Web Service` inspired by XHS web version, implemented\
+  \ using the technology stack of Typescript, Next.js, TailwindCSS, and Shadcn/UI\
+  \ - `RAG Search/Q&A Service` and `Image/Text/Video Model Service` implemented using\
+  \ the Python framework and LlamaIndex applications - Web Service, `RAG Search/Q&A\
+  \ Service`, and `Image/Text/Video Model Service` can be deployed separately for\
+  \ flexible deployment based on user resources, and can be embedded into other systems\
+  \ for image/text and video content extraction.\n\n- #### Multimodal Content RAG\n\
+  \n- Search for image/text and short video materials. - Extract useful information\
+  \ from image/text and short video content based on user queries to generate high-quality\
+  \ answers. - Present content sources and the breakdown of image/text and short video\
+  \ information through content cards. - Retrieval and Q&A rely on the breakdown of\
+  \ image/text and short video content, including image style, text layout, short\
+  \ video transcription, video summaries, etc. - Support Google content search.\n\n\
+  - #### **Pure Local Multimodal Models**\n\nDeployment of various types of models\
+  \ locally Separation from the RAG application layer, making it easy to replace different\
+  \ models Local model lifecycle management, configurable for manual or automatic\
+  \ release to reduce server load\n\n**Language Models**:\n\n- Support local Ollama\
+  \ model switching. - llama3:8b-instruct Lightweight local deployment of LLM models.\
+  \ - llama3:70b-instruct Eighth place in open-source LLM models.\n\n**Feature Embedding\
+  \ Models**:\n\n- Image Embedding: CLIP Encoder Convert images to text feature encoding.\
+  \ - Text Embedding: BGE Encoder Multilingual embedded model, converting text to\
+  \ feature encoding, with local models aligned to GPT Encoder.\n\n**Image Models**:\n\
+  \n- Image Text OCR Recognition: Qanything Local Knowledge Base Q&A System OCR\n\n\
+  - Visual Understanding Models:\n\n- [ ] llava-llama3: Ollama's locally deployed\
+  \ GPT-4V level visual understanding model.\n\n**Video Models**\n\n- Video Transcription:\
+  \ - Faster Whisper: Quickly extract video transcription content, can run on local\
+  \ CPU. - LLM-based Short Video Content Summarization - [ ] Identification of highlights\
+  \ in short videos - [ ] Recognition of short video style types - [ ] Analysis and\
+  \ breakdown of short video content\n\nFuture Plans\n\n- [ ] **Image/Text Short Video\
+  \ Content Analysis and Viral Content Breakdown** - [ ] **Search for Similar Image/Text/Video**\
+  \ - [ ] **Card Image/Text Content Generation** - [ ] **Short Video Content Editing**\n\
+  \n---\n\n\U0001F916 Installation\n\nFile Structure Introduction\n\n**QMedia services:**\
+  \ Depending on resource availability, they can be deployed locally or the model\
+  \ services can be deployed in the cloud\n\n**mm_server Installation**\n\n- Multimodal\
+  \ Model Service `mm_server`:\n\n- Multimodal model deployment and API calls - Ollama\
+  \ LLM models - Image models - Video models - Feature embedding models\n\n**mmrag_server\
+  \ Installation**\n\n- Content Search and Q&A Service `mmrag_server`:\n\n- Content\
+  \ Card Display and Query - Image/Text/Short Video Content Extraction, Embedding,\
+  \ and Storage Service - Multimodal Data RAG Retrieval Service - Content Q&A Service\n\
+  \n**qmedia_web Installation**\n\n- Web Service `qmedia_web`: Language: TypeScript\
+  \ Framework: Next.js Styling: Tailwind CSS Components: shadcn/ui\n\n---\n\n\u2B50\
+  \uFE0F Usage\n\n**Combined Usage**\n\n`mm_server` + `qmedia_web` + `mmrag_server`\
+  \ Web Page Content Display, Content RAG Search and Q&A, Model Service\n\n1. Service\
+  \ Startup Process:\n\n2. Using Functions via the Web Page During the startup phase,\
+  \ `mmrag_server` will read pseudo data from `assets/medias` and `assets/mm_pseudo_data.json`,\
+  \ and call `mm_server` to extract and structure the information from text/image\
+  \ and short videos into `node` information, which is then stored in the `db`. The\
+  \ retrieval and Q&A will be based on the data in the `db`.\n\nCustom Data\n\nReplace\
+  \ the contents in `assets` and delete the historically stored `db` file. `assets/medias`\
+  \ contains image/video files, which can be replaced with your own image/video files.\
+  \ `assets/mm_pseudo_data.json` contains content card data, which can be replaced\
+  \ with your own content card data. After running the service, the model will automatically\
+  \ extract the information and store it in the `db`.\n\n---\n\n**Independent Model\
+  \ Service**\n\nCan use the `mm_server` local image/text/video information extraction\
+  \ service independently. It can be used as a standalone image encoding, text encoding,\
+  \ video transcription extraction, and image OCR service, accessible via API in any\
+  \ scenario.\n\nAPI Content:\n\n- http://localhost:50110/docs\n\n**Pure Python RAG\
+  \ Service/Model Service**\n\nCan use `mm_server` + `qmedia_web` together to perform\
+  \ content extraction and RAG retrieval in a pure Python environment via APIs.\n\n\
+  API Content:\n\n- http://localhost:50110/docs - http://localhost:8001/docs\n\n---\n\
+  \nStar History\n\nLicense\n\n`QMedia` is licensed under MIT License\n\nAcknowledgments\n\
+  \nThanks to QAnything for strong OCR models.\n\nThanks to llava-llama3 for strong\
+  \ llm vision models.\n\nThanks to Ghibli Image Generator for api support.\n\n[lafe-twitter]:\
+  \ https://x.com/Lafe8088 [g-issues-link]: https://github.com/QmiAI/Qmedia/issues\n\
+  \n[share-x-link]: https://twitter.com/intent/tweet?url=https://github.com/QmiAI/Qmedia&text=Qmedia%0AAn%20open-source%20AI%20content%20search%20engine%20designed%20specifically%20for%20content%20creators.%0ASupports%20extraction%20of%20text,%20images,%20and%20short%20videos.%0AAllows%20full%20local%20deployment%20(web%20app,%20RAG%20server,%20LLM%20server).%0ASupports%20multi-modal%20RAG%20content%20QA."
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '806120483'
+    canonical_url: https://github.com/QmiAI/Qmedia
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

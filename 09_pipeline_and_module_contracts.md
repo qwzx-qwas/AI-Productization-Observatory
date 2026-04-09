@@ -168,7 +168,9 @@ last_frozen_version: pipeline_v2
   - `candidate_prescreen_record`
 - `postconditions`:
   - 候选文档位于正式 `gold_set/` 目录之外
+  - 运行时必须显式区分稳定样本键 `sample_key` 与特定分析幂等键 `analysis_run_key`；两者当前可作为内部键存在，不要求 legacy 文档已持久化带出
   - LLM 预筛结果必须保留理由、证据摘要、不确定点、关键 evidence anchors、主类/邻近类说明、persona 候选与 channel metadata
+  - normalize 只负责把 provider 输出整理为人可读 review card；只有 post-normalization validation 通过且 transport / provider_response / content / schema / business 五层均成功时，才可写成成功预筛
   - 失败时保留清晰错误分类，不伪造成成功预筛
 - `side_effects`:
   - 读取外部 source 或 fixture
@@ -185,6 +187,7 @@ last_frozen_version: pipeline_v2
   - `routing_version`
 - `replay_rules`:
   - same-window rerun 允许覆盖同一候选文档的最新预筛快照
+  - 若 same-window rerun 产生新的成功预筛快照，必须先 durably write back `llm_prescreen` 成功快照，再派生人工一审状态或 staging handoff
   - 不得因为 LLM 失败而静默跳过候选
   - GitHub 若命中 `incomplete_results` 或结果上限风险，必须继续按更小窗口 split-to-exhaustion，而不是把父 slice 直接视为成功
 - `not_responsible_for`:
@@ -222,6 +225,7 @@ last_frozen_version: pipeline_v2
   - `candidate_prescreen_v1`
 - `replay_rules`:
   - 只允许对已通过人工一审的候选重复写入同一 slot 或首个可用空 slot
+  - duplicate guard 应优先使用 `sample_key`；若 legacy 记录缺少 `sample_key`，才回退到 `source_id + normalized canonical_url`
   - 不得把 LLM 预筛 hint 写进正式 annotation / adjudication 字段
 - `not_responsible_for`:
   - `local_project_user` 原始标注

@@ -41,6 +41,7 @@ samples:
     source_window: 2026-03-01..2026-03-08
     external_id: '880024'
     canonical_url: https://github.com/demo/onboarding-chatbot
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -120,6 +121,7 @@ samples:
       candidate_pool_batch_id: candidate_batch_github_qf_chatbot_2026-03-01_2026-03-08
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
   - formal review_refs not yet provided
   - formal evidence_refs not yet provided
@@ -139,7 +141,7 @@ samples:
       onboarding assistant targets a concrete employee-facing workflow and strengthens
       HR coverage.
     human_reviewed_at: '2026-04-02T08:40:00Z'
-  staged_from_candidate_prescreen_at: '2026-04-07T09:37:20.171361Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T03:10:59.387540Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_chatbot_2e131b365f3d.yaml
 - slot_index: 17
   sample_slot_id: GS300-017
@@ -161,6 +163,7 @@ samples:
     source_window: 2026-03-01..2026-03-08
     external_id: '880021'
     canonical_url: https://github.com/demo/helpdesk-chatbot
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -240,6 +243,7 @@ samples:
       candidate_pool_batch_id: candidate_batch_github_qf_chatbot_2026-03-01_2026-03-08
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
   - formal review_refs not yet provided
   - formal evidence_refs not yet provided
@@ -259,7 +263,7 @@ samples:
       support escalation and handoff summaries are concrete customer-service product
       behavior.
     human_reviewed_at: '2026-04-02T08:40:00Z'
-  staged_from_candidate_prescreen_at: '2026-04-07T09:37:21.812233Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T03:11:01.077798Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_chatbot_9bfce06449be.yaml
 - slot_index: 18
   sample_slot_id: GS300-018
@@ -281,6 +285,7 @@ samples:
     source_window: 2026-03-01..2026-03-08
     external_id: '880016'
     canonical_url: https://github.com/demo/support-copilot
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -360,6 +365,7 @@ samples:
       candidate_pool_batch_id: candidate_batch_github_qf_copilot_2026-03-01_2026-03-08
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
   - formal review_refs not yet provided
   - formal evidence_refs not yet provided
@@ -378,7 +384,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       reply drafting and queue summaries are specific support-team workflow features.
     human_reviewed_at: '2026-04-02T08:40:00Z'
-  staged_from_candidate_prescreen_at: '2026-04-07T09:37:23.168958Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T03:11:02.587612Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_copilot_331b4e413b06.yaml
 - slot_index: 19
   sample_slot_id: GS300-019
@@ -400,6 +406,7 @@ samples:
     source_window: 2026-03-08..2026-03-15
     external_id: '822604462'
     canonical_url: https://github.com/666ghj/BettaFish
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -479,6 +486,7 @@ samples:
       candidate_pool_batch_id: candidate_batch_github_qf_agent_2026-03-08_2026-03-15
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
   - formal review_refs not yet provided
   - formal evidence_refs not yet provided
@@ -498,7 +506,7 @@ samples:
       multi-agent public-opinion analysis assistant presents a concrete user-facing
       analysis workflow and adds monitoring/insight coverage.
     human_reviewed_at: '2026-04-02T09:05:00Z'
-  staged_from_candidate_prescreen_at: '2026-04-07T09:37:27.398252Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T03:11:07.201283Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-08_2026-03-15/cand_github_qf_agent_70742258cb36.yaml
 - slot_index: 20
   sample_slot_id: GS300-020
@@ -520,6 +528,7 @@ samples:
     source_window: 2026-03-01..2026-03-08
     external_id: '880003'
     canonical_url: https://github.com/demo/ops-orchestrator
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -599,6 +608,7 @@ samples:
       candidate_pool_batch_id: candidate_batch_github_qf_agent_2026-03-01_2026-03-08
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
   - formal review_refs not yet provided
   - formal evidence_refs not yet provided
@@ -617,7 +627,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-07T09:37:12.249007Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T03:10:52.550695Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_agent_6fe74c69c936.yaml
 - slot_index: 21
   sample_slot_id: GS300-021
@@ -639,6 +649,7 @@ samples:
     source_window: 2026-03-01..2026-03-08
     external_id: '880004'
     canonical_url: https://github.com/demo/repoagent-sdk
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -718,6 +729,7 @@ samples:
       candidate_pool_batch_id: candidate_batch_github_qf_agent_2026-03-01_2026-03-08
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
   - formal review_refs not yet provided
   - formal evidence_refs not yet provided
@@ -736,7 +748,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-07T09:37:13.524097Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T03:10:53.960622Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_agent_fd1bd3b5d6a5.yaml
 - slot_index: 22
   sample_slot_id: GS300-022
@@ -758,6 +770,7 @@ samples:
     source_window: 2026-03-01..2026-03-08
     external_id: '880013'
     canonical_url: https://github.com/demo/assistant-sdk
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -837,6 +850,7 @@ samples:
       candidate_pool_batch_id: candidate_batch_github_qf_ai_assistant_2026-03-01_2026-03-08
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
   - formal review_refs not yet provided
   - formal evidence_refs not yet provided
@@ -855,7 +869,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-07T09:37:16.175809Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T03:10:55.263766Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_assistant_865f0a09efcf.yaml
 - slot_index: 23
   sample_slot_id: GS300-023
@@ -877,6 +891,7 @@ samples:
     source_window: 2026-03-01..2026-03-08
     external_id: '880012'
     canonical_url: https://github.com/demo/meeting-assistant-internal
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -956,6 +971,7 @@ samples:
       candidate_pool_batch_id: candidate_batch_github_qf_ai_assistant_2026-03-01_2026-03-08
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
   - formal review_refs not yet provided
   - formal evidence_refs not yet provided
@@ -974,7 +990,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-07T09:37:16.701041Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T03:10:55.809064Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_assistant_c9cdf911f234.yaml
 - slot_index: 24
   sample_slot_id: GS300-024
@@ -996,6 +1012,7 @@ samples:
     source_window: 2026-03-01..2026-03-08
     external_id: '880027'
     canonical_url: https://github.com/demo/internal-approval-ai
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -1075,6 +1092,7 @@ samples:
       candidate_pool_batch_id: candidate_batch_github_qf_ai_workflow_2026-03-01_2026-03-08
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
   - formal review_refs not yet provided
   - formal evidence_refs not yet provided
@@ -1093,7 +1111,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-07T09:37:17.613803Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T03:10:56.709955Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_workflow_638c3bd4b7dd.yaml
 - slot_index: 25
   sample_slot_id: GS300-025
@@ -1115,6 +1133,7 @@ samples:
     source_window: 2026-03-01..2026-03-08
     external_id: '880028'
     canonical_url: https://github.com/demo/workflow-engine-llm
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -1194,6 +1213,7 @@ samples:
       candidate_pool_batch_id: candidate_batch_github_qf_ai_workflow_2026-03-01_2026-03-08
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
   - formal review_refs not yet provided
   - formal evidence_refs not yet provided
@@ -1212,7 +1232,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-07T09:37:19.275263Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T03:10:58.421541Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_workflow_fdab4f9a402e.yaml
 - slot_index: 26
   sample_slot_id: GS300-026
@@ -1234,6 +1254,7 @@ samples:
     source_window: 2026-03-01..2026-03-08
     external_id: '880022'
     canonical_url: https://github.com/demo/hr-chatbot-internal
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -1313,6 +1334,7 @@ samples:
       candidate_pool_batch_id: candidate_batch_github_qf_chatbot_2026-03-01_2026-03-08
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
   - formal review_refs not yet provided
   - formal evidence_refs not yet provided
@@ -1331,7 +1353,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-07T09:37:20.719704Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T03:10:59.956451Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_chatbot_3430687b66a1.yaml
 - slot_index: 27
   sample_slot_id: GS300-027
@@ -1353,6 +1375,7 @@ samples:
     source_window: 2026-03-01..2026-03-08
     external_id: '880023'
     canonical_url: https://github.com/demo/chatbot-framework
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -1432,6 +1455,7 @@ samples:
       candidate_pool_batch_id: candidate_batch_github_qf_chatbot_2026-03-01_2026-03-08
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
   - formal review_refs not yet provided
   - formal evidence_refs not yet provided
@@ -1450,7 +1474,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-07T09:37:21.270938Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T03:11:00.512120Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_chatbot_404e2a1bb677.yaml
 - slot_index: 28
   sample_slot_id: GS300-028
@@ -1472,6 +1496,7 @@ samples:
     source_window: 2026-03-01..2026-03-08
     external_id: '880018'
     canonical_url: https://github.com/demo/copilot-sdk-shell
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -1551,6 +1576,7 @@ samples:
       candidate_pool_batch_id: candidate_batch_github_qf_copilot_2026-03-01_2026-03-08
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
   - formal review_refs not yet provided
   - formal evidence_refs not yet provided
@@ -1569,7 +1595,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-07T09:37:22.319756Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T03:11:01.636428Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_copilot_10df34952758.yaml
 - slot_index: 29
   sample_slot_id: GS300-029
@@ -1591,6 +1617,7 @@ samples:
     source_window: 2026-03-01..2026-03-08
     external_id: '880017'
     canonical_url: https://github.com/demo/ops-copilot-console
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -1670,6 +1697,7 @@ samples:
       candidate_pool_batch_id: candidate_batch_github_qf_copilot_2026-03-01_2026-03-08
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
   - formal review_refs not yet provided
   - formal evidence_refs not yet provided
@@ -1688,7 +1716,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-07T09:37:24.062940Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T03:11:03.522377Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_copilot_5d7b8f2d002d.yaml
 - slot_index: 30
   sample_slot_id: GS300-030
@@ -1710,6 +1738,7 @@ samples:
     source_window: 2026-03-01..2026-03-08
     external_id: '880007'
     canonical_url: https://github.com/demo/policy-rag-console
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -1789,6 +1818,7 @@ samples:
       candidate_pool_batch_id: candidate_batch_github_qf_rag_2026-03-01_2026-03-08
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
   - formal review_refs not yet provided
   - formal evidence_refs not yet provided
@@ -1807,5 +1837,5 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-07T09:37:24.575141Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T03:11:04.058034Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_rag_33e7a1d5086b.yaml

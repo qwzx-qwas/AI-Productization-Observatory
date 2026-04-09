@@ -79,7 +79,7 @@ class CandidatePrescreenStagingUnitTests(unittest.TestCase):
             with self.assertRaises(ContractValidationError) as ctx:
                 validate_staging_workspace(staging_dir)
 
-            self.assertIn("Duplicate source semantic key in staging workspace", str(ctx.exception))
+            self.assertIn("Duplicate source URL key in staging workspace", str(ctx.exception))
 
     def test_dedupe_staging_semantic_duplicates_clears_duplicate_slot_and_restores_valid_workspace(self) -> None:
         with TemporaryDirectory() as tmp_dir:
@@ -106,23 +106,32 @@ class CandidatePrescreenStagingUnitTests(unittest.TestCase):
             self.assertIsNone(cleared_sample["sample_id"])
             self.assertEqual(cleared_sample["source_record_refs"], [])
 
-    def test_handoff_candidate_to_staging_rejects_semantic_duplicate_source(self) -> None:
+    def test_handoff_candidate_to_staging_prioritizes_sample_key_duplicate_guard(self) -> None:
         with TemporaryDirectory() as tmp_dir:
             staging_dir = Path(tmp_dir) / "staging"
             _copy_clean_staging_dir(staging_dir)
-            _, source_sample, _, _ = _filled_and_empty_slot(staging_dir)
+            staging_path, source_sample, _, _ = _filled_and_empty_slot(staging_dir)
+            payload = load_yaml(staging_path)
+            for sample in payload["samples"]:
+                if sample.get("sample_slot_id") != source_sample["sample_slot_id"]:
+                    continue
+                sample["sample_metadata"]["sample_key"] = "sample_locked_duplicate"
+                sample["source_record_refs"][0]["sample_key"] = "sample_locked_duplicate"
+                break
+            dump_yaml(staging_path, payload)
             source_ref = source_sample["source_record_refs"][0]
             candidate_record = {
-                "candidate_id": "cand_semantic_duplicate_guard",
+                "candidate_id": "cand_sample_key_duplicate_guard",
                 "candidate_batch_id": "candidate_batch_github_qf_agent_2026-04-06",
+                "sample_key": "sample_locked_duplicate",
                 "human_review_status": "approved_for_staging",
                 "human_review_notes": "Approved in first-pass review.",
                 "human_reviewed_at": "2026-04-06T09:10:00Z",
                 "source": "github",
                 "source_id": source_ref["source_id"],
                 "source_window": "2026-04-01..2026-04-06",
-                "external_id": source_ref["external_id"],
-                "canonical_url": source_ref["canonical_url"],
+                "external_id": "different_external_id_same_sample_key",
+                "canonical_url": "https://github.com/example/completely-different-product",
                 "query_family": "ai_applications_and_products",
                 "query_slice_id": "qf_agent",
                 "selection_rule_version": "github_qsv1",
@@ -139,4 +148,73 @@ class CandidatePrescreenStagingUnitTests(unittest.TestCase):
                     staging_dir=staging_dir,
                 )
 
-            self.assertIn("Semantic duplicate source already present in staging", str(ctx.exception))
+            self.assertIn("Semantic duplicate source URL already present in staging", str(ctx.exception))
+
+    def test_handoff_candidate_to_staging_rejects_semantic_duplicate_source_url_with_legacy_fallback(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            staging_dir = Path(tmp_dir) / "staging"
+            _copy_clean_staging_dir(staging_dir)
+            _, source_sample, _, _ = _filled_and_empty_slot(staging_dir)
+            source_ref = source_sample["source_record_refs"][0]
+            duplicate_url_variant = str(source_ref["canonical_url"]).replace("https://", "HTTPS://").rstrip("/") + "/#fragment"
+            candidate_record = {
+                "candidate_id": "cand_semantic_duplicate_guard",
+                "candidate_batch_id": "candidate_batch_github_qf_agent_2026-04-06",
+                "human_review_status": "approved_for_staging",
+                "human_review_notes": "Approved in first-pass review.",
+                "human_reviewed_at": "2026-04-06T09:10:00Z",
+                "source": "github",
+                "source_id": source_ref["source_id"],
+                "source_window": "2026-04-01..2026-04-06",
+                "external_id": "different_external_id_same_url",
+                "canonical_url": duplicate_url_variant,
+                "query_family": "ai_applications_and_products",
+                "query_slice_id": "qf_agent",
+                "selection_rule_version": "github_qsv1",
+                "whitelist_reason": None,
+                "llm_prescreen": {
+                    "recommended_action": "candidate_pool",
+                },
+            }
+
+            with self.assertRaises(ContractValidationError) as ctx:
+                handoff_candidate_to_staging(
+                    candidate_record,
+                    candidate_path=Path(tmp_dir) / "candidate.yaml",
+                    staging_dir=staging_dir,
+                )
+
+            self.assertIn("Semantic duplicate source URL already present in staging", str(ctx.exception))
+
+    def test_handoff_candidate_to_staging_rejects_blank_canonical_url(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            staging_dir = Path(tmp_dir) / "staging"
+            _copy_clean_staging_dir(staging_dir)
+            candidate_record = {
+                "candidate_id": "cand_invalid_url_guard",
+                "candidate_batch_id": "candidate_batch_github_qf_agent_2026-04-06",
+                "human_review_status": "approved_for_staging",
+                "human_review_notes": "Approved in first-pass review.",
+                "human_reviewed_at": "2026-04-06T09:10:00Z",
+                "source": "github",
+                "source_id": "src_github",
+                "source_window": "2026-04-01..2026-04-06",
+                "external_id": "url-missing",
+                "canonical_url": "   ",
+                "query_family": "ai_applications_and_products",
+                "query_slice_id": "qf_agent",
+                "selection_rule_version": "github_qsv1",
+                "whitelist_reason": None,
+                "llm_prescreen": {
+                    "recommended_action": "candidate_pool",
+                },
+            }
+
+            with self.assertRaises(ContractValidationError) as ctx:
+                handoff_candidate_to_staging(
+                    candidate_record,
+                    candidate_path=Path(tmp_dir) / "candidate.yaml",
+                    staging_dir=staging_dir,
+                )
+
+            self.assertIn("candidate_prescreen_record.canonical_url must be a non-empty string", str(ctx.exception))

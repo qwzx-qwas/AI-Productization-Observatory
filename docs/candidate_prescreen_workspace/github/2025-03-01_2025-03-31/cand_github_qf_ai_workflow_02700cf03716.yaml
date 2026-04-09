@@ -1,0 +1,131 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_02700cf03716
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-03-01_2025-03-31
+created_at: '2026-04-08T15:25:37.082871Z'
+updated_at: '2026-04-09T03:05:11.717276Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '910713975'
+canonical_url: https://github.com/SMACAcademy/Mastering-LangChain
+title: Mastering-LangChain
+summary: Mastering LangChain
+raw_evidence_excerpt: "Mastering LangChain\n\nMaster LangChain and build smarter AI\
+  \ solutions with large language model (LLM) integration! This course covers everything\
+  \ you need to know to build robust AI applications using LangChain. We\u2019ll start\
+  \ by introducing you to key concepts like AI, large language models, and retrieval-augmented\
+  \ generation (RAG). From there, you\u2019ll set up your environment and learn how\
+  \ to process data with document loaders and splitters, making sure your AI has the\
+  \ right data to work with.\n\nNext, we\u2019ll dive deep into embeddings and vector\
+  \ stores, essential for creating powerful AI search and retrieval systems. You\u2019\
+  ll explore different vector store solutions such as FAISS, ChromaDB, and Pinecone,\
+  \ and learn how to select the best one for your needs. Our retriever modules will\
+  \ teach you how to make your AI smarter with multi-query and context-aware retrieval\
+  \ techniques.\n\nIn the second half of the course, we\u2019ll focus on building\
+  \ AI chat models and composing effective prompts to get the best responses. You\u2019\
+  ll also explore advanced workflow integration using the LangChain Component Execution\
+  \ Layer (LCEL), where you\u2019ll learn to create dynamic, modular AI solutions.\
+  \ Finally, we\u2019ll wrap up with essential debugging and tracing techniques to\
+  \ ensure your AI workflows are optimized and running efficiently.\n\n**What Will\
+  \ You Learn?**\n\n* How to set up LangChain and Ollama for local AI development\n\
+  \n* Using document loaders and splitters to process text, PDFs, JSON, and other\
+  \ formats\n\n* Creating embeddings for smarter AI search and retrieval\n\n* Working\
+  \ with vector stores like FAISS, ChromaDB, Pinecone, and more\n\n* Building interactive\
+  \ AI chat models and workflows using LangChain\n\n* Optimizing and debugging AI\
+  \ workflows with tools like LangSmith and custom retriever tracing\n\n**Course Highlights**\n\
+  \n* **Step-by-step guidance:** Learn everything from setup to building advanced\
+  \ workflows\n\n* **Hands-on projects:** Apply what you learn with real-world examples\
+  \ and exercises\n\n* **Reference code:** All code is provided in a GitHub repository\
+  \ for easy access and practice\n\n* **Advanced techniques:** Explore embedding caching,\
+  \ context-aware retrievers, and LangChain Component Execution Layer (LCEL)\n\n**What\
+  \ Will You Gain?**\n\n* Practical experience with LangChain, Ollama, and AI integrations\n\
+  \n* A deep understanding of vector stores, embeddings, and document processing\n\
+  \n* The ability to build scalable, efficient AI workflows\n\n* Skills to debug and\
+  \ optimize AI solutions for real-world use cases\n\n**How Is This Course Taught?**\n\
+  \n* Clear, step-by-step explanations\n\n* Hands-on demos and practical projects\n\
+  \n* Reference code provided on GitHub for all exercises\n\n* Real-world applications\
+  \ to reinforce learning\n\n**Join Me on This Exciting Journey!**\n\n* Build smarter\
+  \ AI solutions with LangChain and LLMs\n\n* Stay ahead of the curve with cutting-edge\
+  \ AI integration techniques\n\n* Gain practical skills that you can apply immediately\
+  \ in your projects\n\n**Let\u2019s get started and unlock the full potential of\
+  \ LangChain together!**\n\nEnroll here : Master LangChain LLM Integration: Build\
+  \ Smarter AI Solutions"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '910713975'
+    canonical_url: https://github.com/SMACAcademy/Mastering-LangChain
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

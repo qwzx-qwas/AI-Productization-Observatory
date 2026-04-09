@@ -1,0 +1,177 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_10c79e1bff83
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-01-01_2026-04-06
+created_at: '2026-04-08T10:53:03.817151Z'
+updated_at: '2026-04-09T02:57:00.005825Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2026-04-06
+time_field: pushed_at
+external_id: '725266899'
+canonical_url: https://github.com/microsoft/Mastering-GitHub-Copilot-for-Paired-Programming
+title: Mastering-GitHub-Copilot-for-Paired-Programming
+summary: A multi-module course teaching everything you need to know about using GitHub
+  Copilot as an AI Peer Programming resource.
+raw_evidence_excerpt: "A multi-module course teaching everything you need to know\
+  \ about using GitHub Copilot as an AI Peer Programming resource.\n\nMastering GitHub\
+  \ Copilot Unlock the next generation of collaborative coding with our newly updated,\
+  \ in-depth course: Mastering GitHub Copilot. This multi-module, 10-hour program\
+  \ now features GitHub Copilot's revolutionary Agent Mode, transforming Copilot from\
+  \ a passive assistant into a proactive AI coding partner that works with you\u2014\
+  and for you.\n\nWhether you're just starting out or an experienced developer, this\
+  \ course equips you to fully harness GitHub Copilot\u2019s AI capabilities, including\
+  \ real-time autonomous code execution, intelligent problem-solving, and workflow\
+  \ automation. You'll learn how to collaborate with AI using natural-language prompts\
+  \ that initiate multi-step solutions\u2014from initial planning and architecture\
+  \ suggestions to code generation, testing, and iteration.\n\n\U0001F331 Getting\
+  \ Started\n\nTo get started, make sure to follow the instructions on how to fork\
+  \ the lessons into your own GitHub account. This will allow you to modify the code\
+  \ and complete the challenges at your own pace.\n\nTo use GitHub Copilot, you must\
+  \ have an active GitHub Copilot subscription.\n\n**Sign up for free here: GitHub\
+  \ Copilot.**\n\nTo make it easier to revisit this repository in the future, you\
+  \ can also star (\U0001F31F) this repo this repo.\n\nBelow are links to each lesson\u2014\
+  feel free to explore and dive into any topic that interests you the most!\n\n\U0001F9E0\
+  \ Want to learn more? After completing this course, check out our GitHub Copilot\
+  \ Learn Collection to continue leveling up your AI Peer Programming knowledge!\n\
+  \n\U0001F680 Are you a startup or got an idea you want to launch?\n\nSign up for\
+  \ Microsoft for Startups Founders Hub to receive **free OpenAI credits** and up\
+  \ to **$150k towards Azure credits to access OpenAI models through Azure OpenAI\
+  \ Services**.\n\n\U0001F64F Want to help?\n\nHere are ways you can contribute to\
+  \ this course: - Find spelling errors or code errors, Raise an issue or Create a\
+  \ pull request - Send us your ideas, maybe your ideas for new lessons or exercises,\
+  \ and let us know how we can improve.\n\n\U0001F4C2 Each lesson includes:\n\n- a\
+  \ written lesson located in the README - a challenge or assignment to apply your\
+  \ learning - links to extra resources to continue your learning\n\n\U0001F5C3\uFE0F\
+  \ Lessons\n\nBeginner | Lesson Link | Concepts Taught | Learning Goal | | :------------------------------------:\
+  \ | :---------------------------------------------------------: | -----------------------------------------------------------\
+  \ | | Getting Started with GitHub Copilot | GitHub Copilot is an AI coding assistant\
+  \ that can help you write code faster and with less effort, allowing you to focus\
+  \ more energy on problem solving and collaboration. | In this exercise, you'll unlock\
+  \ the potential of this AI-powered coding assistant to accelerate your development\
+  \ process. |\n\nIntermediate | Lesson Link | Concepts Taught | Learning Goal | |\
+  \ :------------------------------------: | :---------------------------------------------------------:\
+  \ | ----------------------------------------------------------- | | Using GitHub\
+  \ Copilot with JavaScript | Use GitHub Copilot, via agentic mode, to work with JavaScript.\
+  \ | Enable the GitHub Copilot extension in Visual Studio Code. Craft prompts that\
+  \ can generate useful suggestions from GitHub Copilot. Use GitHub Copilot to improve\
+  \ a JavaScript project. | | Using GitHub Copilot with Python | Use GitHub Copilot,\
+  \ via agentic mode, to work with Python. | Enable the GitHub Copilot extension in\
+  \ Visual Studio Code. Craft prompts that can generate useful suggestions from GitHub\
+  \ Copilot. Use GitHub Copilot to improve a Python project. | | Using GitHub Copilot\
+  \ with C# | Use GitHub Copilot, via agentic mode, to work with C#. | Enable the\
+  \ GitHub Copilot extension in Visual Studio Code. Craft prompts that can generate\
+  \ useful suggestions from GitHub Copilot. Use GitHub Copilot to improve a C# Minimal\
+  \ API project. | | Using GitHub Copilot CLI | Use Copilot in the CLI and enhance\
+  \ your development workflow. | Craft prompts from your native code editing experience.\
+  \ Learn about the end to end features delivered from the CLI. | | Using GitHub Copilot\
+  \ Coding Agent | Use GitHub Copilot Coding Agent to work alongside agents | Integrate\
+  \ the coding agent into your workflow. Delegate tasks to Copilot from plan mode\
+  \ to delivery. Understand the full SDLC capability of the coding agent. | | Integrate\
+  \ MCP with GitHub Copilot | Use Model Context Protocol (MCP) to expand GitHub Copilot's\
+  \ capabilities and enhance your development workflow. | Integrate a GitHub MCP server\
+  \ with GitHub Copilot. Delegate tasks to Copilot from issue research to pull request\
+  \ implementation. Build a mixed development workflow using GitHub Copilot for project\
+  \ management. | | Creating a Mini Game with GitHub Copilot | Use GitHub Copilot\
+  \ to assist you in building a Python-based mini game. | Craft prompts that can generate\
+  \ useful suggestions from GitHub Copilot to incorporate gaming logic and improve\
+  \ your Python-based game. |\n\nAdvanced | Lesson Link | Concepts Taught | Learning\
+  \ Goal | | :------------------------------------: | :---------------------------------------------------------:\
+  \ | ----------------------------------------------------------- | | Using Advanced\
+  \ GitHub Copilot Features | Use advanced GitHub Copilot features like inline chat,\
+  \ slash commands, and agents. | Interact with GitHub Copilot with deeper context\
+  \ on your project and ask questions about it. | | Getting Started with Copilot for\
+  \ Azure to Deploy to the Cloud | Learn cloud deployment with GitHub Copilot for\
+  \ Azure\u2014your ultimate guide to streamlined cloud success. | Effortless application\
+  \ deployment leveraging Azure\u2019s powerful scalability. | | Challenging GitHub\
+  \ Copilot with complex SQL | Apply advanced GitHub Copilot features to work with\
+  \ a challenging application working with a complex SQL query | Gain a clear understanding\
+  \ of how to work with extremely challenging SQL and yield better results when simple\
+  \ prompts don't work well | | Upgrading Legacy project | Leverage GitHub Copilot\
+  \ to upgrade a legacy Python project to the latest version of Python. | Apply techniques\
+  \ to overcome the challenges involved in working with legacy projects | | Migrating\
+  \ to a new language | Rewrite an existing application using a different language\
+  \ with the guidance of GitHub Copilot | Use advanced workflows with GitHub Copilot\
+  \ applicable when translating projects to different programming languages | | GitHub\
+  \ Copilot for Data Science | Work with Jupyter notebooks and a dataset for data\
+  \ exploration and analysis | Use advanced workflows with GitHub Copilot for Data\
+  \ Science projects |\n\n\U0001F392 Other Courses\n\nOur team produces other courses!\
+  \ Check out:\n\nAzure / Edge / MCP / Agents\n\n---\n\nGenerative AI Series\n\n---\n\
+  \nCore Learning\n\n---\n\nCopilot Series"
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2026-04-06
+    external_id: '725266899'
+    canonical_url: https://github.com/microsoft/Mastering-GitHub-Copilot-for-Paired-Programming
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

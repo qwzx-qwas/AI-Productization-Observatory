@@ -1,0 +1,139 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_0816edc70f06
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-01-01_2025-01-31
+created_at: '2026-04-08T13:25:02.305953Z'
+updated_at: '2026-04-09T02:52:22.324758Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '693596090'
+canonical_url: https://github.com/mongodb-industry-solutions/Insurance-image-search
+title: Insurance-image-search
+summary: ''
+raw_evidence_excerpt: "Insurance Image Search\n\nThis demo showcases the functionalities\
+  \ and features of the Insurance Image Search application. It leverages MongoDB's\
+  \ Vector Search capabilities to perform similarity searches on insurance-related\
+  \ images. By embedding and comparing image vectors, this demo enables users to efficiently\
+  \ search for visually similar images, streamlining processes in the insurance industry.\n\
+  \nWhere MongoDB Shines?\n\n- **Vector Storage and Similarity Search:** MongoDB\u2019\
+  s flexible schema and Atlas Vector Search capabilities make it ideal for storing\
+  \ image embeddings and running efficient similarity comparisons. In this demo, the\
+  \ embeddings of car crash images are seamlessly stored and queried to find visually\
+  \ similar images, enabling faster claims assessments and decision-making.\n\n- **Rich\
+  \ Query Capabilities:** MongoDB combines vector search with traditional database\
+  \ queries, allowing structured fields (e.g., claim costs, dates, car models) to\
+  \ be queried alongside unstructured data. This hybrid search model streamlines claim\
+  \ cost estimation by enabling comprehensive searches within a single database.\n\
+  \n- **Scalability and Performance:** MongoDB\u2019s distributed architecture ensures\
+  \ the ability to scale horizontally, making it easy to handle large datasets of\
+  \ image embeddings and metadata, ensuring lightning-fast searches and high availability.\n\
+  \n- **Ease of Integration for AI Workflows:** MongoDB pairs seamlessly with AI/ML\
+  \ use cases by acting as the backbone for storing and analyzing embeddings. This\
+  \ enables smooth integration of pre-trained ML models with real-time or batch similarity\
+  \ searches.\n\nLearn more about MongoDB here.\n\nTech Stack\n\nFrontend - **Jupyter\
+  \ Notebooks** are used to create interactive data exploration and visualization\
+  \ tools in this demo, providing an environment for running code and displaying results\
+  \ inline. This setup is ideal for iterative development and analysis.\n\nBackend\
+  \ - **Database**: MongoDB Atlas a fully managed cloud database service, is chosen\
+  \ for its ease of use, scalability, and ability to efficiently handle and query\
+  \ JSON-like documentary data. Its built-in vector search capabilities enable fast\
+  \ and accurate similarity searches on image embeddings.\n\n- **Language**: Python\
+  \ utilized for its robust ecosystem of libraries suited for machine learning and\
+  \ data processing tasks.\n\nPrerequisites\n\nBefore setting up the Insurance Image\
+  \ Search demo, ensure that you have the following prerequisites installed and configured\
+  \ on your system:\n\n- Python 3.10 or above - MongoDB Atlas Cluster\n\nCreating\
+  \ Search Index\n\nTo optimize your data retrieval times and enable efficient search\
+  \ operations, you might need to create an index, particularly if using MongoDB Atlas\
+  \ Search.\n\nSetup a Search Index: 1. Navigate to your MongoDB Atlas Cluster. 2.\
+  \ Go to the \"Collections\" tab and select the appropriate collection. 3. Open the\
+  \ \"Search\" tab and click on \"Create Search Index\". 4. Use the Following Index\
+  \ Definition:\n\nCopy and paste the JSON document below into the index configuration\
+  \ field to define an efficient search configuration for your collection:\n\nAdding\
+  \ Environment Variables\n\nTo connect your Jupyter Notebook to your MongoDB cluster,\
+  \ you'll need to update the uri variable with the correct connection string for\
+  \ your cluster.\n\nSteps to Update the Connection URI: 1. Locate Your Connection\
+  \ String: Log in to MongoDB Atlas and navigate to your cluster. Find the connection\
+  \ string provided for your cluster.\n\n2. Modify the URI in Your Notebook: Replace\
+  \ the placeholder text in the uri variable with your actual connection details.\
+  \ Ensure you update the username, password, and cluster name as per your MongoDB\
+  \ Atlas configuration.\n\nExample\n\nHere's an example of a query of an image found\
+  \ online\n\nAnd its output"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '693596090'
+    canonical_url: https://github.com/mongodb-industry-solutions/Insurance-image-search
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -1,0 +1,171 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_232de976d928
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-03-01_2025-03-31
+created_at: '2026-04-08T15:03:34.550003Z'
+updated_at: '2026-04-09T03:07:10.500841Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '602764290'
+canonical_url: https://github.com/Azure-Samples/miyagi
+title: miyagi
+summary: Sample to envision intelligent apps with Microsoft's Copilot stack for AI-infused
+  product experiences.
+raw_evidence_excerpt: "Sample to envision intelligent apps with Microsoft's Copilot\
+  \ stack for AI-infused product experiences.\n\nProject Miyagi - Envisioning sample\
+  \ for Copilot stack\n\n> \u201CStart with the customer experience and work backwards\
+  \ for the technology\u201D - Steve Jobs > > \"Change is the only constant\" - Ancient\
+  \ wisdom\n\nProject Miyagi showcases Microsoft's Copilot Stack in an envisioning\
+  \ workshop aimed at designing, developing, and deploying enterprise-grade intelligent\
+  \ apps. By exploring both generative and traditional ML use cases, Miyagi offers\
+  \ an experiential approach to developing AI-infused product experiences that enhance\
+  \ productivity and enable hyper-personalization. Additionally, the workshop introduces\
+  \ traditional software engineers to emerging design patterns in prompt engineering,\
+  \ such as chain-of-thought and retrieval-augmentation, as well as to techniques\
+  \ like vectorization for long-term memory, fine-tuning of OSS models, agent-like\
+  \ orchestration, and plugins or tools for augmenting and grounding LLMs.\n\n> **Note**\
+  \ > *Work in Progress*. Meanwhile, signup at intelligentapp.dev for updates and\
+  \ checkout our related repo that showcases Generative AI capabilities for cloud-native,\
+  \ event-driven microservices: Azure/reddog-solutions. > > :tv: For a preview, catch\
+  \ the recording on Cosmos DB Live TV >\n\nThe project includes examples of usage\
+  \ for Semantic Kernel, Promptflow, LlamaIndex, LangChain, vector stores (Azure AI\
+  \ Search, CosmosDB Postgres pgvector, and generative image utilities such as DreamFusion\
+  \ and ControlNet. Additionally, it features fine-tuned foundation Models from AzureML\
+  \ such as Llama2 and Phi-2. Utilize this project to gain insights as you modernize\
+  \ and transform your applications with AI and fine-tune your private data to build\
+  \ your own Copilots.\n\nThis polyglot codebase relies on a multitude of microservices,\
+  \ implementing several use cases using our Copilot stack. It includes generative\
+  \ text and images for personalized financial coaching, summarization, and agent-like\
+  \ orchestration. Built on a cloud-native event-diven architecture (EDA) backbone,\
+  \ the design and codebase ensures enterprise-grade quality attributes such as availability,\
+  \ scalability, and maintainability.\n\nEmbark on a journey to transform your applications\
+  \ into cutting-edge, intelligent systems with the self-guided workshop and discover\
+  \ the art of the possible.\n\nPartial Implementations\n\nDue to the rapid pace of\
+  \ advancements in foundation models, we are incrementally implementing use cases\
+  \ for Miyagi in the experiments folder. So far, we have the following implemented:\n\
+  \n1. MVP with Personalize (Synthesis via Semantic Kernel) and Chat on Azure Container\
+  \ Apps. 1. Detailed breakdown and implementations 1. Quickstart with RaG 1. Agents\
+  \ with Assistants API 1. Agents with Autogen 1. VSCode extension for GitHub Copilot\
+  \ Agent 1. Miyagi ChatGPT Plugin 1. Knowledge Graph memory using Langchain's entity\
+  \ cache 1. Qdrant vector store for embeddings via Langchain 1. MS Graph API intent\
+  \ invoked via Semantic Kernel's skills 1. Miyagi prompt engineered chat interaction\
+  \ using LangChain's PromptTemplate 1. Azure OpenAI GPT-3.5 basic flow 1. GPT-3.5-turbo\
+  \ and Whisper-1 usage to transcribe audio and demonstrate few-shot example 1. DeepSpeed\
+  \ Chat MiyagiGPT (BYO Weights w/ RLHF - Reinforcement Learning from Human Feedback)\
+  \ - coming soon\n\nFrontend Interaction with foundation models is more than chat.\
+  \ This sample shows a few use cases\n\nVSCode extension for GitHub Copilot Agent\n\
+  \nArchitecture\n\nHigh-level logical architecture\n\nSemantic Kernel Orchestration\
+  \ for Miyagi usecase\n\nIn-context learning flow\n\n30k foot view Typical AI Application\n\
+  \nAI Application in Azure\n\nPrompt Flow\n\nOSS Pre-trained Foundation Models\n\n\
+  Initial ideation for EDA + SK flow\n\nGenerative image use case architecture with\
+  \ Dreambooth This will be similar to reddog product image generation use case.\n\
+  \nTech Stack\n\nCopilot Stack\n\nServices and capabilities\n\n- Azure OpenAI - Semantic\
+  \ Kernel - LangChain - LlamaIndex - GitHub Copilot Agent - AI Studio - AI Search\
+  \ - AI Speech - AzureML PromptFlow - TypeChat - Kernel-memory - AutoGen - TaskWeaver\
+  \ - Azure Functions - APIM - Service Bus - Event Grid - Logic Apps - AKS / ACA -\
+  \ Cosmos DB - Github Actions - Azure Monitor - Azure DB for PostgreSQL - Azure Redis\
+  \ Cache - Azure Storage\n\nContributing\n\nThis project welcomes contributions and\
+  \ suggestions. Most contributions require you to agree to a Contributor License\
+  \ Agreement (CLA) declaring that you have the right to, and actually do, grant us\
+  \ the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.\n\
+  \nWhen you submit a pull request, a CLA bot will automatically determine whether\
+  \ you need to provide a CLA and decorate the PR appropriately (e.g., status check,\
+  \ comment). Simply follow the instructions provided by the bot. You will only need\
+  \ to do this once across all repos using our CLA.\n\nThis project has adopted the\
+  \ Microsoft Open Source Code of Conduct. For more information see the Code of Conduct\
+  \ FAQ or contact opencode@microsoft.com with any additional questions or comments.\n\
+  \nDisclaimer\n\nThis software is provided for demonstration purposes only. It is\
+  \ not intended to be relied upon for any purpose. The creators of this software\
+  \ make no representations or warranties of any kind, express or implied, about the\
+  \ completeness, accuracy, reliability, suitability or availability with respect\
+  \ to the software or the information, products, services, or related graphics contained\
+  \ in the software for any purpose. Any reliance you place on such information is\
+  \ therefore strictly at your own risk.\n\nLicense\n\nThis software is provided for\
+  \ demonstration purposes only. It is not intended to be relied upon for any purpose.\
+  \ The software is provided \u201Cas is\u201D and without any warranties, express\
+  \ or implied. The software is not intended to be used for any commercial purpose.\
+  \ The software is provided solely for demonstration purposes and should not be used\
+  \ for any other purpose. The software is provided without any warranty of any kind,\
+  \ either express or implied, including, but not limited to, the implied warranties\
+  \ of merchantability, fitness for a particular purpose, or non-infringement. The\
+  \ software is provided \u201Cas is\u201D and without any warranty of any kind. The\
+  \ user assumes all risk and responsibility for the use of the software."
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '602764290'
+    canonical_url: https://github.com/Azure-Samples/miyagi
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

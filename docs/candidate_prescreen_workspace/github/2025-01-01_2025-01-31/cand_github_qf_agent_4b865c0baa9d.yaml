@@ -1,0 +1,218 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_4b865c0baa9d
+candidate_batch_id: candidate_batch_github_qf_agent_2025-01-01_2025-01-31
+created_at: '2026-04-08T12:42:33.398691Z'
+updated_at: '2026-04-09T02:50:35.590087Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '617325145'
+canonical_url: https://github.com/noahshinn/reflexion
+title: reflexion
+summary: '[NeurIPS 2023] Reflexion: Language Agents with Verbal Reinforcement Learning'
+raw_evidence_excerpt: '[NeurIPS 2023] Reflexion: Language Agents with Verbal Reinforcement
+  Learning
+
+
+  This repo holds the code, demos, and log files for Reflexion: Language Agents with
+  Verbal Reinforcement Learning by Noah Shinn, Federico Cassano, Edward Berman, Ashwin
+  Gopinath, Karthik Narasimhan, Shunyu Yao.
+
+
+  We have released the LeetcodeHardGym here
+
+
+  To Run: reasoning (HotPotQA)
+
+
+  We have provided a set of notebooks to easily run, explore, and interact with the
+  results of the reasoning experiments. Each experiment consists of a random sample
+  of 100 questions from the HotPotQA distractor dataset. Each question in the sample
+  is attempted by an agent with a specific type and reflexion strategy.
+
+
+  Setup
+
+
+  To get started:
+
+
+  1. Clone this repo and move to the HotPotQA directory:
+
+
+  2. Install the module dependencies into your environment:
+
+
+  3. Set `OPENAI_API_KEY` environment variable to your OpenAI API key:
+
+
+  Agent Types
+
+
+  Agent type is determined by the notebook you choose to run. The available agent
+  types include:
+
+
+  - `ReAct` - ReAct Agent
+
+
+  - `CoT_context` - CoT Agent given supporting context about the question
+
+
+  - `CoT_no_context` - CoT Agent given no supporting context about the question
+
+
+  The notebook for each agent type is located in the `./hotpot_runs/notebooks` directory.
+
+
+  Reflexion Strategies
+
+
+  Each notebook allows you to specify the reflexion strategy to be used by the agents.
+  The available reflexion strategies, which are defined in an `Enum`, include:
+
+
+  - `ReflexionStrategy.NONE` - The agent is not given any information about its last
+  attempt.
+
+
+  - `ReflexionStrategy.LAST_ATTEMPT` - The agent is given its reasoning trace from
+  its last attempt on the question as context.
+
+
+  - `ReflexionStrategy.REFLEXION` - The agent is given its self-reflection on the
+  last attempt as context.
+
+
+  - `ReflexionStrategy.LAST_ATTEMPT_AND_REFLEXION` - The agent is given both its reasoning
+  trace and self-reflection on the last attempt as context.
+
+
+  To Run: decision-making (AlfWorld)
+
+
+  Clone this repo and move to the AlfWorld directory
+
+
+  Specify the run parameters in `./run_reflexion.sh`. `num_trials`: number of iterative
+  learning steps `num_envs`: number of task-environment pairs per trial `run_name`:
+  the name for this run `use_memory`: use persisting memory to store self-reflections
+  (turn off to run a baseline run) `is_resume`: use logging directory to resume a
+  previous run `resume_dir`: the logging directory from which to resume the previous
+  run `start_trial_num`: if resume run, then the trial number of which to start
+
+
+  Run the trial
+
+
+  The logs will be sent to `./root/ `.
+
+
+  Another Note
+
+
+  Due to the nature of these experiments, it may not be feasible for individual developers
+  to rerun the results as GPT-4 has limited access and significant API charges. All
+  runs from the paper and additional results are logged in `./alfworld_runs/root`
+  for decision-making, `./hotpotqa_runs/root` for reasoning, and `./programming_runs/root`
+  for programming
+
+
+  Other Notes
+
+
+  Check out the original implementation here
+
+
+  Read one of the original blog posts here
+
+
+  Check out an Appl implementation here.
+
+
+  Check out an interesting type-prediction implementation here: OpenTau
+
+
+  For all questions, contact noahrshinn@gmail.com
+
+
+  Cite'
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '617325145'
+    canonical_url: https://github.com/noahshinn/reflexion
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

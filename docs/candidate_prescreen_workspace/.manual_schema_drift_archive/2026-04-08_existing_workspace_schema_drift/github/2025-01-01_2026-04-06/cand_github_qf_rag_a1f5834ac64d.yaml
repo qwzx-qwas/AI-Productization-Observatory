@@ -1,0 +1,228 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_a1f5834ac64d
+candidate_batch_id: candidate_batch_github_qf_rag_2025-01-01_2026-04-06
+created_at: '2026-04-07T13:05:58.116249Z'
+updated_at: '2026-04-07T14:33:36.062652Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2026-04-06
+time_field: pushed_at
+external_id: '856264642'
+canonical_url: https://github.com/whyashthakker/RAG
+title: RAG
+summary: RAG From Basics to Building a Working RAG Ecosystem
+raw_evidence_excerpt: 'RAG From Basics to Building a Working RAG Ecosystem
+
+
+  Running the project
+
+
+  python3.11 -m venv myenv
+
+
+  source myenv/bin/activate
+
+
+  pip install requests beautifulsoup4 langchain langchain-openai faiss-cpu numpy lxml
+  openai
+
+
+  pip install --upgrade pip
+
+
+  pip install -r requirements.txt
+
+
+  AWS Deployment Guide
+
+
+  This guide walks you through the process of deploying your application on an AWS
+  EC2 instance.
+
+
+  1. Launch EC2 Instance
+
+
+  1. Go to the Amazon AWS console and search for "EC2". 2. Click on "Launch Instance".
+  3. Provide a name for your instance.
+
+
+  View Screenshot
+
+
+  4. Select the instance type that suits your needs.
+
+
+  View Screenshot
+
+
+  2. Configure Network Settings
+
+
+  1. Click on "Edit" in the Network Settings section.
+
+
+  View Screenshot
+
+
+  2. Click on "Add security group rule".
+
+
+  View Screenshot
+
+
+  3. Add port range 8501 and set the source type to "Anywhere". 4. Click on "Launch
+  Instance".
+
+
+  View Screenshot
+
+
+  3. Connect to Your Instance
+
+
+  1. Once the instance is launched, click on the instance ID.
+
+
+  View Screenshot
+
+
+  2. Click on "Connect".
+
+
+  View Screenshot
+
+
+  4. Set Up the Environment
+
+
+  1. In the CLI, change to superuser:
+
+
+  2. Install git:
+
+
+  View Screenshot
+
+
+  3. Install Python3-pip:
+
+
+  View Screenshot
+
+
+  4. Clone your repository:
+
+
+  5. Create a Python virtual environment:
+
+
+  View Screenshot
+
+
+  6. Install necessary libraries:
+
+
+  View Screenshot
+
+
+  5. Configure and Run Your Application
+
+
+  1. Change directory to your repo:
+
+
+  2. Edit your Python file to add your API key:
+
+
+  View Screenshot
+
+
+  3. Run your script:
+
+
+  4. For continuous running of the instance even after closing the tab:
+
+
+  View Screenshot
+
+
+  Congratulations! Your application should now be deployed and running on AWS EC2.'
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2026-04-06'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2026-04-06
+    external_id: '856264642'
+    canonical_url: https://github.com/whyashthakker/RAG
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: schema_drift
+  error_message: OpenAI-compatible response must provide message.content text
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

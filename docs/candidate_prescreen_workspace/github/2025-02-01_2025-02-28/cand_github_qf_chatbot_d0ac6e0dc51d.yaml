@@ -1,0 +1,102 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_d0ac6e0dc51d
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-02-01_2025-02-28
+created_at: '2026-04-08T14:16:34.840334Z'
+updated_at: '2026-04-09T03:01:06.455143Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '792608353'
+canonical_url: https://github.com/ChatBot-All/chatbot-app
+title: chatbot-app
+summary: '"ChatBot" AI application, supporting GPT,  Gemini Pro, Cohere & Ollama models'
+raw_evidence_excerpt: "\"ChatBot\" AI application, supporting GPT, Gemini Pro, Cohere\
+  \ & Ollama models\n\nChatBot - Suppoort More Models\n\nEnglish | \u7B80\u4F53\u4E2D\
+  \u6587\n\nAI application, supporting GPT, Gemini Pro, Cohere & Ollama models.\n\n\
+  iOS / Android / macOS / Telegram\n\nFeature\n\n> * Support GPT, Gemini Pro, DeepSeek,\
+  \ Kimi, \u901A\u4E49\u5343\u95EE, \u667A\u8C31, DeepSeek, Kimi, \u96F6\u4E00\u4E07\
+  \u7269, MiniMax, Cohere, \u6587\u5FC3\u4E00\u8A00 & Ollama models >* Privacy first,\
+  \ all data is stored locally >* Responsive design, dark mode >* Support voice conversation\
+  \ >* Support generating pictures >* support long conversations >* support ChatGPT\
+  \ Code interpreter >* I18n: English, \u7B80\u4F53\u4E2D\u6587, \u65E5\u672C\u8A9E\
+  , \uD55C\uAD6D\uC5B4\n\nFor Android & iOS\n\nFor macOS\n\nWarning\n\n\u8BF7\u52FF\
+  \u4ECE\u5176\u4ED6\u6E20\u9053\u4E0B\u8F7D\uFF0C\u9632\u6B62 API Key \u88AB\u76D7"
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '792608353'
+    canonical_url: https://github.com/ChatBot-All/chatbot-app
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: provider_timeout
+  error_message: Relay timed out
+whitelist_reason: null
+human_review_status: pending_first_pass
+human_review_note_template_key: null
+human_review_notes: null
+human_reviewed_at: null
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import hashlib
+import json
 from pathlib import Path
 from typing import Any
 
+from src.candidate_prescreen.url_utils import normalize_candidate_url
 from src.common.errors import ContractValidationError
 from src.common.files import load_yaml
 
@@ -56,3 +58,34 @@ def candidate_id(source_code: str, window: str, query_slice_id: str | None, exte
     digest = hashlib.sha1(raw_key.encode("utf-8")).hexdigest()[:12]
     slice_key = query_slice_id or "default"
     return f"cand_{source_code}_{slice_key}_{digest}"
+
+
+def build_sample_key(source_id: str, canonical_url: str) -> str:
+    normalized_url = normalize_candidate_url(canonical_url, field_name="candidate_prescreen.canonical_url")
+    raw_key = f"{source_id}:{normalized_url}"
+    digest = hashlib.sha1(raw_key.encode("utf-8")).hexdigest()[:16]
+    return f"sample_{digest}"
+
+
+def build_analysis_run_key(
+    *,
+    sample_key: str,
+    cleaned_candidate_input: dict[str, Any],
+    prompt_version: str,
+    routing_version: str,
+    relay_client_version: str,
+    payload_builder_version: str,
+) -> str:
+    serialized_input = json.dumps(cleaned_candidate_input, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+    raw_key = "::".join(
+        [
+            sample_key,
+            serialized_input,
+            prompt_version,
+            routing_version,
+            relay_client_version,
+            payload_builder_version,
+        ]
+    )
+    digest = hashlib.sha1(raw_key.encode("utf-8")).hexdigest()[:16]
+    return f"analysis_{digest}"
