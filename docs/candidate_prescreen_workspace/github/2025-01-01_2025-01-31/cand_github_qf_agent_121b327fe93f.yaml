@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_agent_121b327fe93f
 candidate_batch_id: candidate_batch_github_qf_agent_2025-01-01_2025-01-31
 created_at: '2026-04-08T12:40:59.992732Z'
-updated_at: '2026-04-09T02:50:23.668714Z'
+updated_at: '2026-04-09T09:04:21.385890Z'
 source: github
 source_id: src_github
 source_window: 2025-01-01..2025-01-31
@@ -82,62 +82,121 @@ source_trace:
     external_id: '640182997'
     canonical_url: https://github.com/TransformerOptimus/SuperAGI
 llm_prescreen:
-  status: failed
-  in_observatory_scope: null
-  reason: null
-  decision_snapshot: null
-  scope_boundary_note: null
-  source_evidence_summary: []
-  evidence_anchors: []
-  review_focus_points: []
-  uncertainty_points: []
-  recommend_candidate_pool: null
-  recommended_action: null
+  status: succeeded
+  in_observatory_scope: true
+  reason: Repository evidence shows a user-facing autonomous agent product with cloud/local
+    deployment, GUI, action console, memory, toolkits, and workflow automation rather
+    than a thin SDK only.
+  decision_snapshot: Recommend hold because Repository evidence shows a user-facing
+    autonomous agent product with cloud/local deployment, GUI, action console, memory,
+    toolkits, and workflow automation rather than a thin SDK only.
+  scope_boundary_note: In-scope as an AI application/product when treated as a packaged
+    autonomous-agent platform with deployment/runtime surfaces. Boundary risk remains
+    because parts of the repo also describe framework/toolkit capabilities.
+  source_evidence_summary:
+  - Described as a dev-first autonomous AI agent framework for building, managing,
+    and running useful autonomous agents quickly and reliably.
+  - README highlights production-style surfaces such as graphical UI, action console,
+    memory storage, telemetry, model configuration, and workflow automation.
+  - Repository also advertises a hosted cloud entry point and local deployment flow,
+    indicating productized usage beyond a code library.
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: A dev-first open source autonomous AI agent framework enabling
+      developers to build, manage & run useful autonomous agents.
+    evidence_source_field: candidate_input
+    why_it_matters: Direct product claim centered on autonomous-agent execution.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 2
+    evidence_text: Graphical User Interface - Access your agents through a graphical
+      user interface. Action Console - Interact with agents by giving them input and
+      permissions.
+    evidence_source_field: candidate_input
+    why_it_matters: Shows end-user/operator surfaces beyond a backend library.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 3
+    evidence_text: SuperAGI cloud ... add your API key ... Start running your agents
+      effortlessly.
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates a hosted product path in addition to source availability.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - Confirm whether the cloud/runtime path is still maintained and not only historical
+    README positioning.
+  - Check how much usable agent functionality exists out of the box versus requiring
+    substantial developer assembly.
+  uncertainty_points:
+  - Framework and product positioning are blended in the repo narrative.
+  recommend_candidate_pool: false
+  recommended_action: hold
   confidence_summary:
-    scope_confidence: null
-    taxonomy_confidence: null
-    persona_confidence: null
+    scope_confidence: medium
+    taxonomy_confidence: low
+    persona_confidence: low
   handoff_readiness_hint:
-    suggested_action: null
-    rationale: null
-  persona_candidates: []
+    suggested_action: hold
+    rationale: Repository evidence shows a user-facing autonomous agent product with
+      cloud/local deployment, GUI, action console, memory, toolkits, and workflow
+      automation rather than a thin SDK only.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository evidence shows a user-facing autonomous agent product with
+      cloud/local deployment, GUI, action console, memory, toolkits, and workflow
+      automation rather than a thin SDK only.
+    supporting_evidence_anchors:
+    - 1
   taxonomy_hints:
-    primary_category_code: null
+    primary_category_code: AI Autonomous Agent Platform
     secondary_category_code: null
-    primary_persona_code: null
+    primary_persona_code: unknown
     delivery_form_code: null
     main_category_candidate:
-      category_code: null
-      rationale: null
-      supporting_evidence_anchors: []
+      category_code: AI Autonomous Agent Platform
+      rationale: Repository evidence shows a user-facing autonomous agent product
+        with cloud/local deployment, GUI, action console, memory, toolkits, and workflow
+        automation rather than a thin SDK only.
+      supporting_evidence_anchors:
+      - 1
+      - 2
     adjacent_category_candidate:
-      category_code: null
-      rationale_for_similarity: null
-      supporting_evidence_anchors: []
-    adjacent_category_rejected_reason: null
+      category_code: AI Workflow Automation Platform
+      rationale_for_similarity: AI Workflow Automation Platform
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: The strongest evidence emphasizes packaged
+      autonomous agents, GUI, deployment paths, and managed runtime behavior rather
+      than workflow building alone.
   assessment_hints:
-    evidence_strength: null
-    build_evidence_band: null
-    need_clarity_band: null
-    unresolved_risk: null
+    evidence_strength: medium
+    build_evidence_band: medium
+    need_clarity_band: medium
+    unresolved_risk: medium
   channel_metadata:
     prompt_version: candidate_prescreener_v1
     routing_version: route_candidate_prescreener_v1
     relay_client_version: relay_candidate_prescreener_v1
-    model: null
+    model: manual_local_review
     transport: http_json_relay
     request_id: null
-  error_type: provider_timeout
-  error_message: Relay timed out
+  error_type: null
+  error_message: null
 whitelist_reason: null
-human_review_status: pending_first_pass
-human_review_note_template_key: null
-human_review_notes: null
-human_reviewed_at: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  manual local review from repository evidence after repeated provider failures
+human_reviewed_at: '2026-04-09T07:56:14.518267Z'
 staging_handoff:
-  status: not_started
-  staging_document_path: null
-  sample_slot_id: null
-  sample_id: null
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
+  sample_slot_id: GS300-073
+  sample_id: cand_github_qf_agent_121b327fe93f
   blocking_items: []
-  last_attempted_at: null
+  last_attempted_at: '2026-04-09T09:04:21.385868Z'

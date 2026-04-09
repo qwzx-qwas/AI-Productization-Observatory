@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_chatbot_1248422846e9
 candidate_batch_id: candidate_batch_github_qf_chatbot_2025-02-01_2025-02-28
 created_at: '2026-04-08T14:12:39.054538Z'
-updated_at: '2026-04-09T03:00:19.422403Z'
+updated_at: '2026-04-09T09:04:39.118454Z'
 source: github
 source_id: src_github
 source_window: 2025-02-01..2025-02-28
@@ -153,62 +153,124 @@ source_trace:
     external_id: '602806555'
     canonical_url: https://github.com/whatwewant/chatgpt-for-chatbot-feishu
 llm_prescreen:
-  status: failed
-  in_observatory_scope: null
-  reason: null
-  decision_snapshot: null
-  scope_boundary_note: null
-  source_evidence_summary: []
-  evidence_anchors: []
-  review_focus_points: []
-  uncertainty_points: []
-  recommend_candidate_pool: null
-  recommended_action: null
+  status: succeeded
+  in_observatory_scope: true
+  reason: Repository evidence shows a deployable Feishu chatbot/assistant product
+    that connects OpenAI-backed chat and image generation into workplace messaging
+    flows.
+  decision_snapshot: Recommend hold because Repository evidence shows a deployable
+    Feishu chatbot/assistant product that connects OpenAI-backed chat and image generation
+    into workplace messaging flows.
+  scope_boundary_note: In-scope as an enterprise or work-assistant chatbot because
+    the repo focuses on deploying a messaging assistant into Feishu with admin controls,
+    command triggers, context retention, and enterprise setup guidance.
+  source_evidence_summary:
+  - The repo is explicitly positioned as connecting ChatGPT into Feishu for personal
+    or employee assistant use.
+  - Feature list includes long conversations, private chat, group chat, @bot replies,
+    command triggers, and custom OpenAI model selection.
+  - Deployment options include one-click deploy, binaries, Docker Compose, and enterprise
+    Feishu app configuration guidance.
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: "\u5FEB\u901F\u5C06 ChatGPT \u63A5\u5165\u98DE\u4E66\uFF0C\u57FA\
+      \u4E8E OpenAI \u5B98\u65B9\u63A5\u53E3\uFF0C\u4F5C\u4E3A\u79C1\u4EBA\u5DE5\u4F5C\
+      \u52A9\u7406\u6216\u8005\u4F01\u4E1A\u5458\u5DE5\u52A9\u7406"
+    evidence_source_field: candidate_input
+    why_it_matters: Direct product statement for workplace assistant usage.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 2
+    evidence_text: "\u652F\u6301\u957F\u5BF9\u8BDD\uFF0C\u81EA\u52A8\u8054\u7CFB\u4E0A\
+      \u4E0B\u6587 ... \u652F\u6301\u79C1\u4EBA\u5BF9\u8BDD ... \u652F\u6301\u7FA4\
+      \u804A ... \u652F\u6301 @ \u673A\u5668\u4EBA\u56DE\u590D"
+    evidence_source_field: candidate_input
+    why_it_matters: Shows sustained conversational product capability inside a workplace
+      channel.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 3
+    evidence_text: "\u4E00\u952E\u90E8\u7F72\uFF08\u63A8\u8350\uFF09 ... Docker Compose\
+      \ ... \u98DE\u4E66\u5E94\u7528\u914D\u7F6E\u548C OpenAI \u76F8\u5173\u6B65\u9AA4"
+    evidence_source_field: candidate_input
+    why_it_matters: Indicates a deployment-oriented product package rather than only
+      sample code.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - Confirm whether the Feishu/OpenAI integration path remains current with present
+    APIs and platform requirements.
+  - Assess whether enterprise assistant claims rely mostly on deployment wiring versus
+    richer product behavior.
+  uncertainty_points:
+  - The repo is older and may require freshness checks against current Feishu and
+    OpenAI interfaces.
+  recommend_candidate_pool: false
+  recommended_action: hold
   confidence_summary:
-    scope_confidence: null
-    taxonomy_confidence: null
-    persona_confidence: null
+    scope_confidence: medium
+    taxonomy_confidence: low
+    persona_confidence: low
   handoff_readiness_hint:
-    suggested_action: null
-    rationale: null
-  persona_candidates: []
+    suggested_action: hold
+    rationale: Repository evidence shows a deployable Feishu chatbot/assistant product
+      that connects OpenAI-backed chat and image generation into workplace messaging
+      flows.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository evidence shows a deployable Feishu chatbot/assistant product
+      that connects OpenAI-backed chat and image generation into workplace messaging
+      flows.
+    supporting_evidence_anchors:
+    - 1
   taxonomy_hints:
-    primary_category_code: null
+    primary_category_code: Enterprise AI Chatbot Assistant
     secondary_category_code: null
-    primary_persona_code: null
+    primary_persona_code: unknown
     delivery_form_code: null
     main_category_candidate:
-      category_code: null
-      rationale: null
-      supporting_evidence_anchors: []
+      category_code: Enterprise AI Chatbot Assistant
+      rationale: Repository evidence shows a deployable Feishu chatbot/assistant product
+        that connects OpenAI-backed chat and image generation into workplace messaging
+        flows.
+      supporting_evidence_anchors:
+      - 1
+      - 2
     adjacent_category_candidate:
-      category_code: null
-      rationale_for_similarity: null
-      supporting_evidence_anchors: []
-    adjacent_category_rejected_reason: null
+      category_code: AI Personal Assistant
+      rationale_for_similarity: AI Personal Assistant
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: The strongest evidence is workplace-chatbot
+      deployment inside Feishu, not a general standalone personal assistant app.
   assessment_hints:
-    evidence_strength: null
-    build_evidence_band: null
-    need_clarity_band: null
-    unresolved_risk: null
+    evidence_strength: medium
+    build_evidence_band: medium
+    need_clarity_band: medium
+    unresolved_risk: medium
   channel_metadata:
     prompt_version: candidate_prescreener_v1
     routing_version: route_candidate_prescreener_v1
     relay_client_version: relay_candidate_prescreener_v1
-    model: null
+    model: manual_local_review
     transport: http_json_relay
     request_id: null
-  error_type: provider_timeout
-  error_message: Relay timed out
+  error_type: null
+  error_message: null
 whitelist_reason: null
-human_review_status: pending_first_pass
-human_review_note_template_key: null
-human_review_notes: null
-human_reviewed_at: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  manual local review from repository evidence after repeated provider failures
+human_reviewed_at: '2026-04-09T07:56:14.518267Z'
 staging_handoff:
-  status: not_started
-  staging_document_path: null
-  sample_slot_id: null
-  sample_id: null
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_06_samples_076_090.yaml
+  sample_slot_id: GS300-078
+  sample_id: cand_github_qf_chatbot_1248422846e9
   blocking_items: []
-  last_attempted_at: null
+  last_attempted_at: '2026-04-09T09:04:39.118427Z'

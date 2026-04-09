@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_chatbot_160e45ec4b6d
 candidate_batch_id: candidate_batch_github_qf_chatbot_2025-01-01_2025-01-31
 created_at: '2026-04-08T13:14:18.640090Z'
-updated_at: '2026-04-09T02:53:32.749053Z'
+updated_at: '2026-04-09T08:01:43.491356Z'
 source: github
 source_id: src_github
 source_window: 2025-01-01..2025-01-31
@@ -33,58 +33,106 @@ source_trace:
     external_id: '917009069'
     canonical_url: https://github.com/CRYPTO-ui123/chatbot
 llm_prescreen:
-  status: failed
-  in_observatory_scope: null
-  reason: null
-  decision_snapshot: null
-  scope_boundary_note: null
-  source_evidence_summary: []
-  evidence_anchors: []
-  review_focus_points: []
+  status: succeeded
+  in_observatory_scope: false
+  reason: Repository is primarily a component, framework, integration artifact, or
+    starter rather than an end-user AI product.
+  decision_snapshot: Recommend reject because Repository is primarily a component,
+    framework, integration artifact, or starter rather than an end-user AI product.
+  scope_boundary_note: Current repository evidence places this candidate outside the
+    observatory staging boundary for real AI products.
+  source_evidence_summary:
+  - "\U0001F4AC Chatbot template"
+  - A simple Streamlit app that shows how to build a chatbot using OpenAI's GPT-3.5.
+  - How to run it on your own machine
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: "\U0001F4AC Chatbot template"
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 2
+    evidence_text: A simple Streamlit app that shows how to build a chatbot using
+      OpenAI's GPT-3.5.
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 3
+    evidence_text: How to run it on your own machine
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - Do not promote unless new evidence shows a concrete end-user AI product surface
+    beyond the current repository framing.
+  - If revisited later, re-check only for newly added product UX, deployment surface,
+    or clear model-driven user workflow.
   uncertainty_points: []
-  recommend_candidate_pool: null
-  recommended_action: null
+  recommend_candidate_pool: false
+  recommended_action: reject
   confidence_summary:
-    scope_confidence: null
-    taxonomy_confidence: null
-    persona_confidence: null
+    scope_confidence: medium
+    taxonomy_confidence: low
+    persona_confidence: low
   handoff_readiness_hint:
-    suggested_action: null
-    rationale: null
-  persona_candidates: []
+    suggested_action: reject
+    rationale: Repository is primarily a component, framework, integration artifact,
+      or starter rather than an end-user AI product.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository is primarily a component, framework, integration artifact,
+      or starter rather than an end-user AI product.
+    supporting_evidence_anchors:
+    - 1
   taxonomy_hints:
-    primary_category_code: null
+    primary_category_code: Out-of-Scope Candidate
     secondary_category_code: null
-    primary_persona_code: null
+    primary_persona_code: unknown
     delivery_form_code: null
     main_category_candidate:
-      category_code: null
-      rationale: null
-      supporting_evidence_anchors: []
+      category_code: Out-of-Scope Candidate
+      rationale: Repository is primarily a component, framework, integration artifact,
+        or starter rather than an end-user AI product.
+      supporting_evidence_anchors:
+      - 1
+      - 2
     adjacent_category_candidate:
-      category_code: null
-      rationale_for_similarity: null
-      supporting_evidence_anchors: []
-    adjacent_category_rejected_reason: null
+      category_code: AI Chatbot Application
+      rationale_for_similarity: AI Chatbot Application
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: The chosen primary classification better matches
+      the repository evidence available in local review.
   assessment_hints:
-    evidence_strength: null
-    build_evidence_band: null
-    need_clarity_band: null
-    unresolved_risk: null
+    evidence_strength: medium
+    build_evidence_band: medium
+    need_clarity_band: low
+    unresolved_risk: low
   channel_metadata:
     prompt_version: candidate_prescreener_v1
     routing_version: route_candidate_prescreener_v1
     relay_client_version: relay_candidate_prescreener_v1
-    model: null
+    model: manual_local_review
     transport: http_json_relay
     request_id: null
-  error_type: provider_timeout
-  error_message: Relay timed out
+  error_type: null
+  error_message: null
 whitelist_reason: null
-human_review_status: pending_first_pass
-human_review_note_template_key: null
-human_review_notes: null
-human_reviewed_at: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope; repository is primarily a component,
+  framework, integration artifact, or starter rather than an end-user AI product.
+human_reviewed_at: '2026-04-09T08:01:43.491341Z'
 staging_handoff:
   status: not_started
   staging_document_path: null

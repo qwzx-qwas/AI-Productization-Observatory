@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_rag_ae6506662683
 candidate_batch_id: candidate_batch_github_qf_rag_2026-03-31_2026-04-06
 created_at: '2026-04-06T09:15:34.996101Z'
-updated_at: '2026-04-09T03:11:26.951727Z'
+updated_at: '2026-04-09T09:04:17.284188Z'
 source: github
 source_id: src_github
 source_window: 2026-03-31..2026-04-06
@@ -213,4 +213,4 @@ staging_handoff:
   - 'Semantic duplicate source URL already present in staging: source_url::src_github::https://github.com/Shubhamsaboo/awesome-llm-apps
     at /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
     GS300-064 (cand_github_qf_rag_b8b42b7bc597)'
-  last_attempted_at: '2026-04-09T03:11:26.951704Z'
+  last_attempted_at: '2026-04-09T09:04:17.284164Z'

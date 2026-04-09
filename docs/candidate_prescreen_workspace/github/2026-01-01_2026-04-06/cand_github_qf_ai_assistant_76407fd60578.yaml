@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_ai_assistant_76407fd60578
 candidate_batch_id: candidate_batch_github_qf_ai_assistant_2026-01-01_2026-04-06
 created_at: '2026-04-06T11:47:51.072802Z'
-updated_at: '2026-04-06T11:48:19.845490Z'
+updated_at: '2026-04-09T08:03:22.360210Z'
 source: github
 source_id: src_github
 source_window: 2026-01-01..2026-04-06
@@ -248,10 +248,9 @@ human_review_notes: boundary with internal tooling unclear; Human reviewer shoul
   assistant applications for end users. evidence_strength=medium review_source=existing_llm_prescreen
 human_reviewed_at: '2026-04-06T11:48:19.845459Z'
 staging_handoff:
-  status: blocked
+  status: not_started
   staging_document_path: null
   sample_slot_id: null
   sample_id: null
-  blocking_items:
-  - candidate first-pass review resolved to on_hold
+  blocking_items: []
   last_attempted_at: '2026-04-06T11:48:19.845484Z'

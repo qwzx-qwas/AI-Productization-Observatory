@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_ai_workflow_d435178c6114
 candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-01-01_2025-01-31
 created_at: '2026-04-08T13:22:59.715430Z'
-updated_at: '2026-04-09T02:53:08.720158Z'
+updated_at: '2026-04-09T08:01:43.333740Z'
 source: github
 source_id: src_github
 source_window: 2025-01-01..2025-01-31
@@ -95,58 +95,119 @@ source_trace:
     external_id: '810681653'
     canonical_url: https://github.com/luandev/ComfyUI-CrewAI
 llm_prescreen:
-  status: failed
-  in_observatory_scope: null
-  reason: null
-  decision_snapshot: null
-  scope_boundary_note: null
-  source_evidence_summary: []
-  evidence_anchors: []
-  review_focus_points: []
-  uncertainty_points: []
-  recommend_candidate_pool: null
-  recommended_action: null
+  status: succeeded
+  in_observatory_scope: true
+  reason: Repository shows plausible workflow product signals, but product boundary
+    or delivery maturity remains too unclear for direct staging promotion.
+  decision_snapshot: Recommend hold because Repository shows plausible workflow product
+    signals, but product boundary or delivery maturity remains too unclear for direct
+    staging promotion.
+  scope_boundary_note: Potentially in-scope, but repository evidence still mixes product
+    claims with framework, research, or integration-artifact signals.
+  source_evidence_summary:
+  - This project aims to integrate Crew AI's multi-agent collaboration framework into
+    the ComfyUI environment. By combining the strengths of Crew AI's role-based, collaborative
+    AI agent system with ComfyUI's intuitive interface, we will create a robust platform
+    for managing and executing complex AI tasks seamlessly
+  - "\U0001F4CEComfyUI-CrewAI"
+  - Crafting high-quality prompts is essential for generating images or other content,
+    but it can be challenging and time-consuming to find the right words, structure,
+    or variations to achieve the desired result.
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: This project aims to integrate Crew AI's multi-agent collaboration
+      framework into the ComfyUI environment. By combining the strengths of Crew AI's
+      role-based, collaborative AI agent system with ComfyUI's intuitive interface,
+      we will create a robust platform for managing and executing complex AI tasks
+      seamlessly
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 2
+    evidence_text: "\U0001F4CEComfyUI-CrewAI"
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 3
+    evidence_text: Crafting high-quality prompts is essential for generating images
+      or other content, but it can be challenging and time-consuming to find the right
+      words, structure, or variations to achieve the desired result.
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - Confirm whether this repo is a packaged product experience versus a framework,
+    research artifact, or integration layer.
+  - Verify whether claimed AI functionality is currently runnable and central to the
+    repository, not only aspirational.
+  uncertainty_points:
+  - Boundary between product, framework, or demo remains unresolved from local repository
+    evidence alone.
+  recommend_candidate_pool: false
+  recommended_action: hold
   confidence_summary:
-    scope_confidence: null
-    taxonomy_confidence: null
-    persona_confidence: null
+    scope_confidence: low
+    taxonomy_confidence: low
+    persona_confidence: low
   handoff_readiness_hint:
-    suggested_action: null
-    rationale: null
-  persona_candidates: []
+    suggested_action: hold
+    rationale: Repository shows plausible workflow product signals, but product boundary
+      or delivery maturity remains too unclear for direct staging promotion.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository shows plausible workflow product signals, but product boundary
+      or delivery maturity remains too unclear for direct staging promotion.
+    supporting_evidence_anchors:
+    - 1
   taxonomy_hints:
-    primary_category_code: null
+    primary_category_code: AI Workflow Automation Platform
     secondary_category_code: null
-    primary_persona_code: null
+    primary_persona_code: unknown
     delivery_form_code: null
     main_category_candidate:
-      category_code: null
-      rationale: null
-      supporting_evidence_anchors: []
+      category_code: AI Workflow Automation Platform
+      rationale: Repository shows plausible workflow product signals, but product
+        boundary or delivery maturity remains too unclear for direct staging promotion.
+      supporting_evidence_anchors:
+      - 1
+      - 2
     adjacent_category_candidate:
-      category_code: null
-      rationale_for_similarity: null
-      supporting_evidence_anchors: []
-    adjacent_category_rejected_reason: null
+      category_code: AI Agent Platform
+      rationale_for_similarity: AI Agent Platform
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: The chosen primary classification better matches
+      the repository evidence available in local review.
   assessment_hints:
-    evidence_strength: null
-    build_evidence_band: null
-    need_clarity_band: null
-    unresolved_risk: null
+    evidence_strength: low
+    build_evidence_band: low
+    need_clarity_band: medium
+    unresolved_risk: medium
   channel_metadata:
     prompt_version: candidate_prescreener_v1
     routing_version: route_candidate_prescreener_v1
     relay_client_version: relay_candidate_prescreener_v1
-    model: null
+    model: manual_local_review
     transport: http_json_relay
     request_id: null
-  error_type: provider_timeout
-  error_message: Relay timed out
+  error_type: null
+  error_message: null
 whitelist_reason: null
-human_review_status: pending_first_pass
-human_review_note_template_key: null
-human_review_notes: null
-human_reviewed_at: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear; product boundary or delivery
+  maturity remains unclear from repository evidence
+human_reviewed_at: '2026-04-09T08:01:43.333725Z'
 staging_handoff:
   status: not_started
   staging_document_path: null

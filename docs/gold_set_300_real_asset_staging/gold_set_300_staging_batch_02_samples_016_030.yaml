@@ -141,7 +141,7 @@ samples:
       onboarding assistant targets a concrete employee-facing workflow and strengthens
       HR coverage.
     human_reviewed_at: '2026-04-02T08:40:00Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:10:59.387540Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:49.648706Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_chatbot_2e131b365f3d.yaml
 - slot_index: 17
   sample_slot_id: GS300-017
@@ -263,7 +263,7 @@ samples:
       support escalation and handoff summaries are concrete customer-service product
       behavior.
     human_reviewed_at: '2026-04-02T08:40:00Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:01.077798Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:51.303290Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_chatbot_9bfce06449be.yaml
 - slot_index: 18
   sample_slot_id: GS300-018
@@ -384,7 +384,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       reply drafting and queue summaries are specific support-team workflow features.
     human_reviewed_at: '2026-04-02T08:40:00Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:02.587612Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:52.793017Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_copilot_331b4e413b06.yaml
 - slot_index: 19
   sample_slot_id: GS300-019
@@ -506,7 +506,7 @@ samples:
       multi-agent public-opinion analysis assistant presents a concrete user-facing
       analysis workflow and adds monitoring/insight coverage.
     human_reviewed_at: '2026-04-02T09:05:00Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:07.201283Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:57.389774Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-08_2026-03-15/cand_github_qf_agent_70742258cb36.yaml
 - slot_index: 20
   sample_slot_id: GS300-020
@@ -627,7 +627,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:10:52.550695Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:42.849222Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_agent_6fe74c69c936.yaml
 - slot_index: 21
   sample_slot_id: GS300-021
@@ -748,7 +748,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:10:53.960622Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:44.149123Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_agent_fd1bd3b5d6a5.yaml
 - slot_index: 22
   sample_slot_id: GS300-022
@@ -869,7 +869,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:10:55.263766Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:45.438712Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_assistant_865f0a09efcf.yaml
 - slot_index: 23
   sample_slot_id: GS300-023
@@ -990,7 +990,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:10:55.809064Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:45.989588Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_assistant_c9cdf911f234.yaml
 - slot_index: 24
   sample_slot_id: GS300-024
@@ -1111,7 +1111,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:10:56.709955Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:46.953006Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_workflow_638c3bd4b7dd.yaml
 - slot_index: 25
   sample_slot_id: GS300-025
@@ -1232,7 +1232,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:10:58.421541Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:48.716488Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_workflow_fdab4f9a402e.yaml
 - slot_index: 26
   sample_slot_id: GS300-026
@@ -1353,7 +1353,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:10:59.956451Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:50.191443Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_chatbot_3430687b66a1.yaml
 - slot_index: 27
   sample_slot_id: GS300-027
@@ -1474,7 +1474,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:00.512120Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:50.755043Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_chatbot_404e2a1bb677.yaml
 - slot_index: 28
   sample_slot_id: GS300-028
@@ -1595,7 +1595,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:01.636428Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:51.852574Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_copilot_10df34952758.yaml
 - slot_index: 29
   sample_slot_id: GS300-029
@@ -1716,7 +1716,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:03.522377Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:53.732483Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_copilot_5d7b8f2d002d.yaml
 - slot_index: 30
   sample_slot_id: GS300-030
@@ -1837,5 +1837,5 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:04.058034Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:54.265783Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_rag_33e7a1d5086b.yaml

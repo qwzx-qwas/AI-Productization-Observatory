@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_rag_293bf7687fae
 candidate_batch_id: candidate_batch_github_qf_rag_2025-03-01_2025-03-31
 created_at: '2026-04-08T14:44:54.325956Z'
-updated_at: '2026-04-09T03:08:08.811654Z'
+updated_at: '2026-04-09T09:03:57.622153Z'
 source: github
 source_id: src_github
 source_window: 2025-03-01..2025-03-31
@@ -81,62 +81,114 @@ source_trace:
     external_id: '687282258'
     canonical_url: https://github.com/run-llama/sec-insights
 llm_prescreen:
-  status: failed
-  in_observatory_scope: null
-  reason: null
-  decision_snapshot: null
-  scope_boundary_note: null
-  source_evidence_summary: []
-  evidence_anchors: []
-  review_focus_points: []
-  uncertainty_points: []
-  recommend_candidate_pool: null
-  recommended_action: null
+  status: succeeded
+  in_observatory_scope: true
+  reason: Repository evidence presents this candidate as a concrete RAG application
+    with deployable or user-facing product behavior.
+  decision_snapshot: Recommend candidate_pool because Repository evidence presents
+    this candidate as a concrete RAG application with deployable or user-facing product
+    behavior.
+  scope_boundary_note: In-scope, but downstream formal annotation should still verify
+    current maintenance and real usability from repository artifacts.
+  source_evidence_summary:
+  - A real world full-stack application using LlamaIndex
+  - "SEC Insights \U0001F3E6"
+  - SEC Insights uses the Retrieval Augmented Generation (RAG) capabilities of LlamaIndex
+    to answer questions about SEC 10-K & 10-Q documents.
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: A real world full-stack application using LlamaIndex
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 2
+    evidence_text: "SEC Insights \U0001F3E6"
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 3
+    evidence_text: SEC Insights uses the Retrieval Augmented Generation (RAG) capabilities
+      of LlamaIndex to answer questions about SEC 10-K & 10-Q documents.
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - Verify that the advertised product surface is still runnable from the repository
+    and not only described in README text.
+  - Check whether the packaged experience offers end-user value beyond a developer-only
+    component or demo.
+  uncertainty_points:
+  - Operational maturity and present-day maintenance should be checked during later
+    formal annotation.
+  recommend_candidate_pool: true
+  recommended_action: candidate_pool
   confidence_summary:
-    scope_confidence: null
-    taxonomy_confidence: null
-    persona_confidence: null
+    scope_confidence: medium
+    taxonomy_confidence: low
+    persona_confidence: low
   handoff_readiness_hint:
-    suggested_action: null
-    rationale: null
-  persona_candidates: []
+    suggested_action: candidate_pool
+    rationale: Repository evidence presents this candidate as a concrete RAG application
+      with deployable or user-facing product behavior.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository evidence presents this candidate as a concrete RAG application
+      with deployable or user-facing product behavior.
+    supporting_evidence_anchors:
+    - 1
   taxonomy_hints:
-    primary_category_code: null
+    primary_category_code: AI RAG Application
     secondary_category_code: null
-    primary_persona_code: null
+    primary_persona_code: unknown
     delivery_form_code: null
     main_category_candidate:
-      category_code: null
-      rationale: null
-      supporting_evidence_anchors: []
+      category_code: AI RAG Application
+      rationale: Repository evidence presents this candidate as a concrete RAG application
+        with deployable or user-facing product behavior.
+      supporting_evidence_anchors:
+      - 1
+      - 2
     adjacent_category_candidate:
-      category_code: null
-      rationale_for_similarity: null
-      supporting_evidence_anchors: []
-    adjacent_category_rejected_reason: null
+      category_code: AI Search / Knowledge Assistant
+      rationale_for_similarity: AI Search / Knowledge Assistant
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: The chosen primary classification better matches
+      the repository evidence available in local review.
   assessment_hints:
-    evidence_strength: null
-    build_evidence_band: null
-    need_clarity_band: null
-    unresolved_risk: null
+    evidence_strength: medium
+    build_evidence_band: medium
+    need_clarity_band: medium
+    unresolved_risk: medium
   channel_metadata:
     prompt_version: candidate_prescreener_v1
     routing_version: route_candidate_prescreener_v1
     relay_client_version: relay_candidate_prescreener_v1
-    model: null
+    model: manual_local_review
     transport: http_json_relay
     request_id: null
-  error_type: provider_timeout
-  error_message: Relay timed out
+  error_type: null
+  error_message: null
 whitelist_reason: null
-human_review_status: pending_first_pass
-human_review_note_template_key: null
-human_review_notes: null
-human_reviewed_at: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  manual local review from repository evidence after provider failures
+human_reviewed_at: '2026-04-09T08:01:49.587993Z'
 staging_handoff:
-  status: not_started
-  staging_document_path: null
-  sample_slot_id: null
-  sample_id: null
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+  sample_slot_id: GS300-096
+  sample_id: cand_github_qf_rag_293bf7687fae
   blocking_items: []
-  last_attempted_at: null
+  last_attempted_at: '2026-04-09T09:03:57.622130Z'

@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_agent_a7e7c2ef0a49
 candidate_batch_id: candidate_batch_github_qf_agent_2025-03-01_2025-03-31
 created_at: '2026-04-08T14:30:16.473672Z'
-updated_at: '2026-04-09T03:03:49.923581Z'
+updated_at: '2026-04-09T09:03:47.255035Z'
 source: github
 source_id: src_github
 source_window: 2025-03-01..2025-03-31
@@ -191,62 +191,168 @@ source_trace:
     external_id: '967213951'
     canonical_url: https://github.com/sfxyn/agent
 llm_prescreen:
-  status: failed
-  in_observatory_scope: null
-  reason: null
-  decision_snapshot: null
-  scope_boundary_note: null
-  source_evidence_summary: []
-  evidence_anchors: []
-  review_focus_points: []
-  uncertainty_points: []
-  recommend_candidate_pool: null
-  recommended_action: null
+  status: succeeded
+  in_observatory_scope: true
+  reason: Repository evidence presents this candidate as a concrete agent application
+    or packaged autonomous agent product with deployable or user-facing product behavior.
+  decision_snapshot: Recommend candidate_pool because Repository evidence presents
+    this candidate as a concrete agent application or packaged autonomous agent product
+    with deployable or user-facing product behavior.
+  scope_boundary_note: In-scope, but downstream formal annotation should still verify
+    current maintenance and real usability from repository artifacts.
+  source_evidence_summary:
+  - "\u4E00\u4E2A\u5F3A\u5927\u7684\u57FA\u4E8E\u5927\u8BED\u8A00\u6A21\u578B\u7684\
+    \u5C0F\u8BF4\u521B\u4F5C\u5DE5\u5177\uFF0C\u80FD\u591F\u81EA\u52A8\u5B8C\u6210\
+    \u4ECE\u521B\u610F\u6784\u601D\u5230\u6210\u54C1\u5C0F\u8BF4\u7684\u5168\u6D41\
+    \u7A0B\u521B\u4F5C\uFF0C\u76EE\u524D\u53EF\u4EE5\u505A\u5230\u4E00\u952E\u751F\
+    \u621010w\u5B57+\u5C0F\u8BF4"
+  - "\u4E00\u4E2A\u5F3A\u5927\u7684\u57FA\u4E8E\u5927\u8BED\u8A00\u6A21\u578B\u7684\
+    \u5C0F\u8BF4\u521B\u4F5C\u5DE5\u5177\uFF0C\u80FD\u591F\u81EA\u52A8\u5B8C\u6210\
+    \u4ECE\u521B\u610F\u6784\u601D\u5230\u6210\u54C1\u5C0F\u8BF4\u7684\u5168\u6D41\
+    \u7A0B\u521B\u4F5C\u3002"
+  - "\U0001F916 **AI\u9A71\u52A8\u51B3\u7B56**\uFF1AAI\u4EE3\u7406\u80FD\u5206\u6790\
+    \u521B\u4F5C\u63D0\u793A\uFF0C\u81EA\u4E3B\u51B3\u5B9A\u5C0F\u8BF4\u7C7B\u578B\
+    \u3001\u98CE\u683C\u3001\u7ED3\u6784\u7B49\u5173\u952E\u53C2\u6570 - \U0001F4DD\
+    \ **\u591A\u8F6E\u7AE0\u8282\u751F\u6210**\uFF1A\u6BCF\u7AE0\u7EA68000\u5B57\uFF0C\
+    \u901A\u8FC7\u591A\u8F6E\u751F\u6210\u8FBE\u5230\u76EE\u6807\u5B57\u6570\uFF0C\
+    \u786E\u4FDD\u5185\u5BB9\u8FDE\u8D2F - \U0001F4BE **\u72B6\u6001\u4FDD\u5B58\u4E0E\
+    \u6062\u590D**\uFF1A\u652F\u6301\u4E2D\u65AD\u6062\u590D\u521B\u4F5C\uFF0C\u5B9A\
+    \u671F\u4FDD\u5B58\u521B\u4F5C\u72B6\u6001\uFF0C\u907F\u514D\u8FDB\u5EA6\u4E22\
+    \u5931 - \U0001F504 **\u5B8C\u6574\u521B\u4F5C\u6D41\u7A0B**\uFF1A\u4ECE\u6982\
+    \u5FF5\u6784\u601D\u3001\u89D2\u8272\u8BBE\u8BA1\u5230\u7AE0\u8282\u5927\u7EB2\
+    \u548C\u5185\u5BB9\u64B0\u5199\u7684\u5168\u6D41\u7A0B\u652F\u6301 - \U0001F4CB\
+    \ **\u7ED3\u6784\u5316\u8F93\u51FA**\uFF1A\u751F\u6210\u5305\u542B\u7AE0\u8282\
+    \u3001\u6807\u9898\u7B49\u5B8C\u6574\u7ED3\u6784\u7684\u5C0F\u8BF4\u5185\u5BB9\
+    \ - \U0001F310 **\u591A\u6A21\u578B\u652F\u6301**\uFF1A\u652F\u6301\u591A\u79CD\
+    \u5927\u8BED\u8A00\u6A21\u578B\uFF0C\u9ED8\u8BA4\u4F7F\u7528\u8C46\u5305AI - \u270D\
+    \uFE0F **\u4F5C\u5BB6\u98CE\u683C\u6A21\u4EFF**\uFF1A\u652F\u6301\u6A21\u4EFF\u7279\
+    \u5B9A\u4F5C\u5BB6\u7684\u5199\u4F5C\u98CE\u683C\uFF0C\u7528\u4E8E\u5B66\u4E60\
+    \u548C\u521B\u4F5C\u53C2\u8003 - \U0001F4C8 **\u521B\u4F5C\u5F15\u5BFC\u8F85\u52A9\
+    **\uFF1A\u4E13\u4E3A\u4F5C\u5BB6\u8BBE\u8BA1\u7684\u5199\u4F5C\u628A\u63A7\u5DE5\
+    \u5177\uFF0C\u63D0\u4F9B\u7075\u611F\u548C\u6307\u5BFC"
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: "\u4E00\u4E2A\u5F3A\u5927\u7684\u57FA\u4E8E\u5927\u8BED\u8A00\u6A21\
+      \u578B\u7684\u5C0F\u8BF4\u521B\u4F5C\u5DE5\u5177\uFF0C\u80FD\u591F\u81EA\u52A8\
+      \u5B8C\u6210\u4ECE\u521B\u610F\u6784\u601D\u5230\u6210\u54C1\u5C0F\u8BF4\u7684\
+      \u5168\u6D41\u7A0B\u521B\u4F5C\uFF0C\u76EE\u524D\u53EF\u4EE5\u505A\u5230\u4E00\
+      \u952E\u751F\u621010w\u5B57+\u5C0F\u8BF4"
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 2
+    evidence_text: "\u4E00\u4E2A\u5F3A\u5927\u7684\u57FA\u4E8E\u5927\u8BED\u8A00\u6A21\
+      \u578B\u7684\u5C0F\u8BF4\u521B\u4F5C\u5DE5\u5177\uFF0C\u80FD\u591F\u81EA\u52A8\
+      \u5B8C\u6210\u4ECE\u521B\u610F\u6784\u601D\u5230\u6210\u54C1\u5C0F\u8BF4\u7684\
+      \u5168\u6D41\u7A0B\u521B\u4F5C\u3002"
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 3
+    evidence_text: "\U0001F916 **AI\u9A71\u52A8\u51B3\u7B56**\uFF1AAI\u4EE3\u7406\u80FD\
+      \u5206\u6790\u521B\u4F5C\u63D0\u793A\uFF0C\u81EA\u4E3B\u51B3\u5B9A\u5C0F\u8BF4\
+      \u7C7B\u578B\u3001\u98CE\u683C\u3001\u7ED3\u6784\u7B49\u5173\u952E\u53C2\u6570\
+      \ - \U0001F4DD **\u591A\u8F6E\u7AE0\u8282\u751F\u6210**\uFF1A\u6BCF\u7AE0\u7EA6\
+      8000\u5B57\uFF0C\u901A\u8FC7\u591A\u8F6E\u751F\u6210\u8FBE\u5230\u76EE\u6807\
+      \u5B57\u6570\uFF0C\u786E\u4FDD\u5185\u5BB9\u8FDE\u8D2F - \U0001F4BE **\u72B6\
+      \u6001\u4FDD\u5B58\u4E0E\u6062\u590D**\uFF1A\u652F\u6301\u4E2D\u65AD\u6062\u590D\
+      \u521B\u4F5C\uFF0C\u5B9A\u671F\u4FDD\u5B58\u521B\u4F5C\u72B6\u6001\uFF0C\u907F\
+      \u514D\u8FDB\u5EA6\u4E22\u5931 - \U0001F504 **\u5B8C\u6574\u521B\u4F5C\u6D41\
+      \u7A0B**\uFF1A\u4ECE\u6982\u5FF5\u6784\u601D\u3001\u89D2\u8272\u8BBE\u8BA1\u5230\
+      \u7AE0\u8282\u5927\u7EB2\u548C\u5185\u5BB9\u64B0\u5199\u7684\u5168\u6D41\u7A0B\
+      \u652F\u6301 - \U0001F4CB **\u7ED3\u6784\u5316\u8F93\u51FA**\uFF1A\u751F\u6210\
+      \u5305\u542B\u7AE0\u8282\u3001\u6807\u9898\u7B49\u5B8C\u6574\u7ED3\u6784\u7684\
+      \u5C0F\u8BF4\u5185\u5BB9 - \U0001F310 **\u591A\u6A21\u578B\u652F\u6301**\uFF1A\
+      \u652F\u6301\u591A\u79CD\u5927\u8BED\u8A00\u6A21\u578B\uFF0C\u9ED8\u8BA4\u4F7F\
+      \u7528\u8C46\u5305AI - \u270D\uFE0F **\u4F5C\u5BB6\u98CE\u683C\u6A21\u4EFF**\uFF1A\
+      \u652F\u6301\u6A21\u4EFF\u7279\u5B9A\u4F5C\u5BB6\u7684\u5199\u4F5C\u98CE\u683C\
+      \uFF0C\u7528\u4E8E\u5B66\u4E60\u548C\u521B\u4F5C\u53C2\u8003 - \U0001F4C8 **\u521B\
+      \u4F5C\u5F15\u5BFC\u8F85\u52A9**\uFF1A\u4E13\u4E3A\u4F5C\u5BB6\u8BBE\u8BA1\u7684\
+      \u5199\u4F5C\u628A\u63A7\u5DE5\u5177\uFF0C\u63D0\u4F9B\u7075\u611F\u548C\u6307\
+      \u5BFC"
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - Verify that the advertised product surface is still runnable from the repository
+    and not only described in README text.
+  - Check whether the packaged experience offers end-user value beyond a developer-only
+    component or demo.
+  uncertainty_points:
+  - Operational maturity and present-day maintenance should be checked during later
+    formal annotation.
+  recommend_candidate_pool: true
+  recommended_action: candidate_pool
   confidence_summary:
-    scope_confidence: null
-    taxonomy_confidence: null
-    persona_confidence: null
+    scope_confidence: medium
+    taxonomy_confidence: low
+    persona_confidence: low
   handoff_readiness_hint:
-    suggested_action: null
-    rationale: null
-  persona_candidates: []
+    suggested_action: candidate_pool
+    rationale: Repository evidence presents this candidate as a concrete agent application
+      or packaged autonomous agent product with deployable or user-facing product
+      behavior.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository evidence presents this candidate as a concrete agent application
+      or packaged autonomous agent product with deployable or user-facing product
+      behavior.
+    supporting_evidence_anchors:
+    - 1
   taxonomy_hints:
-    primary_category_code: null
+    primary_category_code: AI Agent Application
     secondary_category_code: null
-    primary_persona_code: null
+    primary_persona_code: unknown
     delivery_form_code: null
     main_category_candidate:
-      category_code: null
-      rationale: null
-      supporting_evidence_anchors: []
+      category_code: AI Agent Application
+      rationale: Repository evidence presents this candidate as a concrete agent application
+        or packaged autonomous agent product with deployable or user-facing product
+        behavior.
+      supporting_evidence_anchors:
+      - 1
+      - 2
     adjacent_category_candidate:
-      category_code: null
-      rationale_for_similarity: null
-      supporting_evidence_anchors: []
-    adjacent_category_rejected_reason: null
+      category_code: AI Workflow Automation Platform
+      rationale_for_similarity: AI Workflow Automation Platform
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: The chosen primary classification better matches
+      the repository evidence available in local review.
   assessment_hints:
-    evidence_strength: null
-    build_evidence_band: null
-    need_clarity_band: null
-    unresolved_risk: null
+    evidence_strength: medium
+    build_evidence_band: medium
+    need_clarity_band: medium
+    unresolved_risk: medium
   channel_metadata:
     prompt_version: candidate_prescreener_v1
     routing_version: route_candidate_prescreener_v1
     relay_client_version: relay_candidate_prescreener_v1
-    model: null
+    model: manual_local_review
     transport: http_json_relay
     request_id: null
-  error_type: provider_timeout
-  error_message: Relay timed out
+  error_type: null
+  error_message: null
 whitelist_reason: null
-human_review_status: pending_first_pass
-human_review_note_template_key: null
-human_review_notes: null
-human_reviewed_at: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  manual local review from repository evidence after provider failures
+human_reviewed_at: '2026-04-09T08:01:47.668867Z'
 staging_handoff:
-  status: not_started
-  staging_document_path: null
-  sample_slot_id: null
-  sample_id: null
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_06_samples_076_090.yaml
+  sample_slot_id: GS300-089
+  sample_id: cand_github_qf_agent_a7e7c2ef0a49
   blocking_items: []
-  last_attempted_at: null
+  last_attempted_at: '2026-04-09T09:03:47.255011Z'

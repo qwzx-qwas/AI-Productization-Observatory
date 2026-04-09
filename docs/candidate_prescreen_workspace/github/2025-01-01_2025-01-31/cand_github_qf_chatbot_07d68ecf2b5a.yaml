@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_chatbot_07d68ecf2b5a
 candidate_batch_id: candidate_batch_github_qf_chatbot_2025-01-01_2025-01-31
 created_at: '2026-04-08T13:15:46.666037Z'
-updated_at: '2026-04-09T02:53:20.258107Z'
+updated_at: '2026-04-09T08:01:43.415361Z'
 source: github
 source_id: src_github
 source_window: 2025-01-01..2025-01-31
@@ -43,58 +43,119 @@ source_trace:
     external_id: '914295384'
     canonical_url: https://github.com/RachelPol/Chatbot
 llm_prescreen:
-  status: failed
-  in_observatory_scope: null
-  reason: null
-  decision_snapshot: null
-  scope_boundary_note: null
-  source_evidence_summary: []
-  evidence_anchors: []
-  review_focus_points: []
+  status: succeeded
+  in_observatory_scope: false
+  reason: Repository does not show enough end-user product evidence to justify staging
+    promotion under the current observatory boundary.
+  decision_snapshot: Recommend reject because Repository does not show enough end-user
+    product evidence to justify staging promotion under the current observatory boundary.
+  scope_boundary_note: Current repository evidence places this candidate outside the
+    observatory staging boundary for real AI products.
+  source_evidence_summary:
+  - chatbot The aim of the project is to help novice developers enter the job market.
+    Taking a beginner programmer costs a company a lot of investment and money until
+    the developer can manage on his own, therefore, most companies will try to take
+    developers with experience only. Even if it is basic experience, it changes the
+    whole picture.
+  - The goal of the project is to take novice developers, teach them the basics (how
+    to work in a team, git, pull-request, code-review, etc.), so that when the person
+    looks for a job, it will be much easier for him / her to integrate as a junior
+    developer.
+  - The project contains code from several juniors (and me :smile:).
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: chatbot The aim of the project is to help novice developers enter
+      the job market. Taking a beginner programmer costs a company a lot of investment
+      and money until the developer can manage on his own, therefore, most companies
+      will try to take developers with experience only. Even if it is basic experience,
+      it changes the whole picture.
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 2
+    evidence_text: The goal of the project is to take novice developers, teach them
+      the basics (how to work in a team, git, pull-request, code-review, etc.), so
+      that when the person looks for a job, it will be much easier for him / her to
+      integrate as a junior developer.
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 3
+    evidence_text: The project contains code from several juniors (and me :smile:).
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - Do not promote unless new evidence shows a concrete end-user AI product surface
+    beyond the current repository framing.
+  - If revisited later, re-check only for newly added product UX, deployment surface,
+    or clear model-driven user workflow.
   uncertainty_points: []
-  recommend_candidate_pool: null
-  recommended_action: null
+  recommend_candidate_pool: false
+  recommended_action: reject
   confidence_summary:
-    scope_confidence: null
-    taxonomy_confidence: null
-    persona_confidence: null
+    scope_confidence: medium
+    taxonomy_confidence: low
+    persona_confidence: low
   handoff_readiness_hint:
-    suggested_action: null
-    rationale: null
-  persona_candidates: []
+    suggested_action: reject
+    rationale: Repository does not show enough end-user product evidence to justify
+      staging promotion under the current observatory boundary.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository does not show enough end-user product evidence to justify
+      staging promotion under the current observatory boundary.
+    supporting_evidence_anchors:
+    - 1
   taxonomy_hints:
-    primary_category_code: null
+    primary_category_code: Out-of-Scope Candidate
     secondary_category_code: null
-    primary_persona_code: null
+    primary_persona_code: unknown
     delivery_form_code: null
     main_category_candidate:
-      category_code: null
-      rationale: null
-      supporting_evidence_anchors: []
+      category_code: Out-of-Scope Candidate
+      rationale: Repository does not show enough end-user product evidence to justify
+        staging promotion under the current observatory boundary.
+      supporting_evidence_anchors:
+      - 1
+      - 2
     adjacent_category_candidate:
-      category_code: null
-      rationale_for_similarity: null
-      supporting_evidence_anchors: []
-    adjacent_category_rejected_reason: null
+      category_code: AI Chatbot Application
+      rationale_for_similarity: AI Chatbot Application
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: The chosen primary classification better matches
+      the repository evidence available in local review.
   assessment_hints:
-    evidence_strength: null
-    build_evidence_band: null
-    need_clarity_band: null
-    unresolved_risk: null
+    evidence_strength: medium
+    build_evidence_band: medium
+    need_clarity_band: low
+    unresolved_risk: low
   channel_metadata:
     prompt_version: candidate_prescreener_v1
     routing_version: route_candidate_prescreener_v1
     relay_client_version: relay_candidate_prescreener_v1
-    model: null
+    model: manual_local_review
     transport: http_json_relay
     request_id: null
-  error_type: provider_timeout
-  error_message: Relay timed out
+  error_type: null
+  error_message: null
 whitelist_reason: null
-human_review_status: pending_first_pass
-human_review_note_template_key: null
-human_review_notes: null
-human_reviewed_at: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope; repository does not show enough end-user
+  product evidence to justify staging promotion under the current observatory boundary.
+human_reviewed_at: '2026-04-09T08:01:43.415343Z'
 staging_handoff:
   status: not_started
   staging_document_path: null

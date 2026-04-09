@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_ai_workflow_49e2e52607b9
 candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-02-01_2025-02-28
 created_at: '2026-04-08T14:22:42.939181Z'
-updated_at: '2026-04-09T02:59:20.903113Z'
+updated_at: '2026-04-09T09:04:36.539144Z'
 source: github
 source_id: src_github
 source_window: 2025-02-01..2025-02-28
@@ -69,62 +69,117 @@ source_trace:
     external_id: '738425296'
     canonical_url: https://github.com/craftgen/craftgen
 llm_prescreen:
-  status: failed
-  in_observatory_scope: null
-  reason: null
-  decision_snapshot: null
-  scope_boundary_note: null
-  source_evidence_summary: []
-  evidence_anchors: []
-  review_focus_points: []
-  uncertainty_points: []
-  recommend_candidate_pool: null
-  recommended_action: null
+  status: succeeded
+  in_observatory_scope: true
+  reason: Repository evidence shows a no-code AI workflow platform with agent capabilities,
+    model management, observability, and graph-based execution intended for practical
+    deployment.
+  decision_snapshot: Recommend hold because Repository evidence shows a no-code AI
+    workflow platform with agent capabilities, model management, observability, and
+    graph-based execution intended for practical deployment.
+  scope_boundary_note: In-scope as an AI workflow product because the repo emphasizes
+    a visual workflow canvas, model/provider integration, agent tooling, and production-oriented
+    monitoring for both technical and non-technical users.
+  source_evidence_summary:
+  - Craftgen is positioned as an open-source, no-code platform for integrating AI
+    into workflows.
+  - The repo highlights workflow building, model management, agent capabilities, and
+    real-time monitoring.
+  - Graph architecture, actor model, offline support, and broad provider compatibility
+    suggest productized platform intent.
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: Integrating AI into every workflow with our open-source, no-code
+      platform
+    evidence_source_field: candidate_input
+    why_it_matters: Direct workflow-platform product positioning.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 2
+    evidence_text: 'Workflow: Build and test powerful AI workflows on a visual canvas'
+    evidence_source_field: candidate_input
+    why_it_matters: Shows concrete end-user workflow surface.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 3
+    evidence_text: Agent capabilities ... model management ... real-time monitoring
+      for fast prototyping to production.
+    evidence_source_field: candidate_input
+    why_it_matters: Signals broader product/platform readiness beyond a narrow demo.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - Verify how much of the no-code workflow surface is production-ready versus evolving
+    platform vision.
+  - Check whether the marketplace and offline claims are implemented or still roadmap-level.
+  uncertainty_points:
+  - The repo openly describes itself as a work in progress.
+  recommend_candidate_pool: false
+  recommended_action: hold
   confidence_summary:
-    scope_confidence: null
-    taxonomy_confidence: null
-    persona_confidence: null
+    scope_confidence: medium
+    taxonomy_confidence: low
+    persona_confidence: low
   handoff_readiness_hint:
-    suggested_action: null
-    rationale: null
-  persona_candidates: []
+    suggested_action: hold
+    rationale: Repository evidence shows a no-code AI workflow platform with agent
+      capabilities, model management, observability, and graph-based execution intended
+      for practical deployment.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository evidence shows a no-code AI workflow platform with agent
+      capabilities, model management, observability, and graph-based execution intended
+      for practical deployment.
+    supporting_evidence_anchors:
+    - 1
   taxonomy_hints:
-    primary_category_code: null
+    primary_category_code: AI Workflow Automation Platform
     secondary_category_code: null
-    primary_persona_code: null
+    primary_persona_code: unknown
     delivery_form_code: null
     main_category_candidate:
-      category_code: null
-      rationale: null
-      supporting_evidence_anchors: []
+      category_code: AI Workflow Automation Platform
+      rationale: Repository evidence shows a no-code AI workflow platform with agent
+        capabilities, model management, observability, and graph-based execution intended
+        for practical deployment.
+      supporting_evidence_anchors:
+      - 1
+      - 2
     adjacent_category_candidate:
-      category_code: null
-      rationale_for_similarity: null
-      supporting_evidence_anchors: []
-    adjacent_category_rejected_reason: null
+      category_code: AI Agent Platform
+      rationale_for_similarity: AI Agent Platform
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: The dominant surface is a visual workflow platform;
+      agent features appear as one capability inside that broader workflow product.
   assessment_hints:
-    evidence_strength: null
-    build_evidence_band: null
-    need_clarity_band: null
-    unresolved_risk: null
+    evidence_strength: medium
+    build_evidence_band: medium
+    need_clarity_band: medium
+    unresolved_risk: medium
   channel_metadata:
     prompt_version: candidate_prescreener_v1
     routing_version: route_candidate_prescreener_v1
     relay_client_version: relay_candidate_prescreener_v1
-    model: null
+    model: manual_local_review
     transport: http_json_relay
     request_id: null
-  error_type: provider_timeout
-  error_message: Relay timed out
+  error_type: null
+  error_message: null
 whitelist_reason: null
-human_review_status: pending_first_pass
-human_review_note_template_key: null
-human_review_notes: null
-human_reviewed_at: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging;
+  manual local review from repository evidence after repeated provider failures
+human_reviewed_at: '2026-04-09T07:56:14.518267Z'
 staging_handoff:
-  status: not_started
-  staging_document_path: null
-  sample_slot_id: null
-  sample_id: null
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_06_samples_076_090.yaml
+  sample_slot_id: GS300-077
+  sample_id: cand_github_qf_ai_workflow_49e2e52607b9
   blocking_items: []
-  last_attempted_at: null
+  last_attempted_at: '2026-04-09T09:04:36.539120Z'

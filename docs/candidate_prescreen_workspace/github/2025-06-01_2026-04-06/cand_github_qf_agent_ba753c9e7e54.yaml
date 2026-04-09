@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_agent_ba753c9e7e54
 candidate_batch_id: candidate_batch_github_qf_agent_2025-06-01_2026-04-06
 created_at: '2026-04-06T12:11:02.724457Z'
-updated_at: '2026-04-09T03:11:36.329930Z'
+updated_at: '2026-04-09T08:01:50.485771Z'
 source: github
 source_id: src_github
 source_window: 2025-06-01..2026-04-06
@@ -95,68 +95,119 @@ source_trace:
     external_id: '16347164'
     canonical_url: https://github.com/buildkite/agent
 llm_prescreen:
-  status: failed
-  in_observatory_scope: null
-  reason: null
-  decision_snapshot: null
-  scope_boundary_note: null
-  source_evidence_summary: []
-  evidence_anchors: []
-  review_focus_points: []
+  status: succeeded
+  in_observatory_scope: false
+  reason: Repository is primarily a component, framework, integration artifact, or
+    starter rather than an end-user AI product.
+  decision_snapshot: Recommend reject because Repository is primarily a component,
+    framework, integration artifact, or starter rather than an end-user AI product.
+  scope_boundary_note: Current repository evidence places this candidate outside the
+    observatory staging boundary for real AI products.
+  source_evidence_summary:
+  - The Buildkite Agent is an open-source toolkit written in Go for securely running
+    build jobs on any device or network
+  - Buildkite Agent
+  - "The buildkite-agent is a small, reliable, and cross-platform build runner that\
+    \ makes it easy to run automated builds on your own infrastructure. It\u2019s\
+    \ main responsibilities are polling buildkite.com for work, running build jobs,\
+    \ reporting back the status code and output log of the job, and uploading the\
+    \ job's artifacts."
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: The Buildkite Agent is an open-source toolkit written in Go for
+      securely running build jobs on any device or network
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 2
+    evidence_text: Buildkite Agent
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 3
+    evidence_text: "The buildkite-agent is a small, reliable, and cross-platform build\
+      \ runner that makes it easy to run automated builds on your own infrastructure.\
+      \ It\u2019s main responsibilities are polling buildkite.com for work, running\
+      \ build jobs, reporting back the status code and output log of the job, and\
+      \ uploading the job's artifacts."
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - Do not promote unless new evidence shows a concrete end-user AI product surface
+    beyond the current repository framing.
+  - If revisited later, re-check only for newly added product UX, deployment surface,
+    or clear model-driven user workflow.
   uncertainty_points: []
-  recommend_candidate_pool: null
-  recommended_action: null
+  recommend_candidate_pool: false
+  recommended_action: reject
   confidence_summary:
-    scope_confidence: null
-    taxonomy_confidence: null
-    persona_confidence: null
+    scope_confidence: medium
+    taxonomy_confidence: low
+    persona_confidence: low
   handoff_readiness_hint:
-    suggested_action: null
-    rationale: null
-  persona_candidates: []
+    suggested_action: reject
+    rationale: Repository is primarily a component, framework, integration artifact,
+      or starter rather than an end-user AI product.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository is primarily a component, framework, integration artifact,
+      or starter rather than an end-user AI product.
+    supporting_evidence_anchors:
+    - 1
   taxonomy_hints:
-    primary_category_code: null
+    primary_category_code: Out-of-Scope Candidate
     secondary_category_code: null
-    primary_persona_code: null
+    primary_persona_code: unknown
     delivery_form_code: null
     main_category_candidate:
-      category_code: null
-      rationale: null
-      supporting_evidence_anchors: []
+      category_code: Out-of-Scope Candidate
+      rationale: Repository is primarily a component, framework, integration artifact,
+        or starter rather than an end-user AI product.
+      supporting_evidence_anchors:
+      - 1
+      - 2
     adjacent_category_candidate:
-      category_code: null
-      rationale_for_similarity: null
-      supporting_evidence_anchors: []
-    adjacent_category_rejected_reason: null
+      category_code: AI Agent Application
+      rationale_for_similarity: AI Agent Application
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: The chosen primary classification better matches
+      the repository evidence available in local review.
   assessment_hints:
-    evidence_strength: null
-    build_evidence_band: null
-    need_clarity_band: null
-    unresolved_risk: null
+    evidence_strength: medium
+    build_evidence_band: medium
+    need_clarity_band: low
+    unresolved_risk: low
   channel_metadata:
     prompt_version: candidate_prescreener_v1
     routing_version: route_candidate_prescreener_v1
     relay_client_version: relay_candidate_prescreener_v1
-    model: null
+    model: manual_local_review
     transport: http_json_relay
     request_id: null
-  error_type: provider_timeout
-  error_message: Relay timed out
+  error_type: null
+  error_message: null
 whitelist_reason: null
-human_review_status: approved_for_staging
-human_review_note_template_key: approved
-human_review_notes: clear end-user product signal; evidence sufficient for staging;
-  Ready for quick human pass. Reviewer should only promote if they find concrete AI
-  capability evidence beyond this operational agent scope. Treat this as CI/CD infrastructure
-  tooling unless human review finds explicit AI capabilities (e.g., model inference,
-  AI-assisted build decisions, LLM integrations, or ML-driven optimization). Current
-  evidence supports secure job execution/orchestration, not an AI application/product.
-  evidence_strength=low review_source=fresh_llm_review
-human_reviewed_at: '2026-04-06T13:07:48.197787Z'
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope; repository is primarily a component,
+  framework, integration artifact, or starter rather than an end-user AI product.
+human_reviewed_at: '2026-04-09T08:01:50.485755Z'
 staging_handoff:
-  status: written
-  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
-  sample_slot_id: GS300-067
-  sample_id: cand_github_qf_agent_ba753c9e7e54
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
   blocking_items: []
-  last_attempted_at: '2026-04-09T03:11:36.329910Z'
+  last_attempted_at: null

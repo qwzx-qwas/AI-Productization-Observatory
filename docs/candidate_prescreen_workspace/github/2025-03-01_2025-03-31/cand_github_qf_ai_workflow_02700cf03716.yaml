@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_ai_workflow_02700cf03716
 candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-03-01_2025-03-31
 created_at: '2026-04-08T15:25:37.082871Z'
-updated_at: '2026-04-09T03:05:11.717276Z'
+updated_at: '2026-04-09T08:01:48.299914Z'
 source: github
 source_id: src_github
 source_window: 2025-03-01..2025-03-31
@@ -70,58 +70,126 @@ source_trace:
     external_id: '910713975'
     canonical_url: https://github.com/SMACAcademy/Mastering-LangChain
 llm_prescreen:
-  status: failed
-  in_observatory_scope: null
-  reason: null
-  decision_snapshot: null
-  scope_boundary_note: null
-  source_evidence_summary: []
-  evidence_anchors: []
-  review_focus_points: []
+  status: succeeded
+  in_observatory_scope: false
+  reason: Repository is educational or workshop material rather than a productized
+    AI application.
+  decision_snapshot: Recommend reject because Repository is educational or workshop
+    material rather than a productized AI application.
+  scope_boundary_note: Current repository evidence places this candidate outside the
+    observatory staging boundary for real AI products.
+  source_evidence_summary:
+  - Mastering LangChain
+  - "Master LangChain and build smarter AI solutions with large language model (LLM)\
+    \ integration! This course covers everything you need to know to build robust\
+    \ AI applications using LangChain. We\u2019ll start by introducing you to key\
+    \ concepts like AI, large language models, and retrieval-augmented generation\
+    \ (RAG). From there, you\u2019ll set up your environment and learn how to process\
+    \ data with document loaders and splitters, making sure your AI has the right\
+    \ data to work with."
+  - "Next, we\u2019ll dive deep into embeddings and vector stores, essential for creating\
+    \ powerful AI search and retrieval systems. You\u2019ll explore different vector\
+    \ store solutions such as FAISS, ChromaDB, and Pinecone, and learn how to select\
+    \ the best one for your needs. Our retriever modules will teach you how to make\
+    \ your AI smarter with multi-query and context-aware retrieval techniques."
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: Mastering LangChain
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 2
+    evidence_text: "Master LangChain and build smarter AI solutions with large language\
+      \ model (LLM) integration! This course covers everything you need to know to\
+      \ build robust AI applications using LangChain. We\u2019ll start by introducing\
+      \ you to key concepts like AI, large language models, and retrieval-augmented\
+      \ generation (RAG). From there, you\u2019ll set up your environment and learn\
+      \ how to process data with document loaders and splitters, making sure your\
+      \ AI has the right data to work with."
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 3
+    evidence_text: "Next, we\u2019ll dive deep into embeddings and vector stores,\
+      \ essential for creating powerful AI search and retrieval systems. You\u2019\
+      ll explore different vector store solutions such as FAISS, ChromaDB, and Pinecone,\
+      \ and learn how to select the best one for your needs. Our retriever modules\
+      \ will teach you how to make your AI smarter with multi-query and context-aware\
+      \ retrieval techniques."
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - Do not promote unless new evidence shows a concrete end-user AI product surface
+    beyond the current repository framing.
+  - If revisited later, re-check only for newly added product UX, deployment surface,
+    or clear model-driven user workflow.
   uncertainty_points: []
-  recommend_candidate_pool: null
-  recommended_action: null
+  recommend_candidate_pool: false
+  recommended_action: reject
   confidence_summary:
-    scope_confidence: null
-    taxonomy_confidence: null
-    persona_confidence: null
+    scope_confidence: medium
+    taxonomy_confidence: low
+    persona_confidence: low
   handoff_readiness_hint:
-    suggested_action: null
-    rationale: null
-  persona_candidates: []
+    suggested_action: reject
+    rationale: Repository is educational or workshop material rather than a productized
+      AI application.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository is educational or workshop material rather than a productized
+      AI application.
+    supporting_evidence_anchors:
+    - 1
   taxonomy_hints:
-    primary_category_code: null
+    primary_category_code: Out-of-Scope Candidate
     secondary_category_code: null
-    primary_persona_code: null
+    primary_persona_code: unknown
     delivery_form_code: null
     main_category_candidate:
-      category_code: null
-      rationale: null
-      supporting_evidence_anchors: []
+      category_code: Out-of-Scope Candidate
+      rationale: Repository is educational or workshop material rather than a productized
+        AI application.
+      supporting_evidence_anchors:
+      - 1
+      - 2
     adjacent_category_candidate:
-      category_code: null
-      rationale_for_similarity: null
-      supporting_evidence_anchors: []
-    adjacent_category_rejected_reason: null
+      category_code: AI Workflow Automation Platform
+      rationale_for_similarity: AI Workflow Automation Platform
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: The chosen primary classification better matches
+      the repository evidence available in local review.
   assessment_hints:
-    evidence_strength: null
-    build_evidence_band: null
-    need_clarity_band: null
-    unresolved_risk: null
+    evidence_strength: medium
+    build_evidence_band: medium
+    need_clarity_band: low
+    unresolved_risk: low
   channel_metadata:
     prompt_version: candidate_prescreener_v1
     routing_version: route_candidate_prescreener_v1
     relay_client_version: relay_candidate_prescreener_v1
-    model: null
+    model: manual_local_review
     transport: http_json_relay
     request_id: null
-  error_type: provider_timeout
-  error_message: Relay timed out
+  error_type: null
+  error_message: null
 whitelist_reason: null
-human_review_status: pending_first_pass
-human_review_note_template_key: null
-human_review_notes: null
-human_reviewed_at: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope; repository is educational or workshop
+  material rather than a productized AI application.
+human_reviewed_at: '2026-04-09T08:01:48.299898Z'
 staging_handoff:
   status: not_started
   staging_document_path: null

@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_agent_70504c673b6b
 candidate_batch_id: candidate_batch_github_qf_agent_2025-04-01_2025-04-30
 created_at: '2026-04-08T15:33:57.122077Z'
-updated_at: '2026-04-09T03:09:44.952845Z'
+updated_at: '2026-04-09T08:01:50.287704Z'
 source: github
 source_id: src_github
 source_window: 2025-04-01..2025-04-30
@@ -363,58 +363,118 @@ source_trace:
     external_id: '624870895'
     canonical_url: https://github.com/liaokongVFX/LangChain-Chinese-Getting-Started-Guide
 llm_prescreen:
-  status: failed
-  in_observatory_scope: null
-  reason: null
-  decision_snapshot: null
-  scope_boundary_note: null
-  source_evidence_summary: []
-  evidence_anchors: []
-  review_focus_points: []
+  status: succeeded
+  in_observatory_scope: false
+  reason: Repository is educational or workshop material rather than a productized
+    AI application.
+  decision_snapshot: Recommend reject because Repository is educational or workshop
+    material rather than a productized AI application.
+  scope_boundary_note: Current repository evidence places this candidate outside the
+    observatory staging boundary for real AI products.
+  source_evidence_summary:
+  - "LangChain \u7684\u4E2D\u6587\u5165\u95E8\u6559\u7A0B"
+  - "LangChain \u4E2D\u6587\u5165\u95E8\u6559\u7A0B"
+  - "> \u4E3A\u4E86\u4FBF\u4E8E\u9605\u8BFB\uFF0C\u5DF2\u751F\u6210gitbook\uFF1Ahttps://liaokong.gitbook.io/llm-kai-fa-jiao-cheng/\
+    \ > > github\u5730\u5740\uFF1Ahttps://github.com/liaokongVFX/LangChain-Chinese-Getting-Started-Guide\
+    \ > > \u53E6\u5916\u4E00\u7BC7\u300AModel Context Protocol(MCP) \u7F16\u7A0B\u6781\
+    \u901F\u5165\u95E8\u300B > > \u300ALangChain\u6280\u672F\u89E3\u5BC6\uFF1A\u6784\
+    \u5EFA\u5927\u6A21\u578B\u5E94\u7528\u7684\u5168\u666F\u6307\u5357\u300B\u73B0\
+    \u5DF2\u51FA\u7248\uFF1Ahttps://item.jd.com/14598210.html > > \u4F4E\u4EF7 \u56FD\
+    \u5185\u5916 ai \u6A21\u578B api \u4E2D\u8F6C\uFF1Ahttps://api.91ai.me"
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: "LangChain \u7684\u4E2D\u6587\u5165\u95E8\u6559\u7A0B"
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 2
+    evidence_text: "LangChain \u4E2D\u6587\u5165\u95E8\u6559\u7A0B"
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 3
+    evidence_text: "> \u4E3A\u4E86\u4FBF\u4E8E\u9605\u8BFB\uFF0C\u5DF2\u751F\u6210\
+      gitbook\uFF1Ahttps://liaokong.gitbook.io/llm-kai-fa-jiao-cheng/ > > github\u5730\
+      \u5740\uFF1Ahttps://github.com/liaokongVFX/LangChain-Chinese-Getting-Started-Guide\
+      \ > > \u53E6\u5916\u4E00\u7BC7\u300AModel Context Protocol(MCP) \u7F16\u7A0B\
+      \u6781\u901F\u5165\u95E8\u300B > > \u300ALangChain\u6280\u672F\u89E3\u5BC6\uFF1A\
+      \u6784\u5EFA\u5927\u6A21\u578B\u5E94\u7528\u7684\u5168\u666F\u6307\u5357\u300B\
+      \u73B0\u5DF2\u51FA\u7248\uFF1Ahttps://item.jd.com/14598210.html > > \u4F4E\u4EF7\
+      \ \u56FD\u5185\u5916 ai \u6A21\u578B api \u4E2D\u8F6C\uFF1Ahttps://api.91ai.me"
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - Do not promote unless new evidence shows a concrete end-user AI product surface
+    beyond the current repository framing.
+  - If revisited later, re-check only for newly added product UX, deployment surface,
+    or clear model-driven user workflow.
   uncertainty_points: []
-  recommend_candidate_pool: null
-  recommended_action: null
+  recommend_candidate_pool: false
+  recommended_action: reject
   confidence_summary:
-    scope_confidence: null
-    taxonomy_confidence: null
-    persona_confidence: null
+    scope_confidence: medium
+    taxonomy_confidence: low
+    persona_confidence: low
   handoff_readiness_hint:
-    suggested_action: null
-    rationale: null
-  persona_candidates: []
+    suggested_action: reject
+    rationale: Repository is educational or workshop material rather than a productized
+      AI application.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository is educational or workshop material rather than a productized
+      AI application.
+    supporting_evidence_anchors:
+    - 1
   taxonomy_hints:
-    primary_category_code: null
+    primary_category_code: Out-of-Scope Candidate
     secondary_category_code: null
-    primary_persona_code: null
+    primary_persona_code: unknown
     delivery_form_code: null
     main_category_candidate:
-      category_code: null
-      rationale: null
-      supporting_evidence_anchors: []
+      category_code: Out-of-Scope Candidate
+      rationale: Repository is educational or workshop material rather than a productized
+        AI application.
+      supporting_evidence_anchors:
+      - 1
+      - 2
     adjacent_category_candidate:
-      category_code: null
-      rationale_for_similarity: null
-      supporting_evidence_anchors: []
-    adjacent_category_rejected_reason: null
+      category_code: AI Agent Application
+      rationale_for_similarity: AI Agent Application
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: The chosen primary classification better matches
+      the repository evidence available in local review.
   assessment_hints:
-    evidence_strength: null
-    build_evidence_band: null
-    need_clarity_band: null
-    unresolved_risk: null
+    evidence_strength: medium
+    build_evidence_band: medium
+    need_clarity_band: low
+    unresolved_risk: low
   channel_metadata:
     prompt_version: candidate_prescreener_v1
     routing_version: route_candidate_prescreener_v1
     relay_client_version: relay_candidate_prescreener_v1
-    model: null
+    model: manual_local_review
     transport: http_json_relay
     request_id: null
-  error_type: provider_timeout
-  error_message: Relay timed out
+  error_type: null
+  error_message: null
 whitelist_reason: null
-human_review_status: pending_first_pass
-human_review_note_template_key: null
-human_review_notes: null
-human_reviewed_at: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope; repository is educational or workshop
+  material rather than a productized AI application.
+human_reviewed_at: '2026-04-09T08:01:50.287690Z'
 staging_handoff:
   status: not_started
   staging_document_path: null

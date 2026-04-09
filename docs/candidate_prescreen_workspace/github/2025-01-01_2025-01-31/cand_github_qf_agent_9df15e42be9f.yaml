@@ -1,0 +1,172 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_9df15e42be9f
+candidate_batch_id: candidate_batch_github_qf_agent_2025-01-01_2025-01-31
+created_at: '2026-04-09T08:55:55.758706Z'
+updated_at: '2026-04-09T09:20:00.000000Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '661942912'
+canonical_url: https://github.com/ysymyth/awesome-language-agents
+title: awesome-language-agents
+summary: List of language agents based on paper "Cognitive Architectures for Language
+  Agents"
+raw_evidence_excerpt: "List of language agents based on paper \"Cognitive Architectures\
+  \ for Language Agents\"\n\n\U0001F428CoALA: Awesome Language Agents\n\nA compilation\
+  \ of language agents using the **Cognitive Architectures for Language Agents (\U0001F428\
+  CoALA)** framework. - CoALA Paper (16 pages of main content): https://arxiv.org/abs/2309.02427\
+  \ - CoALA Tweet (6 threads): https://twitter.com/ShunyuYao12/status/1699396834983362690\
+  \ - CoALA BibTex file with 300+ related citations: CoALA.bib - CoALA BibTex citation\
+  \ if you find our work/resources useful:\n\n\U0001F428CoALA Overview CoALA neatly\
+  \ specifies a language agent starting with its **action space**, which has 2 parts:\
+  \ * External actions to interact with external environments (**grounding**) * Internal\
+  \ actions to interact with internal memories (**reasoning**, **retrieval**, **learning**)\
+  \ * A language agent has a short-term working memory and several (optional) long-term\
+  \ memories (episodic for experience, semantic for knowledge, procedural for code/LLM)\
+  \ * **Reasoning** = update working memory (with LLM) * **Retrieval** = read long-term\
+  \ memory * **Learning** = write long-term memory\n\nThen how does a language agent\
+  \ choose which action to take? Its actions are structured into **decision making**\
+  \ cycles, and each cycle has two stages: * **Planning**: The agent applies reasoning/retrieval\
+  \ actions to (iteratively) propose and evaluate actions, then select a learning/grounding\
+  \ action. * **Execution**: The selected learning/grounding action is executed to\
+  \ affect the internal memory or external world.\n\nTo understand more, read Section\
+  \ 4 of our paper.\n\nPapers Below is only a subset of papers scraped from CoALA.bib\
+  \ plus pulled requests, with potentially incorrect action space labels. Date is\
+  \ based on arxiv v1. They do not represent all language agent work, and we plan\
+  \ to add more work soon (pull requests welcome), and have labels for highly cited\
+  \ work."
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '661942912'
+    canonical_url: https://github.com/ysymyth/awesome-language-agents
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: false
+  reason: Repository is a curated paper/resource list about language agents rather
+    than a deployable end-user AI application or product surface.
+  decision_snapshot: Recommend reject because Repository is a curated paper/resource
+    list about language agents rather than a deployable end-user AI application or
+    product surface.
+  scope_boundary_note: Current repository evidence places this candidate outside the
+    observatory staging boundary for real AI products; it functions as a research/resource
+    index rather than a productized system.
+  source_evidence_summary:
+  - List of language agents based on paper "Cognitive Architectures for Language
+    Agents"
+  - A compilation of language agents using the Cognitive Architectures for Language
+    Agents (CoALA) framework.
+  - Below is only a subset of papers scraped from CoALA.bib plus pulled requests.
+  review_focus_points:
+  - Do not promote unless separate repository evidence shows a runnable end-user product,
+    service, or deployable application surface rather than a bibliography/resource
+    collection.
+  - If revisited later, check whether the repository has evolved beyond a curated
+    list into an actual agent platform or product experience.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: reject
+  confidence_summary:
+    scope_confidence: medium
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: reject
+    rationale: Repository evidence is sufficient to classify this as a research/resource
+      collection rather than a product candidate.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository is a curated paper/resource list rather than a user-facing
+      product.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: Out-of-Scope Candidate
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: Out-of-Scope Candidate
+      rationale: Repository evidence describes a curated language-agent resource list
+        and paper index, not a deployable AI application/product.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: AI Agent Application
+      rationale_for_similarity: AI Agent Application
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: The repository catalogs agent work but does
+      not itself present a productized agent application.
+  assessment_hints:
+    evidence_strength: medium
+    build_evidence_band: low
+    need_clarity_band: low
+    unresolved_risk: low
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: manual_local_review
+    transport: http_json_relay
+    request_id: null
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: List of language agents based on paper "Cognitive Architectures
+      for Language Agents"
+    evidence_source_field: candidate_input
+    why_it_matters: Signals that the repository is a list/catalog derived from research,
+      not a product surface.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 2
+    evidence_text: A compilation of language agents using the Cognitive Architectures
+      for Language Agents (CoALA) framework.
+    evidence_source_field: candidate_input
+    why_it_matters: Frames the repository as a compilation/resource collection rather
+      than an application.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 3
+    evidence_text: Below is only a subset of papers scraped from CoALA.bib plus pulled
+      requests.
+    evidence_source_field: candidate_input
+    why_it_matters: Confirms the content is bibliographic/index-like material rather
+      than runnable product functionality.
+    applies_to:
+    - scope
+    - recommended_action
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope; repository is a curated paper/resource
+  list about language agents rather than a deployable AI application or product.
+human_reviewed_at: '2026-04-09T09:20:00.000000Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

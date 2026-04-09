@@ -1,0 +1,149 @@
+# Candidate Sample Statistics 2026-04-09
+
+## Summary
+- 当前总样本数: 224
+- 活跃 workspace 样本数: 130
+- 归档样本数: 94
+- 去重后样本数（按 `candidate_id`）: 219
+- 重复样本数（`candidate_id` 重复记录数）: 5
+- 内容去重后样本数（按 `title + summary + raw_evidence_excerpt` 精确内容）: 187
+- 内容重复记录数: 37
+- 已写入 staging 的样本数: 98
+- `approved_for_staging` 记录数: 101
+- 活跃 workspace 中 `approved_for_staging` 但未写入的样本数: 0
+- 全部记录中 `approved_for_staging` 但未写入的样本数: 3
+
+## Duplicate Candidate IDs
+- `cand_github_qf_agent_895adf196550`
+  - `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-07_2027-02-10/cand_github_qf_agent_895adf196550.yaml`
+  - `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-07_2027-02-10/cand_github_qf_agent_895adf196550__archived_2.yaml`
+- `cand_github_qf_agent_8a59393a88e0`
+  - `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.manual_schema_drift_archive/.batch_20260408T101938Z/github/2025-01-01_2026-04-06/cand_github_qf_agent_8a59393a88e0.yaml`
+  - `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.manual_schema_drift_archive/2026-04-08_existing_workspace_schema_drift/github/2025-01-01_2026-04-06/cand_github_qf_agent_8a59393a88e0.yaml`
+  - `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2026-04-06/cand_github_qf_agent_8a59393a88e0.yaml`
+- `cand_github_qf_copilot_46f2a401bf88`
+  - `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-04-03_2026-07-03/cand_github_qf_copilot_46f2a401bf88.yaml`
+  - `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-03_2026-07-03/cand_github_qf_copilot_46f2a401bf88.yaml`
+- `cand_github_qf_rag_a1f5834ac64d`
+  - `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.manual_schema_drift_archive/2026-04-08_existing_workspace_schema_drift/github/2025-01-01_2026-04-06/cand_github_qf_rag_a1f5834ac64d.yaml`
+  - `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2026-04-06/cand_github_qf_rag_a1f5834ac64d.yaml`
+
+## Content-Duplicate Groups
+- Group 1: `AutoGPT` | `https://github.com/Significant-Gravitas/AutoGPT`
+  - `cand_github_qf_agent_bf93f5d4a747` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/github/2026-04-03_2026-04-07/cand_github_qf_agent_bf93f5d4a747.yaml`
+  - `cand_github_qf_agent_fac59f8c6c92` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-03_2026-07-03/cand_github_qf_agent_fac59f8c6c92.yaml`
+- Group 2: `ChatterBot` | `https://github.com/gunthercox/ChatterBot`
+  - `cand_github_qf_chatbot_f77d8dad92a2` | `approved_for_staging` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-22_2026-03-29/cand_github_qf_chatbot_f77d8dad92a2.yaml`
+  - `cand_github_qf_chatbot_f4818c7c3570` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-06/cand_github_qf_chatbot_f4818c7c3570.yaml`
+- Group 3: `CoPilot` | `https://github.com/socfortress/CoPilot`
+  - `cand_github_qf_copilot_03f5bc350319` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/github/2026-01-01_2026-04-02/cand_github_qf_copilot_03f5bc350319.yaml`
+  - `cand_github_qf_copilot_8ad55c7d24ae` | `approved_for_staging` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-29_2026-04-02/cand_github_qf_copilot_8ad55c7d24ae.yaml`
+  - `cand_github_qf_copilot_108fc741a81d` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-06/cand_github_qf_copilot_108fc741a81d.yaml`
+- Group 4: `CopilotKit` | `https://github.com/CopilotKit/CopilotKit`
+  - `cand_github_qf_copilot_df3e72db143c` | `approved_for_staging` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_copilot_df3e72db143c.yaml`
+  - `cand_github_qf_copilot_46f2a401bf88` | `approved_for_staging` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-04-03_2026-07-03/cand_github_qf_copilot_46f2a401bf88.yaml`
+  - `cand_github_qf_copilot_46f2a401bf88` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-03_2026-07-03/cand_github_qf_copilot_46f2a401bf88.yaml`
+  - `cand_github_qf_copilot_ba743a424bdc` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_copilot_ba743a424bdc.yaml`
+- Group 5: `LightRAG` | `https://github.com/HKUDS/LightRAG`
+  - `cand_github_qf_rag_6a7e6aed7510` | `pending_first_pass` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-07_2027-02-10/cand_github_qf_rag_6a7e6aed7510.yaml`
+  - `cand_github_qf_rag_b701748b4d1c` | `pending_first_pass` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-07_2027-07-11/cand_github_qf_rag_b701748b4d1c.yaml`
+- Group 6: `Mastering-GitHub-Copilot-for-Paired-Programming` | `https://github.com/microsoft/Mastering-GitHub-Copilot-for-Paired-Programming`
+  - `cand_github_qf_copilot_afd85b6a8c35` | `pending_first_pass` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.manual_schema_drift_archive/2026-04-08_existing_workspace_schema_drift/github/2025-06-01_2026-04-06/cand_github_qf_copilot_afd85b6a8c35.yaml`
+  - `cand_github_qf_copilot_10c79e1bff83` | `rejected_after_human_review` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2026-04-06/cand_github_qf_copilot_10c79e1bff83.yaml`
+- Group 7: `RAG` | `https://github.com/whyashthakker/RAG`
+  - `cand_github_qf_rag_a1f5834ac64d` | `pending_first_pass` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.manual_schema_drift_archive/2026-04-08_existing_workspace_schema_drift/github/2025-01-01_2026-04-06/cand_github_qf_rag_a1f5834ac64d.yaml`
+  - `cand_github_qf_rag_a1f5834ac64d` | `rejected_after_human_review` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2026-04-06/cand_github_qf_rag_a1f5834ac64d.yaml`
+- Group 8: `Yearning` | `https://github.com/cookieY/Yearning`
+  - `cand_github_qf_ai_assistant_2200558eb92d` | `pending_first_pass` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.manual_schema_drift_archive/2026-04-08_existing_workspace_schema_drift/github/2025-06-01_2026-04-06/cand_github_qf_ai_assistant_2200558eb92d.yaml`
+  - `cand_github_qf_ai_assistant_9c0144ef6286` | `rejected_after_human_review` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2026-04-06/cand_github_qf_ai_assistant_9c0144ef6286.yaml`
+- Group 9: `activepieces` | `https://github.com/activepieces/activepieces`
+  - `cand_github_qf_ai_workflow_f94eaf7a905e` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/github/2026-03-29_2026-04-02/cand_github_qf_ai_workflow_f94eaf7a905e.yaml`
+  - `cand_github_qf_ai_workflow_b31ede31a75a` | `approved_for_staging` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_ai_workflow_b31ede31a75a.yaml`
+  - `cand_github_qf_ai_workflow_298cfba13df8` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-03_2026-07-03/cand_github_qf_ai_workflow_298cfba13df8.yaml`
+  - `cand_github_qf_ai_workflow_f441139943fd` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-06/cand_github_qf_ai_workflow_f441139943fd.yaml`
+- Group 10: `agent` | `https://github.com/grafana/agent`
+  - `cand_github_qf_agent_63b95e3572fc` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/github/2026-01-01_2026-04-02/cand_github_qf_agent_63b95e3572fc.yaml`
+  - `cand_github_qf_agent_640f23c39640` | `approved_for_staging` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-29_2026-04-02/cand_github_qf_agent_640f23c39640.yaml`
+  - `cand_github_qf_agent_68c4d1863537` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-06/cand_github_qf_agent_68c4d1863537.yaml`
+- Group 11: `agent` | `https://github.com/superblocksteam/agent`
+  - `cand_github_qf_agent_895adf196550` | `pending_first_pass` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-07_2027-02-10/cand_github_qf_agent_895adf196550.yaml`
+  - `cand_github_qf_agent_895adf196550` | `pending_first_pass` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-07_2027-02-10/cand_github_qf_agent_895adf196550__archived_2.yaml`
+- Group 12: `agent` | `https://github.com/0xfreysa/agent`
+  - `cand_github_qf_agent_8a59393a88e0` | `pending_first_pass` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.manual_schema_drift_archive/.batch_20260408T101938Z/github/2025-01-01_2026-04-06/cand_github_qf_agent_8a59393a88e0.yaml`
+  - `cand_github_qf_agent_8a59393a88e0` | `pending_first_pass` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.manual_schema_drift_archive/2026-04-08_existing_workspace_schema_drift/github/2025-01-01_2026-04-06/cand_github_qf_agent_8a59393a88e0.yaml`
+  - `cand_github_qf_agent_8a59393a88e0` | `rejected_after_human_review` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2026-04-06/cand_github_qf_agent_8a59393a88e0.yaml`
+- Group 13: `agent` | `https://github.com/buildkite/agent`
+  - `cand_github_qf_agent_8e0d9bd4b23c` | `approved_for_staging` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_agent_8e0d9bd4b23c.yaml`
+  - `cand_github_qf_agent_ba753c9e7e54` | `rejected_after_human_review` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_ba753c9e7e54.yaml`
+- Group 14: `agent` | `https://github.com/nginx/agent`
+  - `cand_github_qf_agent_bf4b52017416` | `approved_for_staging` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-03_2026-07-03/cand_github_qf_agent_bf4b52017416.yaml`
+  - `cand_github_qf_agent_fd90b3efc7cc` | `pending_first_pass` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-07_2027-07-11/cand_github_qf_agent_fd90b3efc7cc.yaml`
+- Group 15: `aidlc-workflows` | `https://github.com/awslabs/aidlc-workflows`
+  - `cand_github_qf_ai_workflow_8164ad732291` | `approved_for_staging` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_ai_workflow_8164ad732291.yaml`
+  - `cand_github_qf_ai_workflow_08f87407cb38` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_workflow_08f87407cb38.yaml`
+- Group 16: `awesome-llm-apps` | `https://github.com/Shubhamsaboo/awesome-llm-apps`
+  - `cand_github_qf_rag_ae6506662683` | `approved_for_staging` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_rag_ae6506662683.yaml`
+  - `cand_github_qf_rag_b8b42b7bc597` | `approved_for_staging` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_rag_b8b42b7bc597.yaml`
+- Group 17: `chatbot` | `https://github.com/vercel/chatbot`
+  - `cand_github_qf_chatbot_fcb0e81342ff` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/github/2026-03-29_2026-04-02/cand_github_qf_chatbot_fcb0e81342ff.yaml`
+  - `cand_github_qf_chatbot_0ff41a8d4211` | `approved_for_staging` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_chatbot_0ff41a8d4211.yaml`
+- Group 18: `git-mcp` | `https://github.com/idosal/git-mcp`
+  - `cand_github_qf_ai_assistant_b8a22cf141a5` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/github/2026-01-01_2026-04-02/cand_github_qf_ai_assistant_b8a22cf141a5.yaml`
+  - `cand_github_qf_ai_assistant_1b3c374bee1a` | `approved_for_staging` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-08_2026-03-15/cand_github_qf_ai_assistant_1b3c374bee1a.yaml`
+- Group 19: `julep` | `https://github.com/julep-ai/julep`
+  - `cand_github_qf_ai_workflow_ec184c81fca7` | `approved_for_staging` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-08_2026-03-15/cand_github_qf_ai_workflow_ec184c81fca7.yaml`
+  - `cand_github_qf_ai_workflow_99a3695a5af1` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_workflow_99a3695a5af1.yaml`
+- Group 20: `ollama` | `https://github.com/ollama/ollama`
+  - `cand_github_qf_ai_assistant_0a1548491e03` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/github/2026-04-03_2026-04-07/cand_github_qf_ai_assistant_0a1548491e03.yaml`
+  - `cand_github_qf_rag_d9f69b469827` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/github/2026-04-03_2026-04-07/cand_github_qf_rag_d9f69b469827.yaml`
+  - `cand_github_qf_ai_assistant_550641f2b841` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/github/2026-04-03_2026-07-03/cand_github_qf_ai_assistant_550641f2b841.yaml`
+  - `cand_github_qf_rag_cbe28fa16773` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/github/2026-04-03_2026-07-03/cand_github_qf_rag_cbe28fa16773.yaml`
+  - `cand_github_qf_ai_assistant_5a455351c2a0` | `approved_for_staging` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_ai_assistant_5a455351c2a0.yaml`
+  - `cand_github_qf_chatbot_868117b09112` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-03_2026-07-03/cand_github_qf_chatbot_868117b09112.yaml`
+  - `cand_github_qf_ai_assistant_76407fd60578` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-06/cand_github_qf_ai_assistant_76407fd60578.yaml`
+- Group 21: `openclaw` | `https://github.com/openclaw/openclaw`
+  - `cand_github_qf_ai_assistant_fdc462fa4747` | `approved_for_staging` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_ai_assistant_fdc462fa4747.yaml`
+  - `cand_github_qf_ai_assistant_2cd2782d869c` | `approved_for_staging` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_assistant_2cd2782d869c.yaml`
+- Group 22: `rag` | `https://github.com/NVIDIA-AI-Blueprints/rag`
+  - `cand_github_qf_rag_557d6a8a8855` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/github/2026-03-29_2026-04-02/cand_github_qf_rag_557d6a8a8855.yaml`
+  - `cand_github_qf_rag_937ee6a5a72b` | `approved_for_staging` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_rag_937ee6a5a72b.yaml`
+  - `cand_github_qf_rag_408d7dd2839c` | `on_hold` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-06/cand_github_qf_rag_408d7dd2839c.yaml`
+- Group 23: `wechaty` | `https://github.com/wechaty/wechaty`
+  - `cand_github_qf_chatbot_38916da302a0` | `pending_first_pass` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.manual_schema_drift_archive/2026-04-08_existing_workspace_schema_drift/github/2025-06-01_2026-04-06/cand_github_qf_chatbot_38916da302a0.yaml`
+  - `cand_github_qf_chatbot_293dea103870` | `rejected_after_human_review` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2026-04-06/cand_github_qf_chatbot_293dea103870.yaml`
+- Group 24: `workflow-builder-template` | `https://github.com/vercel-labs/workflow-builder-template`
+  - `cand_github_qf_ai_workflow_2e735434ca4d` | `pending_first_pass` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.manual_schema_drift_archive/2026-04-08_existing_workspace_schema_drift/github/2025-06-01_2026-04-06/cand_github_qf_ai_workflow_2e735434ca4d.yaml`
+  - `cand_github_qf_ai_workflow_779af7bc8dbb` | `rejected_after_human_review` | `/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2026-04-06/cand_github_qf_ai_workflow_779af7bc8dbb.yaml`
+
+## Staging Write Check
+- 本次已将 2 个更优且已完成分析的重复样本版本替换写入 staging：
+  - `cand_github_qf_agent_640f23c39640` -> `GS300-045`
+  - `cand_github_qf_agent_8e0d9bd4b23c` -> `GS300-067`
+- 本次还新增写入了 1 个经本地二次修正并完成分析的非重复样本：
+  - `cand_github_qf_agent_a2709d3e522f` -> `GS300-098`
+- 当前活跃 workspace 中已无 `approved_for_staging` 但未写入的样本。
+- 全部记录里仍有 3 个 `approved_for_staging` 但未写入的归档样本，它们都已被 staging 中更优版本覆盖，因此继续保持未写入：
+  - `cand_github_qf_ai_assistant_fdc462fa4747`
+  - `cand_github_qf_copilot_df3e72db143c`
+  - `cand_github_qf_rag_ae6506662683`
+- 活跃 workspace 当前状态分布：
+  - `approved_for_staging`: 39
+  - `rejected_after_human_review`: 69
+  - `on_hold`: 22
+- 活跃 workspace 当前 `llm_prescreen.status` 分布：
+  - `succeeded`: 130
+- 当前已无活跃样本处于 `pending_first_pass` 或 `llm_prescreen.failed`。
+- `python3 -m src.cli dedupe-staging-semantic-duplicates` 复核结果为 `duplicate_group_count=0`、`staging_total_filled=98`。
+
+## First Empty Staging Slots
+- `GS300-099` | `/mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml`
+- `GS300-100` | `/mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml`
+- `GS300-101` | `/mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml`
+- `GS300-102` | `/mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml`
+- `GS300-103` | `/mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml`
+- `GS300-104` | `/mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml`
+- `GS300-105` | `/mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml`
+- `GS300-106` | `/mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml`
+- `GS300-107` | `/mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml`
+- `GS300-108` | `/mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml`
+- `GS300-109` | `/mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml`

@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_agent_2134d3f6e67d
 candidate_batch_id: candidate_batch_github_qf_agent_2025-04-01_2025-04-30
 created_at: '2026-04-08T15:30:44.618654Z'
-updated_at: '2026-04-09T03:09:09.553383Z'
+updated_at: '2026-04-09T08:01:50.000724Z'
 source: github
 source_id: src_github
 source_window: 2025-04-01..2025-04-30
@@ -72,58 +72,111 @@ source_trace:
     external_id: '945344252'
     canonical_url: https://github.com/iam-veeramalla/ai-assisted-devops
 llm_prescreen:
-  status: failed
-  in_observatory_scope: null
-  reason: null
-  decision_snapshot: null
-  scope_boundary_note: null
-  source_evidence_summary: []
-  evidence_anchors: []
-  review_focus_points: []
+  status: succeeded
+  in_observatory_scope: false
+  reason: Repository is educational or workshop material rather than a productized
+    AI application.
+  decision_snapshot: Recommend reject because Repository is educational or workshop
+    material rather than a productized AI application.
+  scope_boundary_note: Current repository evidence places this candidate outside the
+    observatory staging boundary for real AI products.
+  source_evidence_summary:
+  - Learn how DevOps Engineers can use Gen AI to enhance their productivity in day
+    to day tasks.
+  - AI-Assisted DevOps - 10-Day Course Syllabus
+  - "**Day 1: Introduction to AI for DevOps** \U0001F4CC Topics - Why AI is a game-changer\
+    \ for DevOps - Overview of Generative AI and LLMs (without deep theory) - Popular\
+    \ AI tools for DevOps Engineers."
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: Learn how DevOps Engineers can use Gen AI to enhance their productivity
+      in day to day tasks.
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 2
+    evidence_text: AI-Assisted DevOps - 10-Day Course Syllabus
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 3
+    evidence_text: "**Day 1: Introduction to AI for DevOps** \U0001F4CC Topics - Why\
+      \ AI is a game-changer for DevOps - Overview of Generative AI and LLMs (without\
+      \ deep theory) - Popular AI tools for DevOps Engineers."
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - Do not promote unless new evidence shows a concrete end-user AI product surface
+    beyond the current repository framing.
+  - If revisited later, re-check only for newly added product UX, deployment surface,
+    or clear model-driven user workflow.
   uncertainty_points: []
-  recommend_candidate_pool: null
-  recommended_action: null
+  recommend_candidate_pool: false
+  recommended_action: reject
   confidence_summary:
-    scope_confidence: null
-    taxonomy_confidence: null
-    persona_confidence: null
+    scope_confidence: medium
+    taxonomy_confidence: low
+    persona_confidence: low
   handoff_readiness_hint:
-    suggested_action: null
-    rationale: null
-  persona_candidates: []
+    suggested_action: reject
+    rationale: Repository is educational or workshop material rather than a productized
+      AI application.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository is educational or workshop material rather than a productized
+      AI application.
+    supporting_evidence_anchors:
+    - 1
   taxonomy_hints:
-    primary_category_code: null
+    primary_category_code: Out-of-Scope Candidate
     secondary_category_code: null
-    primary_persona_code: null
+    primary_persona_code: unknown
     delivery_form_code: null
     main_category_candidate:
-      category_code: null
-      rationale: null
-      supporting_evidence_anchors: []
+      category_code: Out-of-Scope Candidate
+      rationale: Repository is educational or workshop material rather than a productized
+        AI application.
+      supporting_evidence_anchors:
+      - 1
+      - 2
     adjacent_category_candidate:
-      category_code: null
-      rationale_for_similarity: null
-      supporting_evidence_anchors: []
-    adjacent_category_rejected_reason: null
+      category_code: AI Agent Application
+      rationale_for_similarity: AI Agent Application
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: The chosen primary classification better matches
+      the repository evidence available in local review.
   assessment_hints:
-    evidence_strength: null
-    build_evidence_band: null
-    need_clarity_band: null
-    unresolved_risk: null
+    evidence_strength: medium
+    build_evidence_band: medium
+    need_clarity_band: low
+    unresolved_risk: low
   channel_metadata:
     prompt_version: candidate_prescreener_v1
     routing_version: route_candidate_prescreener_v1
     relay_client_version: relay_candidate_prescreener_v1
-    model: null
+    model: manual_local_review
     transport: http_json_relay
     request_id: null
-  error_type: provider_timeout
-  error_message: Relay timed out
+  error_type: null
+  error_message: null
 whitelist_reason: null
-human_review_status: pending_first_pass
-human_review_note_template_key: null
-human_review_notes: null
-human_reviewed_at: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope; repository is educational or workshop
+  material rather than a productized AI application.
+human_reviewed_at: '2026-04-09T08:01:50.000704Z'
 staging_handoff:
   status: not_started
   staging_document_path: null

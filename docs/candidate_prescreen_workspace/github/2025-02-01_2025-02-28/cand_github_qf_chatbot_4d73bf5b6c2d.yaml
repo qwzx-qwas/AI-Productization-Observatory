@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_chatbot_4d73bf5b6c2d
 candidate_batch_id: candidate_batch_github_qf_chatbot_2025-02-01_2025-02-28
 created_at: '2026-04-08T14:11:42.339169Z'
-updated_at: '2026-04-09T03:00:30.952921Z'
+updated_at: '2026-04-09T08:01:46.215691Z'
 source: github
 source_id: src_github
 source_window: 2025-02-01..2025-02-28
@@ -120,58 +120,113 @@ source_trace:
     external_id: '291647773'
     canonical_url: https://github.com/harryadel/AI-ML-Driven-Companies-In-Egypt
 llm_prescreen:
-  status: failed
-  in_observatory_scope: null
-  reason: null
-  decision_snapshot: null
-  scope_boundary_note: null
-  source_evidence_summary: []
-  evidence_anchors: []
-  review_focus_points: []
+  status: succeeded
+  in_observatory_scope: false
+  reason: Repository is educational or workshop material rather than a productized
+    AI application.
+  decision_snapshot: Recommend reject because Repository is educational or workshop
+    material rather than a productized AI application.
+  scope_boundary_note: Current repository evidence places this candidate outside the
+    observatory staging boundary for real AI products.
+  source_evidence_summary:
+  - A list of AI/ML driven companies in Egypt
+  - AI/ML Driven Companies In Egypt
+  - This repository is intented to aid aspiring AI/ML enthusiasts by providing a list
+    of companies working in such fields. However, this is a mere starting point, you
+    need to put in your own work and lookup companies thoroughly to grasp the underlying
+    tech used. Cold email people, reach out to the HR or Developers on linkedin. Be
+    creative and most importantly polite!
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: A list of AI/ML driven companies in Egypt
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 2
+    evidence_text: AI/ML Driven Companies In Egypt
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 3
+    evidence_text: This repository is intented to aid aspiring AI/ML enthusiasts by
+      providing a list of companies working in such fields. However, this is a mere
+      starting point, you need to put in your own work and lookup companies thoroughly
+      to grasp the underlying tech used. Cold email people, reach out to the HR or
+      Developers on linkedin. Be creative and most importantly polite!
+    evidence_source_field: candidate_input
+    why_it_matters: Supports the local manual classification using repository summary
+      and README evidence.
+    applies_to:
+    - scope
+    - recommended_action
+  review_focus_points:
+  - Do not promote unless new evidence shows a concrete end-user AI product surface
+    beyond the current repository framing.
+  - If revisited later, re-check only for newly added product UX, deployment surface,
+    or clear model-driven user workflow.
   uncertainty_points: []
-  recommend_candidate_pool: null
-  recommended_action: null
+  recommend_candidate_pool: false
+  recommended_action: reject
   confidence_summary:
-    scope_confidence: null
-    taxonomy_confidence: null
-    persona_confidence: null
+    scope_confidence: medium
+    taxonomy_confidence: low
+    persona_confidence: low
   handoff_readiness_hint:
-    suggested_action: null
-    rationale: null
-  persona_candidates: []
+    suggested_action: reject
+    rationale: Repository is educational or workshop material rather than a productized
+      AI application.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository is educational or workshop material rather than a productized
+      AI application.
+    supporting_evidence_anchors:
+    - 1
   taxonomy_hints:
-    primary_category_code: null
+    primary_category_code: Out-of-Scope Candidate
     secondary_category_code: null
-    primary_persona_code: null
+    primary_persona_code: unknown
     delivery_form_code: null
     main_category_candidate:
-      category_code: null
-      rationale: null
-      supporting_evidence_anchors: []
+      category_code: Out-of-Scope Candidate
+      rationale: Repository is educational or workshop material rather than a productized
+        AI application.
+      supporting_evidence_anchors:
+      - 1
+      - 2
     adjacent_category_candidate:
-      category_code: null
-      rationale_for_similarity: null
-      supporting_evidence_anchors: []
-    adjacent_category_rejected_reason: null
+      category_code: AI Chatbot Application
+      rationale_for_similarity: AI Chatbot Application
+      supporting_evidence_anchors:
+      - 1
+    adjacent_category_rejected_reason: The chosen primary classification better matches
+      the repository evidence available in local review.
   assessment_hints:
-    evidence_strength: null
-    build_evidence_band: null
-    need_clarity_band: null
-    unresolved_risk: null
+    evidence_strength: medium
+    build_evidence_band: medium
+    need_clarity_band: low
+    unresolved_risk: low
   channel_metadata:
     prompt_version: candidate_prescreener_v1
     routing_version: route_candidate_prescreener_v1
     relay_client_version: relay_candidate_prescreener_v1
-    model: null
+    model: manual_local_review
     transport: http_json_relay
     request_id: null
-  error_type: provider_timeout
-  error_message: Relay timed out
+  error_type: null
+  error_message: null
 whitelist_reason: null
-human_review_status: pending_first_pass
-human_review_note_template_key: null
-human_review_notes: null
-human_reviewed_at: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope; repository is educational or workshop
+  material rather than a productized AI application.
+human_reviewed_at: '2026-04-09T08:01:46.215672Z'
 staging_handoff:
   status: not_started
   staging_document_path: null

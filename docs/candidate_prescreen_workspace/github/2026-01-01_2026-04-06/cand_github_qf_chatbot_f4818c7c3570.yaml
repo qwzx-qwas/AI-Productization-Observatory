@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_chatbot_f4818c7c3570
 candidate_batch_id: candidate_batch_github_qf_chatbot_2026-01-01_2026-04-06
 created_at: '2026-04-06T11:52:36.529693Z'
-updated_at: '2026-04-06T11:53:02.872613Z'
+updated_at: '2026-04-09T08:03:22.591646Z'
 source: github
 source_id: src_github
 source_window: 2026-01-01..2026-04-06
@@ -250,10 +250,9 @@ human_review_notes: boundary with internal tooling unclear; Repository evidence 
   review_source=existing_llm_prescreen
 human_reviewed_at: '2026-04-06T11:53:02.872582Z'
 staging_handoff:
-  status: blocked
+  status: not_started
   staging_document_path: null
   sample_slot_id: null
   sample_id: null
-  blocking_items:
-  - candidate first-pass review resolved to on_hold
+  blocking_items: []
   last_attempted_at: '2026-04-06T11:53:02.872607Z'

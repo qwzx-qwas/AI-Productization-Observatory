@@ -1,0 +1,170 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_a2444a11f76e
+candidate_batch_id: candidate_batch_github_qf_agent_2025-01-01_2025-01-31
+created_at: '2026-04-09T08:56:22.237165Z'
+updated_at: '2026-04-09T09:25:00.000000Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '301903883'
+canonical_url: https://github.com/huawei-noah/SMARTS
+title: SMARTS
+summary: Scalable Multi-Agent RL Training School for Autonomous Driving
+raw_evidence_excerpt: 'Scalable Multi-Agent RL Training School for Autonomous Driving
+
+
+  SMARTS
+
+
+  SMARTS (Scalable Multi-Agent Reinforcement Learning Training School) is a simulation
+  platform for multi-agent reinforcement learning (RL) and research on autonomous
+  driving. Its focus is on realistic and diverse interactions. It is part of the XingTian
+  suite of RL platforms from Huawei Noah''s Ark Lab.
+
+
+  Check out the paper at SMARTS: Scalable Multi-Agent Reinforcement Learning Training
+  School for Autonomous Driving.
+
+
+  Documentation 1. Read the docs :notebook_with_decorative_cover: at smarts.readthedocs.io
+  :fire: 1. Base examples 1. RL models
+
+
+  Issues, Bugs, Feature Requests 1. First, read how to communicate issues, report
+  bugs, and request features here. 1. Next, raise them using appropriate tags at https://github.com/huawei-noah/SMARTS/issues.
+
+
+  Cite this work If you use SMARTS in your research, please cite the paper. In BibTeX
+  format:'
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '301903883'
+    canonical_url: https://github.com/huawei-noah/SMARTS
+llm_prescreen:
+  status: succeeded
+  in_observatory_scope: false
+  reason: Repository is a simulation and reinforcement-learning research platform
+    for autonomous driving rather than an end-user AI application or product surface.
+  decision_snapshot: Recommend reject because Repository is a simulation and reinforcement-learning
+    research platform for autonomous driving rather than an end-user AI application
+    or product surface.
+  scope_boundary_note: Current repository evidence places this candidate outside the
+    observatory staging boundary for real AI products; it is research and experimentation
+    infrastructure.
+  source_evidence_summary:
+  - Scalable Multi-Agent RL Training School for Autonomous Driving
+  - SMARTS is a simulation platform for multi-agent reinforcement learning (RL) and
+    research on autonomous driving.
+  - It is part of the XingTian suite of RL platforms from Huawei Noah's Ark Lab.
+  review_focus_points:
+  - Do not promote unless future repository evidence adds a concrete deployable end-user
+    product surface beyond research simulation tooling.
+  - If revisited later, check whether the repository has expanded into an operational
+    application rather than a simulator or benchmark environment.
+  uncertainty_points: []
+  recommend_candidate_pool: false
+  recommended_action: reject
+  confidence_summary:
+    scope_confidence: medium
+    taxonomy_confidence: low
+    persona_confidence: low
+  handoff_readiness_hint:
+    suggested_action: reject
+    rationale: Repository evidence is sufficient to classify this as research/simulation
+      infrastructure rather than a staging candidate.
+  persona_candidates:
+  - persona_code: unknown
+    confidence_rank: 1
+    rationale: Repository is a research simulator/platform rather than a user-facing
+      product.
+    supporting_evidence_anchors:
+    - 1
+  taxonomy_hints:
+    primary_category_code: Out-of-Scope Candidate
+    secondary_category_code: null
+    primary_persona_code: unknown
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: Out-of-Scope Candidate
+      rationale: Repository evidence describes RL/autonomous-driving simulation infrastructure,
+        not a productized AI application.
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_candidate:
+      category_code: AI Agent Application
+      rationale_for_similarity: AI Agent Application
+      supporting_evidence_anchors:
+      - 1
+      - 2
+    adjacent_category_rejected_reason: The repository uses multi-agent terminology
+      for RL research, but the actual artifact is simulation/training infrastructure
+      rather than a deployable application.
+  assessment_hints:
+    evidence_strength: medium
+    build_evidence_band: low
+    need_clarity_band: low
+    unresolved_risk: low
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: manual_local_review
+    transport: http_json_relay
+    request_id: null
+  evidence_anchors:
+  - anchor_rank: 1
+    evidence_text: Scalable Multi-Agent RL Training School for Autonomous Driving
+    evidence_source_field: candidate_input
+    why_it_matters: Frames the repository as autonomous-driving RL training infrastructure.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 2
+    evidence_text: SMARTS is a simulation platform for multi-agent reinforcement
+      learning (RL) and research on autonomous driving.
+    evidence_source_field: candidate_input
+    why_it_matters: Explicitly identifies the project as a simulator/research platform,
+      not a product surface.
+    applies_to:
+    - scope
+    - recommended_action
+  - anchor_rank: 3
+    evidence_text: It is part of the XingTian suite of RL platforms from Huawei Noah's
+      Ark Lab.
+    evidence_source_field: candidate_input
+    why_it_matters: Confirms the repository belongs to a research platform suite
+      rather than a deployable application.
+    applies_to:
+    - scope
+    - recommended_action
+  error_type: null
+  error_message: null
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope; repository is a multi-agent RL/autonomous-driving
+  simulation platform rather than a deployable AI application or product.
+human_reviewed_at: '2026-04-09T09:25:00.000000Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

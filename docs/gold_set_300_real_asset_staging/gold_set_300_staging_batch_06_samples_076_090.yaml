@@ -23,17 +23,25 @@ future_formal_target:
 samples:
 - slot_index: 76
   sample_slot_id: GS300-076
-  current_state: awaiting_real_input
+  current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: null
+  sample_id: cand_github_qf_agent_b19486d5c4ca
   target_type: product
   review_closed: null
   clear_adjudication: null
   primary_category_code: null
   review_refs: []
   evidence_refs: []
-  source_record_refs: []
+  source_record_refs: &id001
+  - candidate_id: cand_github_qf_agent_b19486d5c4ca
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_agent_b19486d5c4ca.yaml
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '916376760'
+    canonical_url: https://github.com/hrithikkoduri/WebRover
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -97,11 +105,11 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: null
+    sample_id: cand_github_qf_agent_b19486d5c4ca
     target_id: null
-    source_id: null
+    source_id: src_github
     target_type: product
-    source_record_refs: []
+    source_record_refs: *id001
     review_refs: []
     evidence_refs: []
     eligibility_snapshot:
@@ -110,29 +118,51 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: null
+      candidate_pool_batch_id: candidate_batch_github_qf_agent_2025-02-01_2025-02-28
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
-  - real sample_id not yet provided
+  - formal review_refs not yet provided
+  - formal evidence_refs not yet provided
   - local_project_user raw annotation not yet provided
   - llm raw annotation not yet provided
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
-  - review_refs/evidence_refs/source_record_refs not yet provided
+  candidate_prescreen_ref:
+    candidate_id: cand_github_qf_agent_b19486d5c4ca
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_agent_b19486d5c4ca.yaml
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+    recommended_action: hold
+    human_review_status: approved_for_staging
+    human_review_notes: clear end-user product signal; evidence sufficient for staging;
+      manual local review from repository evidence after repeated provider failures
+    human_reviewed_at: '2026-04-09T07:56:14.518267Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:31.337920Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_agent_b19486d5c4ca.yaml
 - slot_index: 77
   sample_slot_id: GS300-077
-  current_state: awaiting_real_input
+  current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: null
+  sample_id: cand_github_qf_ai_workflow_49e2e52607b9
   target_type: product
   review_closed: null
   clear_adjudication: null
   primary_category_code: null
   review_refs: []
   evidence_refs: []
-  source_record_refs: []
+  source_record_refs: &id002
+  - candidate_id: cand_github_qf_ai_workflow_49e2e52607b9
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_49e2e52607b9.yaml
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '738425296'
+    canonical_url: https://github.com/craftgen/craftgen
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -196,11 +226,11 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: null
+    sample_id: cand_github_qf_ai_workflow_49e2e52607b9
     target_id: null
-    source_id: null
+    source_id: src_github
     target_type: product
-    source_record_refs: []
+    source_record_refs: *id002
     review_refs: []
     evidence_refs: []
     eligibility_snapshot:
@@ -209,29 +239,51 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: null
+      candidate_pool_batch_id: candidate_batch_github_qf_ai_workflow_2025-02-01_2025-02-28
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
-  - real sample_id not yet provided
+  - formal review_refs not yet provided
+  - formal evidence_refs not yet provided
   - local_project_user raw annotation not yet provided
   - llm raw annotation not yet provided
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
-  - review_refs/evidence_refs/source_record_refs not yet provided
+  candidate_prescreen_ref:
+    candidate_id: cand_github_qf_ai_workflow_49e2e52607b9
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_49e2e52607b9.yaml
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+    recommended_action: hold
+    human_review_status: approved_for_staging
+    human_review_notes: clear end-user product signal; evidence sufficient for staging;
+      manual local review from repository evidence after repeated provider failures
+    human_reviewed_at: '2026-04-09T07:56:14.518267Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:36.432971Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_49e2e52607b9.yaml
 - slot_index: 78
   sample_slot_id: GS300-078
-  current_state: awaiting_real_input
+  current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: null
+  sample_id: cand_github_qf_chatbot_1248422846e9
   target_type: product
   review_closed: null
   clear_adjudication: null
   primary_category_code: null
   review_refs: []
   evidence_refs: []
-  source_record_refs: []
+  source_record_refs: &id003
+  - candidate_id: cand_github_qf_chatbot_1248422846e9
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_1248422846e9.yaml
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '602806555'
+    canonical_url: https://github.com/whatwewant/chatgpt-for-chatbot-feishu
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -295,11 +347,11 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: null
+    sample_id: cand_github_qf_chatbot_1248422846e9
     target_id: null
-    source_id: null
+    source_id: src_github
     target_type: product
-    source_record_refs: []
+    source_record_refs: *id003
     review_refs: []
     evidence_refs: []
     eligibility_snapshot:
@@ -308,29 +360,51 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: null
+      candidate_pool_batch_id: candidate_batch_github_qf_chatbot_2025-02-01_2025-02-28
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
-  - real sample_id not yet provided
+  - formal review_refs not yet provided
+  - formal evidence_refs not yet provided
   - local_project_user raw annotation not yet provided
   - llm raw annotation not yet provided
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
-  - review_refs/evidence_refs/source_record_refs not yet provided
+  candidate_prescreen_ref:
+    candidate_id: cand_github_qf_chatbot_1248422846e9
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_1248422846e9.yaml
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+    recommended_action: hold
+    human_review_status: approved_for_staging
+    human_review_notes: clear end-user product signal; evidence sufficient for staging;
+      manual local review from repository evidence after repeated provider failures
+    human_reviewed_at: '2026-04-09T07:56:14.518267Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:39.008359Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_1248422846e9.yaml
 - slot_index: 79
   sample_slot_id: GS300-079
-  current_state: awaiting_real_input
+  current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: null
+  sample_id: cand_github_qf_ai_assistant_7c0d7212a8c6
   target_type: product
   review_closed: null
   clear_adjudication: null
   primary_category_code: null
   review_refs: []
   evidence_refs: []
-  source_record_refs: []
+  source_record_refs: &id004
+  - candidate_id: cand_github_qf_ai_assistant_7c0d7212a8c6
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_assistant_7c0d7212a8c6.yaml
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '635131424'
+    canonical_url: https://github.com/Docta-ai/docta
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -394,11 +468,11 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: null
+    sample_id: cand_github_qf_ai_assistant_7c0d7212a8c6
     target_id: null
-    source_id: null
+    source_id: src_github
     target_type: product
-    source_record_refs: []
+    source_record_refs: *id004
     review_refs: []
     evidence_refs: []
     eligibility_snapshot:
@@ -407,29 +481,51 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: null
+      candidate_pool_batch_id: candidate_batch_github_qf_ai_assistant_2025-01-01_2025-01-31
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
-  - real sample_id not yet provided
+  - formal review_refs not yet provided
+  - formal evidence_refs not yet provided
   - local_project_user raw annotation not yet provided
   - llm raw annotation not yet provided
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
-  - review_refs/evidence_refs/source_record_refs not yet provided
+  candidate_prescreen_ref:
+    candidate_id: cand_github_qf_ai_assistant_7c0d7212a8c6
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_assistant_7c0d7212a8c6.yaml
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+    recommended_action: candidate_pool
+    human_review_status: approved_for_staging
+    human_review_notes: clear end-user product signal; evidence sufficient for staging;
+      manual local review from repository evidence after provider failures
+    human_reviewed_at: '2026-04-09T08:01:42.810990Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:25.332642Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_assistant_7c0d7212a8c6.yaml
 - slot_index: 80
   sample_slot_id: GS300-080
-  current_state: awaiting_real_input
+  current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: null
+  sample_id: cand_github_qf_chatbot_c77cfeee726b
   target_type: product
   review_closed: null
   clear_adjudication: null
   primary_category_code: null
   review_refs: []
   evidence_refs: []
-  source_record_refs: []
+  source_record_refs: &id005
+  - candidate_id: cand_github_qf_chatbot_c77cfeee726b
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_chatbot_c77cfeee726b.yaml
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '607863488'
+    canonical_url: https://github.com/Rogendo/Mental-health-Chatbot
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -493,11 +589,11 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: null
+    sample_id: cand_github_qf_chatbot_c77cfeee726b
     target_id: null
-    source_id: null
+    source_id: src_github
     target_type: product
-    source_record_refs: []
+    source_record_refs: *id005
     review_refs: []
     evidence_refs: []
     eligibility_snapshot:
@@ -506,29 +602,51 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: null
+      candidate_pool_batch_id: candidate_batch_github_qf_chatbot_2025-01-01_2025-01-31
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
-  - real sample_id not yet provided
+  - formal review_refs not yet provided
+  - formal evidence_refs not yet provided
   - local_project_user raw annotation not yet provided
   - llm raw annotation not yet provided
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
-  - review_refs/evidence_refs/source_record_refs not yet provided
+  candidate_prescreen_ref:
+    candidate_id: cand_github_qf_chatbot_c77cfeee726b
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_chatbot_c77cfeee726b.yaml
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+    recommended_action: candidate_pool
+    human_review_status: approved_for_staging
+    human_review_notes: clear end-user product signal; evidence sufficient for staging;
+      manual local review from repository evidence after provider failures
+    human_reviewed_at: '2026-04-09T08:01:43.727675Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:27.093091Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_chatbot_c77cfeee726b.yaml
 - slot_index: 81
   sample_slot_id: GS300-081
-  current_state: awaiting_real_input
+  current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: null
+  sample_id: cand_github_qf_copilot_11d26d8effdb
   target_type: product
   review_closed: null
   clear_adjudication: null
   primary_category_code: null
   review_refs: []
   evidence_refs: []
-  source_record_refs: []
+  source_record_refs: &id006
+  - candidate_id: cand_github_qf_copilot_11d26d8effdb
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_copilot_11d26d8effdb.yaml
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '783089952'
+    canonical_url: https://github.com/ishaan1013/sandbox
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -592,11 +710,11 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: null
+    sample_id: cand_github_qf_copilot_11d26d8effdb
     target_id: null
-    source_id: null
+    source_id: src_github
     target_type: product
-    source_record_refs: []
+    source_record_refs: *id006
     review_refs: []
     evidence_refs: []
     eligibility_snapshot:
@@ -605,29 +723,51 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: null
+      candidate_pool_batch_id: candidate_batch_github_qf_copilot_2025-01-01_2025-01-31
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
-  - real sample_id not yet provided
+  - formal review_refs not yet provided
+  - formal evidence_refs not yet provided
   - local_project_user raw annotation not yet provided
   - llm raw annotation not yet provided
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
-  - review_refs/evidence_refs/source_record_refs not yet provided
+  candidate_prescreen_ref:
+    candidate_id: cand_github_qf_copilot_11d26d8effdb
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_copilot_11d26d8effdb.yaml
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+    recommended_action: candidate_pool
+    human_review_status: approved_for_staging
+    human_review_notes: clear end-user product signal; evidence sufficient for staging;
+      manual local review from repository evidence after provider failures
+    human_reviewed_at: '2026-04-09T08:01:43.811513Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:28.333851Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_copilot_11d26d8effdb.yaml
 - slot_index: 82
   sample_slot_id: GS300-082
-  current_state: awaiting_real_input
+  current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: null
+  sample_id: cand_github_qf_ai_assistant_6cc195dca41f
   target_type: product
   review_closed: null
   clear_adjudication: null
   primary_category_code: null
   review_refs: []
   evidence_refs: []
-  source_record_refs: []
+  source_record_refs: &id007
+  - candidate_id: cand_github_qf_ai_assistant_6cc195dca41f
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_6cc195dca41f.yaml
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '881815257'
+    canonical_url: https://github.com/flexpilot-ai/vscode-extension
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -691,11 +831,11 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: null
+    sample_id: cand_github_qf_ai_assistant_6cc195dca41f
     target_id: null
-    source_id: null
+    source_id: src_github
     target_type: product
-    source_record_refs: []
+    source_record_refs: *id007
     review_refs: []
     evidence_refs: []
     eligibility_snapshot:
@@ -704,29 +844,51 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: null
+      candidate_pool_batch_id: candidate_batch_github_qf_ai_assistant_2025-02-01_2025-02-28
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
-  - real sample_id not yet provided
+  - formal review_refs not yet provided
+  - formal evidence_refs not yet provided
   - local_project_user raw annotation not yet provided
   - llm raw annotation not yet provided
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
-  - review_refs/evidence_refs/source_record_refs not yet provided
+  candidate_prescreen_ref:
+    candidate_id: cand_github_qf_ai_assistant_6cc195dca41f
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_6cc195dca41f.yaml
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+    recommended_action: candidate_pool
+    human_review_status: approved_for_staging
+    human_review_notes: clear end-user product signal; evidence sufficient for staging;
+      manual local review from repository evidence after provider failures
+    human_reviewed_at: '2026-04-09T08:01:45.432941Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:32.633322Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_6cc195dca41f.yaml
 - slot_index: 83
   sample_slot_id: GS300-083
-  current_state: awaiting_real_input
+  current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: null
+  sample_id: cand_github_qf_ai_assistant_8ef471d4f97d
   target_type: product
   review_closed: null
   clear_adjudication: null
   primary_category_code: null
   review_refs: []
   evidence_refs: []
-  source_record_refs: []
+  source_record_refs: &id008
+  - candidate_id: cand_github_qf_ai_assistant_8ef471d4f97d
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_8ef471d4f97d.yaml
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '752798324'
+    canonical_url: https://github.com/yatendra2001/ai_buddy
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -790,11 +952,11 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: null
+    sample_id: cand_github_qf_ai_assistant_8ef471d4f97d
     target_id: null
-    source_id: null
+    source_id: src_github
     target_type: product
-    source_record_refs: []
+    source_record_refs: *id008
     review_refs: []
     evidence_refs: []
     eligibility_snapshot:
@@ -803,29 +965,51 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: null
+      candidate_pool_batch_id: candidate_batch_github_qf_ai_assistant_2025-02-01_2025-02-28
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
-  - real sample_id not yet provided
+  - formal review_refs not yet provided
+  - formal evidence_refs not yet provided
   - local_project_user raw annotation not yet provided
   - llm raw annotation not yet provided
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
-  - review_refs/evidence_refs/source_record_refs not yet provided
+  candidate_prescreen_ref:
+    candidate_id: cand_github_qf_ai_assistant_8ef471d4f97d
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_8ef471d4f97d.yaml
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+    recommended_action: candidate_pool
+    human_review_status: approved_for_staging
+    human_review_notes: clear end-user product signal; evidence sufficient for staging;
+      manual local review from repository evidence after provider failures
+    human_reviewed_at: '2026-04-09T08:01:45.585789Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:33.842581Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_8ef471d4f97d.yaml
 - slot_index: 84
   sample_slot_id: GS300-084
-  current_state: awaiting_real_input
+  current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: null
+  sample_id: cand_github_qf_ai_assistant_a68a38a5eeba
   target_type: product
   review_closed: null
   clear_adjudication: null
   primary_category_code: null
   review_refs: []
   evidence_refs: []
-  source_record_refs: []
+  source_record_refs: &id009
+  - candidate_id: cand_github_qf_ai_assistant_a68a38a5eeba
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_a68a38a5eeba.yaml
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '877293804'
+    canonical_url: https://github.com/Andaroth/ai-assistant-electron
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -889,11 +1073,11 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: null
+    sample_id: cand_github_qf_ai_assistant_a68a38a5eeba
     target_id: null
-    source_id: null
+    source_id: src_github
     target_type: product
-    source_record_refs: []
+    source_record_refs: *id009
     review_refs: []
     evidence_refs: []
     eligibility_snapshot:
@@ -902,29 +1086,51 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: null
+      candidate_pool_batch_id: candidate_batch_github_qf_ai_assistant_2025-02-01_2025-02-28
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
-  - real sample_id not yet provided
+  - formal review_refs not yet provided
+  - formal evidence_refs not yet provided
   - local_project_user raw annotation not yet provided
   - llm raw annotation not yet provided
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
-  - review_refs/evidence_refs/source_record_refs not yet provided
+  candidate_prescreen_ref:
+    candidate_id: cand_github_qf_ai_assistant_a68a38a5eeba
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_a68a38a5eeba.yaml
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+    recommended_action: candidate_pool
+    human_review_status: approved_for_staging
+    human_review_notes: clear end-user product signal; evidence sufficient for staging;
+      manual local review from repository evidence after provider failures
+    human_reviewed_at: '2026-04-09T08:01:45.664235Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:35.138196Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_a68a38a5eeba.yaml
 - slot_index: 85
   sample_slot_id: GS300-085
-  current_state: awaiting_real_input
+  current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: null
+  sample_id: cand_github_qf_ai_workflow_6c3ba304442b
   target_type: product
   review_closed: null
   clear_adjudication: null
   primary_category_code: null
   review_refs: []
   evidence_refs: []
-  source_record_refs: []
+  source_record_refs: &id010
+  - candidate_id: cand_github_qf_ai_workflow_6c3ba304442b
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_6c3ba304442b.yaml
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '867149056'
+    canonical_url: https://github.com/epuerta9/kitchenai
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -988,11 +1194,11 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: null
+    sample_id: cand_github_qf_ai_workflow_6c3ba304442b
     target_id: null
-    source_id: null
+    source_id: src_github
     target_type: product
-    source_record_refs: []
+    source_record_refs: *id010
     review_refs: []
     evidence_refs: []
     eligibility_snapshot:
@@ -1001,29 +1207,51 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: null
+      candidate_pool_batch_id: candidate_batch_github_qf_ai_workflow_2025-02-01_2025-02-28
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
-  - real sample_id not yet provided
+  - formal review_refs not yet provided
+  - formal evidence_refs not yet provided
   - local_project_user raw annotation not yet provided
   - llm raw annotation not yet provided
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
-  - review_refs/evidence_refs/source_record_refs not yet provided
+  candidate_prescreen_ref:
+    candidate_id: cand_github_qf_ai_workflow_6c3ba304442b
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_6c3ba304442b.yaml
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+    recommended_action: candidate_pool
+    human_review_status: approved_for_staging
+    human_review_notes: clear end-user product signal; evidence sufficient for staging;
+      manual local review from repository evidence after provider failures
+    human_reviewed_at: '2026-04-09T08:01:45.921074Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:37.711859Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_6c3ba304442b.yaml
 - slot_index: 86
   sample_slot_id: GS300-086
-  current_state: awaiting_real_input
+  current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: null
+  sample_id: cand_github_qf_chatbot_d0ac6e0dc51d
   target_type: product
   review_closed: null
   clear_adjudication: null
   primary_category_code: null
   review_refs: []
   evidence_refs: []
-  source_record_refs: []
+  source_record_refs: &id011
+  - candidate_id: cand_github_qf_chatbot_d0ac6e0dc51d
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_d0ac6e0dc51d.yaml
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '792608353'
+    canonical_url: https://github.com/ChatBot-All/chatbot-app
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -1087,11 +1315,11 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: null
+    sample_id: cand_github_qf_chatbot_d0ac6e0dc51d
     target_id: null
-    source_id: null
+    source_id: src_github
     target_type: product
-    source_record_refs: []
+    source_record_refs: *id011
     review_refs: []
     evidence_refs: []
     eligibility_snapshot:
@@ -1100,29 +1328,51 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: null
+      candidate_pool_batch_id: candidate_batch_github_qf_chatbot_2025-02-01_2025-02-28
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
-  - real sample_id not yet provided
+  - formal review_refs not yet provided
+  - formal evidence_refs not yet provided
   - local_project_user raw annotation not yet provided
   - llm raw annotation not yet provided
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
-  - review_refs/evidence_refs/source_record_refs not yet provided
+  candidate_prescreen_ref:
+    candidate_id: cand_github_qf_chatbot_d0ac6e0dc51d
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_d0ac6e0dc51d.yaml
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+    recommended_action: candidate_pool
+    human_review_status: approved_for_staging
+    human_review_notes: clear end-user product signal; evidence sufficient for staging;
+      manual local review from repository evidence after provider failures
+    human_reviewed_at: '2026-04-09T08:01:46.461765Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:40.401166Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_d0ac6e0dc51d.yaml
 - slot_index: 87
   sample_slot_id: GS300-087
-  current_state: awaiting_real_input
+  current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: null
+  sample_id: cand_github_qf_copilot_ea2f067193ed
   target_type: product
   review_closed: null
   clear_adjudication: null
   primary_category_code: null
   review_refs: []
   evidence_refs: []
-  source_record_refs: []
+  source_record_refs: &id012
+  - candidate_id: cand_github_qf_copilot_ea2f067193ed
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_copilot_ea2f067193ed.yaml
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '803762461'
+    canonical_url: https://github.com/egoist/shell-ask
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -1186,11 +1436,11 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: null
+    sample_id: cand_github_qf_copilot_ea2f067193ed
     target_id: null
-    source_id: null
+    source_id: src_github
     target_type: product
-    source_record_refs: []
+    source_record_refs: *id012
     review_refs: []
     evidence_refs: []
     eligibility_snapshot:
@@ -1199,29 +1449,51 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: null
+      candidate_pool_batch_id: candidate_batch_github_qf_copilot_2025-02-01_2025-02-28
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
-  - real sample_id not yet provided
+  - formal review_refs not yet provided
+  - formal evidence_refs not yet provided
   - local_project_user raw annotation not yet provided
   - llm raw annotation not yet provided
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
-  - review_refs/evidence_refs/source_record_refs not yet provided
+  candidate_prescreen_ref:
+    candidate_id: cand_github_qf_copilot_ea2f067193ed
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_copilot_ea2f067193ed.yaml
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+    recommended_action: candidate_pool
+    human_review_status: approved_for_staging
+    human_review_notes: clear end-user product signal; evidence sufficient for staging;
+      manual local review from repository evidence after provider failures
+    human_reviewed_at: '2026-04-09T08:01:46.885281Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:41.793798Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_copilot_ea2f067193ed.yaml
 - slot_index: 88
   sample_slot_id: GS300-088
-  current_state: awaiting_real_input
+  current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: null
+  sample_id: cand_github_qf_rag_b58c2946672e
   target_type: product
   review_closed: null
   clear_adjudication: null
   primary_category_code: null
   review_refs: []
   evidence_refs: []
-  source_record_refs: []
+  source_record_refs: &id013
+  - candidate_id: cand_github_qf_rag_b58c2946672e
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_rag_b58c2946672e.yaml
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '906380555'
+    canonical_url: https://github.com/bracesproul/site-rag
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -1285,11 +1557,11 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: null
+    sample_id: cand_github_qf_rag_b58c2946672e
     target_id: null
-    source_id: null
+    source_id: src_github
     target_type: product
-    source_record_refs: []
+    source_record_refs: *id013
     review_refs: []
     evidence_refs: []
     eligibility_snapshot:
@@ -1298,29 +1570,51 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: null
+      candidate_pool_batch_id: candidate_batch_github_qf_rag_2025-02-01_2025-02-28
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
-  - real sample_id not yet provided
+  - formal review_refs not yet provided
+  - formal evidence_refs not yet provided
   - local_project_user raw annotation not yet provided
   - llm raw annotation not yet provided
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
-  - review_refs/evidence_refs/source_record_refs not yet provided
+  candidate_prescreen_ref:
+    candidate_id: cand_github_qf_rag_b58c2946672e
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_rag_b58c2946672e.yaml
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+    recommended_action: candidate_pool
+    human_review_status: approved_for_staging
+    human_review_notes: clear end-user product signal; evidence sufficient for staging;
+      manual local review from repository evidence after provider failures
+    human_reviewed_at: '2026-04-09T08:01:47.147175Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:45.705743Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_rag_b58c2946672e.yaml
 - slot_index: 89
   sample_slot_id: GS300-089
-  current_state: awaiting_real_input
+  current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: null
+  sample_id: cand_github_qf_agent_a7e7c2ef0a49
   target_type: product
   review_closed: null
   clear_adjudication: null
   primary_category_code: null
   review_refs: []
   evidence_refs: []
-  source_record_refs: []
+  source_record_refs: &id014
+  - candidate_id: cand_github_qf_agent_a7e7c2ef0a49
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_agent_a7e7c2ef0a49.yaml
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '967213951'
+    canonical_url: https://github.com/sfxyn/agent
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -1384,11 +1678,11 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: null
+    sample_id: cand_github_qf_agent_a7e7c2ef0a49
     target_id: null
-    source_id: null
+    source_id: src_github
     target_type: product
-    source_record_refs: []
+    source_record_refs: *id014
     review_refs: []
     evidence_refs: []
     eligibility_snapshot:
@@ -1397,29 +1691,51 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: null
+      candidate_pool_batch_id: candidate_batch_github_qf_agent_2025-03-01_2025-03-31
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
-  - real sample_id not yet provided
+  - formal review_refs not yet provided
+  - formal evidence_refs not yet provided
   - local_project_user raw annotation not yet provided
   - llm raw annotation not yet provided
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
-  - review_refs/evidence_refs/source_record_refs not yet provided
+  candidate_prescreen_ref:
+    candidate_id: cand_github_qf_agent_a7e7c2ef0a49
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_agent_a7e7c2ef0a49.yaml
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+    recommended_action: candidate_pool
+    human_review_status: approved_for_staging
+    human_review_notes: clear end-user product signal; evidence sufficient for staging;
+      manual local review from repository evidence after provider failures
+    human_reviewed_at: '2026-04-09T08:01:47.668867Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:47.149458Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_agent_a7e7c2ef0a49.yaml
 - slot_index: 90
   sample_slot_id: GS300-090
-  current_state: awaiting_real_input
+  current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: null
+  sample_id: cand_github_qf_ai_assistant_82a2e0a86544
   target_type: product
   review_closed: null
   clear_adjudication: null
   primary_category_code: null
   review_refs: []
   evidence_refs: []
-  source_record_refs: []
+  source_record_refs: &id015
+  - candidate_id: cand_github_qf_ai_assistant_82a2e0a86544
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_assistant_82a2e0a86544.yaml
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '915617195'
+    canonical_url: https://github.com/hasan-py/Ai-Assistant-Chrome-Extension
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -1483,11 +1799,11 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: null
+    sample_id: cand_github_qf_ai_assistant_82a2e0a86544
     target_id: null
-    source_id: null
+    source_id: src_github
     target_type: product
-    source_record_refs: []
+    source_record_refs: *id015
     review_refs: []
     evidence_refs: []
     eligibility_snapshot:
@@ -1496,13 +1812,27 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: null
+      candidate_pool_batch_id: candidate_batch_github_qf_ai_assistant_2025-03-01_2025-03-31
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
-  - real sample_id not yet provided
+  - formal review_refs not yet provided
+  - formal evidence_refs not yet provided
   - local_project_user raw annotation not yet provided
   - llm raw annotation not yet provided
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
-  - review_refs/evidence_refs/source_record_refs not yet provided
+  candidate_prescreen_ref:
+    candidate_id: cand_github_qf_ai_assistant_82a2e0a86544
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_assistant_82a2e0a86544.yaml
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+    recommended_action: candidate_pool
+    human_review_status: approved_for_staging
+    human_review_notes: clear end-user product signal; evidence sufficient for staging;
+      manual local review from repository evidence after provider failures
+    human_reviewed_at: '2026-04-09T08:01:47.939745Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:48.441146Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_assistant_82a2e0a86544.yaml

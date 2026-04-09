@@ -140,7 +140,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:04.739447Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:54.973983Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_rag_3ccad06a16fa.yaml
 - slot_index: 32
   sample_slot_id: GS300-032
@@ -261,7 +261,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:06.675476Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:56.848850Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-08_2026-03-15/cand_github_qf_agent_1455730e33be.yaml
 - slot_index: 33
   sample_slot_id: GS300-033
@@ -382,7 +382,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:07.993587Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:58.133137Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-08_2026-03-15/cand_github_qf_ai_assistant_1b3c374bee1a.yaml
 - slot_index: 34
   sample_slot_id: GS300-034
@@ -503,7 +503,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       aligned with existing staged sample GS300-034.
     human_reviewed_at: '2026-04-02T10:52:18Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:08.721504Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:58.897849Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-08_2026-03-15/cand_github_qf_ai_workflow_ec184c81fca7.yaml
 - slot_index: 35
   sample_slot_id: GS300-035
@@ -624,7 +624,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:09.426134Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:03:59.628791Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-08_2026-03-15/cand_github_qf_chatbot_41f0b9f79ae9.yaml
 - slot_index: 36
   sample_slot_id: GS300-036
@@ -745,7 +745,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       user confirmed and requested pool admission.
     human_reviewed_at: '2026-04-02T10:02:37.123383Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:10.165305Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:00.372979Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-08_2026-03-15/cand_github_qf_rag_99c9d1b25d3e.yaml
 - slot_index: 37
   sample_slot_id: GS300-037
@@ -867,7 +867,7 @@ samples:
       all-in-one productivity app with integrated AI assistant/agent and public distribution
       via F-Droid shows clear end-user product scope.
     human_reviewed_at: '2026-04-02T10:33:09.259048Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:13.199654Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:03.371212Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_chatbot_4e4a987a2684.yaml
 - slot_index: 38
   sample_slot_id: GS300-038
@@ -989,7 +989,7 @@ samples:
       patient-facing healthcare assistant with symptom triage, doctor search, scheduling,
       and public demo provides strong user-side product evidence.
     human_reviewed_at: '2026-04-02T10:33:09.259048Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:15.644803Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:05.652836Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_chatbot_e9b0cb0902a2.yaml
 - slot_index: 39
   sample_slot_id: GS300-039
@@ -1111,7 +1111,7 @@ samples:
       multi-channel customer-support ticket product with chatbot integrations and
       explicit SaaS/operator features is in scope for staging.
     human_reviewed_at: '2026-04-02T10:33:09.259048Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:13.927484Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:04.063927Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_chatbot_a0f916165350.yaml
 - slot_index: 40
   sample_slot_id: GS300-040
@@ -1233,7 +1233,7 @@ samples:
       local AI task-management system with direct user workflow and goal-driven prioritization
       fits the user-side productivity product boundary.
     human_reviewed_at: '2026-04-02T10:35:47.097651Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:11.807242Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:02.017514Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_ai_assistant_82d0c34c10ee.yaml
 - slot_index: 41
   sample_slot_id: GS300-041
@@ -1355,7 +1355,7 @@ samples:
       farmer-facing agriculture platform with public web deployment, decision-support
       features, and AI chatbot support is clearly in scope.
     human_reviewed_at: '2026-04-02T10:35:47.065291Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:16.327859Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:06.335911Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_chatbot_fec76bc9738a.yaml
 - slot_index: 42
   sample_slot_id: GS300-042
@@ -1477,7 +1477,7 @@ samples:
       AI-driven personal productivity system with explicit daily planning and knowledge-management
       workflows fits the user-side product boundary.
     human_reviewed_at: '2026-04-02T10:38:25.162488Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:12.513029Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:02.715528Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_ai_assistant_ba47c89263e5.yaml
 - slot_index: 43
   sample_slot_id: GS300-043
@@ -1605,7 +1605,7 @@ samples:
       be excluded or split into specific subprojects for separate review. evidence_strength=low
       review_source=existing_llm_prescreen'
     human_reviewed_at: '2026-04-06T14:52:29.017791Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:48.833234Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:12.484767Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_rag_e7338be43224.yaml
 - slot_index: 44
   sample_slot_id: GS300-044
@@ -1732,14 +1732,14 @@ samples:
       artifacts; exclude if scope requires an application whose primary user-facing
       function is AI. evidence_strength=low review_source=fresh_llm_review
     human_reviewed_at: '2026-04-03T06:52:01.537159Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T03:11:19.346427Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:09.512847Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-29_2026-04-02/cand_github_qf_ai_assistant_e5fa55433e1b.yaml
 - slot_index: 45
   sample_slot_id: GS300-045
   current_state: candidate_approved_for_annotation
   ready_for_formal_writeflow: false
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
-  sample_id: cand_github_qf_agent_63b95e3572fc
+  sample_id: cand_github_qf_agent_640f23c39640
   target_type: product
   review_closed: null
   clear_adjudication: null
@@ -1747,13 +1747,14 @@ samples:
   review_refs: []
   evidence_refs: []
   source_record_refs: &id015
-  - candidate_id: cand_github_qf_agent_63b95e3572fc
-    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-02/cand_github_qf_agent_63b95e3572fc.yaml
+  - candidate_id: cand_github_qf_agent_640f23c39640
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-29_2026-04-02/cand_github_qf_agent_640f23c39640.yaml
     source: github
     source_id: src_github
-    source_window: 2026-01-01..2026-04-02
+    source_window: 2026-03-29..2026-04-02
     external_id: '224021526'
     canonical_url: https://github.com/grafana/agent
+    sample_key: null
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
@@ -1817,7 +1818,7 @@ samples:
     notes: null
   sample_metadata:
     provided: false
-    sample_id: cand_github_qf_agent_63b95e3572fc
+    sample_id: cand_github_qf_agent_640f23c39640
     target_id: null
     source_id: src_github
     target_type: product
@@ -1830,9 +1831,10 @@ samples:
       clear_adjudication: null
       is_unresolved: null
     pool_trace:
-      candidate_pool_batch_id: candidate_batch_github_qf_agent_2026-01-01_2026-04-02
+      candidate_pool_batch_id: candidate_batch_github_qf_agent_2026-03-29_2026-04-02
       training_pool_source: candidate_pool
       whitelist_reason: null
+    sample_key: null
   blocking_items:
   - formal review_refs not yet provided
   - formal evidence_refs not yet provided
@@ -1841,21 +1843,20 @@ samples:
   - adjudicated final decision fields not yet provided
   - adjudication basis not yet provided
   candidate_prescreen_ref:
-    candidate_id: cand_github_qf_agent_63b95e3572fc
-    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-02/cand_github_qf_agent_63b95e3572fc.yaml
+    candidate_id: cand_github_qf_agent_640f23c39640
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-29_2026-04-02/cand_github_qf_agent_640f23c39640.yaml
     query_family: ai_applications_and_products
     query_slice_id: qf_agent
     selection_rule_version: github_qsv1
-    recommended_action: null
+    recommended_action: candidate_pool
     human_review_status: approved_for_staging
-    human_review_notes: clear end-user product signal; evidence sufficient for staging;
-      Repository describes a programmable observability/telemetry collector distribution,
-      not an AI application or AI productization tool. It is also explicitly end-of-life,
-      further reducing fit for active candidate tracking. Strong match to observability
-      infrastructure (metrics/logs/traces/profiles pipelines). Weak/no evidence of
-      AI model functionality, LLM features, ML lifecycle tooling, or AI-specific product
-      workflows. Treat as non-AI infrastructure unless broader inclusion rules explicitly
-      allow general developer tooling. evidence_strength=high review_source=fresh_llm_review
-    human_reviewed_at: '2026-04-03T07:54:06.006204Z'
-  staged_from_candidate_prescreen_at: '2026-04-03T07:54:06.562125Z'
-  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-02/cand_github_qf_agent_63b95e3572fc.yaml
+    human_review_notes: 'clear end-user product signal; evidence sufficient for staging;
+      High readiness for quick human triage: likely close as out-of-scope for AI applications/products
+      unless rubric intentionally includes AI-adjacent infra observability. This appears
+      to be infrastructure observability middleware (metrics/logs/traces/profiles
+      collection and routing), not an AI-native application or AI product feature.
+      It may be relevant only under a broader infra/tooling taxonomy, not core AI
+      applications. evidence_strength=low review_source=existing_llm_prescreen'
+    human_reviewed_at: '2026-04-03T06:58:59.227895Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T09:04:08.725905Z'
+  staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-29_2026-04-02/cand_github_qf_agent_640f23c39640.yaml
