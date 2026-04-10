@@ -13,6 +13,7 @@ from src.candidate_prescreen.workflow import (
     run_candidate_prescreen,
     validate_candidate_workspace,
 )
+from src.collectors.github import collect_fixture_window as collect_github_fixture_window
 from src.common.errors import ContractValidationError, ProcessingError
 from src.common.files import dump_yaml, load_yaml, utc_now_iso
 from src.runtime.raw_store.file_store import FileRawStore
@@ -147,6 +148,26 @@ class FixturePipelineIntegrationTests(unittest.TestCase):
             self.assertEqual(len(records), 1)
             self.assertEqual(records[0]["fetched_at"], "2026-03-08T00:00:00Z")
             self.assertIn("window_start=2026-03-01", records[0]["raw_payload_ref"])
+
+    def test_github_collector_fixture_builds_replayable_raw_records(self) -> None:
+        with temp_config() as config:
+            collector_output = collect_github_fixture_window(
+                config.fixtures_dir / "collector" / "github_qf_agent_window.json",
+                expected_window_start="2026-03-01T00:00:00Z",
+                expected_window_end="2026-03-08T00:00:00Z",
+                expected_query_slice_id="qf_agent",
+                expected_selection_rule_version="github_qsv1",
+            )
+
+            raw_store = FileRawStore(config.raw_store_dir)
+            records = raw_store.store_items(collector_output["crawl_run"], collector_output["items"])
+
+            self.assertEqual(len(records), 2)
+            self.assertEqual(records[0]["source_id"], "src_github")
+            self.assertEqual(records[0]["request_params"]["selection_rule_version"], "github_qsv1")
+            self.assertEqual(records[0]["request_params"]["query_slice_id"], "qf_agent")
+            self.assertEqual(records[0]["request_params"]["page_or_cursor_start"], 1)
+            self.assertEqual(records[0]["watermark_before"]["time_field"], "pushed_at")
 
     def test_replay_marks_terminal_failure_on_invalid_normalized_output(self) -> None:
         with TemporaryDirectory() as tmp_dir:

@@ -29,6 +29,7 @@ SCREENING_BOUNDARY_README_PATH = REPO_ROOT / "docs" / "screening_calibration_ass
 SCREENING_POSITIVE_DATA_PATH = REPO_ROOT / "docs" / "screening_calibration_assets" / "screening_positive_set" / "screening_positive_set_candidates.yaml"
 SCREENING_NEGATIVE_DATA_PATH = REPO_ROOT / "docs" / "screening_calibration_assets" / "screening_negative_set" / "screening_negative_set_candidates.yaml"
 SCREENING_BOUNDARY_DATA_PATH = REPO_ROOT / "docs" / "screening_calibration_assets" / "screening_boundary_set" / "screening_boundary_set_candidates.yaml"
+PHASE1_A_BASELINE_PATH = REPO_ROOT / "docs" / "phase1_a_baseline.md"
 
 EXPECTED_MVP_REFERENCE_SAMPLE_COUNTS = {
     "gold_set": 134,
@@ -755,3 +756,20 @@ class FreezeBoardSignoffContractTests(unittest.TestCase):
             actual_mapping[entry["file"]] = source_decisions
 
         self.assertEqual(actual_mapping, expected_mapping)
+
+
+class Phase1ABaselineContractTests(unittest.TestCase):
+    def test_document_overview_registers_phase1_a_baseline_artifact(self) -> None:
+        content = DOCUMENT_OVERVIEW_PATH.read_text(encoding="utf-8")
+        self.assertIn("`phase1_prompt.md`", content)
+        self.assertIn("`Phase1-A baseline matrix`", content)
+        self.assertIn("`docs/phase1_a_baseline.md`", content)
+
+    def test_phase1_a_baseline_tracks_entry_gate_and_runtime_boundaries(self) -> None:
+        content = PHASE1_A_BASELINE_PATH.read_text(encoding="utf-8")
+        self.assertIn("`17_open_decisions_and_freeze_board.md` 已明确：当前不存在 `blocking = yes` 且 `status != frozen` 的条目", content)
+        self.assertIn("GitHub 为当前阶段默认 live candidate discovery 路径", content)
+        self.assertIn("Product Hunt 当前 runnable baseline 只保留 fixture / replay / contract", content)
+        self.assertIn("`src/collectors/github.py` 与 `fixtures/collector/github_qf_agent_window.json` 已把 GitHub `selection_rule_version + query_slice_id + pushed window + page` replay contract 显式落到仓库", content)
+        self.assertIn("`entity_resolver.py`、`observation_builder.py`、`product_profiler.py`、`taxonomy_classifier.py`、`score_engine.py` 当前仍返回 `placeholder_for_phase1_followup`", content)
+        self.assertIn("当前没有新增的 `Phase1-A` blocker", content)

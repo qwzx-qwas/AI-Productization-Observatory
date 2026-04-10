@@ -576,24 +576,30 @@ last_frozen_version: governance_v2
    - owner：`annotation_owner`
    - status：`implemented`
    (17) 第 17 行
+   - doc：`phase1_prompt.md`
+   - artifact：`Phase1-A baseline matrix`
+   - repo path：`docs/phase1_a_baseline.md`
+   - owner：`phase1_owner`
+   - status：`implemented`
+   (18) 第 18 行
    - doc：`14_test_plan_and_acceptance.md`
    - artifact：fixtures
    - repo path：`fixtures/`
    - owner：`qa_owner`
    - status：`implemented`
-   (18) 第 18 行
+   (19) 第 19 行
    - doc：`14_test_plan_and_acceptance.md`
    - artifact：gold set
    - repo path：`gold_set/`
    - owner：`qa_owner`
    - status：`stub`
-   (19) 第 19 行
+   (20) 第 20 行
    - doc：`16_repo_structure_and_module_mapping.md`
    - artifact：module mapping
    - repo path：`src/`
    - owner：`pipeline_owner`
    - status：`implemented`
-   (20) 第 20 行
+   (21) 第 21 行
    - doc：`21_screening_calibration_asset_layer.md`
    - artifact：screening calibration assets
    - repo path：`docs/screening_calibration_assets/`
