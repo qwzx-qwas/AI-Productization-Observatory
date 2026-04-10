@@ -236,6 +236,7 @@ review 结果可以回流：
 - gold set 扩充
 - 候选样本池
 - future training pool
+- screening calibration assets
 
 补充约束：
 
@@ -247,6 +248,11 @@ review 结果可以回流：
 - 候选池不等于 training pool
 - 只有 review closure 完成、证据充分、裁决清晰、非 `unresolved` 的样本，才建议进入 training pool
 - 若要进入 `gold_set`，还必须满足双标 + adjudication
+- 若要进入 `screening calibration assets`，只允许按候选预筛状态分流：
+  - `approved_for_staging` -> `screening_positive_set`
+  - `rejected_after_human_review` -> `screening_negative_set`
+  - `on_hold` -> `screening_boundary_set`
+- `screening calibration assets` 只服务于前置筛选校准，不得与 formal `gold_set`、training pool 或 adjudication 资产混用
 - `gold_set` 必须保留每个双标通道的原始标注结果与 channel metadata，不能只保留 adjudication 后的汇总结果
 - 若当前双标通道包含 LLM，该通道应尽量与生产 taxonomy-classification prompt / routing 解耦；若暂时复用部分组件，必须在评估与复标记录中显式标注相关性风险
 

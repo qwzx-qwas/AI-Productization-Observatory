@@ -19,6 +19,11 @@ from tests.helpers import REPO_ROOT
 
 
 FREEZE_BOARD_PATH = REPO_ROOT / "17_open_decisions_and_freeze_board.md"
+DOCUMENT_OVERVIEW_PATH = REPO_ROOT / "document_overview.md"
+SCREENING_ASSETS_README_PATH = REPO_ROOT / "docs" / "screening_calibration_assets" / "README.md"
+SCREENING_POSITIVE_README_PATH = REPO_ROOT / "docs" / "screening_calibration_assets" / "screening_positive_set" / "README.md"
+SCREENING_NEGATIVE_README_PATH = REPO_ROOT / "docs" / "screening_calibration_assets" / "screening_negative_set" / "README.md"
+SCREENING_BOUNDARY_README_PATH = REPO_ROOT / "docs" / "screening_calibration_assets" / "screening_boundary_set" / "README.md"
 
 
 def _write_json(path: Path, payload: dict[str, object]) -> None:
@@ -609,6 +614,41 @@ class ContractCommandTests(unittest.TestCase):
             self.assertTrue((root / "task_store").is_dir())
             self.assertTrue((root / "marts").is_dir())
             self.assertEqual((root / "task_store" / "tasks.json").read_text(encoding="utf-8").strip(), "[]")
+
+
+class ScreeningCalibrationAssetContractTests(unittest.TestCase):
+    def test_document_overview_registers_screening_calibration_spec_and_asset_path(self) -> None:
+        content = DOCUMENT_OVERVIEW_PATH.read_text(encoding="utf-8")
+        self.assertIn("`21_screening_calibration_asset_layer.md`", content)
+        self.assertIn("screening calibration 资产层规范", content)
+        self.assertIn("`docs/screening_calibration_assets/`", content)
+        self.assertIn("artifact：screening calibration assets", content)
+
+    def test_screening_calibration_assets_readme_keeps_gold_set_boundary_and_priority(self) -> None:
+        content = SCREENING_ASSETS_README_PATH.read_text(encoding="utf-8")
+        self.assertIn("本目录不是 `gold_set`", content)
+        self.assertIn("本目录不能与 formal `gold_set_300` 混用", content)
+        self.assertIn("candidate prescreen 中间文档不能直接当正式 gold set annotation / adjudication", content)
+        self.assertIn("`screening_positive_set/`", content)
+        self.assertIn("`screening_negative_set/`", content)
+        self.assertIn("`screening_boundary_set/`", content)
+        self.assertIn("1. `screening_negative_set`", content)
+        self.assertIn("2. `screening_boundary_set`", content)
+        self.assertIn("3. `screening_positive_set`", content)
+
+    def test_screening_set_role_readmes_keep_source_and_boundary_split(self) -> None:
+        positive = SCREENING_POSITIVE_README_PATH.read_text(encoding="utf-8")
+        self.assertIn("`approved_for_staging`", positive)
+        self.assertIn("它不是 formal gold set", positive)
+
+        negative = SCREENING_NEGATIVE_README_PATH.read_text(encoding="utf-8")
+        self.assertIn("`rejected_after_human_review`", negative)
+        self.assertIn("它不是 formal gold set 的负类补充", negative)
+
+        boundary = SCREENING_BOUNDARY_README_PATH.read_text(encoding="utf-8")
+        self.assertIn("`on_hold`", boundary)
+        self.assertIn("它不是负例", boundary)
+        self.assertIn("它的价值在于表达“不应硬判”", boundary)
 
 
 class FreezeBoardSignoffContractTests(unittest.TestCase):

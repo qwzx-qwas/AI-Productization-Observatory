@@ -1,0 +1,172 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_ef16342da542
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-02-01_2025-02-28
+created_at: '2026-04-09T12:18:37.138700Z'
+updated_at: '2026-04-09T13:10:40.780140Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '606768439'
+canonical_url: https://github.com/Infinity242/KickViewBot
+title: KickViewBot
+summary: The first open source Kick.com viewbot
+raw_evidence_excerpt: 'The first open source Kick.com viewbot
+
+
+  NEW UPDATE! Hello everyone, it seems so crazy that I have been working on this project
+  for two years! Since its release, we have made huge improvements. It is now fully
+  server-sided & we offer Viewbotting, Followbots, Ai Chatbots, Normal Chatbots, Pollbots,
+  Clip Viewbots & More! Everything is VERY cheap and can either be bought through
+  one of our plans or bought individually!
+
+
+  Website: https://kvb.gg Discord: https://discord.gg/kvb
+
+
+  New Features
+
+
+  - Improved UI - Improved view botting (Up to 20,000+ Viewers) - Chatbot - Pollbot
+  - Clip Viewbot - Ai Chatbot (Coming Soon!) - Followbot - Auto Start (The bots automatically
+  send when you go live!) - Premium Support - Weekly Updates - Proxy Support - Anti-Finger
+  Printing - Anti-Bot Detection
+
+
+  Preview
+
+
+  Kick View Bot
+
+
+  Hello, my name is AnonX. I created a simple view bot for the new streaming site
+  called kick.com, I have been working on this for quite some time now to ensure that
+  it had little to no issues upon it''s public release.
+
+
+  This tool is to only be used for preventing view botting on your own website, via
+  testing using this tool. I do not condone using this on kick.com or any other streaming
+  platform.
+
+
+  Installation
+
+
+  1: Download Python 3.10 from the Microsoft store
+
+
+  2: Open a command prompt in the folder with the Python files
+
+
+  3: Install using these commands
+
+
+  Need more help? Here''s a video! https://www.youtube.com/watch?v=asG2wI9VA4k
+
+
+  Discord & Guilded If you need any help or if you would just like to be up to date
+  on future updates for this tool, please join the Discord server. I also added a
+  guilded server just in case the Discord server gets banned (Guilded is a Discord
+  alternative with less rules).
+
+
+  - Discord Link: https://discord.gg/8PV8k4QFHB - Create a Guilded Account here: https://www.guilded.gg?r=4DQZMKMd
+  - Guilded Server Invite (Click after you''ve created an account): https://www.guilded.gg/i/2VVeW832
+
+
+  Features
+
+
+  - Auto Age Confirmation - Multi-Threading - Low CPU Usage - No viewer drop-offs
+  - Simple UI - Easy to use - Headless Version! - New UI Coming Soon! - Paid Version
+  Coming Soon! - Proxy Support Coming Soon!
+
+
+  The Future Of The Tool I have plans to make a paid version of the tool with improved
+  functionality, better UI and better performance. I will also be actively updating
+  the free tool to add new features and fix bugs or other issues that may come up
+  with the script.
+
+
+  Credit I do ask that anyone that uses this tool please leave the credits in the
+  script, yes the script is open source but getting credit for something I made is
+  just as cool as it being free to use. Thank You!'
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '606768439'
+    canonical_url: https://github.com/Infinity242/KickViewBot
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:40.780140Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

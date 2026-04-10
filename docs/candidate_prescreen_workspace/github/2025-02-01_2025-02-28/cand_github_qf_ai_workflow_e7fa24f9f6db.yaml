@@ -1,0 +1,172 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_e7fa24f9f6db
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-02-01_2025-02-28
+created_at: '2026-04-09T14:09:05.629164Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '937491000'
+canonical_url: https://github.com/felton/email-agent-workshop
+title: email-agent-workshop
+summary: ''
+raw_evidence_excerpt: "Email Agent Workshop\n\nBuild a personal AI Email Agent that\
+  \ automatically processes, labels, and drafts responses to incoming messages. You'll\
+  \ create the agent with Next.js, TypeScript, the Vercel AI SDK, and Neon Postgres.\n\
+  \nBy the end of the workshop, you'll have a fully working email assistant and gain\
+  \ practical experience building AI features you can include in future projects.\n\
+  \nPrerequisites\n\nWhen it comes to assumptions & prerequisites, workshop attendees\
+  \ should have:\n\n- Knowledge of git, building APIs, and writing server-side code\
+  \ with JavaScript/TypeScript - Familiarity with command-line tools and installing\
+  \ Node.js packages\n\nThe workshop focuses exclusively on backend development and\
+  \ AI integration, so no frontend experience is required\n\nWorkshop Structure\n\n\
+  The workshop combines two types of activities:\n\n- Conceptual overview: Explanations\
+  \ of key ideas you'll need to understand. - Hands-on exercises: Guided activities\
+  \ where you'll apply what you've learned, with helpful code snippets provided.\n\
+  \nIntroduction\n\nIf you've used AI apps like ChatGPT, Claude, Le Chat, Google Gemini,\
+  \ or others, you'll notice that they all offer a similar user experience where you:\n\
+  \n1. Initiate a conversation 2. Only do one task at a time\n\nAI Agents are the\
+  \ next evolution of AI apps. Since they will allow you to delegate tasks to an AI\
+  \ and have them done in the background.\n\nSome example use cases of AI Agents are:\n\
+  \n- Coding - Support - Deep Research\n\nThere's also a lot of potential for personal\
+  \ AI agents. This workshop will show you how to build a personal AI Email Agent\
+  \ that automatically processes, labels, and summarizes incoming emails.\n\nThe goal\
+  \ of this workshop is to give you a solid foundation to build your own AI Agents.\
+  \ The concepts you'll learn can be applied to other AI Agent projects.\n\nHow the\
+  \ email agent will work\n\nThe email agent will work as follows:\n\n- Google Apps\
+  \ Script will check for new emails and forward them to an API endpoint - Incoming\
+  \ emails will be processed using the Vercel AI SDK and the result will be stored\
+  \ in a database on Neon\n\nExercise: Set up your development environment\n\nTo follow\
+  \ along:\n\n1. Switch to the \"start\" branch and click on the \"Code\" button to\
+  \ open the repository in GitHub Codespaces. 2. Rename the `.env.example` file to\
+  \ `.env` and set a random value for the `WEBHOOK_SECRET` variable. 3. Install the\
+  \ dependencies by running `npm install` 4. start the development server by running\
+  \ `npm run dev`\n\nYou should see the Next.js app running on `http://localhost:3000`.\n\
+  \nProject Overview\n\nThe project is a Next.js app that uses the Vercel AI SDK,\
+  \ Neon Postgres, and Drizzle ORM to build an AI workflow that processes incoming\
+  \ emails.\n\nThe `/src/app/page.tsx` file contains the main page component that\
+  \ displays the email data. The page fetches the email data from the database and\
+  \ renders it.\n\nThe webhook route handler implemented in `/src/app/api/webhooks/agent/route.ts`\
+  \ functions as the primary endpoint for email data processing.\n\nConceptual Overview:\
+  \ What are webhooks?\n\nWebhooks are a way for one application to send real-time\
+  \ data to another application. They are commonly used in APIs to notify other systems\
+  \ about events or updates.\n\n- Stripe: When a payment is made, Stripe sends a webhook\
+  \ to your server to update the payment status. - GitHub: When you push code to a\
+  \ repository, GitHub sends a webhook to your CI/CD system to trigger a build.\n\n\
+  When you're developing locally, you can use a service like smee.io to proxy your\
+  \ local webhooks to the internet. This allows you to receive webhooks from external\
+  \ services on your local machine.\n\nExercise: Set up webhooks for testing\n\n1.\
+  \ Go to smee.io 1. Create a new channel 1. Update the `dev:webhook` script in your\
+  \ package.json with your URL 1. Run the following two commands:\n\n- `npm run dev`\
+  \ to start the Next.js server - `npm run dev:webhook` to start proxying localhost\n\
+  \nConceptual Overview: Building an AI Workflow\n\nThe initial configuration establishes\
+  \ a strict schema definition that enforces the expected email data structure.\n\n\
+  Upon receiving a request, the system extracts the X-Webhook-Secret header and performs\
+  \ a comparison against the environment-configured secret. Any requests failing this\
+  \ validation trigger an immediate 401 unauthorized response.\n\nNext, the AI SDK\
+  \ will be used to generate an object that contains the label and summary. We then\
+  \ store the email data in the database using Drizzle ORM and return a 200 OK response.\n\
+  \nExercise: Create an AI workflow with the AI SDK by Vercel\n\n1. Go to platform.openai.com\
+  \ and generate an API Key\n\n- New account -> generate an API key during onboarding\
+  \ - Existing account -> Settings > API Keys > create new secret key\n\n2. Go to\
+  \ the route handler in `/src/app/api/webhooks/agent/route.ts` and use the `generateObject`\
+  \ function to generate a structured output which will be stored in the database.\n\
+  \nClick to see the solution\n\nConceptual Overview: Google Apps Scripts\n\nGoogle\
+  \ Apps Script is a cloud-based scripting language that allows you to automate tasks\
+  \ across Google products and third-party services. It's based on JavaScript and\
+  \ can be used to create custom functions, automate workflows, and interact with\
+  \ external APIs.\n\nIn this workshop, we'll use Google Apps Script to create a script\
+  \ that checks for new emails in your Gmail account and forwards them to a webhook\
+  \ endpoint. There will then be a trigger that runs the script at regular intervals\
+  \ to check for new emails and forward them.\n\nExercise: Automated email forwarding\
+  \ using Google Apps Script\n\n1. Go to script.google.com and create a new project\
+  \ 2. Copy the following snippet and update the `WEBHOOK_URL` and `WEBHOOK_SECRET`\
+  \ values. Make sure that they match the values you're using in your project.\n\n\
+  3. Deployment\n\n- Click Deploy > New Deployment - Select the deployment type to\
+  \ be `Web app` - Click Deploy - Click `Authorize access`, You'll see a warning saying\
+  \ the app isn't verified, so choose the \"advanced\" option and click Go to (unsafe)\
+  \ and then Allow.\n\n4. Create a trigger\n\n- Go back to the Google apps script\
+  \ console and choose \"Triggers\" from the sidebar - Click \u201CAdd Trigger\u201D\
+  \ - Choose the `processRecentEmails` function - Select type of time based trigger\
+  \ to be \u201CMinutes Timer\u201D and have it run every minute\n\nand that's it!\
+  \ Your Google Apps Script is now set up to forward emails to your webhook endpoint."
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '937491000'
+    canonical_url: https://github.com/felton/email-agent-workshop
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

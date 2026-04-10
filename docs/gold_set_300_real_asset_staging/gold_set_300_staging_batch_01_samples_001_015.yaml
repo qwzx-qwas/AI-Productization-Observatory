@@ -140,7 +140,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       customer-support workspace and ticket workflow are specific enough for staging.
     human_reviewed_at: '2026-04-02T08:21:35.744745Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:03:42.296298Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:15.500850Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_agent_12fa7139c622.yaml
 - slot_index: 2
   sample_slot_id: GS300-002
@@ -262,7 +262,7 @@ samples:
       legal matter intake and document summarization add unique knowledge-extraction
       coverage.
     human_reviewed_at: '2026-04-02T08:21:35.744745Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:03:43.233809Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:16.425129Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_agent_ca1c64ff94cd.yaml
 - slot_index: 3
   sample_slot_id: GS300-003
@@ -384,7 +384,7 @@ samples:
       field dispatch, visit notes, and follow-up actions form a concrete operator
       workflow.
     human_reviewed_at: '2026-04-02T08:21:35.744745Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:03:43.605300Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:16.815053Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_agent_f897a91b2621.yaml
 - slot_index: 4
   sample_slot_id: GS300-004
@@ -505,7 +505,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       outbound-sales prep and follow-up workflow are concrete and well scoped.
     human_reviewed_at: '2026-04-02T08:21:35.744745Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:03:44.527136Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:17.809390Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_assistant_344bc277bf39.yaml
 - slot_index: 5
   sample_slot_id: GS300-005
@@ -627,7 +627,7 @@ samples:
       finance variance summaries and close-checklist tasks are concrete enough for
       staging.
     human_reviewed_at: '2026-04-02T08:21:35.744745Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:03:44.908122Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:18.277044Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_assistant_582d2bf38aed.yaml
 - slot_index: 6
   sample_slot_id: GS300-006
@@ -748,7 +748,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       recruiting packet and interviewer-brief workflow improves HR coverage.
     human_reviewed_at: '2026-04-02T08:21:35.744745Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:03:46.377377Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:19.768864Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_assistant_f312c469133c.yaml
 - slot_index: 7
   sample_slot_id: GS300-007
@@ -870,7 +870,7 @@ samples:
       lead routing and pipeline-update automation are packaged as an end-user sales
       workflow.
     human_reviewed_at: '2026-04-02T08:21:35.744745Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:03:47.369037Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:20.803975Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_workflow_802bc2ffe99e.yaml
 - slot_index: 8
   sample_slot_id: GS300-008
@@ -992,7 +992,7 @@ samples:
       reconciliation questions and close-task follow-up provide strong finance-workflow
       coverage.
     human_reviewed_at: '2026-04-02T08:21:35.744745Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:03:47.776587Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:21.200215Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_workflow_82b28bfa514b.yaml
 - slot_index: 9
   sample_slot_id: GS300-009
@@ -1113,7 +1113,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       renewal prep and risk triage make the customer-success workflow concrete.
     human_reviewed_at: '2026-04-02T08:21:35.744745Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:03:48.168059Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:21.580141Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_workflow_ec412960ce14.yaml
 - slot_index: 10
   sample_slot_id: GS300-010
@@ -1234,7 +1234,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       the student-facing coaching workflow adds education coverage with low ambiguity.
     human_reviewed_at: '2026-04-02T08:21:35.744745Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:03:49.097338Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:22.529734Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_chatbot_2d879a2a4f27.yaml
 - slot_index: 11
   sample_slot_id: GS300-011
@@ -1355,7 +1355,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       forecast notes and deal-risk explanations add distinct revenue-workflow coverage.
     human_reviewed_at: '2026-04-02T08:21:35.744745Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:03:52.238908Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:25.692402Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_copilot_17572aab6e41.yaml
 - slot_index: 12
   sample_slot_id: GS300-012
@@ -1476,7 +1476,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       visit prep and clinical follow-up tasks show a concrete operations workflow.
     human_reviewed_at: '2026-04-02T08:21:35.744745Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:03:53.166928Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:26.742079Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_copilot_3e68e57d113f.yaml
 - slot_index: 13
   sample_slot_id: GS300-013
@@ -1597,7 +1597,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       grounded classroom Q&A provides clear education-coaching coverage.
     human_reviewed_at: '2026-04-02T08:21:35.744745Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:03:55.396271Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:29.157043Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_rag_64303f0b07ee.yaml
 - slot_index: 14
   sample_slot_id: GS300-014
@@ -1718,7 +1718,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       grounded account-brief workflow adds research-analysis coverage for sales teams.
     human_reviewed_at: '2026-04-02T08:21:35.744745Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:03:55.774343Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:29.533753Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_rag_9efc3e3fb257.yaml
 - slot_index: 15
   sample_slot_id: GS300-015
@@ -1839,5 +1839,5 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       analyst-facing grounded answer workspace is concrete and representative.
     human_reviewed_at: '2026-04-02T08:21:35.744745Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:03:56.163474Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:29.925111Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_rag_a89ea00a2bc4.yaml

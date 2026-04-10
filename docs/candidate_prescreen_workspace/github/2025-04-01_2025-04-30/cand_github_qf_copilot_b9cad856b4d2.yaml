@@ -1,0 +1,150 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_b9cad856b4d2
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-04-01_2025-04-30
+created_at: '2026-04-09T13:48:15.306190Z'
+updated_at: '2026-04-09T14:56:31.444154Z'
+source: github
+source_id: src_github
+source_window: 2025-04-01..2025-04-30
+time_field: pushed_at
+external_id: '839025002'
+canonical_url: https://github.com/copilot-extensions/github-models-extension
+title: github-models-extension
+summary: Copilot Extension to connect and chat with GitHub Models
+raw_evidence_excerpt: 'Copilot Extension to connect and chat with GitHub Models
+
+
+  @models Copilot Extension
+
+
+  This is an agent-based GitHub Copilot Extension that provides a way to interact
+  with GitHub Models, directly in Copilot Chat.
+
+
+  What it can do
+
+
+  You can ask it things like "what models are available?" or "which model should I
+  use for my use-case?". You can also ask it to execute a basic prompt using a particular
+  model.
+
+
+  | Description | Image | | --- |--- | | User asking `@models` for a recommended model
+  that is low-cost and supports function calling | !User asking @models for a recommended
+  model that is low-cost and supports function calling | | Dialogue with the Extension,
+  asking for an OpenAI model | !Dialogue with the Extension, asking for an OpenAI
+  model | | User executing a basic prompt using the model that the extension recommended
+  | !User executing a basic prompt using the model that the extension recommended
+  |
+
+
+  Development
+
+
+  1. Install dependencies:
+
+
+  2. Run the server
+
+
+  - To run in development mode:
+
+
+  - To build and run in production mode:
+
+
+  3. Follow this guide to make your server accessible to the internet
+
+
+  In short, we would expose a public URL for our local server using the following
+  command (follow the guide for detailed setup instructions):
+
+
+  4. Follow this guide to create a GitHub app 5. Follow this guide to configure the
+  app to use the public URL from (3.) 6. Use your newly installed app! On any copilot
+  enabled page, type `@your-app-name ` (from the app created in 4.) to interact with
+  your local installation of this extension!
+
+
+  Copilot Extensions Documentation - Using Copilot Extensions - About building Copilot
+  Extensions - Set up process - Communicating with the Copilot platform - Communicating
+  with GitHub'
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-04-01'
+    window_end: '2025-04-30'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-04-01..2025-04-30
+    external_id: '839025002'
+    canonical_url: https://github.com/copilot-extensions/github-models-extension
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+  sample_slot_id: GS300-134
+  sample_id: cand_github_qf_copilot_b9cad856b4d2
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:56:31.444130Z'

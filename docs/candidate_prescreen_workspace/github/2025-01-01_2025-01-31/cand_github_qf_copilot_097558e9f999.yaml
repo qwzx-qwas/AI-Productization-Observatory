@@ -1,0 +1,227 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_097558e9f999
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:49:33.861132Z'
+updated_at: '2026-04-09T13:10:37.597615Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '661618245'
+canonical_url: https://github.com/chaoss/AFOS-AfricanOpenSource
+title: AFOS-AfricanOpenSource
+summary: 'AFOS (AfricanOpenSource) is a platform for showcasing Open Source projects
+  build by Africans to increase visibility, and expose the projects to more contributors.
+  This was a GitHub-funded project '
+raw_evidence_excerpt: 'AFOS (AfricanOpenSource) is a platform for showcasing Open
+  Source projects build by Africans to increase visibility, and expose the projects
+  to more contributors. This was a GitHub-funded project
+
+
+  AFOS (AfricanOpenSource)
+
+
+  AFOS is a CHAOSS Africa and Github collaboration created to demonstrate how GitHub
+  CoPilot enhances and improves developer productivity. The project involved creating
+  a platform for showcasing Open Source projects build by Africans.
+
+
+  The team created a web project using CoPilot to generate code suggestions in real
+  time to detemine CoPilot''s impact on developer productivity.
+
+
+  Main Objectives
+
+
+  - To demonstrate how GitHub CoPilot enhances productivity and reduces time it takes
+  to deliver projects. - To develop a story on how GitHub CoPilot makes a positive
+  impact for social good. - To train developers on how to use GitHub CoPilot in their
+  Open Source communities.
+
+
+  Project Set Up
+
+
+  We use the following tools and frameworks in this project:
+
+
+  - Frontend Library: ReactJS - Type safety: TypeScript - CSS Framework: Tailwind
+  CSS - Bundler/Build Tool: Vite - Test Runner: Vitest - Testing Framework: React
+  Testing Library - Routing Implementation: React Router - Component Library: Shadcn/UI
+  - Icon Pack: React icons
+
+
+  Installation
+
+
+  To run the project in a local environment, ensure the following are installed:
+
+
+  - Nodejs - Npm
+
+
+  Setup Github Copilot (Optional)
+
+
+  GitHub Copilot is available as an extension for popular code editors such as Visual
+  Studio Code. To install GitHub Copilot, follow these steps:
+
+
+  - Open Visual Studio Code. - Go to the Extensions view by clicking on the square
+  icon on the sidebar or pressing Ctrl+Shift+X (Windows/Linux) or Cmd+Shift+X (Mac).
+  - Search for "GitHub Copilot" in the search bar. - Click on the "Install" button
+  next to the GitHub Copilot extension. - Wait for the installation to complete, and
+  then click on the "Reload" button to activate the extension. - Usage: Once GitHub
+  Copilot is installed, it automatically starts providing code suggestions as you
+  type in your code editor. It learns from millions of lines of public code and your
+  own code to generate accurate and context-aware suggestions.
+
+
+  How to contribute to the project
+
+
+  - **Fix an Issue**
+
+
+  If you want to fix an open issue, leave a comment on it to show. This is done to
+  avoid having multiple people working on the same issue unknowingly.
+
+
+  - **Open an Issue**
+
+
+  In the event that you''re encountering an issue or have an inquiry you''d like assistance
+  responding to, kindly go ahead and open an issue. To prevent duplicates, momentarily
+  look through open issues. When opening an issue, ensure you provide a concise description
+  with all relevant information. Source Code
+
+
+  - Clone this project repository
+
+
+  - Change to the project directory
+
+
+  - Install the project dependencies
+
+
+  - Create a branch for your work & changes.
+
+
+  - Make your changes - Run the project locally to test your changes
+
+
+  - Commit the change(s) using a descriptive commit message and signing off the commit
+
+
+  - Submit a pull request
+
+
+  Upon submitting a pull request, one of the maintainers will review your pull request
+  and give feedback on changes or merge your pull requested. > Keep in mind to regularly
+  synchronize your fork with the main branch. To do this, make sure you are in the
+  project''s root folder, and the branch should be the main branch. Run the command:
+
+
+  Now that your upstream is set up on your local machine, whenever you need to create
+  a new branch to make changes, make sure your main branch is in sync with the main
+  repository by typing:
+
+
+  Thank you for your contributions! We appreciate your time and effort in making this
+  project better.
+
+
+  Resources
+
+
+  - Project Design - Figma
+
+
+  - Code of Conduct
+
+
+  Contributing Guidelines
+
+
+  This project is open to the community and anyone can contribute to it. To contribute
+  to this project, ensure to follow the guidelines found above and here.'
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '661618245'
+    canonical_url: https://github.com/chaoss/AFOS-AfricanOpenSource
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:37.597615Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

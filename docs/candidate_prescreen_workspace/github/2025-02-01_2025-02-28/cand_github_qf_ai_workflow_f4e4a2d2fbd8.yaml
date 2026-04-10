@@ -1,0 +1,131 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_f4e4a2d2fbd8
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-02-01_2025-02-28
+created_at: '2026-04-09T14:07:31.100864Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '926727553'
+canonical_url: https://github.com/SimardeepSingh-zsh/SecureAI-Ops
+title: SecureAI-Ops
+summary: AI Cloud Security Toolkit. Automated Scripts, compliance guardrails & best
+  practices for securing AI workloads on Azure (Kubernetes, Docker, Cognitive Services).
+  Includes GDPR/HIPAA-ready policies, non-technical guides, and zero-trust blueprints."
+raw_evidence_excerpt: 'AI Cloud Security Toolkit. Automated Scripts, compliance guardrails
+  & best practices for securing AI workloads on Azure (Kubernetes, Docker, Cognitive
+  Services). Includes GDPR/HIPAA-ready policies, non-technical guides, and zero-trust
+  blueprints."
+
+
+  SecureAI-Ops Welcome to the SecureAI-Ops repository! This project aims to enhance
+  the security of AI operations through a variety of tools and techniques. Whether
+  you''re a tech enthusiast, a cybersecurity professional, or someone curious about
+  AI, this repository has something for you. Introduction SecureAI-Ops is a project
+  designed to improve the security and reliability of AI systems. The goal is to provide
+  a suite of tools and practices that can be easily integrated into AI workflows to
+  ensure they are secure and efficient. Features Security Tools: A collection of tools
+  to safeguard AI operations.
+
+
+  Best Practices: Guidelines and recommendations for secure AI development and deployment.
+
+
+  Automation Scripts: Scripts to automate common security tasks in AI workflows.
+
+
+  Documentation: Comprehensive documentation to help users understand and use the
+  tools effectively. Getting Started To get started with SecureAI-Ops, follow these
+  simple steps:
+
+
+  Clone the Repository: Download the repository to your local machine using the following
+  command:
+
+
+  git clone https://github.com/SimardeepSingh-zsh/SecureAI-Ops.git
+
+
+  Install Dependencies: Navigate to the project directory and install the required
+  dependencies: cd SecureAI-Ops Use the appropriate package manager to install dependencies
+  pip install -r requirements.txt'
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '926727553'
+    canonical_url: https://github.com/SimardeepSingh-zsh/SecureAI-Ops
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

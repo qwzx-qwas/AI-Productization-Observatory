@@ -1,0 +1,194 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_1a8c8ee75a4c
+candidate_batch_id: candidate_batch_github_qf_agent_2025-03-01_2025-03-31
+created_at: '2026-04-09T14:16:02.990172Z'
+updated_at: '2026-04-09T14:56:02.754288Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '952554289'
+canonical_url: https://github.com/agenticsorg/devops
+title: devops
+summary: A fully autonomous, AI-powered DevOps platform for managing cloud infrastructure
+  across multiple providers, with AWS and GitHub integration, powered by OpenAI's
+  Agents SDK.
+raw_evidence_excerpt: "A fully autonomous, AI-powered DevOps platform for managing\
+  \ cloud infrastructure across multiple providers, with AWS and GitHub integration,\
+  \ powered by OpenAI's Agents SDK.\n\nAgentic DevOps\n\nA fully autonomous, AI-powered\
+  \ DevOps platform for managing cloud infrastructure across multiple providers, with\
+  \ AWS and GitHub integration, powered by OpenAI's Agents SDK.\n\n- \u2B50 Try it\
+  \ Here: agentic-devops.fly.dev\n\n- \U0001F355 Github Repo: https://github.com/agenticsorg/devops\n\
+  \n- \U0001F37A Support Agentics Foundation: https://agentics.org/memberships\n\n\
+  Introduction\n\nAgentic DevOps represents the next step in infrastructure management,\
+  \ a fully autonomous system that doesn't just assist with DevOps tasks but can independently\
+  \ plan, execute, and optimize your entire infrastructure lifecycle.\n\nBuilt on\
+  \ the foundation of advanced AI capabilities, this platform goes beyond traditional\
+  \ automation by incorporating true AI-driven decision-making capabilities.\n\nThe\
+  \ system can autonomously:\n\n- Provision and configure infrastructure based on\
+  \ high-level requirements - Monitor and detect anomalies across your environment\
+  \ - Self-heal infrastructure issues without human intervention - Optimize resource\
+  \ allocation and costs continuously - Deploy applications with intelligent rollout\
+  \ strategies - Manage complex multi-environment deployments - Learn from past operations\
+  \ to improve future performance\n\nAgentic DevOps serves as an intelligent co-pilot\
+  \ for your infrastructure, or even as a fully autonomous operator, understanding\
+  \ complex requirements, executing precise commands, adapting to changing conditions,\
+  \ and providing valuable insights across your entire DevOps workflow. Whether you're\
+  \ managing AWS resources, working with GitHub repositories, or orchestrating complex\
+  \ deployments, Agentic DevOps provides a unified, intelligent interface that simplifies\
+  \ these tasks while maintaining security and best practices.\n\nOverview\n\nAgentic\
+  \ DevOps is designed to transform cloud infrastructure management through autonomous\
+  \ operation and intelligent decision-making. It provides a consistent interface\
+  \ for working with various cloud providers and services while adding a layer of\
+  \ AI-driven automation that can operate independently when needed.\n\nKey benefits\
+  \ include:\n\n- **Autonomous Operation**: Deploy infrastructure and applications\
+  \ with minimal human oversight - **Self-Healing Systems**: Automatically detect\
+  \ and remediate issues before they impact users - **Continuous Optimization**: Intelligently\
+  \ adjust resources based on actual usage patterns - **Reduced Complexity**: Manage\
+  \ multiple cloud services through a single, intelligent interface - **Increased\
+  \ Efficiency**: Eliminate repetitive tasks through true autonomous automation -\
+  \ **Enhanced Security**: Built-in security guardrails with proactive vulnerability\
+  \ detection - **Natural Language Control**: Interact with your infrastructure using\
+  \ plain English - **Extensibility**: Easily add support for new services and providers\
+  \ - **Comprehensive Documentation**: Detailed guides and examples for all features\n\
+  \nTable of Contents\n\n- Features & Core Capabilities - UI Components - Installation\
+  \ - Quick Start - Documentation - Examples - Architecture - Deployment Options -\
+  \ Contributing - License\n\nFeatures & Core Capabilities\n\n| Category | Capabilities\
+  \ | |----------|--------------| | **Autonomous Infrastructure Management** | \u2022\
+  \ Self-provisioning infrastructure based on application requirements \u2022 Automatic\
+  \ scaling based on real-time demand \u2022 Intelligent resource optimization for\
+  \ cost efficiency \u2022 Anomaly detection and autonomous remediation \u2022 Predictive\
+  \ capacity planning \u2022 Self-documenting infrastructure changes | | **Intelligent\
+  \ Agents** | \u2022 Specialized agents for different DevOps domains \u2022 Multi-agent\
+  \ collaboration for complex tasks \u2022 Contextual awareness of infrastructure\
+  \ state \u2022 Memory of past operations and outcomes \u2022 Reasoning capabilities\
+  \ for complex problem-solving \u2022 Adaptive learning from operational patterns\
+  \ | | **Natural Language Interaction** | \u2022 Infrastructure management via conversational\
+  \ commands \u2022 Complex multi-step operations from simple instructions \u2022\
+  \ Contextual understanding of technical requirements \u2022 Clarification requests\
+  \ when instructions are ambiguous \u2022 Explanation of actions in plain language\
+  \ | | **Multi-Cloud Support** | \u2022 AWS (primary support) \u2022 Azure (planned)\
+  \ \u2022 Google Cloud (planned) \u2022 DigitalOcean (planned) \u2022 Unified interface\
+  \ across all providers \u2022 Cross-cloud resource management | | **Security and\
+  \ Compliance** | \u2022 Secure credential management with keyring integration \u2022\
+  \ Least privilege access patterns \u2022 Compliance checking for industry standards\
+  \ \u2022 Security best practice enforcement \u2022 Audit logging and reporting \u2022\
+  \ Automated vulnerability scanning \u2022 Security posture recommendations | | **Observability\
+  \ and Monitoring** | \u2022 Resource health monitoring \u2022 Performance metrics\
+  \ collection \u2022 Cost tracking and optimization \u2022 Anomaly detection \u2022\
+  \ Custom alerting rules \u2022 Predictive failure analysis \u2022 Root cause determination\
+  \ | | **Deployment Automation** | \u2022 CI/CD pipeline integration \u2022 Blue/green\
+  \ deployment strategies \u2022 Canary releases \u2022 Rollback capabilities \u2022\
+  \ Deployment verification \u2022 Feature flag management \u2022 Release train orchestration\
+  \ | | **Disaster Recovery** | \u2022 Automated backup management \u2022 Cross-region\
+  \ replication \u2022 Recovery time objective (RTO) optimization \u2022 Disaster\
+  \ recovery testing \u2022 Failover automation \u2022 Recovery simulation and validation\
+  \ | | **Workflow Orchestration** | \u2022 Complex multi-step workflow automation\
+  \ \u2022 Conditional execution paths \u2022 Error handling and recovery \u2022 Parallel\
+  \ task execution \u2022 Human-in-the-loop approvals \u2022 Workflow visualization\
+  \ and monitoring | | **Knowledge Management** | \u2022 Self-documenting operations\
+  \ \u2022 Automated runbook generation \u2022 Institutional knowledge capture \u2022\
+  \ Best practice recommendations \u2022 Troubleshooting guidance \u2022 Historical\
+  \ context preservation |\n\nAutonomous Capabilities in Detail\n\nAgentic DevOps\
+  \ takes automation to the next level with true autonomous capabilities:\n\nAutonomous\
+  \ Decision Making The platform can make informed decisions about infrastructure\
+  \ changes, scaling operations, and resource allocation without human intervention.\
+  \ It evaluates multiple factors including performance metrics, cost implications,\
+  \ security considerations, and business priorities to determine the optimal course\
+  \ of action.\n\nSelf-Healing Infrastructure When issues are detected, Agentic DevOps\
+  \ doesn't just alert\u2014it takes action. The system can: - Automatically restart\
+  \ failed services - Replace unhealthy instances - Adjust resource allocations to\
+  \ address performance bottlenecks - Implement temporary workarounds while developing\
+  \ permanent solutions - Roll back problematic deployments\n\nContinuous Learning\
+  \ The platform improves over time by: - Learning from successful and unsuccessful\
+  \ operations - Building patterns of normal vs. abnormal behavior - Adapting to your\
+  \ specific environment and requirements - Refining its decision-making based on\
+  \ outcomes - Incorporating feedback from human operators\n\nPredictive Operations\
+  \ Rather than just reacting to events, Agentic DevOps can: - Predict resource needs\
+  \ before they become critical - Identify potential failures before they occur -\
+  \ Recommend preemptive maintenance - Suggest optimizations based on usage patterns\
+  \ - Schedule operations during optimal time windows\n\nAutonomous Security Management\
+  \ The platform continuously monitors and enhances your security posture by: - Detecting\
+  \ and remediating common security misconfigurations - Implementing security patches\
+  \ and updates - Enforcing security best practices across your infrastructure - Identifying\
+  \ unusual access patterns that may indicate security threats - Automatically rotating\
+  \ credentials and secrets\n\nUI Components"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '952554289'
+    canonical_url: https://github.com/agenticsorg/devops
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+  sample_slot_id: GS300-126
+  sample_id: cand_github_qf_agent_1a8c8ee75a4c
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:56:02.754263Z'

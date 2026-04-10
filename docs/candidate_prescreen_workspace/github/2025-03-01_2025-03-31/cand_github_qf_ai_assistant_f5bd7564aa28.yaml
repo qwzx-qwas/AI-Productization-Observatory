@@ -1,0 +1,163 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_f5bd7564aa28
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-03-01_2025-03-31
+created_at: '2026-04-09T14:31:53.057052Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '951046925'
+canonical_url: https://github.com/hyperb1iss/lucidity-mcp
+title: lucidity-mcp
+summary: AI-powered code quality analysis using MCP to help AI assistants review code
+  more effectively. Analyze git changes for complexity, security issues, and more
+  through structured prompts.
+raw_evidence_excerpt: "AI-powered code quality analysis using MCP to help AI assistants\
+  \ review code more effectively. Analyze git changes for complexity, security issues,\
+  \ and more through structured prompts.\n\n\u2728 Lucidity MCP \U0001F50D\n\n**Clarity\
+  \ in Code, Confidence in Creation**\n\nLucidity is a Model Context Protocol (MCP)\
+  \ server designed to enhance the quality of AI-generated code through intelligent,\
+  \ prompt-based analysis. By providing structured guidance to AI coding assistants,\
+  \ Lucidity helps identify and address common quality issues, resulting in cleaner,\
+  \ more maintainable, and more robust code.\n\nBefore you commit, just ask Lucidity\
+  \ to analyze the changes instead of vibe-coding yourself into a nightmare hellscape!\
+  \ \U0001F631 \U0001F4A5 \U0001F6AB\n\n\U0001F4AB Features\n\n- \U0001F52E **Comprehensive\
+  \ Issue Detection** - Covers 10 critical quality dimensions from complexity to security\
+  \ vulnerabilities - \U0001F504 **Contextual Analysis** - Compares changes against\
+  \ original code to identify unintended modifications - \U0001F310 **Language Agnostic**\
+  \ - Works with any programming language the AI assistant understands - \U0001F3AF\
+  \ **Focused Analysis** - Option to target specific issue types based on project\
+  \ needs - \U0001F4DD **Structured Outputs** - Guides AI to provide actionable feedback\
+  \ with clear recommendations - \U0001F916 **MCP Integration** - Seamless integration\
+  \ with Claude and other MCP-compatible AI assistants - \U0001FAB6 **Lightweight\
+  \ Implementation** - Simple server design with minimal dependencies - \U0001F9E9\
+  \ **Extensible Framework** - Easy to add new issue types or refine analysis criteria\
+  \ - \U0001F500 **Flexible Transport** - Supports both stdio for terminal-based interaction\
+  \ and SSE for network-based communication - \U0001F504 **Git-Aware Analysis** -\
+  \ Analyzes changes directly from git diff, making it ideal for pre-commit reviews\n\
+  \n\U0001F680 Installation\n\n\U0001F4CB Prerequisites\n\n- Python 3.13 or higher\
+  \ - Git (for analyzing code changes) - UV package manager (recommended for dependency\
+  \ management)\n\n\U0001F52E Quick Start\n\nRun the Lucidity server\n\nUsing with\
+  \ AI Assistants\n\n1. Start Lucidity in SSE mode:\n\n2. Connect your AI assistant\
+  \ using the MCP protocol URI:\n\n3. The AI can now invoke the `analyze_changes`\
+  \ tool to get code quality feedback!\n\n\U0001F9E0 Analysis Dimensions\n\nLucidity\
+  \ analyzes code across 10 critical quality dimensions:\n\n1. **Unnecessary Complexity**\
+  \ - Identifies overly complex algorithms, excessive abstractions, and convoluted\
+  \ logic 2. **Poor Abstractions** - Detects leaky or inappropriate abstractions and\
+  \ unclear separation of concerns 3. **Unintended Code Deletion** - Catches accidental\
+  \ removal of critical functionality or validation 4. **Hallucinated Components**\
+  \ - Finds references to non-existent functions, classes, or APIs 5. **Style Inconsistencies**\
+  \ - Spots deviations from project coding standards and conventions 6. **Security\
+  \ Vulnerabilities** - Identifies potential security issues in code changes 7. **Performance\
+  \ Issues** - Detects inefficient algorithms or operations that could impact performance\
+  \ 8. **Code Duplication** - Finds repeated logic or functionality that should be\
+  \ refactored 9. **Incomplete Error Handling** - Spots missing or inadequate exception\
+  \ handling 10. **Test Coverage Gaps** - Identifies missing tests for critical functionality\n\
+  \n\U0001F4CA Example AI Assistant Queries\n\nWith an AI assistant connected to Lucidity,\
+  \ try these queries:\n\n- \"Analyze the code quality in my latest git changes\"\
+  \ - \"Check for security vulnerabilities in my JavaScript changes\" - \"Make sure\
+  \ my Python code follows best practices\" - \"Identify any performance issues in\
+  \ my recent code changes\" - \"Are there any unintended side effects in my recent\
+  \ refactoring?\" - \"Help me improve the abstractions in my code\" - \"Check if\
+  \ I've accidentally removed any important validation\" - \"Find any hallucinated\
+  \ API calls in my latest commit\" - \"Is my error handling complete and robust?\"\
+  \ - \"Are there any test coverage gaps in my new feature?\"\n\n\U0001F6E0\uFE0F\
+  \ Available MCP Tools\n\nTools\n\n- `analyze_changes` - Prepares git changes for\
+  \ analysis through MCP - Parameters: - `workspace_root`: The root directory of the\
+  \ workspace/git repository - `path`: Optional specific file path to analyze\n\n\U0001F4BB\
+  \ Development\n\nLucidity uses UV for dependency management and development workflows.\
+  \ UV is a fast, reliable Python package manager and resolver.\n\n\U0001F527 Logging\
+  \ Behavior\n\nLucidity handles logging differently depending on the transport:\n\
+  \n- **SSE transport**: Full console logging is enabled - **Stdio transport with\
+  \ --log-file**: All logs go to the file, console is disabled - **Stdio transport\
+  \ without --log-file**: Only warnings and errors go to stderr, info logs are disabled\n\
+  \nThis ensures that stdio communication isn't broken by logs appearing on stdout.\n\
+  \n\U0001F39B\uFE0F Command-line Options\n\n\U0001F91D Contributing\n\nContributions\
+  \ are welcome! Please feel free to submit a Pull Request.\n\n1. Fork the repository\
+  \ 2. Create your feature branch (`git checkout -b feature/amazing-feature`) 3. Set\
+  \ up your development environment with UV 4. Make your changes 5. Run tests and\
+  \ linting 6. Commit your changes (`git commit -m 'Add some amazing feature'`) 7.\
+  \ Push to the branch (`git push origin feature/amazing-feature`) 8. Open a Pull\
+  \ Request\n\n\U0001F4DD License\n\nThis project is licensed under the Apache License\
+  \ 2.0 - see the LICENSE file for details.\n\n---\n\nCreated by Stefanie Jane \U0001F320\
+  \n\nIf you find Lucidity useful, buy me a Monster Ultra Violet \u26A1\uFE0F"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '951046925'
+    canonical_url: https://github.com/hyperb1iss/lucidity-mcp
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

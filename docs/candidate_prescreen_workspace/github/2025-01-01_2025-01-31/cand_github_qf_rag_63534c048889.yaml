@@ -1,0 +1,180 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_63534c048889
+candidate_batch_id: candidate_batch_github_qf_rag_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:34:11.197488Z'
+updated_at: '2026-04-09T14:55:16.497340Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '717917803'
+canonical_url: https://github.com/andrewnguonly/Lumos
+title: Lumos
+summary: A RAG LLM co-pilot for browsing the web, powered by local LLMs
+raw_evidence_excerpt: "A RAG LLM co-pilot for browsing the web, powered by local LLMs\n\
+  \nLumos\n\nA RAG LLM co-pilot for browsing the web, powered by local LLMs.\n\nThis\
+  \ Chrome extension is powered by Ollama. Inference is done on your local machine\
+  \ without any _remote_ server support. However, due to security constraints in the\
+  \ Chrome extension platform, the app does rely on _local_ server support to run\
+  \ the LLM. This app is inspired by the Chrome extension example provided by the\
+  \ Web LLM project and the local LLM examples provided by LangChain.\n\n- Ollama\
+  \ (Home) - Ollama (GitHub)\n\n_Lumos. Nox. Lumos. Nox._\n\nUse Cases - Summarize\
+  \ long threads on issue tracking sites, forums, and social media sites. - Summarize\
+  \ news articles. - Ask questions about reviews on business and product pages. -\
+  \ Ask questions about long, technical documentation. - ... what else?\n\nOllama\
+  \ Server\n\nA local Ollama server is needed for the embedding database and LLM inference.\
+  \ Download and install Ollama and the CLI here.\n\nPull Image\n\nExample:\n\nStart\
+  \ Server\n\nExample:\n\nTerminal output:\n\nNote: The environment variable `OLLAMA_ORIGINS`\
+  \ must be set to `chrome-extension://*` to allow requests originating from the Chrome\
+  \ extension. The following error will occur in the Chrome extension if `OLLAMA_ORIGINS`\
+  \ is not set properly.\n\nmacOS\n\nRun `launchctl setenv` to set `OLLAMA_ORIGINS`.\n\
+  \nSetting environment variables on Mac (Ollama)\n\nDocker\n\nThe Ollama server can\
+  \ also be run in a Docker container. The container should have the `OLLAMA_ORIGINS`\
+  \ environment variable set to `chrome-extension://*`.\n\nRun `docker run` with the\
+  \ `-e` flag to set the `OLLAMA_ORIGINS` environment variable:\n\nChrome Extension\n\
+  \nIn the project directory, you can run:\n\n`npm test`\n\nLaunches the test runner\
+  \ in the interactive watch mode.\\ See the section about running tests for more\
+  \ information.\n\n`npm run lint`\n\nRuns `eslint` and `prettier` on `src` and `__tests__`\
+  \ files.\n\n`npm run build`\n\nBuilds the app for production to the `dist` folder.\\\
+  \ It correctly bundles React in production mode and optimizes the build for the\
+  \ best performance.\n\nThe build is minified and the filenames include the hashes.\\\
+  \ Your app is ready to be deployed!\n\nSee the section about deployment for more\
+  \ information.\n\nLoad Unpacked Extension (Install)\n\nKeyboard Shortcut\n\nCreate\
+  \ a keyboard shortcut to make Lumos easily accessible.\n\n1. Navigate to `chrome://extensions/shortcuts`.\
+  \ 1. Configure a shortcut for Lumos (`Activate the extension`). For example, `\u2318\
+  L` (`command key` + `L`).\n\nReleases\n\nIf you don't have `npm` installed, you\
+  \ can download the pre-built extension package from the Releases page.\n\nLumos\
+  \ Options\n\nRight-click on the extension icon and select `Options` to access the\
+  \ extension's Options page.\n\n- **Ollama Model**: Select desired model (e.g. `llama2`)\
+  \ - **Ollama Embedding Model**: Select desired embedding model (e.g. `nomic-embed-text`).\
+  \ Specify the `OLLAMA_MAX_LOADED_MODELS=2` environment variable when starting the\
+  \ Ollama server to allow multiple models to be loaded into memory. - **Ollama Host**:\
+  \ Select desired host (defaults to `http://localhost:11434`) - **Vector Store TTL\
+  \ (minutes)**: Number of minutes to store a URL's content in the vector store cache.\
+  \ - **Content Parser Config**: Lumos's default content parser will extract all text\
+  \ content between a page's ` ` tag. To customize the content parser, add an entry\
+  \ to the configuration. - **Enable/Disable Tools**: Enable or disable individual\
+  \ tools. If a tool is enabled, a custom prefix trigger (e.g. \"calc:\") can be specified\
+  \ to override the app's internal prompt classification mechanism. - **Enable/Disable\
+  \ Dark Arts**: \U0001F608\n\nContent Parser Config\n\nEach URL path can have its\
+  \ own content parser. The content parser config for the longest URL path will be\
+  \ matched.\n\n- **chunkSize**: Number of characters to chunk page content into for\
+  \ indexing into RAG vectorstore - **chunkOverlap**: Number of characters to overlap\
+  \ in chunks for indexing into RAG vectorstore - **selectors**: `document.querySelector()`\
+  \ queries to perform to retrieve page content - **selectorsAll**: `document.querySelectorAll()`\
+  \ queries to perform to retrieve page content\n\nFor example, given the following\
+  \ config, if the URL path of the current tab is `domain.com/path1/subpath1/subsubpath1`,\
+  \ then the config for `domain.com/path1/subpath1` will be used (i.e. `chunkSize=600`).\n\
+  \nSee docs for How to Create a Custom Content Parser. See documentation for `querySelector()`\
+  \ and `querySelectorAll()` to confirm all querying capabilities.\n\nExample:\n\n\
+  Highlighted Content\n\nAlternatively, if content is highlighted on a page (e.g.\
+  \ highlighted text), that content will be parsed instead of the content produced\
+  \ from the content parser configuration.\n\nNote: Content that is highlighted will\
+  \ not be cached in the vector store cache. Each subsequent prompt containing highlighted\
+  \ content will generate new embeddings.\n\nShortcuts\n\n- `cmd + c`: Copy last message\
+  \ to clipboard. - `cmd + b`: Load clipboard text as a file attachment. - `cmd +\
+  \ j`: Toggle `Disable content parsing` checkbox. - `cmd + k`: Clear all messages.\
+  \ - `cmd + s`: Save chat to Chat History. - `cmd + ;`: Open/close Chat History panel.\
+  \ - `ctrl + c`: Cancel request (LLM request/streaming or embeddings generation)\
+  \ - `ctrl + x`: Remove file attachment. - `ctrl + r`: Regenerate last LLM response.\n\
+  \nNote: On Windows PC, use the `alt` key instead of `cmd`.\n\nChat History Save\
+  \ a chat to the Chat History (`cmd + s`). Open the Chat History (`cmd + ;`) and\
+  \ load a previously saved chat.\n\nMultimodal\n\nLumos supports multimodal models!\
+  \ Images that are present on the current page will be downloaded and bound to the\
+  \ model for prompting. See documentation and examples here.\n\nFile Attachments\n\
+  \nFile attachments can be uploaded to Lumos. The contents of a file will be parsed\
+  \ and processed through Lumos's RAG workflow (similar to processing page content).\
+  \ By default, the text content of a file will be parsed if the extension type is\
+  \ not explicitly listed below.\n\nSupported extension types: - `.csv` - `.json`\
+  \ - `.pdf` - any plain text file format (`.txt`, `.md`, `.py`, etc)\n\nNote: If\
+  \ an attachment is present, page content will not be parsed. Remove the file attachment\
+  \ to resume parsing page content.\n\nImage Files\n\nImage files will be processed\
+  \ through Lumos's multimodal workflow (requires multimodal model).\n\nSupported\
+  \ image types: - `.jpeg`, `.jpg` - `.png`\n\nClipboard Content\n\nClipboard content\
+  \ can be uploaded as a file attachment. Use the `cmd + b` shortcut key to load clipboard\
+  \ text as a file attachment.\n\nTools (Experimental)\n\nLumos invokes Tools automatically\
+  \ based on the provided prompt. See documentation and examples here.\n\nReading\
+  \ - Local LLM in the Browser Powered by Ollama - Local LLM in the Browser Powered\
+  \ by Ollama (Part 2) - Let\u2019s Normalize Online, In-Memory RAG! (Part 3) - Supercharging\
+  \ If-Statements With Prompt Classification Using Ollama and LangChain (Part 4) -\
+  \ Bolstering LangChain\u2019s MemoryVectorStore With Keyword Search (Part 5) - A\
+  \ Guide to Gotchas with LangChain Document Loaders in a Chrome Extension (Part 6)"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '717917803'
+    canonical_url: https://github.com/andrewnguonly/Lumos
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T13:10:38.100504Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+  sample_slot_id: GS300-106
+  sample_id: cand_github_qf_rag_63534c048889
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:55:16.497316Z'

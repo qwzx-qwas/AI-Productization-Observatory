@@ -1,0 +1,141 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_a95ac31789a6
+candidate_batch_id: candidate_batch_github_qf_rag_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:33:15.228793Z'
+updated_at: '2026-04-09T13:10:38.313120Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '315747164'
+canonical_url: https://github.com/wandb/edu
+title: edu
+summary: Educational materials on deep learning by Weights & Biases
+raw_evidence_excerpt: "Educational materials on deep learning by Weights & Biases\n\
+  \nWeights & Biases AI Academy\n\nWelcome to the W&B AI Academy! This repository\
+  \ contains materials for learning AI, organized by topic. These materials are designed\
+  \ to complement our online courses but can also be useful on their own.\n\n\U0001F916\
+  \ Large Language Models (LLMs)\n\n| Course | Instructor | Description | |--------|------------|-------------|\
+  \ | \U0001F195 RAG++ | Bharat Ramanathan MLE @ W&B Ayush Thakur MLE @ W&B Meor Amer\
+  \ Developer Advocate @ Cohere Charles Pierse Head of Weaviate Labs | Practical RAG\
+  \ techniques for engineers: production-ready solutions to optimize performance,\
+  \ cut costs, and enhance accuracy. | | \U0001F195 Developer's guide to LLM prompting\
+  \ | Anish Shah MLE @ W&B Teodora Danilovic Prompt Engineer @ AutogenAI | Everything\
+  \ you need to get started with prompt engineering, from system prompts to model-specific\
+  \ strategies. | | LLM Engineering: Structured Outputs | Jason Liu Independent Consultant\
+  \ | Improve LLM engineering skills, learn about structured JSON output handling,\
+  \ function calling, and complex validations. | | Building LLM-Powered Apps | Darek\
+  \ K\u0142eczek MLE @ W&B Bharat Ramanathan MLE @ W&B Thomas Capelle MLE @ W&B Shreya\
+  \ Rajpal Creator of Guardrails AI Anton Troynikov Co-Founder of Chroma Shahram Anver\
+  \ Co-Creator of Rebuff | Learn to build LLM-powered applications using LLM APIs,\
+  \ Langchain, and W&B LLM tooling. | | Training and Fine-tuning LLMs | Darek K\u0142\
+  eczek MLE @ W&B Ayush Thakur MLE @ W&B Jonathan Frankle Chief Scientist @ MosaicML\
+  \ Weiwei Yang Principal SDE Manager @ Microsoft Research Mark Saroufim PyTorch Engineer\
+  \ @ Meta | Explore LLM architecture, training techniques, and fine-tuning methods,\
+  \ including LoRA and RLHF. | | Evaluate and Debug Generative AI | Carey Phelps Founding\
+  \ Product Manager @ W&B | Practice evaluating and debugging Generative AI work using\
+  \ the W&B AI Developer Platform. |\n\n\U0001F680 MLOps\n\n| Course | Instructor\
+  \ | Description | |--------|------------|-------------| | Model CI/CD | Noa Schwartz\
+  \ Product Manager @ W&B Darek K\u0142eczek MLE @ W&B Hamel Husain Founder @ Parlance\
+  \ Labs | Overcome model chaos, automate workflows, ensure governance, and streamline\
+  \ the end-to-end model lifecycle. | | Effective MLOps: Model Development | Thomas\
+  \ Capelle MLE @ W&B Darek K\u0142eczek MLE @ W&B Hamel Husain Founder @ Parlance\
+  \ Labs | Learn to accelerate and scale model development, improve productivity,\
+  \ and ensure reproducibility. | | CI/CD for Machine Learning (GitOps) | Hamel Husain\
+  \ Founder @ Parlance Labs | Streamline ML workflows using GitHub Actions and integrate\
+  \ W&B experiment tracking. | | Data Validation in Production ML Pipelines | Shreya\
+  \ Shankar PhD student @ UC Berkeley | Build robust production ML pipelines, detect\
+  \ data drift, and manage data quality. | | ML for Business Decision Optimization\
+  \ | Dan Becker | Optimize business decisions and translate ML predictions into actionable\
+  \ insights. |\n\n\U0001F4CA W&B Tools\n\n| Course | Instructor | Description | |--------|------------|-------------|\
+  \ | W&B 101 | Scott Condron MLE @ W&B | Introduction to W&B with a focus on experiment\
+  \ tracking, visualization, and optimization. | | W&B 201: Model Registry | Ken Lee\
+  \ MLE @ W&B | Advanced model management using W&B for logging, registering, and\
+  \ managing ML models. |\n\n\U0001F30D International Courses\n\n| Course | Language\
+  \ | Description | |--------|----------|-------------| | \uD6A8\uC728\uC801\uC778\
+  \ MLOps: \uBAA8\uB378 \uAC1C\uBC1C | Korean | Comprehensive program on bringing\
+  \ ML models to life, optimizing performance, and preparing for primetime. | | \u52B9\
+  \u679C\u7684\u306AMLOps: \u30E2\u30C7\u30EB\u958B\u767A | Japanese | Learn to accelerate\
+  \ and scale model development, improve productivity, and ensure reproducibility.\
+  \ |\n\n\U0001F3EB Resources for Educators\n\n- Materials for Educators, TAs, and\
+  \ Students\n\n\U0001F9EE Math for ML\n\n- Math refresher for Machine Learning\n\n\
+  For more information and to enroll in courses, visit the W&B AI Academy website."
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '315747164'
+    canonical_url: https://github.com/wandb/edu
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:38.313120Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

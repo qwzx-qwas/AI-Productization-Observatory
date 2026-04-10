@@ -1,0 +1,221 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_355dec64a7ad
+candidate_batch_id: candidate_batch_github_qf_rag_2025-02-01_2025-02-28
+created_at: '2026-04-09T13:39:28.879139Z'
+updated_at: '2026-04-09T14:55:52.840580Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '896743863'
+canonical_url: https://github.com/AndrewNgo-ini/agentic_rag
+title: agentic_rag
+summary: A fully custom chatbot built with Agentic RAG (Retrieval-Augmented Generation),
+  combining Gemini models with a local knowledge base for accurate, context-aware,
+  and explainable responses. Features a lightweight, dependency-free frontend and
+  a streamlined FastAPI backend for complete control and simplicity.
+raw_evidence_excerpt: 'A fully custom chatbot built with Agentic RAG (Retrieval-Augmented
+  Generation), combining Gemini models with a local knowledge base for accurate, context-aware,
+  and explainable responses. Features a lightweight, dependency-free frontend and
+  a streamlined FastAPI backend for complete control and simplicity.
+
+
+  Agentic RAG Chat
+
+
+  A fully custom chatbot built with Agentic RAG (Retrieval-Augmented Generation),
+  combining Gemini models (free tier) with a local knowledge base for accurate, context-aware,
+  and explainable responses. Features a lightweight, dependency-free frontend and
+  a streamlined FastAPI backend for complete control and simplicity.
+
+
+  Features
+
+
+  - Pure HTML/CSS/JavaScript frontend with no external dependencies - FastAPI backend
+  with Gemini integration - Agentic RAG implementation with: - Context retrieval using
+  embeddings and cosine similarity - Step-by-step reasoning with Chain of Thought
+  - Function calling for dynamic context retrieval - Comprehensive error handling
+  and logging - Type-safe implementation with Python type hints - Configurable through
+  environment variables
+
+
+  Project Structure
+
+
+  Prerequisites
+
+
+  - Python 3.11 or higher - Gemini API key (you can get one for free at google ai
+  studio) - Git (for version control)
+
+
+  Installation
+
+
+  1. Clone the repository:
+
+
+  2. Create and activate a virtual environment (recommended):
+
+
+  3. Install Python dependencies:
+
+
+  4. Set up environment variables:
+
+
+  Then edit `.env` with your configuration:
+
+
+  Running the Application
+
+
+  1. Start the backend server:
+
+
+  2. Access the frontend: - Option 1: Open `frontend/index.html` directly in your
+  web browser - Option 2: Serve using Python''s built-in server:
+
+
+  Then visit http://localhost:3000 in your browser.
+
+
+  Usage
+
+
+  1. Type your question in the input field 2. The system will: - Retrieve relevant
+  context using embeddings - Generate a step-by-step reasoning process - Provide a
+  final answer based on the context and reasoning 3. View the intermediate steps and
+  reasoning process in the response
+
+
+  Configuration
+
+
+  The application can be configured through environment variables:
+
+
+  | Variable | Description | Default | |----------|-------------|---------| | GEMINI_API_KEY
+  | Your Gemini API key | Required | | GEMINI_MODEL | Gemini model to use | gemini-2.0-flash
+  | | HOST | Backend server host | 0.0.0.0 | | PORT | Backend server port | 8000 |
+
+
+  Error Handling
+
+
+  The application includes comprehensive error handling:
+
+
+  - API errors are logged and returned with appropriate status codes - Frontend displays
+  user-friendly error messages - Detailed logging for debugging and monitoring - Graceful
+  fallbacks for common failure scenarios
+
+
+  License
+
+
+  This project is licensed under the MIT License - see the LICENSE file for details.
+
+
+  Troubleshooting
+
+
+  Common issues and solutions:
+
+
+  1. **Gemini API Error** - Verify your API key is correct - Check your API usage
+  limits - Ensure the model name is valid
+
+
+  2. **Backend Connection Failed** - Confirm the backend server is running - Check
+  the port is not in use - Verify firewall settings
+
+
+  3. **Embedding Errors** - Ensure input text is not empty - Check for proper text
+  encoding - Verify numpy installation
+
+
+  Acknowledgments
+
+
+  - Gemini for their API and models - FastAPI framework - Contributors and maintainers'
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '896743863'
+    canonical_url: https://github.com/AndrewNgo-ini/agentic_rag
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+  sample_slot_id: GS300-124
+  sample_id: cand_github_qf_rag_355dec64a7ad
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:55:52.840551Z'

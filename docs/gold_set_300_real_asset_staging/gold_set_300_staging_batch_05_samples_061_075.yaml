@@ -141,7 +141,7 @@ samples:
       manual override: user requested to promote all non-duplicate active candidates
       into gold staging'
     human_reviewed_at: '2026-04-06T11:28:59.921707Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:15.305942Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:50.132092Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_chatbot_f8924585188a.yaml
 - slot_index: 62
   sample_slot_id: GS300-062
@@ -263,7 +263,7 @@ samples:
       manual override: user requested to stage analyzed samples that are semantically
       non-duplicate against existing staging and against each other'
     human_reviewed_at: '2026-04-09T02:32:24.943753Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:02.182867Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:56:34.484035Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_assistant_288a67500c73.yaml
 - slot_index: 63
   sample_slot_id: GS300-063
@@ -385,7 +385,7 @@ samples:
       manual override: user requested to promote all non-duplicate active candidates
       into gold staging'
     human_reviewed_at: '2026-04-06T11:29:01.919081Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:18.199540Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:53.076951Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-04-03_2026-07-03/cand_github_qf_copilot_46f2a401bf88.yaml
 - slot_index: 64
   sample_slot_id: GS300-064
@@ -510,7 +510,7 @@ samples:
       original product code in-repo. Do not scope it as one deployable AI app based
       solely on the README claims. evidence_strength=low review_source=existing_llm_prescreen'
     human_reviewed_at: '2026-04-06T12:24:38.234583Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:11.780459Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:56:43.845297Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_rag_b8b42b7bc597.yaml
 - slot_index: 65
   sample_slot_id: GS300-065
@@ -639,7 +639,7 @@ samples:
       internals unless they materially change product classification. evidence_strength=low
       review_source=existing_llm_prescreen
     human_reviewed_at: '2026-04-06T12:34:43.230398Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:03.265185Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:56:35.506499Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_assistant_2cd2782d869c.yaml
 - slot_index: 66
   sample_slot_id: GS300-066
@@ -893,7 +893,7 @@ samples:
       insufficient for inclusion under ai_applications_and_products without explicit
       AI-facing capabilities. evidence_strength=low review_source=existing_llm_prescreen'
     human_reviewed_at: '2026-04-06T09:13:27.615083Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:11.420601Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:46.034400Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_agent_8e0d9bd4b23c.yaml
 - slot_index: 68
   sample_slot_id: GS300-068
@@ -1015,7 +1015,7 @@ samples:
       manual override: user requested to stage analyzed samples that are semantically
       non-duplicate against existing staging and against each other'
     human_reviewed_at: '2026-04-09T02:32:25.054342Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:04.376137Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:56:36.506145Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_assistant_79d470bb524e.yaml
 - slot_index: 69
   sample_slot_id: GS300-069
@@ -1137,7 +1137,7 @@ samples:
       manual override: user requested to stage analyzed samples that are semantically
       non-duplicate against existing staging and against each other'
     human_reviewed_at: '2026-04-09T02:32:25.222848Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:07.306095Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:56:39.471433Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_chatbot_8e0f2a454ad4.yaml
 - slot_index: 70
   sample_slot_id: GS300-070
@@ -1259,7 +1259,7 @@ samples:
       manual override: user requested to stage analyzed samples that are semantically
       non-duplicate against existing staging and against each other'
     human_reviewed_at: '2026-04-09T02:32:25.294161Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:08.375423Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:56:40.539242Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_chatbot_bf46b7af1b88.yaml
 - slot_index: 71
   sample_slot_id: GS300-071
@@ -1381,7 +1381,7 @@ samples:
       manual override: user requested to stage analyzed samples that are semantically
       non-duplicate against existing staging and against each other'
     human_reviewed_at: '2026-04-09T02:32:25.381915Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:09.491455Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:56:41.643020Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_copilot_79d47f808a83.yaml
 - slot_index: 72
   sample_slot_id: GS300-072
@@ -1503,7 +1503,7 @@ samples:
       manual override: user requested to stage analyzed samples that are semantically
       non-duplicate against existing staging and against each other'
     human_reviewed_at: '2026-04-09T02:32:25.469760Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:10.647015Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:56:42.792040Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_rag_4d86ff9135b0.yaml
 - slot_index: 73
   sample_slot_id: GS300-073
@@ -1624,7 +1624,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       manual local review from repository evidence after repeated provider failures
     human_reviewed_at: '2026-04-09T07:56:14.518267Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:21.279173Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:56.154421Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_121b327fe93f.yaml
 - slot_index: 74
   sample_slot_id: GS300-074
@@ -1745,7 +1745,7 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       manual local review from repository evidence after repeated provider failures
     human_reviewed_at: '2026-04-09T07:56:14.518267Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:24.144595Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:55:03.492530Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_assistant_5aad3958bdbf.yaml
 - slot_index: 75
   sample_slot_id: GS300-075
@@ -1866,5 +1866,5 @@ samples:
     human_review_notes: clear end-user product signal; evidence sufficient for staging;
       manual local review from repository evidence after repeated provider failures
     human_reviewed_at: '2026-04-09T07:56:14.518267Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:29.561561Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:55:14.709825Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_rag_414d440bee37.yaml

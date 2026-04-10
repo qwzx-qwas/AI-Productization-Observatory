@@ -1,0 +1,1133 @@
+document_id: screening_positive_set_current
+document_purpose: Active candidate prescreen records routed from approved_for_staging into screening_positive_set.
+status_boundary:
+  asset_layer: screening_calibration_assets
+  represents_formal_gold_set_delivery: false
+  source_status: approved_for_staging
+sample_count: 75
+samples:
+- sequence_id: 1
+  candidate_id: cand_github_qf_agent_121b327fe93f
+  title: SuperAGI
+  canonical_url: https://github.com/TransformerOptimus/SuperAGI
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T07:56:14.518267Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after repeated provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_121b327fe93f.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
+    sample_slot_id: GS300-073
+    sample_id: cand_github_qf_agent_121b327fe93f
+- sequence_id: 2
+  candidate_id: cand_github_qf_agent_26ddbff213ee
+  title: Free_US_Investment_Agent_System
+  canonical_url: https://github.com/oldharrywang/Free_US_Investment_Agent_System
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T13:10:35.911437Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_26ddbff213ee.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+    sample_slot_id: GS300-099
+    sample_id: cand_github_qf_agent_26ddbff213ee
+- sequence_id: 3
+  candidate_id: cand_github_qf_agent_767f3cf7e6d5
+  title: twitter
+  canonical_url: https://github.com/wordware-ai/twitter
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T13:10:36.036776Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_767f3cf7e6d5.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+    sample_slot_id: GS300-100
+    sample_id: cand_github_qf_agent_767f3cf7e6d5
+- sequence_id: 4
+  candidate_id: cand_github_qf_agent_a2709d3e522f
+  title: terminal-velocity
+  canonical_url: https://github.com/mind-protocol/terminal-velocity
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T09:30:00.000000Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_a2709d3e522f.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+    sample_slot_id: GS300-098
+    sample_id: cand_github_qf_agent_a2709d3e522f
+- sequence_id: 5
+  candidate_id: cand_github_qf_agent_ad74b70fdc4c
+  title: SolidGPT
+  canonical_url: https://github.com/AI-Citizen/SolidGPT
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T13:10:36.295699Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_ad74b70fdc4c.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+    sample_slot_id: GS300-101
+    sample_id: cand_github_qf_agent_ad74b70fdc4c
+- sequence_id: 6
+  candidate_id: cand_github_qf_ai_assistant_5aad3958bdbf
+  title: personal-ai-assistant
+  canonical_url: https://github.com/kaymen99/personal-ai-assistant
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T07:56:14.518267Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after repeated provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_assistant_5aad3958bdbf.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
+    sample_slot_id: GS300-074
+    sample_id: cand_github_qf_ai_assistant_5aad3958bdbf
+- sequence_id: 7
+  candidate_id: cand_github_qf_ai_assistant_7c0d7212a8c6
+  title: docta
+  canonical_url: https://github.com/Docta-ai/docta
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T08:01:42.810990Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_assistant_7c0d7212a8c6.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_06_samples_076_090.yaml
+    sample_slot_id: GS300-079
+    sample_id: cand_github_qf_ai_assistant_7c0d7212a8c6
+- sequence_id: 8
+  candidate_id: cand_github_qf_ai_assistant_ad43029017bf
+  title: telegram_ai_assistant
+  canonical_url: https://github.com/efelem/telegram_ai_assistant
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T13:10:36.786281Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_assistant_ad43029017bf.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+    sample_slot_id: GS300-102
+    sample_id: cand_github_qf_ai_assistant_ad43029017bf
+- sequence_id: 9
+  candidate_id: cand_github_qf_chatbot_94f4e4c3cf3b
+  title: Symptom-Checker-Chatbot
+  canonical_url: https://github.com/imonishkumar/Symptom-Checker-Chatbot
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T13:10:37.119968Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_chatbot_94f4e4c3cf3b.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+    sample_slot_id: GS300-103
+    sample_id: cand_github_qf_chatbot_94f4e4c3cf3b
+- sequence_id: 10
+  candidate_id: cand_github_qf_chatbot_c77cfeee726b
+  title: Mental-health-Chatbot
+  canonical_url: https://github.com/Rogendo/Mental-health-Chatbot
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T08:01:43.727675Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_chatbot_c77cfeee726b.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_06_samples_076_090.yaml
+    sample_slot_id: GS300-080
+    sample_id: cand_github_qf_chatbot_c77cfeee726b
+- sequence_id: 11
+  candidate_id: cand_github_qf_chatbot_f154e719511c
+  title: weebo
+  canonical_url: https://github.com/amanvirparhar/weebo
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T13:10:37.454908Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_chatbot_f154e719511c.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+    sample_slot_id: GS300-104
+    sample_id: cand_github_qf_chatbot_f154e719511c
+- sequence_id: 12
+  candidate_id: cand_github_qf_copilot_11d26d8effdb
+  title: sandbox
+  canonical_url: https://github.com/ishaan1013/sandbox
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T08:01:43.811513Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_copilot_11d26d8effdb.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_06_samples_076_090.yaml
+    sample_slot_id: GS300-081
+    sample_id: cand_github_qf_copilot_11d26d8effdb
+- sequence_id: 13
+  candidate_id: cand_github_qf_copilot_58388b2fecf7
+  title: ClipboardConqueror
+  canonical_url: https://github.com/aseichter2007/ClipboardConqueror
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T13:10:37.779678Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_copilot_58388b2fecf7.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+    sample_slot_id: GS300-105
+    sample_id: cand_github_qf_copilot_58388b2fecf7
+- sequence_id: 14
+  candidate_id: cand_github_qf_rag_414d440bee37
+  title: ragapp
+  canonical_url: https://github.com/ragapp/ragapp
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T07:56:14.518267Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after repeated provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_rag_414d440bee37.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
+    sample_slot_id: GS300-075
+    sample_id: cand_github_qf_rag_414d440bee37
+- sequence_id: 15
+  candidate_id: cand_github_qf_rag_63534c048889
+  title: Lumos
+  canonical_url: https://github.com/andrewnguonly/Lumos
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T13:10:38.100504Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_rag_63534c048889.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+    sample_slot_id: GS300-106
+    sample_id: cand_github_qf_rag_63534c048889
+- sequence_id: 16
+  candidate_id: cand_github_qf_rag_bcc38892b807
+  title: mychatGPT
+  canonical_url: https://github.com/jlonge4/mychatGPT
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T13:10:38.470209Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_rag_bcc38892b807.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+    sample_slot_id: GS300-107
+    sample_id: cand_github_qf_rag_bcc38892b807
+- sequence_id: 17
+  candidate_id: cand_github_qf_agent_6a3c307e73c8
+  title: BDAIScraperAgent
+  canonical_url: https://github.com/techwithtim/BDAIScraperAgent
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T13:10:38.954507Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_agent_6a3c307e73c8.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+    sample_slot_id: GS300-108
+    sample_id: cand_github_qf_agent_6a3c307e73c8
+- sequence_id: 18
+  candidate_id: cand_github_qf_agent_b19486d5c4ca
+  title: WebRover
+  canonical_url: https://github.com/hrithikkoduri/WebRover
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T07:56:14.518267Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after repeated provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_agent_b19486d5c4ca.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_06_samples_076_090.yaml
+    sample_slot_id: GS300-076
+    sample_id: cand_github_qf_agent_b19486d5c4ca
+- sequence_id: 19
+  candidate_id: cand_github_qf_agent_d51b396aab28
+  title: agentlabs
+  canonical_url: https://github.com/agentlabs-dev/agentlabs
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T13:10:39.211435Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_agent_d51b396aab28.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+    sample_slot_id: GS300-109
+    sample_id: cand_github_qf_agent_d51b396aab28
+- sequence_id: 20
+  candidate_id: cand_github_qf_ai_assistant_20ea8b0679f8
+  title: ThereForYou
+  canonical_url: https://github.com/TAHIR0110/ThereForYou
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_20ea8b0679f8.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+    sample_slot_id: GS300-119
+    sample_id: cand_github_qf_ai_assistant_20ea8b0679f8
+- sequence_id: 21
+  candidate_id: cand_github_qf_ai_assistant_6cc195dca41f
+  title: vscode-extension
+  canonical_url: https://github.com/flexpilot-ai/vscode-extension
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T08:01:45.432941Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_6cc195dca41f.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_06_samples_076_090.yaml
+    sample_slot_id: GS300-082
+    sample_id: cand_github_qf_ai_assistant_6cc195dca41f
+- sequence_id: 22
+  candidate_id: cand_github_qf_ai_assistant_8ef471d4f97d
+  title: ai_buddy
+  canonical_url: https://github.com/yatendra2001/ai_buddy
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T08:01:45.585789Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_8ef471d4f97d.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_06_samples_076_090.yaml
+    sample_slot_id: GS300-083
+    sample_id: cand_github_qf_ai_assistant_8ef471d4f97d
+- sequence_id: 23
+  candidate_id: cand_github_qf_ai_assistant_a68a38a5eeba
+  title: ai-assistant-electron
+  canonical_url: https://github.com/Andaroth/ai-assistant-electron
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T08:01:45.664235Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_a68a38a5eeba.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_06_samples_076_090.yaml
+    sample_slot_id: GS300-084
+    sample_id: cand_github_qf_ai_assistant_a68a38a5eeba
+- sequence_id: 24
+  candidate_id: cand_github_qf_ai_assistant_c251975a9b4c
+  title: tiny-assistant
+  canonical_url: https://github.com/Katharine/tiny-assistant
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_c251975a9b4c.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+    sample_slot_id: GS300-120
+    sample_id: cand_github_qf_ai_assistant_c251975a9b4c
+- sequence_id: 25
+  candidate_id: cand_github_qf_ai_workflow_49e2e52607b9
+  title: craftgen
+  canonical_url: https://github.com/craftgen/craftgen
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T07:56:14.518267Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after repeated provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_49e2e52607b9.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_06_samples_076_090.yaml
+    sample_slot_id: GS300-077
+    sample_id: cand_github_qf_ai_workflow_49e2e52607b9
+- sequence_id: 26
+  candidate_id: cand_github_qf_ai_workflow_6c3ba304442b
+  title: kitchenai
+  canonical_url: https://github.com/epuerta9/kitchenai
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T08:01:45.921074Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_6c3ba304442b.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_06_samples_076_090.yaml
+    sample_slot_id: GS300-085
+    sample_id: cand_github_qf_ai_workflow_6c3ba304442b
+- sequence_id: 27
+  candidate_id: cand_github_qf_ai_workflow_9d382c274e7c
+  title: scraping-agent-ai
+  canonical_url: https://github.com/hmshb/scraping-agent-ai
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_9d382c274e7c.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+    sample_slot_id: GS300-121
+    sample_id: cand_github_qf_ai_workflow_9d382c274e7c
+- sequence_id: 28
+  candidate_id: cand_github_qf_ai_workflow_a29f2e1500c4
+  title: oapy
+  canonical_url: https://github.com/lukedavisseo/oapy
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T13:10:40.020528Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_a29f2e1500c4.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+    sample_slot_id: GS300-110
+    sample_id: cand_github_qf_ai_workflow_a29f2e1500c4
+- sequence_id: 29
+  candidate_id: cand_github_qf_ai_workflow_a50e4f510b3a
+  title: treehacks
+  canonical_url: https://github.com/nicolesplaining/treehacks
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T13:10:40.096351Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_a50e4f510b3a.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+    sample_slot_id: GS300-111
+    sample_id: cand_github_qf_ai_workflow_a50e4f510b3a
+- sequence_id: 30
+  candidate_id: cand_github_qf_chatbot_1248422846e9
+  title: chatgpt-for-chatbot-feishu
+  canonical_url: https://github.com/whatwewant/chatgpt-for-chatbot-feishu
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T07:56:14.518267Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after repeated provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_1248422846e9.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_06_samples_076_090.yaml
+    sample_slot_id: GS300-078
+    sample_id: cand_github_qf_chatbot_1248422846e9
+- sequence_id: 31
+  candidate_id: cand_github_qf_chatbot_998296d91838
+  title: chatdocs
+  canonical_url: https://github.com/cthiriet/chatdocs
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_998296d91838.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+    sample_slot_id: GS300-122
+    sample_id: cand_github_qf_chatbot_998296d91838
+- sequence_id: 32
+  candidate_id: cand_github_qf_chatbot_d0ac6e0dc51d
+  title: chatbot-app
+  canonical_url: https://github.com/ChatBot-All/chatbot-app
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T08:01:46.461765Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_d0ac6e0dc51d.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_06_samples_076_090.yaml
+    sample_slot_id: GS300-086
+    sample_id: cand_github_qf_chatbot_d0ac6e0dc51d
+- sequence_id: 33
+  candidate_id: cand_github_qf_chatbot_d83231e308ea
+  title: Mental-Health-Support-Chatbot
+  canonical_url: https://github.com/Vikranth3140/Mental-Health-Support-Chatbot
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T13:10:40.699407Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_d83231e308ea.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+    sample_slot_id: GS300-112
+    sample_id: cand_github_qf_chatbot_d83231e308ea
+- sequence_id: 34
+  candidate_id: cand_github_qf_copilot_67cf59817ad4
+  title: vscode-deepseek
+  canonical_url: https://github.com/manekinekko/vscode-deepseek
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_copilot_67cf59817ad4.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+    sample_slot_id: GS300-123
+    sample_id: cand_github_qf_copilot_67cf59817ad4
+- sequence_id: 35
+  candidate_id: cand_github_qf_copilot_7938f33bcf40
+  title: Artifex
+  canonical_url: https://github.com/islamnurdin/Artifex
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T13:10:41.121068Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_copilot_7938f33bcf40.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+    sample_slot_id: GS300-113
+    sample_id: cand_github_qf_copilot_7938f33bcf40
+- sequence_id: 36
+  candidate_id: cand_github_qf_copilot_891900161c7b
+  title: AI-Conversational-Copilot
+  canonical_url: https://github.com/amulchapla/AI-Conversational-Copilot
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T13:10:41.204687Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_copilot_891900161c7b.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+    sample_slot_id: GS300-114
+    sample_id: cand_github_qf_copilot_891900161c7b
+- sequence_id: 37
+  candidate_id: cand_github_qf_copilot_ea2f067193ed
+  title: shell-ask
+  canonical_url: https://github.com/egoist/shell-ask
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T08:01:46.885281Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_copilot_ea2f067193ed.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_06_samples_076_090.yaml
+    sample_slot_id: GS300-087
+    sample_id: cand_github_qf_copilot_ea2f067193ed
+- sequence_id: 38
+  candidate_id: cand_github_qf_rag_355dec64a7ad
+  title: agentic_rag
+  canonical_url: https://github.com/AndrewNgo-ini/agentic_rag
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_rag_355dec64a7ad.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+    sample_slot_id: GS300-124
+    sample_id: cand_github_qf_rag_355dec64a7ad
+- sequence_id: 39
+  candidate_id: cand_github_qf_rag_686b5d990e6e
+  title: GithubChat
+  canonical_url: https://github.com/SylphAI-Inc/GithubChat
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_rag_686b5d990e6e.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+    sample_slot_id: GS300-125
+    sample_id: cand_github_qf_rag_686b5d990e6e
+- sequence_id: 40
+  candidate_id: cand_github_qf_rag_6b7e921a7102
+  title: langgraph-email-automation
+  canonical_url: https://github.com/kaymen99/langgraph-email-automation
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T13:10:41.446485Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_rag_6b7e921a7102.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+    sample_slot_id: GS300-115
+    sample_id: cand_github_qf_rag_6b7e921a7102
+- sequence_id: 41
+  candidate_id: cand_github_qf_rag_b58c2946672e
+  title: site-rag
+  canonical_url: https://github.com/bracesproul/site-rag
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T08:01:47.147175Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_rag_b58c2946672e.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_06_samples_076_090.yaml
+    sample_slot_id: GS300-088
+    sample_id: cand_github_qf_rag_b58c2946672e
+- sequence_id: 42
+  candidate_id: cand_github_qf_rag_b7abdea980f0
+  title: drop-rag
+  canonical_url: https://github.com/bangoc123/drop-rag
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T13:10:41.700071Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_rag_b7abdea980f0.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+    sample_slot_id: GS300-116
+    sample_id: cand_github_qf_rag_b7abdea980f0
+- sequence_id: 43
+  candidate_id: cand_github_qf_agent_113b75e1c7d8
+  title: macOS-use
+  canonical_url: https://github.com/browser-use/macOS-use
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T13:10:41.994946Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_agent_113b75e1c7d8.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+    sample_slot_id: GS300-117
+    sample_id: cand_github_qf_agent_113b75e1c7d8
+- sequence_id: 44
+  candidate_id: cand_github_qf_agent_1a8c8ee75a4c
+  title: devops
+  canonical_url: https://github.com/agenticsorg/devops
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_agent_1a8c8ee75a4c.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+    sample_slot_id: GS300-126
+    sample_id: cand_github_qf_agent_1a8c8ee75a4c
+- sequence_id: 45
+  candidate_id: cand_github_qf_agent_a7e7c2ef0a49
+  title: agent
+  canonical_url: https://github.com/sfxyn/agent
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:47.668867Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_agent_a7e7c2ef0a49.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_06_samples_076_090.yaml
+    sample_slot_id: GS300-089
+    sample_id: cand_github_qf_agent_a7e7c2ef0a49
+- sequence_id: 46
+  candidate_id: cand_github_qf_ai_assistant_82a2e0a86544
+  title: Ai-Assistant-Chrome-Extension
+  canonical_url: https://github.com/hasan-py/Ai-Assistant-Chrome-Extension
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T08:01:47.939745Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_assistant_82a2e0a86544.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_06_samples_076_090.yaml
+    sample_slot_id: GS300-090
+    sample_id: cand_github_qf_ai_assistant_82a2e0a86544
+- sequence_id: 47
+  candidate_id: cand_github_qf_ai_assistant_e34397844760
+  title: robbinghood_live
+  canonical_url: https://github.com/vikvang/robbinghood_live
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_assistant_e34397844760.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+    sample_slot_id: GS300-127
+    sample_id: cand_github_qf_ai_assistant_e34397844760
+- sequence_id: 48
+  candidate_id: cand_github_qf_ai_workflow_b2f27d93be37
+  title: luminary
+  canonical_url: https://github.com/nascarjake/luminary
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T08:01:48.477366Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_workflow_b2f27d93be37.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+    sample_slot_id: GS300-091
+    sample_id: cand_github_qf_ai_workflow_b2f27d93be37
+- sequence_id: 49
+  candidate_id: cand_github_qf_ai_workflow_d67ae031071e
+  title: devchat
+  canonical_url: https://github.com/devchat-ai/devchat
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T08:01:48.570043Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_workflow_d67ae031071e.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+    sample_slot_id: GS300-092
+    sample_id: cand_github_qf_ai_workflow_d67ae031071e
+- sequence_id: 50
+  candidate_id: cand_github_qf_chatbot_868d548e20fe
+  title: bot-verse
+  canonical_url: https://github.com/k0msenapati/bot-verse
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T08:01:48.913389Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_chatbot_868d548e20fe.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+    sample_slot_id: GS300-093
+    sample_id: cand_github_qf_chatbot_868d548e20fe
+- sequence_id: 51
+  candidate_id: cand_github_qf_copilot_c0a780ba08ff
+  title: swark
+  canonical_url: https://github.com/swark-io/swark
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T08:01:49.254246Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_copilot_c0a780ba08ff.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+    sample_slot_id: GS300-094
+    sample_id: cand_github_qf_copilot_c0a780ba08ff
+- sequence_id: 52
+  candidate_id: cand_github_qf_copilot_db41dfe79eb1
+  title: MahjongCopilot
+  canonical_url: https://github.com/latorc/MahjongCopilot
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T08:01:49.502567Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_copilot_db41dfe79eb1.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+    sample_slot_id: GS300-095
+    sample_id: cand_github_qf_copilot_db41dfe79eb1
+- sequence_id: 53
+  candidate_id: cand_github_qf_rag_293bf7687fae
+  title: sec-insights
+  canonical_url: https://github.com/run-llama/sec-insights
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T08:01:49.587993Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_rag_293bf7687fae.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+    sample_slot_id: GS300-096
+    sample_id: cand_github_qf_rag_293bf7687fae
+- sequence_id: 54
+  candidate_id: cand_github_qf_rag_46a4f3380ebd
+  title: ai-video-search-engine
+  canonical_url: https://github.com/yoeven/ai-video-search-engine
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T13:10:42.939907Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_rag_46a4f3380ebd.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+    sample_slot_id: GS300-118
+    sample_id: cand_github_qf_rag_46a4f3380ebd
+- sequence_id: 55
+  candidate_id: cand_github_qf_rag_ba336dabf1ff
+  title: Qmedia
+  canonical_url: https://github.com/QmiAI/Qmedia
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T08:01:49.759271Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; manual local review from repository evidence after provider failures
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_rag_ba336dabf1ff.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+    sample_slot_id: GS300-097
+    sample_id: cand_github_qf_rag_ba336dabf1ff
+- sequence_id: 56
+  candidate_id: cand_github_qf_ai_assistant_9ba0ed99709d
+  title: codeflex-ai
+  canonical_url: https://github.com/burakorkmez/codeflex-ai
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_ai_assistant_9ba0ed99709d.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+    sample_slot_id: GS300-128
+    sample_id: cand_github_qf_ai_assistant_9ba0ed99709d
+- sequence_id: 57
+  candidate_id: cand_github_qf_ai_assistant_b763def42fcd
+  title: sql-explorer
+  canonical_url: https://github.com/explorerhq/sql-explorer
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_ai_assistant_b763def42fcd.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+    sample_slot_id: GS300-129
+    sample_id: cand_github_qf_ai_assistant_b763def42fcd
+- sequence_id: 58
+  candidate_id: cand_github_qf_ai_workflow_e0ee3e41ed93
+  title: AI_Agent_Chatbot_Synapse
+  canonical_url: https://github.com/raj-maharajwala/AI_Agent_Chatbot_Synapse
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_ai_workflow_e0ee3e41ed93.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+    sample_slot_id: GS300-130
+    sample_id: cand_github_qf_ai_workflow_e0ee3e41ed93
+- sequence_id: 59
+  candidate_id: cand_github_qf_ai_workflow_e3dec2a2cd32
+  title: open-responses
+  canonical_url: https://github.com/open-responses/open-responses
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_ai_workflow_e3dec2a2cd32.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+    sample_slot_id: GS300-131
+    sample_id: cand_github_qf_ai_workflow_e3dec2a2cd32
+- sequence_id: 60
+  candidate_id: cand_github_qf_chatbot_3c9cf2dbdd90
+  title: v12
+  canonical_url: https://github.com/botpress/v12
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_chatbot_3c9cf2dbdd90.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+    sample_slot_id: GS300-132
+    sample_id: cand_github_qf_chatbot_3c9cf2dbdd90
+- sequence_id: 61
+  candidate_id: cand_github_qf_chatbot_7a44e2b3bd59
+  title: EngAce
+  canonical_url: https://github.com/phanxuanquang/EngAce
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_chatbot_7a44e2b3bd59.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+    sample_slot_id: GS300-133
+    sample_id: cand_github_qf_chatbot_7a44e2b3bd59
+- sequence_id: 62
+  candidate_id: cand_github_qf_copilot_b9cad856b4d2
+  title: github-models-extension
+  canonical_url: https://github.com/copilot-extensions/github-models-extension
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_copilot_b9cad856b4d2.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+    sample_slot_id: GS300-134
+    sample_id: cand_github_qf_copilot_b9cad856b4d2
+- sequence_id: 63
+  candidate_id: cand_github_qf_agent_4935f53a3168
+  title: agent
+  canonical_url: https://github.com/stakpak/agent
+  source_window: 2025-06-01..2026-04-06
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T02:32:24.751437Z'
+  human_review_status: approved_for_staging
+  human_review_notes: 'clear end-user product signal; evidence sufficient for staging; manual override: user requested to stage analyzed samples that are semantically non-duplicate against existing staging and against each other'
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_4935f53a3168.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+    sample_slot_id: GS300-050
+    sample_id: cand_github_qf_agent_4935f53a3168
+- sequence_id: 64
+  candidate_id: cand_github_qf_agent_cefeaa3e098d
+  title: agent
+  canonical_url: https://github.com/kerberos-io/agent
+  source_window: 2025-06-01..2026-04-06
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T02:32:24.858091Z'
+  human_review_status: approved_for_staging
+  human_review_notes: 'clear end-user product signal; evidence sufficient for staging; manual override: user requested to stage analyzed samples that are semantically non-duplicate against existing staging and against each other'
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_cefeaa3e098d.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+    sample_slot_id: GS300-059
+    sample_id: cand_github_qf_agent_cefeaa3e098d
+- sequence_id: 65
+  candidate_id: cand_github_qf_ai_assistant_288a67500c73
+  title: NextChat
+  canonical_url: https://github.com/ChatGPTNextWeb/NextChat
+  source_window: 2025-06-01..2026-04-06
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T02:32:24.943753Z'
+  human_review_status: approved_for_staging
+  human_review_notes: 'clear end-user product signal; evidence sufficient for staging; manual override: user requested to stage analyzed samples that are semantically non-duplicate against existing staging and against each other'
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_assistant_288a67500c73.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
+    sample_slot_id: GS300-062
+    sample_id: cand_github_qf_ai_assistant_288a67500c73
+- sequence_id: 66
+  candidate_id: cand_github_qf_ai_assistant_2cd2782d869c
+  title: openclaw
+  canonical_url: https://github.com/openclaw/openclaw
+  source_window: 2025-06-01..2026-04-06
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-06T12:34:43.230398Z'
+  human_review_status: approved_for_staging
+  human_review_notes: clear end-user product signal; evidence sufficient for staging; Repository strongly presents as a productized, self-hosted personal AI assistant with broad channel integrations and onboarding. However, evidence is mostly self-description; independent validation of maturity, single-user vs team scope, and practical deployability is still needed. Treat this candidate as a self-hosted AI assistant product (end-user application with operational control plane), not as a generic agent SDK/framework. Focus review on the user-facing assistant experience across channels and device nodes; de-emphasize low-level gateway internals unless they materially change product classification. evidence_strength=low review_source=existing_llm_prescreen
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_assistant_2cd2782d869c.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
+    sample_slot_id: GS300-065
+    sample_id: cand_github_qf_ai_assistant_2cd2782d869c
+- sequence_id: 67
+  candidate_id: cand_github_qf_ai_assistant_79d470bb524e
+  title: mem0
+  canonical_url: https://github.com/mem0ai/mem0
+  source_window: 2025-06-01..2026-04-06
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T02:32:25.054342Z'
+  human_review_status: approved_for_staging
+  human_review_notes: 'clear end-user product signal; evidence sufficient for staging; manual override: user requested to stage analyzed samples that are semantically non-duplicate against existing staging and against each other'
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_assistant_79d470bb524e.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
+    sample_slot_id: GS300-068
+    sample_id: cand_github_qf_ai_assistant_79d470bb524e
+- sequence_id: 68
+  candidate_id: cand_github_qf_ai_workflow_edbe85c86a6e
+  title: awesome-claude-skills
+  canonical_url: https://github.com/ComposioHQ/awesome-claude-skills
+  source_window: 2025-06-01..2026-04-06
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-06T15:02:55.659958Z'
+  human_review_status: approved_for_staging
+  human_review_notes: 'clear end-user product signal; evidence sufficient for staging; If in doubt, split into two records for human review: (1) this repo as a curated ecosystem index, (2) Composio/connect-apps as a potential productized automation platform. Treat this as a community curation and enablement hub (skills catalog + plugin setup) unless human review confirms it represents a distinct deployable product with owned functionality beyond listing third-party skills. evidence_strength=low review_source=existing_llm_prescreen'
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_workflow_edbe85c86a6e.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+    sample_slot_id: GS300-049
+    sample_id: cand_github_qf_ai_workflow_edbe85c86a6e
+- sequence_id: 69
+  candidate_id: cand_github_qf_chatbot_39cab9febf4c
+  title: chatbot
+  canonical_url: https://github.com/dbpedia/chatbot
+  source_window: 2025-06-01..2026-04-06
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-06T14:59:12.658295Z'
+  human_review_status: approved_for_staging
+  human_review_notes: 'clear end-user product signal; evidence sufficient for staging; Ready for quick human first-pass: likely exclude from active candidate pool unless reviewer is intentionally collecting legacy/reference chatbot implementations. Treat this as a deprecated, publicly documented chatbot artifact (historical/reference scope), not an actively maintained production AI product. Include only if the review goal allows legacy exemplars or API-pattern baselines. evidence_strength=low review_source=existing_llm_prescreen'
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_chatbot_39cab9febf4c.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_04_samples_046_060.yaml
+    sample_slot_id: GS300-047
+    sample_id: cand_github_qf_chatbot_39cab9febf4c
+- sequence_id: 70
+  candidate_id: cand_github_qf_chatbot_8e0f2a454ad4
+  title: spring-ai-alibaba
+  canonical_url: https://github.com/alibaba/spring-ai-alibaba
+  source_window: 2025-06-01..2026-04-06
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T02:32:25.222848Z'
+  human_review_status: approved_for_staging
+  human_review_notes: 'clear end-user product signal; evidence sufficient for staging; manual override: user requested to stage analyzed samples that are semantically non-duplicate against existing staging and against each other'
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_chatbot_8e0f2a454ad4.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
+    sample_slot_id: GS300-069
+    sample_id: cand_github_qf_chatbot_8e0f2a454ad4
+- sequence_id: 71
+  candidate_id: cand_github_qf_chatbot_bf46b7af1b88
+  title: chatbot
+  canonical_url: https://github.com/zhaoyingjun/chatbot
+  source_window: 2025-06-01..2026-04-06
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T02:32:25.294161Z'
+  human_review_status: approved_for_staging
+  human_review_notes: 'clear end-user product signal; evidence sufficient for staging; manual override: user requested to stage analyzed samples that are semantically non-duplicate against existing staging and against each other'
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_chatbot_bf46b7af1b88.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
+    sample_slot_id: GS300-070
+    sample_id: cand_github_qf_chatbot_bf46b7af1b88
+- sequence_id: 72
+  candidate_id: cand_github_qf_copilot_79d47f808a83
+  title: copilot
+  canonical_url: https://github.com/spring-ai-alibaba/copilot
+  source_window: 2025-06-01..2026-04-06
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T02:32:25.381915Z'
+  human_review_status: approved_for_staging
+  human_review_notes: 'clear end-user product signal; evidence sufficient for staging; manual override: user requested to stage analyzed samples that are semantically non-duplicate against existing staging and against each other'
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_copilot_79d47f808a83.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
+    sample_slot_id: GS300-071
+    sample_id: cand_github_qf_copilot_79d47f808a83
+- sequence_id: 73
+  candidate_id: cand_github_qf_rag_4d86ff9135b0
+  title: rag
+  canonical_url: https://github.com/neuml/rag
+  source_window: 2025-06-01..2026-04-06
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T02:32:25.469760Z'
+  human_review_status: approved_for_staging
+  human_review_notes: 'clear end-user product signal; evidence sufficient for staging; manual override: user requested to stage analyzed samples that are semantically non-duplicate against existing staging and against each other'
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_rag_4d86ff9135b0.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
+    sample_slot_id: GS300-072
+    sample_id: cand_github_qf_rag_4d86ff9135b0
+- sequence_id: 74
+  candidate_id: cand_github_qf_rag_b8b42b7bc597
+  title: awesome-llm-apps
+  canonical_url: https://github.com/Shubhamsaboo/awesome-llm-apps
+  source_window: 2025-06-01..2026-04-06
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-06T12:24:38.234583Z'
+  human_review_status: approved_for_staging
+  human_review_notes: 'clear end-user product signal; evidence sufficient for staging; High-readability candidate for quick human triage: classify first as resource hub, then split out any truly productized subprojects if needed. Treat this as a meta-resource (catalog + learning hub) unless human review confirms substantial original product code in-repo. Do not scope it as one deployable AI app based solely on the README claims. evidence_strength=low review_source=existing_llm_prescreen'
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_rag_b8b42b7bc597.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
+    sample_slot_id: GS300-064
+    sample_id: cand_github_qf_rag_b8b42b7bc597
+- sequence_id: 75
+  candidate_id: cand_github_qf_rag_e7338be43224
+  title: ai-engineering-hub
+  canonical_url: https://github.com/patchy631/ai-engineering-hub
+  source_window: 2025-06-01..2026-04-06
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-06T14:52:29.017791Z'
+  human_review_status: approved_for_staging
+  human_review_notes: 'clear end-user product signal; evidence sufficient for staging; Human reviewer can make a quick scope decision now; only proceed to deeper review if program policy includes learning hubs or if selecting specific subprojects for independent screening. Prescreen boundary: treat this as an educational project index unless the observatory scope explicitly accepts curriculum-style repositories. If the scope requires identifiable productization units (single app/service with defined users, operations, and lifecycle), this repo should be excluded or split into specific subprojects for separate review. evidence_strength=low review_source=existing_llm_prescreen'
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_rag_e7338be43224.yaml
+  staging_handoff:
+    status: written
+    staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_03_samples_031_045.yaml
+    sample_slot_id: GS300-043
+    sample_id: cand_github_qf_rag_e7338be43224

@@ -1,0 +1,187 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_cd524002d581
+candidate_batch_id: candidate_batch_github_qf_rag_2025-03-01_2025-03-31
+created_at: '2026-04-09T12:40:01.097635Z'
+updated_at: '2026-04-09T13:10:43.256497Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '951932591'
+canonical_url: https://github.com/FareedKhan-dev/rag-with-rl
+title: rag-with-rl
+summary: Maximizing the Performance of a Simple RAG using RL
+raw_evidence_excerpt: "Maximizing the Performance of a Simple RAG using RL\n\nSimple\
+  \ RAG with RL\n\nA simple RAG works in three simple steps:\n\n1. **Indexing**: Break\
+  \ documents into chunks and convert to vector embeddings.\n\n2. **Retrieval**: When\
+  \ a question is asked, find the most relevant chunks.\n\n3. **Generation**: Combine\
+  \ the question with retrieved chunks and let the AI generate an answer using this\
+  \ information.\n\nThe actual problem is to generate an answer to a given question\
+  \ using the provided documents. Simple RAG often fails to generate accurate answers\
+  \ due to the lack of context in the retrieved chunks. In this notebook, we will\
+  \ use the `RL RAG` approach to generate answers to the given questions using the\
+  \ provided documents.\n\nTable of Contents\n\n- Setting Up the Environment - Data\
+  \ Preprocessing - Document Embedding Generation - Vector Store Implementation -\
+  \ Simple Retrieval Implementation - LLM Response Generation - Basic RAG Pipeline\
+  \ - Evaluate the basic RAG pipeline - Reinforcement Learning for RAG - State, Action\
+  \ Space, and Reward Methodology - Action Function Logic - Policy Network - Single\
+  \ RL Step - Training Parameters and Policy Update - Training Loop - Performance\
+  \ Comparison Logic - Evaluation Framework (**Optional**) - Evaluating (RL vs Simple)\
+  \ RAG - Saving the Comparison Results - What can we conclude?\n\nSetting Up the\
+  \ Environment\n\nClone the repository and install the required libraries.\n\nInstall\
+  \ the required libraries.\n\nFirst, we need to import the necessary libraries and\
+  \ set up the environment. We will be using HuggingFace Models hosted under **Nebius**\
+  \ platform. Obviously, you can use your own models as long as they are compatible\
+  \ with OpenAI's API.\n\nNext, we need to initialize the client responsible for response\
+  \ and embedding generation.\n\nData Preprocessing Now that we have moved onto the\
+  \ data preprocessing stage, we need to load the data and preprocess it. Let's create\
+  \ a function that will load all the `.txt` files from a directory and return a list\
+  \ of documents.\n\nWe need to create a function that performs chunking of the documents\
+  \ once they are loaded. We are using a `chunk_size` of `100` characters, but you\
+  \ can adjust it as per your requirements.\n\nThis step is **optional**, where we\
+  \ preprocess each chunk by removing special characters, converting to lowercase,\
+  \ etc.\n\nHowever, if you are using the previous preprocessing step, you can simply\
+  \ create a function to preprocess the entire document.\n\nNow that we have implemented\
+  \ all the functions for data preprocessing, we can load the documents from the directory,\
+  \ split them into chunks, and preprocess the chunks.\n\nPrint the first 200 characters\
+  \ of the first two chunks\n\nChunk 1: quantum computing principles progress and\
+  \ possibil ... -------------------------------------------------- Chunk 2: process\
+  \ information in binary digits bits quantum ... --------------------------------------------------\n\
+  \nDocument Embedding Generation\n\nIn the previous step, we chunked our document.\
+  \ Now it's time to generate embeddings for the chunk dataset. When working with\
+  \ RAG, our knowledge base is typically quite large. Therefore, we need to perform\
+  \ embedding generation in batches. Let's create a core function to generate embeddings\
+  \ for the chunks in batches.\n\nThe embedding model we are using is `BAAI/bge-en-icl`.\n\
+  \nNext, we will define a function to generate embeddings for all text chunks in\
+  \ batches. This function will take a list of text chunks as input and generate embeddings\
+  \ for each batch of chunks using the OpenAI client. The function will return a list\
+  \ of embeddings corresponding to all the text chunks.\n\nLet's create another function\
+  \ to save the embeddings to a file in JSON format.\n\nNow that we have implemented\
+  \ all the functions for embedding generation, we can proceed to generate embeddings\
+  \ for the preprocessed text chunks and save them to a JSON file.\n\nVector Store\
+  \ Implementation Since we are not using any python libraries for vector storage,\
+  \ we will implement a simple vector store using a dictionary.\n\nSimple Retrieval\
+  \ Implementation\n\nWe do know for retrieving the most similar text chunks to a\
+  \ given query, we can use the cosine similarity between the query embedding and\
+  \ the embeddings of all text chunks. The higher the cosine similarity, the more\
+  \ similar the text chunks are. We can then sort the chunks based on their similarity\
+  \ scores and return the top-k most similar chunks.\n\nSo, let's implement a simple\
+  \ cosine similarity-based retrieval function.\n\nThe cosine similarity between two\
+  \ vectors $A$ and $B$ is calculated as:\n\n$$\\text{cosine similarity} = \\frac{A\
+  \ \\cdot B}{||A|| \\times ||B||} = \\frac{\\sum_{i=1}^{n} A_i B_i}{\\sqrt{\\sum_{i=1}^{n}\
+  \ A_i^2} \\times \\sqrt{\\sum_{i=1}^{n} B_i^2}}$$\n\nWhere: - $A \\cdot B$ is the\
+  \ dot product of vectors $A$ and $B$ - $||A||$ and $||B||$ are the Euclidean norms\
+  \ (magnitudes) of the vectors - $n$ is the dimension of the vectors\n\nWhen we calculate\
+  \ the cosine similarity between a query and all the chunks, we can perform a similarity\
+  \ search. Based on the `top_k` parameter, we retrieve the top k most similar chunks.\n\
+  \nOnce we have the similarity search function ready, we can simply code a retrieval\
+  \ function on top of it that will provide the relevant chunks based on the query.\n\
+  \nNow that we have implemented all the functions for retrieval, we can proceed to\
+  \ test the retrieval system with a sample query.\n\nChunk 1: quantum computing principles\
+  \ progress and possibil ... -------------------------------------------------- Chunk\
+  \ 2: through distinct stages 1 nisq era current 2 error ... --------------------------------------------------\
+  \ Chunk 3: quantum advantage and practical applications quant ... --------------------------------------------------\
+  \ Chunk 4: process information in binary digits bits quantum ... --------------------------------------------------\
+  \ Chunk 5: measuring the correct answer quantum gates and cir ... --------------------------------------------------\n\
+  \nLLM Response Generation\n\nWhen we have a query and a set of relevant document\
+  \ chunks, we can use a large language model (LLM) to generate a response based on\
+  \ the query and the retrieved information. In this section, we will use the OpenAI\
+  \ API to generate a response to a query by providing the query text and the relevant\
+  \ document chunks as context to the LLM.\n\nFirst we need a function to construct\
+  \ the input prompt for the LLM, which includes the query text and the relevant document\
+  \ chunks as context.\n\nTo generate an LLM response, we need to implement a function\
+  \ that takes the constructed input prompt and sends it to the OpenAI API for response\
+  \ generation.\n\nBasic RAG Pipeline\n\nWe cannot run small pieces of code repeatedly.\
+  \ Therefore, we need to create a simple RAG pipeline that takes only one parameter,\
+  \ which is our query, and returns the LLM response.\n\nEvaluate the basic RAG pipeline\n\
+  \nNow that we have coded the basic RAG pipeline, we can use it for evaluation. Our\
+  \ evaluation queries contain different targeted segments, such as `factual_queries`\
+  \ and `complex_nature`. We are going to test the factual knowledge of our RAG pipeline.\n\
+  \nLet's load our evaluation queries and their expected answers.\n\nSample Query:\
+  \ What is the mathematical representation of a qubit in superposition?\n\nExpected\
+  \ Answer: |\xCF\u02C6\xE2\u0178\xA9 = \xCE\xB1|0\xE2\u0178\xA9 + \xCE\xB2|1\xE2\u0178\
+  \xA9, where \xCE\xB1 and \xCE\xB2 are complex numbers satisfying |\xCE\xB1|\xC2\xB2\
+  \ + |\xCE\xB2|\xC2\xB2 = 1, representing the probability amplitudes for measuring\
+  \ the qubit in state |0\xE2\u0178\xA9 or |1\xE2\u0178\xA9 respectively.\n\nLet's\
+  \ test the basic RAG pipeline with this eval query and see how well it performs.\n\
+  \n\U0001F50D Running the Retrieval-Augmented Generation (RAG) pipeline... \U0001F4E5\
+  \ Query: What is the mathematical representation of a qubit in superposition?"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '951932591'
+    canonical_url: https://github.com/FareedKhan-dev/rag-with-rl
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:43.256497Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

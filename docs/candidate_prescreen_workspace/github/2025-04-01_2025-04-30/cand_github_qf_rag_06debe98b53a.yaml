@@ -1,0 +1,168 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_06debe98b53a
+candidate_batch_id: candidate_batch_github_qf_rag_2025-04-01_2025-04-30
+created_at: '2026-04-09T13:26:33.406493Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-04-01..2025-04-30
+time_field: pushed_at
+external_id: '847546926'
+canonical_url: https://github.com/TAG-Research/TAG-Bench
+title: TAG-Bench
+summary: 'TAG-Bench: A benchmark for table-augmented generation (TAG)'
+raw_evidence_excerpt: 'TAG-Bench: A benchmark for table-augmented generation (TAG)
+
+
+  Text2SQL is Not Enough: Unifying AI and Databases with TAG
+
+
+  [#license-gh-package]: https://lbesson.mit-license.org/ [#arxiv-paper-package]:
+  https://arxiv.org/abs/2408.14717
+
+
+  Table-Augmented Generation (TAG) is a unified and general-purpose paradigm for answering
+  natural language questions over databases. The TAG model represents a wide range
+  of interactions between the LM and database that have been previously unexplored
+  in methods such as Text2SQL and RAG. We provide the first benchmark to study the
+  TAG problem and find that standard methods struggle to answer such queries, confirming
+  the need for further research in this area.
+
+
+  TAG v1 Benchmark The initial TAG v1 benchmark is built upon the BIRD Text2SQL benchmark.
+  To enhance the complexity of the queries and challenge the capabilities of LLMs,
+  the queries in the TAG benchmark have been modified to require either world knowledge
+  or semantic reasoning that goes beyond the information explicitly available in the
+  database. We use and modify a subset of match-based, comparison, ranking, and aggregation
+  queries from BIRD. In total, there are 80 queries, with 20 of each type. 40 of these
+  queries require parameteric knowledge of the model and the other 40 require the
+  model to perform reasoning.
+
+
+  Setup Here are the steps to reproduce the results in the paper.
+
+
+  1. Create a conda environment and download dependencies
+
+
+  2. Download BIRD DBs and convert them to Pandas DataFrames
+
+
+  Now you should have a `dev_folder` folder that contains the databases and a `pandas_dfs`
+  folders for the DataFrames.
+
+
+  3. Create indexes on each table (recommended to do with GPU)
+
+
+  Now you should have an `indexes` folder that contains the indexes.
+
+
+  4. Get Text2SQL prompts
+
+
+  This should have modified the `tag_queries.csv` file to add a Text2SQL prompt column.
+
+
+  Evaluation After performing the setup steps above, you can run the following to
+  reproduce results in the paper. Run these in the tag directory to get the method
+  outputs. You should edit the `lm` object in each file to point to the language model
+  server you want to use. Check the LOTUS documentation for configuring models.
+
+
+  Hand-written TAG on LOTUS
+
+
+  Text2SQL
+
+
+  Text2SQL + LM
+
+
+  RAG
+
+
+  Retrieval + LM Rank
+
+
+  Then, the accuracy and latency of each method can be evaluated via the following
+  command'
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-04-01'
+    window_end: '2025-04-30'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-04-01..2025-04-30
+    external_id: '847546926'
+    canonical_url: https://github.com/TAG-Research/TAG-Bench
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

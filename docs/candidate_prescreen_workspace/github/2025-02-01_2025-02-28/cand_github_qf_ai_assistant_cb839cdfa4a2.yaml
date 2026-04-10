@@ -1,0 +1,175 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_cb839cdfa4a2
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-02-01_2025-02-28
+created_at: '2026-04-09T12:05:01.856954Z'
+updated_at: '2026-04-09T13:10:39.606422Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '785001953'
+canonical_url: https://github.com/twilio-labs/ai-assistants-samples
+title: ai-assistants-samples
+summary: ''
+raw_evidence_excerpt: "Twilio AI Assistants Samples\n\n> [!NOTE] > Twilio AI Assistants\
+  \ is a Twilio Alpha project that is currently in Developer Preview. If you would\
+  \ like to try AI Assistants, join the waitlist.\n\nThis project contains various\
+  \ different Twilio Functions for common use cases like different channel integrations\
+  \ and common example tools you might want to use.\n\nFor more detailed documentation\
+  \ visit the Twilio Docs.\n\nSetup\n\nRequirements: Node 18 & Twlio CLI & Twilio\
+  \ Serverless Toolkit\n\nYou should get output similar to this:\n\nReplace below\
+  \ any ` ` with the output next to `Domain: ` in that output.\n\nMessaging Channel\n\
+  \nSMS\n\n**Via the Twilio CLI:**\n\n**Using the Twilio Console:** Open your SMS-capable\
+  \ phone number of choice or Messaging Service and configure the `When a message\
+  \ comes in` webhook to point to: `https:// .twil.io/channels/messaging/incoming`\n\
+  \nWhatsApp Sandbox\n\nConfigure your `When a message comes in` webhook in the WhatsApp\
+  \ Sandbox Seetings to point to `https:// .twil.io/channels/messaging/incoming`\n\
+  \n> [!NOTE] > If you want to use the same webhook for another Assistant you can\
+  \ add `?AssistantSid= ` as query parameter to the webhook URL. Example: `https://\
+  \ .twil.io/channels/messaging/incoming?AssistantSid=AI1234561231237812312`\n\nConversations\
+  \ Channel\n\nSetup:\n\n1. Set up a Conversations Service or use your default Conversations\
+  \ Service from the Console 2. Configure the webhook on a service level using the\
+  \ Twilio CLI command below 3. Connect your preferred Conversations channel following\
+  \ the guides in the docs.\n\nTools\n\nBelow are a selection of common tools that\
+  \ you might want to use or modify to your own needs. Each has an example configuration\
+  \ but you might want to tweak it to your own needs especially the `Description`\
+  \ if you find your Assistant not triggering the Tool reliably.\n\nGoogle Maps\n\n\
+  Tool to enable your Assistant to search Google Maps for the full address, phone\
+  \ number and opening hours for a business in a given location.\n\n> [!IMPORTANT]\
+  \ > Requires the `GOOGLE_MAPS_API_KEY` environment variable to be set\n\n| Field\
+  \ | Configuration | | --------------- | --------------------------------------------------------------------------------------------------------------------------------------\
+  \ | | **Name** | `Google Maps` | | **Description** | `Use this to fetch information\
+  \ about the a location from Google Maps. You MUST use this tool before the \"Ask\
+  \ User for New Data\" tool.` | | **Input** | { location: string; name: string; }\
+  \ | | **Method** | `GET` | | **URL** | `https:// .twil.io/tools/google-maps` |\n\
+  \nFlex Handover\n\nTool for your AI Assistant to hand over a conversation to a human\
+  \ agent.\n\n> [!IMPORTANT] > Requires: > > 1. The use of Twilio Conversations as\
+  \ channel > 2. The Assistant & these Functions to be deployed in a Flex Account\
+  \ > 3. The `FLEX_WORKSPACE_SID` and `FLEX_WORKFLOW_SID` environment variables to\
+  \ be configured\n\n| Field | Configuration | | --------------- | -------------------------------------------------------------------------------------------------------------------------------\
+  \ | | **Name** | `Hand over Conversation` | | **Description** | `You MUST use this\
+  \ if you don't know how to fulfill the request to let another customer service agent\
+  \ handle the conversation.` | | **Input** | {} | | **Method** | `POST` | | **URL**\
+  \ | `https:// .twil.io/tools/flex-handover` |\n\nStudio Handover\n\nTool to hand\
+  \ over a conversation that the Assistant is handling to a Studio flow. While there\
+  \ is an example `Description` for the Tool you want to update this to match your\
+  \ handover criteria.\n\nThis Tool rewires the conversation from your Assistant to\
+  \ Studio but does not forward the last message to the Studio flow. Instead the Tool\
+  \ will by default respond with `Conversation handed over` which might prompt the\
+  \ Assistant to say something like \"I handed this conversation over\". If you want\
+  \ to manipulate this message you can pass a different message into the Tool URL\
+  \ using the `SuccessMessage` query parameter.\n\n> [!IMPORTANT] > Requires: > >\
+  \ 1. The use of Twilio Conversations as channel > 2. The Assistant & these Functions\
+  \ to be deployed in the same account as Studio flow > 3. You either need to configure\
+  \ the `STUDIO_FLOW_SID` or pass `FlowSid` as query parameter to the Tool URL.\n\n\
+  | Field | Configuration | | --------------- | ---------------------------------------------------------------\
+  \ | | **Name** | `Studio Handover` | | **Description** | `You MUST use this if a\
+  \ customer is asking for a refund.` | | **Input** | {} | | **Method** | `POST` |\
+  \ | **URL** | `https:// .twil.io/tools/studio-handover` |\n\nInternet Search\n\n\
+  This tool will search the internet for relevant information and optionally summarize\
+  \ the information using GPT-3.5 Turbo.\n\n> [!IMPORTANT] > Requires you to set up\
+  \ the `EXA_API_KEY` with a valid key from exa.ai\n\n> [!CAUTION] > This tool will\
+  \ fetch data from the internet and there is a risk that this can open up your Assistant\
+  \ for prompt injection attacks.\n\n| Field | Configuration | | --------------- |\
+  \ -----------------------------------------------------------------------------------------------\
+  \ | | **Name** | `Search Internet` | | **Description** | `You MUST use this for\
+  \ any information you are unsure about or information about recent events` | | **Input**\
+  \ | { query: string; // a search engine query } | | **Method** | `GET` | | **URL**\
+  \ | `https:// .twil.io/tools/internet-search` |\n\nAdditionally to the configuration\
+  \ below, you can use the following query parameters to configure your search behavior.\
+  \ These can be put into the `input` but are recommended to passed directly into\
+  \ the end of the URL instead.\n\n- `limitDomains` \u2014 You can pass multiple ones\
+  \ to limit search results to specific domains. For example `?limitDomains=www.segment.com&limitDomains=www.twilio.com`\
+  \ will only search those two domains. - `n` \u2014 specifies the amount of search\
+  \ results you want to take into consideration for the response. Example: `?n=2`\
+  \ - `summarize` \u2014 If set to `?summarize=true`, it will optionally run the request\
+  \ through OpenAI's GPT-3.5-Turbo for a proper answer that gets pushed into your\
+  \ Assistant. This requires the `OPENAI_API_KEY` environment variable to be set.\n\
+  \nUI Tools\n\nThis tool enables you to trigger functions in the web UI of your AI\
+  \ Assistant assuming you are using the AI Assistants JavaScript SDK.\n\n> [!IMPORTANT]\
+  \ > This will only work if you are using the specific AI Assistants JavaScript SDK\
+  \ and not with any other Twilio Conversations SDK.\n\n| Field | Configuration |\
+  \ | --------------- | -----------------------------------------------------------------------------------------\
+  \ | | **Name** | ` ` | | **Description** | `Description for when this UI tool should\
+  \ be triggered` | | **Input** | { // anything you want to send to the UI tool }\
+  \ | | **Method** | `GET` | | **URL** | `https:// .twil.io/tools/ui-tools?toolName=\
+  \ ` |\n\nContributing\n\nSee contributing guide\n\nLicense\n\nMIT"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '785001953'
+    canonical_url: https://github.com/twilio-labs/ai-assistants-samples
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:39.606422Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

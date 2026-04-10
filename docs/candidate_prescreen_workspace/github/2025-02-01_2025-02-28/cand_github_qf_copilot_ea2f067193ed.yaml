@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_copilot_ea2f067193ed
 candidate_batch_id: candidate_batch_github_qf_copilot_2025-02-01_2025-02-28
 created_at: '2026-04-08T14:05:16.343275Z'
-updated_at: '2026-04-09T09:04:41.902070Z'
+updated_at: '2026-04-09T14:55:51.240594Z'
 source: github
 source_id: src_github
 source_window: 2025-02-01..2025-02-28
@@ -290,4 +290,4 @@ staging_handoff:
   sample_slot_id: GS300-087
   sample_id: cand_github_qf_copilot_ea2f067193ed
   blocking_items: []
-  last_attempted_at: '2026-04-09T09:04:41.902044Z'
+  last_attempted_at: '2026-04-09T14:55:51.240557Z'

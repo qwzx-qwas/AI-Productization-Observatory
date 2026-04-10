@@ -188,6 +188,14 @@ taxonomy / annotation 最小样例说明还应覆盖：
 - 初版切分默认使用 `60 / 20 / 20`（train / validation / test）
 - 若样本允许，切分时优先保持 `source` 与 L1 `primary_category_code` 的基本分层一致
 
+### Screening Calibration Assets
+
+- `screening_positive_set` 来自 `approved_for_staging`，用于放行标准与召回评估
+- `screening_negative_set` 来自 `rejected_after_human_review`，用于拦截标准与精度校准
+- `screening_boundary_set` 来自 `on_hold`，用于 hold/review 触发能力与稳健性校准
+- 这三类集合只服务于前置筛选质量，不得与 formal `gold_set_300` 混用
+- `screening_*` 资产不得被直接视为正式 annotation / adjudication 基线
+
 ## 3. Test Type 说明
 
 ### Unit Tests
@@ -241,6 +249,7 @@ taxonomy / annotation 最小样例说明还应覆盖：
 - `attention_score` 的 `benchmark_sample_insufficient`、`metric_definition_unavailable` 等 null case 不得被伪装成有效 band
 - annotation sample-pool layering 不得把 candidate / training / gold set 混层
 - candidate prescreen 中间文档不得被直接视为正式 gold set annotation / adjudication
+- screening calibration assets 不得被直接视为 formal `gold_set_300` 的替代物或补充分层
 - annotation `needs_review -> review_issue`、高影响 override -> maker-checker gate 的链路在 prompt / rule 更新后不应断裂
 
 ### Manual Trace Tests

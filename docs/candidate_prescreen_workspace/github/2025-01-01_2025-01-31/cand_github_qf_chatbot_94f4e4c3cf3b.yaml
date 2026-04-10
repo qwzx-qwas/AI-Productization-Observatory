@@ -1,0 +1,202 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_94f4e4c3cf3b
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:57:43.669377Z'
+updated_at: '2026-04-09T14:55:07.906529Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '702573337'
+canonical_url: https://github.com/imonishkumar/Symptom-Checker-Chatbot
+title: Symptom-Checker-Chatbot
+summary: 'A Symptom Checker Chatbot: Get quick answers about your health concerns
+  and find nearby medical centers. Built with Python, PyTorch, and NLTK, powered by
+  AI for health-related queries.'
+raw_evidence_excerpt: 'A Symptom Checker Chatbot: Get quick answers about your health
+  concerns and find nearby medical centers. Built with Python, PyTorch, and NLTK,
+  powered by AI for health-related queries.
+
+
+  Symptom Checker Chatbot ai
+
+
+  A simple chatbot that can help users check their symptoms and provide relevant information.
+  This chatbot uses natural language processing (NLP) techniques and a recurrent neural
+  network (RNN) model to understand user queries and respond accordingly.
+
+
+  Table of Contents
+
+
+  - Introduction - Getting Started - Usage - Training - Dependencies - Contributing
+  - License - Contact
+
+
+  Introduction
+
+
+  This repository contains code for a symptom checker chatbot. The chatbot can engage
+  in conversations with users, gather information about their symptoms, and provide
+  information about potential conditions or nearby medical centers. It uses a pre-trained
+  RNN model for natural language understanding.
+
+
+  Getting Started
+
+
+  To get started with the Symptom Checker Chatbot, follow these steps:
+
+
+  1. Clone the repository to your local machine:
+
+
+  2. Install the required dependencies:
+
+
+  3. Download the necessary data files and place them in the appropriate directories:
+  - `intents.json`: Contains predefined intents for the chatbot. - `data_rnn.pth`:
+  Pre-trained RNN model for natural language understanding. - `medical_centers.json`:
+  Data file containing information about medical centers.
+
+
+  Usage
+
+
+  To use the Symptom Checker Chatbot, run the `app.py` file:
+
+
+  This will start a Flask web application that you can interact with. Visit the URL
+  `http://localhost:5000` in your web browser to access the chat interface.
+
+
+  Training
+
+
+  If you want to retrain the RNN model or modify the chatbot''s behavior, follow these
+  steps:
+
+
+  1. Modify the intents and patterns in `intents.json` to customize the chatbot''s
+  responses.
+
+
+  2. Run the training script to retrain the RNN model:
+
+
+  3. Save the trained model with a new filename and update the `FILE` variable in
+  `chat.py` with the new filename.
+
+
+  Dependencies
+
+
+  The Symptom Checker Chatbot relies on the following dependencies:
+
+
+  - Python 3.x - PyTorch - Flask - NLTK - geocoder
+
+
+  You can install these dependencies using the provided `requirements.txt` file.
+
+
+  Contributing
+
+
+  If you''d like to contribute to this project, feel free to fork the repository and
+  submit pull requests. Contributions are welcome, whether it''s bug fixes, feature
+  enhancements, or documentation improvements.
+
+
+  License
+
+
+  This project is licensed under the MIT License - see the LICENSE file for details.
+
+
+  Contact
+
+
+  For questions or collaboration opportunities, feel free to contact us at monishkumarpecai@gmail.com.
+
+
+  ---'
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '702573337'
+    canonical_url: https://github.com/imonishkumar/Symptom-Checker-Chatbot
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T13:10:37.119968Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+  sample_slot_id: GS300-103
+  sample_id: cand_github_qf_chatbot_94f4e4c3cf3b
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:55:07.906505Z'

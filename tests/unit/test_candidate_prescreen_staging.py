@@ -70,6 +70,48 @@ def _copy_clean_staging_dir(staging_dir: Path) -> None:
 
 
 class CandidatePrescreenStagingUnitTests(unittest.TestCase):
+    def test_staging_progress_counts_slot_with_real_refs_even_when_sample_id_is_missing(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            staging_dir = Path(tmp_dir) / "staging"
+            _copy_clean_staging_dir(staging_dir)
+            before_progress = staging_progress(staging_dir)
+            _, _, empty_path, empty_sample = _filled_and_empty_slot(staging_dir)
+            payload = load_yaml(empty_path)
+            for sample in payload["samples"]:
+                if sample["sample_slot_id"] != empty_sample["sample_slot_id"]:
+                    continue
+                sample["current_state"] = "candidate_approved_for_annotation"
+                sample["candidate_prescreen_ref"] = {
+                    "candidate_id": "cand_partial_slot_without_sample_id",
+                    "candidate_document_path": "/tmp/cand_partial_slot_without_sample_id.yaml",
+                    "query_family": "ai_applications_and_products",
+                    "query_slice_id": "qf_agent",
+                    "selection_rule_version": "github_qsv1",
+                    "recommended_action": "candidate_pool",
+                    "human_review_status": "approved_for_staging",
+                    "human_review_notes": "Approved in first-pass review.",
+                    "human_reviewed_at": "2026-04-09T09:10:00Z",
+                }
+                sample["source_record_refs"] = [
+                    {
+                        "candidate_id": "cand_partial_slot_without_sample_id",
+                        "candidate_document_path": "/tmp/cand_partial_slot_without_sample_id.yaml",
+                        "source": "github",
+                        "source_id": "src_github",
+                        "source_window": "2026-04-01..2026-04-08",
+                        "external_id": "partial-slot-001",
+                        "canonical_url": "https://github.com/example/partial-slot",
+                        "sample_key": None,
+                    }
+                ]
+                break
+            dump_yaml(empty_path, payload)
+
+            after_progress = staging_progress(staging_dir)
+
+            self.assertEqual(after_progress["total_filled"], before_progress["total_filled"] + 1)
+            self.assertNotEqual(after_progress["next_open_slot"]["sample_slot_id"], empty_sample["sample_slot_id"])
+
     def test_validate_staging_workspace_rejects_duplicate_source_semantic_key(self) -> None:
         with TemporaryDirectory() as tmp_dir:
             staging_dir = Path(tmp_dir) / "staging"

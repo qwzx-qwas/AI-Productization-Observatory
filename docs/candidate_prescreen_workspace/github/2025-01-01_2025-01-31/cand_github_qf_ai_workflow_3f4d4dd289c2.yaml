@@ -1,0 +1,117 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_3f4d4dd289c2
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-01-01_2025-01-31
+created_at: '2026-04-09T11:06:27.856692Z'
+updated_at: '2026-04-09T13:10:37.061830Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '924404962'
+canonical_url: https://github.com/echoflame14/AIDevWorkflow
+title: AIDevWorkflow
+summary: ''
+raw_evidence_excerpt: "Codebase Analysis Tools\n\nThis directory contains utility\
+  \ scripts for codebase analysis, structure visualization, and file summarization.\
+  \ These tools are designed to help developers and AI systems better understand and\
+  \ interact with the codebase.\n\nScripts Overview\n\ncaptureCodebase.ts \U0001F4F8\
+  \n\n**Captures a snapshot** of your codebase while respecting include/exclude patterns.\
+  \ Useful for documentation and analysis.\n\n**Key Features:**\n\n* Configurable\
+  \ file inclusion via CSV patterns (simple/regex) * Outputs matched file contents\
+  \ to paste.txt * Built-in exclusion of common non-source directories\n\ndiff.ts\
+  \ \u2194\uFE0F\n\n**Generates Git diffs** for code review and documentation.\n\n\
+  **Key Features:**\n\n* Captures staged changes * Includes whitespace-ignored diffs\
+  \ * Requires an active Git repository\n\ngetStructure.ts \U0001F333\n\n**Creates\
+  \ a directory structure map** with file token counts.\n\n**Key Features:**\n\n*\
+  \ Hierarchical directory tree output * Token estimation (4 characters = 1 token)\
+  \ * Copies LLM-friendly prompt to clipboard * Writes structure to paste.txt\n\n\
+  rag.ts \U0001F916\n\n**Generates AI-powered file summaries** using Claude 3 Haiku.\n\
+  \n**Key Features:**\n\n* Summary caching with MD5 hash validation * Metadata tracking\
+  \ (timestamps, file paths) * Configurable file extensions * Error handling for API/file\
+  \ operations\n\nInstallation \U0001F6E0\uFE0F\n\n1. Install dependencies:\n\n2.\
+  \ Set up environment variables:\n\nConfiguration \u2699\uFE0F\n\nCommon Ignore Patterns\n\
+  \nUsage \U0001F680\n\nCodebase Capture\n\nGit Diff Generation\n\nDirectory Structure\
+  \ Analysis\n\nFile Summarization\n\nOutput Files \U0001F4C2\n\npaste.txt \U0001F4CB\
+  \n\n* Capture: Selected file contents * Structure: Directory tree with token counts\
+  \ * Diff: Git diff output\n\nSummary Files (/summaries/*.json) \U0001F5C3\uFE0F\n\
+  \nError Handling \U0001F512\n\nAll scripts include:\n\n* File system error detection\
+  \ * Pattern validation * API error handling (rag.ts) * JSON read/write safeguards"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '924404962'
+    canonical_url: https://github.com/echoflame14/AIDevWorkflow
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:37.061830Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

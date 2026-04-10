@@ -1,0 +1,147 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_c251975a9b4c
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-02-01_2025-02-28
+created_at: '2026-04-09T13:48:03.454628Z'
+updated_at: '2026-04-09T14:55:30.646946Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '940843480'
+canonical_url: https://github.com/Katharine/tiny-assistant
+title: tiny-assistant
+summary: An AI assistant for the Pebble
+raw_evidence_excerpt: 'An AI assistant for the Pebble
+
+
+  Tiny Assistant
+
+
+  Tiny Assistant is an LLM-based assistant that runs on your Pebble smartwatch, if
+  you still have a smartwatch that ceased production in 2016 lying around.
+
+
+  Usage
+
+
+  Server
+
+
+  To use Tiny Assistant, you will need to run the server in `service/` somewhere your
+  phone can reach.
+
+
+  You will also need to set a few environment variables:
+
+
+  - `GEMINI_KEY` - a key for Google''s Gemini - you can get one at the Google AI Studio
+  - `REDIS_URL` - a URL for a functioning Redis server. No data is persisted long-term,
+  so a purely in-memory server is fine.
+
+
+  Client
+
+
+  Update the URL in `app/src/pkjs/urls.js` to point at your instance of the server.
+
+
+  Then you can simply build it using the Pebble SDK and install on your watch.
+
+
+  Contributing
+
+
+  See `CONTRIBUTING.md` for details.
+
+
+  License
+
+
+  Apache 2.0; see `LICENSE` for details.
+
+
+  Disclaimer
+
+
+  This project is not an official Google project. It is not supported by Google and
+  Google specifically disclaims all warranties as to its quality, merchantability,
+  or fitness for a particular purpose.'
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '940843480'
+    canonical_url: https://github.com/Katharine/tiny-assistant
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+  sample_slot_id: GS300-120
+  sample_id: cand_github_qf_ai_assistant_c251975a9b4c
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:55:30.646922Z'

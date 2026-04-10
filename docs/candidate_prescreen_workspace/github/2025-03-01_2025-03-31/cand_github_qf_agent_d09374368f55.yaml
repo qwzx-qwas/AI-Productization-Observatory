@@ -1,0 +1,153 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_d09374368f55
+candidate_batch_id: candidate_batch_github_qf_agent_2025-03-01_2025-03-31
+created_at: '2026-04-09T12:30:17.873752Z'
+updated_at: '2026-04-09T13:10:42.337581Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '159880367'
+canonical_url: https://github.com/eugenevinitsky/sequential_social_dilemma_games
+title: sequential_social_dilemma_games
+summary: Repo for reproduction of sequential social dilemmas
+raw_evidence_excerpt: "Repo for reproduction of sequential social dilemmas\n\nDeprecation\
+  \ Warning These environments were intended to reproduce an earlier version of melting\
+  \ pot that was not open sourced. You can find Melting Pot at the link and we strongly\
+  \ recommend using it over this repo.\n\nSequential Social Dilemma Games This repo\
+  \ is an open-source implementation of DeepMind's Sequential Social Dilemma (SSD)\
+  \ multi-agent game-theoretic environments [[1]](https://arxiv.org/abs/1702.03037).\
+  \ SSDs can be thought of as analogous to spatially and temporally extended Prisoner's\
+  \ Dilemma-like games. The reward structure poses a dilemma because individual short-term\
+  \ optimal strategies lead to poor long-term outcomes for the group.\n\nThe implemented\
+  \ environments are structured to be compatible with OpenAIs gym environments as\
+  \ well as RLlib's Multiagent Environment\n\nImplemented Games\n\n* **Cleanup**:\
+  \ A public goods dilemma in which agents get a reward for consuming apples, but\
+  \ must use a cleaning beam to clean a river in order for apples to grow. While an\
+  \ agent is cleaning the river, other agents can exploit it by consuming the apples\
+  \ that appear.\n\n* **Harvest**: A tragedy-of-the-commons dilemma in which apples\
+  \ regrow at a rate that depends on the amount of nearby apples. If individual agents\
+  \ employ an exploitative strategy by greedily consuming too many apples, the collective\
+  \ reward of all agents is reduced.\n\nThe above plot shows the empirical Schelling\
+  \ diagrams for both Cleanup (A) and Harvest (B) (from [[2]](https://arxiv.org/abs/1803.08884)).\
+  \ These diagrams show the payoff that an individual agent can expect if it follows\
+  \ a defecting/exploitative strategy (red) vs a cooperative strategy (blue), given\
+  \ the number of other agents that are cooperating. We can see that an individual\
+  \ agent can almost always greedily benefit from detecting, but the more agents that\
+  \ defect, the worse the outcomes for all agents.\n\nSetup instructions To install\
+  \ the SSD environments: Anaconda/miniconda\n\nTo install sb3|rllib|all requirements\
+  \ for learning:\n\nIf using RLlib:\n\nAfter the setup, you can run experiments like\
+  \ so: - To train with default parameters (baseline model cleanup with 2 agents):\n\
+  \n- To train the MOA with 5 agents:\n\nMany more options are available which can\
+  \ be found in default_args.py. A collection of preconfigured training scripts can\
+  \ be found in run_scripts.\n\nNote that the RLlib initialization time can be rather\
+  \ high (up to 5 minutes) the more agents you use, and the more complex your used\
+  \ model is.\n\n- To train using Stable-Baselines3 and parameter shared PPO:\n\n\
+  - To train using MARL-Baselines3 and independent PPO:\n\n- To train using MARL-Baselines3\
+  \ and independent PPO with inequity aversion:\n\nCUDA, cuDNN and tensorflow-gpu\n\
+  \nIf you run into any cuda errors, make sure you've got a compatible set of cuda/cudnn/tensorflow\
+  \ versions installed. However, beware of the following: >The compatibility table\
+  \ given in the tensorflow site does not contain specific minor versions for cuda\
+  \ and cuDNN. However, if the specific versions are not met, there will be an error\
+  \ when you try to use tensorflow. source\n\nTests Tests are located in the test\
+  \ folder and can be run individually or run by running `python -m pytest`. Many\
+  \ of the less obviously defined rules for the games can be understood by reading\
+  \ the tests, each of which outline some aspect of the game.\n\nConstructing new\
+  \ environments Every environment that subclasses MapEnv probably needs to implement\
+  \ the following methods:\n\nPPO Results\n\nThe below graphs display results for\
+  \ cleanup/harvest using un-tuned PPO in RLlib. As of yet, A3C remains untested.\n\
+  \n**Collective cleanup reward**:\n\n**Collective harvest reward**:\n\nRelevant papers\n\
+  \n1. Leibo, J. Z., Zambaldi, V., Lanctot, M., Marecki, J., & Graepel, T. (2017).\
+  \ Multi-agent reinforcement learning in sequential social dilemmas. In Proceedings\
+  \ of the 16th Conference on Autonomous Agents and MultiAgent Systems (pp. 464-473).\n\
+  \n2. Hughes, E., Leibo, J. Z., Phillips, M., Tuyls, K., Due\xF1ez-Guzman, E., Casta\xF1\
+  eda, A. G., Dunning, I., Zhu, T., McKee, K., Koster, R., Tina Zhu, Roff, H., Graepel,\
+  \ T. (2018). Inequity aversion improves cooperation in intertemporal social dilemmas.\
+  \ In Advances in Neural Information Processing Systems (pp. 3330-3340).\n\n3. Jaques,\
+  \ N., Lazaridou, A., Hughes, E., Gulcehre, C., Ortega, P. A., Strouse, D. J., Leibo,\
+  \ J. Z. & de Freitas, N. (2018). Intrinsic Social Motivation via Causal Influence\
+  \ in Multi-Agent RL. arXiv preprint arXiv:1810.08647.\n\nContributors\n\nThis code\
+  \ base was initially developed by Eugene Vinitsky and Natasha Jaques; help with\
+  \ reproduction was provided by Joel Leibo, Antonio Castenada, and Edward Hughes.\
+  \ Additional development was done by Hugo Heemskerk. Support for PettingZoo was\
+  \ provided by Rohan Potdar.\n\nCitation\n\nIf you want to cite this repository accademic\
+  \ work, please use the following citation:"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '159880367'
+    canonical_url: https://github.com/eugenevinitsky/sequential_social_dilemma_games
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:42.337581Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

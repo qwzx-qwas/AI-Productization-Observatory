@@ -1,0 +1,114 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_080731591c5c
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:47:03.589724Z'
+updated_at: '2026-04-09T13:10:37.524327Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '789664559'
+canonical_url: https://github.com/CScorza/OSINT-IA
+title: OSINT-IA
+summary: L'I.A. a supporto dell'OSINT
+raw_evidence_excerpt: "L'I.A. a supporto dell'OSINT\n\n***AI in support of OSINT***\n\
+  \nBelow is a list of useful tools for various activities.\n\nList of AI Chatbots\
+  \ Present In WhatsApp\n\n|| | --- | |**Microsoft Copilot**| |**Meta AI**| |**ChatGPT**|\
+  \ |**Shmooz AI**| |**WizAI**| |**GuideGeek**| |**MobileGPT**| |**LuzIA**| |**Truora\
+  \ Genie AI**| |**August AI**| |**HeyPat AI**| |**Dola AI**|\n\n**Generics** | ---\
+  \ | |**ChatGPT**| |**Gemini**| |**Stellar.ia**|\n\n**Tools** | --- | |**AI Tools\
+  \ kit**|\n\n**Hacking Chat I.A.** | --- | |**Chat.Hackerai.co**|\n\n***DanChatGPT***\
+  \ |**DAN GPT**|***How to Overcome ChatGPT Barriers***| | --- | --- |\n\n**To Write**\
+  \ | --- | |**ChatSonic**| |**ChatABC**| |**JasperAI**| |**Quillbot**| |**ChatPDF**|\n\
+  \n**Programming Support** | --- | |**Copilot**| |**Tabnine**| |**MutableAI**| |**Safurai**|\
+  \ |**10Web**| |**cursor**|\n\n**For \U0001D5E5\U0001D5F2\U0001D600\U0001D5F2\U0001D5EE\
+  \U0001D5FF\U0001D5F0\U0001D5F5** | --- | **Paperpal** **Perplexity** **YouChat**\
+  \ **Elicit**\n\n**For \U0001D5E7\U0001D604\U0001D5F6\U0001D601\U0001D601\U0001D5F2\
+  \U0001D5FF** | --- | |**Tweetmonk**| |**Tribescaler**| |**Postwise**| |**TweetLify**|\n\
+  \n**For the \U0001D5E3\U0001D5FF\U0001D5FC\U0001D5F1\U0001D602\U0001D5F0\U0001D601\
+  \U0001D5F6\U0001D603\U0001D5F6\U0001D601\U0001D606** | --- | |**Synthesia**| |**Otter**|\
+  \ |**Bardeen**| |**CopyAI**|\n\n**Per la Creazione di Contenuti** | --- | |**WriteSonic**|\
+  \ |**Tome**| |**CopySmith**| |**TextBlaze**|\n\n**For the Curriculum useful for\
+  \ the creation of \"Avatar\"** | --- | |**KickResume**| |**ReziAI**| |**ResumeAI**|\
+  \ |**EnhanceCV**|\n\n**For the transcription of the \U0001D5D4\U0001D602\U0001D5F1\
+  \U0001D5F6\U0001D5FC\U0001D5FC** | --- | |**MurfAI**| |**Speechify**| |**LovoAI**|\
+  \ |**MediaAI**|\n\n**For YouTube** | --- | |**YouTube Tran Script**|"
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '789664559'
+    canonical_url: https://github.com/CScorza/OSINT-IA
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:37.524327Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

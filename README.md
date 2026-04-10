@@ -33,6 +33,7 @@ AI Productization Observatory 是一个面向公开网络、可持续运行、�
   - [11_metrics_and_marts.md](11_metrics_and_marts.md)
 - test / acceptance / runtime / replay：
   - [14_test_plan_and_acceptance.md](14_test_plan_and_acceptance.md)
+  - [21_screening_calibration_asset_layer.md](21_screening_calibration_asset_layer.md)
   - [15_tech_stack_and_runtime.md](15_tech_stack_and_runtime.md)
   - [18_runtime_task_and_replay_contracts.md](18_runtime_task_and_replay_contracts.md)
 - 执行 `10_prompt_specs/` 下阶段 prompt、按模板汇报任务、或进入 blocker 响应时：
@@ -70,6 +71,8 @@ AI Productization Observatory 是一个面向公开网络、可持续运行、�
   - 测试 fixture
 - `docs/candidate_prescreen_workspace/`
   - 候选预筛工作区与人工一审前工作文档
+- `docs/screening_calibration_assets/`
+  - 并行于 formal gold set 的筛选校准资产层
 - `gold_set/`
   - gold set 与标注产物
 - 根目录 `*.md`

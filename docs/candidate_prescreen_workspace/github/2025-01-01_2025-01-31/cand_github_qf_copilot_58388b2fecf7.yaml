@@ -1,0 +1,341 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_58388b2fecf7
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:47:29.267503Z'
+updated_at: '2026-04-09T14:55:13.459472Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '715332481'
+canonical_url: https://github.com/aseichter2007/ClipboardConqueror
+title: ClipboardConqueror
+summary: 'Clipboard Conqueror is a novel copy and paste copilot alternative designed
+  to bring your very own LLM AI assistant to any text field.  '
+raw_evidence_excerpt: 'Clipboard Conqueror is a novel copy and paste copilot alternative
+  designed to bring your very own LLM AI assistant to any text field.
+
+
+  Clipboard Conqueror: Your Personal AI Copilot
+
+
+  Welcome to Clipboard Conqueror, a powerful tool that brings the power of Artificial
+  Intelligence to your fingertips. Whether you''re a developer, writer, student, or
+  just someone who loves to explore, Clipboard Conqueror is here to help.
+
+
+  Install, Choosing a Model, Basic Use, Bookmarklets, Prompt Reference, Prompt Formatting,
+  API Switching, Chaining Inference, Setup.js
+
+
+  What is Clipboard Conqueror?
+
+
+  Clipboard Conqueror is a copy paste Large Language Model interface that works as
+  a personal universal copilot. It simply works anywhere. No need to sign in, no required
+  keys. CC allows you to leverage cutting-edge Artificial Intelligence models to enhance
+  your productivity and creativity. Almost everything is configurable.
+
+
+  With Clipboard Conqueror, you can simply copy three pipes "`|||`" and a question
+  or command, and it will generate a response into the clipboard that you can paste
+  directly into any text field.
+
+
+  Clipboard Conqueror works out of the box with - KoboldCPP, - Text Generation WebUI,
+  - Ollama, - LMStudio *closed source
+
+
+  These local inference servers are generally considered secure and reliable, and
+  can be invoked simply like "|||ollama|" or "|||tgw|". They do not require an internet
+  connection or any sensitive data to be sent on the network. Clipboard Conqeror is
+  very configurable and should be compatible with any inference server.
+
+
+  CC works online via: - Novita AI - 01.AI - Anyscale - Claude - Fireworks - Groq
+  - Openrouter - Together - OpenAI''s API
+
+
+  Put your key into the appropriate endpoint.key in setup.js.
+
+
+  Key Features
+
+
+  Summon any text right where you need it.
+
+
+  - **Control Every Part of LLM Prompts:** Manage and customize every aspect of your
+  AI without leaving your current workspace.
+
+
+  - **Quickly Prototype Prompts:** Test and refine your prompts quickly for deployment
+  in production environments.
+
+
+  - **Locally Run Models:** Trust your data with locally run models that do not phone
+  home or report any metrics.
+
+
+  - **Supports Multiple Inference Endpoints:** Flexibly interface with your favorite
+  inference engines.
+
+
+  - **No-code Multi-hop Inference Framework** Prepare powerful chain-of-inference
+  prompts for superior responses or prototype workflows for use in multi-step agentic
+  frameworks.
+
+
+  - **Desktop Platforms** Clipboard Conqueror is designed to work seamlessly across
+  multiple desktop platforms including Windows, macOS, and Linux. It has been gently
+  tested to ensure stability and compatibility.
+
+
+  - **OpenAI Compatible** local inference engines are not strictly required to use
+  Clipboard Conqueror, it works against ChatGPT API and other internet inference sources.
+
+
+  - CC provides a whole toolbox of predefined and targeted assistants, ready to work
+  for you.
+
+
+  - Save system prompts on the fly to draft, define, translate, think, review, or
+  tell jokes.
+
+
+  Getting Started
+
+
+  1. Installing Clipboard Conqueror 2. Choosing a Model 3. Basic Use 4. Bookmarklets
+  4. Prompt Reference 5. Prompt Formatting 6. API Switching 7. Chain of Inference
+  8. Setup.js
+
+
+  Privacy Policy Clipboard Conqueror does not collect any metrics or send any data
+  behind the scenes. When used with local LLMs, no data leaves the local machine.
+  When used with online APIs, please refer to the privacy policy of your chosen host.
+
+
+  Additional Resources
+
+
+  - Prompt Tower
+
+
+  This VSCode extension is excellent for building and arranging code prompts, and
+  works seamlessly with CC, just add an invocation to the top of the prompt tower
+  and click Copy Prompt.
+
+
+  - Toggle Design Mode Bookmarklet
+
+
+  Morph the web on demand as you browse. - Effects of Basic Sampling Parameters -
+  Unofficial Kobold Guide and Model Suggestions - AMD GPU Resources - The Hitchhiker''s
+  Guide to LLMs - LLMs: How Do They Work? - OpenHermes 2.5 Mistral Prompting Ideas
+  - Llama 3 Quant Loss - Visual Guide to Quantization
+
+
+  Videos Quick Start Jam, Reccomended:
+
+
+  Quick demo:
+
+
+  Using Clipboard Conqueror to mutate content, and Installation:
+
+
+  - *note in this video I mention context leaking with Context Shift, that was my
+  mistake, for a bit I had a bug where |||re| was persisting unexpectedly.
+
+
+  Support the Developer, Please!
+
+
+  I would very much appreciate a donation and am open to prompt engineering consultation
+  on Fridays. Send me an email if I can help you in any way.
+
+
+  - Patreon
+
+
+  - Ko-fi
+
+
+  or coin: - BTC: bc1qqpfndachfsdgcc4xxtnc5pnk8y58zjzaxavu27 - DOGE: D7JQNfq2ybDSorYjP7xS2U4hs8PD2UUroY
+
+
+  If CC really gets rolling and meets my financial needs, I will host a dedicated
+  cluster of my own to ensure free LLM access for anyone on secure and transparent
+  terms with any excess.
+
+
+  Contact
+
+
+  For bug reports, feature requests, or any other inquiries, please contact me at
+  clipboard.aseichter2007@gmail.com or open an issue on GitHub.
+
+
+  If you have a good idea for adding a proper gui to CC, fork it and show me how it''s
+  done. I''d like to avoid a heavy web framework.
+
+
+  Acknowlegements
+
+
+  I''d like to give a special thank you to the creators of KoboldAi, KoboldCPP, Meta,
+  ClosedAi, and the communities that made all this possible to figure out.
+
+
+  Star History
+
+
+  Large Language Models: ---
+
+
+  Every LLM is a little different, it takes some time to get used to how each model
+  should be talked to for the best results.
+
+
+  LLMs are powerful tools but it''s important to understand how they work. The input
+  text is vectorized and put through matrix multiplications and a big complex vector
+  is built up. Then each word is added to that vector as it is chosen in turn one
+  at a time, with some randomity to get better speech flavor, until the next probable
+  token is a stop token or max length is exceeded.
+
+
+  In an LLM every word is a cloud of numbers that represent how that token relates
+  to other words, concepts or phrase structures. By turning words into numbers, we
+  can then beat them with math and determine which numbers probably are appropriate
+  to go next.
+
+
+  It doesn''t really reason, it doesn''t really think, it amplifies patterns and guesses
+  using probabilities and random, each next word chosen with such accuracy and literate
+  complexity that kind of functionally it simulates having thought. An important note:
+  LLMs return a list of probable tokens and their probability, and after the LLM has
+  done the math, one word is selected by user set rules from the returned set.
+
+
+  LLM models don''t make the choice, sampling happens after they do the magic, and
+  then the machine is asked for the next tokens to choose from, ev-ery -to-ke-n -
+  however the words are sliced.
+
+
+  It''s weird, but they have no state, it''s data-crunch-out every word in turn, no
+  real consideration.
+
+
+  Use them effectively within their limits to succeed in 2024.
+
+
+  You can go find the right data and paste the text at an LLM and it can use that
+  data, but no LLM should be trusted implicitly, just as a first resort, right here
+  aboard the Clipboard Conqueror.
+
+
+  License
+
+
+  This project is licensed under the MIT License. See the LICENSE file for details.
+
+
+  Disclaimer
+
+
+  Please use Clipboard Conqueror responsibly and respect copyright and laws in your
+  country while generating content. Misuse of this tool might lead to unintended consequences
+  and breaches of privacy or intellectual property rights. I hold no responsibility
+  for the data that passes through this tool on any system.
+
+
+  Install, Choosing a Model, Basic Use, Bookmarklets, Prompt Reference, Prompt Formatting,
+  API Switching, Chaining Inference, Setup.js
+
+
+  I solemnly promise that this application and at least one compatible backend will
+  function in the absence of internet connectivity. One of my design inspirations
+  for this application is to spread LLM models to as many computers as possible. I
+  want to ensure at least one intact system is recovered by future archaeologists,
+  a time capsule of culture, science, and data. We should be sending intelligent boxes
+  to deep space too. Our knowledge and posterity must not go to waste.'
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '715332481'
+    canonical_url: https://github.com/aseichter2007/ClipboardConqueror
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T13:10:37.779678Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+  sample_slot_id: GS300-105
+  sample_id: cand_github_qf_copilot_58388b2fecf7
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:55:13.459449Z'

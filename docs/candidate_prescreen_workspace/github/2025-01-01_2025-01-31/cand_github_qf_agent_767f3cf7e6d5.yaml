@@ -1,0 +1,122 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_767f3cf7e6d5
+candidate_batch_id: candidate_batch_github_qf_agent_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:22:37.576504Z'
+updated_at: '2026-04-09T14:54:59.211833Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '809602516'
+canonical_url: https://github.com/wordware-ai/twitter
+title: twitter
+summary: AI Agent for Twitter Personality Analysis
+raw_evidence_excerpt: "AI Agent for Twitter Personality Analysis\n\nTwitter Personality\
+  \ \U0001F426\U0001F9E0\n\nTwitter Personality is a web application that analyzes\
+  \ your Twitter handle to create a personalized personality profile using Wordware\
+  \ AI Agent. This project leverages cutting-edge AI technologies to provide users\
+  \ with unique insights into their Twitter persona. \U0001F680\n\nYou can explore\
+  \ the AI agent and prompts used in this app by visiting this Wordware link.\n\n\
+  Setting Up the Project \U0001F6E0\uFE0F\n\nTo set up the Twitter Personality project\
+  \ on your local machine, follow these steps:\n\n1. **Clone the Repository** \U0001F4C2\
+  : Clone the Twitter Personality repository from GitHub to your local machine using\
+  \ your preferred method (e.g., Git Bash, GitHub Desktop, or the command line). 2.\
+  \ **Install Dependencies** \U0001F4E6: Navigate to the project directory and run\
+  \ `npm install` to install all the required dependencies. 3. **Environment Variables**\
+  \ \U0001F510: Create a `.env.local` file in the project root directory based on\
+  \ the `.env.example` file. Here are some key environment variables you'll need to\
+  \ set: - `DATABASE_URL`: Your Neon database URL (Do not expose these credentials\
+  \ to the browser). - `WORDWARE_API_KEY`: Your Wordware API key for AI processing.\
+  \ - `WORDWARE_PROMPT_ID`, `WORDWARE_ROAST_PROMPT_ID`, `WORDWARE_FULL_PROMPT_ID`,\
+  \ `WORDWARE_PAIR_PROMPT_ID`: The specific Wordware prompt IDs for this project.\
+  \ - `NEXT_PUBLIC_BASE_URL`: The base URL for your application (e.g., http://localhost:3000\
+  \ for local development). - `LOOPS_API_KEY`: Your Loops API key for newsletter functionality.\
+  \ - `NEXT_PUBLIC_POSTHOG_KEY`, `NEXT_PUBLIC_POSTHOG_HOST`, `POSTHOG_PROJECT_ID`,\
+  \ `POSTHOG_PERSONAL_API_KEY`: PostHog analytics configuration. - `STRIPE_SECRET_KEY`,\
+  \ `STRIPE_WEBHOOK_SECRET`, `STRIPE_PRICE_ID`, `STRIPE_PRODUCT_ID`: Stripe configuration\
+  \ for payments. - `NEXT_PUBLIC_PAIR_PASSWORD`: Password for pair functionality.\
+  \ - For scraping, you'll need at least one of the following (we use all of these\
+  \ in a system of fallback functions) - `TWITTER_API_TOKEN` and `TWITTER_COOKIE`:\
+  \ Twitter API configuration. - `APIFY_API_KEY`: API key for Apify web scraping service.\
+  \ - `SOCIALDATA_API_KEY`: SocialData API key.\n\nRefer to the `.env.example` file\
+  \ for a complete list of required environment variables.\n\nExample `.env.local`\
+  \ file content (replace with your actual values):"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '809602516'
+    canonical_url: https://github.com/wordware-ai/twitter
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T13:10:36.036776Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+  sample_slot_id: GS300-100
+  sample_id: cand_github_qf_agent_767f3cf7e6d5
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:54:59.211811Z'

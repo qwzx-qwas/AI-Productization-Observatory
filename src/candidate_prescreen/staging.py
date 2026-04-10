@@ -19,9 +19,47 @@ def _staging_files(staging_dir: Path) -> list[Path]:
     return sorted(staging_dir.glob("gold_set_300_staging_batch_*.yaml"))
 
 
+def _has_non_empty_string(value: Any) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def _mapping_has_any_non_empty_string(mapping: Any, keys: tuple[str, ...]) -> bool:
+    if not isinstance(mapping, dict):
+        return False
+    return any(_has_non_empty_string(mapping.get(key)) for key in keys)
+
+
 def _sample_is_filled(sample: dict[str, Any]) -> bool:
-    sample_id = sample.get("sample_id")
-    return isinstance(sample_id, str) and bool(sample_id.strip())
+    current_state = sample.get("current_state")
+    if _has_non_empty_string(current_state) and str(current_state).strip() != "awaiting_real_input":
+        return True
+    if _has_non_empty_string(sample.get("sample_id")):
+        return True
+    if _mapping_has_any_non_empty_string(
+        sample.get("candidate_prescreen_ref"),
+        ("candidate_id", "candidate_document_path"),
+    ):
+        return True
+    source_record_refs = sample.get("source_record_refs")
+    if isinstance(source_record_refs, list):
+        for ref in source_record_refs:
+            if _mapping_has_any_non_empty_string(
+                ref,
+                ("candidate_id", "candidate_document_path", "source_id", "external_id", "canonical_url", "sample_key"),
+            ):
+                return True
+    if _has_non_empty_string(sample.get("staged_from_candidate_prescreen_path")):
+        return True
+    return False
+
+
+def _sample_reference_id(sample: dict[str, Any]) -> str:
+    if _has_non_empty_string(sample.get("sample_id")):
+        return str(sample["sample_id"]).strip()
+    candidate_ref = sample.get("candidate_prescreen_ref")
+    if isinstance(candidate_ref, dict) and _has_non_empty_string(candidate_ref.get("candidate_id")):
+        return str(candidate_ref["candidate_id"]).strip()
+    return str(sample.get("sample_slot_id") or "<unknown-slot>")
 
 
 def _require_mapping(value: Any, description: str) -> dict[str, Any]:
@@ -307,7 +345,7 @@ def staging_progress(staging_dir: Path) -> dict[str, Any]:
                 filled_samples.append(
                     {
                         "sample_slot_id": sample_slot_id,
-                        "sample_id": str(sample_mapping["sample_id"]),
+                        "sample_id": _sample_reference_id(sample_mapping),
                     }
                 )
             else:

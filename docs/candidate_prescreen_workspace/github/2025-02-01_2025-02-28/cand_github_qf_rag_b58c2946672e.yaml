@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_rag_b58c2946672e
 candidate_batch_id: candidate_batch_github_qf_rag_2025-02-01_2025-02-28
 created_at: '2026-04-08T13:41:32.893563Z'
-updated_at: '2026-04-09T09:03:45.815406Z'
+updated_at: '2026-04-09T14:55:57.409516Z'
 source: github
 source_id: src_github
 source_window: 2025-02-01..2025-02-28
@@ -292,4 +292,4 @@ staging_handoff:
   sample_slot_id: GS300-088
   sample_id: cand_github_qf_rag_b58c2946672e
   blocking_items: []
-  last_attempted_at: '2026-04-09T09:03:45.815383Z'
+  last_attempted_at: '2026-04-09T14:55:57.409494Z'

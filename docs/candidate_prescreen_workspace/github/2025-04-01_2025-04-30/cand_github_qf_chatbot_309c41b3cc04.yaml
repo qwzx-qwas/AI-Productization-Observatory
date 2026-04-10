@@ -1,0 +1,137 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_309c41b3cc04
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-04-01_2025-04-30
+created_at: '2026-04-09T13:59:57.475340Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-04-01..2025-04-30
+time_field: pushed_at
+external_id: '969977832'
+canonical_url: https://github.com/Hemamanigandan/Exno.3-Prompt-Engg
+title: Exno.3-Prompt-Engg
+summary: Scenario-Based Report Development Utilizing Diverse Prompting Techniques
+raw_evidence_excerpt: "Scenario-Based Report Development Utilizing Diverse Prompting\
+  \ Techniques\n\nExno.3-Scenario-Based Report Development Utilizing Diverse Prompting\
+  \ Techniques DATE: REGISTER NUMBER : Aim: To design an AI-powered chatbot that assists\
+  \ customers in resolving issues related to product troubleshooting, order tracking,\
+  \ and general inquiries. The chatbot should handle various customer queries efficiently\
+  \ while maintaining a conversational and user-friendly tone. In this experiment,\
+  \ we will employ different prompt patterns to guide the development process of the\
+  \ chatbot, ranging from basic task-oriented prompts to more complex, persona-driven\
+  \ prompts.\n\nAlgorithm: 1. Direct Instruction Prompts Objective: Guide the chatbot\
+  \ to respond concisely to customer inquiries. Prompt Pattern: Prompt: \"When a customer\
+  \ asks for the status of their order, reply with: 'Your order is currently being\
+  \ processed and will be delivered by [date].'\" 2. Contextual Prompting Objective:\
+  \ Incorporate specific context to provide detailed answers based on the user\u2019\
+  s previous interaction. Prompt Pattern: Prompt: \"If the customer previously mentioned\
+  \ that they haven\u2019t received their order, say, 'I see that you mentioned your\
+  \ order hasn't arrived yet. Let me check the details for you and get back shortly.'\"\
+  \ 3. Persona-Based Prompting Objective: Design the chatbot to adopt a specific persona,\
+  \ making the interaction more engaging. Prompt Pattern: Prompt: \"Pretend you are\
+  \ a friendly, helpful customer service representative. Use a conversational tone,\
+  \ such as 'Hey there! I\u2019m here to help with any questions you might have. Let\u2019\
+  s get your issue sorted!'\" 4. Few-Shot Prompting Objective: Teach the AI how to\
+  \ respond using a few examples, enabling it to generalize for similar situations.\
+  \ Prompt Pattern: Prompt: \"Here are some examples of how to handle technical questions:\
+  \ 'My phone isn't charging.' \u2192 'Have you tried using a different cable? If\
+  \ that doesn\u2019t work, it may be an issue with the port.' 'The screen is flickering.'\
+  \ \u2192 'It sounds like a display issue. Have you tried restarting the device?'\
+  \ Now, respond to: 'My app keeps crashing.'\" 5. Chain of Thought Prompting Objective:\
+  \ Use a step-by-step reasoning approach for resolving more complex or technical\
+  \ issues. Prompt Pattern: Prompt: \"When a customer reports their laptop overheating,\
+  \ guide them through the following steps: Ask if they are using the laptop on a\
+  \ soft surface. Suggest moving the laptop to a flat, hard surface for better airflow.\
+  \ Ask if they\u2019ve cleaned the vents recently. Recommend restarting the device\
+  \ to see if the issue persists. Now, solve: 'My laptop fan is making a loud noise.'\"\
+  \ 6. Instruction with Constraints Objective: Instruct the chatbot to provide assistance\
+  \ while adhering to specific constraints (e.g., response length or tone). Prompt\
+  \ Pattern: Prompt: \"Respond to order inquiries in no more than 50 words and avoid\
+  \ using technical jargon. For example, 'Your order is on the way and should arrive\
+  \ by [date]. Feel free to reach out if you need anything else.'\" 7. Reflective\
+  \ Prompting Objective: Ensure that the chatbot reflects the user\u2019s query back\
+  \ to them before providing a response, reducing misunderstandings. Prompt Pattern:\
+  \ Prompt: \"When a customer asks for help, first reflect their question back to\
+  \ them. For example, if they ask 'How can I reset my password?' respond with 'You're\
+  \ asking how to reset your password, correct? Here\u2019s how you can do it.'\"\
+  \ Result: The various types of Prompts are executed successfully.\n\nResult: Thus\
+  \ the Prompts were exected succcessfully ."
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-04-01'
+    window_end: '2025-04-30'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-04-01..2025-04-30
+    external_id: '969977832'
+    canonical_url: https://github.com/Hemamanigandan/Exno.3-Prompt-Engg
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

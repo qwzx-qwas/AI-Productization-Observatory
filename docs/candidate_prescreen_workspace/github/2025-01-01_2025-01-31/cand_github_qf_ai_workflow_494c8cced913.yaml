@@ -1,0 +1,308 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_494c8cced913
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-01-01_2025-01-31
+created_at: '2026-04-09T11:03:27.885523Z'
+updated_at: '2026-04-09T13:10:37.232772Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '418953311'
+canonical_url: https://github.com/MedPhysUL/delia
+title: delia
+summary: 'DICOM Extraction for Large-scale Image Analysis (DELIA). '
+raw_evidence_excerpt: 'DICOM Extraction for Large-scale Image Analysis (DELIA).
+
+
+  DELIA facilitates data extraction from DICOM files to support large-scale image
+  analysis workflows.
+
+
+  Notable features
+
+
+  - Bulk extraction of images and segmentations from multiple patients'' DICOM files.
+  Segmentations must be in DICOM-SEG or RTStruct format. - Creation of an HDF5 database
+  containing multiple patients'' medical images as well as binary label maps (segmentations).
+  The database is then easier to use than DICOMs to perform tasks on medical data,
+  such as training deep neural networks. - Bulk extraction of radiomics features from
+  multiple patients'' DICOM files using pyradiomics. Note that `pyradiomics` is not
+  a dependency of `delia` and must be installed separately.
+
+
+  Installation
+
+
+  Latest stable version :
+
+
+  Latest (possibly unstable) version :
+
+
+  Quick usage preview
+
+
+  Extract images as `numpy` arrays
+
+
+  Create patients database (HDF5)
+
+
+  Create radiomics dataset (CSV)
+
+
+  *Note that `pyradiomics` is not a dependency of `delia` and must be installed separately.*
+
+
+  Motivation
+
+
+  **Digital Imaging and Communications in Medicine** (**DICOM**) is *the* international
+  standard for medical images and related information. The working group DICOM WG-23
+  on Artificial Intelligence / Application Hosting is currently working to identify
+  or develop the DICOM mechanisms to support AI workflows, concentrating on the clinical
+  context. Moreover, their future *roadmap and objectives* includes working on the
+  concern that current DICOM mechanisms might not be adequate to cover some use cases,
+  particularly bulk analysis of large repository data, e.g. for training deep learning
+  neural networks. **However, no tool has been developed to achieve this goal at present.**
+
+
+  The main **purpose** of this module is therefore to provide the necessary tools
+  to facilitate the use of medical images in an AI workflow. This goal is accomplished
+  by using the HDF file format to create a database containing patients'' medical
+  images as well as binary label maps obtained from the segmentation of these images.
+
+
+  How it works
+
+
+  Main concepts
+
+
+  There are 4 main concepts :
+
+
+  1. `PatientDataModel` : It is the primary `delia` data structure. It is a named
+  tuple gathering the image and segmentation data available in a patient record. 2.
+  `PatientsDataExtractor` : A Python Generator that allows to iterate over several
+  patients and create a `PatientDataModel` object for each of them. A sequence of
+  `delia` and/or `monai` transformations to apply to specific images or segmentations
+  can be specified (see MONAI). 3. `PatientsDatabase` : An object that is used to
+  create/interact with an HDF5 file (a database!) containing all patients information
+  (images + label maps). The `PatientsDataExtractor` is used to populate this database.
+  4. `RadiomicsDataset` : An object that is used to create/interact with a csv file
+  (a dataset!) containing radiomics features extracted from images. The `PatientsDataExtractor`
+  is used to populate this dataset.
+
+
+  Organize your data
+
+
+  Since this module requires the use of data, it is important to properly configure
+  the data-related elements before using it.
+
+
+  File format
+
+
+  Images files must be in standard **DICOM** format and segmentation files must be
+  in DICOM-SEG or RTStruct format.
+
+
+  If your segmentation files are in a research file format (`.nrrd`, `.nii`, etc.),
+  you need to convert them into the standardized DICOM-SEG or RTStruct format. You
+  can use the pydicom-seg library to create the DICOM-SEG files OR use the itkimage2dicomSEG
+  python module, which provide a complete pipeline to perform this conversion. Also,
+  you can use the RT-Utils library to create the RTStruct files.
+
+
+  Tag values (Optional)
+
+
+  *This dictionary is **not** mandatory for the code to work and therefore its default
+  value is `None`. Note that if no `tag_values` dictionary is given, i.e. `tag_values
+  = None`, then all images will be added to the database.*
+
+
+  The tag values are specified as a **dictionary** that contains the values for the
+  tag specified when creating the PatientsDataExtractor object of the images that
+  need to be extracted from the patients'' files. Keys are arbitrary names given to
+  the images we want to add and values are lists of values for the desired tag. The
+  images associated with these tag values do not need to have a corresponding segmentation
+  volume. If none of the descriptions match the series in a patient''s files, a warning
+  is raised and the patient is added to the list of patients for whom the pipeline
+  has failed.
+
+
+  Note that the tag values can be specified as a python dictionary or as a path to
+  a **json file** that contains the desired values. Both methods are presented below.
+
+
+  Using a json file
+
+
+  Create a json file containing only the dictionary of the names given to the images
+  we want to add (keys) and lists of tag values (values). Place this file in your
+  data folder.
+
+
+  Here is an example of a json file configured as expected :
+
+
+  Using a Python dictionary
+
+
+  Create the organs dictionary in your main.py python file.
+
+
+  Here is an example of a python dictionary instanced as expected :
+
+
+  Structure your patients directory
+
+
+  It is important to configure the directory structure correctly to ensure that the
+  module interacts correctly with the data files. The `patients` folder, must be structured
+  as follows. *Note that all DICOM files in the patients'' folder will be read.*
+
+
+  Import the package
+
+
+  The easiest way to import the package is to use :
+
+
+  You can explicitly use the objects sub-modules :
+
+
+  Use the package
+
+
+  Example using the `PatientsDatabase` class
+
+
+  This file can then be executed to obtain an hdf5 database.
+
+
+  The created HDF5 database will then look something like :
+
+
+  Example using the `PatientsDataExtractor`class
+
+
+  This file can then be executed to perform on-the-fly tasks on images.
+
+
+  Need more examples?
+
+
+  You can find more in the examples folder.
+
+
+  A deeper look into the `PatientsDataExtractor` object
+
+
+  The `PatientsDataExtractor` has 4 important variables: a `path_to_patients_folder`
+  (which dictates the path to the folder that contains all patient records), a `tag`
+  (which specifies which tag to use when choosing which images need to be extracted,
+  if no value is given, this defaults to `SeriesDescription`), a `tag_values` (which
+  dictates the images that needs to be extracted from the patient records) and `transforms`
+  that defines a sequence of transformations to apply on images or segmentations.
+  For each patient/folder available in the `path_to_patients_folder`, all DICOM files
+  in their folder are read. If the specified tag''s value of a certain volume match
+  one of the descriptions present in the given `tag_values` dictionary, this volume
+  and its segmentation (if available) are automatically added to the `PatientDataModel`.
+  Note that if no `tag_values` dictionary is given (`tag_values = None`), then all
+  images (and associated segmentations) will be added to the database.
+
+
+  The `PatientsDataExtractor` can therefore be used to iteratively perform tasks on
+  each of the patients, such as displaying certain images, transforming images into
+  numpy arrays, or creating an HDF5 database using the `PatientsDatabase`. It is this
+  last task that is highlighted in this package, but it must be understood that the
+  data extraction is performed in a very general manner by the `PatientsDataExtractor`
+  and is therefore not limited to this single application. For example, someone could
+  easily develop a `Numpydatabase` whose creation would be ensured by the `PatientsDataExtractor`,
+  similar to the current `PatientsDatabase` based on the HDF5 format.
+
+
+  TODO'
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '418953311'
+    canonical_url: https://github.com/MedPhysUL/delia
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:37.232772Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

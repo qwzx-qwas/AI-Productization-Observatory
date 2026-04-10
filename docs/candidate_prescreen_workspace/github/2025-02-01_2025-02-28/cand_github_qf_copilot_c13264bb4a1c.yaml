@@ -1,0 +1,124 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_c13264bb4a1c
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-02-01_2025-02-28
+created_at: '2026-04-09T13:55:00.637255Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '826989239'
+canonical_url: https://github.com/github-technology-partners/Arm
+title: Arm
+summary: ''
+raw_evidence_excerpt: "About the Arm & GitHub Partnership\n\nThis ground\u2013breaking\
+  \ partnership between Arm & GitHub unites the world\u2019s most ubiquitous compute\
+  \ platform with the world\u2019s largest developer platform.\n\nTogether we are\
+  \ revolutionizing the software development experience for developers \u2013 enabling\
+  \ them to write once and deploy everywhere.\n\nArm is GitHub\u2019s 2024 Overall\
+  \ Technology Partner of the Year!\n\nThis award highlights our achievements with\
+  \ Arm-based runners for GitHub Actions and sets the stage for future innovations\
+  \ in MLOps and Copilot. We're excited to keep working closely together with GitHub\
+  \ to drive unmatched performance and efficiency across any device, anywhere.\n\n\
+  Watch the Arm\u2019s Mainstage talk @ GitHub Universe \u201824\n\nIntegration Details\n\
+  \nTogether with GitHub we have built the following integrations:\n\n1. **Native\
+  \ Arm Runners for GitHub Actions**:\n\nThe GitHub Arm-hosted runners offer significant\
+  \ benefits for developers:\n\nNative performance: Execute your build and test cycles\
+  \ directly on Arm Neoverse-based processors. This eliminates the overhead and complexities\
+  \ tied to instruction emulation and cross-compilation. Integrated Workflow: Experience\
+  \ a seamless integration within the familiar GitHub Actions environment, making\
+  \ your development process more straightforward. Cost-effectiveness: Enjoy the convenience\
+  \ and cost savings that come with the GitHub hosted runner infrastructure. Arm Linux\
+  \ and Windows runners are now generally available in Teams and Enterprise Accounts\
+  \ ...\n\nAND ... free in public reposities (Private Preview)!!\n\n2. **The Arm Extendion\
+  \ for GitHub Copilot**:\n\nSoon to be available as part of the GitHub marketplace,\
+  \ GitHub Copilot Arm extensions help developers build, test, and deploy software\
+  \ more efficiently, increasing productivity and impact. The extensions, integrated\
+  \ with curated datasets, offer specialized tools for AI code development such as\
+  \ code migration, containerization, CI/CD workflows, and performance optimization,\
+  \ helping to ensure a smooth cloud to edge deployment experience. Watch the Demo!.\n\
+  \nRelevant Links and Articles\n\nHere are some articles and links that provide more\
+  \ information about how to use our our technology and integrations and to learn\
+  \ more about our partnership:\n\n- Optimize MLOps with Arm-hosted GitHub Runners\
+  \ - Build Multi-Architecture Container Images with GitHub Arm-hosted - Visit GitHub\u2019\
+  s page in the Arm Partner Catalog - View Arm's GitHub success story\n\nContact Us\n\
+  \nFor any queries or support, please reach out to us at [support@arm.com]."
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '826989239'
+    canonical_url: https://github.com/github-technology-partners/Arm
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

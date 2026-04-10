@@ -1,0 +1,117 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_bcc38892b807
+candidate_batch_id: candidate_batch_github_qf_rag_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:31:14.497912Z'
+updated_at: '2026-04-09T14:55:18.253122Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '637110610'
+canonical_url: https://github.com/jlonge4/mychatGPT
+title: mychatGPT
+summary: GPT chat with your docs!
+raw_evidence_excerpt: "GPT chat with your docs!\n\nRAG Agent: Document Assistant \U0001F680\
+  \U0001F916\n\nThis project has evolved from a simple PDF chatbot to a sophisticated\
+  \ RAG (Retrieval-Augmented Generation) agent capable of accessing conversation history,\
+  \ retrieving context, summarizing documents, and answering follow-up questions based\
+  \ on user queries and intent detection.\n\nTry it out yourself at agentic-rag\n\n\
+  Screenshot:\n\nInstallation\n\nTo set up this project, you'll first need your OPENAI_API\
+  \ key. Next, ensure you have the necessary dependencies installed. You can install\
+  \ them via:\n\n`pip install -r requirements.txt`\n\nUsage\n\nTo launch the RAG agent,\
+  \ run the command:\n\n`python -m streamlit run agentic_rag.py`\n\nThis will start\
+  \ the Streamlit app in your browser. Once launched, you can upload your `.pdf, .txt,\
+  \ .docx` docs and start querying naturally for summaries, in depth queries, and\
+  \ follow up questions!\n\nFeatures\n\n- **Conversation History**: The RAG agent\
+  \ can access conversation history to maintain context and provide more relevant\
+  \ responses. - **Document Summarization**: It can summarize documents to provide\
+  \ concise answers or overviews. - **Follow-up Answers**: The agent can answer follow-up\
+  \ questions based on previous interactions and the current conversation context.\
+  \ - **Logical Intent Determination**: It uses logic to determine user intent, ensuring\
+  \ accurate responses. - **Supported File Types**: Users can upload and select `.pdf,\
+  \ .txt, .docx` documents directly within the app interface.\n\nHistory\n\nThis project\
+  \ is an ongoing effort to enhance the capabilities of the RAG agent. While the functionality\
+  \ is currently demonstrated in the provided .py file, further developments are in\
+  \ progress. Stay tuned for updates as I transition this project into a fully functional\
+  \ application that enables local execution and PDF selection through a user-friendly\
+  \ interface.\n\nCredits\n\nYour's truly \U0001F605\n\nLicense\n\nApache2.0\n\nEnjoy\
+  \ interacting with your documents through this intelligent RAG Agent!"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '637110610'
+    canonical_url: https://github.com/jlonge4/mychatGPT
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T13:10:38.470209Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+  sample_slot_id: GS300-107
+  sample_id: cand_github_qf_rag_bcc38892b807
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:55:18.253098Z'

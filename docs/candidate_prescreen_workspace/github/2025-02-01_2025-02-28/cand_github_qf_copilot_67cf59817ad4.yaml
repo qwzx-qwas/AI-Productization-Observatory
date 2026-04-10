@@ -1,0 +1,150 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_67cf59817ad4
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-02-01_2025-02-28
+created_at: '2026-04-09T13:54:30.977032Z'
+updated_at: '2026-04-09T14:55:46.698273Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '924683636'
+canonical_url: https://github.com/manekinekko/vscode-deepseek
+title: vscode-deepseek
+summary: This extension allows you to interact with the DeepSeek models for Github
+  Copilot Chat, fully locally and offline. It uses Ollama under the hood to provide
+  a seamless experience.
+raw_evidence_excerpt: 'This extension allows you to interact with the DeepSeek models
+  for Github Copilot Chat, fully locally and offline. It uses Ollama under the hood
+  to provide a seamless experience.
+
+
+  DeepSeek Agent for Github Copilot
+
+
+  This extension allows you to interact with the DeepSeek models for Github Copilot
+  Chat, fully locally and offline. It uses Ollama under the hood to provide a seamless
+  experience.
+
+
+  How to use
+
+
+  1. Install the extension from the Visual Studio Code Marketplace 2. Open Github
+  Copilot Chat panel 3. In the chat, type `@deepseek` followed by your prompt
+
+
+  > [!NOTE] > During the first run, the extension will download the model. This may
+  take a few minutes.
+
+
+  Build from source
+
+
+  1. Clone this repository 2. Run `npm install` 3. Run `npm run package` 4. Install
+  the generated `.vsix` file in Visual Studio Code
+
+
+  Settings
+
+
+  You can configure the extension by opening the settings panel (or `settings.json`)
+  and editing the following settings:
+
+
+  > [!NOTE] > You can find a list of available DeepSeek models at ollama.com.
+
+
+  Limitations
+
+
+  Currently, the extension does not have access to your files, so it cannot provide
+  context-aware completions. This will be fixed in future versions.
+
+
+  To remedy this, you can copy the code you want to complete and paste it in the chat.
+
+
+  Requirements
+
+
+  This extension requires the Ollama app to be installed on your system. You can install
+  it by following the instructions from ollama.com.'
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '924683636'
+    canonical_url: https://github.com/manekinekko/vscode-deepseek
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+  sample_slot_id: GS300-123
+  sample_id: cand_github_qf_copilot_67cf59817ad4
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:55:46.698250Z'

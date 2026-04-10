@@ -1,0 +1,189 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_891900161c7b
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-02-01_2025-02-28
+created_at: '2026-04-09T12:10:45.596456Z'
+updated_at: '2026-04-09T14:55:49.885687Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '710414355'
+canonical_url: https://github.com/amulchapla/AI-Conversational-Copilot
+title: AI-Conversational-Copilot
+summary: App leveraging multimodal Azure AI showing an innovative real-time customer
+  experience.
+raw_evidence_excerpt: "App leveraging multimodal Azure AI showing an innovative real-time\
+  \ customer experience.\n\nConversation Copilot with Multimodal Azure AI Conversation\
+  \ copilot is a web-based app that enables you to simulate Agent-Customer interactions\
+  \ (in any line of business) and shows the power of AI to act as a very effective\
+  \ copilot. It uses Azure AI\u2019s powerful multimodal understanding of long-form\
+  \ text, images and ability to reason across the diverse data input to power the\
+  \ copilot experience.\n\n**Solution highlights:** * A pattern for customer interaction\
+  \ where it intercepts voice, text and image data in real-time to power a better\
+  \ and more efficient end-user experience. * The real-time pattern implemented here\
+  \ can be applied to expedite business insights & make faster business decisions.\
+  \ * Drive earlier actions: for example customer churn & upsell opportunities. *\
+  \ Live guidance to enable agent-assist, coaching and virtual agents use cases. *\
+  \ Pattern could be used to drive better digital experiences for customers/employees\
+  \ * Could be used to mobile/web experiences (not just call centers).\n\n**Key features\
+  \ of this solution:** 1. **Live Guidance**: Real-time conversation analysis to provide\
+  \ live guidance. 2. **GPT 4o multimodal for image analysis**: Extract key information\
+  \ & insights from images. 3. **Conversation Summarization & custom insight**: Extract\
+  \ custom business insights & conversation summarization. 4. **Conversation Transcript**:\
+  \ Transcription of live audio stream (using laptop mic or headphone). 5. **Entity\
+  \ Extraction & PII Detection** including real-time PII redaction.\n\nArchitecture\
+  \ Below architecture diagram shows the key components of this solution.\n\nThe solution\
+  \ has two runtime components: * **API backend** is an Express-based backend API\
+  \ app. It orchestrates calls to multiple Azure AI services (Azure OpenAI, Azure\
+  \ Speech, Azure Language) and provides API endpoint for the frontend webapp to consume.\n\
+  \n* **Web frontend** is a React-based web UI. It captures voice, text, image data\
+  \ and interacts with the backend API to get real-time insights from Azure AI services.\n\
+  \nPrerequisites\n\n1. This article assumes that you have an Azure account. If you\
+  \ don't have an Azure account and subscription, try the Azure account for free.\
+  \ 2. Create a Azure Speech resource in the Azure portal. 3. Create a Azure Language\
+  \ resource in the Azure portal. 4. Create a Azure OpenAI resource in the Azure portal.\
+  \ You can check the OpenAI documentation for more information. This app is using\
+  \ Azure OpenAI Completion API, Chat API & GPT-4 Vision. So you will need to create\
+  \ model deployments for completion API, Chat API and GPT-4 Vision. 5. Install Node.js\
+  \ on your laptop to run the frontend and backend apps on your local machine.\n\n\
+  How to setup this solution\n\n1. Clone this repo. This repo has two apps: * ai-conversational-copilot-webfrontend\
+  \ folder is for the \"ReactJS Frontend\" web UI component and * ai-conversational-copilot-apibackend\
+  \ folder is for the \"ExpressJS Backend\" API backend component\n\n2. **Prepare\
+  \ and run the backend app (in folder ai-conversational-copilot-apibackend)** - Go\
+  \ to ai-conversational-copilot-apibackend directory and run `npm install -all` to\
+  \ install dependencies. - Rename config_template.json to config.json - Update the\
+  \ \u201Cconfig.json\u201D file with your Azure Speech service key (speech_subscription_key\
+  \ property) and Azure region (speech_region property). Azure Region value examples:\
+  \ \u201Ceastus2\u201D, \u201Cwestus\u201D - Update the \u201Cconfig.json\u201D file\
+  \ with your Azure Language service key (text_analytics_key property) and endpoint\
+  \ (text_analytics_endpoint property). - Update the \u201Cconfig.json\u201D file\
+  \ with your Azure OpenAI service key (openai_key property), endpoint (openai_endpoint\
+  \ property) and deployment name (openai_deployment_name property). These settings\
+  \ are associated with OpenAI completion API. - Update the \u201Cconfig.json\u201D\
+  \ file with your Azure OpenAI service Chat API model deployment information. NOTE:\
+  \ Chat API is used for live guidance functionality. So if you do not enable \"Live\
+  \ Guidance\" from the web UI settings then you do not need to configure Chat API\
+  \ settings in this config.json file. - Update the \u201Cconfig.json\u201D file with\
+  \ your Azure OpenAI service GPT-4 Vision model deployment information. NOTE: GPT-4\
+  \ Vision is used for image analysis functionality. So if you do not enable \"GPT-Vision\"\
+  \ from the web UI settings then you do not need to configure \"gptv_key\" & \"gptv_endpoint\"\
+  \ settings in this config.json file. - Also, Azure storage is only used for image\
+  \ analysis. So if you do not enable \"GPT-Vision\" from the web UI settings then\
+  \ you do not need to configure \"azure_storage_account_name\", \"azure_storage_connection_string\"\
+  \ & \"azure_storage_container_name\" settings in this config.json file. - Start\
+  \ backend AI API app by running `\u2018npm start\u2019` - If you are running this\
+  \ locally then try accessing below URLs from browser to verify that the backend\
+  \ component is working as expected * `http://localhost:8080/api/sayhello` * `http://localhost:8080/api/get-speech-token`\
+  \ - If you have deployed ai-app-backend app to Azure App Service (as per instructions\
+  \ below) then you can verify using URLs from browser as below: * `https:// >/api/sayhello`\
+  \ * `https:// >/api/get-speech-token` 3. **Prepare and run the frontend app for\
+  \ web UI (in folder ai-conversational-copilot-webfrontend)** + Go to ai-conversational-copilot-webfrontend\
+  \ directory and run `npm install -all` to install dependencies. + Update \u201C\
+  src/main.tsx\u201D as following. Set value of \u201Caxios.defaults.baseURL\u201D\
+  \ depending on where your ai-conversational-copilot-apibackend is running. You might\
+  \ have to update the port number as well depending on where you are running the\
+  \ backend app. + If \u201Cai-conversational-copilot-apibackend\u201D is running\
+  \ on local machine using port 8080 then use `axios.defaults.baseURL = 'http://localhost:8080';`\
+  \ + Start frontend web app by running `\u2018npm run dev\u2019`. If you get port\
+  \ confict with port 8080 then update package.json file to use any other port (Eg:\
+  \ 8081) + Open a browser and go to `http://localhost:8081` to access the app. +\
+  \ Click on the \"Start Converstation\" button on the web page and start talking.\
+  \ You should see transcription displayed on the web page in real-time (an example\
+  \ shown below). You can change spoken language under \"Settings\". Note that Live\
+  \ Guidance is disabled by default. Output below is with Live Guidance enabled. +\
+  \ Remember to click on \"End Conversation\" to stop live transcription and insights.\n\
+  \nSelecting AI Features to use This solution is modular and you can select which\
+  \ AI features you want to use. You can enable/disable AI features from the web UI\
+  \ settings. Below are the AI features that you can enable/disable from the web UI\
+  \ settings. 1. **Live Guidance**: This feature uses Azure OpenAI Chat API (GPT-4)\
+  \ to provide live guidance to the agent. This feature is disabled by default. To\
+  \ enable this feature, go to \"Settings\" and then enable \"Live Guidance\". You\
+  \ can update the conversation template as necessary and can also tune the template\
+  \ questions/wordings. An example of live guidance configuratio is shown below.\n\
+  \n2. **GPT-Vision**: This feature uses Azure OpenAI GPT-4o Vision to extract key\
+  \ information from images. This feature is disabled by default. To enable this feature,\
+  \ go to \"Settings\" and then enable \"GPT-Vision\". An example of GPT-4o (formerly\
+  \ GPT-Vision) output is shown below.\n\n3. **Conversation Summarization & custom\
+  \ prompts**: This feature uses Azure OpenAI Completion API to summarize the conversation\
+  \ or extract insights using custom prompts. This feature is disabled by default.\
+  \ To enable this feature, go to \"Settings\" and then enable \"Custom Prompts\"\
+  . An example of conversation summarization output is shown below."
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '710414355'
+    canonical_url: https://github.com/amulchapla/AI-Conversational-Copilot
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T13:10:41.204687Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+  sample_slot_id: GS300-114
+  sample_id: cand_github_qf_copilot_891900161c7b
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:55:49.885663Z'

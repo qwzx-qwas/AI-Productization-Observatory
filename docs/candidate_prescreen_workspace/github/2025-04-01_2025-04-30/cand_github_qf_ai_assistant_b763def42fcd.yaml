@@ -1,0 +1,230 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_b763def42fcd
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-04-01_2025-04-30
+created_at: '2026-04-09T13:40:18.081181Z'
+updated_at: '2026-04-09T14:56:22.816083Z'
+source: github
+source_id: src_github
+source_window: 2025-04-01..2025-04-30
+time_field: pushed_at
+external_id: '15381974'
+canonical_url: https://github.com/explorerhq/sql-explorer
+title: sql-explorer
+summary: SQL reporting that Just Works. Fast, simple, and confusion-free. Write and
+  share queries in a delightful SQL editor, with AI assistance.
+raw_evidence_excerpt: 'SQL reporting that Just Works. Fast, simple, and confusion-free.
+  Write and share queries in a delightful SQL editor, with AI assistance.
+
+
+  .. image:: https://readthedocs.org/projects/django-sql-explorer/badge/?version=latest
+  :target: https://django-sql-explorer.readthedocs.io/en/latest/?badge=latest :alt:
+  Documentation Status
+
+
+  :target: https://pypi.python.org/pypi/django-sql-explorer/ :alt: Latest Version
+
+
+  :target: https://pypi.python.org/pypi/django-sql-explorer/ :alt: Downloads
+
+
+  :target: https://pypi.python.org/pypi/django-sql-explorer/ :alt: License
+
+
+  SQL Explorer ============
+
+
+  * `Official Website `_ * `Live Demo `_ * `Documentation `_
+
+
+  Video Tour ----------
+
+
+  .. |inline-image| image:: https://sql-explorer.s3.amazonaws.com/video-thumbnail.png
+  :target: https://sql-explorer.s3.amazonaws.com/Sql+Explorer+5.mp4 :height: 10em
+
+
+  |inline-image|
+
+
+  Quick Start -----------
+
+
+  Included is a complete test project that you can use to kick the tires.
+
+
+  1. Run ``docker compose up`` 2. Navigate to 127.0.0.1:8000/explorer/ 3. log in with
+  admin/admin 4. Begin exploring!
+
+
+  This will also run a Vite dev server with hot reloading for front-end changes.
+
+
+  About -----
+
+
+  SQL Explorer aims to make the flow of data between people fast, simple, and confusion-free.
+  It is a Django-based application that you can add to an existing Django site, or
+  use as a standalone business intelligence tool. It will happily connect to any SQL
+  database that `Django supports `_ as well as user-uploaded CSV, JSON, or SQLite
+  databases.
+
+
+  Quickly write and share SQL queries in a simple, usable SQL editor, view the results
+  in the browser, and keep the information flowing.
+
+
+  Add an OpenAI (or other provider) API key and get an LLM-powered SQL assistant that
+  can help write and debug queries. The assistant will automatically add relevant
+  context and schema into the underlying LLM prompt.
+
+
+  SQL Explorer values simplicity, intuitive use, unobtrusiveness, stability, and the
+  principle of least surprise. The project is MIT licensed, and pull requests are
+  welcome.
+
+
+  Some key features include:
+
+
+  - Support for multiple connections, admin configured or user-provided. - Users can
+  upload and immediately query JSON or CSV files. - AI-powered SQL assistant - Quick
+  access to schema information to make querying easier (including autocomplete) -
+  Ability to snapshot queries on a regular schedule, capturing changing data - Query
+  history and logs - Quick in-browser statistics, pivot tables, and scatter-plots
+  (saving a trip to Excel for simple analyses) - Parameterized queries that automatically
+  generate a friendly UI for users who don''t know SQL - A playground area for quickly
+  running ad-hoc queries - Send query results via email - Saved queries can be exposed
+  as a quick-n-dirty JSON API if desired - ...and more!
+
+
+  Screenshots -----------
+
+
+  **Writing a query and viewing the schema helper**
+
+
+  .. image:: https://sql-explorer.s3.amazonaws.com/5.0-query-with-schema.png
+
+
+  ------------------
+
+
+  **Using the SQL AI Assistant**
+
+
+  .. image:: https://sql-explorer.s3.amazonaws.com/5.0-assistant.png
+
+
+  ------------------
+
+
+  **Viewing all queries**
+
+
+  .. image:: https://sql-explorer.s3.amazonaws.com/5.0-query-list.png
+
+
+  ------------------
+
+
+  **Query results w/ stats summary**
+
+
+  .. image:: https://sql-explorer.s3.amazonaws.com/5.0-query-results.png
+
+
+  ------------------
+
+
+  **Pivot in browser**
+
+
+  .. image:: https://sql-explorer.s3.amazonaws.com/5.0-pivot.png
+
+
+  ------------------
+
+
+  **View logs**
+
+
+  .. image:: https://sql-explorer.s3.amazonaws.com/5.0-querylogs.png'
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-04-01'
+    window_end: '2025-04-30'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-04-01..2025-04-30
+    external_id: '15381974'
+    canonical_url: https://github.com/explorerhq/sql-explorer
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+  sample_slot_id: GS300-129
+  sample_id: cand_github_qf_ai_assistant_b763def42fcd
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:56:22.816060Z'

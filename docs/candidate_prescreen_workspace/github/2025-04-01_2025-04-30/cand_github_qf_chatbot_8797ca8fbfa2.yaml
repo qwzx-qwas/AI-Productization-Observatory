@@ -1,0 +1,177 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_8797ca8fbfa2
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-04-01_2025-04-30
+created_at: '2026-04-09T14:00:58.328357Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-04-01..2025-04-30
+time_field: pushed_at
+external_id: '874166792'
+canonical_url: https://github.com/SteveSandersonMS/dotnet-ai-workshop
+title: dotnet-ai-workshop
+summary: ''
+raw_evidence_excerpt: '.NET AI Workshop
+
+
+  Welcome! This workshop aims to help you get started adding AI features to .NET applications.
+
+
+  Why would you want to? Many, perhaps most, nontrivial applications can be made more
+  powerful and productive through adding AI-based features. It can automate many business
+  processes and let users complete their tasks faster while remaining in control.
+
+
+  These features include **classification**, **summarization**, **data extraction/cleaning**,
+  **anomaly detection**, **translation**, **sentiment detection**, **semantic search**,
+  **Q&A chatbots**, **voice assistants**, and more.
+
+
+  Who is this relevant to?
+
+
+  This is relevant to **developers getting started with AI in .NET applications**.
+
+
+  We will assume you''re already familiar with .NET and C#, including typical app
+  patterns such as dependency injection (DI). You *don''t* need to know Blazor or
+  web programming, though a couple of the examples will use them. In most cases, examples
+  will be plain console apps to preserve the focus on AI topics.
+
+
+  **You don''t need prior knowledge of AI technology.** We''ll focus on the **usage**
+  of AI services, including LLMs and embeddings, to implement app features such as
+  those listed above. This includes understanding capabilities, limitations, problems,
+  and risks. We''ll focus a lot on optimizing for reliability.
+
+
+  We won''t be creating or training new AI models from scratch, so it doesn''t matter
+  whether you know how things like tokenizers or transformers work.
+
+
+  What do I need?
+
+
+  You''ll need:
+
+
+  - A development environment, including: - .NET 9 - A code editor (e.g., VS 2022,
+  VS Code with the C# Dev Kit extension, or Rider) - Docker - Ollama
+
+
+  As for AI services, you can use any of the following:
+
+
+  | Service | Notes | | --- | --- | | GitHub Models (free) | Ideal. Instructions provided.
+  | | OpenAI platform | Ideal. Instructions provided. | | Azure OpenAI | Ideal. Instructions
+  provided. | | Ollama (local) | Instructions provided, but some things are trickier
+  to make work well, and it''s nowhere near as fast | | Others (Google Gemini, Anthropic,
+  HuggingFace, etc) | Instructions are not provided but the code should work with
+  slight adaptations, since we use Microsoft.Extensions.AI.Abstractions which supports
+  arbitrary backends.
+
+
+  Chapter 1 contains more information about how to set these up.
+
+
+  Contents
+
+
+  Jump in wherever you like. If you''re new to this, starting at chapter 1 makes sense.
+
+
+  | Index | Title | Contents | Topics | | ---| --- | --- | --- | | 1 | Build a Quiz
+  App | Get started quickly with a casual exercise. This helps build familiarity with
+  using LLMs without needing too much theory. | Chat completion. Prompt engineering.
+  Prompt injection. | | 2 | Embeddings | Learn how to compute the semantic similarity
+  of text and perform semantic search. This is a basic building block for many AI
+  features. | Embeddings. Semantic search. | | 3 | Vector Search | Build an index
+  of embeddings for high-performance semantic search. | Vector databases. FAISS. |
+  | 4 | Language Models (Part 1) | Use LLMs to implement a range of application features.
+  | Completion. Streaming. Structured output. | 5 | Language Models (Part 2) | Use
+  LLMs to implement a range of application features. | Function calling. Chatbots.
+  Middleware. | 6 | Retrieval Augmented Generation | Implement an end-to-end Q&A chatbot,
+  from data ingestion to quality evaluation. | Ingestion. Chunking. Embedding. Retrieval.
+  Citations. Evaluation. RAG triad. | | 7 | Vision | Combine multi-modal models with
+  earlier topics to build an image monitoring system. | Multi-modality. Structured
+  output. Small models. Caching. | | 8 | Realtime | Produce responses in realtime
+  using an audio-to-audio model, creating a voice assistant. | Realtime APIs |'
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-04-01'
+    window_end: '2025-04-30'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-04-01..2025-04-30
+    external_id: '874166792'
+    canonical_url: https://github.com/SteveSandersonMS/dotnet-ai-workshop
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

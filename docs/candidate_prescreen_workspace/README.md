@@ -42,8 +42,8 @@ do
       --query-slice "$s" \
       --limit 5 \
       --discovery-request-interval-seconds 0 \
-      --provider-request-interval-seconds 60 \
-      --retry-sleep-seconds 60
+      --provider-request-interval-seconds 30 \
+      --retry-sleep-seconds 30
   done
 done
 ```
@@ -58,8 +58,8 @@ set -a && source .env && set +a && python3 -m src.cli fill-gold-set-staging-unti
   --initial-window 2026-04-02..2026-04-08 \
   --live-limit 1 \
   --discovery-request-interval-seconds 0 \
-  --provider-request-interval-seconds 60 \
-  --retry-sleep-seconds 60
+  --provider-request-interval-seconds 30 \
+  --retry-sleep-seconds 30
 ```
 
 ## Why This Pattern

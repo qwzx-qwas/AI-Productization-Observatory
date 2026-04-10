@@ -1,0 +1,250 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_9ab41eb9c090
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:58:48.490050Z'
+updated_at: '2026-04-09T13:10:37.197065Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '177415822'
+canonical_url: https://github.com/cisco/mindmeld
+title: mindmeld
+summary: An Open Source Conversational AI Platform for Deep-Domain Voice Interfaces
+  and Chatbots.
+raw_evidence_excerpt: 'An Open Source Conversational AI Platform for Deep-Domain Voice
+  Interfaces and Chatbots.
+
+
+  MindMeld Conversational AI Platform
+
+
+  This repository contains the MindMeld Conversational AI Platform.
+
+
+  Introducing MindMeld The MindMeld Conversational AI platform is among the most advanced
+  AI platforms for building production-quality conversational applications. It is
+  a Python-based machine learning framework which encompasses all of the algorithms
+  and utilities required for this purpose. Evolved over several years of building
+  and deploying dozens of the most advanced conversational experiences achievable,
+  MindMeld is optimized for building advanced conversational assistants which demonstrate
+  deep understanding of a particular use case or domain while providing highly useful
+  and versatile conversational experiences.
+
+
+  MindMeld is the only Conversational AI platform available today that provides tools
+  and capabilities for every step in the workflow for a state-of-the-art conversational
+  application. The architecture of MindMeld is illustrated below.
+
+
+  To summarize, the functionality available in MindMeld includes:
+
+
+  - advanced **Natural Language Processing**, consisting of
+
+
+  - **Domain Classification** - **Intent Classification** - **Entity Recognition**
+  - **Entity Role Labeling** - **Entity Resolution** - **Language Parsing** - versatile
+  **dialogue management** - custom **knowledge base creation** - advanced **question
+  answering** - **training data collection and management** support - **large-scale
+  data analytics**
+
+
+  The MindMeld Philosophy
+
+
+  MindMeld has been used for applications in dozens of different domains by some of
+  the largest global organizations. Over the course of these production deployments,
+  MindMeld has evolved to be ideally suited for building production-quality, large-vocabulary
+  language understanding capabilities for any custom application domain. This has
+  been achieved by following the architectural philosophy whose guiding principles
+  are expressed in the table below.
+
+
+  |Concept|Description| |---|---| |**Power and Versatility** |Unlike GUI-based tools
+  typically too rigid to accommodate the functionality required by many applications,
+  MindMeld provides powerful command-line utilities with the flexibility to accommodate
+  nearly any product requirements.| |**Algorithms and Data** |In contrast to machine
+  learning toolkits which offer algorithms but little data, MindMeld provides not
+  only state-of-the-art algorithms, but also functionality which streamlines the collection
+  and management of large sets of custom training data.| |**NLP plus QA and DM** |While
+  conversational AI platforms available today typically provide natural language processing
+  (NLP) support, few assist with question answering (QA) or dialogue management (DM).
+  MindMeld provides end-to-end functionality including advanced NLP, QA, and DM, all
+  three of which are required for production applications today.| |**Knowledge-Driven
+  Learning** |Nearly all production conversational applications rely on a comprehensive
+  knowledge base to enhance intelligence and utility. MindMeld is the only Conversational
+  AI platform available today which supports custom knowledge base creation. This
+  makes MindMeld ideally suited for applications which must demonstrate deep understanding
+  of a large product catalog, content library, or FAQ database, for example.| |**You
+  Own Your Data** |Differently from cloud-based NLP services, which require that you
+  forfeit your data, MindMeld was designed from the start to ensure that proprietary
+  training data and models always remain within the control and ownership of your
+  application.|
+
+
+  Quick Start
+
+
+  Assuming you have pip installed with Python 3.6 or Python 3.7 and Elasticsearch
+  running in the background:
+
+
+  For detailed installation instructions, see Getting Started. To start with pre-built
+  sample applications, see MindMeld Blueprints.
+
+
+  MindMeld UI
+
+
+  You can use our sample web-based chat client interface to interact with any MindMeld
+  application. This web UI also serves as a debugging tool to step through the various
+  stages of query processing by the MindMeld pipeline.
+
+
+  For detailed installation instructions, see Getting Started for UI.
+
+
+  Note: this web client only works on Chrome browser.
+
+
+  How to contribute to the MindMeld platform:
+
+
+  We are very happy to receive your contributions. We maintain a list of open issues
+  on our GitHub project.
+
+
+  You can also create your own issue and link it to your code in a pull request, which
+  we will promptly review.
+
+
+  To setup local development for MindMeld, first you will need to fork the MindMeld
+  repository from GitHub and follow instructions on Getting Started page to setup
+  the virtual environment.
+
+
+  To develop MindMeld, you need Python 3.6 or Python 3.7. To install and manage different
+  versions of Python, you can checkout pyenv which also works with ``virtualenv``.
+
+
+  Now we can install MindMeld and its dependencies:
+
+
+  Make sure that the numerical parser and Elasticsearch are running in the background.
+  Finally we are ready to run MindMeld static style checks and unit tests.
+
+
+  After making changes and all tests are passing locally, commit the code to your
+  fork and issue a PR against the cisco/mindmeld repo.
+
+
+  Documentation You can view the documentation for the latest stable release on mindmeld.com/docs
+  and the documentation for the latest master branch version on our Github Page.
+
+
+  You can contribute to the documentation under the `source` directory.
+
+
+  To generate the documentation, please follow these steps:
+
+
+  Citation
+
+
+  Please cite this paper if you use MindMeld in your work: >Raghuvanshi, A., Carroll,
+  L. and Raghunathan, K., 2018, November. Developing Production-Level Conversational
+  Interfaces with Shallow Semantic Parsing. In Proceedings of the 2018 Conference
+  on Empirical Methods in Natural Language Processing: System Demonstrations (pp.
+  157-162)
+
+
+  Want to learn more about MindMeld?
+
+
+  Visit the MindMeld website.
+
+
+  Feedback or Support Questions
+
+
+  Please contact us at mindmeld@cisco.com.'
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '177415822'
+    canonical_url: https://github.com/cisco/mindmeld
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:37.197065Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

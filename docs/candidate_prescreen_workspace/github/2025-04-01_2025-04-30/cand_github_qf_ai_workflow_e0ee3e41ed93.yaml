@@ -1,0 +1,132 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_e0ee3e41ed93
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-04-01_2025-04-30
+created_at: '2026-04-09T14:06:57.025267Z'
+updated_at: '2026-04-09T14:56:24.597996Z'
+source: github
+source_id: src_github
+source_window: 2025-04-01..2025-04-30
+time_field: pushed_at
+external_id: '971103016'
+canonical_url: https://github.com/raj-maharajwala/AI_Agent_Chatbot_Synapse
+title: AI_Agent_Chatbot_Synapse
+summary: ''
+raw_evidence_excerpt: 'Synapse Workflows
+
+
+  Overview Synapse Workflows is a platform that allows users to interact with specialized
+  AI agents through natural language. The platform offers three main types of intelligent
+  agents designed to assist with different tasks:
+
+
+  UI Chatbot using Streamlit, HTML, CSS, and JavaScript
+
+
+  1. **Smart Search Agent** - Searches the web in real-time, summarizes topics, and
+  gathers up-to-date information.
+
+
+  2. **Productivity Assistant** - Automates daily tasks including email management,
+  calendar organization, and to-do lists.
+
+
+  3. **Data Analysis Agent** - Analyzes large datasets, generates visualizations,
+  and provides insights.
+
+
+  Features - Intuitive natural language interface - Multiple specialized AI agents
+  for different use cases - Real-time web search capabilities - Task automation for
+  productivity - Data analysis and visualization tools
+
+
+  Getting Started Users can begin by selecting one of the three available agents from
+  the main interface or by typing queries directly into the "Ask Anything..." input
+  field.
+
+
+  Notes - The platform indicates that AI workflows may occasionally produce unexpected
+  results. - The interface includes a "Deploy" button in the upper right for deployment
+  options.
+
+
+  Support For more detailed information, users can access the documentation section
+  through the link provided at the bottom of the interface.'
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-04-01'
+    window_end: '2025-04-30'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-04-01..2025-04-30
+    external_id: '971103016'
+    canonical_url: https://github.com/raj-maharajwala/AI_Agent_Chatbot_Synapse
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+  sample_slot_id: GS300-130
+  sample_id: cand_github_qf_ai_workflow_e0ee3e41ed93
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:56:24.597973Z'

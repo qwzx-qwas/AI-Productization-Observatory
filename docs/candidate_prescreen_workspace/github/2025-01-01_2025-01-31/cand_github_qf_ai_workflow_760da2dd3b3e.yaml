@@ -1,0 +1,158 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_760da2dd3b3e
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-01-01_2025-01-31
+created_at: '2026-04-09T11:05:22.372656Z'
+updated_at: '2026-04-09T13:10:36.853506Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '441535135'
+canonical_url: https://github.com/workflows-sh/do-k8s-cdktf
+title: do-k8s-cdktf
+summary: A PaaS workflow with GitOps / ChatOps features that supports DO K8S, VPC,
+  Spaces, LetEncrypt TLS, Container Registry & CDN via CDKTF
+raw_evidence_excerpt: "A PaaS workflow with GitOps / ChatOps features that supports\
+  \ DO K8S, VPC, Spaces, LetEncrypt TLS, Container Registry & CDN via CDKTF\n\nOverview\n\
+  \nThis repo includes a complete Digital Ocean infrastructure complete with Kubernetes,\
+  \ Container Registry, Postgres, Spaces, Load Balancers SSL (via LetsEncrypt) and\
+  \ Project Resource Management all built using CDKTF & Terraform Cloud.\n\nThe repo\
+  \ also includes a PaaS workflow integration with CTO.ai that streamlines Developer\
+  \ Experience for utilizing the infrastructure, which includes interative workflows\
+  \ that work in the CLI & Slack, but also full CI/CD & Preview Environments for all\
+  \ delivery.\n\nTable of contents\n\n- Overview - Table of contents - Prerequisites\
+  \ - DigitalOcean Infrastructure - Demo - Latest Version - Getting Started - Create\
+  \ Account - Create API keys on DigitalOcean - Create an Account on Terraform Cloud\
+  \ - Usage - Build Pipelines for your DigitalOcean Infrastructure - Setup DigitalOcean\
+  \ Kubernetes Infrastructure - View Configuration in Terraform Workspace - Run the\
+  \ Deploy Workflow - View your Kubernetes Services - Destroy your Environment - Getting\
+  \ help - Reporting bugs and Contributing - Learn more - Commands - Other questions?\
+  \ - License\n\n---\n\nPrerequisites\n\n- CTO.ai Account and CLI installed - Docker,\
+  \ AWS CDK, and AWS CLI installed on your machine. - Digital Ocean Account & CLI\
+  \ installed - Terraform Cloud Account - Kubernetes Lens or any Kubernetes Orchestration\
+  \ tool installed on your machine.\n\nDigitalOcean Infrastructure\n\nThis repo includes\
+  \ the following resources: * Docker Registry * Kubernetes Cluster * MySQL Databases\
+  \ * Postgres Databases * Redis Databases * Load balancers\n\nDemo\n\nYou can try\
+  \ run, configure, and deploy the DigitalOcean Kubernetes workflow directly on our\
+  \ Platform. kindly follow the steps below to get started \U0001F680\n\nLatest Version\n\
+  \nThe DigitalOcean Kubernetes workflow is updated and running the latest version\n\
+  \n---\n\nGetting Started\n\n---\n\nCreate Account\n\nBefore you can deploy this\
+  \ Workflow, you need to Setup your account on CTO.ai\n\nCreate API keys on DigitalOcean\n\
+  \n- In your DigitalOcean account, create your API keys for your CTO.ai Workflow\
+  \ setup\n\n---\n\nCreate an Account on Terraform Cloud\n\n- Sign up and log in to\
+  \ your account on Terraform Cloud and add your **Tokens** to your account on CTO.ai.\n\
+  \n---\n\nUsage\n\nAfter creating your accounts on CTO.ai and Terraform Cloud, set\
+  \ up your Infrastructure.\n\nBuild Pipelines for your DigitalOcean Infrastructure\n\
+  \nIn your application directory, build your DigitalOcean workflow, the Docker image\
+  \ from your Dockerfile, and your `ops.yml` file located in the specified path you\
+  \ created in your source directory using the `ops build .` command.\n\n- Check out\
+  \ the documentation to learn more on building pipelines -\n\nSetup DigitalOcean\
+  \ Kubernetes Infrastructure\n\nNext, set up your DigitalOcean Kubernetes infrastructure\
+  \ to build, and run your DOKS workflow using the `ops run .` and select `setup kubernetes\
+  \ infrastructure on DigitalOcean` the command will provision your DigitalOcean stack\
+  \ using CDK and Terraform.\n\n- Check out the documentation to learn more\n\nView\
+  \ Configuration in Terraform Workspace\n\n- Back in your Terraform Workspace you\
+  \ will see your DigitalOcean workflow created in your Terraform workspace As it\
+  \ is synchronizing the state to Terraform Cloud and your workflow grabs the output\
+  \ and synchronizes it in your developer control plane.\n\nRun the Deploy Workflow\n\
+  \nNext, deploy your changes to your environment using `ops run -b .`. This command\
+  \ will deploy your DigitalOcean Kubernetes CDKTF workflow to your managed Kubernetes\
+  \ environment on DigitalOcean where you'll be able to input your `environment name`,\
+  \ `application repo` and `branch`\n\n- Learn more about running the deploy workflow\n\
+  \nView your Kubernetes Services\n\nBack in your service application, you can view\
+  \ all running services and nodes using a Kubernetes tool like Lens\n\n---\n\nDestroy\
+  \ your Environment\n\nAfter configuring your DigitalOcean Kubernetes Workflow, you\
+  \ can destroy your environment and services that are running using the `ops run\
+  \ .` command and select `destroy an environment`\n\n- Learn more about destroying\
+  \ an environment\n\n---\n\nGetting help\n\nCTO.ai DigitalOcean Kubernetes Workflow\
+  \ is an open-source project and is supported by the community. All versions on DOKS\
+  \ CTO.ai are supported on our Platform.\n\nLearn more about CTO.ai community support\
+  \ channels here\n\n- **Slack (Chat):** https://cto.ai/community\n\nReporting bugs\
+  \ and Contributing\n\nFeel free to submit PRs or to fill issues. Every kind of help\
+  \ is appreciated.\n\nKindly check our Contributing guide on how to propose bugfixes\
+  \ and improvements, and submitting pull requests to the project.\n\n- View issues\
+  \ related to this image in our GitHub repository issue tracker\n\nLearn more\n\n\
+  - Read the manual on our website\n\nCommands\n\n- Check out our Commands file on\
+  \ how to set up **configs** in your environment.\n\n---\n\nOther questions?\n\n\
+  Check out our FAQ, send us an email, or open an issue with your question. We'd love\
+  \ to hear from you!\n\nLicense\n\n\xA9 CTO.ai, Inc., 2023\n\nDistributed under MIT\
+  \ License (`The MIT License`).\n\nSee LICENSE for more information."
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '441535135'
+    canonical_url: https://github.com/workflows-sh/do-k8s-cdktf
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:36.853506Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

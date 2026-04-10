@@ -212,6 +212,11 @@ last_frozen_version: repo_mapping_v2
   - `gold_set/gold_set_300/`
 - candidate prescreen workspace：
   - `docs/candidate_prescreen_workspace/`
+- screening calibration assets：
+  - `docs/screening_calibration_assets/`
+  - `docs/screening_calibration_assets/screening_positive_set/`
+  - `docs/screening_calibration_assets/screening_negative_set/`
+  - `docs/screening_calibration_assets/screening_boundary_set/`
 
 ## 5. 常用运行 / 测试 / Replay 命令约定
 

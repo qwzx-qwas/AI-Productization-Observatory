@@ -1,0 +1,100 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_a29f2e1500c4
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-02-01_2025-02-28
+created_at: '2026-04-09T12:24:28.641167Z'
+updated_at: '2026-04-09T14:55:36.654225Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '463495727'
+canonical_url: https://github.com/lukedavisseo/oapy
+title: oapy
+summary: An Open AI script that generates text at scale based on its input. Great
+  for descriptions and definitions.
+raw_evidence_excerpt: "An Open AI script that generates text at scale based on its\
+  \ input. Great for descriptions and definitions.\n\nOapy: a free GPT-4 web app from\
+  \ Impression\n\nOapy is a free GPT-4 web app from Impression that allows SEOs to\
+  \ generate content at scale.\n\nThe app allows you to get more from your AI workflow\
+  \ by combining the simplicity of OpenAI\u2019s Playground tool and combining it\
+  \ with content scalability, saving SEOs hours of time.\n\nFor more information on\
+  \ how to use Oapy, refer to this guide from Impression"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '463495727'
+    canonical_url: https://github.com/lukedavisseo/oapy
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T13:10:40.020528Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+  sample_slot_id: GS300-110
+  sample_id: cand_github_qf_ai_workflow_a29f2e1500c4
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:55:36.654199Z'

@@ -1,0 +1,198 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_20ea8b0679f8
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-02-01_2025-02-28
+created_at: '2026-04-09T13:49:00.643550Z'
+updated_at: '2026-04-09T14:55:25.056207Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '787312976'
+canonical_url: https://github.com/TAHIR0110/ThereForYou
+title: ThereForYou
+summary: 'ThereForYou: Your mental health ally. Kai, our AI assistant, offers compassionate
+  support. Track your mood trends, find solace in a secure community, and access crisis
+  resources swiftly. We''re here to empower your journey towards improved well-being,
+  leveraging technology for a brighter tomorrow. '
+raw_evidence_excerpt: 'ThereForYou: Your mental health ally. Kai, our AI assistant,
+  offers compassionate support. Track your mood trends, find solace in a secure community,
+  and access crisis resources swiftly. We''re here to empower your journey towards
+  improved well-being, leveraging technology for a brighter tomorrow.
+
+
+  ThereForYou
+
+
+  Enhanced Public Safety: ThereForYou **ThereForYou** is a groundbreaking solution
+  aimed at enhancing public safety, particularly focusing on mental health support
+  and suicide prevention. Leveraging cutting-edge technologies such as artificial
+  intelligence (AI), machine learning (ML), natural language processing (NLP), and
+  blockchain, our project offers accessible and empathetic assistance to individuals
+  facing mental health challenges.
+
+
+  Key Features Part 1: AI Psychologist - Dynamic Voice Adjustment: Our AI assistant
+  dynamically adjusts its voice to match the user''s gender, enhancing engagement
+  and personalization. - Emotion Detection: Utilizing algorithms, the assistant detects
+  signs of sadness or depression in user speech, securely storing this data using
+  blockchain technology for potential future counseling sessions. - Empathetic Support:
+  In moments of distress, sadness, or depression, the AI psychologist offers empathetic
+  support and practical advice to encourage users towards positive steps forward.
+
+
+  Part 2: Suicide Prevention Model - Choking Detection: We have developed an API powered
+  by advanced machine learning models that can detect signs of choking in users. Upon
+  detection, it immediately sends alerts with location data of the victim to nearby
+  users and authorities, including police officers, ensuring prompt assistance in
+  critical situations. - Reward System: Users who assist individuals in choking incidents
+  are rewarded with HealthTokens, redeemable at hospitals. This incentivizes community
+  involvement in assisting those in need.
+
+
+  Part 3: Voice-Activated Safety Alert System - NLP-Based Danger Detection: Our advanced
+  NLP model detects danger signals from user speech. Upon detection, nearby users
+  and authorities such as police officers are alerted through push notifications about
+  the location and condition of the victim. - Reward Mechanism: Similar to Part 2,
+  individuals who respond to safety alerts and assist those in danger are rewarded
+  with HealthTokens. - Link to safety system => https://vhelp.onrender.com/ - App
+  link could not be shared because of security reasons
+
+
+  Videos: PART 1:
+
+
+  PART 2:
+
+
+  PART 3 (MUST WATCH):
+
+
+  Tech Stack Frontend - HTML/CSS - JavaScript - Flutter
+
+
+  Machine Learning - TensorFlow - Natural language processing - Scikit-learn - SpaCy
+  - NLTK - OpenCV
+
+
+  Backend - Flask - OpenAPI - Google Web Speech API - PyAudio - Node.js - Firebase
+
+
+  Mentor: Atharv Rastogi
+
+
+  Roadmap for NeuroWellness AI
+
+
+  Q1 2025 - Initial Development and Expansion AI-Powered Diagnostics: Enhance AI psychiatrist
+  capabilities by integrating additional models for personalized mental health support.
+  Facial Expression & Voice Recognition Integration: Improve emotion detection algorithms
+  and refine the accuracy of facial and voice recognition. Blockchain Integration:
+  Ensure that all data is encrypted and stored securely for privacy with blockchain-backed
+  solutions.
+
+
+  Q2 2025 - Pilot and Community Engagement Launch Pilot Programs: Begin testing the
+  platform with a select group of users to collect feedback and refine AI models.
+  VHelp Community Launch: Expand the VHelp feature to facilitate users connecting
+  with nearby mental health professionals. Health Token System: Implement the health
+  token system, allowing users to earn rewards for helping others.
+
+
+  Q3 2025 - Expansion and Scaling Smartwatch Integration: Incorporate wearable tech
+  into the platform to monitor real-time health metrics (heart rate, sleep patterns,
+  etc.) and trigger emergency alerts. Large-Scale Deployment: Expand access to a broader
+  user base, focusing on underserved regions for mental health support. AI Diagnosis
+  Enhancements: Further improve AI-driven diagnosis features, offering more accurate
+  prescriptions and emergency recommendations.
+
+
+  Q4 2025 - Long-Term Vision Cross-National Partnerships: Collaborate with global
+  organizations to increase the reach of NeuroWellness AI to international markets.
+  Full Integration with Healthcare Providers: Build relationships with medical institutions
+  for deeper integration of the platform into existing healthcare systems. Continuous
+  AI Learning: Implement continuous learning techniques to ensure that the AI system
+  adapts to new data and insights, improving over time.
+
+
+  Note: Pull Request may take some time to be merged into the repository. If there
+  are any issues, we will inform you; otherwise, it will be merged eventually. Please
+  don''t worry :)'
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '787312976'
+    canonical_url: https://github.com/TAHIR0110/ThereForYou
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+  sample_slot_id: GS300-119
+  sample_id: cand_github_qf_ai_assistant_20ea8b0679f8
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:55:25.056180Z'

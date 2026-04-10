@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_ai_workflow_638c3bd4b7dd
 candidate_batch_id: candidate_batch_github_qf_ai_workflow_2026-03-01_2026-03-08
 created_at: '2026-04-02T04:54:50.292945Z'
-updated_at: '2026-04-09T09:03:47.061249Z'
+updated_at: '2026-04-09T14:54:20.490208Z'
 source: github
 source_id: src_github
 source_window: 2026-03-01..2026-03-08
@@ -149,4 +149,4 @@ staging_handoff:
   sample_slot_id: GS300-024
   sample_id: cand_github_qf_ai_workflow_638c3bd4b7dd
   blocking_items: []
-  last_attempted_at: '2026-04-09T09:03:47.061226Z'
+  last_attempted_at: '2026-04-09T14:54:20.490185Z'

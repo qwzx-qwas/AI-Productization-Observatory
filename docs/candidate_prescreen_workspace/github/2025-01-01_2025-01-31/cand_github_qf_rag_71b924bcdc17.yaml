@@ -1,0 +1,136 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_71b924bcdc17
+candidate_batch_id: candidate_batch_github_qf_rag_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:32:15.853356Z'
+updated_at: '2026-04-09T13:10:38.207158Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '868659137'
+canonical_url: https://github.com/richard-peng-xia/MMed-RAG
+title: MMed-RAG
+summary: '[ICLR''25] MMed-RAG: Versatile Multimodal RAG System for Medical Vision
+  Language Models'
+raw_evidence_excerpt: "[ICLR'25] MMed-RAG: Versatile Multimodal RAG System for Medical\
+  \ Vision Language Models\n\nMMed-RAG: Versatile Multimodal RAG System for Medical\
+  \ Vision Language Models\n\nWe introduce MMed-RAG, a powerful multimodal RAG system\
+  \ that boosts the factuality of Medical Vision-Language Models (Med-LVLMs) by up\
+  \ to 43.8%! \U0001FA7A [Paper] [X(Twitter)]\n\n\U0001F680 News - [01/22/2025] MMed-RAG\
+  \ is accepted by ICLR 2025! - [12/08/2024] The training scripts are released! -\
+  \ [10/20/2024] The whole data is released in `data/`! Check it out! - [10/18/2024]\
+  \ The manuscript can be found on arXiv.\n\n\U0001F4A1 Overview MMed-RAG enhances\
+  \ alignment across medical domains like radiology, pathology, and ophthalmology\
+  \ with a domain-aware retrieval mechanism. And it tackles three key challenges in\
+  \ alignment of multimodal RAG:\n\n1\uFE0F\u20E3 Direct Copy Homework from Others\u274C\
+  \ Think it by Self \u2705 MMed-RAG helps Med-LVLMs avoid blindly copying external\
+  \ information by encouraging the model to rely on its own visual reasoning when\
+  \ solving complex problems.\n\n2\uFE0F\u20E3 Cannot Solve Problems by Self\u274C\
+  \ Learn How to Copy \u2705 When Med-LVLMs are unsure, MMed-RAG teaches the model\
+  \ to intelligently use retrieved knowledge, pulling in the right information at\
+  \ the right time, boosting accuracy, and reducing errors.\n\n3\uFE0F\u20E3 Copied\
+  \ Homework is Wrong\u274C Avoid Interference from Incorrect Homework \u2705 MMed-RAG\
+  \ prevents models from being misled by incorrect retrievals, reducing the risk of\
+  \ generating inaccurate medical diagnoses.\n\n\U0001F4E6 Requirements 1. Clone this\
+  \ repository and navigate to MMed-RAG folder\n\n2. Install Package: Create conda\
+  \ environment\n\n3. Download the required model checkpoints LLaVA-Med-1.5 from huggingface.\n\
+  \n4. For all the medical datasets, you need firstly apply for the right of access\
+  \ and then download the dataset.\n\n- MIMIC-CXR - IU-Xray (Thanks to R2GenGPT for\
+  \ sharing the file) - Harvard-FairVLMed - PMC-OA - Quilt-1M\n\n\U0001F4D6 Data Description\
+  \ We provide a corresponding json or jsonl file for each dataset, including the\
+  \ image path, question, answer, and original report.\n\n- Training: The data used\
+  \ to train the retriever and fine-tune the Med-LVLM are located in `data/training/retriever/MODALITY`\
+  \ and `data/training/alignment/MODALITY` respectively. Each folder contains data\
+  \ for VQA or report generation tasks.\n\n- Test: All the test data for Med-LVLMs\
+  \ is placed under `data/test/TASK/MODALITY`.\n\n`TASK`: report/vqa, `MODALITY`:\
+  \ radiology/pathology/ophthalmology.\n\n\U0001F3CB\uFE0F Train\n\nRetriver Fine-tuning\n\
+  \nUse the following script, make sure to specify the data paths and the checkpoint\
+  \ saving location.\n\nPreference Fine-tuning Use the script `train_dpo_2stages.sh`\
+  \ in `./script` or the following command, make sure to specify the necessary data\
+  \ paths and the checkpoint saving location.\n\n\U0001F956 Retrieve Use `retrieve_clip_report.sh`\
+  \ or `retrieve_clip_VQA.sh` to retrieve reports for report generation or VQA task.\
+  \ The script uses Harvard-FairVLMed dataset as an example. Make sure to specify\
+  \ the necessary data paths and the saving location.\n\n\U0001F4C5 Schedule\n\n-\
+  \ [x] Release the data (VQA and report generation tasks)\n\n- [x] Release the training\
+  \ code\n\n\U0001F4DACitation\n\n\U0001F64FAcknowledgement We use code from LLaVA-Med,\
+  \ RULE, CARES. We thank the authors for releasing their code.\n\nClip Finetune\n\
+  \nDPO training\n\nInference"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '868659137'
+    canonical_url: https://github.com/richard-peng-xia/MMed-RAG
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:38.207158Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -1,0 +1,129 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_def132619524
+candidate_batch_id: candidate_batch_github_qf_rag_2025-02-01_2025-02-28
+created_at: '2026-04-09T13:41:01.600382Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '703756212'
+canonical_url: https://github.com/marcushellberg/java-ai-playground
+title: java-ai-playground
+summary: ''
+raw_evidence_excerpt: 'Java AI library comparison app
+
+
+  This app is an AI-powered customer support application that:
+
+
+  - Has access to terms and conditions (retrieval augmented generation, RAG) - Can
+  access tools (Java methods) to perform actions - Uses an LLM to interact with the
+  user
+
+
+  The application includes implementations for:
+
+
+  - LangChain4j in the `main` branch - Quarkus in the `quarkus` branch (thanks to
+  @edeandrea!) - Spring AI in the `spring-ai` branch (thanks to @tzolov!) - Semantic
+  Kernel in the `semantic-kernel` branch (thanks to @sohamda!)
+
+
+  The UI is built using Vaadin Hilla and the backend is built using Spring Boot.
+
+
+  Requirements - Java 17+ - OpenAI API key in `OPENAI_API_KEY` environment variable
+
+
+  Running Run the app by running `Application.java` in your IDE or `mvn` in the command
+  line.
+
+
+  Thanks This demo was inspired by the LangChain4jCustomer Support Agent example.
+
+
+  I want to thank the LangChain4j, Quarkus, Spring AI, and Microsoft teams for their
+  support in building this demo. Especially, I want to thank @edeandrea from the Quarkus
+  team for his help in building the Quarkus implementation, @tzolov from The Spring
+  AI team for his help in building the Spring AI implementation and @sohamda from
+  Microsoft for the Semantic Kernel implementation.'
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '703756212'
+    canonical_url: https://github.com/marcushellberg/java-ai-playground
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

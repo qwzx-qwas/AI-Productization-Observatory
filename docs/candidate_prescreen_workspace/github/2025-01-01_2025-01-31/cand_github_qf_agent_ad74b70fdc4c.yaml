@@ -1,0 +1,129 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_ad74b70fdc4c
+candidate_batch_id: candidate_batch_github_qf_agent_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:24:00.615285Z'
+updated_at: '2026-04-09T14:55:02.088583Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '675952364'
+canonical_url: https://github.com/AI-Citizen/SolidGPT
+title: SolidGPT
+summary: Developer AI Persona Search Agent
+raw_evidence_excerpt: "Developer AI Persona Search Agent\n\n\U0001F9F1 SolidGPT\n\n\
+  \u2757\uFE0F\u2757\uFE0FWe solemnly declare:\n\n**We have NOT issued any cryptocurrency.**\n\
+  \n**Any cryptocurrency claiming to be issued in our name is a SCAM. Please stay\
+  \ vigilant and avoid being deceived.**\n\n\U0001F680 What's this SolidGPT is a AI\
+  \ searching assistant for developer that helps code and workspace semantic search\n\
+  \n\U0001F525\U0001F525\U0001F525 Try SolidGPT VSCode Extension from the VSCode Marketplace\n\
+  \nAppreciate Star \U0001F31F us on our SolidGPT Github\n\nTry SolidGPT VSCode Extension\
+  \ 1. Install SolidGPT VSCode Extension from the VSCode Marketplace\n\n\U0001F3C1\
+  \ Quick Start Highly recommend to try SolidGPT VSCode Extension from the VSCode\
+  \ Marketplace.\n\nOr you can follow the steps below to build from source. \U0001F4E6\
+  \ Build From Source 1. Pull the latest version of the SolidGPT from the GitHub repository.\
+  \ 1. Pip install the requirements.txt file under the SolidGPT root directory.\n\n\
+  1. Open terminal and run the following command to start the server.\n\n1. Open terminal\
+  \ and run the following command to start the webapp.\n\n\u2757\uFE0F\u2757\uFE0F\
+  \ Onborading your Codebase and Notion 1. Click Settings button on the right bottom\
+  \ corner.\n\n1. Setup Codebase 1. Enter your OpenAI API key. Get OpenAI API Key\
+  \ 1. Enter the full path of the folder you wish to onboard. **Suggest onboard lower\
+  \ than 100 files, maximum support 500 files onboarding**.\n\n2. Setup Notion (Optional)\
+  \ 1. Configure the Notion API by getting your Notion API secret from Notion API\
+  \ and entering it on the Settings page 1. Give your integration page permissions.\
+  \ Details 1. Get Notion Page ID and entering it on the Settings page\n\n3. Pick\
+  \ chat resources and start chat\n\n\U0001F525 Usecase - Talk to your codebase, save\
+  \ time hunting for the place to start a change or the right method to call. - Ask\
+  \ any questions about your codebase, get the answer in seconds. - Semantic search\
+  \ and summary in Notion, knows your project from documents and track the project\
+  \ sprint board and tickets. - Get questions answered from your codebase and Notion,\
+  \ no more context switching.\n\n\U0001F4D6 Known Issue 1. [Intel Chip Mac]: permission\
+  \ denied - Please run \\`cd ~/.vscode/extensions\\` and \\`chmod -R 777 aict.solidgpt*\\\
+  ` in your terminal to allow the app to run.\n\n\U0001F4E3 Feedback!! If you have\
+  \ any questions or feedback about our project, please don't hesitate to reach out\
+  \ to us. We greatly appreciate your suggestions! - Email: aict@ai-citi.com - GitHub\
+  \ Issues: For more technical inquiries, you can also create a new issue in our GitHub\
+  \ repository. We will respond to all questions within 2-3 business days.\n\nData\
+  \ Safety - SolidGPT will not collect any of users' data. - SolidGPT using OpenAI\
+  \ series model API, using SolidGPT indicates that you have read, understood, and\
+  \ agreed to adhere to all terms of use associated with the OpenAI GPT series model\
+  \ API."
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '675952364'
+    canonical_url: https://github.com/AI-Citizen/SolidGPT
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T13:10:36.295699Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+  sample_slot_id: GS300-101
+  sample_id: cand_github_qf_agent_ad74b70fdc4c
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:55:02.088559Z'

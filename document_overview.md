@@ -349,6 +349,15 @@ last_frozen_version: governance_v2
    - implementation_ready：`true`
    - notes：面向 Phase0 的最小执行 prompt
    (27) 第 27 行
+   - file：`21_screening_calibration_asset_layer.md`
+   - role：screening calibration 资产层规范
+   - status：`active`
+   - canonical：yes
+   - layer：`ops`
+   - precedence_rank：`145`
+   - implementation_ready：`true`
+   - notes：定义并行于 formal gold set 的筛选校准资产层边界、目录与优先级
+   (28) 第 28 行
    - file：`README.md`
    - role：仓库入口
    - status：`active`
@@ -391,6 +400,7 @@ last_frozen_version: governance_v2
 - review / error / test / runtime：
   - `12_review_policy.md`
   - `13_error_and_retry_policy.md`
+  - `21_screening_calibration_asset_layer.md`
   - `14_test_plan_and_acceptance.md`
   - `15_tech_stack_and_runtime.md`
   - `18_runtime_task_and_replay_contracts.md`
@@ -445,6 +455,7 @@ last_frozen_version: governance_v2
   - `11_metrics_and_marts.md`
 - test / acceptance / runtime / replay：
   - `14_test_plan_and_acceptance.md`
+  - `21_screening_calibration_asset_layer.md`
   - `15_tech_stack_and_runtime.md`
   - `18_runtime_task_and_replay_contracts.md`
 - 执行阶段 prompt、整理实现报告、或进入 blocker 响应：
@@ -581,6 +592,12 @@ last_frozen_version: governance_v2
    - artifact：module mapping
    - repo path：`src/`
    - owner：`pipeline_owner`
+   - status：`implemented`
+   (20) 第 20 行
+   - doc：`21_screening_calibration_asset_layer.md`
+   - artifact：screening calibration assets
+   - repo path：`docs/screening_calibration_assets/`
+   - owner：`review_owner`
    - status：`implemented`
 
 

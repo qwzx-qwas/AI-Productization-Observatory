@@ -1,0 +1,126 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_7938f33bcf40
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-02-01_2025-02-28
+created_at: '2026-04-09T12:12:10.231918Z'
+updated_at: '2026-04-09T14:55:48.358297Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '910989165'
+canonical_url: https://github.com/islamnurdin/Artifex
+title: Artifex
+summary: Your CAD Copilot
+raw_evidence_excerpt: "Your CAD Copilot\n\nArtifex: AI-Powered Text-to-CAD Tool \U0001F680\
+  \n\nArtifex is an AI-driven engineering tool that acts as a copilot designed to\
+  \ simplify CAD workflows by enabling natural language-driven design. With **Artifex**,\
+  \ you can describe your ideas in plain English, and it will translate them into\
+  \ complex 3D CAD models within FreeCAD. Built as a macro, Artifex leverages state-of-the-art\
+  \ APIs like OpenAI, Claude and Mistral AI to provide real-time design assistance.\n\
+  \nArtifex in action:\n\n---\n\n\u2728 Features - **Text-to-CAD**: Transform natural\
+  \ language descriptions into CAD models. - **Real-time AI Assistance**: Get instant\
+  \ feedback and suggestions for design improvements. - **Multi-API Support**: Compatible\
+  \ with OpenAI, Claude and Mistral AI APIs. - **Open-Source and Extensible**: Built\
+  \ to encourage community contributions and enhancements.\n\n---\n\n\U0001F6E0 Installation\
+  \ & Setup\n\n1. **Install FreeCAD** Download and install FreeCAD from the official\
+  \ website.\n\n2. **Clone the Repository** Clone this repository to your local machine:\n\
+  \n3. **Set Up API Keys** Obtain API keys for the required service: - OpenAI API:\
+  \ Sign up here. - Claude API: Sign up here. - Mistral AI API: Sign up here.\n\n\
+  Configure the keys as environment variables:\n\n4. **Load the Macro in FreeCAD**\
+  \ - Open FreeCAD and navigate to `Macro > Macros...`. - Load the `Artifex-Anthropic.FCMacro`,\
+  \ `Artifex-OpenAI.FCMacro` or `Artifex-MistralAI.FCMacro` file from the `src/` directory.\
+  \ - Click **Run** to start using Artifex.\n\n---\n\nHow It Works Artifex uses AI\
+  \ to process natural language inputs and generate 3D CAD models: 1. **Input Design**:\
+  \ You describe your design in text, such as: *\"Create two spheres (20mm diameter)\
+  \ connected by a cylinder (20mm diameter, 200mm height).\"* 2. **AI Processing**:\
+  \ Artifex uses OpenAI or Claude to interpret your input and create a script for\
+  \ FreeCAD. 3. **Model Generation**: FreeCAD executes the script, generating a precise\
+  \ 3D model.\n\n---\n\nProject Structure\n\n---\n\nContributing Contributions are\
+  \ welcome! Please read the CONTRIBUTING.md for guidelines.\n\nHow to Contribute\
+  \ - **Bug Reports**: Open an issue describing the problem. - **Feature Requests**:\
+  \ Suggest new features via issues. - **Pull Requests**: Submit code improvements\
+  \ or fixes.\n\n1. Fork this repository. 2. Create a new branch for your feature\
+  \ or fix:\n\n3. Commit your changes with clear messages:\n\n4. Push to your branch\
+  \ and open a pull request.\n\n---\n\nLicense This project is licensed under the\
+  \ MIT License. See the LICENSE file for details.\n\n---\n\nCredits - Developed by\
+  \ Izzy and Mussie. - Powered by FreeCAD, OpenAI, and Claude.\n\n---\n\nLinks - **Website**:\
+  \ Artifex.com - **Twitter**: Izzy on X"
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '910989165'
+    canonical_url: https://github.com/islamnurdin/Artifex
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T13:10:41.121068Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+  sample_slot_id: GS300-113
+  sample_id: cand_github_qf_copilot_7938f33bcf40
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:55:48.358271Z'

@@ -1,0 +1,149 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_0ebdb184e247
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-02-01_2025-02-28
+created_at: '2026-04-09T14:08:32.552957Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '880462699'
+canonical_url: https://github.com/RiP3rQ/ui-butler-turborepo
+title: ui-butler-turborepo
+summary: Fullstack monorepo using Turborepo with Nest.js backend microservices and
+  Next.js frontend microservices
+raw_evidence_excerpt: "Fullstack monorepo using Turborepo with Nest.js backend microservices\
+  \ and Next.js frontend microservices\n\n\U0001F3A8 UI-Butler \U0001F935\n\nAdvanced\
+  \ Full-Stack Monorepo Architecture with Nest.js (Microservices) & Next.js (Frontend\
+  \ Microservices)\n\n\U0001F4DA Educational Repository Overview\n\nThis repository\
+  \ serves as a **comprehensive educational resource demonstrating** a **production-ready**,\
+  \ full-stack monolithic architecture using **Nest.js microservices** and **Next.js\
+  \ Frontend Microservices** within a **Turborepo** as a meneger. It showcases **industry\
+  \ best practices**, advanced architectural patterns, and modern development workflows.\n\
+  \n\U0001F3AF Purpose\n\n- Provide a complete reference implementation of microservices\
+  \ architecture - Demonstrate real-world patterns and best practices - Serve as a\
+  \ learning resource for developers at all levels - Showcase advanced features and\
+  \ integrations - Illustrate various deployment strategies\n\n\U0001F3D7\uFE0F Architecture\
+  \ Overview\n\n\U0001F680 Key Features\n\nBackend Architecture\n\n- **Microservices\
+  \ Framework**: Nest.js-based services with modular architecture - **Inter-Service\
+  \ Communication**: gRPC protocol implementation - **Caching System**: Custom Redis-based\
+  \ caching implementation - **Authentication**: JWT and Passport.js integration -\
+  \ **Rate Limiting**: Redis-based request rate limiting - **Job Processing**: BullMQ\
+  \ integration for async operations [recomended only for dev because of large amount\
+  \ of redis calls in production] - **AI Integration**: `GEMINI` AI response streaming\
+  \ - **Workflow Management**: Custom AI workflow handling for planning the execution\
+  \ - **Microservices proxing**: Implementing proxing from API-GATEWAY to components\
+  \ microservice - **Hybrid backend microservice**: Generated a Nest.js app that is\
+  \ a hybrid application. It serves as an HTTP server and as a microservice. - **Containerization**:\
+  \ Containerizing microservices with docker and docker-compose\n\nFrontend Implementation\n\
+  \n- **Frontend Microservices**: Next.js-based modular frontend architecture - **SSE**:\
+  \ Showcased how to handle Server-Sent Events on the frontend and backend for instantaneous\
+  \ streaming the AI responses - **Workflow Visualization**: React-flow implementation\
+  \ - **State Management**: Advanced state management patterns - **API Integration**:\
+  \ Comprehensive API service integration\n\n\U0001F6E0\uFE0F Technology Stack\n\n\
+  - **Monorepo Management**: Turborepo - **Backend Framework**: Nest.js - **Frontend\
+  \ Framework**: Next.js - **Language**: TypeScript - **Communication**: gRPC, REST\
+  \ - **Caching**: Redis - **Queue**: BullMQ - **Database**: PostgreSQL - **Testing**:\
+  \ Jest - **Deployment**: Docker, PM2, turbo - **CI/CD**: GitHub Actions - **Auth**:\
+  \ JWT, passport.js\n\n\U0001F4E6 Repository Structure\n\n\U0001F6A6 Getting Started\n\
+  \nPrerequisites\n\n- Node.js >= 22 - Docker - Redis (Upstash) - PostgreSQL - pnpm\
+  \ - `GEMINI` API key\n\nInstallation\n\n1. Clone the repository:\n\n2. Install dependencies:\n\
+  \n3. Configure environment variables for backend microservice and frontend microservice:\n\
+  \n4. Start development environment:\n\n\U0001F6A2 Deployment Strategies\n\n1. Docker\
+  \ Deployment\n\nDetailed documentation for containerized deployment:\n\n- Container\
+  \ orchestration - Service configuration - Network setup - Automatic deployment using\
+  \ Github Actions\n\n2. PM2 Ecosystem\n\nGuide for PM2-based deployment:\n\n- Process\
+  \ management - Ecosystem handling - Automatic deployment using Github Actions\n\n\
+  3. Turborepo with PM2\n\nAdvanced deployment strategy combining:\n\n- Build optimization\
+  \ - Service orchestration - Resource management - Performance tuning - Automatic\
+  \ deployment using Github Actions\n\n\U0001F9EA Testing\n\n- Service-level test\
+  \ examples - Component testing strategies - Mocking patterns - Test coverage requirements\n\
+  \n\U0001F4C8 Performance Optimization\n\n- Turborepo caching strategies - Build\
+  \ optimization techniques - Service performance tuning - Caching implementation\
+  \ - Rate limiting implementation - Asynchronous processing of workflows using BullMQ\n\
+  \n\U0001F512 Security Implementations\n\n- JWT authentication - Rate limiting -\
+  \ CORS configuration - Form validation - Security headers - SSL/TLS setup\n\n\U0001F91D\
+  \ Contributing\n\nWe welcome contributions! If you have any tips how to improve\
+  \ this repo, just create a PR.\n\n\U0001F4C4 License\n\nThis project is licensed\
+  \ under the MIT License - see the LICENSE file for details.\n\n\U0001F465 Maintainers\n\
+  \n- RiP3rQ\n\n---\n\n\U0001F4A1 Support\n\nFor support, please:\n\n1. Create an\
+  \ issue 2. Contact me through my website -> Website"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '880462699'
+    canonical_url: https://github.com/RiP3rQ/ui-butler-turborepo
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

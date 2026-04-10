@@ -1,0 +1,161 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_25247729c1c9
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-02-01_2025-02-28
+created_at: '2026-04-09T12:17:10.541569Z'
+updated_at: '2026-04-09T13:10:40.344822Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '782661338'
+canonical_url: https://github.com/Upsonic/Tiger
+title: Tiger
+summary: Neuralink for your AI Agents - LangChain - Autogen - CrewAI
+raw_evidence_excerpt: "Neuralink for your AI Agents - LangChain - Autogen - CrewAI\n\
+  \nTiger: Neuralink for your AI Agents\n\nSetup \u2022\n\nIntegrations: crewAI Integration\
+  \ \u2022 LangChain Integration \u2022 AutoGen Integration \u2022 Telegram Integration\
+  \ \u2022\n\nSources: Currently Tools \u2022 Custom Tools (On-Prem Docker) \u2022\
+  \ Public Dashboard \u2022\n\nWhat is Tiger?\n\nTiger is a community-driven project\
+  \ developing a reusable and integrated tool ecosystem for LLM Agent Revolution.\
+  \ It utilizes Upsonic for isolated tool storage, profillibg and for the automatic\
+  \ generation of documents. With Tiger, you can create a customized environment for\
+  \ your agents or leverage the robust and publicly maintained Tiger \U0001F405 curated\
+  \ by the community itself.\n\nDetails\n\nTiger, influenced by Neuralink, provides\
+  \ an AI-oriented computer interface with threads connected to the LLM interface.\
+  \ It offers a platform for AIs to control a computer by simply 'thinking'.\n\nWith\
+  \ Tiger, your LLM agents can write and execute code, use search engines, manage\
+  \ your calendar, control your mouse and keyboard, speak into your headphones, and\
+  \ much more. Essentially, anything conceived by your agent, Tiger will transform\
+  \ into concrete actions. This embodies the core philosophy of the Tiger project\
+  \ \u2013 to harness AI intelligence to generate tangible actions and support standard\
+  \ infrastructures. Our goals include:\n\n- Providing a **Utility point** for agent\
+  \ tools across any framework that utilizes a function call mechanism, - Building\
+  \ and nurturing a **Community of tool support** across diverse technologies and\
+  \ disciplines, - Developing a **Free, Open and MIT** licensed tool library for the\
+  \ AI agent ecosystem.\n\nSetup\n\nTiger projects have a general usage public library\
+  \ at tiger.upsonic.co. Its include the tools that in `tools` library. For usage\
+  \ this you can use the standart connection that in upsonic python library. After\
+  \ installing the `upsonic` library we will use the Tiger object wand integrate to\
+  \ your agents.\n\n- Tiger requires equal or higher python version to 3.8\n\nCurrently\
+  \ Tools\n\nWe are working on Upsonic and the tools that inside the `tools` folder\
+  \ is sending to public tiger in each release. We are aiming to create tools without\
+  \ any api key and just like normal human events like searching on google with mouse,\
+  \ keyboard and browser.\n\n- App - open - close\n\n- browser - open_url\n\n- Interpreter\n\
+  \n- python - check_package - execute - install_package - sh - execute\n\n- Search\n\
+  \n- google - duckduckgo - read_website\n\n- System\n\n- os_name - architecture -\
+  \ python_version - clipboard - copy\n\n- Knowledge - put - pull - delete - index\
+  \ - reset\n\n- Communication - telegram - as_user - delete_message - get_last_dialogs\
+  \ - get_last_messages - send_message - signin\n\nIf you want to add functions to\
+  \ public and strongest Tiger you can see to Adding Tools section.\n\nPublic Dashboard\n\
+  \nFor the public Tiger you can see the functions and their documentations and readmes\
+  \ in tiger.upsonic.co. You can use this place for documentation also.\n\n**Auth**\n\
+  \n- username: tiger - password: tiger\n\nDocumentation of Tiger Tools\n\nThanks\
+  \ to Upsonic we just write the codes and its gives us an storage system with detailed\
+  \ documentation and cpu ram usage for each function. Also you can make search and\
+  \ use functions in your other projects with connection code.\n\n**Auth**\n\n- username:\
+  \ tiger - password: tiger\n\ncrewAI Integration Tiger project aim is being available\
+  \ for most popular agent framworks like `crewAI`. In this example you can see the\
+  \ easiest tool integration for an AI agent. We are asking for who is Onur Atakan\
+  \ ULUSOY and waits.\n\nLangChain Integration\n\nTiger is able to make a collabration\
+  \ for sharing tools with LangChain agents with this your agents will able to use\
+  \ Tiger functions. In this example we are asking for an multiplation question and\
+  \ the agent will use the tiger and after that its write a python code and tiger\
+  \ will give the result in behind. With this agent will able to make mathematical\
+  \ operations in just two lines of code.\n\nAutoGen Integration\n\nTiger is also\
+  \ have a integration with AutoGen agents. You can put a tiger to your AutoGen agents.\
+  \ In this examples we will use the 'interpreter.python' module and with this your\
+  \ autogen agent able to run and view result of python codes. With this your agent\
+  \ will able to wait 2 second as we request.\n\nSignin to Telegram The user who wants\
+  \ to use telegram functionalities in their LLM agents must trig the signin function\
+  \ before all. For this you can use this function and its will ask for phone number\
+  \ and verification code.\n\nAdding Tools\n\nTiger project is open to any contribution\
+  \ for public tiger, also in the bottom we have another way to create your own, offline\
+  \ tiger. For adding the public tiger you should create a pull request with your\
+  \ new tool.\n\n1. Create a python file in `tiger/tools` section. for ex: `tiger/tools/interpreter/python/execute.py`\n\
+  \n2. Write your function in this format\n\n3. Create the pull request. When its\
+  \ merged its will be available at public Tiger and dashboard.\n\nCreating your Own\
+  \ Tiger\n\nFor creating your own tiger you should install a Upsonic On-Prem docker\
+  \ container. Its will give a dashboard for viewing your own tools and will make\
+  \ documentation automatic. After that you should use the Upsonic Client to connect\
+  \ your On-Prem for this you should get the connection code from your dashboard and\
+  \ finaly you use the tiger function in upsonic client.\n\nInstallation document\n\
+  \nStar History"
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '782661338'
+    canonical_url: https://github.com/Upsonic/Tiger
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear
+human_reviewed_at: '2026-04-09T13:10:40.344822Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

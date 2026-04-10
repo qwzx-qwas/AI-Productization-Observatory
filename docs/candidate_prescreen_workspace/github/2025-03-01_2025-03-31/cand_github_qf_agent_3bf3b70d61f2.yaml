@@ -1,0 +1,216 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_3bf3b70d61f2
+candidate_batch_id: candidate_batch_github_qf_agent_2025-03-01_2025-03-31
+created_at: '2026-04-09T12:29:53.367454Z'
+updated_at: '2026-04-09T13:10:42.072306Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '911027526'
+canonical_url: https://github.com/adamwlarson/ai-book-writer
+title: ai-book-writer
+summary: Experimenting with AutoGen to see if an entire book can be written with AI
+  agents
+raw_evidence_excerpt: 'Experimenting with AutoGen to see if an entire book can be
+  written with AI agents
+
+
+  AutoGen Book Generator
+
+
+  A Python-based system that uses AutoGen to generate complete books through collaborative
+  AI agents. The system employs multiple specialized agents working together to create
+  coherent, structured narratives from initial prompts.
+
+
+  Features
+
+
+  - Multi-agent collaborative writing system - Structured chapter generation with
+  consistent formatting - Maintains story continuity and character development - Automated
+  world-building and setting management - Support for complex, multi-chapter narratives
+  - Built-in validation and error handling
+
+
+  Architecture
+
+
+  The system uses several specialized agents:
+
+
+  - **Story Planner**: Creates high-level story arcs and plot points - **World Builder**:
+  Establishes and maintains consistent settings - **Memory Keeper**: Tracks continuity
+  and context - **Writer**: Generates the actual prose - **Editor**: Reviews and improves
+  content - **Outline Creator**: Creates detailed chapter outlines
+
+
+  Installation
+
+
+  1. Clone the repository:
+
+
+  2. Create a virtual environment:
+
+
+  3. Install dependencies:
+
+
+  Usage
+
+
+  1. Basic usage:
+
+
+  2. Custom initial prompt:
+
+
+  Configuration
+
+
+  The system can be configured through `config.py`. Key configurations include:
+
+
+  - LLM endpoint URL - Number of chapters - Agent parameters - Output directory settings
+
+
+  Output Structure
+
+
+  Generated content is saved in the `book_output` directory:
+
+
+  Requirements
+
+
+  - Python 3.8+ - AutoGen 0.2.0+ - Other dependencies listed in requirements.txt
+
+
+  Development
+
+
+  To contribute to the project:
+
+
+  1. Fork the repository 2. Create a new branch for your feature 3. Install development
+  dependencies:
+
+
+  4. Make your changes 5. Run tests:
+
+
+  6. Submit a pull request
+
+
+  Error Handling
+
+
+  The system includes robust error handling: - Validates chapter completeness - Ensures
+  proper formatting - Maintains backup copies of generated content - Implements retry
+  logic for failed generations
+
+
+  Limitations
+
+
+  - Requires significant computational resources - Generation time increases with
+  chapter count - Quality depends on the underlying LLM model - May require manual
+  review for final polish
+
+
+  Contributing
+
+
+  Contributions are welcome! Please feel free to submit a Pull Request.
+
+
+  License
+
+
+  This project is licensed under the MIT License - see the LICENSE file for details.
+
+
+  Acknowledgments
+
+
+  - Built using the AutoGen framework - Inspired by collaborative writing systems'
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '911027526'
+    canonical_url: https://github.com/adamwlarson/ai-book-writer
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:42.072306Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

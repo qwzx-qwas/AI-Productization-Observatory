@@ -1,0 +1,191 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_f9119fb8c055
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-04-01_2025-04-30
+created_at: '2026-04-09T13:36:48.315534Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-04-01..2025-04-30
+time_field: pushed_at
+external_id: '942384465'
+canonical_url: https://github.com/web-agent-master/google-search
+title: google-search
+summary: A Playwright-based Node.js tool that bypasses search engine anti-scraping
+  mechanisms to execute Google searches. Local alternative to SERP APIs with MCP server
+  integration.
+raw_evidence_excerpt: "A Playwright-based Node.js tool that bypasses search engine\
+  \ anti-scraping mechanisms to execute Google searches. Local alternative to SERP\
+  \ APIs with MCP server integration.\n\nGoogle Search Tool\n\nA Playwright-based\
+  \ Node.js tool that bypasses search engine anti-scraping mechanisms to execute Google\
+  \ searches and extract results. It can be used directly as a command-line tool or\
+  \ as a Model Context Protocol (MCP) server to provide real-time search capabilities\
+  \ to AI assistants like Claude.\n\n\u4E2D\u6587\u6587\u6863\n\nKey Features\n\n\
+  - **Local SERP API Alternative**: No need to rely on paid search engine results\
+  \ API services, all searches are executed locally - **Advanced Anti-Bot Detection\
+  \ Bypass Techniques**: - Intelligent browser fingerprint management that simulates\
+  \ real user behavior - Automatic saving and restoration of browser state to reduce\
+  \ verification frequency - Smart headless/headed mode switching, automatically switching\
+  \ to headed mode when verification is needed - Randomization of device and locale\
+  \ settings to reduce detection risk - **Raw HTML Retrieval**: Ability to fetch the\
+  \ raw HTML of search result pages (with CSS and JavaScript removed) for analysis\
+  \ and debugging when Google's page structure changes - **Page Screenshot**: Automatically\
+  \ captures and saves a full-page screenshot when saving HTML content - **MCP Server\
+  \ Integration**: Provides real-time search capabilities to AI assistants like Claude\
+  \ without requiring additional API keys - **Completely Open Source and Free**: All\
+  \ code is open source with no usage restrictions, freely customizable and extensible\n\
+  \nTechnical Features\n\n- Developed with TypeScript, providing type safety and better\
+  \ development experience - Browser automation based on Playwright, supporting multiple\
+  \ browser engines - Command-line parameter support for search keywords - MCP server\
+  \ support for AI assistant integration - Returns search results with title, link,\
+  \ and snippet - Option to retrieve raw HTML of search result pages for analysis\
+  \ - JSON format output - Support for both headless and headed modes (for debugging)\
+  \ - Detailed logging output - Robust error handling - Browser state saving and restoration\
+  \ to effectively avoid anti-bot detection\n\nInstallation\n\nWindows Environment\
+  \ Notes\n\nThis tool has been specially adapted for Windows environments:\n\n1.\
+  \ `.cmd` files are provided to ensure command-line tools work properly in Windows\
+  \ Command Prompt and PowerShell 2. Log files are stored in the system temporary\
+  \ directory instead of the Unix/Linux `/tmp` directory 3. Windows-specific process\
+  \ signal handling has been added to ensure proper server shutdown 4. Cross-platform\
+  \ file path handling is used to support Windows path separators\n\nUsage\n\nCommand\
+  \ Line Tool\n\nCommand Line Options\n\n- `-l, --limit `: Result count limit (default:\
+  \ 10) - `-t, --timeout `: Timeout in milliseconds (default: 60000) - `--no-headless`:\
+  \ Show browser interface (for debugging) - `--remote-debugging-port `: Enable remote\
+  \ debugging port (default: 9222) - `--state-file `: Browser state file path (default:\
+  \ ./browser-state.json) - `--no-save-state`: Don't save browser state - `--get-html`:\
+  \ Retrieve raw HTML of search result page instead of parsing results - `--save-html`:\
+  \ Save HTML to file (used with --get-html) - `--html-output `: Specify HTML output\
+  \ file path (used with --get-html and --save-html) - `-V, --version`: Display version\
+  \ number - `-h, --help`: Display help information\n\nOutput Example\n\nHTML Output\
+  \ Example\n\nWhen using the `--get-html` option, the output will include information\
+  \ about the HTML content:\n\nIf you also use the `--save-html` option, the output\
+  \ will include the path where the HTML was saved:\n\nMCP Server\n\nThis project\
+  \ provides Model Context Protocol (MCP) server functionality, allowing AI assistants\
+  \ like Claude to directly use Google search capabilities. MCP is an open protocol\
+  \ that enables AI assistants to safely access external tools and data.\n\nIntegration\
+  \ with Claude Desktop\n\n1. Edit the Claude Desktop configuration file: - Mac: `~/Library/Application\
+  \ Support/Claude/claude_desktop_config.json` - Windows: `%APPDATA%\\Claude\\claude_desktop_config.json`\
+  \ - Usually located at `C:\\Users\\username\\AppData\\Roaming\\Claude\\claude_desktop_config.json`\
+  \ - You can access it directly by entering `%APPDATA%\\Claude` in Windows Explorer\
+  \ address bar\n\n2. Add server configuration and restart Claude\n\nFor Windows environments,\
+  \ you can also use the following configurations:\n\n1. Using cmd.exe with npx:\n\
+  \n2. Using node with full path (recommended if you encounter issues with the above\
+  \ method):\n\nNote: For the second method, you must replace `C:/path/to/your/google-search`\
+  \ with the actual full path to where you installed the google-search package.\n\n\
+  After integration, you can directly use search functionality in Claude, such as\
+  \ \"search for the latest AI research\".\n\nProject Structure\n\nTechnology Stack\n\
+  \n- **TypeScript**: Development language, providing type safety and better development\
+  \ experience - **Node.js**: Runtime environment for executing JavaScript/TypeScript\
+  \ code - **Playwright**: For browser automation, supporting multiple browsers -\
+  \ **Commander**: For parsing command line arguments and generating help information\
+  \ - **Model Context Protocol (MCP)**: Open protocol for AI assistant integration\
+  \ - **MCP SDK**: Development toolkit for implementing MCP servers - **Zod**: Schema\
+  \ definition library for validation and type safety - **pnpm**: Efficient package\
+  \ management tool, saving disk space and installation time\n\nDevelopment Guide\n\
+  \nAll commands can be run in the project root directory:\n\nCLI Development\n\n\
+  MCP Server Development\n\nError Handling\n\nThe tool has built-in robust error handling\
+  \ mechanisms:\n\n- Friendly error messages when browser startup fails - Automatic\
+  \ error status return for network connection issues - Detailed logs for search result\
+  \ parsing failures - Graceful exit and useful information return in timeout situations\n\
+  \nNotes\n\nGeneral Notes\n\n- This tool is for learning and research purposes only\
+  \ - Please comply with Google's terms of service and policies - Do not send requests\
+  \ too frequently to avoid being blocked by Google - Some regions may require a proxy\
+  \ to access Google - Playwright needs to install browsers, which will be automatically\
+  \ downloaded on first use\n\nState Files\n\n- State files contain browser cookies\
+  \ and storage data, please keep them secure - Using state files can effectively\
+  \ avoid Google's anti-bot detection and improve search success rate\n\nMCP Server\n\
+  \n- MCP server requires Node.js v16 or higher - When using the MCP server, please\
+  \ ensure Claude Desktop is updated to the latest version - When configuring Claude\
+  \ Desktop, use absolute paths to the MCP server file\n\nWindows-Specific Notes\n\
+  \n- In Windows environments, you may need administrator privileges to install Playwright\
+  \ browsers for the first time - If you encounter permission issues, try running\
+  \ Command Prompt or PowerShell as administrator - Windows Firewall may block Playwright\
+  \ browser network connections; allow access when prompted - Browser state files\
+  \ are saved by default in the user's home directory as `.google-search-browser-state.json`\
+  \ - Log files are stored in the system temporary directory under the `google-search-logs`\
+  \ folder\n\nComparison with Commercial SERP APIs\n\nCompared to paid search engine\
+  \ results API services (such as SerpAPI), this project offers the following advantages:\n\
+  \n- **Completely Free**: No API call fees - **Local Execution**: All searches are\
+  \ executed locally, no dependency on third-party services - **Privacy Protection**:\
+  \ Search queries are not recorded by third parties - **Customizability**: Fully\
+  \ open source, can be modified and extended as needed - **No Usage Limits**: Not\
+  \ subject to API call count or frequency limitations - **MCP Integration**: Native\
+  \ support for integration with AI assistants like Claude"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-04-01'
+    window_end: '2025-04-30'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-04-01..2025-04-30
+    external_id: '942384465'
+    canonical_url: https://github.com/web-agent-master/google-search
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

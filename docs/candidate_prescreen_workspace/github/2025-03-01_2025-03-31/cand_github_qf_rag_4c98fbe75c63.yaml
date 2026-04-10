@@ -1,0 +1,158 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_4c98fbe75c63
+candidate_batch_id: candidate_batch_github_qf_rag_2025-03-01_2025-03-31
+created_at: '2026-04-09T14:23:00.416050Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '770984750'
+canonical_url: https://github.com/aws-samples/generative-bi-using-rag
+title: generative-bi-using-rag
+summary: A solution guidance for Generative BI using Amazon Bedrock, Amazon OpenSearch
+  with RAG
+raw_evidence_excerpt: "A solution guidance for Generative BI using Amazon Bedrock,\
+  \ Amazon OpenSearch with RAG\n\nGenerative BI using RAG on AWS\n\nThe further updates\
+  \ of this repo is moved to internal gitlab\n\n\u4E2D\u6587\u6587\u6863 | \u65E5\u672C\
+  \u8A9E\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\n\nThe deployment guide here is CDK only.\
+  \ For manual deployment or detailed guide, refer to Manual Deployment Guide in Chinese\n\
+  \nIntroduction\n\nA Generative BI demo using Amazon Bedrock, Amazon OpenSearch with\
+  \ RAG technique.\n\n*Reference Architecture on AWS*\n\n*Design Logic*\n\nUser Operation\
+  \ Manual\n\nProject Data Flowchart\n\nTable of Content 1. Overview - Cost 2. Prerequisites\
+  \ - Operating System 3. Workshop 4. Deployment Steps 5. Deployment Validation 6.\
+  \ Running the Guidance 7. Next Steps 8. Cleanup\n\nOverview This is a comprehensive\
+  \ framework designed to enable Generative BI capabilities on customized data sources\
+  \ (RDS/Redshift) hosted on AWS. It offers the following key features: - Text-to-SQL\
+  \ functionality for querying customized data sources using natural language. - User-friendly\
+  \ interface for adding, editing, and managing data sources, tables, and column descriptions.\
+  \ - Performance enhancement through the integration of historical question-answer\
+  \ ranking and entity recognition. - Customize business information, including entity\
+  \ information, formulas, SQL samples, and analysis ideas for complex business problems.\
+  \ - Add agent task splitting function to handle complex attribution analysis problems.\
+  \ - Intuitive question-answering UI that provides insights into the underlying Text-to-SQL\
+  \ mechanism. - Simple agent design interface for handling complex queries through\
+  \ a conversational approach.\n\nCost This section presents an estimation of the\
+  \ AWS infrastructure costs to run this prototype on AWS. lt's important to note\
+  \ that the we've only used standard publit AWS pricing for the cost estimation.\
+  \ AWS offers enterprise discounts its large-spend clients via a Private Pricing.\
+  \ Your AWS Account team can support you throught this exercise. Hence the absolute\
+  \ cost numbers provided in this simulation are less relevant, the main purpose of\
+  \ this cost simulation exercise is to highlight the main cost drivers of the solution\
+  \ and how you can optimize the cost by tuning various cost elements.\n\nAs of May,\
+  \ 2024, the cost for running this Guidance with the default settings in the _us-west-2_\
+  \ is approximately $219.21 per month for processing 2000 requests.\n\nSample Cost\
+  \ Table\n\nThe following table provides a sample cost breakdown for deploying this\
+  \ Guidance with the default parameters in the US East (N. Virginia) Region for one\
+  \ month.\n\n| AWS service | Dimensions | Cost [USD] per Month | | ----------- |\
+  \ ------------ | ------------ | | Amazon ECS | v0.75 CPU 5GB | $11.51 | | Amazon\
+  \ DynamoDB | 25 provisioned write & read capacity units per month | $ 14.04 | |\
+  \ Amazon Bedrock | 2000 requests per month, with each request consuming 10000 input\
+  \ tokens and 1000 output tokens | $ 90.00 | | Amazon OpenSearch Service | 1 domain\
+  \ with m5.large.search | $ 103.66 |\n\nPrerequisites\n\nOperating System \u201C\
+  CDK are optimized to best work to be initiated on ** **. Deployment in another OS\
+  \ may require additional steps.\u201D\n\nAWS account requirements\n\n- VPC - IAM\
+  \ role with specific permissions - Amazon Bedrock - Amazon ECS - Amazon DynamoDB\
+  \ - Amazon Cognito - Amazon OpenSearch Service - Amazon Elastic Load Balancing -\
+  \ Amazon SageMaker (Optional, if you need customized models to be deployed) - Amazon\
+  \ Secrets Manager\n\nSupported Regions\n\nus-west-2, us-east-2, us-east-1, ap-south-1,\
+  \ ap-southeast-1, ap-southeast-2, ap-northeast-1, eu-central-1, eu-west-1, eu-west-3,\
+  \ or any other region that supports the services (bedrock) used in the Guidance.\n\
+  \nWorkShop\n\nFor more detailed usage instructions, please refer to the workshop\
+  \ below.\n\n\U0001F525\U0001F525\U0001F525 The Workshop Content\n\nDeployment Steps\n\
+  \n1. Prepare CDK Pre-requisites Please follow the instructions in the CDK Workshop\
+  \ to install the CDK toolkit. Make sure your environment have the authorization\
+  \ to create the resources.\n\n2. Set a password for the GenBI Admin Web UI\n\nThe\
+  \ default password is [Empty] for GenBI Admin Web UI. If you need to set a password\
+  \ for the GenBI Admin Web UI, you can update the password in the\n\ncredentials:\
+  \ usernames: jsmith: email: jsmith@gmail.com name: John Smith password: XXXXXX #\
+  \ To be replaced with hashed password rbriggs: email: rbriggs@gmail.com name: Rebecca\
+  \ Briggs password: XXXXXX # To be replaced with hashed password cookie: expiry_days:\
+  \ 30 key: random_signature_key # Must be string name: random_cookie_name preauthorized:\
+  \ emails: - melsby@gmail.com\n\nfrom streamlit_authenticator.utilities.hasher import\
+  \ Hasher hashed_passwords = Hasher(['password123']).generate()\n\ncd generative-bi-using-rag/source/resources\n\
+  \nnpm install aws-cdk-lib\n\nexport AWS_ACCOUNT_ID=XXXXXXXXXXXX export AWS_REGION=us-west-2\n\
+  \ncdk bootstrap aws://$AWS_ACCOUNT_ID/$AWS_REGION cdk deploy GenBiMainStack --require-approval\
+  \ never\n\nGenBiMainStack.AOSDomainEndpoint = XXXXX.us-west-2.es.amazonaws.com GenBiMainStack.APIEndpoint\
+  \ = XXXXX.us-west-2.elb.amazonaws.com GenBiMainStack.FrontendEndpoint = XXXXX.us-west-2.elb.amazonaws.com\
+  \ GenBiMainStack.StreamlitEndpoint = XXXXX.us-west-2.elb.amazonaws.com\n\ncdk destroy\
+  \ GenBiMainStack"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '770984750'
+    canonical_url: https://github.com/aws-samples/generative-bi-using-rag
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -1,0 +1,112 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_d3474a1f3240
+candidate_batch_id: candidate_batch_github_qf_rag_2025-03-01_2025-03-31
+created_at: '2026-04-09T12:39:33.513569Z'
+updated_at: '2026-04-09T13:10:43.333681Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '761155785'
+canonical_url: https://github.com/AIAnytime/Medical-RAG-using-Bio-Mistral-7B
+title: Medical-RAG-using-Bio-Mistral-7B
+summary: This is a RAG implementation using Open Source stack. BioMistral 7B has been
+  used to build this app along with PubMedBert as an embedding model, Qdrant as a
+  self hosted Vector DB, and Langchain & Llama CPP as an orchestration frameworks.
+raw_evidence_excerpt: "This is a RAG implementation using Open Source stack. BioMistral\
+  \ 7B has been used to build this app along with PubMedBert as an embedding model,\
+  \ Qdrant as a self hosted Vector DB, and Langchain & Llama CPP as an orchestration\
+  \ frameworks.\n\nMedical-RAG-using-Bio-Mistral-7B This is a RAG implementation using\
+  \ Open Source stack. BioMistral 7B has been used to build this app along with PubMedBert\
+  \ as an embedding model, Qdrant as a self hosted Vector DB, and Langchain & Llama\
+  \ CPP as an orchestration frameworks. Reference Implementation on Intel AI PC Disclaimer\
+  \ This demo is intended only for the purpose of exploring new LLM use cases at the\
+  \ edge and not recommended for production-grade medical chatbot\n\nDevice Under\
+  \ Test Processor: Intel\xAE Core\u2122 Ultra 7 165H OS: Windows 11 Pro 23H2 RAM:\
+  \ 64GB Python 3.11.9\n\nPrerequisite Install Microsoft Visual C++ compiler toolset\
+  \ required for installing llama-cpp-python\n\nSteps 1. Clone this repository 2.\
+  \ Create a Python virtual environment and install the dependencies\n\n3. Download\
+  \ the INT4 version of BioMistral-7B model in GGUF format 4. Download the embedding\
+  \ model\n\n5. Install Docker Desktop for Windows with optional proxy settings 6.\
+  \ Create the Qdrant container\n\nAccess the Dashboard using http://localhost:6333/dashboard\
+  \ 7. Create embeddings for the new documents in data\n\nCheck the new Collection\
+  \ on the Qdrant Dashboard\n\n8. Run the application\n\nSample Outputs"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '761155785'
+    canonical_url: https://github.com/AIAnytime/Medical-RAG-using-Bio-Mistral-7B
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:43.333681Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

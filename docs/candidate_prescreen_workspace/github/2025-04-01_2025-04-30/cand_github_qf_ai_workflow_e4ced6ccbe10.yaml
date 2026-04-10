@@ -1,0 +1,115 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_e4ced6ccbe10
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-04-01_2025-04-30
+created_at: '2026-04-09T14:08:16.253320Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-04-01..2025-04-30
+time_field: pushed_at
+external_id: '905006864'
+canonical_url: https://github.com/morph-data/morph
+title: morph
+summary: ' Python + Markdown framework for building internal apps.'
+raw_evidence_excerpt: "Python + Markdown framework for building internal apps.\n\n\
+  Features\n\nMorph is a python-centric full-stack framework for building and deploying\
+  \ AI apps.\n\n- **Fast to start** \U0001F680 - Allows you to get up and running\
+  \ with just three commands. - **Deploy and operate \U0001F310** - Easily deploy\
+  \ your AI apps and manage them in production. Managed cloud is available for user\
+  \ authentication and secure data connection. - **No HTML/CSS knowledge required\U0001F530\
+  ** - With **Markdown-based syntax** and **pre-made components**, you can create\
+  \ flexible, visually appealing designs without writing a single line of HTML or\
+  \ CSS. - **Customizable \U0001F6E0\uFE0F** - **Chain Python and SQL** for advanced\
+  \ AI workflows. Custom CSS and custom React components are available for building\
+  \ tailored UI.\n\nQuick start\n\n1. Install morph\n\n2. Create a new project\n\n\
+  3. Start dev server\n\n4. Visit `http://localhsot:8080` on browser.\n\nHow it works\n\
+  \nUnderstanding the concept of developing an AI app in Morph will let you do a flying\
+  \ start.\n\n1. Develop the AI workflow in Python and give it an alias. 2. Create\
+  \ an .mdx file. Each .mdx file becomes a page of your app. 3. Place the component\
+  \ in the MDX file and specify the alias to connect to.\n\nBuilding AI Apps\n\nA\
+  \ little example\n\n1. Create each files in `python` and `pages` directories.\n\n\
+  Python: Using Langchain to create a AI workflow.\n\nMDX: Define the page and connect\
+  \ the data.\n\n2. Run `morph serve` to open the app!\n\nDocumentation\n\nVisit https://docs.morph-data.io\
+  \ for more documentation.\n\nContributing\n\nThanks for your interest in helping\
+  \ improve Morph \u2764\uFE0F\n\n- Before contributing, please read the CONTRIBUTING.md.\
+  \ - If you find any issues, please let us know and open an issue.\n\nLisence\n\n\
+  Morph is Apache 2.0 licensed."
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-04-01'
+    window_end: '2025-04-30'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-04-01..2025-04-30
+    external_id: '905006864'
+    canonical_url: https://github.com/morph-data/morph
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

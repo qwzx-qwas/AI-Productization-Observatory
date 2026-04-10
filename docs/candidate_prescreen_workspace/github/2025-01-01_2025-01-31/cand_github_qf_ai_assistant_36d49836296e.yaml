@@ -1,0 +1,124 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_36d49836296e
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:39:13.278401Z'
+updated_at: '2026-04-09T13:10:36.555838Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '910975901'
+canonical_url: https://github.com/RobToMars/DeepSeek
+title: DeepSeek
+summary: Integration of DeepSeek API into AI Assistant of PyCharm IDE
+raw_evidence_excerpt: "Integration of DeepSeek API into AI Assistant of PyCharm IDE\n\
+  \nDeepSeek Integration Guide for AI Assistant in PyCharm\n\nThis guide provides\
+  \ step-by-step instructions to integrate **DeepSeek V3** into **AI Assistant** as\
+  \ a third-party provider in **PyCharm 2024.3.1 (Professional Edition)**. Data is\
+  \ routed through a fake Ollama server to DeepSeek.\n\n---\n\nPrerequisites - **DeepSeek\
+  \ API Key**: Ensure you have the necessary API key from DeepSeek. - **Python/Docker\
+  \ Knowledge**: Basic understanding of Python and Docker is required.\n\n---\n\n\
+  Setting Up the Fake Ollama Server\n\nUsing Docker To run the docker container, replace\
+  \ `your_api_key_here` with your DeepSeek API key:\n\nUsing Python 1. **Set Up the\
+  \ Repository**: - Clone the repository. - Create a virtual environment. - Install\
+  \ dependencies from `requirements.txt`.\n\n2. **Configure PyCharm**: - Open your\
+  \ project in PyCharm. - Navigate to `Run > Edit Configurations`. - Add a new configuration\
+  \ for `fake_ollama_server.py`. - Add your DeepSeek API key as `API_KEY` environment\
+  \ variable in the run configuration.\n\n---\n\nConfiguring AI Assistant in PyCharm\n\
+  \n1. **Add Third-Party AI Provider**: - Go to `Tools > AI Assistant > Third-party\
+  \ AI providers`. - Check `Enable Ollama` and update `URL` if changed. - Use `Test\
+  \ connection` and `Apply` settings. - AI Assistant will automatically detect the\
+  \ server (approximately every minute) otherwise disable/enable it.\n\n2. **Select\
+  \ the Model**: - Once the server is detected, choose the DeepSeek model from the\
+  \ available options.\n\n3. **Use the Model**: - Enter a user prompt to interact\
+  \ with the selected model.\n\n---\n\nVisual Guides **Python Setup**\n\n**Third-Party\
+  \ AI Providers Configuration**\n\n**AI Assistant Chat Interface**\n\n---\n\nNotes\
+  \ - Ensure `fake_ollama_server.py` is running before proceeding with the integration.\
+  \ - If the server is not detected, restart the server and verify the environment\
+  \ variables.\n\n---\n\nUseful Links - PyCharm AI Assistant Documentation - DeepSeek\
+  \ Chat - DeepSeek API Documentation - Ollama GitHub Repository\n\n---\n\nJoin the\
+  \ Community We welcome contributions and feedback! If you have suggestions or encounter\
+  \ issues, please: - Open an issue. - Submit a pull request.\n\nLet\u2019s improve\
+  \ this integration together!\n\n---\n\nCredits - **DeepSeek V3**: With system prompts\
+  \ of AI Assistant in PyCharm 2024.3.1 (Professional Edition) and the web chat edition.\
+  \ - RobToMars - starkirby125918 - JasonLovesDoggo\n\n---\n\nFor further assistance,\
+  \ refer to the official DeepSeek documentation or contact the support team."
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '910975901'
+    canonical_url: https://github.com/RobToMars/DeepSeek
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:36.555838Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -1,0 +1,288 @@
+document_id: screening_boundary_set_current
+document_purpose: Active candidate prescreen records routed from on_hold into screening_boundary_set.
+status_boundary:
+  asset_layer: screening_calibration_assets
+  represents_formal_gold_set_delivery: false
+  source_status: on_hold
+sample_count: 28
+samples:
+- sequence_id: 1
+  candidate_id: cand_github_qf_agent_7dcabdf3a749
+  title: moon-dev-ai-agents-for-trading
+  canonical_url: https://github.com/daydy-dev/moon-dev-ai-agents-for-trading
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:42.325548Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear; product boundary or delivery maturity remains unclear from repository evidence
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_7dcabdf3a749.yaml
+- sequence_id: 2
+  candidate_id: cand_github_qf_agent_bb61f9ef26c6
+  title: ChatLaw
+  canonical_url: https://github.com/PKU-YuanGroup/ChatLaw
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:42.411643Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear; product boundary or delivery maturity remains unclear from repository evidence
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_bb61f9ef26c6.yaml
+- sequence_id: 3
+  candidate_id: cand_github_qf_ai_assistant_203ee060f4cd
+  title: mcp-compass
+  canonical_url: https://github.com/liuyoshio/mcp-compass
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T08:01:42.594753Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear; product boundary or delivery maturity remains unclear from repository evidence
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_assistant_203ee060f4cd.yaml
+- sequence_id: 4
+  candidate_id: cand_github_qf_ai_workflow_0816edc70f06
+  title: Insurance-image-search
+  canonical_url: https://github.com/mongodb-industry-solutions/Insurance-image-search
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T08:01:42.990212Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear; product boundary or delivery maturity remains unclear from repository evidence
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_workflow_0816edc70f06.yaml
+- sequence_id: 5
+  candidate_id: cand_github_qf_ai_workflow_66b3ce335b8c
+  title: sd-webui-agent-scheduler
+  canonical_url: https://github.com/SipherAGI/sd-webui-agent-scheduler
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T08:01:43.247641Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear; product boundary or delivery maturity remains unclear from repository evidence
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_workflow_66b3ce335b8c.yaml
+- sequence_id: 6
+  candidate_id: cand_github_qf_ai_workflow_d435178c6114
+  title: ComfyUI-CrewAI
+  canonical_url: https://github.com/luandev/ComfyUI-CrewAI
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T08:01:43.333725Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear; product boundary or delivery maturity remains unclear from repository evidence
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_workflow_d435178c6114.yaml
+- sequence_id: 7
+  candidate_id: cand_github_qf_copilot_5574b34d6d89
+  title: CopilotOne
+  canonical_url: https://github.com/SugarAI-HQ/CopilotOne
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T13:10:37.694111Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_copilot_5574b34d6d89.yaml
+- sequence_id: 8
+  candidate_id: cand_github_qf_agent_5895c2d15c8a
+  title: SeeAct
+  canonical_url: https://github.com/OSU-NLP-Group/SeeAct
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:45.153638Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear; product boundary or delivery maturity remains unclear from repository evidence
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_agent_5895c2d15c8a.yaml
+- sequence_id: 9
+  candidate_id: cand_github_qf_ai_assistant_86059bf7d7a9
+  title: AnimatAI
+  canonical_url: https://github.com/Apcoev/AnimatAI
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T08:01:45.509417Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear; product boundary or delivery maturity remains unclear from repository evidence
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_86059bf7d7a9.yaml
+- sequence_id: 10
+  candidate_id: cand_github_qf_ai_workflow_f4c053bccb6a
+  title: multimodal-mcp-client
+  canonical_url: https://github.com/Ejb503/multimodal-mcp-client
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T08:01:46.095967Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear; product boundary or delivery maturity remains unclear from repository evidence
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_f4c053bccb6a.yaml
+- sequence_id: 11
+  candidate_id: cand_github_qf_chatbot_25247729c1c9
+  title: Tiger
+  canonical_url: https://github.com/Upsonic/Tiger
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T13:10:40.344822Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_25247729c1c9.yaml
+- sequence_id: 12
+  candidate_id: cand_github_qf_rag_dcf42d31ced8
+  title: legit-rag
+  canonical_url: https://github.com/Emissary-Tech/legit-rag
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T08:01:47.225863Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear; product boundary or delivery maturity remains unclear from repository evidence
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_rag_dcf42d31ced8.yaml
+- sequence_id: 13
+  candidate_id: cand_github_qf_rag_def132619524
+  title: java-ai-playground
+  canonical_url: https://github.com/marcushellberg/java-ai-playground
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_rag_def132619524.yaml
+- sequence_id: 14
+  candidate_id: cand_github_qf_ai_assistant_726c58188db1
+  title: MCP-Doc
+  canonical_url: https://github.com/MeterLong/MCP-Doc
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_assistant_726c58188db1.yaml
+- sequence_id: 15
+  candidate_id: cand_github_qf_ai_assistant_7294b58d8c3b
+  title: codeselect
+  canonical_url: https://github.com/maynetee/codeselect
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T08:01:47.853599Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear; product boundary or delivery maturity remains unclear from repository evidence
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_assistant_7294b58d8c3b.yaml
+- sequence_id: 16
+  candidate_id: cand_github_qf_ai_assistant_f5bd7564aa28
+  title: lucidity-mcp
+  canonical_url: https://github.com/hyperb1iss/lucidity-mcp
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_assistant_f5bd7564aa28.yaml
+- sequence_id: 17
+  candidate_id: cand_github_qf_chatbot_a7260cb832f0
+  title: AilyticMinds
+  canonical_url: https://github.com/AilyticMinds/AilyticMinds
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T08:01:49.001611Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear; product boundary or delivery maturity remains unclear from repository evidence
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_chatbot_a7260cb832f0.yaml
+- sequence_id: 18
+  candidate_id: cand_github_qf_rag_cc99a5025095
+  title: youtube-rag
+  canonical_url: https://github.com/svpino/youtube-rag
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T08:01:49.919547Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear; product boundary or delivery maturity remains unclear from repository evidence
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_rag_cc99a5025095.yaml
+- sequence_id: 19
+  candidate_id: cand_github_qf_ai_workflow_51c95f103616
+  title: AI-Workflow-Automations
+  canonical_url: https://github.com/fares-automation/AI-Workflow-Automations
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_ai_workflow_51c95f103616.yaml
+- sequence_id: 20
+  candidate_id: cand_github_qf_ai_workflow_08f87407cb38
+  title: aidlc-workflows
+  canonical_url: https://github.com/awslabs/aidlc-workflows
+  source_window: 2025-06-01..2026-04-06
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T08:01:50.687575Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear; product boundary or delivery maturity remains unclear from repository evidence
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_workflow_08f87407cb38.yaml
+- sequence_id: 21
+  candidate_id: cand_github_qf_ai_workflow_99a3695a5af1
+  title: julep
+  canonical_url: https://github.com/julep-ai/julep
+  source_window: 2025-06-01..2026-04-06
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-06T15:27:49.140485Z'
+  human_review_status: on_hold
+  human_review_notes: 'boundary with internal tooling unclear; High-value for quick human pass: lifecycle status and scope policy are the only major blockers; core categorization is straightforward. Likely in-scope if your inclusion policy accepts open-source, self-hostable AI workflow infrastructure. Potentially out-of-scope if policy requires actively operated hosted products or commercially maintained SaaS at review time. evidence_strength=low review_source=existing_llm_prescreen'
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_workflow_99a3695a5af1.yaml
+- sequence_id: 22
+  candidate_id: cand_github_qf_copilot_ba743a424bdc
+  title: CopilotKit
+  canonical_url: https://github.com/CopilotKit/CopilotKit
+  source_window: 2025-06-01..2026-04-06
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-06T15:21:41.484407Z'
+  human_review_status: on_hold
+  human_review_notes: 'boundary with internal tooling unclear; Ready for quick human first-pass: high signal repo, but requires boundary decision and adoption verification before candidate_pool consideration. Treat this as AI product infrastructure (developer-facing SDK + protocol) rather than a standalone end-user AI application. Keep review scoped to whether the observatory includes enabling stacks/frameworks and protocol-led ecosystems, not just consumer/copilot apps. evidence_strength=low review_source=existing_llm_prescreen'
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_copilot_ba743a424bdc.yaml
+- sequence_id: 23
+  candidate_id: cand_github_qf_agent_68c4d1863537
+  title: agent
+  canonical_url: https://github.com/grafana/agent
+  source_window: 2026-01-01..2026-04-06
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-06T11:43:50.153252Z'
+  human_review_status: on_hold
+  human_review_notes: 'boundary with internal tooling unclear; Fast-path human review: validate taxonomy boundary (AI product vs general DevOps observability) and decide if successor migration policy applies. Treat this as observability infrastructure context, not an AI-native application/product. If your scope includes enabling infra for AI systems, review successor project (Grafana Alloy) instead of this EOL repo. evidence_strength=low review_source=existing_llm_prescreen'
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-06/cand_github_qf_agent_68c4d1863537.yaml
+- sequence_id: 24
+  candidate_id: cand_github_qf_ai_assistant_76407fd60578
+  title: ollama
+  canonical_url: https://github.com/ollama/ollama
+  source_window: 2026-01-01..2026-04-06
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-06T11:48:19.845459Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear; Human reviewer should make a quick scope decision first; if infrastructure is allowed, this is likely a strong candidate for deeper evaluation, otherwise route to adjacent infra/platform lane. Treat as in-scope only if the review lane includes AI productized platforms/tooling used to power assistants. Treat as out-of-scope if the lane is limited to direct assistant applications for end users. evidence_strength=medium review_source=existing_llm_prescreen
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-06/cand_github_qf_ai_assistant_76407fd60578.yaml
+- sequence_id: 25
+  candidate_id: cand_github_qf_ai_workflow_f441139943fd
+  title: activepieces
+  canonical_url: https://github.com/activepieces/activepieces
+  source_window: 2026-01-01..2026-04-06
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T08:01:51.193506Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear; product boundary or delivery maturity remains unclear from repository evidence
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-06/cand_github_qf_ai_workflow_f441139943fd.yaml
+- sequence_id: 26
+  candidate_id: cand_github_qf_chatbot_f4818c7c3570
+  title: ChatterBot
+  canonical_url: https://github.com/gunthercox/ChatterBot
+  source_window: 2026-01-01..2026-04-06
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-06T11:53:02.872582Z'
+  human_review_status: on_hold
+  human_review_notes: boundary with internal tooling unclear; Repository evidence strongly indicates a developer-facing Python chatbot engine/library, not a standalone AI product. It appears relevant to chatbot infrastructure discovery but may be legacy/non-LLM architecture and needs recency/activity verification within the requested time window. Treat this as a conversational AI development library (component/tooling) rather than an end-user chatbot application. Keep evaluation focused on productization signals (active maintenance, adoption, deployment fit) and avoid counting it as a finished AI assistant product without additional evidence. evidence_strength=low review_source=existing_llm_prescreen
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-06/cand_github_qf_chatbot_f4818c7c3570.yaml
+- sequence_id: 27
+  candidate_id: cand_github_qf_copilot_108fc741a81d
+  title: CoPilot
+  canonical_url: https://github.com/socfortress/CoPilot
+  source_window: 2026-01-01..2026-04-06
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-06T11:50:44.452145Z'
+  human_review_status: on_hold
+  human_review_notes: 'boundary with internal tooling unclear; Fastest human check: scan docs and dependency manifests for model/provider integrations; if none found, mark as non-AI adjacent tooling. Within the ''ai_applications_and_products'' query family, this appears adjacent but not clearly in-scope: the text emphasizes ''single pane of glass'', connectors, APIs/webhooks, and open-source tool integration. No direct claims of model usage, inference, copiloting via LLM, or AI-driven automation are visible in the provided evidence. evidence_strength=low review_source=existing_llm_prescreen'
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-06/cand_github_qf_copilot_108fc741a81d.yaml
+- sequence_id: 28
+  candidate_id: cand_github_qf_rag_408d7dd2839c
+  title: rag
+  canonical_url: https://github.com/NVIDIA-AI-Blueprints/rag
+  source_window: 2026-01-01..2026-04-06
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-06T11:46:03.233183Z'
+  human_review_status: on_hold
+  human_review_notes: 'boundary with internal tooling unclear; Repository appears to be a production-oriented RAG reference solution/blueprint with deployment, governance, and operations details, but final inclusion should confirm whether the observatory scope prefers end-user products vs. developer reference stacks. Strong fit for AI productization patterns (architecture, deployment modes, guardrails, observability, ops). Boundary risk: this is explicitly a ''reference solution/foundational starting point'' and may be classified as an implementation blueprint rather than a finished product offering. evidence_strength=low review_source=existing_llm_prescreen'
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-06/cand_github_qf_rag_408d7dd2839c.yaml

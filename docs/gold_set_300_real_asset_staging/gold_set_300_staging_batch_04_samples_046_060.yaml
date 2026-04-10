@@ -146,7 +146,7 @@ samples:
       accept ''blueprints/reference solutions'' that require adaptation. evidence_strength=low
       review_source=fresh_llm_review'
     human_reviewed_at: '2026-04-03T10:21:44.579951Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:03:41.909232Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:15.109564Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_rag_937ee6a5a72b.yaml
 - slot_index: 47
   sample_slot_id: GS300-047
@@ -272,7 +272,7 @@ samples:
       review goal allows legacy exemplars or API-pattern baselines. evidence_strength=low
       review_source=existing_llm_prescreen'
     human_reviewed_at: '2026-04-06T14:59:12.658295Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:06.261350Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:56:38.375645Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_chatbot_39cab9febf4c.yaml
 - slot_index: 48
   sample_slot_id: GS300-048
@@ -398,7 +398,7 @@ samples:
       where AI exists, but the provided evidence does not show AI as a core product
       capability. evidence_strength=low review_source=existing_llm_prescreen
     human_reviewed_at: '2026-04-03T10:50:10.735761Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:19.069309Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:53.966722Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-03_2026-07-03/cand_github_qf_agent_bf4b52017416.yaml
 - slot_index: 49
   sample_slot_id: GS300-049
@@ -524,7 +524,7 @@ samples:
       product with owned functionality beyond listing third-party skills. evidence_strength=low
       review_source=existing_llm_prescreen'
     human_reviewed_at: '2026-04-06T15:02:55.659958Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:05.360207Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:56:37.502487Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_workflow_edbe85c86a6e.yaml
 - slot_index: 50
   sample_slot_id: GS300-050
@@ -646,7 +646,7 @@ samples:
       manual override: user requested to stage analyzed samples that are semantically
       non-duplicate against existing staging and against each other'
     human_reviewed_at: '2026-04-09T02:32:24.751437Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:00.198714Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:56:32.552739Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_4935f53a3168.yaml
 - slot_index: 51
   sample_slot_id: GS300-051
@@ -768,7 +768,7 @@ samples:
       manual override: user requested to promote all non-duplicate active candidates
       into gold staging'
     human_reviewed_at: '2026-04-06T11:28:51.162781Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:03:40.112009Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:13.302603Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_ai_workflow_8164ad732291.yaml
 - slot_index: 52
   sample_slot_id: GS300-052
@@ -890,7 +890,7 @@ samples:
       manual override: user requested to promote all non-duplicate active candidates
       into gold staging'
     human_reviewed_at: '2026-04-06T11:28:52.034824Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:03:41.054609Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:14.185945Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_chatbot_0ff41a8d4211.yaml
 - slot_index: 53
   sample_slot_id: GS300-053
@@ -1012,7 +1012,7 @@ samples:
       manual override: user requested to promote all non-duplicate active candidates
       into gold staging'
     human_reviewed_at: '2026-04-06T11:28:52.895315Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:01.310399Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:35.664035Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_ai_assistant_61648890c1ca.yaml
 - slot_index: 54
   sample_slot_id: GS300-054
@@ -1134,7 +1134,7 @@ samples:
       manual override: user requested to promote all non-duplicate active candidates
       into gold staging'
     human_reviewed_at: '2026-04-06T11:28:53.741585Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:04.948465Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:39.328706Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_chatbot_bbbee3622346.yaml
 - slot_index: 55
   sample_slot_id: GS300-055
@@ -1256,7 +1256,7 @@ samples:
       manual override: user requested to promote all non-duplicate active candidates
       into gold staging'
     human_reviewed_at: '2026-04-06T11:28:54.603296Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:07.189473Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:41.670327Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-22_2026-03-29/cand_github_qf_agent_cd9500c30334.yaml
 - slot_index: 56
   sample_slot_id: GS300-056
@@ -1378,7 +1378,7 @@ samples:
       manual override: user requested to promote all non-duplicate active candidates
       into gold staging'
     human_reviewed_at: '2026-04-06T11:28:55.477956Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:08.024232Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:42.491345Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-22_2026-03-29/cand_github_qf_chatbot_f77d8dad92a2.yaml
 - slot_index: 57
   sample_slot_id: GS300-057
@@ -1500,7 +1500,7 @@ samples:
       manual override: user requested to promote all non-duplicate active candidates
       into gold staging'
     human_reviewed_at: '2026-04-06T11:28:56.332841Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:10.408776Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:45.024131Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-29_2026-04-02/cand_github_qf_copilot_8ad55c7d24ae.yaml
 - slot_index: 58
   sample_slot_id: GS300-058
@@ -1622,7 +1622,7 @@ samples:
       manual override: user requested to promote all non-duplicate active candidates
       into gold staging'
     human_reviewed_at: '2026-04-06T11:28:57.191730Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:12.322189Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:47.092757Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_ai_assistant_5a455351c2a0.yaml
 - slot_index: 59
   sample_slot_id: GS300-059
@@ -1744,7 +1744,7 @@ samples:
       manual override: user requested to stage analyzed samples that are semantically
       non-duplicate against existing staging and against each other'
     human_reviewed_at: '2026-04-09T02:32:24.858091Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T08:59:12.821066Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:56:33.463996Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_cefeaa3e098d.yaml
 - slot_index: 60
   sample_slot_id: GS300-060
@@ -1866,5 +1866,5 @@ samples:
       manual override: user requested to promote all non-duplicate active candidates
       into gold staging'
     human_reviewed_at: '2026-04-06T11:28:59.039591Z'
-  staged_from_candidate_prescreen_at: '2026-04-09T09:04:14.212928Z'
+  staged_from_candidate_prescreen_at: '2026-04-09T14:54:49.030471Z'
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_ai_workflow_b31ede31a75a.yaml

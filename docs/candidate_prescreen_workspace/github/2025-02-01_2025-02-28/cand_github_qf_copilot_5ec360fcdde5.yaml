@@ -1,0 +1,137 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_5ec360fcdde5
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-02-01_2025-02-28
+created_at: '2026-04-09T13:56:03.422192Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '709684100'
+canonical_url: https://github.com/Azure-Samples/copilot-openai-todo
+title: copilot-openai-todo
+summary: Discover how to use GitHub Copilot to quickly build a Node.js application
+  with OpenAI and Azure
+raw_evidence_excerpt: "Discover how to use GitHub Copilot to quickly build a Node.js\
+  \ application with OpenAI and Azure\n\n\U0001F916 copilot-openai-todo\n\nThis project\
+  \ is an example Todo app implementation, that aims to showcase how to use GitHub\
+  \ Copilot to build an AI-powered todo app using Azure OpenAI and Azure Cosmos DB.\n\
+  \n**The completed application is located in the completed branch.**\n\nPrerequisites\
+  \ - **Node.js v20+** - **Docker v20+** - **Azure account**. If you're new to Azure,\
+  \ get an Azure account for free to get free Azure credits to get started. - **Azure\
+  \ subscription with access enabled for the Azure OpenAI service**. You can request\
+  \ access with this form. * Alternatively, you can use an OpenAI API key instead\
+  \ of the Azure OpenAI service.\n\nYou can use GitHub Codespaces to work on this\
+  \ project directly from your browser: select the **Code** button, then the **Codespaces**\
+  \ tab and click on **Create Codespaces on main**.\n\nYou can also use the Dev Containers\
+  \ extension for VS Code to work locally using a ready-to-use dev environment.\n\n\
+  After you cloned or opened the project in your dev environment, run the following\
+  \ command to install the dependencies:\n\nProject details\n\nThis project is structured\
+  \ as monorepo and makes use of NPM Workspaces. It's organized as follows:\n\nHow\
+  \ to build the project\n\nThis command will build the client and server packages.\n\
+  \nHow to setup deployment\n\nTo provision the resources on Azure and deploy the\
+  \ services, we use the Azure Dev CLI.\n\nYou can also provision and deploy the infrastructure\
+  \ separately:\n\nHow to run locally\n\nIn order to run the application locally,\
+  \ you'll need to setup the following environment variables in a `.env` file at the\
+  \ root of the project with the following content:\n\nAs the application rely on\
+  \ Azure services for the OpenAI completions and Cosmos DB storage, you'll need to\
+  \ provision these resources on Azure first (see How to setup deployment).\n\nThen,\
+  \ run the following commands to generate your `.env` file:\n\nOnce your `.env` file\
+  \ is ready, you can start the application by running the following command at the\
+  \ root of the project:\n\nThis will run both the client and server: - The client\
+  \ will be available at http://localhost:4200. - The server will be available at\
+  \ http://localhost:3000.\n\nContributing\n\nThis project welcomes contributions\
+  \ and suggestions. Most contributions require you to agree to a Contributor License\
+  \ Agreement (CLA) declaring that you have the right to, and actually do, grant us\
+  \ the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.\n\
+  \nWhen you submit a pull request, a CLA bot will automatically determine whether\
+  \ you need to provide a CLA and decorate the PR appropriately (e.g., status check,\
+  \ comment). Simply follow the instructions provided by the bot. You will only need\
+  \ to do this once across all repos using our CLA.\n\nThis project has adopted the\
+  \ Microsoft Open Source Code of Conduct. For more information see the Code of Conduct\
+  \ FAQ or contact opencode@microsoft.com with any additional questions or comments.\n\
+  \nTrademarks\n\nThis project may contain trademarks or logos for projects, products,\
+  \ or services. Authorized use of Microsoft trademarks or logos is subject to and\
+  \ must follow Microsoft's Trademark & Brand Guidelines. Use of Microsoft trademarks\
+  \ or logos in modified versions of this project must not cause confusion or imply\
+  \ Microsoft sponsorship. Any use of third-party trademarks or logos are subject\
+  \ to those third-party's policies."
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '709684100'
+    canonical_url: https://github.com/Azure-Samples/copilot-openai-todo
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

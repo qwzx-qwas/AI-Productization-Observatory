@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_ai_assistant_fdc462fa4747
 candidate_batch_id: candidate_batch_github_qf_ai_assistant_2026-03-31_2026-04-06
 created_at: '2026-04-06T09:18:15.611098Z'
-updated_at: '2026-04-09T09:04:13.441737Z'
+updated_at: '2026-04-09T14:54:48.188475Z'
 source: github
 source_id: src_github
 source_window: 2026-03-31..2026-04-06
@@ -257,4 +257,4 @@ staging_handoff:
   - 'Semantic duplicate source URL already present in staging: source_url::src_github::https://github.com/openclaw/openclaw
     at /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
     GS300-065 (cand_github_qf_ai_assistant_2cd2782d869c)'
-  last_attempted_at: '2026-04-09T09:04:13.441714Z'
+  last_attempted_at: '2026-04-09T14:54:48.188450Z'

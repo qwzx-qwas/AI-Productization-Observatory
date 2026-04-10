@@ -57,6 +57,8 @@ last_frozen_version: ai_context_v1
   - `11_metrics_and_marts.md`
 - test / acceptance：
   - `14_test_plan_and_acceptance.md`
+- screening calibration assets：
+  - `21_screening_calibration_asset_layer.md`
 - runtime / scheduler：
   - `15_tech_stack_and_runtime.md`
   - `18_runtime_task_and_replay_contracts.md`

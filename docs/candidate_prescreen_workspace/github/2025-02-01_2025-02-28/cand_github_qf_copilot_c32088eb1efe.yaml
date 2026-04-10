@@ -1,0 +1,173 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_c32088eb1efe
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-02-01_2025-02-28
+created_at: '2026-04-09T12:11:42.562868Z'
+updated_at: '2026-04-09T13:10:41.290728Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '669360050'
+canonical_url: https://github.com/geffzhang/awesome-semantickernel
+title: awesome-semantickernel
+summary: Awesome list of tools and projects with the awesome semantic kernel framework
+raw_evidence_excerpt: "Awesome list of tools and projects with the awesome semantic\
+  \ kernel framework\n\nawesome-semantickernel Awesome list of tools and projects\
+  \ with the awesome semantic kernel framework\n\n> Curated list of tools and projects\
+  \ using semantic kernel.\n\nSemantic kernel is an amazing framework to get LLM projects\
+  \ done in a matter of no time and the ecosystem is growing fast. Here is an attempt\
+  \ to keep track of the initiatives around semantic kernel.\n\nContributions welcome.\
+  \ Add links through pull requests or create an issue to start a discussion. Please\
+  \ read the contribution guidelines before contributing.\n\nTable of Contents\n\n\
+  - Awesome semantickernel - Table of Contents - Semantickernel Framework - Plugins\
+  \ - Planners - Personas - Autogen - Open Source Projects - Learn - Notebooks - Videos\
+  \ - Articles - Alternatives - Complement to this list\n\nSemantickernel Framework\n\
+  \n- Concepts: Semantic Kernel concepts doc - Discord discussion - Semantic Kernel\
+  \ Blog: The Official Semantic Kernel blog - Semantic Kernel starter: Starter Projects\
+  \ for Semantic Kernel - VisualStudio Code Tool: Visual Code Studio Semantic Kernel\
+  \ Extension - OSSInsight.io - gosk Go Semantic Kernel (gosk) adapts Microsoft's\
+  \ Semantic Kernel (C#, Python) to provide OpenAI API integration for Golang developers\
+  \ - Semantic Kernel vs LangChain Compare Semantic Kernel and LangChain - analassist-langchain-vs-microsoft-sk\
+  \ AnalAssist - LangChain vs. Microsoft Semantic Kernel - Explore the Power of AI\
+  \ with SKPlayground - SK release SK release notes - SK Extensibility Scenarios how\
+  \ to extend several Semantic Kernel interfaces and to use them in core scenarios.\
+  \ - Generative AI Learning for Beginners A 12 Lesson course teaching everything\
+  \ you need to know to start building Generative AI applications - skUnit is a testing\
+  \ tool for SemanticKernel units, such as plugin functions and kernels - Elsa agent\
+  \ module\n\nPlugins modules that connect Semantic Kernel to different AI models\
+  \ or services, such as GPT-3, Azure Prompt Flow, or the Microsoft Graph Plugins\
+  \ are at the heart of unlocking more potential with your Semantic Kernel applications.\
+  \ They allow you to connect to external data sources and give large language models\
+  \ tools to be able to interact with native functions and API services.\n\nIf you\
+  \ want to try out your plugins and you do not have a ChatGPT plus subscription or\
+  \ are off the waitlist, you can test this directly **for free** using the Semantic\
+  \ Kernel!\n\nSee this tutorial doc or watch the video for how to get set up.\n\n\
+  **Why:** Microsoft is standardizing around the plugin architecture for all of its\
+  \ internal AI copilots and encourage developers to use them for their own applications.\
+  \ This hackathon serves to jumpstart a larger plugin ecosystem that is valuable\
+  \ to the broader community.\n\n**How:** Follow the getting started guides for creating\
+  \ a plugin - **C#** - (Video) | (Repo) Semantic Kernel ChatGPT plugin starter -\
+  \ **Python** - (Video) | (Repo) Semantic Kernel Python Flask (and plugin) Starter\n\
+  \n- NL2EF A Semantic Kernel plugin designed to be a drop-in service that can expose\
+  \ an existing database to be queried via natural language\n\n- sk-ethereumtx-plugin\
+  \ Semantic Kernel ChatGPT plugin for Ethereum Txs - Webscraper AIplugin: AI Plugin\
+  \ that can be used to scrape useful information from a given URL - teams-bot-semantic-kernel\
+  \ A Teams Bot app integrated with Semantic Kernel and its Microsoft Graph Plugin\
+  \ - EmbedElite marketplaceThis project is creating a plugin for the EmbedElite marketplace\
+  \ for the SK Hackathon. The Sementic Kernel plugin facilitates fetching ready-made\
+  \ premium context based on embeddings via an API\n\n- sk-researcher: Using Semantic\
+  \ Kernel to power a research agent that will work on your behalf to research a topic\
+  \ - worddoc-aiplugin AI Plugin that can be used to create and append to word documents\
+  \ - sk-plugin-sample Sample project to show how plugins can be used with Semantic\
+  \ Kernel - semantic-kernel-gradio Using Gradio API for Semantic Kernel - TextEmbeddingGeneration\
+  \ - ServiceStack.AI Speech-to-Text and ChatGPT providers to enable natural language\
+  \ features in .NET - MerkonVectorDB - bankcopilot-semantickernel-aiplugin This is\
+  \ a Bank ChatGPT AI Plugin POC to observe how ChatGPT will perform with additional\
+  \ banking transaction skills - FreeMindLabs.SemanticKernel.Connectors.Elasticsearch\
+  \ A Semantic Kernel connector to Elasticsearch. Use Elasticsearch as your vector\
+  \ database. - Postgres adapter for Kernel Memory - Kernel Memory with SQLiteThis\
+  \ repository contains the SQLite adapter allowing to use Kernel Memory with SQLite\
+  \ - SemanticKernel.Connectors.Memory.SqlServerSQL Server connector for Semantic\
+  \ Kernel plugin and Kernel Memory - Plugin sample built using Semantic Kernel that\
+  \ summarises a given text from Bing Web Search. - Codeblaze.SemanticKernel - PaddleSharp.KernelMemoryUsing\
+  \ PaddleSharp as an OCR engine in kernel memory. - SemanticKernel.DashScope \u8FDE\
+  \u63A5 DashScope \u7684 Semantic Kernel Connector - KernelMemory.Playwright is an\
+  \ open-source project that provides methods to import websites as text or images\
+  \ into memory - Connectors and plugins for integrating large language models via\
+  \ Semantic Kernel - Thor(\u96F7\u795E\u6258\u5C14) \u662F\u4E00\u6B3E\u5F3A\u5927\
+  \u7684\u4EBA\u5DE5\u667A\u80FD\u6A21\u578B\u7BA1\u7406\u5DE5\u5177\uFF0C\u5176\u4E3B\
+  \u8981\u76EE\u7684\u662F\u4E3A\u4E86\u5B9E\u73B0\u591A\u79CDAI\u6A21\u578B\u7684\
+  \u7EDF\u4E00\u7BA1\u7406\u548C\u4F7F\u7528,\u517C\u5BB9OpenAI\u7684\u63A5\u53E3\u683C\
+  \u5F0F - KernelMemory.StructRAGMicrosoft's Kernel Memory StructRAG implementation\
+  \ - EFCore.SqlServer.VectorSearch - generative-ai Access and integrate the Gemini\
+  \ API into your .NET applications. The packages support both Google AI Studio and\
+  \ Google Cloud Vertex AI\n\nPlanners sequences of actions that Semantic Kernel can\
+  \ execute to achieve a goal, such as booking a flight or writing some content. -\
+  \ Introduction to Semantic Kernel Planners for Seamless Orchestration - Semantic\
+  \ Kernel Planner 101 - Using Planners in the SK Java Kernel - UniversalLLMFunctionCaller\
+  \ A planner that integrates into Semantic Kernel to enable function calling on all\
+  \ Chat based LLMs (Mistral, Bard, Claude, LLama etc)\n\nPersonas profiles that define\
+  \ the preferences and personality of Semantic Kernel, such as tone, style, and humor\
+  \ - SKPersona Demonstration of how to give Language Models (LLMs) a unique persona\
+  \ using part of speech tagging and logit bias - Semantic Kernel Personas: An Interview\
+  \ with SK Team Member Brian Krabach\n\nAutogen - A programming framework for agentic\
+  \ AI - A cli chatroom for AutoGen agents"
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '669360050'
+    canonical_url: https://github.com/geffzhang/awesome-semantickernel
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:41.290728Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

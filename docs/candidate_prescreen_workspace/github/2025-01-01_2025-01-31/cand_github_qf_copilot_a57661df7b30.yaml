@@ -1,0 +1,150 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_a57661df7b30
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:48:31.489086Z'
+updated_at: '2026-04-09T13:10:37.894281Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '906627097'
+canonical_url: https://github.com/kturung/cogent
+title: cogent
+summary: ''
+raw_evidence_excerpt: "\U0001F680 Cogent: Your Agentic AI-Powered Coding Companion\n\
+  \n> \"Because rubber duck debugging is better with a duck that talks back!\"\n\n\
+  Cogent is an agentic Github Copilot VSCode chat extension that transforms your coding\
+  \ environment into an autonomous development powerhouse. Think of it as having a\
+  \ brilliant (and slightly nerdy) AI agent who not only understands your code but\
+  \ can independently take actions while keeping you in control. It's your witty companion\
+  \ that makes coding feel like pair programming with a super-smart friend who never\
+  \ needs coffee breaks!\n\n\U0001F3AF Prerequisites\n\nBefore we embark on this magical\
+  \ journey, make sure you have:\n\n- \U0001F4B3 Active GitHub Copilot subscription\
+  \ - \U0001F4E6 VS Code 1.95.0 or higher - \U0001F916 GitHub Copilot Chat extension\n\
+  \n\u2728 Features\n\n- \U0001F916 **Autonomous Agent** - Works independently with\
+  \ minimal supervision - \U0001F4DD **Smart File Operations** - Create, read, update\
+  \ and diff-apply for precise updates to also handle large files with AI precision\
+  \ - \U0001F3AE **Command Execution** - Run terminal commands without leaving your\
+  \ chat - \U0001F9E0 **Context-Aware** - Understands your entire project structure\
+  \ - \U0001F91D **Pair Programming** - Like pair programming, but your partner never\
+  \ needs coffee breaks - \U0001F512 **Safe Operations** - Asks for your approval\
+  \ before making changes or running commands - \U0001F4DA **Workspace Awareness**\
+  \ - Can load your entire workspace for better context (configurable) - \U0001F4DC\
+  \ **Custom Rules** - Teach your AI companion your project's special needs\n\n\U0001F680\
+  \ Installation\n\nFor Development\n\n1. Clone the repository 2. Install dependencies:\n\
+  \n3. Compile the extension:\n\n4. Press F5 in VS Code to start debugging > This\
+  \ will open a new VS Code window with the extension loaded\n\nDistribution\n\nWant\
+  \ to package the extension for distribution? Easy peasy:\n\n1. Install vsce globally:\n\
+  \n2. Package the extension:\n\nThis creates a `.vsix` file you can distribute!\n\
+  \n\u2699\uFE0F Configuration\n\nWorkspace Awareness\n\nCogent can be as nosy or\
+  \ respectful as you want with your workspace:\n\n- When `true`: Cogent loads your\
+  \ entire workspace upfront. Respects your .gitignore file - When `false`: Reads\
+  \ files on-demand. This is the default setting.\n\n> \U0001F4A1 Tip: Disable for\
+  \ large workspaces unless you want Cogent to have a coffee break while loading!\n\
+  \nCustom Rules\n\nWant Cogent to follow your house rules? Create a `.cogentrules`\
+  \ file in your workspace root:\n\nThink of it as leaving a note for your AI roommate\
+  \ about how to keep the code clean! \U0001F9F9\n\nAuto Approval Mode\n\nWant to\
+  \ live life on the edge?\U0001F3A2 Enable auto approval for specific operations:\n\
+  \n> \u26A0\uFE0F WARNING: Enabling auto approval is like giving your AI assistant\
+  \ caffeine and a credit card. Fun things will happen faster, but maybe keep an eye\
+  \ on those pull requests! Remember: with great automation comes great \"what did\
+  \ I just approve?\" moments. \U0001F605\n\n\U0001F3AE Usage\n\n1. Open GitHub Copilot\
+  \ Chat in VS Code 2. Type `@Cogent` followed by your request 3. Watch your agentic\
+  \ buddy spring into action!\n\nCogent works autonomously but always asks for your\
+  \ approval when: - Creating or modifying files in your workspace - Running terminal\
+  \ commands - Making significant project changes\n\nThis ensures you stay in control\
+  \ while letting Cogent handle the heavy lifting!\n\n\U0001F4AC Example Conversations\n\
+  \n\U0001F3AD Behind the Scenes\n\nCogent is powered by the GitHub Copilot and mighty\
+  \ Claude-3.5-Sonnet model. It's like having a tiny developer living in your VS Code.\
+  \ Don't worry, we feed them virtual cookies! \U0001F36A\n\n\U0001F91D Contributing\n\
+  \nFound a bug? Want to make Cogent even more awesome? We love contributions! Just:\n\
+  \n1. Fork it (like a pro) 2. Create your feature branch (`git checkout -b feature/amazing-feature`)\
+  \ 3. Commit your changes (`git commit -m 'Add some amazingness'`) 4. Push to the\
+  \ branch (`git push origin feature/amazing-feature`) 5. Open a PR and do a little\
+  \ victory dance \U0001F483\n\n\U0001F41B Bug Reports\n\nIf something's not working\
+  \ quite right:\n\n1. Open an issue 2. Tell us what went wrong (the more details,\
+  \ the better!) 3. Show us how to reproduce it 4. Cross your fingers and wait for\
+  \ the fix\n\n\U0001F4DC License\n\nMIT - Because sharing is caring! Feel free to\
+  \ use this in your projects, but remember to give a virtual high-five back! \U0001F590\
+  \uFE0F\n\n---\n\nMade with \u2764\uFE0F and lots of \u2615 by awesome developers\
+  \ like you!\n\n*Remember: The best code is the one that works... but the second-best\
+  \ is not writing any code at all!* \U0001F609"
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '906627097'
+    canonical_url: https://github.com/kturung/cogent
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:37.894281Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -1,0 +1,187 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_c75b127efafb
+candidate_batch_id: candidate_batch_github_qf_rag_2025-04-01_2025-04-30
+created_at: '2026-04-09T13:24:29.383616Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-04-01..2025-04-30
+time_field: pushed_at
+external_id: '955249333'
+canonical_url: https://github.com/lehoanglong95/rag-all-in-one
+title: rag-all-in-one
+summary: "\U0001F9E0 Guide to Building RAG (Retrieval-Augmented Generation) Applications"
+raw_evidence_excerpt: "\U0001F9E0 Guide to Building RAG (Retrieval-Augmented Generation)\
+  \ Applications\n\nRAG All-in-one\n\nHello there! \U0001F44B\n\nI'm Long Le, a Machine\
+  \ Learning Engineer passionate about building AI systems. This repository is my\
+  \ collection of RAG (Retrieval-Augmented Generation) resources to help you build\
+  \ powerful AI applications.\n\nFeel free to connect with me on social media to discuss\
+  \ AI, machine learning, or this project:\n\nIntroduction\n\nRAG All-in-one is a\
+  \ guide to building Retrieval-Augmented Generation (RAG) applications. It offers\
+  \ a comprehensive collection of tools, libraries, and frameworks for RAG systems,\
+  \ organized by key components of the RAG architecture. This resource serves as a\
+  \ centralized directory to help you discover the most relevant technologies for\
+  \ each part of your RAG pipeline.\n\nRAG Architecture Diagram\n\nRAG Components\n\
+  \n| Component | Description | |-----------|-------------| | \U0001F4DA Courses and\
+  \ Learning Materials | Comprehensive courses and learning resources for mastering\
+  \ RAG systems | | \U0001F4C4 Document Ingestor | Tools for ingesting and processing\
+  \ raw documents. Document loaders, parsers, and preprocessing tools | | \u2702\uFE0F\
+  \ Chunking Techniques | Methods and tools for breaking down documents into manageable\
+  \ pieces for processing and retrieval | | \U0001F50D Retrieval | Advanced techniques\
+  \ and methods for retrieving relevant information in RAG systems using LlamaIndex\
+  \ | | \U0001F504 Query Transform | Advanced techniques for improving query quality\
+  \ and retrieval effectiveness in RAG systems | | \U0001F916 Agent Framework | End-to-end\
+  \ frameworks for building RAG applications. Unified solutions for RAG implementation\
+  \ | | \U0001F4C0 Database | Databases optimized for storing and searching vector\
+  \ embeddings. Vector storage, similarity search, and indexing | | \U0001F4BB LLM\
+  \ | Large Language Models for generating responses. LLM providers and frameworks\
+  \ | | \U0001F4DD Embedding | Models and services for creating text embeddings. Embedding\
+  \ models and APIs | | \U0001F527 Fine-tuning | Tools and techniques for customizing\
+  \ LLMs to specific domains or tasks | | \U0001F5A5\uFE0F LLM Observability | Tools\
+  \ for monitoring and analyzing LLM performance. Logging, tracing, and analytics\
+  \ | | \U0001F4D5 Prompt Techniques | Methods for effective prompt engineering. Prompt\
+  \ templates and frameworks | | \U0001F914 Evaluation | Tools for assessing RAG system\
+  \ performance. Metrics and evaluation frameworks | | \U0001F4FA User Interface |\
+  \ Tools for building interactive AI interfaces. UI frameworks for RAG applications\
+  \ | | \U0001F680 Complete RAG Applications | Ready-to-use, comprehensive RAG systems\
+  \ that integrate various components of the RAG stack |\n\nCourses and Learning Materials\n\
+  \nComprehensive courses and learning resources for mastering RAG systems.\n\n| Course\
+  \ Name | Platform | Description | Link | Level | |-------------|----------|-------------|------|-------|\n\
+  \nBooks on RAG\n\n| Book | Description | Link | |------|-------------|------| |\
+  \ Building LLMs in Production | Covers building reliable and scalable LLM applications\
+  \ with a focus on RAG systems. Includes techniques for fine-tuning, evaluation,\
+  \ and deployment of production-ready LLM applications. | Link | | Hands-on RAG Development\
+  \ | Focuses on using LangChain and Python to create RAG applications. Covers foundational\
+  \ concepts, practical tutorials, and real-world applications. Includes topics like\
+  \ packaging, deployment, and the future of RAG systems. | Link | | Enterprise RAG\
+  \ | Aimed at building scalable, production-ready RAG systems for enterprise use.\
+  \ Discusses advanced techniques like agent-based retrieval, query rewriting, and\
+  \ handling hallucinations. Includes practical advice for deploying and maintaining\
+  \ RAG systems. | Link | | Knowledge Graph-Enhanced RAG | Focuses on integrating\
+  \ knowledge graphs into RAG systems for improved accuracy and traceability. Offers\
+  \ hands-on techniques for building tools like vector similarity search and knowledge\
+  \ graphs. | Link | | A Simple Guide to Retrieval Augmented Generation | Designed\
+  \ for beginners, this book simplifies RAG concepts and provides step-by-step guidance.\
+  \ Covers modular approaches, LangChain integration, and reducing hallucinations\
+  \ in LLMs. | Link | | RAG-Driven Generative AI | Comprehensive guide to building\
+  \ RAG systems with practical implementations and real-world use cases. | Link |\n\
+  \nDocument Ingestor\n\nTools and libraries for ingesting various document formats,\
+  \ extracting text, and preparing data for further processing.\n\n| Library | Description\
+  \ | Link | GitHub Stars \U0001F31F | |---------|-------------|------|-------------|\n\
+  \n| Adobe PDF Extract | A service provided by Adobe for extracting content from\
+  \ PDF documents | Link | | | Azure AI Document Intelligence | A service provided\
+  \ by Azure for extracting content including text, tables, images from PDF documents\
+  \ | Link | |\n\nChunking Techniques\n\nMethods and tools for breaking down documents\
+  \ into manageable pieces for processing and retrieval.\n\n| Technique | Description\
+  \ | Link | Code Example | |-----------|-------------|----------|--------------|\
+  \ | Fixed Size Chunking | Splits text into chunks of specified character length.\
+  \ Simple and computationally efficient. Key concepts: chunk size, overlap, separator.\
+  \ | Link | Code Example | | Recursive Chunking | Hierarchically divides text using\
+  \ multiple separators in sequence. Respects text structure by recursively applying\
+  \ different separators. | Link | Code Example | | Document Based Chunking | Splits\
+  \ content according to document's inherent structure (headers, code blocks, tables,\
+  \ etc.). Format-aware chunking for Markdown, Python, JS, etc. | Link | Code Example\
+  \ | | Semantic Chunking | Creates chunks based on semantic similarity rather than\
+  \ size. Keeps related content together by analyzing embedding similarity at potential\
+  \ breakpoints. | Link | Code Example | | Agentic Chunking | Uses LLM-based agents\
+  \ to intelligently determine chunk boundaries based on context and content. Can\
+  \ identify standalone propositions for optimal chunking. | Link | Code Example |\n\
+  \nRetrieval\n\nAdvanced techniques and methods for retrieving relevant information\
+  \ in RAG systems using LlamaIndex.\n\n| Technique | Description | Implementation\
+  \ | Link | |-----------|-------------|----------------|-----------| | Fusion Retrieval\
+  \ | Combines different retrieval methods for more comprehensive results | - Hybrid\
+  \ retriever combining keyword and vector search - Customizable weighting between\
+  \ retrieval methods | Link | | Intelligent Reranking | Advanced scoring mechanisms\
+  \ to improve relevance ranking | - LLM-based reranking with custom prompts - Metadata-aware\
+  \ reranking - Cross-encoder reranking | Link | | Multi-faceted Filtering | Various\
+  \ filtering techniques to refine results | - Metadata filtering with custom filters\
+  \ - Similarity threshold filtering - Content-based filtering | | | Hierarchical\
+  \ Indices | Multi-tiered system for efficient information navigation | - Summary\
+  \ index for high-level overview - Document index for detailed retrieval - Recursive\
+  \ retrieval across indices | Link | | Ensemble Retrieval | Combines multiple retrieval\
+  \ models for robust results | - Multiple embedding models - Customizable ensemble\
+  \ strategies - Weighted voting mechanisms | Link | | Dartboard Retrieval | Optimizes\
+  \ for both relevance and diversity | - Combined scoring function - Direct optimization\
+  \ for information gain | Link | | Multi-modal Retrieval | Handles diverse data types\
+  \ for richer responses | - Image-to-text retrieval - Multi-modal embeddings - Cross-modal\
+  \ similarity search | Link |\n\nQuery Transform\n\nAdvanced techniques for improving\
+  \ query quality and retrieval effectiveness in RAG systems."
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-04-01'
+    window_end: '2025-04-30'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-04-01..2025-04-30
+    external_id: '955249333'
+    canonical_url: https://github.com/lehoanglong95/rag-all-in-one
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

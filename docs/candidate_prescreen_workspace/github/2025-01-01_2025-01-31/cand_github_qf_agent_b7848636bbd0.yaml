@@ -1,0 +1,157 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_b7848636bbd0
+candidate_batch_id: candidate_batch_github_qf_agent_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:25:07.562992Z'
+updated_at: '2026-04-09T13:10:36.379709Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '789601531'
+canonical_url: https://github.com/codefuse-ai/CodeFuse-muAgent
+title: CodeFuse-muAgent
+summary: An Innovative Agent Framework Driven by KG Engine
+raw_evidence_excerpt: "An Innovative Agent Framework Driven by KG Engine\n\n\u4E2D\
+  \u6587 \uFF5C English\n\nmuAgent: An Innovative Agent Framework Driven by KG Engine\n\
+  \n\U0001F514 News - [2025.01.13] Released muAgent v2.2, providing muAgent-sdk v0.1.0,\
+  \ supporting ekg-sdk and parallel execution of ekg. - [2024.10.28] The release of\
+  \ muAgent V2.1, which offers one-click deployment capabilities, including KG-based\
+  \ agent orchestration, Java-based tool and agent registration and management, as\
+  \ well as a user-friendly drag-and-drop front-end product UI. - [2024.09.05] we\
+  \ release muAgent v2.0: An Innovative Agent Framework Driven By KG Engine. - [2024.04.01]\
+  \ muAgent is now open source, focusing on multi-agent orchestration and collaborating\
+  \ with technologies such as FunctionCall, RAG, and CodeInterpreter.\n\n\U0001F4DC\
+  \ Contents\n\n- muAgent: An Innovative Agent Framework Driven by KG Engine - \U0001F514\
+  \ News - \U0001F4DC Contents - \U0001F91D Introduction - \U0001F680 QuickStart -\
+  \ EKG Services - SDK - \U0001F9ED Features - \U0001F917 Contribution - \U0001F5C2\
+  \ Miscellaneous - \U0001F4F1 Contact Us\n\n\U0001F91D Introduction\n\nA brand new\
+  \ Agent Framework driven by LLM and EKG(Eventic Knowledge Graph, Industry Knowledge\
+  \ Carrier)\uFF0Ccollaboratively utilizing MultiAgent, FunctionCall, CodeInterpreter,\
+  \ etc. Through canvas-based drag-and-drop and simple text writing, the large language\
+  \ model can assists you in executing various complex SOP under human guidance. It\
+  \ is compatbile with existing frameworks on the market and can achieve four core\
+  \ differentiating technical functions: Complex Reasoning, Online Collaboration,\
+  \ Human Interaction, Knowledge On-demand. This framework has been validated in multiple\
+  \ complex DevOps scenarios within Ant Group. At the sametime, come and experience\
+  \ the Undercover game we quickly built!\n\n\U0001F680 QuickStart\n\nFor complete\
+  \ documentation, see: CodeFuse-muAgent. For more examples, see demos.\n\nEKG Services\n\
+  \nWe provide corresponding muagent-related images (beta) at codefuse-ai/packages.\
+  \ If needed, you can download them using `bash docker_pull_images.sh`.\n\nSDK\n\n\
+  We also provide a version of the SDK for using muagent.\n\n1. Installation\n\n2.\
+  \ For Code answer Prepare related llm and embedding model configurations, see ocs\
+  \ and examples.\n\n\U0001F9ED Features\n\n- **EKG Builder**\uFF1AThrough the design\
+  \ of virtual teams, scene intentions, and semantic nodes, you can experience the\
+  \ differences between online and local documentation, or annotated versus unannotated\
+  \ code handover. For a vast amount of existing documents (text, diagrams, etc.),\
+  \ we support intelligent parsing, which is available for one-click import. - **EKG\
+  \ Assets**\uFF1AThrough comprehensive KG Schema design\u2014including Intention\
+  \ Nodes, Workflow Nodes, Tool Nodes, and Character Nodes\u2014we can meet various\
+  \ SOP Automation requirements. The inclusion of Tool Nodes in the KG enhances the\
+  \ accuracy of tool selection and parameter filling. Additionally, the incorporation\
+  \ of Characters (whether human or agents) in the KG allows for human-involved process\
+  \ advancement, making it flexible for use in multiplayer text-based games. - **EKG\
+  \ Reasoning**\uFF1ACompared to purely model-based or entirely fix-flow Reasoning,\
+  \ our framework allows LLM to operate under human guidance-flexibility, control,\
+  \ and enabling exploration in unknown scenarios. Additionally, successful exploration\
+  \ experiences can be summarized and documented into KG, minimizing detours for similar\
+  \ issues. - **Diagnose**\uFF1AAfter KG editing, visual interface allows for quick\
+  \ debugging, and successful Execution path configurations will be automatically\
+  \ documented, which reduces model interactions, accelerates inference, and minimizes\
+  \ LLM Token costs. Additionally, during online execution, we provide comprehensive\
+  \ end-to-end visual monitoring. - **Memory**\uFF1AUnified message pooling design\
+  \ supports categorized message delivery and subscription based on the needs of different\
+  \ scenarios, like multi-agent. Additionally, through message retrievel, rerank and\
+  \ distillation, it facilitates long-context handling, improving the overall question-answer\
+  \ quality. - **ActionSpace**\uFF1AAdhering to Swagger protocol, we provide tool\
+  \ registration, tool categorization, and permission management, facilitating LLM\
+  \ Function Calling. We offer a secure and trustworthy code execution environment,\
+  \ and ensuring precise code generation to meet the demands of various scenarios,\
+  \ including visual plot, numerical calculations, and table editing.\n\n\U0001F917\
+  \ Contribution\n\nThank you for your interest in the muAgent project! We genuinely\
+  \ appreciate your feedback and invite you to share your suggestions, insights (including\
+  \ constructive criticism), and contributions.\n\nTo facilitate this process, we\
+  \ encourage you to submit your feedback directly through GitHub Issues. There are\
+  \ numerous ways to engage with and contribute to the muAgent project, including\
+  \ code implementation, test development, documentation enhancements, and more.\n\
+  \nWe welcome all forms of contributions and look forward to recognizing your efforts\
+  \ by adding you to our list of contributors. For more details, please refer to our\
+  \ Contribution Guide.\n\n\U0001F5C2 Miscellaneous\n\n\U0001F4F1 Contact Us"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '789601531'
+    canonical_url: https://github.com/codefuse-ai/CodeFuse-muAgent
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:36.379709Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

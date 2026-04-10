@@ -1,0 +1,1628 @@
+document_id: screening_negative_set_current
+document_purpose: Active candidate prescreen records routed from rejected_after_human_review into screening_negative_set.
+status_boundary:
+  asset_layer: screening_calibration_assets
+  represents_formal_gold_set_delivery: false
+  source_status: rejected_after_human_review
+sample_count: 162
+samples:
+- sequence_id: 1
+  candidate_id: cand_github_qf_agent_0892f30f987c
+  title: multi-agent-concierge
+  canonical_url: https://github.com/run-llama/multi-agent-concierge
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T09:35:00.000000Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is an example implementation for building multi-agent systems rather than a deployable AI product.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_0892f30f987c.yaml
+- sequence_id: 2
+  candidate_id: cand_github_qf_agent_48dda93216f9
+  title: puppet-agent
+  canonical_url: https://github.com/puppetlabs/puppet-agent
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T09:35:00.000000Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is archived packaging/build infrastructure for Puppet agent rather than an AI application or product.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_48dda93216f9.yaml
+- sequence_id: 3
+  candidate_id: cand_github_qf_agent_4b865c0baa9d
+  title: reflexion
+  canonical_url: https://github.com/noahshinn/reflexion
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:42.239424Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_4b865c0baa9d.yaml
+- sequence_id: 4
+  candidate_id: cand_github_qf_agent_9df15e42be9f
+  title: awesome-language-agents
+  canonical_url: https://github.com/ysymyth/awesome-language-agents
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T09:20:00.000000Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is a curated paper/resource list about language agents rather than a deployable AI application or product.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_9df15e42be9f.yaml
+- sequence_id: 5
+  candidate_id: cand_github_qf_agent_9e929e73e235
+  title: phillip
+  canonical_url: https://github.com/vladfi1/phillip
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T13:10:36.161328Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_9e929e73e235.yaml
+- sequence_id: 6
+  candidate_id: cand_github_qf_agent_a2444a11f76e
+  title: SMARTS
+  canonical_url: https://github.com/huawei-noah/SMARTS
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T09:25:00.000000Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is a multi-agent RL/autonomous-driving simulation platform rather than a deployable AI application or product.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_a2444a11f76e.yaml
+- sequence_id: 7
+  candidate_id: cand_github_qf_agent_b7848636bbd0
+  title: CodeFuse-muAgent
+  canonical_url: https://github.com/codefuse-ai/CodeFuse-muAgent
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T13:10:36.379709Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_b7848636bbd0.yaml
+- sequence_id: 8
+  candidate_id: cand_github_qf_agent_faf2f6d8a807
+  title: ai-agents-masterclass
+  canonical_url: https://github.com/coleam00/ai-agents-masterclass
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:42.510735Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_faf2f6d8a807.yaml
+- sequence_id: 9
+  candidate_id: cand_github_qf_ai_assistant_235eff7bda72
+  title: pinecone-vercel-starter
+  canonical_url: https://github.com/pinecone-io/pinecone-vercel-starter
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T08:01:42.688865Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_assistant_235eff7bda72.yaml
+- sequence_id: 10
+  candidate_id: cand_github_qf_ai_assistant_36d49836296e
+  title: DeepSeek
+  canonical_url: https://github.com/RobToMars/DeepSeek
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T13:10:36.555838Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_assistant_36d49836296e.yaml
+- sequence_id: 11
+  candidate_id: cand_github_qf_ai_assistant_81e4ddc8bf9c
+  title: team-of-ai-agents
+  canonical_url: https://github.com/l3vels/team-of-ai-agents
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T08:01:42.901063Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_assistant_81e4ddc8bf9c.yaml
+- sequence_id: 12
+  candidate_id: cand_github_qf_ai_assistant_8291a139ece8
+  title: AiDE
+  canonical_url: https://github.com/FixingPixels/AiDE
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T13:10:36.711627Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_assistant_8291a139ece8.yaml
+- sequence_id: 13
+  candidate_id: cand_github_qf_ai_assistant_baccf1f92104
+  title: api-for-cherrystudio
+  canonical_url: https://github.com/tufeiping/api-for-cherrystudio
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T13:10:36.862390Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_assistant_baccf1f92104.yaml
+- sequence_id: 14
+  candidate_id: cand_github_qf_ai_assistant_db8e4d093856
+  title: agency-voice-interface
+  canonical_url: https://github.com/VRSEN/agency-voice-interface
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T13:10:36.939552Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_assistant_db8e4d093856.yaml
+- sequence_id: 15
+  candidate_id: cand_github_qf_ai_workflow_1d20cf3999a5
+  title: metropolis-nim-workflows
+  canonical_url: https://github.com/NVIDIA/metropolis-nim-workflows
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T08:01:43.078912Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_workflow_1d20cf3999a5.yaml
+- sequence_id: 16
+  candidate_id: cand_github_qf_ai_workflow_3f4d4dd289c2
+  title: AIDevWorkflow
+  canonical_url: https://github.com/echoflame14/AIDevWorkflow
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T13:10:37.061830Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_workflow_3f4d4dd289c2.yaml
+- sequence_id: 17
+  candidate_id: cand_github_qf_ai_workflow_431f4fb9f2c5
+  title: human-in-the-loop-in-dify
+  canonical_url: https://github.com/Yevanchen/human-in-the-loop-in-dify
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T08:01:43.160510Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_workflow_431f4fb9f2c5.yaml
+- sequence_id: 18
+  candidate_id: cand_github_qf_ai_workflow_48216ad725c8
+  title: VectorShift
+  canonical_url: https://github.com/amaanshahsr/VectorShift
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T13:10:37.154356Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_workflow_48216ad725c8.yaml
+- sequence_id: 19
+  candidate_id: cand_github_qf_ai_workflow_494c8cced913
+  title: delia
+  canonical_url: https://github.com/MedPhysUL/delia
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T13:10:37.232772Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_workflow_494c8cced913.yaml
+- sequence_id: 20
+  candidate_id: cand_github_qf_ai_workflow_760da2dd3b3e
+  title: do-k8s-cdktf
+  canonical_url: https://github.com/workflows-sh/do-k8s-cdktf
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T13:10:36.853506Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_workflow_760da2dd3b3e.yaml
+- sequence_id: 21
+  candidate_id: cand_github_qf_ai_workflow_be8d113e809f
+  title: aider-based-code-generator
+  canonical_url: https://github.com/presidio-oss/aider-based-code-generator
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T13:10:36.936064Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_ai_workflow_be8d113e809f.yaml
+- sequence_id: 22
+  candidate_id: cand_github_qf_chatbot_07d68ecf2b5a
+  title: Chatbot
+  canonical_url: https://github.com/RachelPol/Chatbot
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T08:01:43.415343Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository does not show enough end-user product evidence to justify staging promotion under the current observatory boundary.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_chatbot_07d68ecf2b5a.yaml
+- sequence_id: 23
+  candidate_id: cand_github_qf_chatbot_160e45ec4b6d
+  title: chatbot
+  canonical_url: https://github.com/CRYPTO-ui123/chatbot
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T08:01:43.491341Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is primarily a component, framework, integration artifact, or starter rather than an end-user AI product.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_chatbot_160e45ec4b6d.yaml
+- sequence_id: 24
+  candidate_id: cand_github_qf_chatbot_3fd9584fc33d
+  title: chatbot
+  canonical_url: https://github.com/xue160709/chatbot
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T08:01:43.567146Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_chatbot_3fd9584fc33d.yaml
+- sequence_id: 25
+  candidate_id: cand_github_qf_chatbot_536da19d7f19
+  title: Ask-Anything
+  canonical_url: https://github.com/OpenGVLab/Ask-Anything
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T08:01:43.647535Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository does not show enough end-user product evidence to justify staging promotion under the current observatory boundary.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_chatbot_536da19d7f19.yaml
+- sequence_id: 26
+  candidate_id: cand_github_qf_chatbot_9ab41eb9c090
+  title: mindmeld
+  canonical_url: https://github.com/cisco/mindmeld
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T13:10:37.197065Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_chatbot_9ab41eb9c090.yaml
+- sequence_id: 27
+  candidate_id: cand_github_qf_chatbot_c42ba91a1630
+  title: langchain-streamlit-template
+  canonical_url: https://github.com/hwchase17/langchain-streamlit-template
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T13:10:37.275112Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_chatbot_c42ba91a1630.yaml
+- sequence_id: 28
+  candidate_id: cand_github_qf_chatbot_d4464711c524
+  title: github2file
+  canonical_url: https://github.com/QuixiAI/github2file
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T13:10:37.377838Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_chatbot_d4464711c524.yaml
+- sequence_id: 29
+  candidate_id: cand_github_qf_copilot_080731591c5c
+  title: OSINT-IA
+  canonical_url: https://github.com/CScorza/OSINT-IA
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T13:10:37.524327Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_copilot_080731591c5c.yaml
+- sequence_id: 30
+  candidate_id: cand_github_qf_copilot_097558e9f999
+  title: AFOS-AfricanOpenSource
+  canonical_url: https://github.com/chaoss/AFOS-AfricanOpenSource
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T13:10:37.597615Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_copilot_097558e9f999.yaml
+- sequence_id: 31
+  candidate_id: cand_github_qf_copilot_7308595b66bc
+  title: are-copilots-local-yet
+  canonical_url: https://github.com/ErikBjare/are-copilots-local-yet
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T08:01:43.905998Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_copilot_7308595b66bc.yaml
+- sequence_id: 32
+  candidate_id: cand_github_qf_copilot_a57661df7b30
+  title: cogent
+  canonical_url: https://github.com/kturung/cogent
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T13:10:37.894281Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_copilot_a57661df7b30.yaml
+- sequence_id: 33
+  candidate_id: cand_github_qf_copilot_c2fcfbaae91e
+  title: copilot
+  canonical_url: https://github.com/timothywarner-org/copilot
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T08:01:43.989329Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_copilot_c2fcfbaae91e.yaml
+- sequence_id: 34
+  candidate_id: cand_github_qf_copilot_d49a69201309
+  title: Bloatynosy
+  canonical_url: https://github.com/builtbybel/Bloatynosy
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T08:01:44.067581Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository does not show enough end-user product evidence to justify staging promotion under the current observatory boundary.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_copilot_d49a69201309.yaml
+- sequence_id: 35
+  candidate_id: cand_github_qf_copilot_e2bed3469764
+  title: workshop-github-copilot-chat
+  canonical_url: https://github.com/ldynia/workshop-github-copilot-chat
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T08:01:44.143066Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_copilot_e2bed3469764.yaml
+- sequence_id: 36
+  candidate_id: cand_github_qf_rag_450d23bf1022
+  title: korvus
+  canonical_url: https://github.com/postgresml/korvus
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T08:01:44.241173Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_rag_450d23bf1022.yaml
+- sequence_id: 37
+  candidate_id: cand_github_qf_rag_694fac0db282
+  title: END-TO-END-GENERATIVE-AI-PROJECTS
+  canonical_url: https://github.com/GURPREETKAURJETHRA/END-TO-END-GENERATIVE-AI-PROJECTS
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T08:01:44.317300Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is a list, survey, catalog, or reference collection rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_rag_694fac0db282.yaml
+- sequence_id: 38
+  candidate_id: cand_github_qf_rag_71b924bcdc17
+  title: MMed-RAG
+  canonical_url: https://github.com/richard-peng-xia/MMed-RAG
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T13:10:38.207158Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_rag_71b924bcdc17.yaml
+- sequence_id: 39
+  candidate_id: cand_github_qf_rag_7816f9628154
+  title: rag-using-langchain-amazon-bedrock-and-opensearch
+  canonical_url: https://github.com/aws-samples/rag-using-langchain-amazon-bedrock-and-opensearch
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T08:01:44.391191Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository does not show enough end-user product evidence to justify staging promotion under the current observatory boundary.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_rag_7816f9628154.yaml
+- sequence_id: 40
+  candidate_id: cand_github_qf_rag_a95ac31789a6
+  title: edu
+  canonical_url: https://github.com/wandb/edu
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T13:10:38.313120Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_rag_a95ac31789a6.yaml
+- sequence_id: 41
+  candidate_id: cand_github_qf_rag_b3177770021f
+  title: byaldi
+  canonical_url: https://github.com/AnswerDotAI/byaldi
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T13:10:38.392180Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_rag_b3177770021f.yaml
+- sequence_id: 42
+  candidate_id: cand_github_qf_rag_d7256861cbcd
+  title: advanced-rag
+  canonical_url: https://github.com/guyernest/advanced-rag
+  source_window: 2025-01-01..2025-01-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T08:01:44.469984Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_rag_d7256861cbcd.yaml
+- sequence_id: 43
+  candidate_id: cand_github_qf_agent_8a59393a88e0
+  title: agent
+  canonical_url: https://github.com/0xfreysa/agent
+  source_window: 2025-01-01..2026-04-06
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:44.552004Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository does not show enough end-user product evidence to justify staging promotion under the current observatory boundary.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2026-04-06/cand_github_qf_agent_8a59393a88e0.yaml
+- sequence_id: 44
+  candidate_id: cand_github_qf_ai_assistant_9c0144ef6286
+  title: Yearning
+  canonical_url: https://github.com/cookieY/Yearning
+  source_window: 2025-01-01..2026-04-06
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T08:01:44.636861Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2026-04-06/cand_github_qf_ai_assistant_9c0144ef6286.yaml
+- sequence_id: 45
+  candidate_id: cand_github_qf_ai_workflow_779af7bc8dbb
+  title: workflow-builder-template
+  canonical_url: https://github.com/vercel-labs/workflow-builder-template
+  source_window: 2025-01-01..2026-04-06
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T08:01:44.720193Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is primarily a component, framework, integration artifact, or starter rather than an end-user AI product.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2026-04-06/cand_github_qf_ai_workflow_779af7bc8dbb.yaml
+- sequence_id: 46
+  candidate_id: cand_github_qf_chatbot_293dea103870
+  title: wechaty
+  canonical_url: https://github.com/wechaty/wechaty
+  source_window: 2025-01-01..2026-04-06
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T08:01:44.805742Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is primarily a component, framework, integration artifact, or starter rather than an end-user AI product.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2026-04-06/cand_github_qf_chatbot_293dea103870.yaml
+- sequence_id: 47
+  candidate_id: cand_github_qf_copilot_10c79e1bff83
+  title: Mastering-GitHub-Copilot-for-Paired-Programming
+  canonical_url: https://github.com/microsoft/Mastering-GitHub-Copilot-for-Paired-Programming
+  source_window: 2025-01-01..2026-04-06
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T08:01:44.895255Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2026-04-06/cand_github_qf_copilot_10c79e1bff83.yaml
+- sequence_id: 48
+  candidate_id: cand_github_qf_rag_a1f5834ac64d
+  title: RAG
+  canonical_url: https://github.com/whyashthakker/RAG
+  source_window: 2025-01-01..2026-04-06
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T08:01:44.979780Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-01-01_2026-04-06/cand_github_qf_rag_a1f5834ac64d.yaml
+- sequence_id: 49
+  candidate_id: cand_github_qf_agent_0185cb758acd
+  title: DexterousHands
+  canonical_url: https://github.com/PKU-MARL/DexterousHands
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T13:10:38.736087Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_agent_0185cb758acd.yaml
+- sequence_id: 50
+  candidate_id: cand_github_qf_agent_1bd6e3f410f1
+  title: openagi
+  canonical_url: https://github.com/aiplanethub/openagi
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T13:10:38.821596Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_agent_1bd6e3f410f1.yaml
+- sequence_id: 51
+  candidate_id: cand_github_qf_agent_3f6b337cf26f
+  title: awesome-ai-agents
+  canonical_url: https://github.com/e2b-dev/awesome-ai-agents
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:45.062170Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is a list, survey, catalog, or reference collection rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_agent_3f6b337cf26f.yaml
+- sequence_id: 52
+  candidate_id: cand_github_qf_agent_978cf16eb707
+  title: pippin
+  canonical_url: https://github.com/pippinlovesyou/pippin
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T13:10:39.037796Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_agent_978cf16eb707.yaml
+- sequence_id: 53
+  candidate_id: cand_github_qf_agent_b2b6c84fc55d
+  title: LLM-Agent-Survey
+  canonical_url: https://github.com/Paitesanshi/LLM-Agent-Survey
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:45.268999Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_agent_b2b6c84fc55d.yaml
+- sequence_id: 54
+  candidate_id: cand_github_qf_agent_d329944e4f65
+  title: awesome-ai-sdks
+  canonical_url: https://github.com/e2b-dev/awesome-ai-sdks
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:45.355232Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is a list, survey, catalog, or reference collection rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_agent_d329944e4f65.yaml
+- sequence_id: 55
+  candidate_id: cand_github_qf_ai_assistant_4a960224fde5
+  title: joplin-mcp-server
+  canonical_url: https://github.com/dweigend/joplin-mcp-server
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_4a960224fde5.yaml
+- sequence_id: 56
+  candidate_id: cand_github_qf_ai_assistant_50a73bc08eb8
+  title: obsidian-mcp-rest
+  canonical_url: https://github.com/PublikPrinciple/obsidian-mcp-rest
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T13:10:39.290328Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_50a73bc08eb8.yaml
+- sequence_id: 57
+  candidate_id: cand_github_qf_ai_assistant_5ba8f9ace99e
+  title: kor
+  canonical_url: https://github.com/eyurtsev/kor
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_5ba8f9ace99e.yaml
+- sequence_id: 58
+  candidate_id: cand_github_qf_ai_assistant_75cffad94a37
+  title: ChatGPT-Assistant
+  canonical_url: https://github.com/SammyFang/ChatGPT-Assistant
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T13:10:39.389097Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_75cffad94a37.yaml
+- sequence_id: 59
+  candidate_id: cand_github_qf_ai_assistant_923a25197e5b
+  title: IDA-Assistant
+  canonical_url: https://github.com/stuxnet147/IDA-Assistant
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T13:10:39.506513Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_923a25197e5b.yaml
+- sequence_id: 60
+  candidate_id: cand_github_qf_ai_assistant_96a6b8f28fa9
+  title: mcp-server-steam
+  canonical_url: https://github.com/dsp/mcp-server-steam
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_96a6b8f28fa9.yaml
+- sequence_id: 61
+  candidate_id: cand_github_qf_ai_assistant_cb839cdfa4a2
+  title: ai-assistants-samples
+  canonical_url: https://github.com/twilio-labs/ai-assistants-samples
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T13:10:39.606422Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_cb839cdfa4a2.yaml
+- sequence_id: 62
+  candidate_id: cand_github_qf_ai_assistant_cc1383e1655c
+  title: maui-ai-assistant
+  canonical_url: https://github.com/jsuarezruiz/maui-ai-assistant
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T13:10:39.689354Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_cc1383e1655c.yaml
+- sequence_id: 63
+  candidate_id: cand_github_qf_ai_assistant_dae799fe72cd
+  title: logseq-plugin-ai-assistant
+  canonical_url: https://github.com/ahonn/logseq-plugin-ai-assistant
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T08:01:45.740044Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is primarily a component, framework, integration artifact, or starter rather than an end-user AI product.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_assistant_dae799fe72cd.yaml
+- sequence_id: 64
+  candidate_id: cand_github_qf_ai_workflow_0ebdb184e247
+  title: ui-butler-turborepo
+  canonical_url: https://github.com/RiP3rQ/ui-butler-turborepo
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_0ebdb184e247.yaml
+- sequence_id: 65
+  candidate_id: cand_github_qf_ai_workflow_53527ca5b0b7
+  title: gitemplate
+  canonical_url: https://github.com/atyrode/gitemplate
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_53527ca5b0b7.yaml
+- sequence_id: 66
+  candidate_id: cand_github_qf_ai_workflow_659e6a7bcc2a
+  title: software-dev-prompt-library
+  canonical_url: https://github.com/codingthefuturewithai/software-dev-prompt-library
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T08:01:45.838005Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_659e6a7bcc2a.yaml
+- sequence_id: 67
+  candidate_id: cand_github_qf_ai_workflow_75326b197750
+  title: systemprompt-mcp-notion
+  canonical_url: https://github.com/Ejb503/systemprompt-mcp-notion
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T13:10:39.867454Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_75326b197750.yaml
+- sequence_id: 68
+  candidate_id: cand_github_qf_ai_workflow_8be8019e713d
+  title: python_sdk
+  canonical_url: https://github.com/edenai/python_sdk
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T13:10:39.944323Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_8be8019e713d.yaml
+- sequence_id: 69
+  candidate_id: cand_github_qf_ai_workflow_c0bc8264c2c3
+  title: n8n-templates-ai-agents
+  canonical_url: https://github.com/Adam-s-tech/n8n-templates-ai-agents
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T13:10:40.176032Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_c0bc8264c2c3.yaml
+- sequence_id: 70
+  candidate_id: cand_github_qf_ai_workflow_c1a33c542209
+  title: self-hosted-ai-starter-kit-2
+  canonical_url: https://github.com/tuyenhm68/self-hosted-ai-starter-kit-2
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T08:01:46.005734Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_c1a33c542209.yaml
+- sequence_id: 71
+  candidate_id: cand_github_qf_ai_workflow_e7fa24f9f6db
+  title: email-agent-workshop
+  canonical_url: https://github.com/felton/email-agent-workshop
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_e7fa24f9f6db.yaml
+- sequence_id: 72
+  candidate_id: cand_github_qf_ai_workflow_f4e4a2d2fbd8
+  title: SecureAI-Ops
+  canonical_url: https://github.com/SimardeepSingh-zsh/SecureAI-Ops
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_f4e4a2d2fbd8.yaml
+- sequence_id: 73
+  candidate_id: cand_github_qf_chatbot_4d73bf5b6c2d
+  title: AI-ML-Driven-Companies-In-Egypt
+  canonical_url: https://github.com/harryadel/AI-ML-Driven-Companies-In-Egypt
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T08:01:46.215672Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_4d73bf5b6c2d.yaml
+- sequence_id: 74
+  candidate_id: cand_github_qf_chatbot_57cafb63db7e
+  title: ollama-fundamentals
+  canonical_url: https://github.com/pdichone/ollama-fundamentals
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T08:01:46.299821Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_57cafb63db7e.yaml
+- sequence_id: 75
+  candidate_id: cand_github_qf_chatbot_6f02bcc0735e
+  title: tidychatmodels
+  canonical_url: https://github.com/AlbertRapp/tidychatmodels
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_6f02bcc0735e.yaml
+- sequence_id: 76
+  candidate_id: cand_github_qf_chatbot_6ff0f804640b
+  title: CSC120-A3
+  canonical_url: https://github.com/jcrouser/CSC120-A3
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T13:10:40.483864Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_6ff0f804640b.yaml
+- sequence_id: 77
+  candidate_id: cand_github_qf_chatbot_9caa5284c59d
+  title: build-ai-agents-and-chatbots-with-langgraph-2021112
+  canonical_url: https://github.com/LinkedInLearning/build-ai-agents-and-chatbots-with-langgraph-2021112
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T08:01:46.379124Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_9caa5284c59d.yaml
+- sequence_id: 78
+  candidate_id: cand_github_qf_chatbot_9ff76b085d6a
+  title: discord-servers-for-ai-agents
+  canonical_url: https://github.com/best-ai-agents/discord-servers-for-ai-agents
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_9ff76b085d6a.yaml
+- sequence_id: 79
+  candidate_id: cand_github_qf_chatbot_a3d4b8602256
+  title: ai
+  canonical_url: https://github.com/codesydney/ai
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T13:10:40.591094Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_a3d4b8602256.yaml
+- sequence_id: 80
+  candidate_id: cand_github_qf_chatbot_a3fe95f5125e
+  title: database-ai-agents
+  canonical_url: https://github.com/pdichone/database-ai-agents
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_a3fe95f5125e.yaml
+- sequence_id: 81
+  candidate_id: cand_github_qf_chatbot_e63efaeb6bfe
+  title: Chatbot-flow-builder
+  canonical_url: https://github.com/sidx8/Chatbot-flow-builder
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_e63efaeb6bfe.yaml
+- sequence_id: 82
+  candidate_id: cand_github_qf_chatbot_ef16342da542
+  title: KickViewBot
+  canonical_url: https://github.com/Infinity242/KickViewBot
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T13:10:40.780140Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_ef16342da542.yaml
+- sequence_id: 83
+  candidate_id: cand_github_qf_copilot_00955861cf16
+  title: gh-copilot-bootcamp-python-ai-demo-2025
+  canonical_url: https://github.com/ManuOSMx/gh-copilot-bootcamp-python-ai-demo-2025
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T08:01:46.542150Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_copilot_00955861cf16.yaml
+- sequence_id: 84
+  candidate_id: cand_github_qf_copilot_132831bcda0e
+  title: expose-github-copilot-http-api
+  canonical_url: https://github.com/purocean/expose-github-copilot-http-api
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T13:10:40.882331Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_copilot_132831bcda0e.yaml
+- sequence_id: 85
+  candidate_id: cand_github_qf_copilot_1e8086efaf88
+  title: copilot-intermediate-training
+  canonical_url: https://github.com/ps-copilot-sandbox/copilot-intermediate-training
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T13:10:40.961432Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_copilot_1e8086efaf88.yaml
+- sequence_id: 86
+  candidate_id: cand_github_qf_copilot_2c15495c6caf
+  title: Powerful-Devs-Hack-Together
+  canonical_url: https://github.com/microsoft/Powerful-Devs-Hack-Together
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T08:01:46.628538Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_copilot_2c15495c6caf.yaml
+- sequence_id: 87
+  candidate_id: cand_github_qf_copilot_4330fca82522
+  title: aitour-repo-principal-list
+  canonical_url: https://github.com/microsoft/aitour-repo-principal-list
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T08:01:46.715621Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_copilot_4330fca82522.yaml
+- sequence_id: 88
+  candidate_id: cand_github_qf_copilot_5678f5ac73b4
+  title: modernize-legacy-cobol-app
+  canonical_url: https://github.com/continuous-copilot/modernize-legacy-cobol-app
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T08:01:46.802093Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository does not show enough end-user product evidence to justify staging promotion under the current observatory boundary.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_copilot_5678f5ac73b4.yaml
+- sequence_id: 89
+  candidate_id: cand_github_qf_copilot_5ec360fcdde5
+  title: copilot-openai-todo
+  canonical_url: https://github.com/Azure-Samples/copilot-openai-todo
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_copilot_5ec360fcdde5.yaml
+- sequence_id: 90
+  candidate_id: cand_github_qf_copilot_9ea61fb4da5f
+  title: tcfy25-copilot-extension-demo
+  canonical_url: https://github.com/dminkovski/tcfy25-copilot-extension-demo
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_copilot_9ea61fb4da5f.yaml
+- sequence_id: 91
+  candidate_id: cand_github_qf_copilot_c13264bb4a1c
+  title: Arm
+  canonical_url: https://github.com/github-technology-partners/Arm
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_copilot_c13264bb4a1c.yaml
+- sequence_id: 92
+  candidate_id: cand_github_qf_copilot_c32088eb1efe
+  title: awesome-semantickernel
+  canonical_url: https://github.com/geffzhang/awesome-semantickernel
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T13:10:41.290728Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_copilot_c32088eb1efe.yaml
+- sequence_id: 93
+  candidate_id: cand_github_qf_copilot_cc4ad571b86e
+  title: SQLAIWorkshop
+  canonical_url: https://github.com/Azure-Samples/SQLAIWorkshop
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_copilot_cc4ad571b86e.yaml
+- sequence_id: 94
+  candidate_id: cand_github_qf_rag_2acde1828b66
+  title: training-fine-tuning-large-language-models-workshop-dhs2024
+  canonical_url: https://github.com/dipanjanS/training-fine-tuning-large-language-models-workshop-dhs2024
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T08:01:46.972239Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_rag_2acde1828b66.yaml
+- sequence_id: 95
+  candidate_id: cand_github_qf_rag_51f11ad6d4a8
+  title: shubhamsaboo-llm-apps
+  canonical_url: https://github.com/D3villl/shubhamsaboo-llm-apps
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T08:01:47.057581Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is a list, survey, catalog, or reference collection rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_rag_51f11ad6d4a8.yaml
+- sequence_id: 96
+  candidate_id: cand_github_qf_rag_5ea74145af83
+  title: digital-human
+  canonical_url: https://github.com/ifitsmanu/digital-human
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_rag_5ea74145af83.yaml
+- sequence_id: 97
+  candidate_id: cand_github_qf_rag_8655dd859361
+  title: java-rag
+  canonical_url: https://github.com/ChinaYiqun/java-rag
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T13:10:41.522974Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_rag_8655dd859361.yaml
+- sequence_id: 98
+  candidate_id: cand_github_qf_rag_9d40fc765863
+  title: advanced-rag-techniques
+  canonical_url: https://github.com/pdichone/advanced-rag-techniques
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T13:10:41.598148Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_rag_9d40fc765863.yaml
+- sequence_id: 99
+  candidate_id: cand_github_qf_rag_e7c4ae1e0df1
+  title: aie-book
+  canonical_url: https://github.com/chiphuyen/aie-book
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T13:10:41.804648Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_rag_e7c4ae1e0df1.yaml
+- sequence_id: 100
+  candidate_id: cand_github_qf_rag_fc8c5be6e133
+  title: mcp-ragdocs
+  canonical_url: https://github.com/qpd-v/mcp-ragdocs
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_rag_fc8c5be6e133.yaml
+- sequence_id: 101
+  candidate_id: cand_github_qf_rag_fdeb8568c299
+  title: LLMInterviewQuestions
+  canonical_url: https://github.com/llmgenai/LLMInterviewQuestions
+  source_window: 2025-02-01..2025-02-28
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T08:01:47.309330Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is a list, survey, catalog, or reference collection rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_rag_fdeb8568c299.yaml
+- sequence_id: 102
+  candidate_id: cand_github_qf_agent_0c2a67d31153
+  title: pinpoint-docker
+  canonical_url: https://github.com/pinpoint-apm/pinpoint-docker
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T13:10:41.913043Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_agent_0c2a67d31153.yaml
+- sequence_id: 103
+  candidate_id: cand_github_qf_agent_2027fc7c2f30
+  title: WebTwin
+  canonical_url: https://github.com/sirioberati/WebTwin
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_agent_2027fc7c2f30.yaml
+- sequence_id: 104
+  candidate_id: cand_github_qf_agent_2dd7ff30974b
+  title: WebPageTest.agent
+  canonical_url: https://github.com/catchpoint/WebPageTest.agent
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_agent_2dd7ff30974b.yaml
+- sequence_id: 105
+  candidate_id: cand_github_qf_agent_3bf3b70d61f2
+  title: ai-book-writer
+  canonical_url: https://github.com/adamwlarson/ai-book-writer
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T13:10:42.072306Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_agent_3bf3b70d61f2.yaml
+- sequence_id: 106
+  candidate_id: cand_github_qf_agent_5bbb645c819c
+  title: swarm
+  canonical_url: https://github.com/openai/swarm
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:47.399143Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is a list, survey, catalog, or reference collection rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_agent_5bbb645c819c.yaml
+- sequence_id: 107
+  candidate_id: cand_github_qf_agent_6d2d7db65662
+  title: Jenkins-Zero-To-Hero
+  canonical_url: https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:47.486851Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is primarily a component, framework, integration artifact, or starter rather than an end-user AI product.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_agent_6d2d7db65662.yaml
+- sequence_id: 108
+  candidate_id: cand_github_qf_agent_7bc31081fbf5
+  title: Gym-Trading-Env
+  canonical_url: https://github.com/ClementPerroud/Gym-Trading-Env
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_agent_7bc31081fbf5.yaml
+- sequence_id: 109
+  candidate_id: cand_github_qf_agent_947df9fbdfa4
+  title: AgenticCookBook
+  canonical_url: https://github.com/microsoft/AgenticCookBook
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_agent_947df9fbdfa4.yaml
+- sequence_id: 110
+  candidate_id: cand_github_qf_agent_99d7a04609ce
+  title: claude-code
+  canonical_url: https://github.com/Onewon/claude-code
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:47.574925Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository does not show enough end-user product evidence to justify staging promotion under the current observatory boundary.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_agent_99d7a04609ce.yaml
+- sequence_id: 111
+  candidate_id: cand_github_qf_agent_b1684c2edfe3
+  title: system-2-research
+  canonical_url: https://github.com/open-thought/system-2-research
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T13:10:42.256330Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_agent_b1684c2edfe3.yaml
+- sequence_id: 112
+  candidate_id: cand_github_qf_agent_d09374368f55
+  title: sequential_social_dilemma_games
+  canonical_url: https://github.com/eugenevinitsky/sequential_social_dilemma_games
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T13:10:42.337581Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_agent_d09374368f55.yaml
+- sequence_id: 113
+  candidate_id: cand_github_qf_agent_e7890054e61d
+  title: ZerePy
+  canonical_url: https://github.com/blorm-network/ZerePy
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:47.762396Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_agent_e7890054e61d.yaml
+- sequence_id: 114
+  candidate_id: cand_github_qf_ai_assistant_946663ebd5b1
+  title: Google-Scholar-MCP-Server
+  canonical_url: https://github.com/JackKuo666/Google-Scholar-MCP-Server
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T08:01:48.024822Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is a list, survey, catalog, or reference collection rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_assistant_946663ebd5b1.yaml
+- sequence_id: 115
+  candidate_id: cand_github_qf_ai_assistant_c302bfb30969
+  title: mcp-server-idapro
+  canonical_url: https://github.com/fdrechsler/mcp-server-idapro
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_assistant_c302bfb30969.yaml
+- sequence_id: 116
+  candidate_id: cand_github_qf_ai_assistant_ddd38d33aeb6
+  title: azureai-assistant-tool
+  canonical_url: https://github.com/Azure-Samples/azureai-assistant-tool
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T08:01:48.118647Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_assistant_ddd38d33aeb6.yaml
+- sequence_id: 117
+  candidate_id: cand_github_qf_ai_assistant_e220d48ebd9f
+  title: openai-assistant
+  canonical_url: https://github.com/boldare/openai-assistant
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_assistant_e220d48ebd9f.yaml
+- sequence_id: 118
+  candidate_id: cand_github_qf_ai_assistant_e4f1e07e00fa
+  title: supabase-mcp
+  canonical_url: https://github.com/coleam00/supabase-mcp
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T08:01:48.211664Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is primarily a component, framework, integration artifact, or starter rather than an end-user AI product.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_assistant_e4f1e07e00fa.yaml
+- sequence_id: 119
+  candidate_id: cand_github_qf_ai_workflow_02700cf03716
+  title: Mastering-LangChain
+  canonical_url: https://github.com/SMACAcademy/Mastering-LangChain
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T08:01:48.299898Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_workflow_02700cf03716.yaml
+- sequence_id: 120
+  candidate_id: cand_github_qf_ai_workflow_7279eeef780f
+  title: Crew-Agent-Generator
+  canonical_url: https://github.com/aakriti1318/Crew-Agent-Generator
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T08:01:48.388280Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository does not show enough end-user product evidence to justify staging promotion under the current observatory boundary.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_workflow_7279eeef780f.yaml
+- sequence_id: 121
+  candidate_id: cand_github_qf_ai_workflow_eed4c94ab288
+  title: AI-COSS
+  canonical_url: https://github.com/potpie-ai/AI-COSS
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T08:01:48.660604Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is a list, survey, catalog, or reference collection rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_workflow_eed4c94ab288.yaml
+- sequence_id: 122
+  candidate_id: cand_github_qf_chatbot_2d0f2c21aeb3
+  title: Bedrock-ChatBot-with-LangChain-and-Streamlit
+  canonical_url: https://github.com/davidshtian/Bedrock-ChatBot-with-LangChain-and-Streamlit
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T08:01:48.748375Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is primarily a component, framework, integration artifact, or starter rather than an end-user AI product.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_chatbot_2d0f2c21aeb3.yaml
+- sequence_id: 123
+  candidate_id: cand_github_qf_chatbot_603231028695
+  title: LookaheadDecoding
+  canonical_url: https://github.com/hao-ai-lab/LookaheadDecoding
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T08:01:48.833267Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository does not show enough end-user product evidence to justify staging promotion under the current observatory boundary.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_chatbot_603231028695.yaml
+- sequence_id: 124
+  candidate_id: cand_github_qf_chatbot_da1bbfc3236b
+  title: Chatbot
+  canonical_url: https://github.com/RidaNaz/Chatbot
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T08:01:49.083923Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is primarily a component, framework, integration artifact, or starter rather than an end-user AI product.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_chatbot_da1bbfc3236b.yaml
+- sequence_id: 125
+  candidate_id: cand_github_qf_copilot_232de976d928
+  title: miyagi
+  canonical_url: https://github.com/Azure-Samples/miyagi
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T08:01:49.167084Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_copilot_232de976d928.yaml
+- sequence_id: 126
+  candidate_id: cand_github_qf_copilot_d15a6e983979
+  title: ai-prompts
+  canonical_url: https://github.com/instructa/ai-prompts
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T08:01:49.342736Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_copilot_d15a6e983979.yaml
+- sequence_id: 127
+  candidate_id: cand_github_qf_copilot_d31518d65841
+  title: copilot-hack
+  canonical_url: https://github.com/github-samples/copilot-hack
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T08:01:49.421975Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is a list, survey, catalog, or reference collection rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_copilot_d31518d65841.yaml
+- sequence_id: 128
+  candidate_id: cand_github_qf_rag_054b5b0e94e2
+  title: ANZ_LLM_Bootcamp
+  canonical_url: https://github.com/Data-drone/ANZ_LLM_Bootcamp
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_rag_054b5b0e94e2.yaml
+- sequence_id: 129
+  candidate_id: cand_github_qf_rag_3ce43746e783
+  title: RAG-Gym
+  canonical_url: https://github.com/RAG-Gym/RAG-Gym
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_rag_3ce43746e783.yaml
+- sequence_id: 130
+  candidate_id: cand_github_qf_rag_4c98fbe75c63
+  title: generative-bi-using-rag
+  canonical_url: https://github.com/aws-samples/generative-bi-using-rag
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_rag_4c98fbe75c63.yaml
+- sequence_id: 131
+  candidate_id: cand_github_qf_rag_502e65f1f024
+  title: chat-your-doc
+  canonical_url: https://github.com/XinyueZ/chat-your-doc
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_rag_502e65f1f024.yaml
+- sequence_id: 132
+  candidate_id: cand_github_qf_rag_561367180675
+  title: RAG_best_practices
+  canonical_url: https://github.com/ali-bahrainian/RAG_best_practices
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T13:10:43.014455Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_rag_561367180675.yaml
+- sequence_id: 133
+  candidate_id: cand_github_qf_rag_7ad44bc8968b
+  title: dbgpts
+  canonical_url: https://github.com/eosphoros-ai/dbgpts
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T13:10:43.088009Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_rag_7ad44bc8968b.yaml
+- sequence_id: 134
+  candidate_id: cand_github_qf_rag_92233d6d73a4
+  title: langgraph-agent
+  canonical_url: https://github.com/kyopark2014/langgraph-agent
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_rag_92233d6d73a4.yaml
+- sequence_id: 135
+  candidate_id: cand_github_qf_rag_9b3306fd5b2b
+  title: ARES
+  canonical_url: https://github.com/stanford-futuredata/ARES
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T08:01:49.672874Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is primarily a component, framework, integration artifact, or starter rather than an end-user AI product.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_rag_9b3306fd5b2b.yaml
+- sequence_id: 136
+  candidate_id: cand_github_qf_rag_cb5c33725061
+  title: LLM-Powered-RAG-System
+  canonical_url: https://github.com/Jenqyang/LLM-Powered-RAG-System
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T08:01:49.844712Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_rag_cb5c33725061.yaml
+- sequence_id: 137
+  candidate_id: cand_github_qf_rag_cd524002d581
+  title: rag-with-rl
+  canonical_url: https://github.com/FareedKhan-dev/rag-with-rl
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T13:10:43.256497Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_rag_cd524002d581.yaml
+- sequence_id: 138
+  candidate_id: cand_github_qf_rag_d3474a1f3240
+  title: Medical-RAG-using-Bio-Mistral-7B
+  canonical_url: https://github.com/AIAnytime/Medical-RAG-using-Bio-Mistral-7B
+  source_window: 2025-03-01..2025-03-31
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T13:10:43.333681Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_rag_d3474a1f3240.yaml
+- sequence_id: 139
+  candidate_id: cand_github_qf_agent_2134d3f6e67d
+  title: ai-assisted-devops
+  canonical_url: https://github.com/iam-veeramalla/ai-assisted-devops
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:50.000704Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_agent_2134d3f6e67d.yaml
+- sequence_id: 140
+  candidate_id: cand_github_qf_agent_2ebff47f264a
+  title: awesome-generative-ai-data-scientist
+  canonical_url: https://github.com/business-science/awesome-generative-ai-data-scientist
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:50.096554Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_agent_2ebff47f264a.yaml
+- sequence_id: 141
+  candidate_id: cand_github_qf_agent_60f137e8db43
+  title: merlin
+  canonical_url: https://github.com/Ne0nd0g/merlin
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:50.183258Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_agent_60f137e8db43.yaml
+- sequence_id: 142
+  candidate_id: cand_github_qf_agent_70504c673b6b
+  title: LangChain-Chinese-Getting-Started-Guide
+  canonical_url: https://github.com/liaokongVFX/LangChain-Chinese-Getting-Started-Guide
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:50.287690Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_agent_70504c673b6b.yaml
+- sequence_id: 143
+  candidate_id: cand_github_qf_agent_aa47c2768930
+  title: open-mcp-client
+  canonical_url: https://github.com/CopilotKit/open-mcp-client
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:50.374413Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is primarily a component, framework, integration artifact, or starter rather than an end-user AI product.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_agent_aa47c2768930.yaml
+- sequence_id: 144
+  candidate_id: cand_github_qf_ai_assistant_3826fbc2871a
+  title: ollama-mcp-bridge
+  canonical_url: https://github.com/patruff/ollama-mcp-bridge
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_ai_assistant_3826fbc2871a.yaml
+- sequence_id: 145
+  candidate_id: cand_github_qf_ai_assistant_71acb3613c07
+  title: gpt-ai-assistant-docs
+  canonical_url: https://github.com/memochou1993/gpt-ai-assistant-docs
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_ai_assistant_71acb3613c07.yaml
+- sequence_id: 146
+  candidate_id: cand_github_qf_ai_assistant_f9119fb8c055
+  title: google-search
+  canonical_url: https://github.com/web-agent-master/google-search
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_ai_assistant
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_ai_assistant_f9119fb8c055.yaml
+- sequence_id: 147
+  candidate_id: cand_github_qf_ai_workflow_336e290417a3
+  title: genai-usecases
+  canonical_url: https://github.com/rguthaa/genai-usecases
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_ai_workflow_336e290417a3.yaml
+- sequence_id: 148
+  candidate_id: cand_github_qf_ai_workflow_e4ced6ccbe10
+  title: morph
+  canonical_url: https://github.com/morph-data/morph
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_ai_workflow
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_ai_workflow_e4ced6ccbe10.yaml
+- sequence_id: 149
+  candidate_id: cand_github_qf_chatbot_309c41b3cc04
+  title: Exno.3-Prompt-Engg
+  canonical_url: https://github.com/Hemamanigandan/Exno.3-Prompt-Engg
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_chatbot_309c41b3cc04.yaml
+- sequence_id: 150
+  candidate_id: cand_github_qf_chatbot_4d7a8d6b85fb
+  title: langchain-chatbot
+  canonical_url: https://github.com/shashankdeshpande/langchain-chatbot
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_chatbot_4d7a8d6b85fb.yaml
+- sequence_id: 151
+  candidate_id: cand_github_qf_chatbot_8797ca8fbfa2
+  title: dotnet-ai-workshop
+  canonical_url: https://github.com/SteveSandersonMS/dotnet-ai-workshop
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_chatbot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_chatbot_8797ca8fbfa2.yaml
+- sequence_id: 152
+  candidate_id: cand_github_qf_copilot_198077981e09
+  title: planventure
+  canonical_url: https://github.com/github-samples/planventure
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_copilot_198077981e09.yaml
+- sequence_id: 153
+  candidate_id: cand_github_qf_copilot_518e86f43c72
+  title: build-applications-w-copilot-agent-mode
+  canonical_url: https://github.com/hanesegi/build-applications-w-copilot-agent-mode
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_copilot_518e86f43c72.yaml
+- sequence_id: 154
+  candidate_id: cand_github_qf_copilot_de0953016d73
+  title: github-copilot-freedom
+  canonical_url: https://github.com/DaydreamCoding/github-copilot-freedom
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_copilot_de0953016d73.yaml
+- sequence_id: 155
+  candidate_id: cand_github_qf_copilot_f68343eadbd0
+  title: SecurityResearcher-Note
+  canonical_url: https://github.com/LearningKijo/SecurityResearcher-Note
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_copilot_f68343eadbd0.yaml
+- sequence_id: 156
+  candidate_id: cand_github_qf_rag_06debe98b53a
+  title: TAG-Bench
+  canonical_url: https://github.com/TAG-Research/TAG-Bench
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_rag_06debe98b53a.yaml
+- sequence_id: 157
+  candidate_id: cand_github_qf_rag_1e10cd36af69
+  title: llm-rag
+  canonical_url: https://github.com/labdmitriy/llm-rag
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_rag_1e10cd36af69.yaml
+- sequence_id: 158
+  candidate_id: cand_github_qf_rag_9458a739e996
+  title: knowledge-graph-rag
+  canonical_url: https://github.com/pdichone/knowledge-graph-rag
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_rag_9458a739e996.yaml
+- sequence_id: 159
+  candidate_id: cand_github_qf_rag_c75b127efafb
+  title: rag-all-in-one
+  canonical_url: https://github.com/lehoanglong95/rag-all-in-one
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_rag_c75b127efafb.yaml
+- sequence_id: 160
+  candidate_id: cand_github_qf_rag_d0a709c373cb
+  title: llm-mcp-rag
+  canonical_url: https://github.com/KelvinQiu802/llm-mcp-rag
+  source_window: 2025-04-01..2025-04-30
+  query_slice_id: qf_rag
+  human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_rag_d0a709c373cb.yaml
+- sequence_id: 161
+  candidate_id: cand_github_qf_agent_ba753c9e7e54
+  title: agent
+  canonical_url: https://github.com/buildkite/agent
+  source_window: 2025-06-01..2026-04-06
+  query_slice_id: qf_agent
+  human_reviewed_at: '2026-04-09T08:01:50.485755Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is primarily a component, framework, integration artifact, or starter rather than an end-user AI product.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_ba753c9e7e54.yaml
+- sequence_id: 162
+  candidate_id: cand_github_qf_copilot_714c3b15a13c
+  title: copilot
+  canonical_url: https://github.com/Copilot-Language/copilot
+  source_window: 2025-06-01..2026-04-06
+  query_slice_id: qf_copilot
+  human_reviewed_at: '2026-04-09T08:01:50.917042Z'
+  human_review_status: rejected_after_human_review
+  human_review_notes: outside observatory scope; repository is educational or workshop material rather than a productized AI application.
+  candidate_document_path: docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_copilot_714c3b15a13c.yaml

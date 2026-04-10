@@ -1,0 +1,128 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_e3dec2a2cd32
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-04-01_2025-04-30
+created_at: '2026-04-09T14:10:25.279528Z'
+updated_at: '2026-04-09T14:56:26.230098Z'
+source: github
+source_id: src_github
+source_window: 2025-04-01..2025-04-30
+time_field: pushed_at
+external_id: '952354263'
+canonical_url: https://github.com/open-responses/open-responses
+title: open-responses
+summary: Self-hosted alternative to OpenAI's Responses API compatible with Agents
+  SDK and works with all model providers (Claude/R1/Qwen/Ollama etc)
+raw_evidence_excerpt: "Self-hosted alternative to OpenAI's Responses API compatible\
+  \ with Agents SDK and works with all model providers (Claude/R1/Qwen/Ollama etc)\n\
+  \nOpen Responses Self-hosted, open-source alternative to OpenAI's Responses API\
+  \ \u2014 With \u2764\uFE0F from the team behind julep\n\nDocumentation \u2022 GitHub\
+  \ \u2022 Examples\n\n\U0001F4A1 What is Open Responses?\n\nOpen Responses lets you\
+  \ run a fully self-hosted version of OpenAI's Responses API. It works seamlessly\
+  \ with any large language model (LLM) provider\u2014whether it's Claude, Qwen, Deepseek\
+  \ R1, Ollama, or others. It's a fully-compatible drop-in replacement for the official\
+  \ API. Swap out OpenAI without changing your existing Agents SDK code.\n\nJust run\
+  \ `npx -y open-responses init` and then:\n\n\U0001F525\U0001F525\U0001F525\n\nWhat\
+  \ is Responses API?\n\nFrom OpenAI docs on Responses API: > The Responses API is\
+  \ our newest core API and an agentic API primitive, combining the simplicity of\
+  \ Chat Completions with the ability to do more agentic tasks. > As model capabilities\
+  \ evolve, the Responses API is a flexible foundation for building action-oriented\
+  \ applications, with built-in tools: > - Web search > - File search > - Computer\
+  \ use\n\nYou can read about it in more detail on their announcement blog post.\n\
+  \n*****\n\n> [!TIP]\n\n](https://github.com/julep-ai/julep)\n\n\u2728 Why use Open\
+  \ Responses?\n\n- **\U0001F504 Bring Your Own Model** - Compatible with any LLM\
+  \ provider you prefer. - **\U0001F512 Privacy First** - Fully self-hosted, giving\
+  \ you total control over your data. - **\U0001F50C Easy Switch** - Drop-in replacement\
+  \ compatible with OpenAI\u2019s official Agents SDK. - **\U0001F680 Fast Setup**\
+  \ - Get started quickly with Docker or our straightforward CLI. - **\U0001F6E0\uFE0F\
+  \ Built-in Tools** - Supports automatic tool calls like web searches using open-source\
+  \ alternatives.\n\n\U0001F680 Quick Start\n\nOne simple command to get going:\n\n\
+  \U0001F4BB Quick Examples\n\nUsing the Agents SDK\n\nMore examples here.\n\nUsing\
+  \ the OpenAI SDK\n\njavascript\n\nMore examples here.\n\npython\n\nMore examples\
+  \ here.\n\n\U0001F4E6 Install Manually\n\nWe publish pre-built docker images which\
+  \ you can run using `docker compose` directly.\n\n\U0001F4DA Learn More\n\n- \U0001F680\
+  \ Quickstart Guide - \U0001F9E0 API Concepts - \U0001F4DD Code Examples - \U0001F4BB\
+  \ CLI Documentation - \U0001F52E Project Roadmap\n\n\U0001F4D6 About Julep AI\n\n\
+  Open Responses is proudly built by Julep AI\u2014the open-source platform empowering\
+  \ data and ML teams to rapidly create, deploy, and manage stateful AI workflows\
+  \ and intelligent agents at scale.\n\n\U0001F91D Contributing\n\nWe\u2019d love\
+  \ your contributions! Open Responses is licensed under Apache-2.0.\n\nCheck out\
+  \ our main project as well"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-04-01'
+    window_end: '2025-04-30'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-04-01..2025-04-30
+    external_id: '952354263'
+    canonical_url: https://github.com/open-responses/open-responses
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+  sample_slot_id: GS300-131
+  sample_id: cand_github_qf_ai_workflow_e3dec2a2cd32
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:56:26.230075Z'

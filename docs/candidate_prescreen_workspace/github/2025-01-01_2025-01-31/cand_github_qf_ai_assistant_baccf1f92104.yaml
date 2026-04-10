@@ -1,0 +1,133 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_baccf1f92104
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:41:13.210132Z'
+updated_at: '2026-04-09T13:10:36.862390Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '913067000'
+canonical_url: https://github.com/tufeiping/api-for-cherrystudio
+title: api-for-cherrystudio
+summary: "\u4E3A Cherry Studio \u63D0\u4F9B\u4E00\u4E2AAPI \u670D\u52A1\uFF0C\u5C06\
+  Cherry Studio \u4F5C\u4E3A\u4E00\u4E2A\u5BA2\u6237\u7AEF\uFF0C\u7EF4\u62A4RAG\u548C\
+  \u6A21\u578B\u4FE1\u606F\uFF0C\u7136\u540EAPI\u670D\u52A1\u53EF\u4EE5\u5BF9\u5916\
+  \u63D0\u4F9B\u670D\u52A1"
+raw_evidence_excerpt: "\u4E3A Cherry Studio \u63D0\u4F9B\u4E00\u4E2AAPI \u670D\u52A1\
+  \uFF0C\u5C06Cherry Studio \u4F5C\u4E3A\u4E00\u4E2A\u5BA2\u6237\u7AEF\uFF0C\u7EF4\
+  \u62A4RAG\u548C\u6A21\u578B\u4FE1\u606F\uFF0C\u7136\u540EAPI\u670D\u52A1\u53EF\u4EE5\
+  \u5BF9\u5916\u63D0\u4F9B\u670D\u52A1\n\nFork from Cherry Studio\n\nAdd **API Service**\
+  \ for **Cherry Studio** to support **Chat**, **RAG** and **Knowledge Base**. more\
+  \ details see API\n\nEnglish | \u4E2D\u6587 | \u65E5\u672C\u8A9E\n\n\U0001F352 Cherry\
+  \ Studio\n\nCherry Studio is a desktop client that supports for multiple LLM providers,\
+  \ available on Windows, Mac and Linux.\n\n\U0001F44F Join Telegram Group\n\n\U0001F320\
+  \ Screenshot\n\n\U0001F31F Key Features\n\n1. **Diverse LLM Provider Support**:\n\
+  \n- \u2601\uFE0F Major LLM Cloud Services: OpenAI, Gemini, Anthropic, and more -\
+  \ \U0001F517 AI Web Service Integration: Claude, Peplexity, Poe, and others - \U0001F4BB\
+  \ Local Model Support with Ollama\n\n2. **AI Assistants & Conversations**:\n\n-\
+  \ \U0001F4DA 300+ Pre-configured AI Assistants - \U0001F916 Custom Assistant Creation\
+  \ - \U0001F4AC Multi-model Simultaneous Conversations\n\n3. **Document & Data Processing**:\n\
+  \n- \U0001F4C4 Support for Text, Images, Office, PDF, and more - \u2601\uFE0F WebDAV\
+  \ File Management and Backup - \U0001F4CA Mermaid Chart Visualization - \U0001F4BB\
+  \ Code Syntax Highlighting\n\n4. **Practical Tools Integration**:\n\n- \U0001F50D\
+  \ Global Search Functionality - \U0001F4DD Topic Management System - \U0001F524\
+  \ AI-powered Translation - \U0001F3AF Drag-and-drop Sorting - \U0001F50C Mini Program\
+  \ Support\n\n5. **Enhanced User Experience**: - \U0001F5A5\uFE0F Cross-platform\
+  \ Support for Windows, Mac, and Linux - \U0001F4E6 Ready to Use, No Environment\
+  \ Setup Required - \U0001F3A8 Light/Dark Themes and Transparent Window - \U0001F4DD\
+  \ Complete Markdown Rendering - \U0001F932 Easy Content Sharing\n\n\U0001F5A5\uFE0F\
+  \ Develop\n\nIDE Setup\n\nCursor + ESLint + Prettier\n\nProject Setup\n\nInstall\n\
+  \nDevelopment\n\nBuild\n\n\U0001F91D Contributing\n\nWe welcome contributions to\
+  \ Cherry Studio! Here are some ways you can contribute:\n\n1. **Contribute Code**:\
+  \ Develop new features or optimize existing code. 2. **Fix Bugs**: Submit fixes\
+  \ for any bugs you find. 3. **Maintain Issues**: Help manage GitHub issues. 4. **Product\
+  \ Design**: Participate in design discussions. 5. **Write Documentation**: Improve\
+  \ user manuals and guides. 6. **Community Engagement**: Join discussions and help\
+  \ users. 7. **Promote Usage**: Spread the word about Cherry Studio.\n\nGetting Started\n\
+  \n1. **Fork the Repository**: Fork and clone it to your local machine. 2. **Create\
+  \ a Branch**: For your changes. 3. **Submit Changes**: Commit and push your changes.\
+  \ 4. **Open a Pull Request**: Describe your changes and reasons.\n\nFor more detailed\
+  \ guidelines, please refer to our Contributing Guide.\n\nThank you for your support\
+  \ and contributions!\n\n\U0001F680 Contributors\n\n\U0001F310 Community\n\nTelegram\
+  \ | Email | Twitter\n\n\U0001F4E3 Product Hunt\n\n\u2615 Sponsor\n\nBuy Me a Coffee\n\
+  \n\U0001F4C3 License\n\nLICENSE\n\n\u2B50\uFE0F Star History"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '913067000'
+    canonical_url: https://github.com/tufeiping/api-for-cherrystudio
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:36.862390Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

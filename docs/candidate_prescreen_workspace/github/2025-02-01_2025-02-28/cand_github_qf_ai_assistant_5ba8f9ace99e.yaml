@@ -1,0 +1,137 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_5ba8f9ace99e
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-02-01_2025-02-28
+created_at: '2026-04-09T13:49:31.950029Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '602715785'
+canonical_url: https://github.com/eyurtsev/kor
+title: kor
+summary: "LLM(\U0001F63D) "
+raw_evidence_excerpt: "LLM(\U0001F63D)\n\n> [!WARNING] > If you're using a chat model\
+  \ that supports a tool calling API, you should probably be using the chat models'\
+  \ tool calling API instead of Kor! > > Kor is best suited for old style LLMs that\
+  \ did not have a chat interface and did not support tool calling. > > Read the tool\
+  \ calling guide in LangChain for more details. > > Please refer to the chat model\
+  \ integration table for a list of chat models that support native tool calling.\n\
+  \nKor\n\nThis is a half-baked prototype that \"helps\" you extract structured data\
+  \ from text using LLMs \U0001F9E9.\n\nSpecify the schema of what should be extracted\
+  \ and provide some examples.\n\nKor will generate a prompt, send it to the specified\
+  \ LLM and parse out the output.\n\nYou might even get results back.\n\nSo yes \u2013\
+  \ it\u2019s just another wrapper on top of LLMs with its own flavor of abstractions.\
+  \ \U0001F638\n\nSee documentation.\n\nIntegrated with the LangChain framework \U0001F63D\
+  \U0001F497 \U0001F99C\U0001F517.\n\nKor vs. LangChain\n\nThere are 3 different approaches\
+  \ for extracting information using LLMs:\n\n1. prompt based/parsing 2. function/tool\
+  \ calling 3. JSON mode\n\nPlease see the LangChain extraction use case docs for\
+  \ an overview.\n\nKor has a pretty good implementation of the **parsing** approach.\
+  \ The approach works with all good-enough LLMs regardless of whether they support\
+  \ function/tool calling or JSON modes.\n\nExtraction quality is principally driven\
+  \ by providing good reference examples and good schema documentation.\n\nPlease\
+  \ see guidelines here and here.\n\nVersion 1.0.0 Release\n\n* `kor` compatible with\
+  \ both pydantic v2 and v1. * pydantic v2 had significant breaking changes w/ respect\
+  \ to v1, `kor` major version bump was used as a precaution.\n\nMain things to watch\
+  \ out for:\n\n1. Use a `default` value for any Optional fields if using pydantic\
+  \ v2 for validation.\n\n2. Kor schema is typed checked using pydantic. Pydantic\
+  \ v2 is stricter, and may catch issues that were hiding in existing user code that\
+  \ was using the `kor` library.\n\n3. Serialization has not yet been implemented\
+  \ with pydantic v2.\n\nKor style schema\n\nPydantic style schema\n\n* See documentation\
+  \ here pydantic.\n\nCompatibility\n\n`Kor` is tested against python 3.8, 3.9, 3.10,\
+  \ 3.11.\n\nInstallation\n\n\U0001F4A1 Ideas\n\nIdeas of some things that could be\
+  \ done with Kor.\n\n* Extract data from text that matches an extraction schema.\
+  \ * Power an AI assistant with skills by precisely understanding a user request.\
+  \ * Provide natural language access to an existing API.\n\n\U0001F6A7 Prototype\n\
+  \nPrototype! So the API is not expected to be stable!\n\n\u2728 What does Kor excel\
+  \ at? \U0001F31F\n\n* Making mistakes! Plenty of them! * Slow! It uses large prompts\
+  \ with examples, and works best with the larger slower LLMs. * Crashing for long\
+  \ enough pieces of text! Context length window could become limiting when working\
+  \ with large forms or long text inputs.\n\nThe expectation is that as LLMs improve\
+  \ some of these issues will be mitigated.\n\nLimitations\n\nKor has no limitations.\
+  \ (Just kidding.)\n\nTake a look at the section above and at the compatibility section.\n\
+  \nGot Ideas?\n\nOpen an issue, and let's discuss!\n\n\U0001F3B6 Why the name?\n\n\
+  Fast to type and sufficiently unique.\n\nContributing\n\nIf you have any ideas or\
+  \ feature requests, please open an issue and share!\n\nSee CONTRIBUTING.md for more\
+  \ information.\n\nOther packages\n\nProbabilistically speaking this package is unlikely\
+  \ to work for your use case.\n\nSo here are some great alternatives:\n\n* Promptify\
+  \ * MiniChain"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '602715785'
+    canonical_url: https://github.com/eyurtsev/kor
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

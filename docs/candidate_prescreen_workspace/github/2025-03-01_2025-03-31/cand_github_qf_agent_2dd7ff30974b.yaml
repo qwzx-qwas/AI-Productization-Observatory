@@ -1,0 +1,187 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_2dd7ff30974b
+candidate_batch_id: candidate_batch_github_qf_agent_2025-03-01_2025-03-31
+created_at: '2026-04-09T14:14:05.176847Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '81830571'
+canonical_url: https://github.com/catchpoint/WebPageTest.agent
+title: WebPageTest.agent
+summary: Cross-platform WebPageTest agent
+raw_evidence_excerpt: "Cross-platform WebPageTest agent\n\n`wptagent`\n\nCross-platform\
+  \ WebPageTest agent\n\n- \U0001F961 Installation instructons - \U0001F40B Docker\
+  \ instructions\n\nContributing\n\nThere are separate lines of development under\
+  \ different licenses (pull requests accepted to either):\n\n- The `master` branch\
+  \ where most active development occurs has the Polyform Shield 1.0.0 license - The\
+  \ `apache` branch has the more permissive Apache 2.0 license\n\nSupported Platforms/Browsers\n\
+  \n- Chromium-based browsers are the only ones that currently support manipulating\
+  \ requests (changing headers, blocking requests, etc). Firefox and Safari do not\
+  \ currently support capturing response bodies and running optimization checks. -\
+  \ All browsers should support basic page loading, scripts, and video capture on\
+  \ all platforms. - Traffic-shaping is supported on all platforms.\n\n\u26A0\uFE0F\
+  \ Known Issues\n\n- Internet Explorer does not support manipulating requests (adding\
+  \ headers, blocking requests, etc)\n\nLinux (with display, or headless with [Xvfb])\n\
+  \n- Chrome: Stable, Beta, and Unstable - Firefox: Stable and Nightly - Opera: Stable,\
+  \ Beta, and Developer - Brave: Stable, Beta, Dev, and Nightly - Microsoft Edge:\
+  \ Dev - Epiphany: Ubuntu 20.04+ - Vivaldi\n\nWindows\n\n- Chrome: Stable, Beta,\
+  \ Dev and Canary - Firefox: Stable, ESR, Developer Edition, Beta, and Nightly -\
+  \ Microsoft Edge: Legacy and Chromium-based - Internet Explorer - Opera: Stable,\
+  \ Beta and Developer - Brave: Stable, Beta, Dev and Nightly\n\nMacOS (Intel and\
+  \ Apple Silicon)\n\n- Chrome: Stable and Canary - Firefox: Stable and Nightly -\
+  \ Safari: iOS Simulator\n\nAndroid (requires a tethered host; Raspberry Pi preferred)\
+  \ - Chrome (Stable, Beta, Dev, and Canary) - Samsung Internet - Several browsers\
+  \ run as \u201Cblack box\u201D tests (single page load, only visual metrics): -\
+  \ Chrome (Stable, Beta, Dev and Canary) - Samsung Browser - Opera - Opera Mini -\
+  \ UC Browser - UC Mini - Firefox (Stable and Beta)\n\nCommand-line options\n\nBasic\
+  \ agent config\n\n* `-v`, `-vv`, `-vvv`\u2026: Increase verbosity (specify multiple\
+  \ times for more). `-vvvv` for full debug output. * `--name`: Agent name (defaults\
+  \ to the machine\u2019s `hostname`). * `--exit`: Exit after the specified number\
+  \ of minutes. Useful for running in a shell script that does maintenance or periodic\
+  \ updates (like hourly). * `--dockerized`: The agent is running inside a docker\
+  \ container. * `--ec2`: Load config settings from EC2 user data. * `--gce`: Load\
+  \ config settings from GCE user data. * `--log`: Log critical errors to the given\
+  \ file. * `--noidle`: Doesn't wait for system idle at any point.\n\n* `--healthcheckport`:\
+  \ HTTP Health check port (defaults to 8889). Set to 0 to disable. Returns 200 if\
+  \ the agent is running and communicating with the server, 503 otherwise. * `--har`\
+  \ : Generate a per-run HAR file as part of the test result (defaults to False).\n\
+  \nVideo capture/display settings (Linux only)\n\n- `--xvfb`: Use an [Xvfb] virtual\
+  \ display for headless testing. - `--fps`: Video capture frame rate (defaults to\
+  \ 10). Valid range is 1\u201360.\n\n[Xvfb]: https://en.wikipedia.org/wiki/Xvfb\n\
+  \nServer/location configuration\n\n* `--server` (required): URL for WebPageTest\
+  \ work. Example: `https://www.webpagetest.org/work/`. * `--location` (required):\
+  \ Location ID (as configured in the server\u2019s `locations.ini`). * `--validcertificate`:\
+  \ Validate server certificates (HTTPS server, defaults to `False`). * `--key` :\
+  \ Location key (if configured in `locations.ini`).\n\nTraffic-shaping (defaults\
+  \ to host-based)\n\n- `--shaper`: Override default traffic shaper. Supported values:\
+  \ - `none`: Disable traffic-shaping (i.e. when you can\u2019t run as root). - `netem,\
+  \ `: Use [NetEm] to bridge reverse-tethered traffic (specify outbound interface).\
+  \ Example: `--shaper netem,eth0` - `remote, , , `: Connect to the remote server\
+  \ over `ssh` and use preconfigured [dummynet] pipes. SSH keys for root user should\
+  \ be pre-authorized. - `chrome`: Use Chrome DevTools\u2019s traffic-shaping. Only\
+  \ for Chromium-based browsers, and [as a last resort because of inaccuracy][devtools-inaccuracy].\n\
+  \n[NetEm]: https://wiki.linuxfoundation.org/networking/netem [dummynet]: http://info.iet.unipi.it/~luigi/dummynet/\
+  \ [devtools-inaccuracy]: https://blog.webpagetest.org/posts/full-throttle-comparing-packet-level-and-dev-tools-throttling/\n\
+  \nAndroid testing\n\n- `--android`: Run tests on an attached Android device. - `--device`:\
+  \ Device ID, if more than one Android is attached. - `--gnirehtet`: Use the `gnirehtet`\
+  \ tool for reverse-tethering. You will need to manually approve the vpn once per\
+  \ mobile device. Valid options are: * ` , `: e.g. `--gnirehtet eth0,8.8.8.8` - `--vpntether`:\
+  \ (Android 7+) Use vpn-reverse-tether for reverse-tethering. You will need to manually\
+  \ approve the vpn once per mobile device. Valid options are: * ` , `: e.g. `--vpntether\
+  \ eth0,8.8.8.8` - `--vpntether2` (recommended): Use vpn-reverse-tether v2 for reverse-tethering.\
+  \ You will need to manually approve the VPN once per mobile device. Valid options:\
+  \ * ` , `: e.g. `--vpntether2 eth0,8.8.8.8` - `--simplert`: Use [SimpleRT] for reverse-tethering.\
+  \ The APK should be installed manually (`adb install simple-rt/simple-rt-1.1.apk`)\
+  \ and tested once manually (`./simple-rt -i eth0`, then disconnect and re-connect\
+  \ phone) to dismiss any system dialogs. The ethernet interface and DNS server should\
+  \ be passed as options: * ` , `: i.e. `--simplert eth0,8.8.8.8` - `--rndis` (deprecated):\
+  \ Enable reverse-tethering over rndis (Android 6+). Valid options: * `--rndis /\
+  \ , , , `: Static Address. e.g. `--rndis 192.168.0.8/24,192.168.0.1,8.8.8.8,8.8.4.4`\
+  \ * `--rndis dhcp`\n\n[SimpleRT]: https://github.com/vvviperrr/SimpleRT\n\nAuthenticating\
+  \ the agent with the server\n\n- `--username`: Username if using HTTP Basic Auth\
+  \ with WebPageTest server. - `--password`: Password if using HTTP Basic Auth with\
+  \ WebPageTest server. - `--cert`: Client certificate if using certificates to authenticate\
+  \ the WebPageTest server connection. - `--certkey`: Client-side private key (if\
+  \ not embedded in the client certificate).\n\nRunning tests locally on the command-line\n\
+  \nThe test result is written as JSON to `stdout`. If a server, location, and key\
+  \ are provided, then the test will be uploaded to the given WebPageTest server and\
+  \ the test ID returned in the output JSON.\n\n- `--testurl`: Test the given URL\
+  \ via the command line (required unless `--testspec` is provided) - `--testspec`:\
+  \ Path to a full JSON file with test parameters - `--browser`: What browser to test\
+  \ in (can also be specified in the JSON file) - `--testout`: Output format fot the\
+  \ test result. Valid options: - `id`: Test ID (if tests are uploaded to a server/location)\
+  \ - `url`: URL to test result (if tests are uploaded to a server/location) - `json`:\
+  \ JSON-formatted raw test result - `--testoutdir` (optional): Output directory for\
+  \ the raw JSON test results - `--testruns`: Number of runs to test. Defaults to\
+  \ 1. - `--testrv`: Include repeat view (defaults to only testing first view)\n\n\
+  Supported features\n\nThe following Script Commands are supported on Windows, Linux,\
+  \ Mac, and Android:\n\n- `navigate` - `exec` and `execAndWait` - `block` - `sleep`\
+  \ - `logData` - `combineSteps` - `setEventName` - `setUserAgent` - `setBrowserSize`,\
+  \ `setViewportSize`, and `setDeviceScaleFactor` - `setActivityTimeout` and `setTimeout`\
+  \ - `blockDomains` and `blockDomainsExcept` - `setDns` and `setDnsName - `setHeader`\
+  \ and `addHeader` (`addHeader` add multiple values for the same header, effectively\
+  \ the same as `setHeader`) - `resetHeaders` - `setCookie` - `setABM` - `click`,\
+  \ `clickAndWait`, and `sendClick` - `selectValue` and `setValue` - `setInnerHTML`\
+  \ and `setInnerText` - `submitForm` - `overrideHost`\n\nUnsupported\n\nThere are\
+  \ no plans to implement the following Script Commands:"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '81830571'
+    canonical_url: https://github.com/catchpoint/WebPageTest.agent
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

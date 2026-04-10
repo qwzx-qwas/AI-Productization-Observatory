@@ -1,0 +1,147 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_b7abdea980f0
+candidate_batch_id: candidate_batch_github_qf_rag_2025-02-01_2025-02-28
+created_at: '2026-04-09T11:59:10.582086Z'
+updated_at: '2026-04-09T14:55:59.178947Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '868910014'
+canonical_url: https://github.com/bangoc123/drop-rag
+title: drop-rag
+summary: Comprehensive tools for building (Retrieval Augmented Generation) RAG chatbots.
+raw_evidence_excerpt: "Comprehensive tools for building (Retrieval Augmented Generation)\
+  \ RAG chatbots.\n\nDrag and Drop RAG\n\nOverview\n\nWatch Video Demo\n\nThis project\
+  \ implements a **Retrieval-Augmented Generation (RAG)** pipeline, enabling users\
+  \ to upload various data files (CSV, JSON, PDF, DOCX), store their content in a\
+  \ **Chroma vector store**, and interact with it via a chatbot. The chatbot is powered\
+  \ by **Gemini**, **OpenAI**, or local models accessible through **OLLAMA**, retrieving\
+  \ relevant information and using **Large Language Models (LLMs)** to enhance responses\
+  \ based on user queries. Additionally, the app provides an **experimental Graph\
+  \ RAG** feature for visualizing data connections.\n\nFeatures 1. **Flexible File\
+  \ Upload** \u2013 Supports uploading CSV, JSON, PDF, and DOCX files, allowing users\
+  \ to choose which columns or sections to index. 2. **Chroma-based Storage and Retrieval**\
+  \ \u2013 Uses **Chroma** to store vector embeddings and perform efficient vector-based\
+  \ searches. 3. **Interactive Chatbot** \u2013 Chatbot interaction is enhanced by\
+  \ **Gemini**, **OpenAI**, or local LLMs to generate context-aware responses. 4.\
+  \ **Customizable LLM Choices** \u2013 Offers options between cloud-based **Gemini**\
+  \ and **OpenAI**, or local LLMs like **OLLAMA**, with support for various open-source\
+  \ models. 5. **Dynamic Chunking Options** \u2013 Provides multiple chunking strategies:\
+  \ **Recursive Token Chunking**, **Agentic Chunking**, **Semantic Chunking**, or\
+  \ no chunking. 6. **Graph RAG Visualization** \u2013 Experimental support for visualizing\
+  \ data relationships and connections using **Graph RAG**.\n\nRunning the Application\n\
+  \n1. Clone the Repository\n\n2. Install Dependencies\n\n3. Run the Streamlit App\n\
+  \nThe app will be accessible at `http://localhost:8501`.\n\nUsage Instructions\n\
+  \nStep 1: Upload Data Upload a CSV, JSON, PDF, or DOCX file. You can specify which\
+  \ columns to index for vector-based search.\n\nStep 2: Embedding and Storage The\
+  \ data is stored in **Chroma**, and embeddings are generated using models like `all-MiniLM-L6-v2`\
+  \ (for English) or `keepitreal/vietnamese-sbert` (for Vietnamese).\n\nStep 3: Choose\
+  \ LLM Select from: - **Gemini API** (requires a Gemini API key) - **OpenAI API**\
+  \ (requires an OpenAI API key) - **Local LLMs via OLLAMA**, supporting models like\
+  \ `llama`, `gpt-j`, and more.\n\nStep 4: Configure Chunking Select a chunking method\
+  \ to organize the content: - **No Chunking**: Use the entire document. - **Recursive\
+  \ Token Chunking**: Divide text based on token count. - **Semantic Chunking**: Group\
+  \ text semantically. - **Agentic Chunking**: Use an LLM to dynamically manage text\
+  \ chunks (requires Gemini API).\n\nStep 5: Interact with the Chatbot Start chatting\
+  \ with the bot, which will enhance responses using the retrieved content.\n\nStep\
+  \ 6: Graph RAG (Experimental) Use **Graph RAG** to visualize relationships and connections\
+  \ within the uploaded data: 1. Ensure an online LLM is configured (Gemini or OpenAI).\
+  \ 2. Click the \"Extract Graph\" button to generate and display the graph.\n\nSupported\
+  \ Models for OLLAMA\n\nHere is a list of models supported by **OLLAMA**:\n\n| Model\
+  \ Name | Size | Identifier | |--------------------------------------|---------------|--------------------------|\
+  \ | Llama 3.2 (3B) | 3B (2.0GB) | `llama3.2` | | Phi 3 Medium (14B) | 14B (7.9GB)\
+  \ | `phi3:medium` | | Code Llama (7B) | 7B (3.8GB) | `codellama` | | Mistral (7B)\
+  \ | 7B (4.1GB) | `mistral` | | ... | ... | ... |\n\nUsing GGUF Models High-performance\
+  \ GGUF models are supported. Refer to Hugging Face for available models.\n\nAdvanced\
+  \ Options Graph RAG Experimental support for **Graph RAG** allows the visualization\
+  \ of data connections. Requires an online LLM (Gemini or OpenAI).\n\nSearch Methods\
+  \ Choose from: - **Vector Search**: Based on vector similarity. - **Hyde Search**:\
+  \ Uses a generative model for improved search accuracy.\n\nTroubleshooting - **No\
+  \ Results?** Ensure you've indexed the correct columns and stored embeddings. -\
+  \ **API Issues?** Verify that your API key is valid (if using Gemini or OpenAI)\
+  \ and that your vector store is initialized.\n\nNotes - **Gemini and OpenAI API\
+  \ Keys**: Required for cloud-based LLMs. Obtain keys from their respective platforms.\
+  \ - **Local Models**: Requires **Docker** for local model inference.\n\nExporting\
+  \ Chatbot Configuration The app allows exporting configuration data for local LLMs\
+  \ to JSON for easy deployment.\n\nClearing Session State Users can clear session\
+  \ state via a sidebar button to reset settings."
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '868910014'
+    canonical_url: https://github.com/bangoc123/drop-rag
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T13:10:41.700071Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+  sample_slot_id: GS300-116
+  sample_id: cand_github_qf_rag_b7abdea980f0
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:55:59.178924Z'

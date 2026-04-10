@@ -1,0 +1,104 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_8be8019e713d
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-02-01_2025-02-28
+created_at: '2026-04-09T12:24:55.294806Z'
+updated_at: '2026-04-09T13:10:39.944323Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '870126522'
+canonical_url: https://github.com/edenai/python_sdk
+title: python_sdk
+summary: Python SDK for Eden AI workflows. Create or update your workflow from your
+  python code, to keep your workflow aligned with your git repo
+raw_evidence_excerpt: "Python SDK for Eden AI workflows. Create or update your workflow\
+  \ from your python code, to keep your workflow aligned with your git repo\n\nPython\
+  \ SDK for Eden AI workflows\n\nBuild and update your Eden AI workflows straight\
+  \ from your python code, without needing a UI! This way you can easily commit changes\
+  \ to your workflow, as all you need to do is putting this code into a git repo \U0001F680\
+  \n\nThis package is in **alpha** and the API can still change\n\nInstallation\n\n\
+  Example\n\nYou can use `client.create_or_update(name=\"my_unique_name\", data=data)`\
+  \ to create a workflow. If a workflow with this name already exists it will update\
+  \ the workflow. You can always view the workflow you've build in the UI in the Eden\
+  \ AI App\n\nTo see which parameters are availabe for each feature, you can check\
+  \ our api docs"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '870126522'
+    canonical_url: https://github.com/edenai/python_sdk
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:39.944323Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -1,0 +1,127 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_998296d91838
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-02-01_2025-02-28
+created_at: '2026-04-09T14:02:26.608480Z'
+updated_at: '2026-04-09T14:55:41.550285Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '603123247'
+canonical_url: https://github.com/cthiriet/chatdocs
+title: chatdocs
+summary: Chatbot for your online documentation.
+raw_evidence_excerpt: "Chatbot for your online documentation.\n\nChatDocs\n\nChatDocs\
+  \ is an open-source project that enables you to ask questions about your online\
+  \ documentation and receive real-time answers.\n\nHow it works:\n\n1. Index your\
+  \ documentation \U0001F4DD 2. Deploy the web application \U0001F680 3. Ask questions\
+  \ \U0001F914\n\nPrerequisites \U0001F4CB\n\nThis project uses:\n\n- OpenAI for generating\
+  \ answers. - Pinecone for indexing the documentation. - Vercel for hosting the web\
+  \ application.\n\nBe sure to have an account and your credentials for each of these\
+  \ services.\n\n> Ensure you have Node.js and Python 3 installed on your machine.\n\
+  \nArchitecture \U0001F3DB\uFE0F\n\nThe project is composed of the following components:\n\
+  \n- `webapp`: folder containing the frontend code for the Q&A website. - `crawl.py`:\
+  \ Python script to crawl a website and index its content in Pinecone.\n\nGetting\
+  \ Started \U0001F680\n\nTo get started with ChatDocs, follow these instructions:\n\
+  \nClone the repository\n\nInstall dependencies and setup the project\n\nIt will\
+  \ create a Python virtual environment and install the dependencies.\n\nIt will also\
+  \ ask your for your **OpenAI** and **Pinecone** credentials.\n\nCustomize the project\n\
+  \nEdit `webapp/public/logo.svg` with the logo of your service.\n\nIndex your documentation\n\
+  \n- `domain` is your top-level domain (e.g. `stripe.com`). - `url` is the root URL\
+  \ of the page you want to index (e.g. `https://stripe.com/docs/atlas/`). In that\
+  \ case, the script will crawl all the pages with the following wildcard: `https://stripe.com/docs/atlas/*`.\
+  \ - `excludes` (optional) is a list of URLs you want to exclude from the index.\
+  \ It can be useful if you want to exclude the homepage or the pricing page.\n\n\
+  Running the project locally\n\nOpen a terminal and run:\n\nGo to http://localhost:3000\
+  \ to see the website.\n\nDeploy the web application on Vercel\n\n- Go to your dashboard\
+  \ and create a new project. - Select `Next.js` as the framework preset. - Select\
+  \ `webapp` as the root directory. - Copy the content of `webapp/.env.local` into\
+  \ the `Environment Variables` section. - Click on `Deploy` and wait for the deployment\
+  \ to finish.\n\nContributing \U0001F9D1\u200D\U0001F4BB\n\nWe welcome contributions\
+  \ to ChatDocs! To get started, follow these steps:\n\n- Fork the repository. - Create\
+  \ a new branch for your changes. - Make your changes and commit them to your branch.\
+  \ - Push your changes to your fork. - Submit a pull request with a detailed description\
+  \ of your changes.\n\nContact \U0001F919\n\nIf you have any questions or comments\
+  \ about ChatDocs or if you want some help to deploy it for your project, please\
+  \ contact us at clement@cthiriet.com.\n\nWe hope you find ChatDocs useful and enjoy\
+  \ using it!\n\nCreator \U0001F9D1\U0001F3FC\u200D\U0001F3A8\n\nCreated by Cl\xE9\
+  ment Thiriet."
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '603123247'
+    canonical_url: https://github.com/cthiriet/chatdocs
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+  sample_slot_id: GS300-122
+  sample_id: cand_github_qf_chatbot_998296d91838
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:55:41.550261Z'

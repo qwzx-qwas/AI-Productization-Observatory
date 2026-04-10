@@ -1,0 +1,163 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_502e65f1f024
+candidate_batch_id: candidate_batch_github_qf_rag_2025-03-01_2025-03-31
+created_at: '2026-04-09T14:22:02.718975Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '684716474'
+canonical_url: https://github.com/XinyueZ/chat-your-doc
+title: chat-your-doc
+summary: Awesome LLM application repo
+raw_evidence_excerpt: "Awesome LLM application repo\n\nAwesome LLMs applications and\
+  \ experiments =============\n\nChat Your Doc is an experimental project aimed at\
+  \ exploring various applications based on LLM. Although it is nominally a chatbot\
+  \ project, its purpose is broader. The project explores various applications using\
+  \ tools such as LangChain, LlamaIndex. In the \"Lab Apps\" section, you can find\
+  \ many examples, including simple and complex ones. The project focuses on researching\
+  \ and exploring various LLM applications, while also incorporating other fields\
+  \ such as UX and computer vision. The \"Lab App\" section includes a table with\
+  \ links to various apps, descriptions, launch commands, and demos.\n\n----\n\n-\
+  \ Setup - Some keys - Conda - Pip - Agentic - Storage - Popular solutions - How\
+  \ to chat with a document via vector database? - Simple - Intermediate - Advanced\
+  \ - Notebooks - Star History\n\nAgentic flow, agentic system\n\n- !Example - !Example\
+  \ - .....\n\nRAG\n\nKnowledge Center (standalone)\n\nAlso, take a look at a use-case\
+  \ known as Knowledge Center that leverages different RAG or Chunking techniques\
+  \ in this repository.\n\nTypical multimodal Chatbot sample\n\n- Video: https://drive.google.com/file/d/1AMAi561gbAuHyT5BQFt7wlg5Xockx-Ni/view?usp=drive_link\
+  \ - Source: https://github.com/XinyueZ/chat-your-doc/blob/master/simple/multimodal_chat.py\
+  \ - Start: `streamlit run simple/multimodal_chat.py --server.port 8000 --server.enableCORS\
+  \ false`\n\n----\n\nSetup\n\nSome keys\n\nFor OpenAI, set API-KEY to your environment\
+  \ variables.\n\nGet OpenAI API-KEY\n\nConda\n\nPip\n\n----\n\nAgentic\n\n- LangChain/LangGraph:\
+  \ Build Reflection Enabled Agentic \U0001F468\U0001F3FB\u200D\U0001F4BB code - Llama-Index/AgentWorkflow:\
+  \ Build Reflection Enabled Agentic \U0001F468\U0001F3FB\u200D\U0001F4BB code - LangGraph\
+  \ / swarm and supervisor: Build Reflection Enabled Agentic \U0001F468\U0001F3FB\u200D\
+  \U0001F4BB supervisor \U0001F468\U0001F3FB\u200D\U0001F4BB swarm - CrewAI / Hierarchical\
+  \ Manager: Build Reflection Enabled Agentic \U0001F468\U0001F3FB\u200D\U0001F4BB\
+  \ code - (Llama-Index Workflows)Translation Agent via Reflection Workflow \U0001F468\
+  \U0001F3FB\u200D\U0001F4BB code - OpenAI Agent SDK: Build Reflection Enabled Agentic\
+  \ \U0001F468\U0001F3FB\u200D\U0001F4BB code\n\nStorage\n\nref: https://python.langchain.com/docs/modules/data_connection/vectorstores/\n\
+  \nChroma, FAISS\n\n`pip install chromadb`\n\n`pip install faiss-cpu`\n\nPopular\
+  \ solutions\n\nBoilerplate codes of tokenization in LLM project, take away codes.\n\
+  \nLLM fine-tuning step: Tokenizing\n\nHow to chat with a document via vector database?\n\
+  \nChat with your PDF \uFF08Streamlit Demo)\n\nHow do auto-annotation (object detection)\
+  \ on images?\n\nLLM, LangChain Agent, Computer Vision\n\nOpenAI Assistants, awesome,\
+  \ it manages a lot of things for you.\n\nHow to Use OpenAI Assistants (API)\n\n\
+  Advanced RAG approaches, learn details how RAG works. Advanced RAG\n\nLangChain\
+  \ App Template Example\n\nExperience with the LangChain App Template\n\n> wine price\
+  \ app, prompt and query wine price. The application has been created, just need\
+  \ to create data, install Poetry and run it.\n\n> Full instructions for creating\
+  \ a LangChain App Template can be found here: LangChain App Template\n\nRAG, Vector\
+  \ and Summary pattern implementation\n\nLlama-Index: RAG with Vector and Summary\
+  \ > Multi-Retrievers with Vector and Summary pattern implementation.\n\nLlama-Index:\
+  \ RAG with Vector and Summary by using Agent > Agent for Vector and Summary pattern\
+  \ implementation.\n\nCreate Agent from Scratch\n\n> Intuitively create an agent\
+  \ from scratch with LangChain.\n\nCreate Agent from Scratch\n\n> Intuitively create\
+  \ an agent from scratch with LlamaIndex.\n\nMulti-Query Retrieval with RAG\n\n>\
+  \ Enhance query context with intermediate queries during RAG to improve information\
+  \ retrieval for the original query.\n\nPrio-reasoning\n\n> Explain how prio-reasoning\
+  \ works in LangChain(qa-chain with refine) and LlamaIndex (MultiStepQueryEngine).\n\
+  \nRAG with Multi-Query pattern\n\n> Introduce the Multi-Query pattern in bundle\
+  \ and step-down solutions.\n\nLangGraph: hello,world!\n\n> Introduce the hello,world\
+  \ version use-case with LangGraph, just simple example to kick off the topic.\n\n\
+  Quick Tour: Ollama+Gemma+LangChain\n\n> Use ollama to deploy and use Gemma with\
+  \ langchain on local machine.\n\nRAG with Hypothetical Document Embeddings(HyDE)\n\
+  \n> Hypothetical Document Embeddings, two-steps process of RAG. Implementation of\
+  \ HyDE retrieval by LlamaIndex, hybrid, local or remote LLMs.\n\nLangChain: Use\
+  \ LLM Agent for World GPU Demand Prediction Report\n\n> Reflecting the analytical\
+  \ methods of the AI era, based on the Agent mechanism and generative AI, intelligently\
+  \ generates necessary information and code.\n\nLangChain: Multi-User Conversation\
+  \ Support\n\n> By using some methods, make the conversation able to happen among\
+  \ multiple users, achieving the basic of a simple \u201Cgroup conversation\u201D\
+  .\n\nLangChain: History-Driven RAG Enhanced By LLM-Chain Routing LangChain\n\n>\
+  \ Using LLM to predict the routing of the chain and achieve Retrieval Augmented\
+  \ Generation with help of conversation history applying HyDE or refined standalone\
+  \ query.\n\nLangChain: Multi-User Conversation Support(Follow-up)\n\n> A follow-up\
+  \ read: Use Cohere\u2019s documents and a special field in additional_kwargsfeature\
+  \ to enhance the organization of information in multi-user conversation.\n\n(Llama-Index\
+  \ Workflow)Translation Agent via Reflection Workflow\n\n> Implemention of Translation\
+  \ Agent: Agentic translation using reflection workflow with Llama-Index workflow\
+  \ framework.\n\nOllama Workaround: DeepSeek R1 Tool Support\n\n> Tool support of\
+  \ Ollama served DeepSeek R1 is still not very well, in this text there is a solution\
+  \ to workaround it and some how we can call tool according to the model response.\n\
+  \nSimple"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '684716474'
+    canonical_url: https://github.com/XinyueZ/chat-your-doc
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

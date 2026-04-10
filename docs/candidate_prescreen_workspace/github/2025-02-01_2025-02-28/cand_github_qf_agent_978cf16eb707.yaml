@@ -1,0 +1,194 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_978cf16eb707
+candidate_batch_id: candidate_batch_github_qf_agent_2025-02-01_2025-02-28
+created_at: '2026-04-09T11:51:51.049642Z'
+updated_at: '2026-04-09T13:10:39.037796Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '914427745'
+canonical_url: https://github.com/pippinlovesyou/pippin
+title: pippin
+summary: The Digital Being Framework for Autonomous Agents
+raw_evidence_excerpt: "The Digital Being Framework for Autonomous Agents\n\nPippin,\
+  \ The Digital Being Framework for Autonomous Agents\n\nWelcome to Pippin \u2014\
+  \ a flexible, open-source framework to create a digital \u201Cbeing\u201D that:\n\
+  \n- Learns about your goals/objectives and your character\u2019s persona. - Connects\
+  \ to various tools or APIs (via API keys or OAuth flows through Composio) to perform\
+  \ tasks. - Dynamically creates and tests new \u201CActivities\u201D in pursuit of\
+  \ your objectives. - Manages a memory system to track past actions and outcomes.\
+  \ - Provides a web UI for easy onboarding/config, or a CLI wizard if you prefer\
+  \ terminal workflows.\n\n---\n\nTable of Contents\n\n1. **Overview** 2. **Features\
+  \ & Highlights** 3. **Prerequisites** 4. **Folder Structure** 5. **Quick Start**\
+  \ - Fork & Clone - Install Dependencies - Onboarding & Configuration - Launch the\
+  \ Agent 6. **Onboarding Flow: CLI vs. Web UI** - Core Steps (Same Under the Hood)\
+  \ - LLM Setup - Objectives & Character - Adding Skills via Composio or API Keys\
+  \ - Multiple LLM Model Support 7. **Default Activities** 8. **Using the Web UI**\
+  \ - Configuring Your Character & Constraints - Connecting Tools via OAuth (Composio)\
+  \ - Launching and Monitoring the Agent 9. **Using the CLI** - Re-running the Onboarding\
+  \ Wizard - Starting the Agent from Terminal 10. **Creating a New Skill for Solana-AgentKit\
+  \ (Manual Example)** 11. **Why Keep the AI/Web UI Default?** 12. **Extending & Creating\
+  \ Other Custom Activities** 13. **Memory, State & Activity Selection** 14. **Stopping\
+  \ or Pausing the Agent** 15. **Contributing** 16. **License**\n\n---\n\nOverview\n\
+  \nThis project is designed to help you quickly spin up a self-improving, LLM-driven\
+  \ digital being that:\n\n- Asks you for your objectives and character details. -\
+  \ Integrates with tools to perform real-world tasks (e.g., tweeting, deploying tokens\
+  \ on Solana, generating images, or web scraping). - Runs a continuous or scheduled\
+  \ loop, picking or creating new Activities to meet your goals. - Stores logs in\
+  \ memory (short-term and long-term). - Adapts by rewriting or generating Python\
+  \ code for new Activities on the fly!\n\nYou can choose to run everything from your\
+  \ terminal or via a web-based UI. Both flows do the same underlying initialization\u2014\
+  so pick whichever is more comfortable.\n\n---\n\nFeatures & Highlights\n\n- **Flexible\
+  \ Onboarding:** - CLI Wizard or Web UI flow to gather essential info\u2014no duplication\
+  \ of effort. - Prevents you from starting until you\u2019ve provided at least one\
+  \ LLM API key (or local config) and a minimal character setup.\n\n- **Multiple LLM\
+  \ Model Support:** - Provide one or more LLM API keys (OpenAI, GPT4All, or your\
+  \ custom provider). - Assign different models to tasks like code generation vs.\
+  \ daily analysis vs. activity selection.\n\n- **Composio:** - OAuth-based gateway\
+  \ to 250+ tools (Twitter, Slack, Google, etc.). - Built-in flows for quickly adding\
+  \ new \u201Cskills\u201D from connected apps.\n\n- **Custom Skills:** - Easily add\
+  \ your own skill, e.g., solana-agent-kit, stable diffusion, or a Node.js microservice.\
+  \ - The default configuration can help you add manual API keys for tools not using\
+  \ Composio.\n\n- **Default Activities:** - Activities for analyzing daily logs,\
+  \ brainstorming new Activities, generating .py files.\n\n- **Configurable Constraints:**\
+  \ - E.g., \u201CNo more than 5 tweets per hour,\u201D \u201CDon\u2019t create new\
+  \ tokens more than once a month.\u201D\n\n- **Memory System & State Tracking:**\
+  \ - The being \u201Cremembers\u201D past actions, can reflect on them, and updates\
+  \ its own state (energy, mood, etc.).\n\n---\n\nPrerequisites\n\n- Python 3.9+ recommended.\
+  \ - A GitHub account (to fork). - A Composio developer key (optional but recommended)\
+  \ if you want to do OAuth-based skill connections.\n\n---\n\nFolder Structure\n\n\
+  ---\n\nQuick Start\n\n1. Fork & Clone\n\nFork this repo on GitHub.\n\nClone your\
+  \ fork:\n\n2. Install Dependencies (this step can be skipped if you use GitHub codespaces\
+  \ or the provided dev container)\n\nFirst, install the UV package manager if not\
+  \ already installed:\n\nThen create and activate your virtual environment:\n\nInstall\
+  \ the project dependencies:\n\n3. Onboarding & Configuration\n\nNavigate to the\
+  \ project directory:\n\nCopy the config_sample folder.\n\nYou can pick one of the\
+  \ following approaches: - **CLI:** `python -m tools.onboard` - **Web UI:** `python\
+  \ -m server` then open `http://localhost:8000` in your browser and follow the onboarding\
+  \ prompts.\n\nEither way, you\u2019ll be guided through:\n\n1. Choosing your main\
+  \ LLM provider and providing at least one API key (or local model path). 2. Defining\
+  \ your character\u2019s name, personality, objectives, constraints, etc. 3. Optionally\
+  \ connecting Composio or manually entering API keys for additional skills. 4. Ensuring\
+  \ at least one skill is fully configured so you can start the agent.\n\n4. Launch\
+  \ the Agent\n\n- **CLI:** `python -m framework.main` - **Web UI:** Once onboarding\
+  \ is complete, a Start button appears\u2014click to run the main loop.\n\n---\n\n\
+  Onboarding Flow: CLI vs. Web UI\n\nBoth flows rely on shared logic that checks whether:\n\
+  \n- You have a named character and objectives. - At least one LLM skill is configured.\
+  \ - (Optional) Composio or other skill credentials if you want advanced features.\n\
+  \nIf these conditions aren\u2019t met, the agent cannot start. This ensures no half-configured\
+  \ usage.\n\n---\n\nCore Steps (Same Under the Hood)\n\nLLM Setup\n\nChoose one or\
+  \ more models. Examples:\n\n- GPT4All for code generation - GPT-3.5 for quick queries\
+  \ - GPT-4 for reasoning\n\nProvide the necessary API keys or local model paths.\
+  \ If using local GPT4All or other offline LLMs, the system can handle that, too.\n\
+  \nObjectives & Character\n\nSpecify:\n\n- **Name:** e.g., \u201COptimus Mentis\u201D\
+  \ - **Personality:** e.g., \u201CHelpful, curious, somewhat playful\u201D - **Objectives:**\
+  \ e.g., primary mission, secondary goals - **Constraints:** e.g., \u201CDo not create\
+  \ new tokens more than once a month\u201D\n\n(Stored in `character_config.json`\
+  \ and `activity_constraints.json`.)\n\nAdding Skills via Composio or API Keys\n\n\
+  **Composio** is recommended if you want your being to do things like:\n\n- Post\
+  \ on Twitter, Slack, or Gmail without manually handling each OAuth. - Auto-fetch\
+  \ each app\u2019s actions as \u201Cdynamic skills.\u201D\n\nAPI Keys are also possible\
+  \ for tools that either don\u2019t integrate with Composio or if you prefer direct\
+  \ usage:\n\n- `image_generation` skill with `OPENAI_API_KEY` or `STABLE_DIFFUSION_KEY`\
+  \ - `solana_agent` skill with a private key environment variable\n\nThe onboarding\
+  \ flow will prompt for these keys. Provide or skip if optional.\n\nMultiple LLM\
+  \ Model Support\n\nThe system can handle multiple LLMs simultaneously, e.g.:\n\n\
+  - **Activity Selector** => cheap GPT-3.5 - **Code Generation** => GPT-4 - **Daily\
+  \ Analysis** => local GPT4All\n\nAll you need is to enable the correct skill(s)\
+  \ in `skills_config.json` and optionally specify which model each feature uses.\
+  \ The default is to just pick one skill for everything.\n\n---\n\nDefault Activities\n\
+  \n1. **AnalyzeDailyActivity** - Reads recent memory, calls your LLM-of-choice, logs\
+  \ a short reflection.\n\n2. **SuggestNewActivities** - Brainstorms new tasks or\
+  \ expansions relevant to your objectives and constraints.\n\n3. **BuildOrUpdateActivity**\
+  \ - Takes suggestions, calls an LLM to generate `.py` code, writes to `activities/`,\
+  \ reloads dynamically.\n\n---\n\nUsing the Web UI\n\nConfiguring Your Character\
+  \ & Constraints\n\n1. Under Onboarding or Configuration, fill in name, personality,\
+  \ objectives, constraints. 2. Click Save.\n\nConnecting Tools via OAuth (Composio)\n\
+  \n1. In the Integrations or Skills tab, pick an app (e.g., Twitter). 2. Complete\
+  \ OAuth via Composio. 3. Confirm the status is \u201CConnected.\u201D\n\nLaunching\
+  \ and Monitoring the Agent\n\n- Once everything is set, click Start. - Real-time\
+  \ logs show which Activity is chosen, memory usage, or new code generation. - Pause\
+  \ or Stop anytime.\n\n---\n\nUsing the CLI\n\nRe-running the Onboarding Wizard\n\
+  \n(It will re-check your config, letting you update or skip certain steps.)\n\n\
+  Starting the Agent from Terminal\n\nLogs appear in your console. Press `Ctrl+C`\
+  \ to stop.\n\n---\n\nCreating a New Skill for Solana-AgentKit (Manual Example)"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '914427745'
+    canonical_url: https://github.com/pippinlovesyou/pippin
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:39.037796Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

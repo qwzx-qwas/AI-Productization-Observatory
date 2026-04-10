@@ -1,0 +1,118 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_9ba0ed99709d
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-04-01_2025-04-30
+created_at: '2026-04-09T13:41:15.723840Z'
+updated_at: '2026-04-09T14:56:21.202090Z'
+source: github
+source_id: src_github
+source_window: 2025-04-01..2025-04-30
+time_field: pushed_at
+external_id: '966400610'
+canonical_url: https://github.com/burakorkmez/codeflex-ai
+title: codeflex-ai
+summary: "Build Your Own AI Fitness Trainer for FREE \U0001F480"
+raw_evidence_excerpt: "Build Your Own AI Fitness Trainer for FREE \U0001F480\n\n\U0001F4AA\
+  \ AI Fitness Assistant \U0001F916\n\nHighlights:\n\n- \U0001F680 Tech stack: Next.js,\
+  \ React, Tailwind & Shadcn UI - \U0001F399\uFE0F Voice AI Assistant (Vapi) - \U0001F9E0\
+  \ LLM Integration (Gemini AI) - \U0001F3CB\uFE0F Personalized Workout Plans - \U0001F957\
+  \ Custom Diet Programs - \U0001F512 Authentication & Authorization (Clerk) - \U0001F4BE\
+  \ Database (Convex) - \U0001F3AC Real-time Program Generation - \U0001F4BB Layouts\
+  \ - \U0001F3AD Client & Server Components\n\nFeatures\n\n- **Smart AI Assistant**:\
+  \ Engage in conversation with an AI that asks about your fitness goals, physical\
+  \ condition, and preferences - **Personalized Workout Plans**: Get custom exercise\
+  \ routines based on your fitness level, injuries, and goals - **Diet Recommendations**:\
+  \ Receive personalized meal plans accounting for your allergies and dietary preferences\
+  \ - **User Authentication**: Sign in with GitHub, Google, or email/password - **Program\
+  \ Management**: Create and view multiple fitness programs with only the latest one\
+  \ active - **Responsive Design**: Beautiful UI that works across all devices\n\n\
+  Setup .env file\n\nGetting Started\n\n1. Clone the repository 2. Install dependencies:\n\
+  \n3. Set up your environment variables as shown above 4. Run the development server:\n\
+  \n5. Open http://localhost:3000 in your browser\n\nDeployment\n\nThis application\
+  \ can be easily deployed to Vercel:\n\nOr connect your GitHub repository to Vercel\
+  \ for automatic deployments.\n\nTechnologies Used\n\n- **Next.js**: React framework\
+  \ for building the frontend and API routes - **Tailwind CSS & Shadcn UI**: For styling\
+  \ and UI components - **Clerk**: Authentication and user management - **Vapi**:\
+  \ Voice agent platform for conversational AI - **Convex**: Real-time database -\
+  \ **Gemini AI**: Large Language Model for generating personalized fitness programs\n\
+  \nLearn More\n\nTo learn more about the technologies used in this project:\n\n-\
+  \ Next.js Documentation - Clerk Documentation - Vapi Documentation - Convex Documentation\
+  \ - Gemini AI Documentation"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-04-01'
+    window_end: '2025-04-30'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-04-01..2025-04-30
+    external_id: '966400610'
+    canonical_url: https://github.com/burakorkmez/codeflex-ai
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+  sample_slot_id: GS300-128
+  sample_id: cand_github_qf_ai_assistant_9ba0ed99709d
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:56:21.202069Z'

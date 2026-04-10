@@ -1,0 +1,127 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_1bd6e3f410f1
+candidate_batch_id: candidate_batch_github_qf_agent_2025-02-01_2025-02-28
+created_at: '2026-04-09T11:52:20.635806Z'
+updated_at: '2026-04-09T13:10:38.821596Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '781844208'
+canonical_url: https://github.com/aiplanethub/openagi
+title: openagi
+summary: Paving the way for open agents and AGI for all.
+raw_evidence_excerpt: "Paving the way for open agents and AGI for all.\n\nOpenAGI\n\
+  \nMaking the development of autonomous human-like agents accessible to all\n\nOpenAGI\
+  \ aims to make human-like agents accessible to everyone, thereby paving the way\
+  \ towards open agents and, eventually, AGI for everyone. We strongly believe in\
+  \ the transformative power of AI and are confident that this initiative will significantly\
+  \ contribute to solving many real-life problems. Currently, OpenAGI is designed\
+  \ to offer developers a framework for creating autonomous human-like agents. \U0001F449\
+  \ Join our Discord community!\n\nInstallation\n\n1. Setup a virtual environment.\n\
+  \n2. Install the openagi\n\nor\n\nExample (Manual Agent Execution)\n\nWorkers are\
+  \ used to create a Multi-Agent architecture.\n\nFollow this example to create a\
+  \ **Trip Planner Agent** that helps you plan the itinerary to SF.\n\nExample (Autonomous\
+  \ Multi-Agent Execution)\n\nLets build a **Sports Agent** now that can run autonomously\
+  \ without any Workers.\n\nLong Term Memory like never before\n\nWith LTM, OpenAGI\
+  \ agents can now:\n\n- Recall past interactions to provide continuity in conversations.\
+  \ - Learn and adapt based on user inputs over time. - Deliver contextually relevant\
+  \ responses by referencing previous conversations. - Improve their accuracy and\
+  \ efficiency with each successive interaction.\n\nDocumentation\n\nFor more queries\
+  \ find documentation for OpenAGI at openagi.aiplanet.com\n\nUse Cases:\n\n- **Education:**\
+  \ In education, agents can provide personalized learning experiences. They adapt\
+  \ and tailor learning content based on student's progress, performance and interests.\
+  \ It can extend to automating various other administrative tasks and assist teachers\
+  \ in improving their productivity. - **Finance and Banking:** Financial services\
+  \ can use agents for fraud detection, risk assessment, personalized banking advice,\
+  \ automating trading, and customer service. They help in analyzing large volumes\
+  \ of transactions to identify suspicious activities and offer tailored investment\
+  \ advice. - **Healthcare:** Agents can be deployed to monitor patients, provide\
+  \ personalized health recommendations, manage patient data, and automate administrative\
+  \ tasks. They can also assist in diagnosing diseases based on symptoms and medical\
+  \ history.\n\nGet in Touch\n\nFor any queries/suggestions/support connect us at\
+  \ openagi@aiplanet.com\n\nContribution guidelines\n\nOpenAGI thrives in the rapidly\
+  \ evolving landscape of open-source projects. We wholeheartedly welcome contributions\
+  \ in various capacities, be it through innovative features, enhanced infrastructure,\
+  \ or refined documentation.\n\nFor a comprehensive guide on the contribution process,\
+  \ please click here.\n\nSupport\n\n\U0001F4DA Documentation \U0001F4AC Discord Community\
+  \ \U0001F4DD Issue Tracker"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '781844208'
+    canonical_url: https://github.com/aiplanethub/openagi
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:38.821596Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

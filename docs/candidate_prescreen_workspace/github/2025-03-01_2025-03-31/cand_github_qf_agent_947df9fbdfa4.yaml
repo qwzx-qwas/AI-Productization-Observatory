@@ -1,0 +1,192 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_947df9fbdfa4
+candidate_batch_id: candidate_batch_github_qf_agent_2025-03-01_2025-03-31
+created_at: '2026-04-09T14:15:04.808108Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '807060479'
+canonical_url: https://github.com/microsoft/AgenticCookBook
+title: AgenticCookBook
+summary: "The \u201CAgentic Cookbook for Generative AI Agent usage\u201D is a comprehensive\
+  \ guide designed to empower users with the knowledge and tools to effectively implement\
+  \ and utilize Generative AI Agents within their workflows."
+raw_evidence_excerpt: "The \u201CAgentic Cookbook for Generative AI Agent usage\u201D\
+  \ is a comprehensive guide designed to empower users with the knowledge and tools\
+  \ to effectively implement and utilize Generative AI Agents within their workflows.\n\
+  \n**Microsoft Agentic Cookbook**\n\nThe cookbooks are focused on conversational\
+  \ agents, all the samples are using the Autogen framework.\n\nContents\n\nThis cookbook\
+  \ includes:\n\n* Introduction * What is AutoGen(\u2705) * Understanding Key Components(\u2705\
+  ) * What is Domain Driven Design(\u2705) * tutorials * Tell me a joke, agents conversing\
+  \ style(\u2705) * Give tools to agents(\U0001F51C) * Teachable agent(\u2705) * Travel\
+  \ Agency front office(\U0001F51C) * Travel Agency front and back office(\u2705)\
+  \ * Travel Agency with solver(\U0001F51C)\n\nOpening the Resource in Codespace\n\
+  \nStoring Your API Keys\n\nKeeping your API keys safe and secure is important when\
+  \ building any type of application. We recommend not to store any API keys directly\
+  \ in your code. Committing those details to a public repository could result in\
+  \ security issues and even unwanted costs if used by a bad actor.\n\nIMPORTANT!\
+  \ Setup environment variables - Duplicate the `.env.template` file and rename the\
+  \ new file to `.env`. - Open your new `.env` file and modify all the endpoints and\
+  \ api keys for all deployments as follows:\n\nOpen AI details - AZURE_OPENAI_MODEL=\"\
+  gpt-4-32k\" - AZURE_OPENAI_EMBEDDING_MODEL=\"text-embedding-ada-002\" - AZURE_OPENAI_KEY=\"\
+  \" - AZURE_OPENAI_ENDPOINT=\"\" - AZURE_OPENAI_API_VERSION=\"2024-02-01\"\n\nHow\
+  \ to Run locally on your computer\n\nTo run the code locally on your computer, you\
+  \ would need to have some version of Python installed.\n\nTo then use the repository,\
+  \ you need to clone it:\n\nOnce you have everything checked out, you can get started!\n\
+  \nInstalling Miniconda (optional step) Miniconda is a lightweight installer for\
+  \ installing Conda, Python, as well as a few packages. Conda itself is a package\
+  \ manager, that makes it easy to setup and switch between different Python **virtual\
+  \ environments** and packages. It also comes in handy for installing packages that\
+  \ are not available via `pip`.\n\nYou can follow the MiniConda installation guide\
+  \ to set it up.\n\nWith Miniconda installed, you need to clone the repository (if\
+  \ you haven't already)\n\nNext, you need to create a virtual environment. To do\
+  \ this with Conda, go ahead and create a new environment file (_environment.yml_).\
+  \ If you are following along using Codespaces, create this within the `.devcontainer`\
+  \ directory, thus `.devcontainer/environment.yml`.\n\nGo ahead and populate your\
+  \ environment file with the snippet below:\n\nThe environment file specifies the\
+  \ dependencies we need. ` ` refers to the name you would like to use for your Conda\
+  \ environment, and ` ` is the version of Python you would like to use, for example,\
+  \ `3` is the latest major version of Python.\n\nWith that done, you can go ahead\
+  \ and create your Conda environment by running the commands below in your command\
+  \ line/terminal\n\nRefer to the Conda environments guide if you run into any issues.\n\
+  \nUsing Visual Studio Code with the Python support extension\n\nWe recommend using\
+  \ the Visual Studio Code (VS Code) editor with the Python support extension installed\
+  \ for this course. This is, however, more of a recommendation and not a definite\
+  \ requirement\n\n> **Note**: By opening the course repository in VS Code, you have\
+  \ the option to set the project up within a container. This is because of the special\
+  \ `.devcontainer` directory found within the course repository. More on this later.\n\
+  \n> **Note**: Once you clone and open the directory in VS Code, it will automatically\
+  \ suggest you install a Python support extension.\n\n> **Note**: If VS Code suggests\
+  \ you re-open the repository in a container, decline this request in other to use\
+  \ the locally installed version of Python.\n\nUsing Jupyter in the Browser\n\nYou\
+  \ can also work on the project using the Jupyter environment right within your browser.\
+  \ Both classic Jupyter and [Jupyter Hub](https://jupyter.org/hub provide quite a\
+  \ pleasant development environment with features such as auto-completion, code highlighting,\
+  \ etc.\n\nTo start Jupyter locally, head over to the terminal/command line, navigate\
+  \ to the course directory, and execute:\n\nor\n\nThis will start a Jupyter instance\
+  \ and the URL to access it will be shown within the command line window.\n\nOnce\
+  \ you access the URL, you should see the course outline and be able to navigate\
+  \ to any `*.ipynb` file. For example, `08-building-search-applications/python/oai-solution.ipynb`.\n\
+  \nRunning in a container\n\nAn alternative to setting everything up on your computer\
+  \ or Codespace is to use a container. The special `.devcontainer` folder within\
+  \ the course repository makes it possible for VS Code to set up the project within\
+  \ a container. Outside of Codespaces, this will require the installation of Docker,\
+  \ and quite frankly, it involves a bit of work, so we recommend this only to those\
+  \ with experience working with containers.\n\nOne of the best ways to keep your\
+  \ API keys secure when using GitHub Codespaces is by using Codespace Secrets. Please\
+  \ follow the Codespaces secrets management guide to learn more about this.\n\nUsing\
+  \ the Azure OpenAI Service for the first time\n\nIf this is your first time working\
+  \ with the Azure OpenAI service, please follow this guide on how to create and deploy\
+  \ an Azure OpenAI Service resource.\n\nUsing the OpenAI API for the first time\n\
+  \nIf this is your first time working with the OpenAI API, please follow the guide\
+  \ on how to create and use the Interface.\n\nMeet Other Learners\n\nWe have our\
+  \ official AI Community Discord server for meeting other learners. This is a great\
+  \ way to network with other like-minded entrepreneurs, builders, students, and anyone\
+  \ looking to level up in Generative AI.\n\nThe project team will also be on this\
+  \ Discord server to help any learners.\n\nRequirements - Visual Studio Code - Python\
+  \ (tested with 3.10, 3.12) - Python virtual environment tool (venv) - An Azure account\
+  \ - Azure subscription onboarded into Azure OpenAI - Necessary permissions to deploy\
+  \ resources in the subscription\n\nPreparation\n\nGit repository - Clone this repository\
+  \ to your local machine and open a terminal in the cloned directory.\n\nVisual Studio\
+  \ Code - Windows - Install Visual Studio Code - Linux - Install Visual Studio Code\
+  \ - Mac - Install Visual Studio Code\n\nPython - Windows - Install Python 3.12.2\
+  \ - Linux - It is usually pre-installed. Check version with `python3 --version`.\
+  \ - Mac - `brew install python3`\n\nPython Virtual Environment Setup - To install\
+  \ virtualenv via pip run: - Windows / Mac / Linux:\n\n`pip3 install virtualenv`\n\
+  \n- Creation of virtualenv (in the cloned Azure/AOAI-workshop directory): - Windows:\n\
+  \n`python -m virtualenv venv` - Mac / Linux:\n\n`virtualenv -p python3 venv`\n\n\
+  - Activate the virtualenv: - Windows:\n\n`.\\venv\\Scripts\\activate.ps1` - Mac\
+  \ / Linux\n\n`source ./venv/bin/activate`\n\nInstall required libraries in your\
+  \ virtual environment - Run the following command in the terminal: - Windows / Mac\
+  \ / Linux:\n\n`pip3 install -r requirements.txt`\n\nContributing\n\nThis project\
+  \ welcomes contributions and suggestions. Most contributions require you to agree\
+  \ to a Contributor License Agreement (CLA) declaring that you have the right to,\
+  \ and actually do, grant us the rights to use your contribution. For details, visit\
+  \ https://cla.opensource.microsoft.com.\n\nWhen you submit a pull request, a CLA\
+  \ bot will automatically determine whether you need to provide a CLA and decorate\
+  \ the PR appropriately (e.g., status check, comment). Simply follow the instructions\
+  \ provided by the bot. You will only need to do this once across all repos using\
+  \ our CLA.\n\nThis project has adopted the Microsoft Open Source Code of Conduct.\
+  \ For more information see the Code of Conduct FAQ or contact opencode@microsoft.com\
+  \ with any additional questions or comments.\n\nTrademarks"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '807060479'
+    canonical_url: https://github.com/microsoft/AgenticCookBook
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

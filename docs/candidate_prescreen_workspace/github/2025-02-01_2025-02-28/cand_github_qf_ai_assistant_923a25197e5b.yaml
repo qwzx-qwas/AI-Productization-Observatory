@@ -1,0 +1,133 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_923a25197e5b
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-02-01_2025-02-28
+created_at: '2026-04-09T12:05:58.355198Z'
+updated_at: '2026-04-09T13:10:39.506513Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '771440212'
+canonical_url: https://github.com/stuxnet147/IDA-Assistant
+title: IDA-Assistant
+summary: IDA plugin to support automatic reverse engineering
+raw_evidence_excerpt: 'IDA plugin to support automatic reverse engineering
+
+
+  IDA Assistant (WIP) IDA Assistant is an IDA Pro plugin that leverages the power
+  of Anthropic''s Claude-3 models to assist users in reverse engineering and binary
+  analysis tasks. The plugin integrates with IDA Pro and provides an interactive chat
+  interface where users can ask questions, seek guidance, and receive intelligent
+  suggestions to support their reverse engineering workflow.
+
+
+  Features - AI-powered assistance for reverse engineering tasks in IDA Pro - Interactive
+  chat interface for seamless communication with the AI assistant Support for various
+  reverse engineering commands and queries, including: - Disassembly retrieval - Function
+  decompilation - Address renaming - Function start and end address retrieval - Address
+  lookup by name - Cross-reference analysis (xrefs to and from addresses) - Adding
+  comments to addresses
+
+
+  Installation Clone the repository:
+
+
+  Install the dependencies:
+
+
+  - Open the ida_assistant.py file and replace with your actual Anthropic(Claude)
+  API key. - Copy the ida_assistant.py file to your IDA Pro plugins directory. - Launch
+  IDA Pro and enable the "IDA Assistant" plugin from the "Edit" menu. Usage - Press
+  Alt+F1 or go to "Edit" > "Plugins" > "IDA Assistant" to open the assistant window.
+  - Type your query or request in the input field and click "Send" or press Enter.
+  - The AI assistant will analyze your query, execute relevant commands, and provide
+  helpful suggestions and information. - Review the assistant''s response in the chat
+  history and follow the provided guidance to aid your reverse engineering process.
+  - Continue the conversation with the assistant as needed, refining your queries
+  and exploring different aspects of the binary analysis.
+
+
+  Acknowledgments - The system prompt used in this plugin was inspired by the AutoGPT
+  project. - The query functions were adapted from the Gepetto IDA Pro plugin.
+
+
+  License This project is licensed under the MIT License.'
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '771440212'
+    canonical_url: https://github.com/stuxnet147/IDA-Assistant
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:39.506513Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

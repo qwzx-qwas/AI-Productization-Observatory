@@ -1,0 +1,124 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_518e86f43c72
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-04-01_2025-04-30
+created_at: '2026-04-09T13:49:48.817021Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-04-01..2025-04-30
+time_field: pushed_at
+external_id: '961954779'
+canonical_url: https://github.com/hanesegi/build-applications-w-copilot-agent-mode
+title: build-applications-w-copilot-agent-mode
+summary: This is a repository is a self-paced repository to build an application using
+  GitHub Copilot agent mode
+raw_evidence_excerpt: "This is a repository is a self-paced repository to build an\
+  \ application using GitHub Copilot agent mode\n\nBuild applications with GitHub\
+  \ Copilot agent mode\n\n_Build an application with GitHub Copilot agent mode in\
+  \ less than an hour._\n\nWelcome\n\nPeople love how GitHub Copilot helps them write\
+  \ code faster and with fewer errors. But what if GitHub could create a full stack\
+  \ application for your job role based on requirements written in natural language.\
+  \ In this exercise, we will prompt GitHub Copilot agent mode to create us a complete\
+  \ application.\n\n- **Who is this for**: Intermediate developers familiar with GitHub\
+  \ Copilot, basic GitHub, and basic web development - **What you'll learn**: We'll\
+  \ introduce GitHub Copilot agent mode and how to use it for application development.\
+  \ - **What you'll build**: You'll use GitHub Copilot agent mode to create a fitness\
+  \ application as the gym teacher of a high school. - **How long**: This course takes\
+  \ less than one hour to complete.\n\nIn this exercise, you will:\n\n1. Start up\
+  \ a preconfigured development environment for making a full stack application. 2.\
+  \ Prompt in GitHub Copilot Chat and select the edit tab and select agent mode from\
+  \ the edit/agent drop down. 3. Try creating the application with GPT-4o. 4. Try\
+  \ other LLM models to see other output.\n\nHow to start this exercise\n\n1. Right-click\
+  \ **Copy Exercise** and open the link in a new tab.\n\n2. In the new tab, most of\
+  \ the fields will automatically fill in for you.\n\n- For owner, choose your personal\
+  \ account or an organization to host the repository. - We recommend creating a public\
+  \ repository, as private repositories will use Actions minutes. - Scroll down and\
+  \ click the **Create repository** button at the bottom of the form.\n\n3. After\
+  \ your new repository is created, wait about 20 seconds for the exercise to be prepared\
+  \ and buttons updated. You will continue working from your copy of the exercise.\n\
+  \n- The **Copy Exercise** button will deactivate, changing to gray. - The **Start\
+  \ Exercise** button will activate, changing to green. - You will likely need to\
+  \ refresh the page.\n\n4. Click **Start Exercise**. Follow the step-by-step instructions\
+  \ and feedback will be provided as you progress.\n\n> [!IMPORTANT] > The **Start\
+  \ Exercise** button will activate after copying the repository. You will probably\
+  \ need to refresh the page.\n\n---\n\nReview the GitHub status page\n\n\xA9 2025\
+  \ GitHub \u2022 Code of Conduct \u2022 MIT License"
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-04-01'
+    window_end: '2025-04-30'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-04-01..2025-04-30
+    external_id: '961954779'
+    canonical_url: https://github.com/hanesegi/build-applications-w-copilot-agent-mode
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

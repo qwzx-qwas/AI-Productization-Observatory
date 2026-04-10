@@ -1,0 +1,144 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_9ff76b085d6a
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-02-01_2025-02-28
+created_at: '2026-04-09T14:02:03.488986Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '930450942'
+canonical_url: https://github.com/best-ai-agents/discord-servers-for-ai-agents
+title: discord-servers-for-ai-agents
+summary: List of AI Agent related discord channels with links
+raw_evidence_excerpt: "List of AI Agent related discord channels with links\n\nDiscord\
+  \ Channels for AI Agents & Automations\n\n> List of AI Agents, agentic workflows,\
+  \ automation and related discord channels with invite links\n\nIndex\n\n- A - B\
+  \ - C - G - H - L - N - O - P - Q - S - V\n\nDiscord Channels\n\n| Name | Discord\
+  \ Invite | Info | | ----------------------------------------------------------------------------------------\
+  \ | ---------------------------------------------------------------------------------------------------------------\
+  \ | --------------------------------------------------------------------------------------------------------------------\
+  \ | | A | | | | AgentHub | Discord \u203A xtbrafmzC7 | Build powerful automations\
+  \ without writing the single line of code | | AI/ML API | Discord \u203A ai-ml-api-1207275734695944252\
+  \ | Community focused on AI/ML APIs | | Agently | Discord \u203A 4HnarMBpYT | AI\
+  \ agent application development framework designed to simplify building and integrating\
+  \ AI agents into applications | | AnythingLLM | Discord \u203A YCtUYD5vBf | Self-hosted\
+  \ LLM application | | B | | | | Botpress | Discord \u203A botpress | Open-source\
+  \ chatbot platform | | C | | | | Chatbot builder | Discord \u203A chatbotbuilderai\
+  \ | Place for chatbot builders | | ChatGPT | Discord \u203A r-chatgpt-1050422060352024636\
+  \ | ChatGPT discussion and support | | Chidori | Discord \u203A CJwKsPSgew | A reactive\
+  \ runtime for building durable AI agents | | Continue | Discord \u203A vapESyrFmJ\
+  \ | AI coding assistant | | Crestel | Discord \u203A crestal | AI-powered customer\
+  \ support | | G | | | | GPT Researcher | Discord \u203A 2pFkc83fRq | Say Goodbye\
+  \ to Hours of Research | | Groq | Discord \u203A n8KtCjfAug | AI chip manufacturer\
+  \ | | H | | | | Harpa.ai | Discord \u203A B9Evx82m4K | AI automation agent for chrome\
+  \ | | Hugging Face | Discord \u203A hugging-face-879548962464493619 | Platform for\
+  \ sharing and discovering machine learning models | | L | | | | Lablab AI | Discord\
+  \ \u203A lablab-ai-877056448956346408 | AI-powered collaborative workspace | | Langroid\
+  \ | Discord \u203A ZU36McDgDs | Harness LLMs with Multi-Agent Programming | | Lazy\
+  \ AI | Discord \u203A lazy-ai-1108429576046137344 | AI code generation tool | |\
+  \ Learn AI | Discord \u203A learnaitogether | Community for learning AI | | Lovable\
+  \ | Discord \u203A rPw2rSFE2K | AI-powered customer feedback platform | | Lyzr AI\
+  \ | Discord \u203A P6HCMQ9TRX | Design, build, and deploy AI agents effortlessly\
+  \ | | N | | | | n8n | Discord \u203A n8n | Workflow automation tool | | O | | |\
+  \ | OpenAI | Discord \u203A openai | Official OpenAI community | | OpenRouter |\
+  \ Discord \u203A fVyRaUDgxW | Multi-chain infrastructure for dApps | | OpenServ\
+  \ | Discord \u203A KQdX3KNg2M | An applied AI Research Lab building the infrastructure\
+  \ for Autonomous Agents | | P | | | | Perplexity | Discord \u203A perplexity-ai\
+  \ | AI search engine | | Phind | Discord \u203A S25yW8TebZ | AI search engine for\
+  \ developers | | Q | | | | Qodo (formerly CodiumAI) | Discord \u203A codiumai-1057273017547378788\
+  \ | AI code generation and testing tool | | S | | | | Semantic Kernel | Discord\
+  \ \u203A semantic-kernel-1063152441819942922 | Microsoft's SDK for integrating LLMs\
+  \ into applications | | SmythOS | Discord \u203A TVHhgrwa | AI operating system\
+  \ | | Solidus Ai Tech | Discord \u203A solidusai | High-performance computing for\
+  \ AI | | Stable Diffusion | Discord \u203A stablediffusion | Text-to-image generation\
+  \ model community | | SuperAGI | Discord \u203A dXbRe5BHJC | Agent Native Architecture\
+  \ for Business SuperIntelligence | | V | | | | Vapi | Discord \u203A pUFNcf2WmH\
+  \ | AI-powered API generation tool | | VectorShift | Discord \u203A PdbDJsdBK2 |\
+  \ The Fastest Way to Build AI Apps and Workflows | | Voiceflow AI | Discord \u203A\
+  \ voiceflow-community-1079548823610871889 | Platform for building conversational\
+  \ AI experiences |\n\nYou can contribute \u2728\n\nIf you have the Discord invite\
+  \ link for AI Agents or agentic automation-related servers, please include it in\
+  \ this list\n\n1. Fork this repository 1. Update the README.md (this) file to add\
+  \ your entry in alphabetical order 1. Make a Pull Request (PR) from your forked\
+  \ repository to this repository\n\nI'll be merging new PRs on daily basis. Please\
+  \ tag me in comment for attention @ashgkwd"
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '930450942'
+    canonical_url: https://github.com/best-ai-agents/discord-servers-for-ai-agents
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

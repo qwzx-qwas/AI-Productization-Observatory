@@ -1,0 +1,130 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_53527ca5b0b7
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-02-01_2025-02-28
+created_at: '2026-04-09T14:07:06.440364Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '922298282'
+canonical_url: https://github.com/atyrode/gitemplate
+title: gitemplate
+summary: FastAPI template made for AI
+raw_evidence_excerpt: "FastAPI template made for AI\n\nGitemplate\n\nA production-ready\
+  \ FastAPI template specifically designed for building AI/LLM-powered web applications.\n\
+  \n- \U0001F916 Optimized for LLM integration and AI workflows - \U0001F680 FastAPI\
+  \ for high-performance API development - \U0001F3A8 Jinja2 templating engine - \U0001F485\
+  \ TailwindCSS for utility-first styling - \u26A1\uFE0F Deploy your app in just an\
+  \ hour\n\nHere are some projects based on this template: gitingest.com and gitdiagram.com.\n\
+  \nWe'd love to see what you build! Share your projects in our Discussions section\
+  \ and become part of our growing ecosystem.\n\nTL;DR\n\nYou may copy and paste the\
+  \ following code block to get started:\n\nYou can now start developping in the `src/your_package_name/main.py`\
+  \ file. This is the entrypoint of your service.\n\n\u2728 Features\n\n- **Production-Ready\
+  \ Structure**: Organized project layout following best practices - **Modern Stack**:\
+  \ - FastAPI for high-performance APIs - Jinja2 templating engine for the front-end\
+  \ - TailwindCSS for modern styling - **Security**: - Built-in rate limiting - Trusted\
+  \ host middleware - Security headers configuration - CORS configuration - Environment\
+  \ variables management - **Deployment Ready**: - Docker support with multi-stage\
+  \ builds - GitHub Actions workflows for: - CI/CD pipeline - PyPI publishing - Docker\
+  \ image building - Health check endpoints - Production-grade logging - **Developer\
+  \ Experience**: - Pre-configured development tools: - Black for code formatting\
+  \ - isort for import sorting - pylint for code analysis - mypy for type checking\
+  \ - pytest for testing - Pre-commit hooks for code quality - Type hints and comprehensive\
+  \ docstrings - Hot reload during development - **Template System**: - Easy customization\
+  \ through `template.py` - Flexible project structure - Configurable dependencies\n\
+  \n\U0001F680 Quick Start\n\n1. Use this template by clicking \"Use this template\"\
+  \ on GitHub or clone it:\n\n2. Create and activate a virtual environment:\n\n3.\
+  \ Set up your project details in `template.py`:\n\n4. Apply the template:\n\n5.\
+  \ Run the development server:\n\nVisit `http://localhost:8000` to see your application\
+  \ running! You can now start developping in the `src/your_package_name/main.py`\
+  \ file. This is the entrypoint of your service.\n\n\U0001F4BB Development\n\nRunning\
+  \ Tests\n\nCode Formatting\n\nThe project uses pre-commit hooks to maintain code\
+  \ quality:\n\nDocker Support\n\nBuild and run using Docker:\n\n\U0001F91D Contributing\n\
+  \nContributions are welcome! Please read our Contributing Guidelines for details\
+  \ on how to submit pull requests, report issues, and contribute to the project.\
+  \ In its current state, the file is templated, but it should give you a good starting\
+  \ point.\n\n\U0001F4C4 License\n\nThis project is licensed under the MIT License\
+  \ - see the LICENSE file for details.\n\nPalette\n\nThe colors used for this project\
+  \ are the following:\n\n\U0001F64F Acknowledgments\n\n- FastAPI for the amazing\
+  \ web framework - Jinja2 for templating - TailwindCSS for styling - Gitingest for\
+  \ the inspiration\n\n\u2B50 Project Growth"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '922298282'
+    canonical_url: https://github.com/atyrode/gitemplate
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

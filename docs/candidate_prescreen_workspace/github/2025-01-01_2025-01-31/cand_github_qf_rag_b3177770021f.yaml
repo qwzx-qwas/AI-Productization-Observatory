@@ -1,0 +1,152 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_rag_b3177770021f
+candidate_batch_id: candidate_batch_github_qf_rag_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:30:47.343962Z'
+updated_at: '2026-04-09T13:10:38.392180Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '852492838'
+canonical_url: https://github.com/AnswerDotAI/byaldi
+title: byaldi
+summary: Use late-interaction multi-modal models such as ColPali in just a few lines
+  of code.
+raw_evidence_excerpt: "Use late-interaction multi-modal models such as ColPali in\
+  \ just a few lines of code.\n\nWelcome to Byaldi _Did you know? In the movie RAGatouille,\
+  \ the dish Remy makes is not actually a ratatouille, but a refined version of the\
+  \ dish called \"Confit Byaldi\"._\n\n\u26A0\uFE0F This is the pre-release version\
+  \ of Byaldi. Please report any issue you encounter, there will likely be quite a\
+  \ few quirks to iron out!\n\nByaldi is RAGatouille's mini sister project. It is\
+  \ a simple wrapper around the ColPali repository to make it easy to use late-interaction\
+  \ multi-modal models such as ColPALI with a familiar API.\n\nGetting started\n\n\
+  First, a warning: This is a pre-release library, using uncompressed indexes and\
+  \ lacking other kinds of refinements.\n\nCurrently, we support all models supported\
+  \ by the underlying colpali-engine, including the newer, and better, ColQwen2 checkpoints,\
+  \ such as `vidore/colqwen2-v1.0`. Broadly, the aim is for byaldi to support all\
+  \ ColVLM models.\n\nAdditional backends will be supported in future updates. As\
+  \ byaldi exists to facilitate the adoption of multi-modal retrievers, we intend\
+  \ to also add support for models such as VisRAG.\n\nEventually, we'll add an HNSW\
+  \ indexing mechanism, pooling, and, who knows, maybe 2-bit quantization?\n\nIt will\
+  \ get updated as the multi-modal ecosystem develops further!\n\nPre-requisites\n\
+  \nPoppler\n\nTo convert pdf to images with a friendly license, we use the `pdf2image`\
+  \ library. This library requires `poppler` to be installed on your system. Poppler\
+  \ is very easy to install by following the instructions on their website. The tl;dr\
+  \ is:\n\n__MacOS with homebrew__\n\n__Debian/Ubuntu__\n\nFlash-Attention\n\nGemma\
+  \ uses a recent version of flash attention. To make things run as smoothly as possible,\
+  \ we'd recommend that you install it after installing the library:\n\nHardware\n\
+  \nColPali uses multi-billion parameter models to encode documents. We recommend\
+  \ using a GPU for smooth operations, though weak/older GPUs are perfectly fine!\
+  \ Encoding your collection would suffer from poor performance on CPU or MPS.\n\n\
+  Using `byaldi`\n\nByaldi is largely modeled after RAGatouille, meaning that everything\
+  \ is designed to take the fewest lines of code possible, so you can very quickly\
+  \ build on top of it rather than spending time figuring out how to create a retrieval\
+  \ pipeline.\n\nLoading a model\n\nLoading a model with `byaldi` is extremely straightforward:\n\
+  \nIf you've already got an index, and wish to load it along with the model necessary\
+  \ to query it, you can do so just as easily:\n\nCreating an index Creating an index\
+  \ with `byaldi` is simple and flexible. **You can index a single PDF file, a single\
+  \ image file, or a directory containing multiple of those**. Here's how to create\
+  \ an index:\n\nAnd that's it! The model will start spinning and create your index,\
+  \ exporting all the necessary information to disk when it's done. You can then use\
+  \ the `RAGMultiModalModel.from_index(\"your_index_name\")` method presented above\
+  \ to load it whenever needed (you don't need to do this right after creating it\
+  \ -- it's already loaded in memory and ready to go!).\n\nThe main decision you'll\
+  \ have to make here is whether you want to set `store_collection_with_index` to\
+  \ True or not. If set to true, it greatly simplifies your workflow: the base64-encoded\
+  \ version of relevant documents will be returned as part of the query results, so\
+  \ you can immediately pipe it to your LLM. However, it adds considerable memory\
+  \ and storage requirements to your index, so you might want to set it to False (the\
+  \ default setting) if you're short on those resources, and create the base64 encoded\
+  \ versions yourself whenever needed.\n\nSearching\n\nOnce you've created or loaded\
+  \ an index, you can start searching for relevant documents. Again, it's a single,\
+  \ very straightforward command:\n\nResults will be a list of `Result` objects, which\
+  \ you can also treat as normal dictionaries. Each result will be in this format:\n\
+  \n`page_num` are 1-indexed, while doc_ids are 0-indexed. This is to make simpler\
+  \ to operate with other PDF manipulation tools, where the 1st page is generally\
+  \ page 1. `page_num` for images and single-page PDFs will always be 1, it's only\
+  \ useful for longer PDFs.\n\nIf you've passed metadata or encoded with the flag\
+  \ to store the base64 versions, these fields will be populated. Results are sorted\
+  \ by score, so item 0 from the list will always be the most relevant document, etc...\n\
+  \nAdding documents to an existing index\n\nSince indexes are in-memory, they're\
+  \ addition-friendly! If you need to ingest some new pdfs, just load your index with\
+  \ `from_index`, and then, call `add_to_index`, with similar parameters to the original\
+  \ `index()` method:"
+query_family: ai_applications_and_products
+query_slice_id: qf_rag
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_rag
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '852492838'
+    canonical_url: https://github.com/AnswerDotAI/byaldi
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:38.392180Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

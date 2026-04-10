@@ -1,0 +1,142 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_8291a139ece8
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:42:15.871699Z'
+updated_at: '2026-04-09T13:10:36.711627Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '910840341'
+canonical_url: https://github.com/FixingPixels/AiDE
+title: AiDE
+summary: AiDE provides a structured approach to developing projects with AI assistance.
+  It creates a standardized way for AI to understand your project context and maintain
+  documentation.
+raw_evidence_excerpt: "AiDE provides a structured approach to developing projects\
+  \ with AI assistance. It creates a standardized way for AI to understand your project\
+  \ context and maintain documentation.\n\nAiDE Framework for AI-Assisted Development\n\
+  \nThe AiDE framework is a lightweight, drop-in solution for structuring AI-assisted\
+  \ development. It standardizes project context management, documentation, and collaboration,\
+  \ ensuring your assistant stays informed and productive throughout the project lifecycle.\n\
+  \n> **\u26A0 Disclaimer** > Some AI-powered code assistants have predefined token\
+  \ limits that could be quickly consumed when reading or writing to `.context` files.\
+  \ While this framework has proven tremendously helpful, developers should be aware\
+  \ of these limitations. Using it with code assistants that leverage your own API\
+  \ keys can help avoid the stricter token limits imposed by some platforms.\n\nFeatures\n\
+  \n- **Drop-in simplicity**: No dependencies or configuration required. Just drop\
+  \ the `.context` folder into your project. - **Versatile usage**: - **New projects**:\
+  \ Use your AI assistant or the AiDE Planning Assistant GPT to generate an initial\
+  \ roadmap, tasks, and documentation. - **Existing projects**: Let the assistant\
+  \ analyze your codebase and update the `.context` files to reflect the current state.\
+  \ - **Standardized structure**: Organized templates for roadmaps, tasks, decisions,\
+  \ and sessions.\n\nHow It Works\n\n1. **Project State** - `current_state.md` tracks\
+  \ active features, technical state, and recent changes. - AI keeps this updated\
+  \ as you work. - Always know where your project stands.\n\n2. **Decision Records**\
+  \ - Document architectural decisions in `decisions/`. - Track context, consequences,\
+  \ and validation. - Build institutional knowledge.\n\n3. **Task Management** - Track\
+  \ tasks in `tasks/`. - AI helps manage priorities and progress. - Keep development\
+  \ focused.\n\n4. **Session Tracking** - Record session summaries in `sessions/`.\
+  \ - Track changes, decisions, and next steps. - Maintain development continuity.\n\
+  \nGetting Started\n\nNew Project 1. Start with the **AiDE Planning Assistant GPT**\
+  \ here. For those who wish to create their own version, the base prompt is included\
+  \ in AiDE_Planning_Assistant_GPT.md. 2. Use it to brainstorm and generate a `planning_doc.md`\
+  \ for your project. 3. Save the `planning_doc.md` in the project root. 4. Instruct\
+  \ your AI code assistant to: - Read the `planning_doc.md`. - Generate and populate\
+  \ the `.context` files (e.g., roadmap, tasks, decisions).\n\nExisting Project 1.\
+  \ Drop the `.context` folder into your project\u2019s root directory. 2. Instruct\
+  \ your AI assistant to: - Analyze the codebase. - Update `current_state.md` with\
+  \ the technical state, features, and recent changes. - Populate or update `roadmap.md`\
+  \ and any relevant tasks or decisions.\n\nBest Practices\n\n1. **Start every session**:\
+  \ Begin each chat session by asking your AI assistant to review the files in `.context`.\
+  \ 2. **Task completion**: When completing a task, ask the assistant to: - Move the\
+  \ task to `.context/tasks/completed/`. - Update related files (e.g., current state,\
+  \ roadmap). 3. **Track decisions**: Document key decisions in `.context/decisions/`\
+  \ and reference them for future guidance. 4. **Session summaries**: Record discussions\
+  \ and outcomes in `.context/sessions/` to maintain continuity.\n\nFolder Structure\n\
+  \nContributions\n\nWe welcome contributions! Feel free to suggest improvements or\
+  \ submit templates that enhance the usability of `.context`.\n\nOptional Consideration:\
+  \ Global Rules for AI Assistants\n\nIf your AI assistant supports global rules or\
+  \ instructions that persist across all chats or sessions, consider using the following\
+  \ set of rules to optimize its integration with the `.context` framework:\n\nImplementing\
+  \ these rules ensures the assistant operates effectively, maintains consistency,\
+  \ and reduces the effort required to manage project context."
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '910840341'
+    canonical_url: https://github.com/FixingPixels/AiDE
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:36.711627Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

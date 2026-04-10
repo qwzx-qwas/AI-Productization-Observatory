@@ -1,0 +1,105 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_132831bcda0e
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-02-01_2025-02-28
+created_at: '2026-04-09T12:11:12.479567Z'
+updated_at: '2026-04-09T13:10:40.882331Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '720625904'
+canonical_url: https://github.com/purocean/expose-github-copilot-http-api
+title: expose-github-copilot-http-api
+summary: "\u5C06 VSCode \u4E2D\u7684 Github Copilot \u8F6C\u5316\u6210 HTTP \u63A5\
+  \u53E3\uFF0C\u65B9\u4FBF\u5728\u5176\u4ED6\u573A\u666F\u4F7F\u7528\u3002"
+raw_evidence_excerpt: "\u5C06 VSCode \u4E2D\u7684 Github Copilot \u8F6C\u5316\u6210\
+  \ HTTP \u63A5\u53E3\uFF0C\u65B9\u4FBF\u5728\u5176\u4ED6\u573A\u666F\u4F7F\u7528\u3002\
+  \n\nexpose-github-copilot-http-api\n\n\u5C06 VSCode \u4E2D\u7684 Github Copilot\
+  \ \u8F6C\u5316\u6210 HTTP \u63A5\u53E3\uFF0C\u65B9\u4FBF\u5728\u5176\u4ED6\u573A\
+  \u666F\u4F7F\u7528\u3002\n\n\u53C2\u8003\u6587\u7AE0\uFF1Ahttps://blog-purocean.vercel.app/hack-github-copilot/\n\
+  \n> [!NOTE] > \u73B0\u5728\u800C\u4ECA\u773C\u76EE\u4E0B\uFF0CGthub Copilot \u5F00\
+  \u653E\u4E86\u5F88\u591A\uFF0C\u6BD4\u5982\u53EF\u4EE5\u901A\u8FC7 https://www.npmjs.com/package/@github/copilot-language-server\
+  \ \u6765\u63A5\u5165\uFF0C\u672C\u65B9\u6CD5\u867D\u7136\u53EF\u7528\uFF082025-02-12\uFF09\
+  \uFF0C\u4F46\u4E0D\u5EFA\u8BAE\u518D\u4F7F\u7528\u4E86\n\nYank Note\n\nYank Note\
+  \ \u7684 AI Copilot \u6269\u5C55\u5DF2\u81EA\u5E26\u8FD9\u4E2A\u9002\u914D\u5668\
+  \uFF0C\u7834\u89E3\u540E\uFF0C\u76F4\u63A5\u586B\u4E0A\u5730\u5740\u5373\u53EF\u5DE5\
+  \u4F5C"
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '720625904'
+    canonical_url: https://github.com/purocean/expose-github-copilot-http-api
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:40.882331Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

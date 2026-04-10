@@ -1,0 +1,131 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_336e290417a3
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-04-01_2025-04-30
+created_at: '2026-04-09T14:09:24.410415Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-04-01..2025-04-30
+time_field: pushed_at
+external_id: '957551618'
+canonical_url: https://github.com/rguthaa/genai-usecases
+title: genai-usecases
+summary: Generative AI Usecases
+raw_evidence_excerpt: "Generative AI Usecases\n\nGenAI Use Cases\n\nThis repository\
+  \ contains practical Generative AI (GenAI) projects and pipelines for real-world\
+  \ use cases.\n\n- Each folder in `/usecases` is a standalone use case, complete\
+  \ with code, setup instructions, and documentation. - The `/examples` folder contains\
+  \ sample programs I created to learn and experiment with technologies like LangChain.\n\
+  \n1. Project Overview\n\nThis repository showcases multiple Generative AI use cases.\n\
+  \n**Current example:** - **Internal Documentation RAG Pipeline:** - Ingests and\
+  \ cleans Markdown/HTML documentation - Generates text embeddings (OpenAI or HuggingFace)\
+  \ - Stores and searches embeddings in ChromaDB - Retrieves and summarizes content\
+  \ with LLMs using LangChain\n\nMore use cases will be added over time.\n\n2. How\
+  \ to Run the Internal Doc Jupyter Notebook\n\nA. Clone the Repository\n\nB. Launch\
+  \ Jupyter Notebook\n\nIf you don\u2019t have Jupyter installed, run:\n\nOr, in a\
+  \ virtual environment:\n\nNow launch:\n\nC. Environment Setup\n\n- The first cell\
+  \ in each notebook runs the setup script for you. - If you run it manually, you\
+  \ must specify the model provider (`OpenAI`, `VertexAI`, etc):\n\n- The setup script\
+  \ will automatically call the appropriate provider-specific setup (like `vertex_ai_setup.sh`)\
+  \ based on the argument you provide.\n\nD. Follow the Notebook Step through the\
+  \ cells to load data, clean, embed, search, and generate LLM-based answers.\n\n\
+  3. How to Run the Internal Doc Pipeline as a Python Project\n\nA. Clone the Repository\
+  \ (if not already done)\n\nB. Setup Environment\n\nC. (Optional) Google Vertex AI\
+  \ Setup If you use Vertex AI, the setup script will handle this step for you.\n\n\
+  D. Run the Pipeline\n\nThe script will process the docs, create embeddings, run\
+  \ retrieval, and summarize with your chosen LLM.\n\nEnvironment Variables\n\nYou\
+  \ must configure environment variables for API keys and service credentials. A `.env.example`\
+  \ file is provided in the repo root.\n\nTo use it:\n\n1. **Copy `.env.example` to\
+  \ `.env`** in the root directory:\n\n2. **Edit `.env`** and fill in your actual\
+  \ keys/paths, for example:\n\n3. **Do NOT commit your `.env` file to git.** `.gitignore`\
+  \ includes `.env` for your safety.\n\nDirectory Structure\n\nusecases/ internal_doc_pipeline/\
+  \ notebooks/ # Jupyter notebooks for experimentation src/ # Core Python source code\
+  \ for the pipeline setup.sh # Main setup script (pass model provider as argument)\
+  \ vertex_ai_setup.sh # GCP/Vertex AI setup (called as needed) examples/ ... # Sample\
+  \ programs, LangChain experiments, etc. Other usecase folders may be added in the\
+  \ future\n\nRequirements\n\n- Python 3.9+ - (Optional) Google Cloud CLI for Vertex\
+  \ AI workflows - OpenAI API key and/or HuggingFace token (for embeddings) - `.env`\
+  \ file with your API keys and credentials (see above)\n\nMore Information\n\n- Related\
+  \ Medium Article: RAG Pipeline for Summarizing Internal Documentation\n\nContributing\
+  \ and Questions\n\nQuestions, issues, and pull requests are welcome. If you are\
+  \ experimenting with similar GenAI pipelines, feel free to fork, extend, or reach\
+  \ out via the Issues tab."
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-04-01'
+    window_end: '2025-04-30'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-04-01..2025-04-30
+    external_id: '957551618'
+    canonical_url: https://github.com/rguthaa/genai-usecases
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

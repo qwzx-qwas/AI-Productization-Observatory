@@ -1,0 +1,179 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_cc4ad571b86e
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-02-01_2025-02-28
+created_at: '2026-04-09T13:54:04.039074Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '849440130'
+canonical_url: https://github.com/Azure-Samples/SQLAIWorkshop
+title: SQLAIWorkshop
+summary: SQL and AI Workshop
+raw_evidence_excerpt: 'SQL and AI Workshop
+
+
+  SQL AI Workshop
+
+
+  Introduction
+
+
+  This workshop is designed to help you get started with SQL AI. The workshop is divided
+  into eight modules, each of which is designed to help you learn about SQL AI and
+  how to use it in your applications.
+
+
+  Pre-requisites
+
+
+  In order to complete exercises in this workshop that are part of demos or specific
+  lab steps you will need:
+
+
+  - An Azure subscription with a minimum Contributor role. - You will need access
+  to deploy an Azure OpenAI Service. - You will need access to deploy an Azure SQL
+  Database. - Your tenant will need to have Copilot for Azure enabled. See more at
+  https://aka.ms/sqlcopilot. - SQL Server Management Studio (SSMS) which you can download
+  at https://aka.ms/ssms. We recommend the latest SSMS version. - The ability to run
+  a Python based notebook. - To run any Fabric exercise you will need access to a
+  Microsoft Fabric account. You can use a free trial from Microsoft Fabric.
+
+
+  Slides
+
+
+  This workshop comes with a PowerPoint slide deck that is used to teach the workshop.
+  You can find the deck in the **slides** folder.
+
+
+  To learn more about each module click on any Module below.
+
+
+  **Module 1 - SQL and AI Fundamentals**
+
+
+  **Module 2 - AI Models**
+
+
+  **Module 3 - SQL and AI Services**
+
+
+  **Module 4 - Vector Search and RAG Patterns**
+
+
+  **Module 5 - Content Safety**
+
+
+  **Module 6 - AI Frameworks**
+
+
+  **Module 7 - Copilots**
+
+
+  **Module 8 - Microsoft Fabric**
+
+
+  Summary
+
+
+  Getting Started To begin the lab, clone this repository and follow the instructions
+  in each section.
+
+
+  Contributing Contributions to this lab are welcome! Please create a PR for any contributions.
+
+
+  License This lab is provided under the MIT License. See the `LICENSE` file for more
+  details.
+
+
+  Acknowledgments A special thanks to all the contributors and maintainers of this
+  lab.
+
+
+  Contact For any queries or feedback regarding the lab, please open an issue in this
+  repository or contact the lab maintainers directly.
+
+
+  Happy coding and learning!'
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '849440130'
+    canonical_url: https://github.com/Azure-Samples/SQLAIWorkshop
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -1,0 +1,132 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_113b75e1c7d8
+candidate_batch_id: candidate_batch_github_qf_agent_2025-03-01_2025-03-31
+created_at: '2026-04-09T12:30:49.708105Z'
+updated_at: '2026-04-09T14:56:01.083262Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '920894482'
+canonical_url: https://github.com/browser-use/macOS-use
+title: macOS-use
+summary: Make Mac apps accessible for AI agents
+raw_evidence_excerpt: "Make Mac apps accessible for AI agents\n\nTell your MacBook\
+  \ what to do, and it's done\u2014across ANY app. Created by Ofir Ozeri \u2665\uFE0F\
+  \ migrated in collaboration with Magnus and Gregor\n\nmacOS-use enables AI agents\
+  \ to interact with your Macbook see it in action!\n\nQuick start\n\n\u26A0\uFE0F\
+  \ Important: Review the Warning section before proceeding.\n\nWith pip:\n\nFrom\
+  \ github\n\nClone first\n\nDon't forget API key Supported providers: OAI, Anthropic\
+  \ or Gemini (deepseek R1 coming soon!)\n\nAt the moment, macOS-use works best with\
+  \ OAI or Anthropic API, although Gemini is free. While Gemini works great too, it\
+  \ is not as reliable.\n\nWe recommend using macOS-use with uv environment\n\nInstall\
+  \ locally and you're good to go! try the first exmaple!\n\nTry prompting it with\n\
+  \nDemos\n\nClick the GIF for the full video!\n\nprompt: Calculate how much is 5\
+  \ X 4 and return the result, then call done.\n\nprompt: Go to auth0.com, sign in\
+  \ with google auth, choose ofiroz91 gmail account, login to the website and call\
+  \ done when you finish.\n\nprompt: Can you check what hour is Shabbat in israel\
+  \ today? call done when you finish.\n\nOur Vision:\n\nTLDR: Tell every Apple device\
+  \ what to do, and see it done. on EVERY APP.\n\nThis project aimes to build the\
+  \ AI agent for the MLX by Apple framework that would allow the agent to perform\
+  \ any action on any Apple device. Our final goal is a open source that anyone can\
+  \ clone, powered by the mlx and mlx-vlm to run local private infrence at zero cost.\n\
+  \nRoadmap goals:\n\n1. Support MacBooks at SOTA reliability\n\n- [ ] Refine the\
+  \ Agent prompting. - [ ] Release the first working version to pypi. - [ ] Improve\
+  \ self-correction. - [x] Adding ability to check which apps the machine has installed.\
+  \ - [x] Add feature to allow the agent to check existing apps if failing, e.g. calendar\
+  \ app actual name is iCal. - [ ] Add action for the agent to ask input from the\
+  \ user. - [ ] Test Test Test! and let us know what and how to improve! - [ ] Make\
+  \ task cheaper and more efficient.\n\n2. Support local inference with small fine\
+  \ tuned model.\n\n- [ ] Add support for inference with local models using mlx and\
+  \ mlx-vlm. - [ ] Fine tune a small model that every device can run inference with.\
+  \ - [ ] SOTA reliability.\n\n3. Support iPhone/iPad\n\nWARNING\n\nThis project is\
+  \ still under development and user discretion is advised! macOS-use can and will\
+  \ use your do login, use private credentials, auth services or stored passwords\
+  \ to complete its task, launch and interact WITH EVERY APP and UI component in your\
+  \ MacBook and restrictions to the model are still under active development! It is\
+  \ not recommended to operate it unsupervised YET macOS-use WILL NOT STOP at captcha\
+  \ or any other forms of bot identifications, so once again, user discretion is advised.\n\
+  \nDisclaimer:\n\nAs this is an early stage release, You might experience varying\
+  \ success rates depending on task prompt, we're actively working on improvements.\
+  \ talk me on X/Twitter or contact me on Discord, your input is crucial and highly\
+  \ valuable!\n\nContributing\n\nWe are a new project and would love contributors!\
+  \ Feel free to PR, open issues for bugs or feature requests.\n\nThanks"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '920894482'
+    canonical_url: https://github.com/browser-use/macOS-use
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T13:10:41.994946Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_08_samples_106_120.yaml
+  sample_slot_id: GS300-117
+  sample_id: cand_github_qf_agent_113b75e1c7d8
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:56:01.083239Z'

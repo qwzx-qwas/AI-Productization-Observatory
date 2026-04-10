@@ -1,0 +1,160 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_26ddbff213ee
+candidate_batch_id: candidate_batch_github_qf_agent_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:26:06.824232Z'
+updated_at: '2026-04-09T14:54:57.656696Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '921740427'
+canonical_url: https://github.com/oldharrywang/Free_US_Investment_Agent_System
+title: Free_US_Investment_Agent_System
+summary: ''
+raw_evidence_excerpt: "Free US Investment Agent System \U0001F680\n\nA sophisticated\
+  \ AI-powered investment agent system for US stock market analysis and trading decisions,\
+  \ leveraging yfinance for market data and AlphaVantage for news sentiment analysis.\n\
+  \n\U0001F30F English | \u7B80\u4F53\u4E2D\u6587\n\n\U0001F6E1\uFE0F Disclaimer\n\
+  \nThis project is for **educational and research purposes only**.\n\n- Not intended\
+  \ for real trading or investment - No warranties or guarantees provided - Past performance\
+  \ does not indicate future results - Creator assumes no liability for financial\
+  \ losses - Consult a financial advisor for investment decisions\n\nBy using this\
+  \ software, you agree to use it solely for learning purposes.\n\n\u2728 Features\n\
+  \n- Real-time US stock market data analysis using yfinance - News sentiment analysis\
+  \ through AlphaVantage API - AI-powered trading decision making - Comprehensive\
+  \ backtesting capabilities - Detailed reasoning for investment decisions - Support\
+  \ for multiple trading strategies\n\n\U0001F3D7\uFE0F System Architecture\n\nThe\
+  \ system employs multiple AI agents working together to make investment decisions:\n\
+  \nAgent Descriptions\n\n1. **Market Data Agent**\n\n- Gathers historical price data\
+  \ from yfinance - Collects financial metrics and statements - Preprocesses data\
+  \ for other agents\n\n2. **Technical Analyst**\n\n- Analyzes price trends and patterns\
+  \ - Calculates technical indicators - Generates technical trading signals\n\n3.\
+  \ **Fundamentals Analyst**\n\n- Evaluates company financial health - Analyzes growth\
+  \ metrics - Provides fundamental analysis signals\n\n4. **Sentiment Analyst**\n\n\
+  - Fetches news from AlphaVantage - Analyzes news sentiment using Gemini - Generates\
+  \ sentiment-based signals\n\n5. **Risk Manager**\n\n- Integrates signals from all\
+  \ analysts - Evaluates potential risks - Sets position limits - Provides risk-adjusted\
+  \ recommendations\n\n6. **Portfolio Manager** - Makes final trading decisions -\
+  \ Manages position sizing - Balances risk and reward - Generates executable orders\n\
+  \nWorkflow\n\n1. Market Data Agent collects all necessary data 2. Three analysts\
+  \ (Technical, Fundamental, Sentiment) work in parallel 3. Risk Manager combines\
+  \ and evaluates all signals 4. Portfolio Manager makes the final decision\n\n\U0001F4C1\
+  \ Project Structure\n\nLogs and Data\n\nThe system generates two types of logs:\n\
+  \n- `api_calls_[date].log`: Records all API calls and their responses - `backtest_[ticker]_[date]_[start]_[end].log`:\
+  \ Records backtesting results and analysis\n\nThe system stores data in JSON format:\n\
+  \n- News data: `src/data/stock_news/[ticker]/[date]_news.json` (Note: The date in\
+  \ filename represents the day before the analysis date, as we use historical news\
+  \ to make current day's decisions)\n\n- Sentiment cache: `src/data/sentiment_cache.json`\n\
+  \n\U0001F4CB Prerequisites\n\n- Python 3.11 - Poetry for dependency management -\
+  \ AlphaVantage API key (Get your free API key from AlphaVantage) - Note: Free API\
+  \ key has a limit of 25 requests per day for news data - Gemini API key (Get your\
+  \ free API key from Google AI Studio)\n\n\u26A0\uFE0F Important Notes\n\nThe investment\
+  \ strategy implemented in this system is for educational purposes only. Users are\
+  \ encouraged to:\n\n- Develop and implement their own trading strategies - Customize\
+  \ the analysis parameters - Modify the decision-making logic - Test thoroughly before\
+  \ any real trading\n\n\U0001F527 Installation\n\n1. Install Poetry:\n\nWindows (PowerShell)\n\
+  \nUnix/macOS\n\n2. Clone the repository:\n\n3. Install dependencies:\n\n4. Set up\
+  \ your environment variables:\n\nYou can set up your environment variables in two\
+  \ ways:\n\na) **Directly edit the .env file** (Recommended):\n\nThen edit the .env\
+  \ file:\n\nb) **Via command line**:\n\nUnix/macOS:\n\nWindows PowerShell:\n\n\U0001F680\
+  \ Usage\n\nReal-time Analysis\n\nThe system predicts trading decisions for the next\
+  \ trading day based on current market data and historical news:\n\n1. **Basic Usage**\n\
+  \n2. **Show Detailed Analysis**\n\n3. **Custom Date and News Analysis**\n\nParameters:\n\
+  \n- `--ticker`: Stock symbol (e.g., TSLA for Tesla) - `--show-reasoning`: Display\
+  \ AI reasoning for decisions - `--end-date`: The date for which to predict next\
+  \ day's trading decision (YYYY-MM-DD format) - `--num-of-news`: Number of historical\
+  \ news articles to analyze (default: 5, max: 100) - `--initial-capital`: Initial\
+  \ cash amount (optional, default: 100,000)\n\nBacktesting\n\nTo run backtesting\
+  \ analysis:\n\nParameters:\n\n- `--ticker`: Stock symbol - `--start-date`: Backtesting\
+  \ start date (YYYY-MM-DD format) - `--end-date`: Backtesting end date (YYYY-MM-DD\
+  \ format) - `--num-of-news`: Number of news articles to analyze (default: 5, max:\
+  \ 100) - `--initial-capital`: Initial cash amount (optional, default: 100,000)\n\
+  \nOutput Description\n\nThe system will output:\n\n1. Fundamental analysis results\
+  \ 2. Technical analysis results 3. Sentiment analysis results 4. Risk management\
+  \ assessment 5. Final trading decision\n\nWhen using `--show-reasoning`, you'll\
+  \ see detailed analysis from each agent.\n\nExample Output:\n\n\U0001F4CA Results\n\
+  \nHere's an example of our backtesting results:\n\n\U0001F4C4 License\n\nThis project\
+  \ is licensed under the MIT License.\n\n\U0001F64F Acknowledgments\n\nThis project\
+  \ is modified from ai-hedge-fund. We sincerely thank the original authors for their\
+  \ excellent work and inspiration.\n\nAdditional acknowledgments:\n\n- yfinance for\
+  \ market data - AlphaVantage for news and sentiment analysis\n\n\u2615 Support the\
+  \ Project\n\nIf you find this project helpful, consider buying me a coffee!"
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '921740427'
+    canonical_url: https://github.com/oldharrywang/Free_US_Investment_Agent_System
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T13:10:35.911437Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_07_samples_091_105.yaml
+  sample_slot_id: GS300-099
+  sample_id: cand_github_qf_agent_26ddbff213ee
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:54:57.656669Z'

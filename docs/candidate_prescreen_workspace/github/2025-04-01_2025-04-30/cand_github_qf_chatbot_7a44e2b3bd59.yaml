@@ -1,0 +1,187 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_7a44e2b3bd59
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-04-01_2025-04-30
+created_at: '2026-04-09T14:01:54.489073Z'
+updated_at: '2026-04-09T14:56:29.685074Z'
+source: github
+source_id: src_github
+source_window: 2025-04-01..2025-04-30
+time_field: pushed_at
+external_id: '810976116'
+canonical_url: https://github.com/phanxuanquang/EngAce
+title: EngAce
+summary: Personalize the way Vietnamese learn English using generative AI
+raw_evidence_excerpt: 'Personalize the way Vietnamese learn English using generative
+  AI
+
+
+  EngAce is a cutting-edge, generative AI-powered application designed to revolutionize
+  the way Vietnamese learn English. This app provides a personalized learning experience
+  tailored to each user''s unique needs and preferences. EngAce combines the power
+  of artificial intelligence with a comprehensive set of features to create an engaging
+  and effective English learning environment. This repository contains the full source
+  code, documentation, and resources for the EngAce app. ____________________________
+
+
+  :raising_hand_man: Our Team | No. | Name | Responsibilities | | --- | --- | ---
+  | | 1 | Phan Xuan Quang | Product Design, Backend Development, DevOps, AI Model
+  Fine-Tuning| | 2 | Bui Minh Tuan | Frontend Development |
+
+
+  :triangular_flag_on_post: License
+
+
+  This project is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike
+  4.0 International** license. See the LICENSE file for details.
+
+
+  :rotating_light: Features EngAce offers a suite of tools and functionalities aimed
+  at making English learning more accessible, enjoyable, and efficient. The app is
+  designed with four main features as below.
+
+
+  1. Intelligent Dictionary
+
+
+  A comprehensive English dictionary tailored for Vietnamese learners, offering detailed
+  explanations, idioms, phrasal verbs, and even more. It provides in-depth Vietnamese
+  context when needed, eliminating the hassle of extensive research Key features include:
+  - Illustrative Examples: Each definition comes with example sentences to help users
+  understand the word in context. - Contextual Search: Users can search for words
+  based on specific contexts, making it easier to understand different usages of a
+  word.
+
+
+  2. Personalized Assignment
+
+
+  EngAce provides personalized practice exercises to help users improve their English
+  skills. The feature includes: - Custom Assignment: Users can generate multiple-choice
+  assignments tailored to their proficiency level and the topics they want to practice.
+  - Adaptive Learning: The app adapts to the user''s performance, providing progressively
+  challenging questions to ensure continuous improvement. - Support up to 100 quizzes
+  per request, and up to 12 different types of quizz for users to select.
+
+
+  3. Intelligent Writing Review
+
+
+  Instantly receive detailed feedback and constructive suggestions to enhance writing
+  skills, helping users improve their English writing with precision. The feature
+  includes: - Writing Review: Users can submit their writing pieces and receive detailed
+  feedback on grammar, style, and coherence. - Improvement Suggestions: The AI provides
+  constructive suggestions to help users refine and improve their writing.
+
+
+  4. Chat with AI Expert
+
+
+  EngAce includes an AI-powered chatbot that acts as an English learning companion.
+  The feature include: - Interactive Discussions: Users can engage in conversations
+  with the chatbot on various English learning topics. - Learning Tips: The chatbot
+  provides tips and advice to help users overcome common learning challenges. - Q&A
+  Support: Users can ask the chatbot questions related to English learning and receive
+  informative answers. - Grouding using Google Search engine: Users can request the
+  chatbot to use Google Search engine to verify its response automatically. - Deep
+  Thinking: User can request the chatbot to think deeply before providing the response
+  - Images Attachment: Users can attach multiple images into their images.
+
+
+  :lock: Data Privacy Statement Your data, including your Gemini API Key and Google
+  account information, is securely stored on your personal device only. This data
+  will be automatically deleted from our system when you log out of the application.
+  We do not store or retain your data on our servers, ensuring that your information
+  remains private and secure at all times.
+
+
+  If you have any concerns or questions about our data privacy practices, please feel
+  free to open a new issue.
+
+
+  :open_hands: Contribution We welcome contributions and encourage you to help this
+  project better and better. If you encounter any issues or have suggestions for improvements,
+  please open an issue in the Issues section of the repository. Before submitting
+  a pull request, please ensure that your changes are well-documented in the Pull
+  Request description.
+
+
+  Thank you for your contribution and for helping to make this project better! :tada:'
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-04-01'
+    window_end: '2025-04-30'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-04-01..2025-04-30
+    external_id: '810976116'
+    canonical_url: https://github.com/phanxuanquang/EngAce
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+  sample_slot_id: GS300-133
+  sample_id: cand_github_qf_chatbot_7a44e2b3bd59
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:56:29.685052Z'

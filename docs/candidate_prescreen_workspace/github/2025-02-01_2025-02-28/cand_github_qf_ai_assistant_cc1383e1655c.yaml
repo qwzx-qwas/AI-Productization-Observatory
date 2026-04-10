@@ -1,0 +1,155 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_cc1383e1655c
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-02-01_2025-02-28
+created_at: '2026-04-09T12:04:30.749217Z'
+updated_at: '2026-04-09T13:10:39.689354Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '852314576'
+canonical_url: https://github.com/jsuarezruiz/maui-ai-assistant
+title: maui-ai-assistant
+summary: Enhance your .NET MAUI development experience with this AI-powered Visual
+  Studio Extension.
+raw_evidence_excerpt: "Enhance your .NET MAUI development experience with this AI-powered\
+  \ Visual Studio Extension.\n\n.NET MAUI AI Assistant\n\nEnhance your **.NET MAUI**\
+  \ development experience with this **AI-powered Visual Studio Extension**. This\
+  \ extension integrates seamlessly into Visual Studio, providing a suite of AI-driven\
+  \ tools designed to boost productivity and streamline your workflow, including:\
+  \ icon creation, generate code from designs, code explanation, comment generation\
+  \ and more.\n\nPrerequisites\n\nAn Azure subscription.\n\nSetup\n\nSign in with\
+  \ your Azure subscription in the Azure portal. Create an **Azure OpenAI** resource.\n\
+  \nBefore you can use the extension, you need to deploy a model. You manage different\
+  \ models from **Azure OpenAI Studio**. The model needed for the library would be\
+  \ gpt-4 or gpt-4o for all context menus, actions like adding comments, refactoring\
+  \ etc.\n\nAlthough are optional, if you want to use tools like IconBuilder, you\
+  \ will need a dall-e-3 model. Whereas if you want to use Design to Code, you need\
+  \ a gpt-4 vision-preview model.\n\nAfter creating the resource and the model/s you\
+  \ just have to add the values \u200B\u200Bin the extension settings.\n\nFunctionality\n\
+  \nExplain Code\n\nHighlight the lines of code you want to get an explanation for\
+  \ by clicking and dragging your mouse over them. Once the lines are selected, right-click\
+  \ on the highlighted area. From the context menu, select \u201C.NET MAUI AI Assistant\
+  \ / Explain\u201D.\n\nThe AI Assistant will analyze the selected code and display\
+  \ an alert with a detailed explanation of the code\u2019s functionality and purpose.\
+  \ This feature is particularly useful for understanding complex code snippets or\
+  \ when you need a quick overview of what a particular section of code does. It can\
+  \ help you learn more about the code you\u2019re working with and ensure that you\
+  \ understand its logic and structure.\n\nComment Code Click and drag your mouse\
+  \ over the lines of code you want to comment on. Make sure you highlight the exact\
+  \ lines. Once the lines are selected, right-click on the highlighted area. From\
+  \ the context menu, select \u201C.NET MAUI AI Assistant / Comment\u201D.\n\nThe\
+  \ AI Assistant will then analyze the selected code and return it with detailed comments,\
+  \ explaining the functionality and purpose of each line or block of code. This feature\
+  \ is particularly useful for improving code readability and understanding, especially\
+  \ when working in teams or revisiting old code. It helps ensure that the logic and\
+  \ purpose of the code are clear to anyone who reads it later.\n\nCreate Summary\n\
+  \nClick and drag your mouse over the lines of code you want to create a summary.\
+  \ The AI Assistant will then analyze the selected method's code, including comments,\
+  \ and implementation details, to produce a human-readable summary that highlights\
+  \ the method's purpose, key steps, and important parameters.\n\nRefactor Code\n\n\
+  Highlight the lines of code you want to refactor by clicking and dragging your mouse\
+  \ over them. Once the lines are selected, right-click on the highlighted area. From\
+  \ the context menu, select \u201C.NET MAUI AI Assistant / Refactor\u201D.\n\nThe\
+  \ AI Assistant will analyze the selected code and return it refactored, improving\
+  \ its structure and readability without changing its behavior. This feature is particularly\
+  \ useful for optimizing your code, making it cleaner and easier to maintain.\n\n\
+  Create Unit Tests\n\nClick and drag your mouse over the lines of code you want to\
+  \ create unit tests. The AI Assistant will then analyze the source code, including\
+  \ its logic, and input/output behaviors, to generate comprehensive and effective\
+  \ unit tests that ensure the reliability and robustness of the codebase.\n\nCreate\
+  \ UI Tests\n\nClick and drag your mouse over the lines of code you want to create\
+  \ ui tests or right click on the code of a C# page or the code-behind of a XAML\
+  \ page. The AI Assistant will generate comprehensive and effective UI tests that\
+  \ ensure the seamless performance and user experience of the application across\
+  \ different devices and platforms.\n\nTools\n\nYou can find more AI tools in the\
+  \ **Tools** menu of Visual Studio.\n\nIcon Builder\n\nClick on Tools in the Visual\
+  \ Studio top menu, select .NET MAUI AI Assistant and click on Icon Builder. Enter\
+  \ a prompt describing the icon you need. For example, you might type _\u201Cvibrant\
+  \ shopping cart\u201D_.\n\nThe AI Assistant will generate a set of icons based on\
+  \ your prompt. You can select the icon you want to use and download it. This feature\
+  \ is great for quickly creating custom icons tailored to your application\u2019\
+  s needs.\n\nDesign to Code\n\nCan select a screenshot from a design or even a drawing.\
+  \ Utilizing the advanced capabilities of OpenAI\u2019s GPT-4 Vision multimodal LLM,\
+  \ the extension transforms the provided screenshot and instructions into .NET MAUI\
+  \ code, simplifying the development process and enabling rapid prototyping and implementation\
+  \ of UI designs."
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '852314576'
+    canonical_url: https://github.com/jsuarezruiz/maui-ai-assistant
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:39.689354Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

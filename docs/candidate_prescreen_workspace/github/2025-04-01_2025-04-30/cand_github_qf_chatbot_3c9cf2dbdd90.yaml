@@ -1,0 +1,119 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_3c9cf2dbdd90
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-04-01_2025-04-30
+created_at: '2026-04-09T13:58:58.384708Z'
+updated_at: '2026-04-09T14:56:27.927418Z'
+source: github
+source_id: src_github
+source_window: 2025-04-01..2025-04-30
+time_field: pushed_at
+external_id: '657218924'
+canonical_url: https://github.com/botpress/v12
+title: v12
+summary: "Botpress OSS \u2013 v12"
+raw_evidence_excerpt: "Botpress OSS \u2013 v12\n\nBotpress \u2014 The building blocks\
+  \ for building chatbots\n\n**IMPORTANT**: With the launch of Botpress Cloud, the\
+  \ documentation for Botpress v12 can now be found here.\n\nWhat is Botpress?\n\n\
+  Botpress is the standard developer stack to build, run, and improve conversational\
+  \ AI applications. Powered by natural language understanding, a messaging API, and\
+  \ a fully featured studio, Botpress allows developers and conversation designers\
+  \ around the globe to build remarkable chatbots without compromise.\n\nThe fastest\
+  \ & easiest way to get started with Botpress is by signing up for free to **Botpress\
+  \ Cloud**. Alternatively, continue reading for more information about Botpress v12.\n\
+  \n**Out of the box, Botpress v12 includes:**\n\n- Administration panel to orchestrate\
+  \ and monitor your chatbots - Conversation Studio to design a conversation, manage\
+  \ content, code custom integration - Easy integration with messaging channels (Messenger,\
+  \ WhatsApp, Slack, Teams, Webchat, Telegram, SMS & more) - Natural Language Understanding\
+  \ - Complete list of features and specs here\n\nGetting Started\n\nThere are a few\
+  \ ways to get started with Botpress v12:\n\n- Download the latest binary for your\
+  \ OS here and follow the installation docs. - Use the official Docker image and\
+  \ follow the hosting docs - Run from sources, follow build docs - Deploy it in the\
+  \ cloud using these shortlinks:\n\nDocumentation\n\n- Main Documentation - SDK Reference\
+  \ - Code Examples - Video Tutorials\n\nCommunity\n\n- Discord - Get community support\
+  \ and find answers to your questions - Issues - Report bugs and file feature requests\
+  \ - Blog - How to's, case studies, and announcements - Contributing - Start contributing\
+  \ to Botpress - Partners - List of agencies who can help you with Botpress\n\nLicense\n\
+  \nBotpress is dual-licensed under AGPLv3 and the Botpress Proprietary License.\n\
+  \nBy default, any bot created with Botpress is licensed under AGPLv3, but you may\
+  \ change to the Botpress License from within your bot's web interface in a few clicks.\n\
+  \nFor more information about how the dual-license works and why it works that way,\
+  \ please see the FAQS ."
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-04-01'
+    window_end: '2025-04-30'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-04-01..2025-04-30
+    external_id: '657218924'
+    canonical_url: https://github.com/botpress/v12
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+  sample_slot_id: GS300-132
+  sample_id: cand_github_qf_chatbot_3c9cf2dbdd90
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:56:27.927396Z'

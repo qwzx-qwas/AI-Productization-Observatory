@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_chatbot_c77cfeee726b
 candidate_batch_id: candidate_batch_github_qf_chatbot_2025-01-01_2025-01-31
 created_at: '2026-04-08T13:14:43.596748Z'
-updated_at: '2026-04-09T09:04:27.222220Z'
+updated_at: '2026-04-09T14:55:09.237821Z'
 source: github
 source_id: src_github
 source_window: 2025-01-01..2025-01-31
@@ -184,4 +184,4 @@ staging_handoff:
   sample_slot_id: GS300-080
   sample_id: cand_github_qf_chatbot_c77cfeee726b
   blocking_items: []
-  last_attempted_at: '2026-04-09T09:04:27.222196Z'
+  last_attempted_at: '2026-04-09T14:55:09.237796Z'

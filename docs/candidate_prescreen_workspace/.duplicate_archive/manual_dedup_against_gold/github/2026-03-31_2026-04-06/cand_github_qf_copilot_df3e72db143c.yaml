@@ -3,7 +3,7 @@ document_version: candidate_prescreen_v1
 candidate_id: cand_github_qf_copilot_df3e72db143c
 candidate_batch_id: candidate_batch_github_qf_copilot_2026-03-31_2026-04-06
 created_at: '2026-04-06T09:20:48.717861Z'
-updated_at: '2026-04-09T09:04:16.359847Z'
+updated_at: '2026-04-09T14:54:51.176836Z'
 source: github
 source_id: src_github
 source_window: 2026-03-31..2026-04-06
@@ -212,4 +212,4 @@ staging_handoff:
   - 'Semantic duplicate source URL already present in staging: source_url::src_github::https://github.com/CopilotKit/CopilotKit
     at /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_05_samples_061_075.yaml
     GS300-063 (cand_github_qf_copilot_46f2a401bf88)'
-  last_attempted_at: '2026-04-09T09:04:16.359824Z'
+  last_attempted_at: '2026-04-09T14:54:51.176814Z'

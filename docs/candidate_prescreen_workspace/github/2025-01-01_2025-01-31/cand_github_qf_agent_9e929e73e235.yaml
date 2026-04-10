@@ -1,0 +1,211 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_9e929e73e235
+candidate_batch_id: candidate_batch_github_qf_agent_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:23:06.364846Z'
+updated_at: '2026-04-09T13:10:36.161328Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '57242918'
+canonical_url: https://github.com/vladfi1/phillip
+title: phillip
+summary: The SSBM "Phillip" AI.
+raw_evidence_excerpt: 'The SSBM "Phillip" AI.
+
+
+  The Phillip AI An SSBM player based on Deep Reinforcement Learning.
+
+
+  NOTE: This project is no longer active and is subject to bit-rot. There is a successor
+  project based on imitation learning from slippi replays at https://github.com/vladfi1/slippi-ai.
+
+
+  Requirements
+
+
+  Tested on: Ubuntu >=14.04, OSX, Windows 7/8/10.
+
+
+  1. The dolphin emulator. You will probably need to compile from source on Linux.
+  On Windows you''ll need to install a custom dolphin version - just unpack the zip
+  somewhere. 2. The SSBM iso image. You will need NTSC 1.02. 3. Python 3. On Windows,
+  you can use Anaconda which sets up the necessary paths. You can also use the linux
+  subsytem on Windows 10. 4. Install phillip. You can download and extract a zip file
+  or clone this repository. Then, from the phillip root, run `pip install -e .`. 5.
+  Some trained agents are included in the `agents` directory. The full set of trained
+  agents is available here.
+
+
+  Play
+
+
+  You will need to know where dolphin is located. On Mac the dolphin path will be
+  `/Applications/Dolphin.app/Contents/MacOS/Dolphin`. If `dolphin-emu` is already
+  on your `PATH` then you can omit this.
+
+
+  python3 phillip/run.py --gui --human --start 0 --reload 0 --epsilon 0 --load agents/FalconFalconBF
+  --iso /path/to/SSBM.iso --exe /path/to/dolphin [--windows]
+
+
+  Trained agents are stored in the `agents` directory. Aside from `FalconFalconBF`,
+  the agents in `agents/delay0/` are also fairly strong. Run with `--help` to see
+  all options. The best human-like agent is `delay18/FalcoBF`, available in the Google
+  Drive zip.
+
+
+  Windows Notes
+
+
+  - The `--exe` will be the path to the `Binary\x64\Dolphin.exe` you unzipped. In
+  general, the forward `/`s should be back `\`s for all paths, unless you are using
+  MinGW, Cygwin, git bash, or some other unix shell emulator. - You may need to omit
+  the `3` from commands like `python3` and `pip3`. - If not using Anaconda, you will
+  likely need to modify your PATH so that python is visible to the command prompt.
+  - Communication with dolphin is done over the local loopback interface, enabled
+  with the `--tcp 1` flag (now implied by `--windows`). You may also need to open
+  port 5555 in your firewall. - If on Windows 10 you can do everything in the Linux
+  subsystem and follow the linux instructions, except for obtaining dolphin. You will
+  need to pass in an explicit user directory with `--user tmp` (the temp directories
+  that python creates start with `/tmp/...` and aren''t valid for windows dolphin).
+
+
+  Train
+
+
+  Training is controlled by `phillip/train.py`. See also `runner.py` and `launcher.py`
+  for training massively in parallel on slurm clusters. Phillip has been trained at
+  the MGHPCC. It is recommended to train with a custom dolphin which uses zmq to synchronize
+  with the AI - the below commands will likely fail otherwise.
+
+
+  Local training is also possible. First, edit `runner.py` with your desired training
+  params (advanced). Then do:
+
+
+  python3 runner.py # will output a path python3 launcher.py saves/path/ --init --local
+  [--agents number_of_agents] [--log_agents]
+
+
+  To view stats during training:
+
+
+  tensorboard --logdir logs/
+
+
+  The trainer and (optionally) agents redirect their stdout/err to `slurm_logs/`.
+  To end training:
+
+
+  kill $(cat saves/path/pids)
+
+
+  To resume training run `launcher.py` again, but omit the `--init` (it will overwrite
+  your old network).
+
+
+  Training on Windows is not supported.
+
+
+  Thanks to microsoftv there is now an instructional video as well!
+
+
+  Support
+
+
+  Come to the Discord!
+
+
+  Recordings
+
+
+  I''ve been streaming practice play over at http://twitch.tv/x_pilot. There are also
+  some recordings on my youtube channel.
+
+
+  Credits
+
+
+  Big thanks to altf4 for getting me started, and to spxtr for a python memory watcher.
+  Some code for dolphin interaction has been borrowed from both projects (mostly the
+  latter now that I''ve switched to pure python).'
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '57242918'
+    canonical_url: https://github.com/vladfi1/phillip
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:36.161328Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

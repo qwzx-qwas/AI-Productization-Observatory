@@ -1,0 +1,177 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_agent_0c2a67d31153
+candidate_batch_id: candidate_batch_github_qf_agent_2025-03-01_2025-03-31
+created_at: '2026-04-09T12:32:24.511637Z'
+updated_at: '2026-04-09T13:10:41.913043Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '132071938'
+canonical_url: https://github.com/pinpoint-apm/pinpoint-docker
+title: pinpoint-docker
+summary: Official Dockerized components of the Pinpoint
+raw_evidence_excerpt: "Official Dockerized components of the Pinpoint\n\nPinpoint-Docker\
+  \ for Pinpoint\n\nOfficial git repository of Dockerized components of the Pinpoint\
+  \ Application Monitoring. Installing Pinpoint with these docker files will take\
+  \ approximately 10min. to check out the features of pinpoint.\n\nWhat is Pinpoint\n\
+  \nPinpoint, is the world's leading open-source application monitoring solution -\
+  \ trusted by millions of users around the globe. It supports and helps you understand\
+  \ your application in a glance and allow you to build world-class, high-quality\
+  \ software.\n\nRequirements\n\n- docker 18.02.0+\n\nHow to install Pinpoint?\n\n\
+  You can easily bring up an entire Dockerized Pinpoint(latest release) environment\
+  \ by using Docker Compose with any of the provided `docker-compose.yml` files as\
+  \ below. With `docker-compose.yml` under *Pinpoint-Docker* folder brings up all\
+  \ the environment attached with Pinpoint-QuickStart(sample app). To monitor your\
+  \ agent see configuration part for further details.\n\nSince Pinpoint v2.5.0, URI\
+  \ Metric and Infrastructure Metric are added. These need Apache Pinot cluster to\
+  \ work and docker-compose-metric.yml has been added to provide them. To use URI\
+  \ Metric and Infrastructure Metric, include `docker-compose-metric.yml` to bring\
+  \ up Pinpoint containers as decribed below.\n\nDocker images for Pinpoint web and\
+  \ Pinpoint collector is provided since **v2.5.1**, so above wouldn't work with v2.5.0\
+  \ images. To use Pinpoint v2.5.0 metric modules, you need to checkout v2.5.0 and\
+  \ then build the images ahead with below command.\n\nIf you are not interested in\
+  \ metric modules, simply remove `-f docker-compose-metric.yml` in docker-compose\
+  \ commands.\n\nBelow are the list of images provided by this project: - Pinpoint-Web\
+  \ Server - Pinpoint-Collector - Pinpoint-Agent - Pinpoint-Flink - Pinpoint-Hbase\
+  \ - Pinpoint-QuickStart: a sample application, v1.8.1+ - Pinpoint-Mysql - Pinpoint-Batch:\
+  \ v2.4.0+\n\nYou can replace `QuickStart` application part with your application\
+  \ to start monitoring. - check `Testing QuickStart application` for a quick demo\
+  \ of pinpoint - check `Monitoring YOUR Application` part for further details\n\n\
+  Below are the list of images required for this project: - Apache Zookeeper v3.4.13:\
+  \ For Hbase and Pinpoint cluster - Apache Zookeeper v3.8.0: For Pinot cluster -\
+  \ Apache Pinot: Tested with v0.11.0 ~ v0.13.0. Please refer to `pinot-init` in `docker-compose-metric.yml`\
+  \ to further see tables and schema information for Pinpoint. - Kafka: Currently\
+  \ using 3.1-22.04_beta. Please refer to `pinpoint-kafka-init` in `docker-compose-metric.yml`\
+  \ to further see topics needed for Pinpoint.\n\nMysql (optional, 1.8.1+)\n\nThe\
+  \ Pinpoint-Mysql is necessary to use 'Alarm' feature. It's server is running on\
+  \ port 13306 and contains the data structure used to register users, groups, and\
+  \ alerts to be sent.\n\nTo send email alerts, you must make BATCH_ENABLE=true and\
+  \ change the other mail-related environment variables (MAIL_HOST, MAIL_PORT, MAIL_USERNAME,\
+  \ MAIL_PASSWORD, MAIL_PROPERTIES_MAIL_SMTP_FROM, ...) to the Pinpoint-Web server\
+  \ in *.env* file.\n\nFor more information checkout Setting Alarm in Pinpoint documentation.\n\
+  \nFlink configuration (optional)\n\nThe Pinpoint-Flink is necessary to use 'Application\
+  \ Inspector' feature.\n\nAfter all containers are started and ready to go. Pinpoint-Flink\
+  \ server is running on port 8081.\n\nAlarm configuration (optional)\n\nYou can check\
+  \ the alarm guide document at the homepage for full understanding. But for the docker\
+  \ image, All is set. fillout variables under *#mail server information required*\
+  \ in `.env` file before starting the container\n\nTesting QuickStart application\n\
+  \nNow you are ready to monitor the sample application(Pinpoint-QuickStart port 8085)\
+  \ provided. If you can't find any connected application from Pinpoint-Web's first\
+  \ page(port 8080 as default), don't panic and wait for a while. It will take some\
+  \ time for Pinpoint to retrieve the application's information when running for the\
+  \ first time.\n\nMonitoring YOUR Application\n\nPinpoint-Agent only prepares required\
+  \ libraries for triggering Pinpoint-Agent. Running and configuring agents is manual\
+  \ action done by the user, but don't worry it's very simple.\n\nIf you are not familiar\
+  \ with Pinpoint concept, please read: Overview, Agents Installation\n\n**You will\
+  \ need to attach *Pinpoint-Agent* to your application.**\n\nRunning Pinpoint-Agent\
+  \ docker-compose separately, Examples are here. Otherwise, you can check how Pinpoint-Quickstart\
+  \ is attached to Pinpoint-Agent with docker-compose.\n\nWe'll try to create more\
+  \ examples along the way. If anyone who can share their dockerfile, it's always\
+  \ welcome.\n\nDistributed System\n\nUntil now, every components are in one docker,\
+  \ single-node approach, which is excellent for test and development. It provides\
+  \ an easy way to prototype new ideas and use cases, as well as try out new functionality\
+  \ and the latest Pinpoint releases. It\u2019s not intended nor supported for production\
+  \ use.\n\nYou can use `docker-compose` and `.env` files under each folder to install\
+  \ the modules separately into several servers. If containers are separated, ip configurations\
+  \ in `.env` must be changed within.\n\nFor example, if you want your application\
+  \ running from a docker and rest of Pinpoint in another. You can remove *pinpoint-agent*\
+  \ and *pinpoint-quickstart* from docker-compose.yml and run to establish all necessary\
+  \ component of pinpoint. And create another docker-compose.yml just like one under\
+  \ pinpoint-quickstart folder to run your application. Finally, since agent needs\
+  \ to acknowledge the collector ip. collector ip needs to be changed in .env.\n\n\
+  Configurations\n\nConfiguration relies on supplying `docker-compose` with environment\
+  \ variables defined in `.env` file. So it's recommended to change variables only\
+  \ from `.env` file. With `docker-compose` in this repository. You can create stand-alone\
+  \ containers that are needed to run most of the features in Pinpoint.\n\n**Ports**\
+  \ can be also configured in .env file. (Default ports are Pinpoint-Web:8080, Pinpoint-Batch:8079,\
+  \ Quickstart:8085 and Flink:8081 as configured in .env file)\n\nPinpoint-Zookeeper\
+  \ is just an example of using zookeeper image. You can modify docker-compose files\
+  \ to suit your needs.\n\nFor more specific details on what the values represents\
+  \ in *.env* file. Please check Pinpoint Github Repository or Pinpoint Web properties,\
+  \ Pinpoint Collector properties, Pinpoint Agent configuration. Please note that\
+  \ only essential configuration options are adopted to pinpoint-docker(docker-compose).\n\
+  \nlogs\n\nYou can check logs produced by these services\n\nYou can also easily change\
+  \ the log level from *.env* file.\n\nAny Issues or Suggestions?\n\nFeel free to\
+  \ share any problems and suggestions via Pinpoint GitHub Issue page. Contributions\
+  \ on the pinpoint-docker image is also always welcome.\n\nLicense Pinpoint is licensed\
+  \ under the Apache License, Version 2.0. See LICENSE for full license text."
+query_family: ai_applications_and_products
+query_slice_id: qf_agent
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_agent
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '132071938'
+    canonical_url: https://github.com/pinpoint-apm/pinpoint-docker
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:41.913043Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

@@ -1,0 +1,133 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_copilot_1e8086efaf88
+candidate_batch_id: candidate_batch_github_qf_copilot_2025-02-01_2025-02-28
+created_at: '2026-04-09T12:12:41.420902Z'
+updated_at: '2026-04-09T13:10:40.961432Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '904431477'
+canonical_url: https://github.com/ps-copilot-sandbox/copilot-intermediate-training
+title: copilot-intermediate-training
+summary: Repository to Assist Trainers during the Copilot for Developers - Intermediate
+  Training
+raw_evidence_excerpt: "Repository to Assist Trainers during the Copilot for Developers\
+  \ - Intermediate Training\n\nGitHub Copilot Intermediate Training Repository\n\n\
+  Introduction\n\n:bulb: This repository is designed to support engineers and trainers\
+  \ in delivering **GitHub Copilot Intermediate Training demonstrations**. The exercises\
+  \ included here aim to illustrate real-world scenarios where Copilot and Copilot\
+  \ Chat can significantly improve development workflows.\n\nWhether you're a trainer\
+  \ facilitating this session or an engineer participating in the training, this repository\
+  \ provides the materials and guidance needed to effectively engage with Copilot\
+  \ and Copilot Chat.\n\n---\n\nOverview\n\nGitHub Copilot is a powerful tool that\
+  \ can streamline your coding process, offering context-aware code suggestions and\
+  \ interactive assistance through Copilot Chat. However, its true potential lies\
+  \ in how effectively you can **interact with and guide** it.\n\nThis repository\
+  \ covers: - **Real-world scenarios** to showcase Copilot\u2019s and Copilot Chat\u2019\
+  s strengths. - **Hands-on demos** focused on Repository Analysis, Enhancement Recommendations,\
+  \ and Level of Effort (LOE) Estimations. - Tips for trainers to facilitate meaningful\
+  \ and impactful demonstrations.\n\nThe repository is divided into individual exercises\
+  \ that highlight specific use cases for Copilot and Copilot Chat, providing participants\
+  \ with an immersive and practical learning experience.\n\n---\n\nObjectives of This\
+  \ Repository\n\nBy the end of this training, participants will: - Gain a deeper\
+  \ understanding of **GitHub Copilot** and **Copilot Chat** workflows. - Explore\
+  \ the power of **prompt engineering** to guide Copilot effectively. - Learn how\
+  \ to evaluate codebases, enhance functionality, and estimate development effort.\
+  \ - Build confidence in leveraging Copilot for complex, real-world tasks.\n\nFor\
+  \ trainers, this repository offers structured guidance to **deliver engaging demonstrations**\
+  \ that showcase Copilot\u2019s impact.\n\n---\n\nDemos Included\n\nThis repository\
+  \ contains two detailed demonstrations, each with its own README file:\n\n1. **Demo\
+  \ 1: Repository Analysis and Enhancements** - **Objective:** Leverage Copilot and\
+  \ Copilot Chat to analyze the VS Code repository, enhance its logging mechanisms,\
+  \ and estimate the Level of Effort (LOE) for proposed improvements. - **Key Focus\
+  \ Areas:** Repository Analysis with @workspace, logging enhancements, and LOE estimation.\n\
+  \nRead the Demo 1 Instructions\n\n---\n\n2. **Demo 2: Building Utilities and Unit\
+  \ Tests** - **Objective:** Implement a utility function, generate unit tests, and\
+  \ refactor code using GitHub Copilot\u2019s AI-driven suggestions. - **Key Focus\
+  \ Areas:** Writing new functionality, creating robust tests, and improving code\
+  \ readability through refactoring.\n\nRead the Demo 2 Instructions\n\n---\n\nPrerequisites\n\
+  \nTo get started, ensure you have the following: - **GitHub Account**: Required\
+  \ for accessing repositories and enabling Copilot. - **Visual Studio Code**: Your\
+  \ IDE of choice for this workshop. - **GitHub Copilot & Copilot Chat Extensions**:\
+  \ Installed and enabled in VS Code. - Familiarity with basic development workflows,\
+  \ including GitHub and VS Code.\n\n---\n\nGetting Started\n\n1. Clone this repository:"
+query_family: ai_applications_and_products
+query_slice_id: qf_copilot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_copilot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '904431477'
+    canonical_url: https://github.com/ps-copilot-sandbox/copilot-intermediate-training
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:40.961432Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

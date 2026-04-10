@@ -1,0 +1,132 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_9d382c274e7c
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-02-01_2025-02-28
+created_at: '2026-04-09T14:08:01.321742Z'
+updated_at: '2026-04-09T14:55:35.120060Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '924510490'
+canonical_url: https://github.com/hmshb/scraping-agent-ai
+title: scraping-agent-ai
+summary: "AI-powered web scraping agent built with LangGraph, LangSmith, Firecrawl,\
+  \ and Anthropic AI. Automates intelligent crawling, structured data extraction,\
+  \ and LLM-powered content formatting. Efficiently handles anti-bot mechanisms, error\
+  \ recovery, and batch processing. \U0001F680"
+raw_evidence_excerpt: "AI-powered web scraping agent built with LangGraph, LangSmith,\
+  \ Firecrawl, and Anthropic AI. Automates intelligent crawling, structured data extraction,\
+  \ and LLM-powered content formatting. Efficiently handles anti-bot mechanisms, error\
+  \ recovery, and batch processing. \U0001F680\n\n\U0001F680 Scraping Agent AI\n\n\
+  An AI-powered **web scraping agent** that automates data extraction from websites\
+  \ with intelligent crawling, anti-bot detection, and structured data parsing. Built\
+  \ using **LangGraph**, **LangSmith**, **Firecrawl**, and **Anthropic AI tools**\
+  \ for seamless AI-driven web scraping and structured data processing.\n\n\U0001F525\
+  \ Features - **Graph-based AI Agent**: Uses LangGraph for managing scraping workflows.\
+  \ - **Intelligent Web Crawling**: Powered by Firecrawl to extract structured data.\
+  \ - **LLM-Powered Formatting**: Uses Anthropic AI for content summarization. - **Adaptive\
+  \ Error Handling**: Retries failed requests dynamically. - **Batch Processing**:\
+  \ Efficiently processes multiple URLs with batched requests. - **Flexible Output\
+  \ Formats**: Supports JSON, Markdown, and more.\n\n---\n\n\U0001F6E0\uFE0F Setup\
+  \ Instructions\n\nFollow these steps to set up and run the project on your local\
+  \ machine:\n\n1. Clone the Repository\n\n2. Create a Virtual Environment\n\n3. Install\
+  \ LangGraph CLI\n\n4. Install Other Dependencies\n\n---\n\n5. Generate LangSmith\
+  \ API Key 1. Visit LangSmith. 2. Create an API key for accessing LangSmith logs.\
+  \ 3. Copy the generated API key.\n\n---\n\n6. Generate Anthropic Claude API Key\
+  \ 1. Visit Anthropic. 2. Create an API key for accessing Claude. 3. Copy the generated\
+  \ API key.\n\n---\n\n7. Configure the Environment Variables - Copy the `.env.example`\
+  \ file and rename it to `.env`:\n\n- Open the `.env` file and update the API keys\
+  \ and configuration values:\n\n8. Run the project\n\n---\n\n9. LangGraph of the\
+  \ AI Agent\n\n---\n\n\U0001F4C2 Project Structure\n\n---\n\n\u2B50 Acknowledgments\n\
+  \nSpecial thanks to:\n\n- **LangGraph** for building graph-based AI workflows. -\
+  \ **LangSmith** for debugging and monitoring AI agents. - **Firecrawl** for powerful\
+  \ web crawling and data extraction. - **Anthropic AI** for AI-powered text summarization\
+  \ and formatting.\n\n---\n\n\U0001F4DC License\n\nThis project is open-source and\
+  \ licensed under the MIT License.\n\n---\n\n\U0001F4E2 Get Involved!\n\nIf you find\
+  \ this repository helpful, please consider:\n\n- \u2B50 **Starring the Repository**\
+  \ to show your support. - \U0001F4E4 **Forking the Repository** to explore further\
+  \ and make your own customizations. - \U0001F4AC **Sharing Your Feedback** by opening\
+  \ issues or discussions.\n\n---\n\n\U0001F4DD Notes\n\n**LangGraph**, **LangSmith**,\
+  \ **Claude** and **FireCrawl** is currently in limited or preview release (depending\
+  \ on your region and timing), and integration details may change as the service\
+  \ evolves.\n\nAlways refer to official documentation for the most up-to-date guidance.\n\
+  \nLet's build smart, scalable AI-powered web scrapers together! \U0001F680"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '924510490'
+    canonical_url: https://github.com/hmshb/scraping-agent-ai
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: approved_for_staging
+human_review_note_template_key: approved
+human_review_notes: clear end-user product signal; evidence sufficient for staging
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: written
+  staging_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml
+  sample_slot_id: GS300-121
+  sample_id: cand_github_qf_ai_workflow_9d382c274e7c
+  blocking_items: []
+  last_attempted_at: '2026-04-09T14:55:35.120035Z'

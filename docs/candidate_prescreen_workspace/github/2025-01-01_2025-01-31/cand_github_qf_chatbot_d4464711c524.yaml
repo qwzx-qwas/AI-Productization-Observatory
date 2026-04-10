@@ -1,0 +1,193 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_d4464711c524
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-01-01_2025-01-31
+created_at: '2026-04-09T10:55:18.259195Z'
+updated_at: '2026-04-09T13:10:37.377838Z'
+source: github
+source_id: src_github
+source_window: 2025-01-01..2025-01-31
+time_field: pushed_at
+external_id: '769907310'
+canonical_url: https://github.com/QuixiAI/github2file
+title: github2file
+summary: ''
+raw_evidence_excerpt: 'GitHub Repository to File Converter
+
+
+  This Python script allows you to download and process files from a GitHub repository,
+  making it easier to share code with chatbots that have large context capabilities
+  but don''t automatically download code from GitHub.
+
+
+  Features
+
+
+  - Download and process files from a GitHub repository - Support for both public
+  and private repositories - Filter files based on programming language (Python, Markdown,
+  Go, JavaScript) - Exclude certain directories, file types, and test files - Remove
+  comments and docstrings from Python source code (optional) - Specify a branch or
+  tag to download from (default: "master") - New GUI feature implemented in `github2file-tkinter-GUI.py`
+  - New `--claude` option for formatting output for Claude - New script `ts-js-rust2file.py`
+  for handling TypeScript, JavaScript, Svelte, and Rust files
+
+
+  Install
+
+
+  - conda create -n g2f python=3.10 - conda activate g2f - pip install -r requirements.txt
+
+
+  Usage
+
+
+  To download and process files from a public GitHub repository, run the following
+  command:
+
+
+  For a private repository, use the following format:
+
+
+  Replace ` ` with your GitHub username and ` ` with your GitHub personal access token.
+
+
+  Optional Arguments
+
+
+  - `--lang`: Specify the programming language of the repository. Choices: "md", "go",
+  "javascript" or "python" (default: "python"). - `--keep-comments`: Keep comments
+  and docstrings in the source code (only applicable for Python). - `--branch_or_tag`:
+  Specify the branch or tag of the repository to download (default: "master"). - `--claude`:
+  Format the output for Claude with document tags
+
+
+  Example
+
+
+  To download and process files from the Hugging Face Transformers repository, run:
+
+
+  This will create a file named `transformers_python.txt` containing the combined
+  Python source code from the repository.
+
+
+  To download and process files from a private repository, run:
+
+
+  Output
+
+
+  The script will create a file named `repository_language.txt` (e.g., `transformers_python.txt`)
+  containing the combined source code from the specified repository. You can then
+  share this file with chatbots like Claude for further analysis or discussion.
+
+
+  GUI Usage
+
+
+  To use the GUI feature, run the following command:
+
+
+  This will open a graphical user interface where you can enter the GitHub repository
+  URL and download the combined source code.
+
+
+  New Script for TypeScript, JavaScript, Svelte, and Rust
+
+
+  To handle TypeScript, JavaScript, Svelte, and Rust files, use the `ts-js-rust2file.py`
+  script. Run the following command:
+
+
+  This will create a file named ` _code.txt` containing the combined source code from
+  the specified repository.
+
+
+  Requirements
+
+
+  - Python 3.x - `requests` library
+
+
+  License
+
+
+  This project is open-source and available under the MIT License.'
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-01-01'
+    window_end: '2025-01-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-01-01..2025-01-31
+    external_id: '769907310'
+    canonical_url: https://github.com/QuixiAI/github2file
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:37.377838Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

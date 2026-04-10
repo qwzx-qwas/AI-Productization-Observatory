@@ -1,0 +1,156 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_assistant_726c58188db1
+candidate_batch_id: candidate_batch_github_qf_ai_assistant_2025-03-01_2025-03-31
+created_at: '2026-04-09T14:33:25.109731Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-03-01..2025-03-31
+time_field: pushed_at
+external_id: '949083574'
+canonical_url: https://github.com/MeterLong/MCP-Doc
+title: MCP-Doc
+summary: "A powerful Word document processing service based on FastMCP, enabling AI\
+  \ assistants to create, edit, and manage docx files with full formatting support.\
+  \ Preserves original styles when editing content.  \u57FA\u4E8EFastMCP\u7684\u5F3A\
+  \u5927Word\u6587\u6863\u5904\u7406\u670D\u52A1\uFF0C\u4F7FAI\u52A9\u624B\u80FD\u591F\
+  \u521B\u5EFA\u3001\u7F16\u8F91\u548C\u7BA1\u7406docx\u6587\u4EF6\uFF0C\u652F\u6301\
+  \u5B8C\u6574\u7684\u683C\u5F0F\u8BBE\u7F6E\u529F\u80FD\u3002\u5728\u7F16\u8F91\u5185\
+  \u5BB9\u65F6\u80FD\u591F\u4FDD\u7559\u539F\u59CB\u6837\u5F0F\u548C\u683C\u5F0F\uFF0C\
+  \u5B9E\u73B0\u7CBE\u786E\u7684\u6587\u6863\u64CD\u4F5C\u3002"
+raw_evidence_excerpt: "A powerful Word document processing service based on FastMCP,\
+  \ enabling AI assistants to create, edit, and manage docx files with full formatting\
+  \ support. Preserves original styles when editing content. \u57FA\u4E8EFastMCP\u7684\
+  \u5F3A\u5927Word\u6587\u6863\u5904\u7406\u670D\u52A1\uFF0C\u4F7FAI\u52A9\u624B\u80FD\
+  \u591F\u521B\u5EFA\u3001\u7F16\u8F91\u548C\u7BA1\u7406docx\u6587\u4EF6\uFF0C\u652F\
+  \u6301\u5B8C\u6574\u7684\u683C\u5F0F\u8BBE\u7F6E\u529F\u80FD\u3002\u5728\u7F16\u8F91\
+  \u5185\u5BB9\u65F6\u80FD\u591F\u4FDD\u7559\u539F\u59CB\u6837\u5F0F\u548C\u683C\u5F0F\
+  \uFF0C\u5B9E\u73B0\u7CBE\u786E\u7684\u6587\u6863\u64CD\u4F5C\u3002\n\nDocx MCP Service\n\
+  \nEnglish | \u4E2D\u6587\n\nA Docx document processing service based on the FastMCP\
+  \ library, supporting the creation, editing, and management of Word documents using\
+  \ AI assistants in Cursor.\n\nFeatures\n\n- **Complete Document Operations**: Support\
+  \ for creating, opening, saving documents, as well as adding, editing, and deleting\
+  \ content - **Formatting**: Support for setting fonts, colors, sizes, alignment,\
+  \ and other formatting options - **Table Processing**: Support for creating, editing,\
+  \ merging, and splitting table cells - **Image Insertion**: Support for inserting\
+  \ images and setting their sizes - **Layout Control**: Support for setting page\
+  \ margins, adding page breaks, and other layout elements - **Query Functions**:\
+  \ Support for retrieving document information, paragraph content, and table data\
+  \ - **Convenient Editing**: Support for find and replace functionality - **Section\
+  \ Editing**: Support for replacing content in specific sections while preserving\
+  \ original formatting and styles\n\nInstallation Dependencies\n\nEnsure Python 3.10+\
+  \ is installed, then install the following dependencies:\n\nUsage\n\nUsing as an\
+  \ MCP Service in Cursor\n\n1. Open Cursor and go to Settings 2. Find the `Features\
+  \ > MCP Servers` section 3. Click `Add new MCP server` 4. Fill in the following\
+  \ information: - Name: MCP_DOCX - Type: Command - Command: `python3 /path/to/MCP_dox/server.py`\
+  \ (replace with the actual path to your `server.py`) 5. Click `Add` to add the service\n\
+  \nAfter adding, you can use natural language to operate Word documents in Cursor's\
+  \ AI assistant, for example:\n\n- \"Create a new Word document and save it to the\
+  \ desktop\" - \"Add a level 3 heading\" - \"Insert a 3x4 table and fill it with\
+  \ data\" - \"Set the second paragraph to bold and center-aligned\"\n\nSupported\
+  \ Operations\n\nThe service supports the following operations:\n\n- **Document Management**:\
+  \ `create_document`, `open_document`, `save_document` - **Content Addition**: `add_paragraph`,\
+  \ `add_heading`, `add_table`, `add_picture` - **Content Editing**: `edit_paragraph`,\
+  \ `delete_paragraph`, `delete_text` - **Table Operations**: `add_table_row`, `delete_table_row`,\
+  \ `edit_table_cell`, `merge_table_cells`, `split_table` - **Layout Control**: `add_page_break`,\
+  \ `set_page_margins` - **Query Functions**: `get_document_info`, `get_paragraphs`,\
+  \ `get_tables`, `search_text` - **File Operations**: `create_document`, `open_document`,\
+  \ `save_document`, `save_as_document`, `create_document_copy` - **Section Editing**:\
+  \ `replace_section`, `edit_section_by_keyword` - **Other Functions**: `find_and_replace`,\
+  \ `search_and_replace` (with preview functionality)\n\nHow It Works\n\n1. The service\
+  \ uses the Python-docx library to process Word documents 2. It implements the MCP\
+  \ protocol through the FastMCP library to communicate with AI assistants 3. It processes\
+  \ requests and returns formatted responses 4. It supports complete error handling\
+  \ and status reporting\n\nTypography Capabilities\n\nThe service has good typography\
+  \ understanding capabilities:\n\n- **Text Hierarchy**: Support for heading levels\
+  \ (1-9) and paragraph organization - **Page Layout**: Support for page margin settings\
+  \ - **Visual Elements**: Support for font styles (bold, italic, underline, color)\
+  \ and alignment - **Table Layout**: Support for creating tables, merging cells,\
+  \ splitting tables, and setting table formats - **Pagination Control**: Support\
+  \ for adding page breaks\n\nDevelopment Notes\n\n- `server.py` - Core implementation\
+  \ of the MCP service using the FastMCP library\n\nTroubleshooting\n\nIf you encounter\
+  \ problems in Cursor, try the following steps:\n\n1. Ensure Python 3.10+ is correctly\
+  \ installed 2. Ensure the python-docx and mcp libraries are correctly installed\
+  \ 3. Check if the server path is correct 4. Restart the Cursor application\n\nNotes\n\
+  \n- Ensure the python-docx and mcp libraries are correctly installed - Ensure Chinese\
+  \ characters in paths can be correctly processed - Using absolute paths can avoid\
+  \ path parsing issues\n\nLicense\n\nMIT License"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_assistant
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-03-01'
+    window_end: '2025-03-31'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_assistant
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-03-01..2025-03-31
+    external_id: '949083574'
+    canonical_url: https://github.com/MeterLong/MCP-Doc
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: on_hold
+human_review_note_template_key: hold
+human_review_notes: boundary with internal tooling unclear
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

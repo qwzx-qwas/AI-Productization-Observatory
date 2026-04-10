@@ -1,0 +1,147 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_chatbot_6f02bcc0735e
+candidate_batch_id: candidate_batch_github_qf_chatbot_2025-02-01_2025-02-28
+created_at: '2026-04-09T14:01:06.234307Z'
+updated_at: '2026-04-09T14:51:36.751320Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '767526289'
+canonical_url: https://github.com/AlbertRapp/tidychatmodels
+title: tidychatmodels
+summary: Chat With All Kinds of AI Models Through a Common Interface
+raw_evidence_excerpt: "Chat With All Kinds of AI Models Through a Common Interface\n\
+  \n> [!IMPORTANT] > This package is superseded by the `{ellmer}` package. It has\
+  \ similarly easy syntax and has way more functionalities compared to {tidychatmodels}.\
+  \ If you're looking for tutorials on how to use AI with R and {ellmer}, you can\
+  \ check out my \"AI with R\" book at air.albert-rapp.de.\n\ntidychatmodels\n\nAbout\
+  \ this package\n\nThis package provides a simple interface to chat with your favorite\
+  \ AI chatbot from R. It is inspired by the modular nature of `{tidymodels}` where\
+  \ you can easily swap out any ML model for another one but keep the other parts\
+  \ of the workflow the same. In the same vain, this package aims to communicate with\
+  \ different chatbot vendors like openAI, mistral.ai, etc. using the same interface.\n\
+  \nBasically, this package is a wrapper around the API of different chatbots and\
+  \ provides a unified interface to communicate with them. The underlying package\
+  \ that handles all the communication is the `{httr2}` package. For a deep dive into\
+  \ `{httr2}`, you could check out one of my tutorials [on YouTube](https://youtu.be/hmtE4QGIOuk).\n\
+  \nVideo walkthrough\n\nIf you want to get a video walkthrough for this package,\
+  \ check out:\n\nInstallation\n\nCurrently this package is only available on GitHub.\
+  \ To install it, you will need to use the `devtools` package.\n\nGetting Started\n\
+  \nWhat you will need to get started is an API key from the chatbot vendor you want\
+  \ to use. For example, to use the openAI chatbot, you will need to sign up for an\
+  \ API key here. Once you have that key, you can use it to authenticate with the\
+  \ openAI API. I recommend saving the key into a `.env` file and loading the key\
+  \ into your R environment using the `{dotenv}` package.\n\nAfterwards, you can add\
+  \ a model to the chat object. In this case, we are adding the `gpt-3.5-turbo` model.\
+  \ The user is responsible for knowing which models are available at a vendor like\
+  \ OpenAI.\n\nSimilarly, you can add parameters to the chat object.\n\nAfterwards,\
+  \ you can add messages to your chat object using different roles. Typically, you\
+  \ might first use a system manage to set the stage for what you bot is required\
+  \ to do. Afterwards, you can add a user message.\n\nAt this stage, you haven\u2019\
+  t actually started any chat with the bot. You can do so by calling the `perform_chat`\
+  \ method. Beware that this will consume your API calls and will likely incur costs.\
+  \ Once the chat is performed, you can extract the chat from the chat object.\n\n\
+  Excellent! ChatGPT seems to know the next line of this [glorious song](https://www.youtube.com/watch?v=M3ujv8xdK2w&ab_channel=musiclyrics).\
+  \ Also, you can save the chat into a tibble. If you want to surpress the output\
+  \ of the chat, you can use the `silent` parameter.\n\nYou could add another message\
+  \ to the chat by adding a user message and then performing the chat again. While\
+  \ we\u2019re at it, let\u2019s just modify the `temperature` parameter to for this\
+  \ new reply.\n\nAh yes, that\u2019s much cooler. But beware, this sent the whole\
+  \ chat again and consumed another API call.\n\nSwitching to another vendor\n\nLet\u2019\
+  s recap our full workflow.\n\nYou can easily switch so some other vendor now. For\
+  \ example, let\u2019s go for the `mistral-large-latest` model from Mistral.ai.\n\
+  \nSupported vendors\n\nCurrently only supported vendors are openAI, mistral.ai and\
+  \ ollama. ollama allows you to deploy local LLMs and chat with them through `localhost`.\
+  \ The ollama\u2019s API is a bit different but on our `tidychatmodels` interface\
+  \ everything should still works the same or be at least very similar.\n\nFor example,\
+  \ creating a chat works pretty much the same but doesn\u2019t require an API key.\n\
+  \nNotice how there is already a parameter `stream` that is set to `false`. This\
+  \ is a change in the API of the ollama chat engine. You see, by default ollama will\
+  \ stream the reply token by token. But `{httr2}` doesn\u2019t want that (or rather\
+  \ I didn\u2019t bother looking into how to do that with `{httr2}`). So that\u2019\
+  s why by default we set `stream` to `false`.\n\nNow, you can add a local model to\
+  \ your chat. So, assume that you ran (outside of R)\n\nThen you can add the model\
+  \ to your chat object.\n\nAnd just like before, you can add messages and perform\
+  \ the chat. Beware though that for some models system messages are not actually\
+  \ working like for openAI or mistral.ai models. So here I\u2019ve only added a user\
+  \ message.\n\nAnd adding more messages works too."
+query_family: ai_applications_and_products
+query_slice_id: qf_chatbot
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_chatbot
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '767526289'
+    canonical_url: https://github.com/AlbertRapp/tidychatmodels
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T14:51:36.751320Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null

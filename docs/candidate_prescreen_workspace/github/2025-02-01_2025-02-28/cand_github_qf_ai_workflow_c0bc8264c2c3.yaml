@@ -1,0 +1,152 @@
+document_type: candidate_prescreen_record
+document_version: candidate_prescreen_v1
+candidate_id: cand_github_qf_ai_workflow_c0bc8264c2c3
+candidate_batch_id: candidate_batch_github_qf_ai_workflow_2025-02-01_2025-02-28
+created_at: '2026-04-09T12:23:29.476860Z'
+updated_at: '2026-04-09T13:10:40.176032Z'
+source: github
+source_id: src_github
+source_window: 2025-02-01..2025-02-28
+time_field: pushed_at
+external_id: '944430962'
+canonical_url: https://github.com/Adam-s-tech/n8n-templates-ai-agents
+title: n8n-templates-ai-agents
+summary: JSON Templates for AI Agents
+raw_evidence_excerpt: "JSON Templates for AI Agents\n\nn8n-Templates A repository\
+  \ for storing, managing, and optimizing JSON templates for AI Agents in n8n.\n\n\
+  **Overview** This repository is designed to **streamline the development, deployment,\
+  \ and management of AI-driven workflows within n8n**. It serves as a central hub\
+  \ for JSON-based AI agent templates, making it easy to integrate, modify, and scale\
+  \ AI-powered automations for various business applications.\n\nBy maintaining a\
+  \ structured collection of AI agent templates, we ensure **reusability, efficiency,\
+  \ and standardization** across different automation workflows. x ---\n\n**Purpose**\
+  \ The primary goal of this repository is to: - Provide **ready-to-use JSON templates**\
+  \ for AI Agents within n8n. - Enable **rapid deployment** of AI-driven workflows.\
+  \ - Facilitate **collaboration and knowledge sharing** among developers. - Standardize\
+  \ AI integrations and **ensure best practices** in automation design.\n\n---\n\n\
+  **Repository Structure**\n\n**Folder Breakdown** - **`/n8n-templates/chatbots/`**\
+  \ \u2192 JSON templates for AI-powered chatbots integrated with n8n. - **`/n8n-templates/lead_automation/`**\
+  \ \u2192 AI agents for handling leads, CRM updates, and follow-ups. - **`/n8n-templates/task_management/`**\
+  \ \u2192 AI agents for automating project management tools. - **`/n8n-templates/content_creation/`**\
+  \ \u2192 AI workflows for auto-generating content, emails, and blog posts. - **`/n8n-templates/custom/`**\
+  \ \u2192 A space for testing and refining new AI agent workflows. - **`/docs/`**\
+  \ \u2192 Guides on how to use and customize AI templates in n8n. - **`/examples/`**\
+  \ \u2192 Sample workflows showcasing real-world AI integrations.\n\n---\n\n**Getting\
+  \ Started** 1. **Clone the Repository:**\n\n2. **Navigate to the Directory:**\n\n\
+  3. **Import JSON into n8n:** - Open **n8n.io** (or self-hosted instance). - Navigate\
+  \ to **Import Workflow**. - Select the `.json` file from the relevant `/ai_agents/`\
+  \ subfolder.\n\n4. **Customize and Deploy:** - Modify the template as needed. -\
+  \ Integrate API keys or other required credentials. - Activate the AI agent workflow.\n\
+  \n---\n\n**Key Features** **Prebuilt AI Workflows** \u2013 Access a collection of\
+  \ AI agent templates for common automation needs. **Plug & Play JSON Files** \u2013\
+  \ Easily import and customize workflows in n8n. **Standardized AI Automation** \u2013\
+  \ Ensures consistency and efficiency in AI-driven tasks. **Modular & Scalable**\
+  \ \u2013 Designed to be extensible and adaptable to various use cases. **Community\
+  \ Contributions** \u2013 Open-source approach to refining AI workflows.\n\n---\n\
+  \n**Collaboration & Contribution Guidelines** We encourage **contributions** from\
+  \ the community to refine and expand the repository.\n\n- **Branching:** Create\
+  \ a feature branch when adding new AI agent templates. - **Pull Requests:** Submit\
+  \ a PR with a description of the new or modified AI agent workflow. - **Documentation:**\
+  \ Include a `.md` file in `/docs/` describing the template\u2019s purpose and setup.\
+  \ - **Testing:** Ensure the workflow functions properly in n8n before submission.\n\
+  \n---\n\n**Best Practices** 1. **Version Control for Templates:** Each JSON file\
+  \ should be clearly versioned and labeled. 2. **Modular & Reusable Code:** Keep\
+  \ AI workflows flexible for different use cases. 3. **Security Considerations:**\
+  \ Avoid storing sensitive API keys directly in templates. 4. **Testing & Optimization:**\
+  \ Regularly update workflows based on feedback and performance metrics.\n\n---\n\
+  \n**Example Use Cases** **Automating CRM Follow-Ups** \u2013 AI agents that categorize\
+  \ leads and trigger email responses. **AI-Powered Content Creation** \u2013 Workflows\
+  \ that generate and schedule social media posts. **Task Management Optimization**\
+  \ \u2013 AI that updates Notion or Asana tasks based on input data. **Custom GPT-Powered\
+  \ Agents** \u2013 Intelligent bots that respond dynamically to queries in Slack\
+  \ or Discord.\n\n---\n\n**Future Roadmap** **Advanced AI Integration** \u2013 Connect\
+  \ AI agents with external APIs for richer interactions. **Multi-System Automations**\
+  \ \u2013 Seamlessly integrate n8n workflows across multiple business tools. **Fine-Tuned\
+  \ AI Assistants** \u2013 More precise and context-aware AI workflows. **Self-Hosted\
+  \ AI Pipelines** \u2013 Expand automation beyond n8n into cloud environments.\n\n\
+  ---\n\n**Contributing** We welcome **collaborators, testers, and automation enthusiasts**\
+  \ to help improve AI workflows in n8n. If you have a new template or enhancement,\
+  \ feel free to **fork the repo** and submit a **pull request**.\n\n---\n\n**Contact**\
+  \ For issues, questions, or suggestions, reach out via the project\u2019s communication\
+  \ channel or contact: - **Keith Bloemendaal** - **Will Lipford**\n\n---\n\n**License**\
+  \ This repository is open-source under the **MIT License**. Contributions are welcome,\
+  \ but please **credit authors** where applicable.\n\n---\n\nLet\u2019s build **powerful\
+  \ AI automations together** and push the limits of what\u2019s possible in n8n!"
+query_family: ai_applications_and_products
+query_slice_id: qf_ai_workflow
+selection_rule_version: github_qsv1
+source_trace:
+  discovery_mode: live
+  selection_basis:
+    window_start: '2025-02-01'
+    window_end: '2025-02-28'
+    query_family: ai_applications_and_products
+    query_slice_id: qf_ai_workflow
+    selection_rule_version: github_qsv1
+  source_item_ref:
+    source: github
+    source_id: src_github
+    source_window: 2025-02-01..2025-02-28
+    external_id: '944430962'
+    canonical_url: https://github.com/Adam-s-tech/n8n-templates-ai-agents
+llm_prescreen:
+  status: failed
+  in_observatory_scope: null
+  reason: null
+  decision_snapshot: null
+  scope_boundary_note: null
+  source_evidence_summary: []
+  evidence_anchors: []
+  review_focus_points: []
+  uncertainty_points: []
+  recommend_candidate_pool: null
+  recommended_action: null
+  confidence_summary:
+    scope_confidence: null
+    taxonomy_confidence: null
+    persona_confidence: null
+  handoff_readiness_hint:
+    suggested_action: null
+    rationale: null
+  persona_candidates: []
+  taxonomy_hints:
+    primary_category_code: null
+    secondary_category_code: null
+    primary_persona_code: null
+    delivery_form_code: null
+    main_category_candidate:
+      category_code: null
+      rationale: null
+      supporting_evidence_anchors: []
+    adjacent_category_candidate:
+      category_code: null
+      rationale_for_similarity: null
+      supporting_evidence_anchors: []
+    adjacent_category_rejected_reason: null
+  assessment_hints:
+    evidence_strength: null
+    build_evidence_band: null
+    need_clarity_band: null
+    unresolved_risk: null
+  channel_metadata:
+    prompt_version: candidate_prescreener_v1
+    routing_version: route_candidate_prescreener_v1
+    relay_client_version: relay_candidate_prescreener_v1
+    model: null
+    transport: http_json_relay
+    request_id: null
+  error_type: dependency_unavailable
+  error_message: OpenAI-compatible response must provide non-empty message.content
+    text
+whitelist_reason: null
+human_review_status: rejected_after_human_review
+human_review_note_template_key: rejected
+human_review_notes: outside observatory scope
+human_reviewed_at: '2026-04-09T13:10:40.176032Z'
+staging_handoff:
+  status: not_started
+  staging_document_path: null
+  sample_slot_id: null
+  sample_id: null
+  blocking_items: []
+  last_attempted_at: null
