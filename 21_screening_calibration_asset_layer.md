@@ -25,6 +25,12 @@ last_frozen_version: screening_calibration_asset_layer_v1
 
 目标：在不改动正式 `gold_set_300` 语义、不将中间筛选资产与正式 gold set 混用的前提下，定义并落地一套并行的“筛选校准资产层”。
 
+当前参考样本基数（MVP 临时口径）：
+
+- `134 gold_set + 75 approved_for_staging + 162 rejected_after_human_review + 28 on_hold`
+- 为简化当前实施步骤，现阶段暂以这批样本作为参考样本集合，用于先跑通一版 MVP
+- 该口径是分层参考口径，不改变 formal `gold_set_300` 与 `screening_*` 的职责边界
+
 该资产层只覆盖三类角色：
 
 1. 正例边界

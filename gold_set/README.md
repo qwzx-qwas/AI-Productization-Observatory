@@ -6,6 +6,8 @@
 
 - `status = implemented`
 - `gold_set/gold_set_300/` 已写入真实样本目录
+- 当前参考样本基数（MVP 临时口径）：`134 gold_set + 75 approved_for_staging + 162 rejected_after_human_review + 28 on_hold`
+- 为简化当前实施步骤，现阶段暂以这批样本作为参考样本集合，用于先跑通一版 MVP
 - 每个已落地样本包含以下文件：
 	- `annotations/local_project_user.json`
 	- `annotations/llm.json`

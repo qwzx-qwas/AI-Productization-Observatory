@@ -2,6 +2,16 @@
 
 本目录承接并行的筛选校准资产。
 
+当前参考样本基数（MVP 临时口径）：
+
+- `134 gold_set + 75 approved_for_staging + 162 rejected_after_human_review + 28 on_hold`
+- 为简化当前实施步骤，现阶段暂以这批样本作为参考样本集合，用于先跑通一版 MVP
+
+口径说明：
+
+- 上述数字是分层统计口径，用于 MVP 阶段的参考集合管理
+- 该口径不改变 formal `gold_set_300` 与 `screening_*` 的职责分离
+
 边界约束：
 
 - 本目录不是 `gold_set`
