@@ -58,6 +58,18 @@ def _prefill_remaining_slots(staging_dir: Path, *, keep_empty_slots: int) -> Non
         dump_yaml(staging_path, payload)
 
 
+def _prepare_stub_gold_set_dir(target: Path) -> Path:
+    gold_set_dir = target / "gold_set"
+    shutil.copytree(REPO_ROOT / "gold_set", gold_set_dir)
+    readme_path = gold_set_dir / "README.md"
+    content = readme_path.read_text(encoding="utf-8").replace("status = implemented", "status = stub")
+    readme_path.write_text(content, encoding="utf-8")
+    for entry in (gold_set_dir / "gold_set_300").iterdir():
+        if entry.is_dir():
+            shutil.rmtree(entry)
+    return gold_set_dir
+
+
 class FixturePipelineIntegrationTests(unittest.TestCase):
     def test_replay_builds_raw_records_and_source_items(self) -> None:
         with temp_config() as config:
@@ -207,9 +219,14 @@ class FixturePipelineIntegrationTests(unittest.TestCase):
             root = Path(tmp_dir)
             candidate_workspace = root / "candidate_workspace"
             staging_dir = root / "staging"
+            gold_set_dir = _prepare_stub_gold_set_dir(root)
             shutil.copytree(REPO_ROOT / "docs" / "gold_set_300_real_asset_staging", staging_dir)
 
-            with temp_config(candidate_workspace_dir=candidate_workspace, gold_set_staging_dir=staging_dir) as config:
+            with temp_config(
+                candidate_workspace_dir=candidate_workspace,
+                gold_set_staging_dir=staging_dir,
+                gold_set_dir=gold_set_dir,
+            ) as config:
                 paths = run_candidate_prescreen(
                     config,
                     source_code="github",
@@ -240,9 +257,14 @@ class FixturePipelineIntegrationTests(unittest.TestCase):
             root = Path(tmp_dir)
             candidate_workspace = root / "candidate_workspace"
             staging_dir = root / "staging"
+            gold_set_dir = _prepare_stub_gold_set_dir(root)
             shutil.copytree(REPO_ROOT / "docs" / "gold_set_300_real_asset_staging", staging_dir)
 
-            with temp_config(candidate_workspace_dir=candidate_workspace, gold_set_staging_dir=staging_dir) as config:
+            with temp_config(
+                candidate_workspace_dir=candidate_workspace,
+                gold_set_staging_dir=staging_dir,
+                gold_set_dir=gold_set_dir,
+            ) as config:
                 paths = run_candidate_prescreen(
                     config,
                     source_code="product_hunt",
@@ -430,10 +452,15 @@ class FixturePipelineIntegrationTests(unittest.TestCase):
             root = Path(tmp_dir)
             candidate_workspace = root / "candidate_workspace"
             staging_dir = root / "staging"
+            gold_set_dir = _prepare_stub_gold_set_dir(root)
             shutil.copytree(REPO_ROOT / "docs" / "gold_set_300_real_asset_staging", staging_dir)
             _prefill_remaining_slots(staging_dir, keep_empty_slots=1)
 
-            with temp_config(candidate_workspace_dir=candidate_workspace, gold_set_staging_dir=staging_dir) as config:
+            with temp_config(
+                candidate_workspace_dir=candidate_workspace,
+                gold_set_staging_dir=staging_dir,
+                gold_set_dir=gold_set_dir,
+            ) as config:
                 summary = fill_gold_set_staging_until_complete(
                     config,
                     source_code="product_hunt",

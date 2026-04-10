@@ -400,13 +400,20 @@ def validate_staging_workspace(staging_dir: Path) -> dict[str, Any]:
                     )
                 continue
 
-            if sample_mapping.get("current_state") != "candidate_approved_for_annotation":
+            current_state = sample_mapping.get("current_state")
+            if current_state not in {"candidate_approved_for_annotation", "ready_for_formal_writeflow"}:
                 raise ContractValidationError(
-                    f"Filled staging slot must remain candidate_approved_for_annotation: {staging_path} {sample_mapping.get('sample_slot_id')}"
+                    "Filled staging slot must remain candidate_approved_for_annotation "
+                    f"or ready_for_formal_writeflow: {staging_path} {sample_mapping.get('sample_slot_id')}"
                 )
-            if sample_mapping.get("ready_for_formal_writeflow") is not False:
+            if current_state == "candidate_approved_for_annotation":
+                if sample_mapping.get("ready_for_formal_writeflow") is not False:
+                    raise ContractValidationError(
+                        f"Candidate staging slots must not mark ready_for_formal_writeflow=true before formal writeflow: {staging_path}"
+                    )
+            elif sample_mapping.get("ready_for_formal_writeflow") is not True:
                 raise ContractValidationError(
-                    f"Candidate staging slots must not mark ready_for_formal_writeflow=true before formal writeflow: {staging_path}"
+                    f"ready_for_formal_writeflow samples must mark ready_for_formal_writeflow=true: {staging_path}"
                 )
             if sample_mapping.get("target_type") != "product":
                 raise ContractValidationError(f"Staging target_type must stay product: {staging_path}")

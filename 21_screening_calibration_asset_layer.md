@@ -30,6 +30,7 @@ last_frozen_version: screening_calibration_asset_layer_v1
 - `134 gold_set + 75 approved_for_staging + 162 rejected_after_human_review + 28 on_hold`
 - 为简化当前实施步骤，现阶段暂以这批样本作为参考样本集合，用于先跑通一版 MVP
 - 该口径是分层参考口径，不改变 formal `gold_set_300` 与 `screening_*` 的职责边界
+- 该口径也是当前 Phase0 MVP 的完成基线之一；不要再把补到任何固定样本目标数当作继续推进的前提
 
 该资产层只覆盖三类角色：
 

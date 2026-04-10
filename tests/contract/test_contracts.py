@@ -20,10 +20,22 @@ from tests.helpers import REPO_ROOT
 
 FREEZE_BOARD_PATH = REPO_ROOT / "17_open_decisions_and_freeze_board.md"
 DOCUMENT_OVERVIEW_PATH = REPO_ROOT / "document_overview.md"
+README_PATH = REPO_ROOT / "README.md"
+GOLD_SET_README_PATH = REPO_ROOT / "gold_set" / "README.md"
 SCREENING_ASSETS_README_PATH = REPO_ROOT / "docs" / "screening_calibration_assets" / "README.md"
 SCREENING_POSITIVE_README_PATH = REPO_ROOT / "docs" / "screening_calibration_assets" / "screening_positive_set" / "README.md"
 SCREENING_NEGATIVE_README_PATH = REPO_ROOT / "docs" / "screening_calibration_assets" / "screening_negative_set" / "README.md"
 SCREENING_BOUNDARY_README_PATH = REPO_ROOT / "docs" / "screening_calibration_assets" / "screening_boundary_set" / "README.md"
+SCREENING_POSITIVE_DATA_PATH = REPO_ROOT / "docs" / "screening_calibration_assets" / "screening_positive_set" / "screening_positive_set_candidates.yaml"
+SCREENING_NEGATIVE_DATA_PATH = REPO_ROOT / "docs" / "screening_calibration_assets" / "screening_negative_set" / "screening_negative_set_candidates.yaml"
+SCREENING_BOUNDARY_DATA_PATH = REPO_ROOT / "docs" / "screening_calibration_assets" / "screening_boundary_set" / "screening_boundary_set_candidates.yaml"
+
+EXPECTED_MVP_REFERENCE_SAMPLE_COUNTS = {
+    "gold_set": 134,
+    "approved_for_staging": 75,
+    "rejected_after_human_review": 162,
+    "on_hold": 28,
+}
 
 
 def _write_json(path: Path, payload: dict[str, object]) -> None:
@@ -33,8 +45,16 @@ def _write_json(path: Path, payload: dict[str, object]) -> None:
 
 def _replace_gold_set_status(gold_set_dir: Path, status: str) -> None:
     readme_path = gold_set_dir / "README.md"
-    content = readme_path.read_text(encoding="utf-8").replace("status = stub", f"status = {status}")
+    content = readme_path.read_text(encoding="utf-8")
+    for current in ("stub", "implemented"):
+        content = content.replace(f"status = {current}", f"status = {status}")
     readme_path.write_text(content, encoding="utf-8")
+
+
+def _clear_gold_set_samples(gold_set_dir: Path) -> None:
+    for entry in (gold_set_dir / "gold_set_300").iterdir():
+        if entry.is_dir():
+            shutil.rmtree(entry)
 
 
 def _valid_gold_set_sample(sample_id: str = "sample_0001") -> dict[str, dict[str, object]]:
@@ -255,6 +275,7 @@ class ContractCommandTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0)
         self.assertIn("--provider-request-interval-seconds", result.stdout)
         self.assertIn("--retry-sleep-seconds", result.stdout)
+        self.assertNotIn("all 300 staging slots are filled", result.stdout)
 
     def test_candidate_prescreen_cli_help_includes_wait_controls(self) -> None:
         result = self.run_cli("run-candidate-prescreen", "--help")
@@ -271,14 +292,28 @@ class ContractCommandTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, msg=result.stderr)
 
     def test_validate_gold_set_stub_contract(self) -> None:
-        result = self.run_cli("validate-gold-set")
-        self.assertEqual(result.returncode, 0, msg=result.stderr)
-        self.assertIn("status=stub", result.stderr)
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            gold_set_dir = root / "gold_set"
+            shutil.copytree(REPO_ROOT / "gold_set", gold_set_dir)
+            _replace_gold_set_status(gold_set_dir, "stub")
+            _clear_gold_set_samples(gold_set_dir)
+
+            result = self.run_cli("validate-gold-set", env={"APO_GOLD_SET_DIR": str(gold_set_dir)})
+            self.assertEqual(result.returncode, 0, msg=result.stderr)
+            self.assertIn("status=stub", result.stderr)
 
     def test_validate_gold_set_require_implemented_rejects_stub(self) -> None:
-        result = self.run_cli("validate-gold-set", "--require-implemented")
-        self.assertEqual(result.returncode, 2)
-        self.assertIn("status = stub", result.stderr)
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            gold_set_dir = root / "gold_set"
+            shutil.copytree(REPO_ROOT / "gold_set", gold_set_dir)
+            _replace_gold_set_status(gold_set_dir, "stub")
+            _clear_gold_set_samples(gold_set_dir)
+
+            result = self.run_cli("validate-gold-set", "--require-implemented", env={"APO_GOLD_SET_DIR": str(gold_set_dir)})
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("status = stub", result.stderr)
 
     def test_validate_gold_set_accepts_minimal_implemented_sample(self) -> None:
         with TemporaryDirectory() as tmp_dir:
@@ -635,6 +670,33 @@ class ScreeningCalibrationAssetContractTests(unittest.TestCase):
         self.assertIn("1. `screening_negative_set`", content)
         self.assertIn("2. `screening_boundary_set`", content)
         self.assertIn("3. `screening_positive_set`", content)
+
+    def test_mvp_reference_sample_set_counts_match_materialized_assets(self) -> None:
+        gold_set_dirs = [
+            entry
+            for entry in (REPO_ROOT / "gold_set" / "gold_set_300").iterdir()
+            if entry.is_dir() and not entry.name.startswith(".")
+        ]
+        self.assertEqual(len(gold_set_dirs), EXPECTED_MVP_REFERENCE_SAMPLE_COUNTS["gold_set"])
+
+        gold_set_readme = GOLD_SET_README_PATH.read_text(encoding="utf-8")
+        screening_assets_readme = SCREENING_ASSETS_README_PATH.read_text(encoding="utf-8")
+        operator_readme = README_PATH.read_text(encoding="utf-8")
+        expected_count_line = "`134 gold_set + 75 approved_for_staging + 162 rejected_after_human_review + 28 on_hold`"
+        self.assertIn(expected_count_line, gold_set_readme)
+        self.assertIn(expected_count_line, screening_assets_readme)
+        self.assertIn("`134 / 75 / 162 / 28`", operator_readme)
+        self.assertNotIn("达到 `300/300`", operator_readme)
+
+        expected_yaml_counts = {
+            SCREENING_POSITIVE_DATA_PATH: EXPECTED_MVP_REFERENCE_SAMPLE_COUNTS["approved_for_staging"],
+            SCREENING_NEGATIVE_DATA_PATH: EXPECTED_MVP_REFERENCE_SAMPLE_COUNTS["rejected_after_human_review"],
+            SCREENING_BOUNDARY_DATA_PATH: EXPECTED_MVP_REFERENCE_SAMPLE_COUNTS["on_hold"],
+        }
+        for path, expected_count in expected_yaml_counts.items():
+            payload = yaml.safe_load(path.read_text(encoding="utf-8"))
+            self.assertEqual(payload["sample_count"], expected_count)
+            self.assertEqual(len(payload["samples"]), expected_count)
 
     def test_screening_set_role_readmes_keep_source_and_boundary_split(self) -> None:
         positive = SCREENING_POSITIVE_README_PATH.read_text(encoding="utf-8")

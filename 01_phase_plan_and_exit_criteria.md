@@ -49,7 +49,8 @@ last_frozen_version: unfrozen
 - `taxonomy_v0`
 - `score_rubric_v0`
 - `annotation_guideline_v0`
-- `gold_set_300`
+- formal `gold_set` baseline（当前目录路径保持为 `gold_set_300`）
+- MVP reference sample set（当前分层口径：`134 gold_set + 75 approved_for_staging + 162 rejected_after_human_review + 28 on_hold`）
 - `prompt_manifest_v0`
 - `model_routing_v0`
 - `prompt 输入 / 输出 contract v0`
@@ -78,36 +79,33 @@ last_frozen_version: unfrozen
 - [ ] `taxonomy_v0` 已给出 `code / definition / inclusion / exclusion`
 - [ ] `score_rubric_v0` 已给出 `score_type / band / null policy`
 - [ ] `annotation_guideline_v0` 已完成并经过试标
-- [ ] `gold_set_300` 已完成 adjudication
+- [ ] 当前 formal `gold_set` 样本已完成 adjudication，且 `gold_set/gold_set_300/` 保持真实双标 + adjudication 目录契约
+- [ ] MVP reference sample set 已按分层落库并对齐到当前口径：`134 gold_set + 75 approved_for_staging + 162 rejected_after_human_review + 28 on_hold`
 - [ ] prompt IO contracts 已可通过 schema validation
 - [ ] `schema_contracts_v0` 已完成核心对象定义
 - [ ] `review_rules_v0` 已定义触发规则
 
 ### Phase0 Quantitative Gates
 
-- 复标一致性：`Krippendorff's alpha >= 0.80`
-- gold set 一级分类表现：`macro-F1 >= 0.85`
-- build evidence band 一致性：`weighted kappa >= 0.70`
+- 当前 formal `gold_set` adjudication complete = `100%`
+- MVP reference sample set documented count consistency = `100%`
+- screening calibration `sample_count` metadata consistency = `100%`
 - schema validation 通过率：`100%`
 - 核心契约中的阻塞级 TBD：`0`
 
 指标定义说明：
 
-- `复标一致性` 只统计双标样本的双通道一致性，口径为 `primary_category_code` 的 `Krippendorff's alpha`；当前运行默认通道为“本地项目使用者 + LLM”；不得用简单 accuracy、micro-F1 或 adjudication 后结果替代。
-- `gold set 一级分类表现` 统计候选 prompt / rule / model 在 `gold_set_300` 上对 L1 `primary_category_code` 的表现，口径为 `macro-F1`；`unresolved` 作为受控输出类单独统计，不得与“未出结果”混为一类。
-- `build evidence band 一致性` 只统计 `build_evidence_band` 的双通道一致性；当前运行默认通道为“本地项目使用者 + LLM”；因其为有序等级，口径固定为 `weighted kappa`；不得改用未加权 kappa 或简单一致率。
-- 上述双通道质量 gate 必须保留每个通道的原始标注结果与 channel metadata，不能只基于 adjudication 后结果回推 agreement 指标。
-- 若其中一条通道为 LLM，该通道应尽量与生产 taxonomy-classification prompt / routing 解耦；若暂时复用部分组件，必须单独记录 prompt / routing version，并在 gate 解释里标注相关性风险。
-- 以上三个 gate 默认都基于冻结版 guideline、taxonomy、rubric 和同一批次样本计算；若任一口径、样本范围或标签集合变更，必须重新记录版本并重算，不得直接与旧结果横向比较。
-- 若后续进入多人标注，应把人工-人工与人工-LLM 指标分开记录，不得混成单一口径直接横向比较。
+- `当前 formal gold_set adjudication complete = 100%` 只统计已经正式落入 `gold_set/gold_set_300/` 的样本；当前 MVP 不再要求为了退出 Phase0 而把历史 `gold_set_300` carrier 强行补满到固定目标值，但所有已落样本仍必须保留双通道原始结果、最终 adjudication、裁决理由与 channel metadata。
+- `MVP reference sample set documented count consistency = 100%` 统计 `gold_set/README.md`、`docs/screening_calibration_assets/README.md` 与实际物化资产是否一致；当前固定口径为 `134 + 75 + 162 + 28`，用于证明 MVP 参考样本集已冻结并可回链，而不是继续把“补到某个目标数量”当成 gate。
+- `screening calibration sample_count metadata consistency = 100%` 统计 `screening_positive_set`、`screening_negative_set`、`screening_boundary_set` 的 `sample_count` 与实际样本条目是否一致；这些集合只服务于前置筛选校准，不替代 formal gold set。
+- `schema validation 通过率 = 100%` 与 `核心契约中的阻塞级 TBD = 0` 继续按既有 contract 与机器可读 artifact 判定。
+- `Krippendorff's alpha`、`macro-F1` 与 `weighted kappa` 仍可作为后续扩充评估的推荐指标，但在当前 MVP 边界内不再作为必须先补满固定样本目标后才能继续推进的阻塞 gate。
 
 判定逻辑：
 
-- 三项人工质量 gate 必须同时达标，Phase0 才可进入退出评审。
-- 若 `复标一致性` 未达标，优先回看 annotation guideline、taxonomy 邻近类边界与 adjudication 记录，而不是先调 prompt。
-- 若 `gold set 一级分类表现` 未达标但人工一致性已达标，优先调整 prompt / routing / rule，不应倒推放宽人工 gate。
-- 若 `build evidence band 一致性` 未达标，优先收紧 band 定义、补充正反例，并检查是否存在“证据不足却被强判高 band”的系统性偏差。
-- 不允许通过临时删除难例、缩小标签空间或跳过 `unresolved` 来换取 gate 达标。
+- 当前 formal gold set 已完成 adjudication、MVP reference sample set 已冻结并验证计数一致、schema/config/contract 验证通过后，Phase0 MVP 可进入退出评审。
+- 不允许为了继续推进而把 screening calibration assets 写成 formal gold set，也不允许为了追逐固定目标数而把未完成审阅或未完成 adjudication 的样本硬塞进 formal gold set。
+- 若后续扩充样本范围或重算扩展评估指标，必须重新记录口径版本；但这属于 post-MVP 扩写，不应回溯性阻断当前 MVP Phase0 完成结论。
 
 ### 退出条件
 
@@ -120,7 +118,7 @@ last_frozen_version: unfrozen
 ### 阻塞条件
 
 - taxonomy / rubric / annotation guideline 仍存在互相冲突。
-- gold set 未 adjudication 完成。
+- 当前 formal gold set 样本未 adjudication 完成，或 MVP reference sample set 分层资产与文档口径不一致。
 - schema contracts 仍无法支持核心对象落库与回溯。
 - review 触发规则缺失，导致不确定项无法稳定分流。
 

@@ -179,7 +179,9 @@ taxonomy / annotation 最小样例说明还应覆盖：
 
 ### Gold Set
 
-- `gold_set_300` 用于 taxonomy / clarity / build evidence 评估
+- formal gold set 目录仍使用 `gold_set_300` 路径名，但当前 MVP 不再把“补满 300”当作 Phase0 完成前提
+- 当前 MVP 参考样本集固定口径为：`134 gold_set + 75 approved_for_staging + 162 rejected_after_human_review + 28 on_hold`
+- 当前 formal `gold_set` 用于 taxonomy / clarity / build evidence 的正式基线；`screening_*` 三层用于前置筛选校准
 - `gold_set_300` 当前默认要求双标 + adjudication
 - 当前双标通道默认由本地项目使用者与 LLM 构成；后续可扩展为多人标注
 - gold set 应保留双标原始结果、最终 adjudication 结果与裁决理由
@@ -218,6 +220,7 @@ taxonomy / annotation 最小样例说明还应覆盖：
 - `score_component` schema 的 required fields、`score_type` 枚举与 `build_evidence_score / need_clarity_score` 非空 `band` 约束与 rubric 一致
 - `review_packet` schema 的 `issue_type` 枚举与 review rules 一致，且 `related_evidence / upstream_downstream_links` 非空
 - `candidate_prescreen_record` schema 必须保留 `prompt_version / routing_version`、人工一审状态、以及 staging handoff 字段
+- `gold_set/README.md`、`docs/screening_calibration_assets/README.md` 与物化样本条目数必须保持一致；当前 MVP 口径固定为 `134 / 75 / 162 / 28`
 
 ### Integration Tests
 
@@ -289,6 +292,7 @@ taxonomy / annotation 最小样例说明还应覆盖：
 
 - schema validation pass rate = `100%`
 - gold set adjudication complete = `100%`
+- MVP reference sample set documented count consistency = `100%`
 - 其余阈值引用 `01_phase_plan_and_exit_criteria.md`
 
 ### Phase1

@@ -1045,7 +1045,10 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("install", help="Bootstrap local runtime directories and dependency checks.")
     subparsers.add_parser("validate-schemas", help="Validate JSON schema documents under schemas/.")
     subparsers.add_parser("validate-configs", help="Validate YAML config artifacts and schema alignment guardrails.")
-    gold_set_parser = subparsers.add_parser("validate-gold-set", help="Validate the gold_set/ directory contract and sample asset completeness.")
+    gold_set_parser = subparsers.add_parser(
+        "validate-gold-set",
+        help="Validate the gold_set/ directory contract and current formal sample asset completeness.",
+    )
     gold_set_parser.add_argument("--require-implemented", action="store_true")
     subparsers.add_parser("validate-candidate-workspace", help="Validate candidate prescreen YAML documents outside gold_set/.")
     subparsers.add_parser(
@@ -1093,7 +1096,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     fill_parser = subparsers.add_parser(
         "fill-gold-set-staging-until-complete",
-        help="Keep looping through candidate review and staging handoff until all 300 staging slots are filled.",
+        help="Maintain the historical gold_set staging carrier by filling open slots when explicitly requested.",
     )
     fill_parser.add_argument("--source")
     fill_parser.add_argument("--initial-window")

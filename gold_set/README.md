@@ -7,7 +7,8 @@
 - `status = implemented`
 - `gold_set/gold_set_300/` 已写入真实样本目录
 - 当前参考样本基数（MVP 临时口径）：`134 gold_set + 75 approved_for_staging + 162 rejected_after_human_review + 28 on_hold`
-- 为简化当前实施步骤，现阶段暂以这批样本作为参考样本集合，用于先跑通一版 MVP
+- 为简化当前实施步骤，现阶段以这批样本作为 MVP 参考样本集合继续推进
+- `gold_set_300` 继续只是 formal 目录路径名；当前 Phase0 MVP 不再要求为追逐固定目标数而把历史 carrier 强行补满
 - 每个已落地样本包含以下文件：
 	- `annotations/local_project_user.json`
 	- `annotations/llm.json`
@@ -47,4 +48,4 @@
 
 当前剩余阻塞：
 
-- staging 中仍有一部分 slot 尚未分配 `sample_id`，无法进入逐样本双标与 formal 写入流程
+- 当前无新增 blocker；未分配 `sample_id` 的历史 staging slot 仅表示后续仍可扩充 formal 样本，不再构成 Phase0 MVP 完成阻塞

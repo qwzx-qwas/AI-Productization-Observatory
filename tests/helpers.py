@@ -21,6 +21,7 @@ def temp_config(
     schema_dir: Path | None = None,
     candidate_workspace_dir: Path | None = None,
     gold_set_staging_dir: Path | None = None,
+    gold_set_dir: Path | None = None,
 ) -> Iterator[AppConfig]:
     with TemporaryDirectory() as tmp_dir:
         root = Path(tmp_dir)
@@ -37,5 +38,7 @@ def temp_config(
             env["APO_CANDIDATE_WORKSPACE_DIR"] = str(candidate_workspace_dir)
         if gold_set_staging_dir is not None:
             env["APO_GOLD_SET_STAGING_DIR"] = str(gold_set_staging_dir)
+        if gold_set_dir is not None:
+            env["APO_GOLD_SET_DIR"] = str(gold_set_dir)
         with patch.dict(os.environ, env, clear=False):
             yield AppConfig.from_env(REPO_ROOT)

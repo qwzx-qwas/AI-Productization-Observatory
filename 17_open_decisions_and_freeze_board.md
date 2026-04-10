@@ -320,6 +320,16 @@ last_frozen_version: freeze_board_v8
    - deadline：`TBD_HUMAN`
    - final_decision：`freeze the schema/runtime database baseline as: use PostgreSQL 17 community edition / PGDG distribution as the self-hosted default for local_only and the first single_vps deployment; evaluate managed PostgreSQL only after entering cloud_managed and do not change the database engine; keep primary keys as application-generated opaque text IDs while business idempotency remains anchored by strong keys and unique constraints rather than database sequences; keep v0 without business-layer soft delete, using append-only history, lifecycle/retention, and explicit status/invalidation fields instead; freeze migration discipline to forward-only plus additive-first, preferring expand/backfill/contract with migration history, schema diff, and an explicit roll-forward path; keep cross-document controlled vocabularies canonical in versioned config artifacts, store runtime values as text codes, and do not freeze them as PostgreSQL enums in v0, while allowing future reference tables or generated lookups if database-side joins become necessary`
    - status：`frozen`
+   (28) 第 28 行
+   - decision_id：`DEC-028`
+   - topic：Phase0 MVP 参考样本集与固定样本目标边界
+   - blocking：`yes`
+   - owner：`phase0_owner`
+   - affected_docs：`01`, `14`, `21`, `README`, `gold_set/README.md`, `10_prompt_specs/05_Phase0_Completion_and_Validation.md`
+   - current_default：`treat the currently materialized layered corpus as the MVP reference sample set: 134 formal gold_set samples + 75 approved_for_staging + 162 rejected_after_human_review + 28 on_hold; keep the historical gold_set_300 path and staging carrier layout, but do not require the carrier to be filled before continuing MVP work`
+   - deadline：`TBD_HUMAN`
+   - final_decision：`freeze the Phase0 MVP reference-sample-set boundary as: use the currently materialized layered corpus = 134 formal gold_set samples under gold_set/gold_set_300/ + 75 approved_for_staging + 162 rejected_after_human_review + 28 on_hold as the MVP reference sample set; keep gold_set/gold_set_300/ and docs/gold_set_300_real_asset_staging/ as historical path/layout names for compatibility, but do not treat the legacy 300-slot carrier capacity as a required sample target for Phase0 MVP completion; Phase0 MVP exit must be judged against layered-sample availability, formal-sample adjudication completeness for the currently landed gold_set assets, schema/config/contract validation, and count consistency between the documented reference set and the materialized assets; further expansion beyond this corpus remains allowed, but it is post-MVP growth rather than a blocker for Phase0 MVP completion`
+   - status：`frozen`
 
 
 ## 默认行为
@@ -350,6 +360,7 @@ last_frozen_version: freeze_board_v8
 - `2026-03-29` / `DEC-025` / owner=`qa_owner` / conclusion=`confirmed unchanged` / effective_scope=`merge-vs-release decision boundary baseline` / writeback_files=`14_test_plan_and_acceptance.md` / implementation_blocked=`no`
 - `2026-03-29` / `DEC-027` / owner=`runtime_owner` / conclusion=`confirmed unchanged` / effective_scope=`database baseline, ID, migration, and vocab-expression baseline` / writeback_files=`15_tech_stack_and_runtime.md`, `08_schema_contracts.md`, `README.md`, `05_controlled_vocabularies_v0.md` / implementation_blocked=`no`
 - `2026-03-29` / `DEC-008` / owner=`prompt_owner` / conclusion=`confirmed unchanged` / effective_scope=`vendor-neutral routing baseline until eval gate` / writeback_files=`10_prompt_and_model_routing_contracts.md`, `configs/model_routing.yaml` / implementation_blocked=`no`
+- `2026-04-10` / `DEC-028` / owner=`phase0_owner` / conclusion=`confirmed with MVP reference-sample-set boundary` / effective_scope=`Phase0 MVP completion baseline without fixed sample target forcing` / writeback_files=`01_phase_plan_and_exit_criteria.md`, `14_test_plan_and_acceptance.md`, `21_screening_calibration_asset_layer.md`, `README.md`, `gold_set/README.md`, `10_prompt_specs/05_Phase0_Completion_and_Validation.md` / implementation_blocked=`no`
 
 ## 2026-03-29 Task 4 统一回写清单
 
@@ -369,10 +380,13 @@ last_frozen_version: freeze_board_v8
 - file=`15_tech_stack_and_runtime.md` / source_decisions=`DEC-007`, `DEC-027` / task4_action=`verify_or_update_note` / task4_note=`Preserve the signed local-harness caveat, PostgreSQL baseline, migration discipline, and vocab-expression boundary.`
 - file=`16_repo_structure_and_module_mapping.md` / source_decisions=`DEC-007` / task4_action=`verify_or_update_note` / task4_note=`Keep repo mapping wording consistent with the signed local harness versus final DB task-table boundary.`
 - file=`18_runtime_task_and_replay_contracts.md` / source_decisions=`DEC-007`, `DEC-022` / task4_action=`verify_or_update_note` / task4_note=`Keep replay gate and runtime-task behavior aligned with the signed Phase1 execution boundary and local-harness note.`
-- file=`01_phase_plan_and_exit_criteria.md` / source_decisions=`DEC-021` / task4_action=`verify_or_update_note` / task4_note=`Keep phase-gate language aligned with the signed gold-set double-annotation plus adjudication baseline.`
-- file=`README.md` / source_decisions=`DEC-006`, `DEC-007`, `DEC-023`, `DEC-024`, `DEC-026`, `DEC-027` / task4_action=`verify_or_update_note` / task4_note=`Keep the operator-facing summary aligned with the signed attention default, unresolved filtering, controlled-vocabulary baseline, sample-pool layering, runtime profile, and database baseline.`
+- file=`01_phase_plan_and_exit_criteria.md` / source_decisions=`DEC-021`, `DEC-028` / task4_action=`verify_or_update_note` / task4_note=`Keep phase-gate language aligned with the signed gold-set double-annotation baseline while treating the MVP reference sample set as the current completion basis without forcing a fixed target count.`
+- file=`README.md` / source_decisions=`DEC-006`, `DEC-007`, `DEC-023`, `DEC-024`, `DEC-026`, `DEC-027`, `DEC-028` / task4_action=`verify_or_update_note` / task4_note=`Keep the operator-facing summary aligned with the signed attention default, unresolved filtering, controlled-vocabulary baseline, sample-pool layering, runtime profile, database baseline, and MVP reference-sample-set boundary.`
 - file=`configs/review_rules_v0.yaml` / source_decisions=`DEC-023` / task4_action=`confirm_unchanged` / task4_note=`Keep unresolved handling and main-report filtering aligned with the signed canonical review-rule baseline.`
-- file=`gold_set/README.md` / source_decisions=`DEC-021`, `DEC-024` / task4_action=`keep_stub_with_signed_boundary` / task4_note=`Keep gold_set marked as stub until real assets land, while recording the signed double-annotation, adjudication, and sample-pool layering boundary.`
+- file=`gold_set/README.md` / source_decisions=`DEC-021`, `DEC-024`, `DEC-028` / task4_action=`verify_or_update_note` / task4_note=`Keep gold_set marked as implemented only when real assets exist, and align its wording with the signed MVP reference-sample-set boundary and sample-pool layering rules.`
+- file=`14_test_plan_and_acceptance.md` / source_decisions=`DEC-020`, `DEC-021`, `DEC-022`, `DEC-025`, `DEC-028` / task4_action=`verify_or_update_note` / task4_note=`Keep test and acceptance wording aligned with the signed taxonomy, gold-set, replay-boundary, merge-vs-release, and MVP reference-sample-set baseline.`
+- file=`21_screening_calibration_asset_layer.md` / source_decisions=`DEC-028` / task4_action=`verify_or_update_note` / task4_note=`Keep the screening calibration asset layer aligned with the signed MVP reference-sample-set counts and the no-fixed-target Phase0 boundary.`
+- file=`10_prompt_specs/05_Phase0_Completion_and_Validation.md` / source_decisions=`DEC-028` / task4_action=`verify_or_update_note` / task4_note=`Keep the Phase0 completion workflow aligned with the signed MVP reference-sample-set boundary and remove fixed-target-count assumptions from the execution prompt.`
 
 ## 变更规则
 

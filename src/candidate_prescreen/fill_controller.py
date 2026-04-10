@@ -1,4 +1,4 @@
-"""Persistent controller that keeps filling staging until all 300 slots are occupied.
+"""Persistent controller that maintains the historical staging carrier when requested.
 
 The control loop keeps long-running responsibility in code:
 - read real progress from staging YAML on disk
@@ -6,6 +6,9 @@ The control loop keeps long-running responsibility in code:
 - call the API-backed LLM as a constrained first-pass reviewer
 - hand off only approved candidates into staging
 - validate and audit every iteration
+
+The historical carrier still has 300 slots for compatibility, but filling every slot
+is no longer the Phase0 MVP completion gate.
 """
 
 from __future__ import annotations
