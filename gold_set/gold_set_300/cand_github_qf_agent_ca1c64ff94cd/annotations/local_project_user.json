@@ -1,0 +1,34 @@
+{
+  "sample_id": "cand_github_qf_agent_ca1c64ff94cd",
+  "target_type": "product",
+  "target_id": "cand_github_qf_agent_ca1c64ff94cd",
+  "primary_category_code": "JTBD_KNOWLEDGE",
+  "secondary_category_code": null,
+  "primary_persona_code": "operator",
+  "delivery_form_code": "workflow_agent",
+  "build_evidence_band": "high",
+  "need_clarity_band": "medium",
+  "rationale": "Local annotation derived from candidate evidence, manual first-pass notes, and repository scope signals.",
+  "evidence_refs": [
+    {
+      "evidence_id": "cand_github_qf_agent_ca1c64ff94cd:repo",
+      "source_url": "https://github.com/demo/legalcase-agent",
+      "note": "candidate_prescreen_primary_evidence"
+    },
+    {
+      "evidence_id": "cand_github_qf_agent_ca1c64ff94cd:candidate_doc",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_agent_ca1c64ff94cd.yaml",
+      "note": "candidate_prescreen_record"
+    }
+  ],
+  "adjudication_status": "double_annotated",
+  "review_recommended": false,
+  "review_reason": null,
+  "taxonomy_change_suggestion": null,
+  "annotator_channel": "local_project_user",
+  "annotated_at": "2026-04-10T02:38:31Z",
+  "channel_metadata": {
+    "annotator": "local_project_user",
+    "annotation_mode": "manual_review_from_candidate_evidence"
+  }
+}

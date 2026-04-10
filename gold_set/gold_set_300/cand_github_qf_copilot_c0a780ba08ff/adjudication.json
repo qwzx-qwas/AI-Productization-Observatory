@@ -1,0 +1,66 @@
+{
+  "sample_id": "cand_github_qf_copilot_c0a780ba08ff",
+  "adjudicated_at": "2026-04-10T02:38:31Z",
+  "adjudicator_role": "local_project_user",
+  "source_annotation_channels": [
+    "local_project_user",
+    "llm"
+  ],
+  "final_decision": {
+    "sample_id": "cand_github_qf_copilot_c0a780ba08ff",
+    "target_type": "product",
+    "target_id": "cand_github_qf_copilot_c0a780ba08ff",
+    "primary_category_code": "JTBD_SALES_SUPPORT",
+    "secondary_category_code": null,
+    "primary_persona_code": "support_agent",
+    "delivery_form_code": "copilot_plugin",
+    "build_evidence_band": "high",
+    "need_clarity_band": "medium",
+    "rationale": "Adjudicated by comparing local_project_user and llm channels; local channel selected as effective decision.",
+    "evidence_refs": [
+      {
+        "evidence_id": "cand_github_qf_copilot_c0a780ba08ff:repo",
+        "source_url": "https://github.com/swark-io/swark",
+        "note": "candidate_prescreen_primary_evidence"
+      },
+      {
+        "evidence_id": "cand_github_qf_copilot_c0a780ba08ff:candidate_doc",
+        "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_copilot_c0a780ba08ff.yaml",
+        "note": "candidate_prescreen_record"
+      }
+    ],
+    "adjudication_status": "adjudicated",
+    "review_recommended": true,
+    "review_reason": "Operational maturity and present-day maintenance should be checked during later formal annotation.",
+    "taxonomy_change_suggestion": null
+  },
+  "adjudication_rationale": "Both channels reviewed; adjudicator confirmed a single effective taxonomy/persona/delivery decision with traceable evidence refs.",
+  "review_refs": [
+    {
+      "review_id": "review:cand_github_qf_copilot_c0a780ba08ff",
+      "reviewed_at": "2026-04-09T08:01:49.254246Z",
+      "review_status": "approved_for_staging",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_copilot_c0a780ba08ff.yaml",
+      "note": "manual_first_pass_review"
+    }
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "cand_github_qf_copilot_c0a780ba08ff:repo",
+      "source_url": "https://github.com/swark-io/swark",
+      "note": "candidate_prescreen_primary_evidence"
+    },
+    {
+      "evidence_id": "cand_github_qf_copilot_c0a780ba08ff:candidate_doc",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_copilot_c0a780ba08ff.yaml",
+      "note": "candidate_prescreen_record"
+    }
+  ],
+  "decision_basis_refs": [
+    {
+      "ref_id": "decision_basis:cand_github_qf_copilot_c0a780ba08ff",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_copilot_c0a780ba08ff.yaml",
+      "note": "candidate_prescreen_record_and_manual_review_note"
+    }
+  ]
+}

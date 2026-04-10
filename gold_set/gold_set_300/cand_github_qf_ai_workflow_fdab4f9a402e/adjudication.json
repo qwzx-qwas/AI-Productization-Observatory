@@ -1,0 +1,66 @@
+{
+  "sample_id": "cand_github_qf_ai_workflow_fdab4f9a402e",
+  "adjudicated_at": "2026-04-10T02:38:31Z",
+  "adjudicator_role": "local_project_user",
+  "source_annotation_channels": [
+    "local_project_user",
+    "llm"
+  ],
+  "final_decision": {
+    "sample_id": "cand_github_qf_ai_workflow_fdab4f9a402e",
+    "target_type": "product",
+    "target_id": "cand_github_qf_ai_workflow_fdab4f9a402e",
+    "primary_category_code": "JTBD_DATA_ANALYTICS",
+    "secondary_category_code": null,
+    "primary_persona_code": "analyst",
+    "delivery_form_code": "api_sdk",
+    "build_evidence_band": "high",
+    "need_clarity_band": "medium",
+    "rationale": "Adjudicated by comparing local_project_user and llm channels; local channel selected as effective decision.",
+    "evidence_refs": [
+      {
+        "evidence_id": "cand_github_qf_ai_workflow_fdab4f9a402e:repo",
+        "source_url": "https://github.com/demo/workflow-engine-llm",
+        "note": "candidate_prescreen_primary_evidence"
+      },
+      {
+        "evidence_id": "cand_github_qf_ai_workflow_fdab4f9a402e:candidate_doc",
+        "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_workflow_fdab4f9a402e.yaml",
+        "note": "candidate_prescreen_record"
+      }
+    ],
+    "adjudication_status": "adjudicated",
+    "review_recommended": true,
+    "review_reason": "Human review should verify whether the repository is truly packaged as a user-facing product.",
+    "taxonomy_change_suggestion": null
+  },
+  "adjudication_rationale": "Both channels reviewed; adjudicator confirmed a single effective taxonomy/persona/delivery decision with traceable evidence refs.",
+  "review_refs": [
+    {
+      "review_id": "review:cand_github_qf_ai_workflow_fdab4f9a402e",
+      "reviewed_at": "2026-04-02T10:02:37.123383Z",
+      "review_status": "approved_for_staging",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_workflow_fdab4f9a402e.yaml",
+      "note": "manual_first_pass_review"
+    }
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "cand_github_qf_ai_workflow_fdab4f9a402e:repo",
+      "source_url": "https://github.com/demo/workflow-engine-llm",
+      "note": "candidate_prescreen_primary_evidence"
+    },
+    {
+      "evidence_id": "cand_github_qf_ai_workflow_fdab4f9a402e:candidate_doc",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_workflow_fdab4f9a402e.yaml",
+      "note": "candidate_prescreen_record"
+    }
+  ],
+  "decision_basis_refs": [
+    {
+      "ref_id": "decision_basis:cand_github_qf_ai_workflow_fdab4f9a402e",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_workflow_fdab4f9a402e.yaml",
+      "note": "candidate_prescreen_record_and_manual_review_note"
+    }
+  ]
+}

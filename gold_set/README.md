@@ -1,24 +1,27 @@
 # Gold Set Status
 
-本目录预留给 gold set 与已裁决样本。
+本目录承载 formal gold set 与已裁决样本。
 
 当前状态：
 
-- `status = stub`
-- 目录已建立
-- 样本文件尚未落成
-- `make validate-gold-set` 当前用于校验 `stub` / `implemented` 状态与目录契约是否一致
-- 当真实样本落入后，可用 `make validate-gold-set REQUIRE_IMPLEMENTED=1` 强制校验已实现状态
-- 中间承载层若存在，必须放在 `gold_set/` 正式目录之外，不能污染 `gold_set/gold_set_300/` 的 `stub` 边界
+- `status = implemented`
+- `gold_set/gold_set_300/` 已写入真实样本目录
+- 每个已落地样本包含以下文件：
+	- `annotations/local_project_user.json`
+	- `annotations/llm.json`
+	- `adjudication.json`
+	- `sample_metadata.json`
+- `make validate-gold-set` 用于校验目录契约与样本完整性
+- 可用 `make validate-gold-set REQUIRE_IMPLEMENTED=1` 强制校验已实现状态
 
 当前运行默认：
 
-- `gold_set_300` 默认采用双标 + adjudication
+- `gold_set_300` 采用双标 + adjudication
 - 当前双标通道默认由本地项目使用者与 LLM 构成
-- 每个双标通道的原始标注结果与 channel metadata 都必须保留，不能只保留 adjudication 后的合成结果
-- 若当前双标通道包含 LLM，该通道应尽量与生产 taxonomy-classification prompt / routing 解耦；若暂时复用部分组件，必须记录相关版本并在复标分析里显式标注相关性风险
+- 每个双标通道的原始标注结果与 channel metadata 必须保留
+- 若双标通道包含 LLM，该通道应尽量与生产 taxonomy-classification prompt / routing 解耦；若暂时复用部分组件，必须记录相关版本并在复标分析中标注相关性风险
 - 当前 adjudicator 默认由本地项目使用者担任
-- candidate pool 每批次默认取 `top_10_candidate_samples`，白名单样本可额外放行；该 top 10 是当前运营参数，不视为理论最优值
+- candidate pool 每批次默认取 `top_10_candidate_samples`，白名单样本可额外放行
 - candidate pool 先排除 `unresolved`、`needs_more_evidence`、review 未关闭样本
 - candidate pool 排序优先级：`need_clarity_band = high` -> `build_evidence_band = high` -> `attention_score` 仅作次要因子
 - 候选样本池、training pool 与 `gold_set` 不是同一层
@@ -35,20 +38,11 @@
 - `16_repo_structure_and_module_mapping.md`
 - `12_review_policy.md`
 
-进入“已实现”前的完成条件：
+当前已实现范围：
 
-- 至少存在一组已裁决样本及其元数据
-- 每个样本至少保留双标原始结果、最终 adjudication 结果与裁决理由
-- 若存在 LLM 双标通道，还应保留该通道的 prompt / routing version 与 channel metadata，确保 agreement 与偏差分析可回放
-- 样本能回链到 review / evidence / taxonomy 或 score 裁决依据
-- 若存在 `taxonomy_change_suggestion`，只能作为候选备注保留，不能视为已生效 taxonomy 改动
-- 文档状态从 `stub` 更新为 `implemented`
+- 所有已具备 `sample_id` 的 staging 样本已完成双标与裁决并落地 formal 目录
+- formal 样本均保留了双通道原始结果、最终 adjudication、裁决理由与可回链 refs
 
-当前仍未满足的差距：
+当前剩余阻塞：
 
-- 还没有落入 `gold_set/gold_set_300/` 的真实双标样本目录
-- 还没有同时保留“本地项目使用者通道 + LLM 通道”的原始标注结果
-- 还没有对应的 adjudication 汇总结果与裁决理由
-- 还没有可回放的 channel metadata、prompt / routing version 记录
-
-因此本轮阶段 2 仍只能继续保持 `status = stub`，不能提前升级为 `implemented`。
+- staging 中仍有一部分 slot 尚未分配 `sample_id`，无法进入逐样本双标与 formal 写入流程

@@ -1,0 +1,51 @@
+{
+  "sample_id": "cand_github_qf_rag_937ee6a5a72b",
+  "target_type": "product",
+  "target_id": "cand_github_qf_rag_937ee6a5a72b",
+  "source_id": "src_github",
+  "source_record_refs": [
+    {
+      "candidate_id": "cand_github_qf_rag_937ee6a5a72b",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_rag_937ee6a5a72b.yaml",
+      "source": "github",
+      "source_id": "src_github",
+      "source_window": "2026-01-01..2026-04-02",
+      "external_id": "902093146",
+      "canonical_url": "https://github.com/NVIDIA-AI-Blueprints/rag",
+      "sample_key": null
+    }
+  ],
+  "review_refs": [
+    {
+      "review_id": "review:cand_github_qf_rag_937ee6a5a72b",
+      "reviewed_at": "2026-04-03T10:21:44.579951Z",
+      "review_status": "approved_for_staging",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_rag_937ee6a5a72b.yaml",
+      "note": "manual_first_pass_review"
+    }
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "cand_github_qf_rag_937ee6a5a72b:repo",
+      "source_url": "https://github.com/NVIDIA-AI-Blueprints/rag",
+      "note": "candidate_prescreen_primary_evidence"
+    },
+    {
+      "evidence_id": "cand_github_qf_rag_937ee6a5a72b:candidate_doc",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_rag_937ee6a5a72b.yaml",
+      "note": "candidate_prescreen_record"
+    }
+  ],
+  "eligibility_snapshot": {
+    "review_closed": true,
+    "sufficient_evidence": true,
+    "clear_adjudication": true,
+    "is_unresolved": false
+  },
+  "pool_trace": {
+    "candidate_pool_batch_id": "candidate_batch_github_qf_rag_2026-01-01_2026-04-02",
+    "training_pool_source": "candidate_pool",
+    "whitelist_reason": null
+  },
+  "sample_key": null
+}

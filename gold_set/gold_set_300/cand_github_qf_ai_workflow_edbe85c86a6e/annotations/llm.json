@@ -1,0 +1,35 @@
+{
+  "sample_id": "cand_github_qf_ai_workflow_edbe85c86a6e",
+  "target_type": "product",
+  "target_id": "cand_github_qf_ai_workflow_edbe85c86a6e",
+  "primary_category_code": "JTBD_PRODUCTIVITY_AUTOMATION",
+  "secondary_category_code": null,
+  "primary_persona_code": "operator",
+  "delivery_form_code": "api_sdk",
+  "build_evidence_band": "low",
+  "need_clarity_band": "low",
+  "rationale": "If in doubt, split into two records for human review: (1) this repo as a curated ecosystem index, (2) Composio/connect-apps as a potential productized automation platform.",
+  "evidence_refs": [
+    {
+      "evidence_id": "cand_github_qf_ai_workflow_edbe85c86a6e:repo",
+      "source_url": "https://github.com/ComposioHQ/awesome-claude-skills",
+      "note": "candidate_prescreen_primary_evidence"
+    },
+    {
+      "evidence_id": "cand_github_qf_ai_workflow_edbe85c86a6e:candidate_doc",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_workflow_edbe85c86a6e.yaml",
+      "note": "candidate_prescreen_record"
+    }
+  ],
+  "adjudication_status": "double_annotated",
+  "review_recommended": false,
+  "review_reason": null,
+  "taxonomy_change_suggestion": null,
+  "annotator_channel": "llm",
+  "annotated_at": "2026-04-10T02:38:31Z",
+  "channel_metadata": {
+    "prompt_version": "candidate_prescreener_v1",
+    "routing_version": "route_candidate_prescreener_v1",
+    "model": "gpt-5.3-codex"
+  }
+}

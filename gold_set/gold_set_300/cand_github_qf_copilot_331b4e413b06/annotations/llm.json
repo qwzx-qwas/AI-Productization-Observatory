@@ -1,0 +1,35 @@
+{
+  "sample_id": "cand_github_qf_copilot_331b4e413b06",
+  "target_type": "product",
+  "target_id": "cand_github_qf_copilot_331b4e413b06",
+  "primary_category_code": "JTBD_SALES_SUPPORT",
+  "secondary_category_code": null,
+  "primary_persona_code": "support_agent",
+  "delivery_form_code": "copilot_plugin",
+  "build_evidence_band": "high",
+  "need_clarity_band": "medium",
+  "rationale": "The repo presents a user-facing product workflow with concrete evidence of business use.",
+  "evidence_refs": [
+    {
+      "evidence_id": "cand_github_qf_copilot_331b4e413b06:repo",
+      "source_url": "https://github.com/demo/support-copilot",
+      "note": "candidate_prescreen_primary_evidence"
+    },
+    {
+      "evidence_id": "cand_github_qf_copilot_331b4e413b06:candidate_doc",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_copilot_331b4e413b06.yaml",
+      "note": "candidate_prescreen_record"
+    }
+  ],
+  "adjudication_status": "double_annotated",
+  "review_recommended": false,
+  "review_reason": null,
+  "taxonomy_change_suggestion": null,
+  "annotator_channel": "llm",
+  "annotated_at": "2026-04-10T02:38:31Z",
+  "channel_metadata": {
+    "prompt_version": "candidate_prescreener_v1",
+    "routing_version": "route_candidate_prescreener_v1",
+    "model": "fixture-llm-generated"
+  }
+}

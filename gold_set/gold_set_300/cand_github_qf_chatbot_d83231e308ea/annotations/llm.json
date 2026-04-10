@@ -1,0 +1,35 @@
+{
+  "sample_id": "cand_github_qf_chatbot_d83231e308ea",
+  "target_type": "product",
+  "target_id": "cand_github_qf_chatbot_d83231e308ea",
+  "primary_category_code": "JTBD_SALES_SUPPORT",
+  "secondary_category_code": null,
+  "primary_persona_code": "support_agent",
+  "delivery_form_code": "api_sdk",
+  "build_evidence_band": "medium",
+  "need_clarity_band": "medium",
+  "rationale": "LLM channel annotation from candidate prescreener evidence.",
+  "evidence_refs": [
+    {
+      "evidence_id": "cand_github_qf_chatbot_d83231e308ea:repo",
+      "source_url": "https://github.com/Vikranth3140/Mental-Health-Support-Chatbot",
+      "note": "candidate_prescreen_primary_evidence"
+    },
+    {
+      "evidence_id": "cand_github_qf_chatbot_d83231e308ea:candidate_doc",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_d83231e308ea.yaml",
+      "note": "candidate_prescreen_record"
+    }
+  ],
+  "adjudication_status": "double_annotated",
+  "review_recommended": false,
+  "review_reason": null,
+  "taxonomy_change_suggestion": null,
+  "annotator_channel": "llm",
+  "annotated_at": "2026-04-10T02:38:31Z",
+  "channel_metadata": {
+    "prompt_version": "candidate_prescreener_v1",
+    "routing_version": "route_candidate_prescreener_v1",
+    "model": "manual_local_review"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "sample_id": "cand_github_qf_ai_workflow_a50e4f510b3a",
+  "target_type": "product",
+  "target_id": "cand_github_qf_ai_workflow_a50e4f510b3a",
+  "source_id": "src_github",
+  "source_record_refs": [
+    {
+      "candidate_id": "cand_github_qf_ai_workflow_a50e4f510b3a",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_a50e4f510b3a.yaml",
+      "source": "github",
+      "source_id": "src_github",
+      "source_window": "2025-02-01..2025-02-28",
+      "external_id": "933105027",
+      "canonical_url": "https://github.com/nicolesplaining/treehacks",
+      "sample_key": null
+    }
+  ],
+  "review_refs": [
+    {
+      "review_id": "review:cand_github_qf_ai_workflow_a50e4f510b3a",
+      "reviewed_at": "2026-04-09T13:10:40.096351Z",
+      "review_status": "approved_for_staging",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_a50e4f510b3a.yaml",
+      "note": "manual_first_pass_review"
+    }
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "cand_github_qf_ai_workflow_a50e4f510b3a:repo",
+      "source_url": "https://github.com/nicolesplaining/treehacks",
+      "note": "candidate_prescreen_primary_evidence"
+    },
+    {
+      "evidence_id": "cand_github_qf_ai_workflow_a50e4f510b3a:candidate_doc",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_ai_workflow_a50e4f510b3a.yaml",
+      "note": "candidate_prescreen_record"
+    }
+  ],
+  "eligibility_snapshot": {
+    "review_closed": true,
+    "sufficient_evidence": true,
+    "clear_adjudication": true,
+    "is_unresolved": false
+  },
+  "pool_trace": {
+    "candidate_pool_batch_id": "candidate_batch_github_qf_ai_workflow_2025-02-01_2025-02-28",
+    "training_pool_source": "candidate_pool",
+    "whitelist_reason": null
+  },
+  "sample_key": null
+}

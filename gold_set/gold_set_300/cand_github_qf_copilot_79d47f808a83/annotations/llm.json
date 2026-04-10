@@ -1,0 +1,35 @@
+{
+  "sample_id": "cand_github_qf_copilot_79d47f808a83",
+  "target_type": "product",
+  "target_id": "cand_github_qf_copilot_79d47f808a83",
+  "primary_category_code": "JTBD_DEV_TOOLS",
+  "secondary_category_code": null,
+  "primary_persona_code": "developer",
+  "delivery_form_code": "copilot_plugin",
+  "build_evidence_band": "low",
+  "need_clarity_band": "high",
+  "rationale": "High-value next step: inspect repository tree and recent commits for actual implementation modules (agent/tool orchestration, code edit pipeline, scaffold generation) before any promotion decision.",
+  "evidence_refs": [
+    {
+      "evidence_id": "cand_github_qf_copilot_79d47f808a83:repo",
+      "source_url": "https://github.com/spring-ai-alibaba/copilot",
+      "note": "candidate_prescreen_primary_evidence"
+    },
+    {
+      "evidence_id": "cand_github_qf_copilot_79d47f808a83:candidate_doc",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_copilot_79d47f808a83.yaml",
+      "note": "candidate_prescreen_record"
+    }
+  ],
+  "adjudication_status": "double_annotated",
+  "review_recommended": true,
+  "review_reason": "Single-source evidence (README excerpt) may overstate implemented capabilities",
+  "taxonomy_change_suggestion": null,
+  "annotator_channel": "llm",
+  "annotated_at": "2026-04-10T02:38:31Z",
+  "channel_metadata": {
+    "prompt_version": "candidate_prescreener_v1",
+    "routing_version": "route_candidate_prescreener_v1",
+    "model": "gpt-5.3-codex"
+  }
+}

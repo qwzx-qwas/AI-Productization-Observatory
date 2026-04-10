@@ -1,0 +1,51 @@
+{
+  "sample_id": "cand_github_qf_chatbot_94f4e4c3cf3b",
+  "target_type": "product",
+  "target_id": "cand_github_qf_chatbot_94f4e4c3cf3b",
+  "source_id": "src_github",
+  "source_record_refs": [
+    {
+      "candidate_id": "cand_github_qf_chatbot_94f4e4c3cf3b",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_chatbot_94f4e4c3cf3b.yaml",
+      "source": "github",
+      "source_id": "src_github",
+      "source_window": "2025-01-01..2025-01-31",
+      "external_id": "702573337",
+      "canonical_url": "https://github.com/imonishkumar/Symptom-Checker-Chatbot",
+      "sample_key": null
+    }
+  ],
+  "review_refs": [
+    {
+      "review_id": "review:cand_github_qf_chatbot_94f4e4c3cf3b",
+      "reviewed_at": "2026-04-09T13:10:37.119968Z",
+      "review_status": "approved_for_staging",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_chatbot_94f4e4c3cf3b.yaml",
+      "note": "manual_first_pass_review"
+    }
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "cand_github_qf_chatbot_94f4e4c3cf3b:repo",
+      "source_url": "https://github.com/imonishkumar/Symptom-Checker-Chatbot",
+      "note": "candidate_prescreen_primary_evidence"
+    },
+    {
+      "evidence_id": "cand_github_qf_chatbot_94f4e4c3cf3b:candidate_doc",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_chatbot_94f4e4c3cf3b.yaml",
+      "note": "candidate_prescreen_record"
+    }
+  ],
+  "eligibility_snapshot": {
+    "review_closed": true,
+    "sufficient_evidence": true,
+    "clear_adjudication": true,
+    "is_unresolved": false
+  },
+  "pool_trace": {
+    "candidate_pool_batch_id": "candidate_batch_github_qf_chatbot_2025-01-01_2025-01-31",
+    "training_pool_source": "candidate_pool",
+    "whitelist_reason": null
+  },
+  "sample_key": null
+}

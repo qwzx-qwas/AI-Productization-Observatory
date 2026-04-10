@@ -1,0 +1,51 @@
+{
+  "sample_id": "cand_github_qf_agent_640f23c39640",
+  "target_type": "product",
+  "target_id": "cand_github_qf_agent_640f23c39640",
+  "source_id": "src_github",
+  "source_record_refs": [
+    {
+      "candidate_id": "cand_github_qf_agent_640f23c39640",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-29_2026-04-02/cand_github_qf_agent_640f23c39640.yaml",
+      "source": "github",
+      "source_id": "src_github",
+      "source_window": "2026-03-29..2026-04-02",
+      "external_id": "224021526",
+      "canonical_url": "https://github.com/grafana/agent",
+      "sample_key": null
+    }
+  ],
+  "review_refs": [
+    {
+      "review_id": "review:cand_github_qf_agent_640f23c39640",
+      "reviewed_at": "2026-04-03T06:58:59.227895Z",
+      "review_status": "approved_for_staging",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-29_2026-04-02/cand_github_qf_agent_640f23c39640.yaml",
+      "note": "manual_first_pass_review"
+    }
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "cand_github_qf_agent_640f23c39640:repo",
+      "source_url": "https://github.com/grafana/agent",
+      "note": "candidate_prescreen_primary_evidence"
+    },
+    {
+      "evidence_id": "cand_github_qf_agent_640f23c39640:candidate_doc",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-29_2026-04-02/cand_github_qf_agent_640f23c39640.yaml",
+      "note": "candidate_prescreen_record"
+    }
+  ],
+  "eligibility_snapshot": {
+    "review_closed": true,
+    "sufficient_evidence": true,
+    "clear_adjudication": true,
+    "is_unresolved": false
+  },
+  "pool_trace": {
+    "candidate_pool_batch_id": "candidate_batch_github_qf_agent_2026-03-29_2026-04-02",
+    "training_pool_source": "candidate_pool",
+    "whitelist_reason": null
+  },
+  "sample_key": null
+}

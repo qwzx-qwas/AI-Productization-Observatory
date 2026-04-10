@@ -1,0 +1,35 @@
+{
+  "sample_id": "cand_github_qf_copilot_8ad55c7d24ae",
+  "target_type": "product",
+  "target_id": "cand_github_qf_copilot_8ad55c7d24ae",
+  "primary_category_code": "JTBD_DEV_TOOLS",
+  "secondary_category_code": null,
+  "primary_persona_code": "developer",
+  "delivery_form_code": "copilot_plugin",
+  "build_evidence_band": "low",
+  "need_clarity_band": "high",
+  "rationale": "High readiness for a quick human decision after one targeted docs pass focused on AI claims; current excerpt alone is insufficient for candidate_pool promotion.",
+  "evidence_refs": [
+    {
+      "evidence_id": "cand_github_qf_copilot_8ad55c7d24ae:repo",
+      "source_url": "https://github.com/socfortress/CoPilot",
+      "note": "candidate_prescreen_primary_evidence"
+    },
+    {
+      "evidence_id": "cand_github_qf_copilot_8ad55c7d24ae:candidate_doc",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-29_2026-04-02/cand_github_qf_copilot_8ad55c7d24ae.yaml",
+      "note": "candidate_prescreen_record"
+    }
+  ],
+  "adjudication_status": "double_annotated",
+  "review_recommended": false,
+  "review_reason": null,
+  "taxonomy_change_suggestion": null,
+  "annotator_channel": "llm",
+  "annotated_at": "2026-04-10T02:38:31Z",
+  "channel_metadata": {
+    "prompt_version": "candidate_prescreener_v1",
+    "routing_version": "route_candidate_prescreener_v1",
+    "model": "gpt-5.3-codex"
+  }
+}

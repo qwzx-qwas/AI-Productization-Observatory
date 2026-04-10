@@ -1,0 +1,51 @@
+{
+  "sample_id": "cand_github_qf_ai_assistant_582d2bf38aed",
+  "target_type": "product",
+  "target_id": "cand_github_qf_ai_assistant_582d2bf38aed",
+  "source_id": "src_github",
+  "source_record_refs": [
+    {
+      "candidate_id": "cand_github_qf_ai_assistant_582d2bf38aed",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_assistant_582d2bf38aed.yaml",
+      "source": "github",
+      "source_id": "src_github",
+      "source_window": "2026-03-01..2026-03-08",
+      "external_id": "880015",
+      "canonical_url": "https://github.com/demo/finance-assistant-workbench",
+      "sample_key": null
+    }
+  ],
+  "review_refs": [
+    {
+      "review_id": "review:cand_github_qf_ai_assistant_582d2bf38aed",
+      "reviewed_at": "2026-04-02T08:21:35.744745Z",
+      "review_status": "approved_for_staging",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_assistant_582d2bf38aed.yaml",
+      "note": "manual_first_pass_review"
+    }
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "cand_github_qf_ai_assistant_582d2bf38aed:repo",
+      "source_url": "https://github.com/demo/finance-assistant-workbench",
+      "note": "candidate_prescreen_primary_evidence"
+    },
+    {
+      "evidence_id": "cand_github_qf_ai_assistant_582d2bf38aed:candidate_doc",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-01_2026-03-08/cand_github_qf_ai_assistant_582d2bf38aed.yaml",
+      "note": "candidate_prescreen_record"
+    }
+  ],
+  "eligibility_snapshot": {
+    "review_closed": true,
+    "sufficient_evidence": true,
+    "clear_adjudication": true,
+    "is_unresolved": false
+  },
+  "pool_trace": {
+    "candidate_pool_batch_id": "candidate_batch_github_qf_ai_assistant_2026-03-01_2026-03-08",
+    "training_pool_source": "candidate_pool",
+    "whitelist_reason": null
+  },
+  "sample_key": null
+}

@@ -1,0 +1,51 @@
+{
+  "sample_id": "cand_github_qf_chatbot_d0ac6e0dc51d",
+  "target_type": "product",
+  "target_id": "cand_github_qf_chatbot_d0ac6e0dc51d",
+  "source_id": "src_github",
+  "source_record_refs": [
+    {
+      "candidate_id": "cand_github_qf_chatbot_d0ac6e0dc51d",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_d0ac6e0dc51d.yaml",
+      "source": "github",
+      "source_id": "src_github",
+      "source_window": "2025-02-01..2025-02-28",
+      "external_id": "792608353",
+      "canonical_url": "https://github.com/ChatBot-All/chatbot-app",
+      "sample_key": null
+    }
+  ],
+  "review_refs": [
+    {
+      "review_id": "review:cand_github_qf_chatbot_d0ac6e0dc51d",
+      "reviewed_at": "2026-04-09T08:01:46.461765Z",
+      "review_status": "approved_for_staging",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_d0ac6e0dc51d.yaml",
+      "note": "manual_first_pass_review"
+    }
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "cand_github_qf_chatbot_d0ac6e0dc51d:repo",
+      "source_url": "https://github.com/ChatBot-All/chatbot-app",
+      "note": "candidate_prescreen_primary_evidence"
+    },
+    {
+      "evidence_id": "cand_github_qf_chatbot_d0ac6e0dc51d:candidate_doc",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-02-01_2025-02-28/cand_github_qf_chatbot_d0ac6e0dc51d.yaml",
+      "note": "candidate_prescreen_record"
+    }
+  ],
+  "eligibility_snapshot": {
+    "review_closed": true,
+    "sufficient_evidence": true,
+    "clear_adjudication": true,
+    "is_unresolved": false
+  },
+  "pool_trace": {
+    "candidate_pool_batch_id": "candidate_batch_github_qf_chatbot_2025-02-01_2025-02-28",
+    "training_pool_source": "candidate_pool",
+    "whitelist_reason": null
+  },
+  "sample_key": null
+}

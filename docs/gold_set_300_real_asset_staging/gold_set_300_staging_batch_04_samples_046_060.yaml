@@ -23,17 +23,28 @@ future_formal_target:
 samples:
 - slot_index: 46
   sample_slot_id: GS300-046
-  current_state: candidate_approved_for_annotation
-  ready_for_formal_writeflow: false
+  current_state: ready_for_formal_writeflow
+  ready_for_formal_writeflow: true
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
   sample_id: cand_github_qf_rag_937ee6a5a72b
   target_type: product
-  review_closed: null
-  clear_adjudication: null
-  primary_category_code: null
-  review_refs: []
-  evidence_refs: []
-  source_record_refs: &id001
+  review_closed: true
+  clear_adjudication: true
+  primary_category_code: JTBD_SALES_SUPPORT
+  review_refs: &id003
+  - review_id: review:cand_github_qf_rag_937ee6a5a72b
+    reviewed_at: '2026-04-03T10:21:44.579951Z'
+    review_status: approved_for_staging
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_rag_937ee6a5a72b.yaml
+    note: manual_first_pass_review
+  evidence_refs: &id001
+  - evidence_id: cand_github_qf_rag_937ee6a5a72b:repo
+    source_url: https://github.com/NVIDIA-AI-Blueprints/rag
+    note: candidate_prescreen_primary_evidence
+  - evidence_id: cand_github_qf_rag_937ee6a5a72b:candidate_doc
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_rag_937ee6a5a72b.yaml
+    note: candidate_prescreen_record
+  source_record_refs: &id002
   - candidate_id: cand_github_qf_rag_937ee6a5a72b
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_rag_937ee6a5a72b.yaml
     source: github
@@ -45,90 +56,99 @@ samples:
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
-    provided: false
-    adjudication_status: double_annotated
-    primary_category_code: null
+    provided: true
+    sample_id: cand_github_qf_rag_937ee6a5a72b
+    target_type: product
+    target_id: cand_github_qf_rag_937ee6a5a72b
+    primary_category_code: JTBD_SALES_SUPPORT
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
-    review_reason: null
-    taxonomy_change_suggestion: null
-    channel_metadata: {}
-  llm_annotation:
-    provided: false
+    primary_persona_code: support_agent
+    delivery_form_code: api_sdk
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Local annotation derived from candidate evidence, manual first-pass
+      notes, and repository scope signals.
+    evidence_refs: *id001
     adjudication_status: double_annotated
-    primary_category_code: null
-    secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
     channel_metadata:
-      prompt_version: null
-      routing_version: null
-  adjudicated_output:
-    provided: false
-    sample_id: null
+      annotator: local_project_user
+      annotation_mode: manual_review_from_candidate_evidence
+  llm_annotation:
+    provided: true
+    sample_id: cand_github_qf_rag_937ee6a5a72b
     target_type: product
-    target_id: null
-    primary_category_code: null
+    target_id: cand_github_qf_rag_937ee6a5a72b
+    primary_category_code: JTBD_SALES_SUPPORT
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    primary_persona_code: support_agent
+    delivery_form_code: api_sdk
+    build_evidence_band: medium
+    need_clarity_band: medium
+    rationale: LLM channel annotation from candidate prescreener evidence.
+    evidence_refs: *id001
+    adjudication_status: double_annotated
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: candidate_prescreener_v1
+      routing_version: route_candidate_prescreener_v1
+      model: manual_local_review
+  adjudicated_output:
+    provided: true
+    sample_id: cand_github_qf_rag_937ee6a5a72b
+    target_type: product
+    target_id: cand_github_qf_rag_937ee6a5a72b
+    primary_category_code: JTBD_SALES_SUPPORT
+    secondary_category_code: null
+    primary_persona_code: support_agent
+    delivery_form_code: api_sdk
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Adjudicated by comparing local_project_user and llm channels; local
+      channel selected as effective decision.
+    evidence_refs: *id001
     adjudication_status: adjudicated
+    review_recommended: false
+    review_reason: null
+    taxonomy_change_suggestion: null
   adjudication_basis:
-    provided: false
-    adjudicated_at: null
+    provided: true
+    adjudicated_at: '2026-04-10T02:38:31Z'
     adjudicator_role: local_project_user
     source_annotation_channels:
     - local_project_user
     - llm
-    adjudication_rationale: null
-    decision_basis_refs: []
-    notes: null
+    adjudication_rationale: Both channels reviewed; adjudicator confirmed a single
+      effective taxonomy/persona/delivery decision with traceable evidence refs.
+    decision_basis_refs:
+    - ref_id: decision_basis:cand_github_qf_rag_937ee6a5a72b
+      candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_rag_937ee6a5a72b.yaml
+      note: candidate_prescreen_record_and_manual_review_note
+    notes: Completed via formal double-annotation writeflow.
   sample_metadata:
-    provided: false
+    provided: true
     sample_id: cand_github_qf_rag_937ee6a5a72b
-    target_id: null
-    source_id: src_github
     target_type: product
-    source_record_refs: *id001
-    review_refs: []
-    evidence_refs: []
+    target_id: cand_github_qf_rag_937ee6a5a72b
+    source_id: src_github
+    source_record_refs: *id002
+    review_refs: *id003
+    evidence_refs: *id001
     eligibility_snapshot:
-      review_closed: null
-      sufficient_evidence: null
-      clear_adjudication: null
-      is_unresolved: null
+      review_closed: true
+      sufficient_evidence: true
+      clear_adjudication: true
+      is_unresolved: false
     pool_trace:
       candidate_pool_batch_id: candidate_batch_github_qf_rag_2026-01-01_2026-04-02
       training_pool_source: candidate_pool
       whitelist_reason: null
     sample_key: null
-  blocking_items:
-  - formal review_refs not yet provided
-  - formal evidence_refs not yet provided
-  - local_project_user raw annotation not yet provided
-  - llm raw annotation not yet provided
-  - adjudicated final decision fields not yet provided
-  - adjudication basis not yet provided
+  blocking_items: []
   candidate_prescreen_ref:
     candidate_id: cand_github_qf_rag_937ee6a5a72b
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_rag_937ee6a5a72b.yaml
@@ -150,17 +170,28 @@ samples:
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_rag_937ee6a5a72b.yaml
 - slot_index: 47
   sample_slot_id: GS300-047
-  current_state: candidate_approved_for_annotation
-  ready_for_formal_writeflow: false
+  current_state: ready_for_formal_writeflow
+  ready_for_formal_writeflow: true
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
   sample_id: cand_github_qf_chatbot_39cab9febf4c
   target_type: product
-  review_closed: null
-  clear_adjudication: null
-  primary_category_code: null
-  review_refs: []
-  evidence_refs: []
-  source_record_refs: &id002
+  review_closed: true
+  clear_adjudication: true
+  primary_category_code: JTBD_SALES_SUPPORT
+  review_refs: &id006
+  - review_id: review:cand_github_qf_chatbot_39cab9febf4c
+    reviewed_at: '2026-04-06T14:59:12.658295Z'
+    review_status: approved_for_staging
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_chatbot_39cab9febf4c.yaml
+    note: manual_first_pass_review
+  evidence_refs: &id004
+  - evidence_id: cand_github_qf_chatbot_39cab9febf4c:repo
+    source_url: https://github.com/dbpedia/chatbot
+    note: candidate_prescreen_primary_evidence
+  - evidence_id: cand_github_qf_chatbot_39cab9febf4c:candidate_doc
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_chatbot_39cab9febf4c.yaml
+    note: candidate_prescreen_record
+  source_record_refs: &id005
   - candidate_id: cand_github_qf_chatbot_39cab9febf4c
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_chatbot_39cab9febf4c.yaml
     source: github
@@ -172,90 +203,100 @@ samples:
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
-    provided: false
-    adjudication_status: double_annotated
-    primary_category_code: null
+    provided: true
+    sample_id: cand_github_qf_chatbot_39cab9febf4c
+    target_type: product
+    target_id: cand_github_qf_chatbot_39cab9febf4c
+    primary_category_code: JTBD_SALES_SUPPORT
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
-    review_reason: null
-    taxonomy_change_suggestion: null
-    channel_metadata: {}
-  llm_annotation:
-    provided: false
+    primary_persona_code: support_agent
+    delivery_form_code: api_sdk
+    build_evidence_band: high
+    need_clarity_band: low
+    rationale: Local annotation derived from candidate evidence, manual first-pass
+      notes, and repository scope signals.
+    evidence_refs: *id004
     adjudication_status: double_annotated
-    primary_category_code: null
-    secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
     channel_metadata:
-      prompt_version: null
-      routing_version: null
-  adjudicated_output:
-    provided: false
-    sample_id: null
+      annotator: local_project_user
+      annotation_mode: manual_review_from_candidate_evidence
+  llm_annotation:
+    provided: true
+    sample_id: cand_github_qf_chatbot_39cab9febf4c
     target_type: product
-    target_id: null
-    primary_category_code: null
+    target_id: cand_github_qf_chatbot_39cab9febf4c
+    primary_category_code: JTBD_KNOWLEDGE
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    primary_persona_code: operator
+    delivery_form_code: api_sdk
+    build_evidence_band: low
+    need_clarity_band: low
+    rationale: 'Ready for quick human first-pass: likely exclude from active candidate
+      pool unless reviewer is intentionally collecting legacy/reference chatbot implementations.'
+    evidence_refs: *id004
+    adjudication_status: double_annotated
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: candidate_prescreener_v1
+      routing_version: route_candidate_prescreener_v1
+      model: gpt-5.3-codex
+  adjudicated_output:
+    provided: true
+    sample_id: cand_github_qf_chatbot_39cab9febf4c
+    target_type: product
+    target_id: cand_github_qf_chatbot_39cab9febf4c
+    primary_category_code: JTBD_SALES_SUPPORT
+    secondary_category_code: null
+    primary_persona_code: support_agent
+    delivery_form_code: api_sdk
+    build_evidence_band: high
+    need_clarity_band: low
+    rationale: Adjudicated by comparing local_project_user and llm channels; local
+      channel selected as effective decision.
+    evidence_refs: *id004
     adjudication_status: adjudicated
+    review_recommended: false
+    review_reason: null
+    taxonomy_change_suggestion: null
   adjudication_basis:
-    provided: false
-    adjudicated_at: null
+    provided: true
+    adjudicated_at: '2026-04-10T02:38:31Z'
     adjudicator_role: local_project_user
     source_annotation_channels:
     - local_project_user
     - llm
-    adjudication_rationale: null
-    decision_basis_refs: []
-    notes: null
+    adjudication_rationale: Both channels reviewed; adjudicator confirmed a single
+      effective taxonomy/persona/delivery decision with traceable evidence refs.
+    decision_basis_refs:
+    - ref_id: decision_basis:cand_github_qf_chatbot_39cab9febf4c
+      candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_chatbot_39cab9febf4c.yaml
+      note: candidate_prescreen_record_and_manual_review_note
+    notes: Completed via formal double-annotation writeflow.
   sample_metadata:
-    provided: false
+    provided: true
     sample_id: cand_github_qf_chatbot_39cab9febf4c
-    target_id: null
-    source_id: src_github
     target_type: product
-    source_record_refs: *id002
-    review_refs: []
-    evidence_refs: []
+    target_id: cand_github_qf_chatbot_39cab9febf4c
+    source_id: src_github
+    source_record_refs: *id005
+    review_refs: *id006
+    evidence_refs: *id004
     eligibility_snapshot:
-      review_closed: null
-      sufficient_evidence: null
-      clear_adjudication: null
-      is_unresolved: null
+      review_closed: true
+      sufficient_evidence: true
+      clear_adjudication: true
+      is_unresolved: false
     pool_trace:
       candidate_pool_batch_id: candidate_batch_github_qf_chatbot_2025-06-01_2026-04-06
       training_pool_source: candidate_pool
       whitelist_reason: null
     sample_key: null
-  blocking_items:
-  - formal review_refs not yet provided
-  - formal evidence_refs not yet provided
-  - local_project_user raw annotation not yet provided
-  - llm raw annotation not yet provided
-  - adjudicated final decision fields not yet provided
-  - adjudication basis not yet provided
+  blocking_items: []
   candidate_prescreen_ref:
     candidate_id: cand_github_qf_chatbot_39cab9febf4c
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_chatbot_39cab9febf4c.yaml
@@ -276,17 +317,28 @@ samples:
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_chatbot_39cab9febf4c.yaml
 - slot_index: 48
   sample_slot_id: GS300-048
-  current_state: candidate_approved_for_annotation
-  ready_for_formal_writeflow: false
+  current_state: ready_for_formal_writeflow
+  ready_for_formal_writeflow: true
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
   sample_id: cand_github_qf_agent_bf4b52017416
   target_type: product
-  review_closed: null
-  clear_adjudication: null
-  primary_category_code: null
-  review_refs: []
-  evidence_refs: []
-  source_record_refs: &id003
+  review_closed: true
+  clear_adjudication: true
+  primary_category_code: JTBD_SALES_SUPPORT
+  review_refs: &id009
+  - review_id: review:cand_github_qf_agent_bf4b52017416
+    reviewed_at: '2026-04-03T10:50:10.735761Z'
+    review_status: approved_for_staging
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-03_2026-07-03/cand_github_qf_agent_bf4b52017416.yaml
+    note: manual_first_pass_review
+  evidence_refs: &id007
+  - evidence_id: cand_github_qf_agent_bf4b52017416:repo
+    source_url: https://github.com/nginx/agent
+    note: candidate_prescreen_primary_evidence
+  - evidence_id: cand_github_qf_agent_bf4b52017416:candidate_doc
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-03_2026-07-03/cand_github_qf_agent_bf4b52017416.yaml
+    note: candidate_prescreen_record
+  source_record_refs: &id008
   - candidate_id: cand_github_qf_agent_bf4b52017416
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-03_2026-07-03/cand_github_qf_agent_bf4b52017416.yaml
     source: github
@@ -298,90 +350,101 @@ samples:
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
-    provided: false
-    adjudication_status: double_annotated
-    primary_category_code: null
+    provided: true
+    sample_id: cand_github_qf_agent_bf4b52017416
+    target_type: product
+    target_id: cand_github_qf_agent_bf4b52017416
+    primary_category_code: JTBD_SALES_SUPPORT
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
-    review_reason: null
-    taxonomy_change_suggestion: null
-    channel_metadata: {}
-  llm_annotation:
-    provided: false
+    primary_persona_code: support_agent
+    delivery_form_code: workflow_agent
+    build_evidence_band: high
+    need_clarity_band: low
+    rationale: Local annotation derived from candidate evidence, manual first-pass
+      notes, and repository scope signals.
+    evidence_refs: *id007
     adjudication_status: double_annotated
-    primary_category_code: null
-    secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
     channel_metadata:
-      prompt_version: null
-      routing_version: null
-  adjudicated_output:
-    provided: false
-    sample_id: null
+      annotator: local_project_user
+      annotation_mode: manual_review_from_candidate_evidence
+  llm_annotation:
+    provided: true
+    sample_id: cand_github_qf_agent_bf4b52017416
     target_type: product
-    target_id: null
-    primary_category_code: null
+    target_id: cand_github_qf_agent_bf4b52017416
+    primary_category_code: JTBD_PRODUCTIVITY_AUTOMATION
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    primary_persona_code: operator
+    delivery_form_code: workflow_agent
+    build_evidence_band: low
+    need_clarity_band: low
+    rationale: Repository content describes infrastructure management for NGINX instances
+      (remote config, metrics, events) without explicit AI/ML model, inference, LLM,
+      or autonomous decisioning functionality.
+    evidence_refs: *id007
+    adjudication_status: double_annotated
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: candidate_prescreener_v1
+      routing_version: route_candidate_prescreener_v1
+      model: gpt-5.3-codex
+  adjudicated_output:
+    provided: true
+    sample_id: cand_github_qf_agent_bf4b52017416
+    target_type: product
+    target_id: cand_github_qf_agent_bf4b52017416
+    primary_category_code: JTBD_SALES_SUPPORT
+    secondary_category_code: null
+    primary_persona_code: support_agent
+    delivery_form_code: workflow_agent
+    build_evidence_band: high
+    need_clarity_band: low
+    rationale: Adjudicated by comparing local_project_user and llm channels; local
+      channel selected as effective decision.
+    evidence_refs: *id007
     adjudication_status: adjudicated
+    review_recommended: false
+    review_reason: null
+    taxonomy_change_suggestion: null
   adjudication_basis:
-    provided: false
-    adjudicated_at: null
+    provided: true
+    adjudicated_at: '2026-04-10T02:38:31Z'
     adjudicator_role: local_project_user
     source_annotation_channels:
     - local_project_user
     - llm
-    adjudication_rationale: null
-    decision_basis_refs: []
-    notes: null
+    adjudication_rationale: Both channels reviewed; adjudicator confirmed a single
+      effective taxonomy/persona/delivery decision with traceable evidence refs.
+    decision_basis_refs:
+    - ref_id: decision_basis:cand_github_qf_agent_bf4b52017416
+      candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-03_2026-07-03/cand_github_qf_agent_bf4b52017416.yaml
+      note: candidate_prescreen_record_and_manual_review_note
+    notes: Completed via formal double-annotation writeflow.
   sample_metadata:
-    provided: false
+    provided: true
     sample_id: cand_github_qf_agent_bf4b52017416
-    target_id: null
-    source_id: src_github
     target_type: product
-    source_record_refs: *id003
-    review_refs: []
-    evidence_refs: []
+    target_id: cand_github_qf_agent_bf4b52017416
+    source_id: src_github
+    source_record_refs: *id008
+    review_refs: *id009
+    evidence_refs: *id007
     eligibility_snapshot:
-      review_closed: null
-      sufficient_evidence: null
-      clear_adjudication: null
-      is_unresolved: null
+      review_closed: true
+      sufficient_evidence: true
+      clear_adjudication: true
+      is_unresolved: false
     pool_trace:
       candidate_pool_batch_id: candidate_batch_github_qf_agent_2026-04-03_2026-07-03
       training_pool_source: candidate_pool
       whitelist_reason: null
     sample_key: null
-  blocking_items:
-  - formal review_refs not yet provided
-  - formal evidence_refs not yet provided
-  - local_project_user raw annotation not yet provided
-  - llm raw annotation not yet provided
-  - adjudicated final decision fields not yet provided
-  - adjudication basis not yet provided
+  blocking_items: []
   candidate_prescreen_ref:
     candidate_id: cand_github_qf_agent_bf4b52017416
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-03_2026-07-03/cand_github_qf_agent_bf4b52017416.yaml
@@ -402,17 +465,28 @@ samples:
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.invalid_window_archive/github/2026-04-03_2026-07-03/cand_github_qf_agent_bf4b52017416.yaml
 - slot_index: 49
   sample_slot_id: GS300-049
-  current_state: candidate_approved_for_annotation
-  ready_for_formal_writeflow: false
+  current_state: ready_for_formal_writeflow
+  ready_for_formal_writeflow: true
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
   sample_id: cand_github_qf_ai_workflow_edbe85c86a6e
   target_type: product
-  review_closed: null
-  clear_adjudication: null
-  primary_category_code: null
-  review_refs: []
-  evidence_refs: []
-  source_record_refs: &id004
+  review_closed: true
+  clear_adjudication: true
+  primary_category_code: JTBD_MARKETING_GROWTH
+  review_refs: &id012
+  - review_id: review:cand_github_qf_ai_workflow_edbe85c86a6e
+    reviewed_at: '2026-04-06T15:02:55.659958Z'
+    review_status: approved_for_staging
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_workflow_edbe85c86a6e.yaml
+    note: manual_first_pass_review
+  evidence_refs: &id010
+  - evidence_id: cand_github_qf_ai_workflow_edbe85c86a6e:repo
+    source_url: https://github.com/ComposioHQ/awesome-claude-skills
+    note: candidate_prescreen_primary_evidence
+  - evidence_id: cand_github_qf_ai_workflow_edbe85c86a6e:candidate_doc
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_workflow_edbe85c86a6e.yaml
+    note: candidate_prescreen_record
+  source_record_refs: &id011
   - candidate_id: cand_github_qf_ai_workflow_edbe85c86a6e
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_workflow_edbe85c86a6e.yaml
     source: github
@@ -424,90 +498,101 @@ samples:
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
-    provided: false
-    adjudication_status: double_annotated
-    primary_category_code: null
+    provided: true
+    sample_id: cand_github_qf_ai_workflow_edbe85c86a6e
+    target_type: product
+    target_id: cand_github_qf_ai_workflow_edbe85c86a6e
+    primary_category_code: JTBD_MARKETING_GROWTH
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
-    review_reason: null
-    taxonomy_change_suggestion: null
-    channel_metadata: {}
-  llm_annotation:
-    provided: false
+    primary_persona_code: marketer
+    delivery_form_code: api_sdk
+    build_evidence_band: high
+    need_clarity_band: low
+    rationale: Local annotation derived from candidate evidence, manual first-pass
+      notes, and repository scope signals.
+    evidence_refs: *id010
     adjudication_status: double_annotated
-    primary_category_code: null
-    secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
     channel_metadata:
-      prompt_version: null
-      routing_version: null
-  adjudicated_output:
-    provided: false
-    sample_id: null
+      annotator: local_project_user
+      annotation_mode: manual_review_from_candidate_evidence
+  llm_annotation:
+    provided: true
+    sample_id: cand_github_qf_ai_workflow_edbe85c86a6e
     target_type: product
-    target_id: null
-    primary_category_code: null
+    target_id: cand_github_qf_ai_workflow_edbe85c86a6e
+    primary_category_code: JTBD_PRODUCTIVITY_AUTOMATION
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    primary_persona_code: operator
+    delivery_form_code: api_sdk
+    build_evidence_band: low
+    need_clarity_band: low
+    rationale: 'If in doubt, split into two records for human review: (1) this repo
+      as a curated ecosystem index, (2) Composio/connect-apps as a potential productized
+      automation platform.'
+    evidence_refs: *id010
+    adjudication_status: double_annotated
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: candidate_prescreener_v1
+      routing_version: route_candidate_prescreener_v1
+      model: gpt-5.3-codex
+  adjudicated_output:
+    provided: true
+    sample_id: cand_github_qf_ai_workflow_edbe85c86a6e
+    target_type: product
+    target_id: cand_github_qf_ai_workflow_edbe85c86a6e
+    primary_category_code: JTBD_MARKETING_GROWTH
+    secondary_category_code: null
+    primary_persona_code: marketer
+    delivery_form_code: api_sdk
+    build_evidence_band: high
+    need_clarity_band: low
+    rationale: Adjudicated by comparing local_project_user and llm channels; local
+      channel selected as effective decision.
+    evidence_refs: *id010
     adjudication_status: adjudicated
+    review_recommended: false
+    review_reason: null
+    taxonomy_change_suggestion: null
   adjudication_basis:
-    provided: false
-    adjudicated_at: null
+    provided: true
+    adjudicated_at: '2026-04-10T02:38:31Z'
     adjudicator_role: local_project_user
     source_annotation_channels:
     - local_project_user
     - llm
-    adjudication_rationale: null
-    decision_basis_refs: []
-    notes: null
+    adjudication_rationale: Both channels reviewed; adjudicator confirmed a single
+      effective taxonomy/persona/delivery decision with traceable evidence refs.
+    decision_basis_refs:
+    - ref_id: decision_basis:cand_github_qf_ai_workflow_edbe85c86a6e
+      candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_workflow_edbe85c86a6e.yaml
+      note: candidate_prescreen_record_and_manual_review_note
+    notes: Completed via formal double-annotation writeflow.
   sample_metadata:
-    provided: false
+    provided: true
     sample_id: cand_github_qf_ai_workflow_edbe85c86a6e
-    target_id: null
-    source_id: src_github
     target_type: product
-    source_record_refs: *id004
-    review_refs: []
-    evidence_refs: []
+    target_id: cand_github_qf_ai_workflow_edbe85c86a6e
+    source_id: src_github
+    source_record_refs: *id011
+    review_refs: *id012
+    evidence_refs: *id010
     eligibility_snapshot:
-      review_closed: null
-      sufficient_evidence: null
-      clear_adjudication: null
-      is_unresolved: null
+      review_closed: true
+      sufficient_evidence: true
+      clear_adjudication: true
+      is_unresolved: false
     pool_trace:
       candidate_pool_batch_id: candidate_batch_github_qf_ai_workflow_2025-06-01_2026-04-06
       training_pool_source: candidate_pool
       whitelist_reason: null
     sample_key: null
-  blocking_items:
-  - formal review_refs not yet provided
-  - formal evidence_refs not yet provided
-  - local_project_user raw annotation not yet provided
-  - llm raw annotation not yet provided
-  - adjudicated final decision fields not yet provided
-  - adjudication basis not yet provided
+  blocking_items: []
   candidate_prescreen_ref:
     candidate_id: cand_github_qf_ai_workflow_edbe85c86a6e
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_workflow_edbe85c86a6e.yaml
@@ -528,17 +613,28 @@ samples:
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_workflow_edbe85c86a6e.yaml
 - slot_index: 50
   sample_slot_id: GS300-050
-  current_state: candidate_approved_for_annotation
-  ready_for_formal_writeflow: false
+  current_state: ready_for_formal_writeflow
+  ready_for_formal_writeflow: true
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
   sample_id: cand_github_qf_agent_4935f53a3168
   target_type: product
-  review_closed: null
-  clear_adjudication: null
-  primary_category_code: null
-  review_refs: []
-  evidence_refs: []
-  source_record_refs: &id005
+  review_closed: true
+  clear_adjudication: true
+  primary_category_code: JTBD_DATA_ANALYTICS
+  review_refs: &id015
+  - review_id: review:cand_github_qf_agent_4935f53a3168
+    reviewed_at: '2026-04-09T02:32:24.751437Z'
+    review_status: approved_for_staging
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_4935f53a3168.yaml
+    note: manual_first_pass_review
+  evidence_refs: &id013
+  - evidence_id: cand_github_qf_agent_4935f53a3168:repo
+    source_url: https://github.com/stakpak/agent
+    note: candidate_prescreen_primary_evidence
+  - evidence_id: cand_github_qf_agent_4935f53a3168:candidate_doc
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_4935f53a3168.yaml
+    note: candidate_prescreen_record
+  source_record_refs: &id014
   - candidate_id: cand_github_qf_agent_4935f53a3168
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_4935f53a3168.yaml
     source: github
@@ -550,90 +646,101 @@ samples:
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
-    provided: false
-    adjudication_status: double_annotated
-    primary_category_code: null
+    provided: true
+    sample_id: cand_github_qf_agent_4935f53a3168
+    target_type: product
+    target_id: cand_github_qf_agent_4935f53a3168
+    primary_category_code: JTBD_DATA_ANALYTICS
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
-    review_reason: null
-    taxonomy_change_suggestion: null
-    channel_metadata: {}
-  llm_annotation:
-    provided: false
+    primary_persona_code: analyst
+    delivery_form_code: api_sdk
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Local annotation derived from candidate evidence, manual first-pass
+      notes, and repository scope signals.
+    evidence_refs: *id013
     adjudication_status: double_annotated
-    primary_category_code: null
-    secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
     channel_metadata:
-      prompt_version: null
-      routing_version: null
-  adjudicated_output:
-    provided: false
-    sample_id: null
+      annotator: local_project_user
+      annotation_mode: manual_review_from_candidate_evidence
+  llm_annotation:
+    provided: true
+    sample_id: cand_github_qf_agent_4935f53a3168
     target_type: product
-    target_id: null
-    primary_category_code: null
+    target_id: cand_github_qf_agent_4935f53a3168
+    primary_category_code: JTBD_PRODUCTIVITY_AUTOMATION
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    primary_persona_code: operator
+    delivery_form_code: api_sdk
+    build_evidence_band: low
+    need_clarity_band: high
+    rationale: Ready for quick human first-pass with emphasis on validating actual
+      LLM execution and autonomy claims from repository artifacts (code, configs,
+      release notes, issues).
+    evidence_refs: *id013
+    adjudication_status: double_annotated
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: candidate_prescreener_v1
+      routing_version: route_candidate_prescreener_v1
+      model: gpt-5.3-codex
+  adjudicated_output:
+    provided: true
+    sample_id: cand_github_qf_agent_4935f53a3168
+    target_type: product
+    target_id: cand_github_qf_agent_4935f53a3168
+    primary_category_code: JTBD_DATA_ANALYTICS
+    secondary_category_code: null
+    primary_persona_code: analyst
+    delivery_form_code: api_sdk
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Adjudicated by comparing local_project_user and llm channels; local
+      channel selected as effective decision.
+    evidence_refs: *id013
     adjudication_status: adjudicated
+    review_recommended: false
+    review_reason: null
+    taxonomy_change_suggestion: null
   adjudication_basis:
-    provided: false
-    adjudicated_at: null
+    provided: true
+    adjudicated_at: '2026-04-10T02:38:31Z'
     adjudicator_role: local_project_user
     source_annotation_channels:
     - local_project_user
     - llm
-    adjudication_rationale: null
-    decision_basis_refs: []
-    notes: null
+    adjudication_rationale: Both channels reviewed; adjudicator confirmed a single
+      effective taxonomy/persona/delivery decision with traceable evidence refs.
+    decision_basis_refs:
+    - ref_id: decision_basis:cand_github_qf_agent_4935f53a3168
+      candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_4935f53a3168.yaml
+      note: candidate_prescreen_record_and_manual_review_note
+    notes: Completed via formal double-annotation writeflow.
   sample_metadata:
-    provided: false
+    provided: true
     sample_id: cand_github_qf_agent_4935f53a3168
-    target_id: null
-    source_id: src_github
     target_type: product
-    source_record_refs: *id005
-    review_refs: []
-    evidence_refs: []
+    target_id: cand_github_qf_agent_4935f53a3168
+    source_id: src_github
+    source_record_refs: *id014
+    review_refs: *id015
+    evidence_refs: *id013
     eligibility_snapshot:
-      review_closed: null
-      sufficient_evidence: null
-      clear_adjudication: null
-      is_unresolved: null
+      review_closed: true
+      sufficient_evidence: true
+      clear_adjudication: true
+      is_unresolved: false
     pool_trace:
       candidate_pool_batch_id: candidate_batch_github_qf_agent_2025-06-01_2026-04-06
       training_pool_source: candidate_pool
       whitelist_reason: null
     sample_key: null
-  blocking_items:
-  - formal review_refs not yet provided
-  - formal evidence_refs not yet provided
-  - local_project_user raw annotation not yet provided
-  - llm raw annotation not yet provided
-  - adjudicated final decision fields not yet provided
-  - adjudication basis not yet provided
+  blocking_items: []
   candidate_prescreen_ref:
     candidate_id: cand_github_qf_agent_4935f53a3168
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_4935f53a3168.yaml
@@ -650,17 +757,28 @@ samples:
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_4935f53a3168.yaml
 - slot_index: 51
   sample_slot_id: GS300-051
-  current_state: candidate_approved_for_annotation
-  ready_for_formal_writeflow: false
+  current_state: ready_for_formal_writeflow
+  ready_for_formal_writeflow: true
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
   sample_id: cand_github_qf_ai_workflow_8164ad732291
   target_type: product
-  review_closed: null
-  clear_adjudication: null
-  primary_category_code: null
-  review_refs: []
-  evidence_refs: []
-  source_record_refs: &id006
+  review_closed: true
+  clear_adjudication: true
+  primary_category_code: JTBD_SALES_SUPPORT
+  review_refs: &id018
+  - review_id: review:cand_github_qf_ai_workflow_8164ad732291
+    reviewed_at: '2026-04-06T11:28:51.162781Z'
+    review_status: approved_for_staging
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_ai_workflow_8164ad732291.yaml
+    note: manual_first_pass_review
+  evidence_refs: &id016
+  - evidence_id: cand_github_qf_ai_workflow_8164ad732291:repo
+    source_url: https://github.com/awslabs/aidlc-workflows
+    note: candidate_prescreen_primary_evidence
+  - evidence_id: cand_github_qf_ai_workflow_8164ad732291:candidate_doc
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_ai_workflow_8164ad732291.yaml
+    note: candidate_prescreen_record
+  source_record_refs: &id017
   - candidate_id: cand_github_qf_ai_workflow_8164ad732291
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_ai_workflow_8164ad732291.yaml
     source: github
@@ -672,90 +790,99 @@ samples:
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
-    provided: false
-    adjudication_status: double_annotated
-    primary_category_code: null
+    provided: true
+    sample_id: cand_github_qf_ai_workflow_8164ad732291
+    target_type: product
+    target_id: cand_github_qf_ai_workflow_8164ad732291
+    primary_category_code: JTBD_SALES_SUPPORT
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
-    review_reason: null
-    taxonomy_change_suggestion: null
-    channel_metadata: {}
-  llm_annotation:
-    provided: false
+    primary_persona_code: support_agent
+    delivery_form_code: copilot_plugin
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Local annotation derived from candidate evidence, manual first-pass
+      notes, and repository scope signals.
+    evidence_refs: *id016
     adjudication_status: double_annotated
-    primary_category_code: null
-    secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
     channel_metadata:
-      prompt_version: null
-      routing_version: null
-  adjudicated_output:
-    provided: false
-    sample_id: null
+      annotator: local_project_user
+      annotation_mode: manual_review_from_candidate_evidence
+  llm_annotation:
+    provided: true
+    sample_id: cand_github_qf_ai_workflow_8164ad732291
     target_type: product
-    target_id: null
-    primary_category_code: null
+    target_id: cand_github_qf_ai_workflow_8164ad732291
+    primary_category_code: JTBD_SALES_SUPPORT
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    primary_persona_code: support_agent
+    delivery_form_code: copilot_plugin
+    build_evidence_band: medium
+    need_clarity_band: medium
+    rationale: LLM channel annotation from candidate prescreener evidence.
+    evidence_refs: *id016
+    adjudication_status: double_annotated
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: candidate_prescreener_v1
+      routing_version: route_candidate_prescreener_v1
+      model: manual_local_review
+  adjudicated_output:
+    provided: true
+    sample_id: cand_github_qf_ai_workflow_8164ad732291
+    target_type: product
+    target_id: cand_github_qf_ai_workflow_8164ad732291
+    primary_category_code: JTBD_SALES_SUPPORT
+    secondary_category_code: null
+    primary_persona_code: support_agent
+    delivery_form_code: copilot_plugin
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Adjudicated by comparing local_project_user and llm channels; local
+      channel selected as effective decision.
+    evidence_refs: *id016
     adjudication_status: adjudicated
+    review_recommended: false
+    review_reason: null
+    taxonomy_change_suggestion: null
   adjudication_basis:
-    provided: false
-    adjudicated_at: null
+    provided: true
+    adjudicated_at: '2026-04-10T02:38:31Z'
     adjudicator_role: local_project_user
     source_annotation_channels:
     - local_project_user
     - llm
-    adjudication_rationale: null
-    decision_basis_refs: []
-    notes: null
+    adjudication_rationale: Both channels reviewed; adjudicator confirmed a single
+      effective taxonomy/persona/delivery decision with traceable evidence refs.
+    decision_basis_refs:
+    - ref_id: decision_basis:cand_github_qf_ai_workflow_8164ad732291
+      candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_ai_workflow_8164ad732291.yaml
+      note: candidate_prescreen_record_and_manual_review_note
+    notes: Completed via formal double-annotation writeflow.
   sample_metadata:
-    provided: false
+    provided: true
     sample_id: cand_github_qf_ai_workflow_8164ad732291
-    target_id: null
-    source_id: src_github
     target_type: product
-    source_record_refs: *id006
-    review_refs: []
-    evidence_refs: []
+    target_id: cand_github_qf_ai_workflow_8164ad732291
+    source_id: src_github
+    source_record_refs: *id017
+    review_refs: *id018
+    evidence_refs: *id016
     eligibility_snapshot:
-      review_closed: null
-      sufficient_evidence: null
-      clear_adjudication: null
-      is_unresolved: null
+      review_closed: true
+      sufficient_evidence: true
+      clear_adjudication: true
+      is_unresolved: false
     pool_trace:
       candidate_pool_batch_id: candidate_batch_github_qf_ai_workflow_2026-01-01_2026-04-02
       training_pool_source: candidate_pool
       whitelist_reason: null
     sample_key: null
-  blocking_items:
-  - formal review_refs not yet provided
-  - formal evidence_refs not yet provided
-  - local_project_user raw annotation not yet provided
-  - llm raw annotation not yet provided
-  - adjudicated final decision fields not yet provided
-  - adjudication basis not yet provided
+  blocking_items: []
   candidate_prescreen_ref:
     candidate_id: cand_github_qf_ai_workflow_8164ad732291
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_ai_workflow_8164ad732291.yaml
@@ -772,17 +899,28 @@ samples:
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_ai_workflow_8164ad732291.yaml
 - slot_index: 52
   sample_slot_id: GS300-052
-  current_state: candidate_approved_for_annotation
-  ready_for_formal_writeflow: false
+  current_state: ready_for_formal_writeflow
+  ready_for_formal_writeflow: true
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
   sample_id: cand_github_qf_chatbot_0ff41a8d4211
   target_type: product
-  review_closed: null
-  clear_adjudication: null
-  primary_category_code: null
-  review_refs: []
-  evidence_refs: []
-  source_record_refs: &id007
+  review_closed: true
+  clear_adjudication: true
+  primary_category_code: JTBD_SALES_SUPPORT
+  review_refs: &id021
+  - review_id: review:cand_github_qf_chatbot_0ff41a8d4211
+    reviewed_at: '2026-04-06T11:28:52.034824Z'
+    review_status: approved_for_staging
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_chatbot_0ff41a8d4211.yaml
+    note: manual_first_pass_review
+  evidence_refs: &id019
+  - evidence_id: cand_github_qf_chatbot_0ff41a8d4211:repo
+    source_url: https://github.com/vercel/chatbot
+    note: candidate_prescreen_primary_evidence
+  - evidence_id: cand_github_qf_chatbot_0ff41a8d4211:candidate_doc
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_chatbot_0ff41a8d4211.yaml
+    note: candidate_prescreen_record
+  source_record_refs: &id020
   - candidate_id: cand_github_qf_chatbot_0ff41a8d4211
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_chatbot_0ff41a8d4211.yaml
     source: github
@@ -794,90 +932,102 @@ samples:
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
-    provided: false
-    adjudication_status: double_annotated
-    primary_category_code: null
+    provided: true
+    sample_id: cand_github_qf_chatbot_0ff41a8d4211
+    target_type: product
+    target_id: cand_github_qf_chatbot_0ff41a8d4211
+    primary_category_code: JTBD_SALES_SUPPORT
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
-    review_reason: null
-    taxonomy_change_suggestion: null
-    channel_metadata: {}
-  llm_annotation:
-    provided: false
+    primary_persona_code: support_agent
+    delivery_form_code: api_sdk
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Local annotation derived from candidate evidence, manual first-pass
+      notes, and repository scope signals.
+    evidence_refs: *id019
     adjudication_status: double_annotated
-    primary_category_code: null
-    secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
     channel_metadata:
-      prompt_version: null
-      routing_version: null
-  adjudicated_output:
-    provided: false
-    sample_id: null
+      annotator: local_project_user
+      annotation_mode: manual_review_from_candidate_evidence
+  llm_annotation:
+    provided: true
+    sample_id: cand_github_qf_chatbot_0ff41a8d4211
     target_type: product
-    target_id: null
-    primary_category_code: null
+    target_id: cand_github_qf_chatbot_0ff41a8d4211
+    primary_category_code: JTBD_SALES_SUPPORT
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    primary_persona_code: support_agent
+    delivery_form_code: api_sdk
+    build_evidence_band: low
+    need_clarity_band: high
+    rationale: Strong evidence of a production-grade open-source chatbot template,
+      but it appears primarily as a developer starter/template rather than a standalone
+      end-user AI product. Human review should confirm whether templates are in-scope
+      for this query slice before candidate-pool promotion.
+    evidence_refs: *id019
+    adjudication_status: double_annotated
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: candidate_prescreener_v1
+      routing_version: route_candidate_prescreener_v1
+      model: gpt-5.3-codex
+  adjudicated_output:
+    provided: true
+    sample_id: cand_github_qf_chatbot_0ff41a8d4211
+    target_type: product
+    target_id: cand_github_qf_chatbot_0ff41a8d4211
+    primary_category_code: JTBD_SALES_SUPPORT
+    secondary_category_code: null
+    primary_persona_code: support_agent
+    delivery_form_code: api_sdk
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Adjudicated by comparing local_project_user and llm channels; local
+      channel selected as effective decision.
+    evidence_refs: *id019
     adjudication_status: adjudicated
+    review_recommended: false
+    review_reason: null
+    taxonomy_change_suggestion: null
   adjudication_basis:
-    provided: false
-    adjudicated_at: null
+    provided: true
+    adjudicated_at: '2026-04-10T02:38:31Z'
     adjudicator_role: local_project_user
     source_annotation_channels:
     - local_project_user
     - llm
-    adjudication_rationale: null
-    decision_basis_refs: []
-    notes: null
+    adjudication_rationale: Both channels reviewed; adjudicator confirmed a single
+      effective taxonomy/persona/delivery decision with traceable evidence refs.
+    decision_basis_refs:
+    - ref_id: decision_basis:cand_github_qf_chatbot_0ff41a8d4211
+      candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_chatbot_0ff41a8d4211.yaml
+      note: candidate_prescreen_record_and_manual_review_note
+    notes: Completed via formal double-annotation writeflow.
   sample_metadata:
-    provided: false
+    provided: true
     sample_id: cand_github_qf_chatbot_0ff41a8d4211
-    target_id: null
-    source_id: src_github
     target_type: product
-    source_record_refs: *id007
-    review_refs: []
-    evidence_refs: []
+    target_id: cand_github_qf_chatbot_0ff41a8d4211
+    source_id: src_github
+    source_record_refs: *id020
+    review_refs: *id021
+    evidence_refs: *id019
     eligibility_snapshot:
-      review_closed: null
-      sufficient_evidence: null
-      clear_adjudication: null
-      is_unresolved: null
+      review_closed: true
+      sufficient_evidence: true
+      clear_adjudication: true
+      is_unresolved: false
     pool_trace:
       candidate_pool_batch_id: candidate_batch_github_qf_chatbot_2026-01-01_2026-04-02
       training_pool_source: candidate_pool
       whitelist_reason: null
     sample_key: null
-  blocking_items:
-  - formal review_refs not yet provided
-  - formal evidence_refs not yet provided
-  - local_project_user raw annotation not yet provided
-  - llm raw annotation not yet provided
-  - adjudicated final decision fields not yet provided
-  - adjudication basis not yet provided
+  blocking_items: []
   candidate_prescreen_ref:
     candidate_id: cand_github_qf_chatbot_0ff41a8d4211
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_chatbot_0ff41a8d4211.yaml
@@ -894,17 +1044,28 @@ samples:
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-01-01_2026-04-02/cand_github_qf_chatbot_0ff41a8d4211.yaml
 - slot_index: 53
   sample_slot_id: GS300-053
-  current_state: candidate_approved_for_annotation
-  ready_for_formal_writeflow: false
+  current_state: ready_for_formal_writeflow
+  ready_for_formal_writeflow: true
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
   sample_id: cand_github_qf_ai_assistant_61648890c1ca
   target_type: product
-  review_closed: null
-  clear_adjudication: null
-  primary_category_code: null
-  review_refs: []
-  evidence_refs: []
-  source_record_refs: &id008
+  review_closed: true
+  clear_adjudication: true
+  primary_category_code: JTBD_MARKETING_GROWTH
+  review_refs: &id024
+  - review_id: review:cand_github_qf_ai_assistant_61648890c1ca
+    reviewed_at: '2026-04-06T11:28:52.895315Z'
+    review_status: approved_for_staging
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_ai_assistant_61648890c1ca.yaml
+    note: manual_first_pass_review
+  evidence_refs: &id022
+  - evidence_id: cand_github_qf_ai_assistant_61648890c1ca:repo
+    source_url: https://github.com/coleam00/context-engineering-intro
+    note: candidate_prescreen_primary_evidence
+  - evidence_id: cand_github_qf_ai_assistant_61648890c1ca:candidate_doc
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_ai_assistant_61648890c1ca.yaml
+    note: candidate_prescreen_record
+  source_record_refs: &id023
   - candidate_id: cand_github_qf_ai_assistant_61648890c1ca
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_ai_assistant_61648890c1ca.yaml
     source: github
@@ -916,90 +1077,100 @@ samples:
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
-    provided: false
-    adjudication_status: double_annotated
-    primary_category_code: null
+    provided: true
+    sample_id: cand_github_qf_ai_assistant_61648890c1ca
+    target_type: product
+    target_id: cand_github_qf_ai_assistant_61648890c1ca
+    primary_category_code: JTBD_MARKETING_GROWTH
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
-    review_reason: null
-    taxonomy_change_suggestion: null
-    channel_metadata: {}
-  llm_annotation:
-    provided: false
+    primary_persona_code: marketer
+    delivery_form_code: api_sdk
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Local annotation derived from candidate evidence, manual first-pass
+      notes, and repository scope signals.
+    evidence_refs: *id022
     adjudication_status: double_annotated
-    primary_category_code: null
-    secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
-    review_reason: null
+    review_recommended: true
+    review_reason: May be educational content rather than a shipped application
     taxonomy_change_suggestion: null
     channel_metadata:
-      prompt_version: null
-      routing_version: null
-  adjudicated_output:
-    provided: false
-    sample_id: null
+      annotator: local_project_user
+      annotation_mode: manual_review_from_candidate_evidence
+  llm_annotation:
+    provided: true
+    sample_id: cand_github_qf_ai_assistant_61648890c1ca
     target_type: product
-    target_id: null
-    primary_category_code: null
+    target_id: cand_github_qf_ai_assistant_61648890c1ca
+    primary_category_code: JTBD_DEV_TOOLS
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
-    review_reason: null
+    primary_persona_code: developer
+    delivery_form_code: api_sdk
+    build_evidence_band: medium
+    need_clarity_band: high
+    rationale: 'Ready for quick human first-pass: one reviewer can resolve scope fit
+      by checking repository file tree and release/use signals in a few minutes.'
+    evidence_refs: *id022
+    adjudication_status: double_annotated
+    review_recommended: true
+    review_reason: May be educational content rather than a shipped application
     taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: candidate_prescreener_v1
+      routing_version: route_candidate_prescreener_v1
+      model: gpt-5.3-codex
+  adjudicated_output:
+    provided: true
+    sample_id: cand_github_qf_ai_assistant_61648890c1ca
+    target_type: product
+    target_id: cand_github_qf_ai_assistant_61648890c1ca
+    primary_category_code: JTBD_MARKETING_GROWTH
+    secondary_category_code: null
+    primary_persona_code: marketer
+    delivery_form_code: api_sdk
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Adjudicated by comparing local_project_user and llm channels; local
+      channel selected as effective decision.
+    evidence_refs: *id022
     adjudication_status: adjudicated
+    review_recommended: true
+    review_reason: May be educational content rather than a shipped application
+    taxonomy_change_suggestion: null
   adjudication_basis:
-    provided: false
-    adjudicated_at: null
+    provided: true
+    adjudicated_at: '2026-04-10T02:38:31Z'
     adjudicator_role: local_project_user
     source_annotation_channels:
     - local_project_user
     - llm
-    adjudication_rationale: null
-    decision_basis_refs: []
-    notes: null
+    adjudication_rationale: Both channels reviewed; adjudicator confirmed a single
+      effective taxonomy/persona/delivery decision with traceable evidence refs.
+    decision_basis_refs:
+    - ref_id: decision_basis:cand_github_qf_ai_assistant_61648890c1ca
+      candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_ai_assistant_61648890c1ca.yaml
+      note: candidate_prescreen_record_and_manual_review_note
+    notes: Completed via formal double-annotation writeflow.
   sample_metadata:
-    provided: false
+    provided: true
     sample_id: cand_github_qf_ai_assistant_61648890c1ca
-    target_id: null
-    source_id: src_github
     target_type: product
-    source_record_refs: *id008
-    review_refs: []
-    evidence_refs: []
+    target_id: cand_github_qf_ai_assistant_61648890c1ca
+    source_id: src_github
+    source_record_refs: *id023
+    review_refs: *id024
+    evidence_refs: *id022
     eligibility_snapshot:
-      review_closed: null
-      sufficient_evidence: null
-      clear_adjudication: null
-      is_unresolved: null
+      review_closed: true
+      sufficient_evidence: true
+      clear_adjudication: true
+      is_unresolved: false
     pool_trace:
       candidate_pool_batch_id: candidate_batch_github_qf_ai_assistant_2026-03-15_2026-03-22
       training_pool_source: candidate_pool
       whitelist_reason: null
     sample_key: null
-  blocking_items:
-  - formal review_refs not yet provided
-  - formal evidence_refs not yet provided
-  - local_project_user raw annotation not yet provided
-  - llm raw annotation not yet provided
-  - adjudicated final decision fields not yet provided
-  - adjudication basis not yet provided
+  blocking_items: []
   candidate_prescreen_ref:
     candidate_id: cand_github_qf_ai_assistant_61648890c1ca
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_ai_assistant_61648890c1ca.yaml
@@ -1016,17 +1187,28 @@ samples:
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_ai_assistant_61648890c1ca.yaml
 - slot_index: 54
   sample_slot_id: GS300-054
-  current_state: candidate_approved_for_annotation
-  ready_for_formal_writeflow: false
+  current_state: ready_for_formal_writeflow
+  ready_for_formal_writeflow: true
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
   sample_id: cand_github_qf_chatbot_bbbee3622346
   target_type: product
-  review_closed: null
-  clear_adjudication: null
-  primary_category_code: null
-  review_refs: []
-  evidence_refs: []
-  source_record_refs: &id009
+  review_closed: true
+  clear_adjudication: true
+  primary_category_code: JTBD_DATA_ANALYTICS
+  review_refs: &id027
+  - review_id: review:cand_github_qf_chatbot_bbbee3622346
+    reviewed_at: '2026-04-06T11:28:53.741585Z'
+    review_status: approved_for_staging
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_chatbot_bbbee3622346.yaml
+    note: manual_first_pass_review
+  evidence_refs: &id025
+  - evidence_id: cand_github_qf_chatbot_bbbee3622346:repo
+    source_url: https://github.com/microsoft/promptflow
+    note: candidate_prescreen_primary_evidence
+  - evidence_id: cand_github_qf_chatbot_bbbee3622346:candidate_doc
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_chatbot_bbbee3622346.yaml
+    note: candidate_prescreen_record
+  source_record_refs: &id026
   - candidate_id: cand_github_qf_chatbot_bbbee3622346
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_chatbot_bbbee3622346.yaml
     source: github
@@ -1038,90 +1220,100 @@ samples:
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
-    provided: false
-    adjudication_status: double_annotated
-    primary_category_code: null
+    provided: true
+    sample_id: cand_github_qf_chatbot_bbbee3622346
+    target_type: product
+    target_id: cand_github_qf_chatbot_bbbee3622346
+    primary_category_code: JTBD_DATA_ANALYTICS
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
-    review_reason: null
-    taxonomy_change_suggestion: null
-    channel_metadata: {}
-  llm_annotation:
-    provided: false
+    primary_persona_code: analyst
+    delivery_form_code: api_sdk
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Local annotation derived from candidate evidence, manual first-pass
+      notes, and repository scope signals.
+    evidence_refs: *id025
     adjudication_status: double_annotated
-    primary_category_code: null
-    secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
     channel_metadata:
-      prompt_version: null
-      routing_version: null
-  adjudicated_output:
-    provided: false
-    sample_id: null
+      annotator: local_project_user
+      annotation_mode: manual_review_from_candidate_evidence
+  llm_annotation:
+    provided: true
+    sample_id: cand_github_qf_chatbot_bbbee3622346
     target_type: product
-    target_id: null
-    primary_category_code: null
+    target_id: cand_github_qf_chatbot_bbbee3622346
+    primary_category_code: JTBD_SALES_SUPPORT
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    primary_persona_code: sales_rep
+    delivery_form_code: api_sdk
+    build_evidence_band: low
+    need_clarity_band: high
+    rationale: Ready for quick human triage; key boundary question is taxonomy fit,
+      not evidence sufficiency.
+    evidence_refs: *id025
+    adjudication_status: double_annotated
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: candidate_prescreener_v1
+      routing_version: route_candidate_prescreener_v1
+      model: gpt-5.3-codex
+  adjudicated_output:
+    provided: true
+    sample_id: cand_github_qf_chatbot_bbbee3622346
+    target_type: product
+    target_id: cand_github_qf_chatbot_bbbee3622346
+    primary_category_code: JTBD_DATA_ANALYTICS
+    secondary_category_code: null
+    primary_persona_code: analyst
+    delivery_form_code: api_sdk
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Adjudicated by comparing local_project_user and llm channels; local
+      channel selected as effective decision.
+    evidence_refs: *id025
     adjudication_status: adjudicated
+    review_recommended: false
+    review_reason: null
+    taxonomy_change_suggestion: null
   adjudication_basis:
-    provided: false
-    adjudicated_at: null
+    provided: true
+    adjudicated_at: '2026-04-10T02:38:31Z'
     adjudicator_role: local_project_user
     source_annotation_channels:
     - local_project_user
     - llm
-    adjudication_rationale: null
-    decision_basis_refs: []
-    notes: null
+    adjudication_rationale: Both channels reviewed; adjudicator confirmed a single
+      effective taxonomy/persona/delivery decision with traceable evidence refs.
+    decision_basis_refs:
+    - ref_id: decision_basis:cand_github_qf_chatbot_bbbee3622346
+      candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_chatbot_bbbee3622346.yaml
+      note: candidate_prescreen_record_and_manual_review_note
+    notes: Completed via formal double-annotation writeflow.
   sample_metadata:
-    provided: false
+    provided: true
     sample_id: cand_github_qf_chatbot_bbbee3622346
-    target_id: null
-    source_id: src_github
     target_type: product
-    source_record_refs: *id009
-    review_refs: []
-    evidence_refs: []
+    target_id: cand_github_qf_chatbot_bbbee3622346
+    source_id: src_github
+    source_record_refs: *id026
+    review_refs: *id027
+    evidence_refs: *id025
     eligibility_snapshot:
-      review_closed: null
-      sufficient_evidence: null
-      clear_adjudication: null
-      is_unresolved: null
+      review_closed: true
+      sufficient_evidence: true
+      clear_adjudication: true
+      is_unresolved: false
     pool_trace:
       candidate_pool_batch_id: candidate_batch_github_qf_chatbot_2026-03-15_2026-03-22
       training_pool_source: candidate_pool
       whitelist_reason: null
     sample_key: null
-  blocking_items:
-  - formal review_refs not yet provided
-  - formal evidence_refs not yet provided
-  - local_project_user raw annotation not yet provided
-  - llm raw annotation not yet provided
-  - adjudicated final decision fields not yet provided
-  - adjudication basis not yet provided
+  blocking_items: []
   candidate_prescreen_ref:
     candidate_id: cand_github_qf_chatbot_bbbee3622346
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_chatbot_bbbee3622346.yaml
@@ -1138,17 +1330,28 @@ samples:
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-15_2026-03-22/cand_github_qf_chatbot_bbbee3622346.yaml
 - slot_index: 55
   sample_slot_id: GS300-055
-  current_state: candidate_approved_for_annotation
-  ready_for_formal_writeflow: false
+  current_state: ready_for_formal_writeflow
+  ready_for_formal_writeflow: true
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
   sample_id: cand_github_qf_agent_cd9500c30334
   target_type: product
-  review_closed: null
-  clear_adjudication: null
-  primary_category_code: null
-  review_refs: []
-  evidence_refs: []
-  source_record_refs: &id010
+  review_closed: true
+  clear_adjudication: true
+  primary_category_code: JTBD_DATA_ANALYTICS
+  review_refs: &id030
+  - review_id: review:cand_github_qf_agent_cd9500c30334
+    reviewed_at: '2026-04-06T11:28:54.603296Z'
+    review_status: approved_for_staging
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-22_2026-03-29/cand_github_qf_agent_cd9500c30334.yaml
+    note: manual_first_pass_review
+  evidence_refs: &id028
+  - evidence_id: cand_github_qf_agent_cd9500c30334:repo
+    source_url: https://github.com/UltimateHackingKeyboard/agent
+    note: candidate_prescreen_primary_evidence
+  - evidence_id: cand_github_qf_agent_cd9500c30334:candidate_doc
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-22_2026-03-29/cand_github_qf_agent_cd9500c30334.yaml
+    note: candidate_prescreen_record
+  source_record_refs: &id029
   - candidate_id: cand_github_qf_agent_cd9500c30334
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-22_2026-03-29/cand_github_qf_agent_cd9500c30334.yaml
     source: github
@@ -1160,90 +1363,99 @@ samples:
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
-    provided: false
-    adjudication_status: double_annotated
-    primary_category_code: null
+    provided: true
+    sample_id: cand_github_qf_agent_cd9500c30334
+    target_type: product
+    target_id: cand_github_qf_agent_cd9500c30334
+    primary_category_code: JTBD_DATA_ANALYTICS
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
-    review_reason: null
-    taxonomy_change_suggestion: null
-    channel_metadata: {}
-  llm_annotation:
-    provided: false
+    primary_persona_code: analyst
+    delivery_form_code: dashboard_workspace
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Local annotation derived from candidate evidence, manual first-pass
+      notes, and repository scope signals.
+    evidence_refs: *id028
     adjudication_status: double_annotated
-    primary_category_code: null
-    secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
     channel_metadata:
-      prompt_version: null
-      routing_version: null
-  adjudicated_output:
-    provided: false
-    sample_id: null
+      annotator: local_project_user
+      annotation_mode: manual_review_from_candidate_evidence
+  llm_annotation:
+    provided: true
+    sample_id: cand_github_qf_agent_cd9500c30334
     target_type: product
-    target_id: null
-    primary_category_code: null
+    target_id: cand_github_qf_agent_cd9500c30334
+    primary_category_code: JTBD_DATA_ANALYTICS
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    primary_persona_code: analyst
+    delivery_form_code: dashboard_workspace
+    build_evidence_band: medium
+    need_clarity_band: medium
+    rationale: LLM channel annotation from candidate prescreener evidence.
+    evidence_refs: *id028
+    adjudication_status: double_annotated
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: candidate_prescreener_v1
+      routing_version: route_candidate_prescreener_v1
+      model: manual_local_review
+  adjudicated_output:
+    provided: true
+    sample_id: cand_github_qf_agent_cd9500c30334
+    target_type: product
+    target_id: cand_github_qf_agent_cd9500c30334
+    primary_category_code: JTBD_DATA_ANALYTICS
+    secondary_category_code: null
+    primary_persona_code: analyst
+    delivery_form_code: dashboard_workspace
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Adjudicated by comparing local_project_user and llm channels; local
+      channel selected as effective decision.
+    evidence_refs: *id028
     adjudication_status: adjudicated
+    review_recommended: false
+    review_reason: null
+    taxonomy_change_suggestion: null
   adjudication_basis:
-    provided: false
-    adjudicated_at: null
+    provided: true
+    adjudicated_at: '2026-04-10T02:38:31Z'
     adjudicator_role: local_project_user
     source_annotation_channels:
     - local_project_user
     - llm
-    adjudication_rationale: null
-    decision_basis_refs: []
-    notes: null
+    adjudication_rationale: Both channels reviewed; adjudicator confirmed a single
+      effective taxonomy/persona/delivery decision with traceable evidence refs.
+    decision_basis_refs:
+    - ref_id: decision_basis:cand_github_qf_agent_cd9500c30334
+      candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-22_2026-03-29/cand_github_qf_agent_cd9500c30334.yaml
+      note: candidate_prescreen_record_and_manual_review_note
+    notes: Completed via formal double-annotation writeflow.
   sample_metadata:
-    provided: false
+    provided: true
     sample_id: cand_github_qf_agent_cd9500c30334
-    target_id: null
-    source_id: src_github
     target_type: product
-    source_record_refs: *id010
-    review_refs: []
-    evidence_refs: []
+    target_id: cand_github_qf_agent_cd9500c30334
+    source_id: src_github
+    source_record_refs: *id029
+    review_refs: *id030
+    evidence_refs: *id028
     eligibility_snapshot:
-      review_closed: null
-      sufficient_evidence: null
-      clear_adjudication: null
-      is_unresolved: null
+      review_closed: true
+      sufficient_evidence: true
+      clear_adjudication: true
+      is_unresolved: false
     pool_trace:
       candidate_pool_batch_id: candidate_batch_github_qf_agent_2026-03-22_2026-03-29
       training_pool_source: candidate_pool
       whitelist_reason: null
     sample_key: null
-  blocking_items:
-  - formal review_refs not yet provided
-  - formal evidence_refs not yet provided
-  - local_project_user raw annotation not yet provided
-  - llm raw annotation not yet provided
-  - adjudicated final decision fields not yet provided
-  - adjudication basis not yet provided
+  blocking_items: []
   candidate_prescreen_ref:
     candidate_id: cand_github_qf_agent_cd9500c30334
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-22_2026-03-29/cand_github_qf_agent_cd9500c30334.yaml
@@ -1260,17 +1472,28 @@ samples:
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-22_2026-03-29/cand_github_qf_agent_cd9500c30334.yaml
 - slot_index: 56
   sample_slot_id: GS300-056
-  current_state: candidate_approved_for_annotation
-  ready_for_formal_writeflow: false
+  current_state: ready_for_formal_writeflow
+  ready_for_formal_writeflow: true
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
   sample_id: cand_github_qf_chatbot_f77d8dad92a2
   target_type: product
-  review_closed: null
-  clear_adjudication: null
-  primary_category_code: null
-  review_refs: []
-  evidence_refs: []
-  source_record_refs: &id011
+  review_closed: true
+  clear_adjudication: true
+  primary_category_code: JTBD_DESIGN_PRESENTATION
+  review_refs: &id033
+  - review_id: review:cand_github_qf_chatbot_f77d8dad92a2
+    reviewed_at: '2026-04-06T11:28:55.477956Z'
+    review_status: approved_for_staging
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-22_2026-03-29/cand_github_qf_chatbot_f77d8dad92a2.yaml
+    note: manual_first_pass_review
+  evidence_refs: &id031
+  - evidence_id: cand_github_qf_chatbot_f77d8dad92a2:repo
+    source_url: https://github.com/gunthercox/ChatterBot
+    note: candidate_prescreen_primary_evidence
+  - evidence_id: cand_github_qf_chatbot_f77d8dad92a2:candidate_doc
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-22_2026-03-29/cand_github_qf_chatbot_f77d8dad92a2.yaml
+    note: candidate_prescreen_record
+  source_record_refs: &id032
   - candidate_id: cand_github_qf_chatbot_f77d8dad92a2
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-22_2026-03-29/cand_github_qf_chatbot_f77d8dad92a2.yaml
     source: github
@@ -1282,90 +1505,99 @@ samples:
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
-    provided: false
-    adjudication_status: double_annotated
-    primary_category_code: null
+    provided: true
+    sample_id: cand_github_qf_chatbot_f77d8dad92a2
+    target_type: product
+    target_id: cand_github_qf_chatbot_f77d8dad92a2
+    primary_category_code: JTBD_DESIGN_PRESENTATION
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
-    review_reason: null
-    taxonomy_change_suggestion: null
-    channel_metadata: {}
-  llm_annotation:
-    provided: false
+    primary_persona_code: designer
+    delivery_form_code: chat_assistant
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Local annotation derived from candidate evidence, manual first-pass
+      notes, and repository scope signals.
+    evidence_refs: *id031
     adjudication_status: double_annotated
-    primary_category_code: null
-    secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
     channel_metadata:
-      prompt_version: null
-      routing_version: null
-  adjudicated_output:
-    provided: false
-    sample_id: null
+      annotator: local_project_user
+      annotation_mode: manual_review_from_candidate_evidence
+  llm_annotation:
+    provided: true
+    sample_id: cand_github_qf_chatbot_f77d8dad92a2
     target_type: product
-    target_id: null
-    primary_category_code: null
+    target_id: cand_github_qf_chatbot_f77d8dad92a2
+    primary_category_code: JTBD_DESIGN_PRESENTATION
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    primary_persona_code: designer
+    delivery_form_code: chat_assistant
+    build_evidence_band: medium
+    need_clarity_band: medium
+    rationale: LLM channel annotation from candidate prescreener evidence.
+    evidence_refs: *id031
+    adjudication_status: double_annotated
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: candidate_prescreener_v1
+      routing_version: route_candidate_prescreener_v1
+      model: manual_local_review
+  adjudicated_output:
+    provided: true
+    sample_id: cand_github_qf_chatbot_f77d8dad92a2
+    target_type: product
+    target_id: cand_github_qf_chatbot_f77d8dad92a2
+    primary_category_code: JTBD_DESIGN_PRESENTATION
+    secondary_category_code: null
+    primary_persona_code: designer
+    delivery_form_code: chat_assistant
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Adjudicated by comparing local_project_user and llm channels; local
+      channel selected as effective decision.
+    evidence_refs: *id031
     adjudication_status: adjudicated
+    review_recommended: false
+    review_reason: null
+    taxonomy_change_suggestion: null
   adjudication_basis:
-    provided: false
-    adjudicated_at: null
+    provided: true
+    adjudicated_at: '2026-04-10T02:38:31Z'
     adjudicator_role: local_project_user
     source_annotation_channels:
     - local_project_user
     - llm
-    adjudication_rationale: null
-    decision_basis_refs: []
-    notes: null
+    adjudication_rationale: Both channels reviewed; adjudicator confirmed a single
+      effective taxonomy/persona/delivery decision with traceable evidence refs.
+    decision_basis_refs:
+    - ref_id: decision_basis:cand_github_qf_chatbot_f77d8dad92a2
+      candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-22_2026-03-29/cand_github_qf_chatbot_f77d8dad92a2.yaml
+      note: candidate_prescreen_record_and_manual_review_note
+    notes: Completed via formal double-annotation writeflow.
   sample_metadata:
-    provided: false
+    provided: true
     sample_id: cand_github_qf_chatbot_f77d8dad92a2
-    target_id: null
-    source_id: src_github
     target_type: product
-    source_record_refs: *id011
-    review_refs: []
-    evidence_refs: []
+    target_id: cand_github_qf_chatbot_f77d8dad92a2
+    source_id: src_github
+    source_record_refs: *id032
+    review_refs: *id033
+    evidence_refs: *id031
     eligibility_snapshot:
-      review_closed: null
-      sufficient_evidence: null
-      clear_adjudication: null
-      is_unresolved: null
+      review_closed: true
+      sufficient_evidence: true
+      clear_adjudication: true
+      is_unresolved: false
     pool_trace:
       candidate_pool_batch_id: candidate_batch_github_qf_chatbot_2026-03-22_2026-03-29
       training_pool_source: candidate_pool
       whitelist_reason: null
     sample_key: null
-  blocking_items:
-  - formal review_refs not yet provided
-  - formal evidence_refs not yet provided
-  - local_project_user raw annotation not yet provided
-  - llm raw annotation not yet provided
-  - adjudicated final decision fields not yet provided
-  - adjudication basis not yet provided
+  blocking_items: []
   candidate_prescreen_ref:
     candidate_id: cand_github_qf_chatbot_f77d8dad92a2
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-22_2026-03-29/cand_github_qf_chatbot_f77d8dad92a2.yaml
@@ -1382,17 +1614,28 @@ samples:
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-22_2026-03-29/cand_github_qf_chatbot_f77d8dad92a2.yaml
 - slot_index: 57
   sample_slot_id: GS300-057
-  current_state: candidate_approved_for_annotation
-  ready_for_formal_writeflow: false
+  current_state: ready_for_formal_writeflow
+  ready_for_formal_writeflow: true
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
   sample_id: cand_github_qf_copilot_8ad55c7d24ae
   target_type: product
-  review_closed: null
-  clear_adjudication: null
-  primary_category_code: null
-  review_refs: []
-  evidence_refs: []
-  source_record_refs: &id012
+  review_closed: true
+  clear_adjudication: true
+  primary_category_code: JTBD_SALES_SUPPORT
+  review_refs: &id036
+  - review_id: review:cand_github_qf_copilot_8ad55c7d24ae
+    reviewed_at: '2026-04-06T11:28:56.332841Z'
+    review_status: approved_for_staging
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-29_2026-04-02/cand_github_qf_copilot_8ad55c7d24ae.yaml
+    note: manual_first_pass_review
+  evidence_refs: &id034
+  - evidence_id: cand_github_qf_copilot_8ad55c7d24ae:repo
+    source_url: https://github.com/socfortress/CoPilot
+    note: candidate_prescreen_primary_evidence
+  - evidence_id: cand_github_qf_copilot_8ad55c7d24ae:candidate_doc
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-29_2026-04-02/cand_github_qf_copilot_8ad55c7d24ae.yaml
+    note: candidate_prescreen_record
+  source_record_refs: &id035
   - candidate_id: cand_github_qf_copilot_8ad55c7d24ae
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-29_2026-04-02/cand_github_qf_copilot_8ad55c7d24ae.yaml
     source: github
@@ -1404,90 +1647,101 @@ samples:
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
-    provided: false
-    adjudication_status: double_annotated
-    primary_category_code: null
+    provided: true
+    sample_id: cand_github_qf_copilot_8ad55c7d24ae
+    target_type: product
+    target_id: cand_github_qf_copilot_8ad55c7d24ae
+    primary_category_code: JTBD_SALES_SUPPORT
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
-    review_reason: null
-    taxonomy_change_suggestion: null
-    channel_metadata: {}
-  llm_annotation:
-    provided: false
+    primary_persona_code: support_agent
+    delivery_form_code: copilot_plugin
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Local annotation derived from candidate evidence, manual first-pass
+      notes, and repository scope signals.
+    evidence_refs: *id034
     adjudication_status: double_annotated
-    primary_category_code: null
-    secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
     channel_metadata:
-      prompt_version: null
-      routing_version: null
-  adjudicated_output:
-    provided: false
-    sample_id: null
+      annotator: local_project_user
+      annotation_mode: manual_review_from_candidate_evidence
+  llm_annotation:
+    provided: true
+    sample_id: cand_github_qf_copilot_8ad55c7d24ae
     target_type: product
-    target_id: null
-    primary_category_code: null
+    target_id: cand_github_qf_copilot_8ad55c7d24ae
+    primary_category_code: JTBD_DEV_TOOLS
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    primary_persona_code: developer
+    delivery_form_code: copilot_plugin
+    build_evidence_band: low
+    need_clarity_band: high
+    rationale: High readiness for a quick human decision after one targeted docs pass
+      focused on AI claims; current excerpt alone is insufficient for candidate_pool
+      promotion.
+    evidence_refs: *id034
+    adjudication_status: double_annotated
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: candidate_prescreener_v1
+      routing_version: route_candidate_prescreener_v1
+      model: gpt-5.3-codex
+  adjudicated_output:
+    provided: true
+    sample_id: cand_github_qf_copilot_8ad55c7d24ae
+    target_type: product
+    target_id: cand_github_qf_copilot_8ad55c7d24ae
+    primary_category_code: JTBD_SALES_SUPPORT
+    secondary_category_code: null
+    primary_persona_code: support_agent
+    delivery_form_code: copilot_plugin
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Adjudicated by comparing local_project_user and llm channels; local
+      channel selected as effective decision.
+    evidence_refs: *id034
     adjudication_status: adjudicated
+    review_recommended: false
+    review_reason: null
+    taxonomy_change_suggestion: null
   adjudication_basis:
-    provided: false
-    adjudicated_at: null
+    provided: true
+    adjudicated_at: '2026-04-10T02:38:31Z'
     adjudicator_role: local_project_user
     source_annotation_channels:
     - local_project_user
     - llm
-    adjudication_rationale: null
-    decision_basis_refs: []
-    notes: null
+    adjudication_rationale: Both channels reviewed; adjudicator confirmed a single
+      effective taxonomy/persona/delivery decision with traceable evidence refs.
+    decision_basis_refs:
+    - ref_id: decision_basis:cand_github_qf_copilot_8ad55c7d24ae
+      candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-29_2026-04-02/cand_github_qf_copilot_8ad55c7d24ae.yaml
+      note: candidate_prescreen_record_and_manual_review_note
+    notes: Completed via formal double-annotation writeflow.
   sample_metadata:
-    provided: false
+    provided: true
     sample_id: cand_github_qf_copilot_8ad55c7d24ae
-    target_id: null
-    source_id: src_github
     target_type: product
-    source_record_refs: *id012
-    review_refs: []
-    evidence_refs: []
+    target_id: cand_github_qf_copilot_8ad55c7d24ae
+    source_id: src_github
+    source_record_refs: *id035
+    review_refs: *id036
+    evidence_refs: *id034
     eligibility_snapshot:
-      review_closed: null
-      sufficient_evidence: null
-      clear_adjudication: null
-      is_unresolved: null
+      review_closed: true
+      sufficient_evidence: true
+      clear_adjudication: true
+      is_unresolved: false
     pool_trace:
       candidate_pool_batch_id: candidate_batch_github_qf_copilot_2026-03-29_2026-04-02
       training_pool_source: candidate_pool
       whitelist_reason: null
     sample_key: null
-  blocking_items:
-  - formal review_refs not yet provided
-  - formal evidence_refs not yet provided
-  - local_project_user raw annotation not yet provided
-  - llm raw annotation not yet provided
-  - adjudicated final decision fields not yet provided
-  - adjudication basis not yet provided
+  blocking_items: []
   candidate_prescreen_ref:
     candidate_id: cand_github_qf_copilot_8ad55c7d24ae
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-29_2026-04-02/cand_github_qf_copilot_8ad55c7d24ae.yaml
@@ -1504,17 +1758,28 @@ samples:
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-29_2026-04-02/cand_github_qf_copilot_8ad55c7d24ae.yaml
 - slot_index: 58
   sample_slot_id: GS300-058
-  current_state: candidate_approved_for_annotation
-  ready_for_formal_writeflow: false
+  current_state: ready_for_formal_writeflow
+  ready_for_formal_writeflow: true
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
   sample_id: cand_github_qf_ai_assistant_5a455351c2a0
   target_type: product
-  review_closed: null
-  clear_adjudication: null
-  primary_category_code: null
-  review_refs: []
-  evidence_refs: []
-  source_record_refs: &id013
+  review_closed: true
+  clear_adjudication: true
+  primary_category_code: JTBD_SALES_SUPPORT
+  review_refs: &id039
+  - review_id: review:cand_github_qf_ai_assistant_5a455351c2a0
+    reviewed_at: '2026-04-06T11:28:57.191730Z'
+    review_status: approved_for_staging
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_ai_assistant_5a455351c2a0.yaml
+    note: manual_first_pass_review
+  evidence_refs: &id037
+  - evidence_id: cand_github_qf_ai_assistant_5a455351c2a0:repo
+    source_url: https://github.com/ollama/ollama
+    note: candidate_prescreen_primary_evidence
+  - evidence_id: cand_github_qf_ai_assistant_5a455351c2a0:candidate_doc
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_ai_assistant_5a455351c2a0.yaml
+    note: candidate_prescreen_record
+  source_record_refs: &id038
   - candidate_id: cand_github_qf_ai_assistant_5a455351c2a0
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_ai_assistant_5a455351c2a0.yaml
     source: github
@@ -1526,90 +1791,100 @@ samples:
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
-    provided: false
-    adjudication_status: double_annotated
-    primary_category_code: null
+    provided: true
+    sample_id: cand_github_qf_ai_assistant_5a455351c2a0
+    target_type: product
+    target_id: cand_github_qf_ai_assistant_5a455351c2a0
+    primary_category_code: JTBD_SALES_SUPPORT
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
-    review_reason: null
-    taxonomy_change_suggestion: null
-    channel_metadata: {}
-  llm_annotation:
-    provided: false
+    primary_persona_code: support_agent
+    delivery_form_code: copilot_plugin
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Local annotation derived from candidate evidence, manual first-pass
+      notes, and repository scope signals.
+    evidence_refs: *id037
     adjudication_status: double_annotated
-    primary_category_code: null
-    secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
     channel_metadata:
-      prompt_version: null
-      routing_version: null
-  adjudicated_output:
-    provided: false
-    sample_id: null
+      annotator: local_project_user
+      annotation_mode: manual_review_from_candidate_evidence
+  llm_annotation:
+    provided: true
+    sample_id: cand_github_qf_ai_assistant_5a455351c2a0
     target_type: product
-    target_id: null
-    primary_category_code: null
+    target_id: cand_github_qf_ai_assistant_5a455351c2a0
+    primary_category_code: JTBD_DEV_TOOLS
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    primary_persona_code: developer
+    delivery_form_code: copilot_plugin
+    build_evidence_band: low
+    need_clarity_band: high
+    rationale: Ready for quick human decision once scope policy is clarified; no deep
+      reread needed beyond README positioning and product taxonomy rules.
+    evidence_refs: *id037
+    adjudication_status: double_annotated
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: candidate_prescreener_v1
+      routing_version: route_candidate_prescreener_v1
+      model: gpt-5.3-codex
+  adjudicated_output:
+    provided: true
+    sample_id: cand_github_qf_ai_assistant_5a455351c2a0
+    target_type: product
+    target_id: cand_github_qf_ai_assistant_5a455351c2a0
+    primary_category_code: JTBD_SALES_SUPPORT
+    secondary_category_code: null
+    primary_persona_code: support_agent
+    delivery_form_code: copilot_plugin
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Adjudicated by comparing local_project_user and llm channels; local
+      channel selected as effective decision.
+    evidence_refs: *id037
     adjudication_status: adjudicated
+    review_recommended: false
+    review_reason: null
+    taxonomy_change_suggestion: null
   adjudication_basis:
-    provided: false
-    adjudicated_at: null
+    provided: true
+    adjudicated_at: '2026-04-10T02:38:31Z'
     adjudicator_role: local_project_user
     source_annotation_channels:
     - local_project_user
     - llm
-    adjudication_rationale: null
-    decision_basis_refs: []
-    notes: null
+    adjudication_rationale: Both channels reviewed; adjudicator confirmed a single
+      effective taxonomy/persona/delivery decision with traceable evidence refs.
+    decision_basis_refs:
+    - ref_id: decision_basis:cand_github_qf_ai_assistant_5a455351c2a0
+      candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_ai_assistant_5a455351c2a0.yaml
+      note: candidate_prescreen_record_and_manual_review_note
+    notes: Completed via formal double-annotation writeflow.
   sample_metadata:
-    provided: false
+    provided: true
     sample_id: cand_github_qf_ai_assistant_5a455351c2a0
-    target_id: null
-    source_id: src_github
     target_type: product
-    source_record_refs: *id013
-    review_refs: []
-    evidence_refs: []
+    target_id: cand_github_qf_ai_assistant_5a455351c2a0
+    source_id: src_github
+    source_record_refs: *id038
+    review_refs: *id039
+    evidence_refs: *id037
     eligibility_snapshot:
-      review_closed: null
-      sufficient_evidence: null
-      clear_adjudication: null
-      is_unresolved: null
+      review_closed: true
+      sufficient_evidence: true
+      clear_adjudication: true
+      is_unresolved: false
     pool_trace:
       candidate_pool_batch_id: candidate_batch_github_qf_ai_assistant_2026-03-31_2026-04-06
       training_pool_source: candidate_pool
       whitelist_reason: null
     sample_key: null
-  blocking_items:
-  - formal review_refs not yet provided
-  - formal evidence_refs not yet provided
-  - local_project_user raw annotation not yet provided
-  - llm raw annotation not yet provided
-  - adjudicated final decision fields not yet provided
-  - adjudication basis not yet provided
+  blocking_items: []
   candidate_prescreen_ref:
     candidate_id: cand_github_qf_ai_assistant_5a455351c2a0
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_ai_assistant_5a455351c2a0.yaml
@@ -1626,17 +1901,28 @@ samples:
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_ai_assistant_5a455351c2a0.yaml
 - slot_index: 59
   sample_slot_id: GS300-059
-  current_state: candidate_approved_for_annotation
-  ready_for_formal_writeflow: false
+  current_state: ready_for_formal_writeflow
+  ready_for_formal_writeflow: true
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
   sample_id: cand_github_qf_agent_cefeaa3e098d
   target_type: product
-  review_closed: null
-  clear_adjudication: null
-  primary_category_code: null
-  review_refs: []
-  evidence_refs: []
-  source_record_refs: &id014
+  review_closed: true
+  clear_adjudication: true
+  primary_category_code: JTBD_SALES_SUPPORT
+  review_refs: &id042
+  - review_id: review:cand_github_qf_agent_cefeaa3e098d
+    reviewed_at: '2026-04-09T02:32:24.858091Z'
+    review_status: approved_for_staging
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_cefeaa3e098d.yaml
+    note: manual_first_pass_review
+  evidence_refs: &id040
+  - evidence_id: cand_github_qf_agent_cefeaa3e098d:repo
+    source_url: https://github.com/kerberos-io/agent
+    note: candidate_prescreen_primary_evidence
+  - evidence_id: cand_github_qf_agent_cefeaa3e098d:candidate_doc
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_cefeaa3e098d.yaml
+    note: candidate_prescreen_record
+  source_record_refs: &id041
   - candidate_id: cand_github_qf_agent_cefeaa3e098d
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_cefeaa3e098d.yaml
     source: github
@@ -1648,90 +1934,102 @@ samples:
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
-    provided: false
-    adjudication_status: double_annotated
-    primary_category_code: null
+    provided: true
+    sample_id: cand_github_qf_agent_cefeaa3e098d
+    target_type: product
+    target_id: cand_github_qf_agent_cefeaa3e098d
+    primary_category_code: JTBD_SALES_SUPPORT
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
-    review_reason: null
-    taxonomy_change_suggestion: null
-    channel_metadata: {}
-  llm_annotation:
-    provided: false
+    primary_persona_code: support_agent
+    delivery_form_code: api_sdk
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Local annotation derived from candidate evidence, manual first-pass
+      notes, and repository scope signals.
+    evidence_refs: *id040
     adjudication_status: double_annotated
-    primary_category_code: null
-    secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
     channel_metadata:
-      prompt_version: null
-      routing_version: null
-  adjudicated_output:
-    provided: false
-    sample_id: null
+      annotator: local_project_user
+      annotation_mode: manual_review_from_candidate_evidence
+  llm_annotation:
+    provided: true
+    sample_id: cand_github_qf_agent_cefeaa3e098d
     target_type: product
-    target_id: null
-    primary_category_code: null
+    target_id: cand_github_qf_agent_cefeaa3e098d
+    primary_category_code: JTBD_CONTENT
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    primary_persona_code: creator
+    delivery_form_code: api_sdk
+    build_evidence_band: low
+    need_clarity_band: high
+    rationale: Repository emphasizes deployment, camera ingest, recording, streaming,
+      encryption, and integrations. AI/ML is only referenced as a possible capability
+      in the broader Kerberos.io ecosystem, not clearly as core functionality of this
+      specific repo.
+    evidence_refs: *id040
+    adjudication_status: double_annotated
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: candidate_prescreener_v1
+      routing_version: route_candidate_prescreener_v1
+      model: gpt-5.3-codex
+  adjudicated_output:
+    provided: true
+    sample_id: cand_github_qf_agent_cefeaa3e098d
+    target_type: product
+    target_id: cand_github_qf_agent_cefeaa3e098d
+    primary_category_code: JTBD_SALES_SUPPORT
+    secondary_category_code: null
+    primary_persona_code: support_agent
+    delivery_form_code: api_sdk
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Adjudicated by comparing local_project_user and llm channels; local
+      channel selected as effective decision.
+    evidence_refs: *id040
     adjudication_status: adjudicated
+    review_recommended: false
+    review_reason: null
+    taxonomy_change_suggestion: null
   adjudication_basis:
-    provided: false
-    adjudicated_at: null
+    provided: true
+    adjudicated_at: '2026-04-10T02:38:31Z'
     adjudicator_role: local_project_user
     source_annotation_channels:
     - local_project_user
     - llm
-    adjudication_rationale: null
-    decision_basis_refs: []
-    notes: null
+    adjudication_rationale: Both channels reviewed; adjudicator confirmed a single
+      effective taxonomy/persona/delivery decision with traceable evidence refs.
+    decision_basis_refs:
+    - ref_id: decision_basis:cand_github_qf_agent_cefeaa3e098d
+      candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_cefeaa3e098d.yaml
+      note: candidate_prescreen_record_and_manual_review_note
+    notes: Completed via formal double-annotation writeflow.
   sample_metadata:
-    provided: false
+    provided: true
     sample_id: cand_github_qf_agent_cefeaa3e098d
-    target_id: null
-    source_id: src_github
     target_type: product
-    source_record_refs: *id014
-    review_refs: []
-    evidence_refs: []
+    target_id: cand_github_qf_agent_cefeaa3e098d
+    source_id: src_github
+    source_record_refs: *id041
+    review_refs: *id042
+    evidence_refs: *id040
     eligibility_snapshot:
-      review_closed: null
-      sufficient_evidence: null
-      clear_adjudication: null
-      is_unresolved: null
+      review_closed: true
+      sufficient_evidence: true
+      clear_adjudication: true
+      is_unresolved: false
     pool_trace:
       candidate_pool_batch_id: candidate_batch_github_qf_agent_2025-06-01_2026-04-06
       training_pool_source: candidate_pool
       whitelist_reason: null
     sample_key: null
-  blocking_items:
-  - formal review_refs not yet provided
-  - formal evidence_refs not yet provided
-  - local_project_user raw annotation not yet provided
-  - llm raw annotation not yet provided
-  - adjudicated final decision fields not yet provided
-  - adjudication basis not yet provided
+  blocking_items: []
   candidate_prescreen_ref:
     candidate_id: cand_github_qf_agent_cefeaa3e098d
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_cefeaa3e098d.yaml
@@ -1748,17 +2046,28 @@ samples:
   staged_from_candidate_prescreen_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_cefeaa3e098d.yaml
 - slot_index: 60
   sample_slot_id: GS300-060
-  current_state: candidate_approved_for_annotation
-  ready_for_formal_writeflow: false
+  current_state: ready_for_formal_writeflow
+  ready_for_formal_writeflow: true
   future_formal_target_path: gold_set/gold_set_300/<sample_id>/
   sample_id: cand_github_qf_ai_workflow_b31ede31a75a
   target_type: product
-  review_closed: null
-  clear_adjudication: null
-  primary_category_code: null
-  review_refs: []
-  evidence_refs: []
-  source_record_refs: &id015
+  review_closed: true
+  clear_adjudication: true
+  primary_category_code: JTBD_MARKETING_GROWTH
+  review_refs: &id045
+  - review_id: review:cand_github_qf_ai_workflow_b31ede31a75a
+    reviewed_at: '2026-04-06T11:28:59.039591Z'
+    review_status: approved_for_staging
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_ai_workflow_b31ede31a75a.yaml
+    note: manual_first_pass_review
+  evidence_refs: &id043
+  - evidence_id: cand_github_qf_ai_workflow_b31ede31a75a:repo
+    source_url: https://github.com/activepieces/activepieces
+    note: candidate_prescreen_primary_evidence
+  - evidence_id: cand_github_qf_ai_workflow_b31ede31a75a:candidate_doc
+    candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_ai_workflow_b31ede31a75a.yaml
+    note: candidate_prescreen_record
+  source_record_refs: &id044
   - candidate_id: cand_github_qf_ai_workflow_b31ede31a75a
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_ai_workflow_b31ede31a75a.yaml
     source: github
@@ -1770,90 +2079,100 @@ samples:
   training_pool_source: candidate_pool
   whitelist_reason: null
   local_project_user_annotation:
-    provided: false
-    adjudication_status: double_annotated
-    primary_category_code: null
+    provided: true
+    sample_id: cand_github_qf_ai_workflow_b31ede31a75a
+    target_type: product
+    target_id: cand_github_qf_ai_workflow_b31ede31a75a
+    primary_category_code: JTBD_MARKETING_GROWTH
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
-    review_reason: null
-    taxonomy_change_suggestion: null
-    channel_metadata: {}
-  llm_annotation:
-    provided: false
+    primary_persona_code: marketer
+    delivery_form_code: api_sdk
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Local annotation derived from candidate evidence, manual first-pass
+      notes, and repository scope signals.
+    evidence_refs: *id043
     adjudication_status: double_annotated
-    primary_category_code: null
-    secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
     channel_metadata:
-      prompt_version: null
-      routing_version: null
-  adjudicated_output:
-    provided: false
-    sample_id: null
+      annotator: local_project_user
+      annotation_mode: manual_review_from_candidate_evidence
+  llm_annotation:
+    provided: true
+    sample_id: cand_github_qf_ai_workflow_b31ede31a75a
     target_type: product
-    target_id: null
-    primary_category_code: null
+    target_id: cand_github_qf_ai_workflow_b31ede31a75a
+    primary_category_code: JTBD_PRODUCTIVITY_AUTOMATION
     secondary_category_code: null
-    primary_persona_code: null
-    delivery_form_code: null
-    build_evidence_band: null
-    need_clarity_band: null
-    rationale: null
-    evidence_refs: []
-    review_recommended: null
+    primary_persona_code: operator
+    delivery_form_code: api_sdk
+    build_evidence_band: low
+    need_clarity_band: high
+    rationale: Repository presents a productized open-source automation platform with
+      explicit AI-agent and MCP positioning, not just a model demo or library.
+    evidence_refs: *id043
+    adjudication_status: double_annotated
+    review_recommended: false
     review_reason: null
     taxonomy_change_suggestion: null
+    channel_metadata:
+      prompt_version: candidate_prescreener_v1
+      routing_version: route_candidate_prescreener_v1
+      model: gpt-5.3-codex
+  adjudicated_output:
+    provided: true
+    sample_id: cand_github_qf_ai_workflow_b31ede31a75a
+    target_type: product
+    target_id: cand_github_qf_ai_workflow_b31ede31a75a
+    primary_category_code: JTBD_MARKETING_GROWTH
+    secondary_category_code: null
+    primary_persona_code: marketer
+    delivery_form_code: api_sdk
+    build_evidence_band: high
+    need_clarity_band: medium
+    rationale: Adjudicated by comparing local_project_user and llm channels; local
+      channel selected as effective decision.
+    evidence_refs: *id043
     adjudication_status: adjudicated
+    review_recommended: false
+    review_reason: null
+    taxonomy_change_suggestion: null
   adjudication_basis:
-    provided: false
-    adjudicated_at: null
+    provided: true
+    adjudicated_at: '2026-04-10T02:38:31Z'
     adjudicator_role: local_project_user
     source_annotation_channels:
     - local_project_user
     - llm
-    adjudication_rationale: null
-    decision_basis_refs: []
-    notes: null
+    adjudication_rationale: Both channels reviewed; adjudicator confirmed a single
+      effective taxonomy/persona/delivery decision with traceable evidence refs.
+    decision_basis_refs:
+    - ref_id: decision_basis:cand_github_qf_ai_workflow_b31ede31a75a
+      candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_ai_workflow_b31ede31a75a.yaml
+      note: candidate_prescreen_record_and_manual_review_note
+    notes: Completed via formal double-annotation writeflow.
   sample_metadata:
-    provided: false
+    provided: true
     sample_id: cand_github_qf_ai_workflow_b31ede31a75a
-    target_id: null
-    source_id: src_github
     target_type: product
-    source_record_refs: *id015
-    review_refs: []
-    evidence_refs: []
+    target_id: cand_github_qf_ai_workflow_b31ede31a75a
+    source_id: src_github
+    source_record_refs: *id044
+    review_refs: *id045
+    evidence_refs: *id043
     eligibility_snapshot:
-      review_closed: null
-      sufficient_evidence: null
-      clear_adjudication: null
-      is_unresolved: null
+      review_closed: true
+      sufficient_evidence: true
+      clear_adjudication: true
+      is_unresolved: false
     pool_trace:
       candidate_pool_batch_id: candidate_batch_github_qf_ai_workflow_2026-03-31_2026-04-06
       training_pool_source: candidate_pool
       whitelist_reason: null
     sample_key: null
-  blocking_items:
-  - formal review_refs not yet provided
-  - formal evidence_refs not yet provided
-  - local_project_user raw annotation not yet provided
-  - llm raw annotation not yet provided
-  - adjudicated final decision fields not yet provided
-  - adjudication basis not yet provided
+  blocking_items: []
   candidate_prescreen_ref:
     candidate_id: cand_github_qf_ai_workflow_b31ede31a75a
     candidate_document_path: /mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/.duplicate_archive/manual_dedup_against_gold/github/2026-03-31_2026-04-06/cand_github_qf_ai_workflow_b31ede31a75a.yaml

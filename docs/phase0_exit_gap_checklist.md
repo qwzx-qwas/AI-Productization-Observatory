@@ -4,7 +4,7 @@
 
 它只是一份面向执行的非 canonical 收口清单；Phase0 是否完成，仍以 canonical 文档、机器可读 artifact、测试结果与真实 `gold_set_300` 资产为准。
 
-最后核对时间：`2026-03-30`
+最后核对时间：`2026-04-10`
 
 ## 1. Canonical Basis
 
@@ -29,7 +29,7 @@
 ## 2. Current Reusable Baseline Assets
 
 - `fixtures/README.md` 已明确 `fixtures/` 当前为 `implemented`，且最小样本覆盖 `collector`、`normalizer`、`marts` 三条验证链路。
-- `gold_set/README.md` 仍明确 `gold_set/` 为 `stub`，`gold_set/gold_set_300/` 只有空目录占位，不能被当成已交付评估资产。
+- `gold_set/README.md` 已明确 `gold_set/` 为 `implemented`，`gold_set/gold_set_300/` 已落入真实双标 + adjudication 样本；但当前 formal 资产仍不能直接替代 Phase0 完整 gate 证据。
 - 已验证的当前最小运行闭环：
   - `make install`
   - `make lint`
@@ -58,7 +58,7 @@
 | `taxonomy_v0` 已给出 `code / definition / inclusion / exclusion` | ready | `04_taxonomy_v0.md` + `configs/taxonomy_v0.yaml` | none in current baseline | yes |
 | `score_rubric_v0` 已给出 `score_type / band / null policy` | ready | `06_score_rubric_v0.md` + `configs/rubric_v0.yaml` | none in current baseline | yes |
 | `annotation_guideline_v0` 已完成并经过试标 | ready_as_guideline | `07_annotation_guideline_v0.md`; `01_phase_plan_and_exit_criteria.md` 已确认“rubric 与 annotation guideline 已固定，并完成必要的试标与对齐” | 仍需把同一口径落到真实 `gold_set_300` 资产 | no |
-| `gold_set_300` 已完成 adjudication | missing | `gold_set/README.md` 明确 `status = stub`; `gold_set/gold_set_300/.gitkeep` 仅为空目录占位 | 需要真实双标样本、每通道原始结果、adjudication 结果、裁决理由、channel metadata | yes |
+| `gold_set_300` 已完成 adjudication | partial | `gold_set/README.md` 明确 `status = implemented`; `gold_set/gold_set_300/` 已包含真实双标样本、每通道原始结果、adjudication 结果、裁决理由与 channel metadata | 仍需补齐完整 `gold_set_300` 覆盖与对应人工质量 gate 计算证据 | yes |
 | prompt IO contracts 已可通过 schema validation | partial | `10_prompt_and_model_routing_contracts.md`, `schemas/*.json`, `make validate-schemas`, contract tests | 当前只有 schema / contract 层证据，尚无真实 prompt output fixtures / eval 证据 | yes |
 | `schema_contracts_v0` 已完成核心对象定义 | ready | `08_schema_contracts.md` + `schemas/source_item.schema.json` + `schemas/product_profile.schema.json` + `schemas/taxonomy_assignment.schema.json` + `schemas/score_component.schema.json` + `schemas/review_packet.schema.json` | none in current baseline | yes |
 | `review_rules_v0` 已定义触发规则 | ready | `12_review_policy.md` + `configs/review_rules_v0.yaml` | none in current baseline | yes |
@@ -66,7 +66,7 @@
 说明：
 
 - 上表中的 `ready` 表示“当前基线下已具备可复用规范与 artifact”，不等于“Phase0 已正式退出”。
-- 当前真正阻断 Phase0 退出的核心缺口仍是：真实 `gold_set_300`、prompt output 对 schema 的实际验证证据、以及由此派生的人工质量 gate 计算结果。
+- 当前真正阻断 Phase0 退出的核心缺口仍是：完整 `gold_set_300` 覆盖、prompt output 对 schema 的实际验证证据、以及由此派生的人工质量 gate 计算结果。
 
 ## 4. Phase0 Quantitative Gates Mapping
 
@@ -80,8 +80,6 @@
 
 ## 5. Assets That Must Stay Stub Or Reserved
 
-- `gold_set/gold_set_300/`
-  - 继续保持 `stub`，直到真实双标与 adjudication 资产落地。
 - `fixtures/extractor/`
   - 继续保持预留目录，当前不能宣称 extractor fixture 已交付。
 - `fixtures/scoring/`
@@ -89,19 +87,11 @@
 
 ## 6. Drift Found During Stage 1
 
-### 6.1 `README.md` 的 `validate-env` 声明与实际运行前提不一致
+### 6.1 gold set 状态文案需要从 `stub` 回写到当前实现状态
 
-- `README.md` 当前把 `make validate-env` 列为“已验证”的基线命令。
-- 但在当前默认 shell 环境下，`make validate-env` 会失败：
-  - missing vars: `APO_CONFIG_DIR`, `APO_SCHEMA_DIR`
-- 同时，`src/common/config.py` 的实际运行路径解析又允许在未显式设置环境变量时回退到仓库默认目录。
-
-这说明 README 里的“默认配置由 `.env.example` 提供”与 `make validate-env` 的实际前提没有被说清楚。
-
-后续回写要求：
-
-- 要么在 README 中把 `make validate-env` 明确为“需要先导出 `.env.example` 对应环境变量”；
-- 要么在阶段 4 收口时把该命令从“已验证的默认基线命令”中分离出来。
+- `gold_set/README.md` 当前已声明 `status = implemented`，且 `make validate-gold-set REQUIRE_IMPLEMENTED=1` 已能通过。
+- 因此任何仍把 `gold_set/gold_set_300/` 表述为“只有空目录占位”或“继续保持 stub”的文案都应视为 drift。
+- 但 formal gold set 已落地并不等于 Phase0 gate 已完成；仍需把“已实现”与“已完成完整质量 gate”分开表述。
 
 ### 6.2 现有测试通过不能替代 Phase0 正式退出证据
 
@@ -111,12 +101,12 @@
 
 ## 7. Safe Next Steps
 
-1. 在 `gold_set/gold_set_300/` 落地真实双标样本、每通道原始结果、adjudication 结果、裁决理由与 channel metadata。
+1. 继续扩充 `gold_set/gold_set_300/` 的真实双标样本覆盖，并保留每通道原始结果、adjudication 结果、裁决理由与 channel metadata。
 2. 为 Phase0 gate 增加固定、可回放的计算入口，生成 `Krippendorff's alpha`、`macro-F1`、`weighted kappa` 与 prompt-output schema 通过率证据。
-3. 在 README / `gold_set/README.md` / Phase0 状态文案中统一回写真实状态，尤其修正 `validate-env` 的前提描述。
+3. 在 README / `gold_set/README.md` / Phase0 状态文案中统一回写真实状态，并把“formal 已实现”与“Phase0 gate 已完成”清楚分开。
 
 ## 8. Current Conclusion
 
 当前仓库已经具备“可继续安全扩写的 Phase0 最小工程基线”，但尚不满足“Phase0 正式完成”的退出条件。
 
-阶段 1 已经完成的工作是：把可复用资产、阻断 Phase0 退出的真实缺口、必须继续保持 `stub` 的对象，以及需要后续统一回写的文档漂移，全部压缩到同一份文件级清单中。
+阶段 1 已经完成的工作是：把可复用资产、阻断 Phase0 退出的真实缺口、仍需保留边界的对象，以及需要后续统一回写的文档漂移，全部压缩到同一份文件级清单中。

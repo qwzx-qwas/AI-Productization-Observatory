@@ -1,0 +1,35 @@
+{
+  "sample_id": "cand_github_qf_ai_workflow_d67ae031071e",
+  "target_type": "product",
+  "target_id": "cand_github_qf_ai_workflow_d67ae031071e",
+  "primary_category_code": "JTBD_PRODUCTIVITY_AUTOMATION",
+  "secondary_category_code": null,
+  "primary_persona_code": "operator",
+  "delivery_form_code": "copilot_plugin",
+  "build_evidence_band": "medium",
+  "need_clarity_band": "medium",
+  "rationale": "Repository evidence presents this candidate as a concrete workflow product with deployable or user-facing product behavior.",
+  "evidence_refs": [
+    {
+      "evidence_id": "cand_github_qf_ai_workflow_d67ae031071e:repo",
+      "source_url": "https://github.com/devchat-ai/devchat",
+      "note": "candidate_prescreen_primary_evidence"
+    },
+    {
+      "evidence_id": "cand_github_qf_ai_workflow_d67ae031071e:candidate_doc",
+      "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_workflow_d67ae031071e.yaml",
+      "note": "candidate_prescreen_record"
+    }
+  ],
+  "adjudication_status": "double_annotated",
+  "review_recommended": true,
+  "review_reason": "Operational maturity and present-day maintenance should be checked during later formal annotation.",
+  "taxonomy_change_suggestion": null,
+  "annotator_channel": "llm",
+  "annotated_at": "2026-04-10T02:38:31Z",
+  "channel_metadata": {
+    "prompt_version": "candidate_prescreener_v1",
+    "routing_version": "route_candidate_prescreener_v1",
+    "model": "manual_local_review"
+  }
+}
