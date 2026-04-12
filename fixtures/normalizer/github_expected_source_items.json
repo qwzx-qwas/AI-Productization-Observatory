@@ -1,0 +1,60 @@
+[
+  {
+    "author_handle": "acme",
+    "author_name": "acme",
+    "canonical_url": "https://github.com/acme/support-agent-workbench",
+    "current_metrics_json": {
+      "fork_count": 18,
+      "star_count": 144,
+      "watcher_count": 144
+    },
+    "current_summary": "AI assistant workspace for support teams that triages inbox tickets and drafts replies.",
+    "external_id": "987654321",
+    "first_observed_at": "2026-03-05T12:34:56Z",
+    "item_status": "active",
+    "language": "TypeScript",
+    "latest_observed_at": "NON_DETERMINISTIC",
+    "linked_homepage_url": "https://acme.example.com/support-agent-workbench",
+    "linked_repo_url": null,
+    "normalization_version": "github_v1",
+    "published_at": "2026-03-05T12:34:56Z",
+    "raw_id": "NON_DETERMINISTIC",
+    "raw_text_excerpt": "AI assistant workspace for support teams that triages inbox tickets and drafts replies.\n\n# Support Agent Workbench\n\nAI assistant workspace for support teams with ticket triage, draft replies, and escalation routing.",
+    "source_id": "src_github",
+    "title": "support-agent-workbench",
+    "topics": [
+      "agent",
+      "support",
+      "helpdesk"
+    ]
+  },
+  {
+    "author_handle": "acme",
+    "author_name": "acme",
+    "canonical_url": "https://github.com/acme/sales-agent-console",
+    "current_metrics_json": {
+      "fork_count": 12,
+      "star_count": 98,
+      "watcher_count": 98
+    },
+    "current_summary": "Copilot console for pipeline follow-up, call prep, and CRM note generation.",
+    "external_id": "987654322",
+    "first_observed_at": "2026-03-06T09:20:11Z",
+    "item_status": "active",
+    "language": "Python",
+    "latest_observed_at": "NON_DETERMINISTIC",
+    "linked_homepage_url": "https://acme.example.com/sales-agent-console",
+    "linked_repo_url": null,
+    "normalization_version": "github_v1",
+    "published_at": "2026-03-06T09:20:11Z",
+    "raw_id": "NON_DETERMINISTIC",
+    "raw_text_excerpt": "Copilot console for pipeline follow-up, call prep, and CRM note generation.\n\n# Sales Agent Console\n\nAI workflow app for sales teams with call prep, meeting notes, and CRM follow-up automation.",
+    "source_id": "src_github",
+    "title": "sales-agent-console",
+    "topics": [
+      "copilot",
+      "sales",
+      "crm"
+    ]
+  }
+]

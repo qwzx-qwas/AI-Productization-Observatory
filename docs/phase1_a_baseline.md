@@ -122,23 +122,27 @@
 
 ### Phase1-D 实体、观测、证据、分类与评分派生链
 
-- current_status: `scaffold_only_placeholder_modules`
+- current_status: `implemented_rule_first_baseline`
 - canonical_basis: `02`, `04`, `06`, `08`, `09`, `10`, `16`, `17`
 - repo_landing:
   - `src/resolution/entity_resolver.py`
   - `src/resolution/observation_builder.py`
-  - `src/extractors/`
+  - `src/extractors/evidence_extractor.py`
   - `src/profiling/product_profiler.py`
   - `src/classification/taxonomy_classifier.py`
   - `src/scoring/score_engine.py`
 - test_paths:
   - `tests/contract/test_contracts.py`
+  - `tests/integration/test_phase1_derivation.py`
+  - `tests/unit/test_phase1_derivation.py`
 - current_evidence:
-  - `entity_resolver.py`、`observation_builder.py`、`product_profiler.py`、`taxonomy_classifier.py`、`score_engine.py` 当前仍返回 `placeholder_for_phase1_followup`
-  - schema / taxonomy / rubric contract 已冻结，可作为后续实现边界
+  - `entity_resolver.py`、`observation_builder.py`、`evidence_extractor.py`、`product_profiler.py`、`taxonomy_classifier.py`、`score_engine.py` 已提供 Phase1-D baseline 规则实现
+  - `tests/integration/test_phase1_derivation.py` 已覆盖 `source_item -> product / observation -> evidence -> profile / taxonomy / score` 主链
+  - `tests/unit/test_phase1_derivation.py` 已覆盖 `attention_score` null case、`unresolved` 分流与实体归并冲突候选
+  - schema / taxonomy / rubric contract 已被实现侧消费，且 `product_profile`、`taxonomy_assignment`、`score_component` 输出继续受 schema 校验
 - blockers_to_close:
-  - 尚无 `source_item -> product / observation / profile / taxonomy / score` 的真实集成链路
-  - 当前不能声称 Phase1-D 已进入可验收状态
+  - 当前 `evidence` 仍以 inline schema + 规则抽取实现，尚未升级为独立 schema artifact 或接入 LLM routing
+  - 当前仍未接入真实 `review_issue` / `processing_error` 写回，因此只能声称 Phase1-D baseline 已 runnable，不能替代 Phase1-E 闭环
 
 ### Phase1-E review / error / replay / unresolved 控制平面
 
@@ -156,7 +160,8 @@
 - current_evidence:
   - `review_packet` schema 已存在并受 contract test 约束
   - blocked replay、retryable failure、terminal failure 已有最小 runtime/regression 断言
-  - `review_packet_builder.py` 当前仍为 `placeholder_for_phase1_followup`
+  - `review_packet_builder.py` 已提供 taxonomy review packet、taxonomy resolution writeback 与 unresolved registry 的本地 harness helper
+  - `src/marts/builder.py` 已可优先从 canonical `taxonomy_assignment` / `review_issue` fixture 记录派生 effective taxonomy 与 `unresolved_registry_view`
 - blockers_to_close:
   - 尚无 `review_issue` / `processing_error` 写回闭环
   - unresolved registry / maker-checker 仍未作为真实控制平面对象落地

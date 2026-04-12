@@ -236,7 +236,7 @@ last_frozen_version: repo_mapping_v2
 - `make validate-configs`
   - 校验 `configs/*.yaml`
 - `make replay-window SOURCE=<source> WINDOW=<window>`
-  - 当前已实现 `product_hunt` fixture replay
+  - 当前已实现 `product_hunt` 与 `github` 的 fixture replay
 - `make build-mart-window`
   - 当前已实现最小 mart fixture rebuild
 

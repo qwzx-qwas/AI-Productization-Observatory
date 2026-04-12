@@ -365,6 +365,16 @@ def _validate_review_rules_config(config_dir: Path) -> None:
     if maker_checker_writeback.get("effective_result_writeback_mode") != "new_version_only":
         raise ContractValidationError("review_rules_v0.yaml maker_checker_writeback.effective_result_writeback_mode must stay new_version_only")
 
+    unresolved_handling = _require_mapping(review_rules.get("unresolved_handling"), "review_rules_v0.yaml:unresolved_handling")
+    if _require_list(
+        unresolved_handling.get("unresolved_modes"),
+        "review_rules_v0.yaml:unresolved_handling:unresolved_modes",
+    ) != [
+        "writeback_unresolved",
+        "review_only_unresolved",
+    ]:
+        raise ContractValidationError("review_rules_v0.yaml unresolved_modes drifted from the frozen unresolved handling policy")
+
     sample_pool_rules = _require_mapping(review_rules.get("sample_pool_rules"), "review_rules_v0.yaml:sample_pool_rules")
     candidate_pool = _require_mapping(sample_pool_rules.get("candidate_pool"), "review_rules_v0.yaml:candidate_pool")
     if candidate_pool.get("per_batch_top_limit") != 10:

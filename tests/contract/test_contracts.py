@@ -771,5 +771,5 @@ class Phase1ABaselineContractTests(unittest.TestCase):
         self.assertIn("GitHub 为当前阶段默认 live candidate discovery 路径", content)
         self.assertIn("Product Hunt 当前 runnable baseline 只保留 fixture / replay / contract", content)
         self.assertIn("`src/collectors/github.py` 与 `fixtures/collector/github_qf_agent_window.json` 已把 GitHub `selection_rule_version + query_slice_id + pushed window + page` replay contract 显式落到仓库", content)
-        self.assertIn("`entity_resolver.py`、`observation_builder.py`、`product_profiler.py`、`taxonomy_classifier.py`、`score_engine.py` 当前仍返回 `placeholder_for_phase1_followup`", content)
+        self.assertIn("`entity_resolver.py`、`observation_builder.py`、`evidence_extractor.py`、`product_profiler.py`、`taxonomy_classifier.py`、`score_engine.py` 已提供 Phase1-D baseline 规则实现", content)
         self.assertIn("当前没有新增的 `Phase1-A` blocker", content)

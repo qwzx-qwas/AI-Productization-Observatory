@@ -5,10 +5,11 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from src.common.constants import DEFAULT_NORMALIZATION_VERSION
 from src.common.errors import ContractValidationError, ProcessingError
 from src.common.schema import validate_instance
 from src.runtime.raw_store.file_store import FileRawStore
+
+_PRODUCT_HUNT_NORMALIZATION_VERSION = "product_hunt_v1"
 
 
 def _excerpt(value: str | None, limit: int = 240) -> str | None:
@@ -22,7 +23,7 @@ def normalize_raw_record(
     raw_record: dict[str, Any],
     raw_store: FileRawStore,
     schema_path: Path,
-    normalization_version: str = DEFAULT_NORMALIZATION_VERSION,
+    normalization_version: str = _PRODUCT_HUNT_NORMALIZATION_VERSION,
 ) -> dict[str, Any]:
     payload = raw_store.load_payload(raw_record["raw_payload_ref"])
     published_at = payload.get("published_at")

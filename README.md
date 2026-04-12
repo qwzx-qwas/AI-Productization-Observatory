@@ -103,6 +103,7 @@ make run-candidate-prescreen SOURCE=github WINDOW=2026-03-01..2026-03-08 QUERY_S
 make handoff-candidates-to-staging
 python3 -m src.cli fill-gold-set-staging-until-complete --source github --initial-window 2026-03-29..2026-04-02 --live-limit 1 --provider-request-interval-seconds 60 --retry-sleep-seconds 30
 make replay-window SOURCE=product_hunt WINDOW=2026-03-01..2026-03-08
+make replay-window SOURCE=github WINDOW=2026-03-01..2026-03-08
 make build-mart-window
 ```
 
@@ -118,6 +119,7 @@ python3 -m src.cli run-candidate-prescreen --source github --window 2026-03-01..
 python3 -m src.cli handoff-candidates-to-staging
 python3 -m src.cli fill-gold-set-staging-until-complete --source github --initial-window 2026-03-29..2026-04-02 --live-limit 1 --provider-request-interval-seconds 60 --retry-sleep-seconds 30
 python3 -m src.cli replay-window --source product_hunt --window 2026-03-01..2026-03-08
+python3 -m src.cli replay-window --source github --window 2026-03-01..2026-03-08
 python3 -m src.cli build-mart-window
 ```
 
@@ -128,6 +130,7 @@ python3 -m src.cli build-mart-window
 当前阶段命令边界说明：
 
 - `make replay-window SOURCE=product_hunt ...` 与 `python3 -m src.cli replay-window --source product_hunt ...` 只对应 Product Hunt fixture / replay baseline，不代表当前阶段支持 Product Hunt live source ingestion。
+- `make replay-window SOURCE=github ...` 与 `python3 -m src.cli replay-window --source github ...` 只对应 GitHub fixture / replay baseline，用于验证 `crawl_run -> raw_source_record -> source_item` 主链；它不是当前 live discovery / live intake 的替代入口。
 - `make run-candidate-prescreen SOURCE=github ...` 与等价 CLI 是当前阶段保留的 live candidate discovery 路径；其默认执行方向也应理解为优先 GitHub，而不是 Product Hunt。
 - Product Hunt 的 official GraphQL API + token auth 路线继续保留为 future integration boundary，但本阶段不落地 live 抓取，也不把 `PRODUCT_HUNT_TOKEN` 视为完成本阶段的必需前提。
 

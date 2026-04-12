@@ -11,6 +11,7 @@ import unittest
 
 from src.common.errors import BlockedReplayError, ProcessingError
 from src.marts.builder import build_mart_from_fixture
+from src.review.review_packet_builder import apply_taxonomy_review_resolution
 from src.runtime.models import default_payload
 from src.runtime.replay import build_default_mart, build_mart_window, replay_source_window
 from src.runtime.tasks import FileTaskStore
@@ -80,6 +81,19 @@ class ReplayAndMartRegressionTests(unittest.TestCase):
             self.assertEqual(tasks[1]["parent_task_id"], first["task_id"])
             self.assertEqual(second["task_id"], tasks[1]["task_id"])
 
+    def test_github_same_window_replay_keeps_parent_link_and_slice_metadata(self) -> None:
+        with temp_config() as config:
+            first = replay_source_window(source_code="github", window="2026-03-01..2026-03-08", config=config)
+            second = replay_source_window(source_code="github", window="2026-03-01..2026-03-08", config=config)
+
+            store = FileTaskStore(config.task_store_path)
+            tasks = [task for task in store.all_tasks() if task["source_id"] == "src_github"]
+            self.assertEqual(len(tasks), 2)
+            self.assertEqual(tasks[1]["parent_task_id"], first["task_id"])
+            self.assertEqual(tasks[1]["payload_json"]["selection_rule_version"], "github_qsv1")
+            self.assertEqual(tasks[1]["payload_json"]["query_slice_id"], "qf_agent")
+            self.assertEqual(second["crawl_run"]["watermark_after"]["time_field"], "pushed_at")
+
     def test_blocked_replay_stays_blocked(self) -> None:
         with temp_config() as config:
             store = FileTaskStore(config.task_store_path)
@@ -115,6 +129,11 @@ class ReplayAndMartRegressionTests(unittest.TestCase):
             self.assertEqual(attention_rows[("research_ops", "high")], 1)
             self.assertEqual(attention_rows[("research_ops", "medium")], 1)
             self.assertNotIn(("qa_automation", None), attention_rows)
+
+            unresolved_rows = {row["review_issue_id"]: row for row in mart["unresolved_registry_view"]}
+            self.assertEqual(len(unresolved_rows), 1)
+            self.assertTrue(unresolved_rows["rev_003"]["is_effective_unresolved"])
+            self.assertFalse(unresolved_rows["rev_003"]["is_stale"])
 
     def test_mart_build_replays_same_window_with_new_task(self) -> None:
         with temp_config() as config:
@@ -160,6 +179,101 @@ class ReplayAndMartRegressionTests(unittest.TestCase):
             )
             categories = {row["category_code"]: row["product_count"] for row in mart["top_jtbd_products_30d"]}
             self.assertEqual(categories["research_ops"], 2)
+
+    def test_mart_builder_prefers_canonical_taxonomy_assignments_over_prebaked_effective_taxonomy(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            fixtures_dir = Path(tmp_dir)
+            (fixtures_dir / "marts").mkdir(parents=True, exist_ok=True)
+
+            mart_fixture = json.loads((REPO_ROOT / "fixtures" / "marts" / "effective_results_window.json").read_text(encoding="utf-8"))
+            mart_fixture["records"][2]["effective_taxonomy"]["category_code"] = "research_ops"
+            (fixtures_dir / "marts" / "effective_results_window.json").write_text(
+                json.dumps(mart_fixture, indent=2, ensure_ascii=True) + "\n",
+                encoding="utf-8",
+            )
+
+            mart = build_mart_from_fixture(
+                fixtures_dir / "marts" / "effective_results_window.json",
+                REPO_ROOT / "configs" / "source_registry.yaml",
+            )
+            categories = {row["category_code"]: row["product_count"] for row in mart["top_jtbd_products_30d"]}
+            unresolved_rows = {row["review_issue_id"]: row for row in mart["unresolved_registry_view"]}
+
+            self.assertEqual(categories["research_ops"], 2)
+            self.assertNotIn("unresolved", categories)
+            self.assertTrue(unresolved_rows["rev_003"]["is_effective_unresolved"])
+
+    def test_taxonomy_writeback_resolution_flows_into_effective_mart_outputs(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            fixtures_dir = Path(tmp_dir)
+            (fixtures_dir / "marts").mkdir(parents=True, exist_ok=True)
+
+            mart_fixture = json.loads((REPO_ROOT / "fixtures" / "marts" / "effective_results_window.json").read_text(encoding="utf-8"))
+            applied = apply_taxonomy_review_resolution(
+                mart_fixture["records"][0],
+                target_summary="Research ops sample resolved to unresolved after human review",
+                upstream_downstream_links=[{"product_id": "prod_001", "source_item_id": "srcitem_ph_1001_v1"}],
+                resolution_action="mark_unresolved",
+                resolution_notes="Human review could not defend a stable primary taxonomy.",
+                reviewer="local_project_user",
+                reviewed_at="2026-03-18T09:00:00Z",
+                config_dir=REPO_ROOT / "configs",
+                schema_dir=REPO_ROOT / "schemas",
+                issue_type="taxonomy_conflict",
+                priority_code="P1",
+            )
+            mart_fixture["records"][0] = applied["record"]
+            (fixtures_dir / "marts" / "effective_results_window.json").write_text(
+                json.dumps(mart_fixture, indent=2, ensure_ascii=True) + "\n",
+                encoding="utf-8",
+            )
+
+            mart = build_mart_from_fixture(
+                fixtures_dir / "marts" / "effective_results_window.json",
+                REPO_ROOT / "configs" / "source_registry.yaml",
+            )
+            categories = {row["category_code"]: row["product_count"] for row in mart["top_jtbd_products_30d"]}
+            unresolved_rows = {row["review_issue_id"]: row for row in mart["unresolved_registry_view"]}
+
+            self.assertEqual(categories["research_ops"], 1)
+            self.assertNotIn("unresolved", categories)
+            self.assertTrue(unresolved_rows[applied["review_issue"]["review_issue_id"]]["is_effective_unresolved"])
+
+    def test_review_only_unresolved_stays_in_main_stats_but_appears_in_registry(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            fixtures_dir = Path(tmp_dir)
+            (fixtures_dir / "marts").mkdir(parents=True, exist_ok=True)
+
+            mart_fixture = json.loads((REPO_ROOT / "fixtures" / "marts" / "effective_results_window.json").read_text(encoding="utf-8"))
+            applied = apply_taxonomy_review_resolution(
+                mart_fixture["records"][0],
+                target_summary="Research ops sample remains review-only unresolved",
+                upstream_downstream_links=[{"product_id": "prod_001", "source_item_id": "srcitem_ph_1001_v1"}],
+                resolution_action="mark_unresolved",
+                resolution_notes="Human review keeps the issue in backlog without overriding the auto result.",
+                reviewer="local_project_user",
+                reviewed_at="2026-03-18T09:00:00Z",
+                unresolved_mode="review_only_unresolved",
+                config_dir=REPO_ROOT / "configs",
+                schema_dir=REPO_ROOT / "schemas",
+                issue_type="taxonomy_conflict",
+                priority_code="P2",
+            )
+            mart_fixture["records"][0] = applied["record"]
+            (fixtures_dir / "marts" / "effective_results_window.json").write_text(
+                json.dumps(mart_fixture, indent=2, ensure_ascii=True) + "\n",
+                encoding="utf-8",
+            )
+
+            mart = build_mart_from_fixture(
+                fixtures_dir / "marts" / "effective_results_window.json",
+                REPO_ROOT / "configs" / "source_registry.yaml",
+            )
+            categories = {row["category_code"]: row["product_count"] for row in mart["top_jtbd_products_30d"]}
+            unresolved_rows = {row["review_issue_id"]: row for row in mart["unresolved_registry_view"]}
+
+            self.assertEqual(categories["research_ops"], 2)
+            self.assertFalse(unresolved_rows[applied["review_issue"]["review_issue_id"]]["is_effective_unresolved"])
 
     def test_consumption_contract_examples_match_fixture_records(self) -> None:
         examples = json.loads((REPO_ROOT / "fixtures" / "marts" / "consumption_contract_examples.json").read_text(encoding="utf-8"))

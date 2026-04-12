@@ -15,6 +15,34 @@
         "result_status": "active",
         "category_code": "research_ops"
       },
+      "taxonomy_assignments": [
+        {
+          "target_type": "product",
+          "target_id": "prod_001",
+          "taxonomy_version": "v0",
+          "label_level": 1,
+          "label_role": "primary",
+          "category_code": "research_ops",
+          "confidence": 0.91,
+          "rationale": "Primary evidence shows desk research and internal knowledge retrieval.",
+          "assigned_by": "taxonomy_classifier",
+          "model_or_rule_version": "taxonomy_classifier_v1",
+          "assigned_at": "2026-03-10T10:05:00Z",
+          "is_override": false,
+          "override_review_issue_id": null,
+          "result_status": "active",
+          "effective_from": "2026-03-10T10:05:00Z",
+          "supersedes_assignment_id": null,
+          "evidence_refs_json": [
+            {
+              "source_item_id": "srcitem_ph_1001_v1",
+              "evidence_type": "job_statement",
+              "source_url": "https://example.com/ph_1001"
+            }
+          ]
+        }
+      ],
+      "review_issues": [],
       "effective_scores": {
         "attention_band": "high",
         "build_evidence_band": "high"
@@ -42,6 +70,34 @@
         "result_status": "active",
         "category_code": "research_ops"
       },
+      "taxonomy_assignments": [
+        {
+          "target_type": "product",
+          "target_id": "prod_002",
+          "taxonomy_version": "v0",
+          "label_level": 1,
+          "label_role": "primary",
+          "category_code": "research_ops",
+          "confidence": 0.84,
+          "rationale": "Repository evidence supports research and retrieval workflows.",
+          "assigned_by": "taxonomy_classifier",
+          "model_or_rule_version": "taxonomy_classifier_v1",
+          "assigned_at": "2026-03-12T12:05:00Z",
+          "is_override": false,
+          "override_review_issue_id": null,
+          "result_status": "active",
+          "effective_from": "2026-03-12T12:05:00Z",
+          "supersedes_assignment_id": null,
+          "evidence_refs_json": [
+            {
+              "source_item_id": "srcitem_gh_2002_v1",
+              "evidence_type": "job_statement",
+              "source_url": "https://example.com/gh_repo_2002"
+            }
+          ]
+        }
+      ],
+      "review_issues": [],
       "effective_scores": {
         "attention_band": "medium",
         "build_evidence_band": "medium"
@@ -68,6 +124,105 @@
         "result_status": "active",
         "category_code": "unresolved"
       },
+      "taxonomy_assignments": [
+        {
+          "target_type": "product",
+          "target_id": "prod_003",
+          "taxonomy_version": "v0",
+          "label_level": 1,
+          "label_role": "primary",
+          "category_code": "research_ops",
+          "confidence": 0.58,
+          "rationale": "Initial auto result leaned research_ops but adjacent workflow evidence conflicted.",
+          "assigned_by": "taxonomy_classifier",
+          "model_or_rule_version": "taxonomy_classifier_v1",
+          "assigned_at": "2026-03-15T16:05:00Z",
+          "is_override": false,
+          "override_review_issue_id": null,
+          "result_status": "superseded",
+          "effective_from": "2026-03-15T16:05:00Z",
+          "supersedes_assignment_id": null,
+          "evidence_refs_json": [
+            {
+              "source_item_id": "srcitem_ph_1099_v1",
+              "evidence_type": "job_statement",
+              "source_url": "https://example.com/ph_1099"
+            }
+          ]
+        },
+        {
+          "target_type": "product",
+          "target_id": "prod_003",
+          "taxonomy_version": "v0",
+          "label_level": 1,
+          "label_role": "primary",
+          "category_code": "unresolved",
+          "confidence": null,
+          "rationale": "Adjacent taxonomy confusion remains unresolved after review closure.",
+          "assigned_by": "review_packet_builder",
+          "model_or_rule_version": "review_packet_builder_v1",
+          "assigned_at": "2026-03-16T09:30:00Z",
+          "is_override": true,
+          "override_review_issue_id": "rev_003",
+          "result_status": "active",
+          "effective_from": "2026-03-16T09:30:00Z",
+          "supersedes_assignment_id": "tax_prod_003_auto",
+          "evidence_refs_json": [
+            {
+              "source_item_id": "srcitem_ph_1099_v1",
+              "evidence_type": "conflict_note",
+              "source_url": "https://example.com/ph_1099"
+            }
+          ]
+        }
+      ],
+      "review_issues": [
+        {
+          "review_issue_id": "rev_003",
+          "issue_type": "taxonomy_conflict",
+          "target_type": "product",
+          "target_id": "prod_003",
+          "priority_code": "P1",
+          "status": "resolved",
+          "assigned_to": "reviewer_a",
+          "reviewer": "reviewer_a",
+          "reviewed_at": "2026-03-16T09:30:00Z",
+          "resolution_action": "mark_unresolved",
+          "approver": null,
+          "approved_at": null,
+          "maker_checker_required": false,
+          "payload_json": {
+            "target_summary": "Ambiguous taxonomy between research ops and workflow automation.",
+            "issue_type": "taxonomy_conflict",
+            "current_auto_result": {
+              "category_code": "research_ops",
+              "confidence": 0.58
+            },
+            "related_evidence": [
+              {
+                "source_item_id": "srcitem_ph_1099_v1",
+                "evidence_type": "conflict_note",
+                "source_url": "https://example.com/ph_1099"
+              }
+            ],
+            "conflict_point": "Evidence supports multiple adjacent primary jobs.",
+            "recommended_action": "mark_unresolved",
+            "upstream_downstream_links": [
+              {
+                "product_id": "prod_003",
+                "source_item_id": "srcitem_ph_1099_v1"
+              }
+            ]
+          },
+          "resolution_payload_json": {
+            "resolution_action": "mark_unresolved"
+          },
+          "created_at": "2026-03-15T16:10:00Z",
+          "updated_at": "2026-03-16T09:30:00Z",
+          "resolved_at": "2026-03-16T09:30:00Z",
+          "resolution_notes": "Adjacent taxonomy confusion remains unresolved after review closure."
+        }
+      ],
       "effective_scores": {
         "attention_band": "high",
         "build_evidence_band": "low"
@@ -107,6 +262,34 @@
         "result_status": "active",
         "category_code": "qa_automation"
       },
+      "taxonomy_assignments": [
+        {
+          "target_type": "product",
+          "target_id": "prod_004",
+          "taxonomy_version": "v0",
+          "label_level": 1,
+          "label_role": "primary",
+          "category_code": "qa_automation",
+          "confidence": 0.86,
+          "rationale": "Product evidence centers on QA and release automation workflows.",
+          "assigned_by": "taxonomy_classifier",
+          "model_or_rule_version": "taxonomy_classifier_v1",
+          "assigned_at": "2026-03-16T08:05:00Z",
+          "is_override": false,
+          "override_review_issue_id": null,
+          "result_status": "active",
+          "effective_from": "2026-03-16T08:05:00Z",
+          "supersedes_assignment_id": null,
+          "evidence_refs_json": [
+            {
+              "source_item_id": "srcitem_ph_1002_v1",
+              "evidence_type": "job_statement",
+              "source_url": "https://example.com/ph_1002"
+            }
+          ]
+        }
+      ],
+      "review_issues": [],
       "effective_scores": {
         "attention_band": null,
         "build_evidence_band": "high"

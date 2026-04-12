@@ -169,6 +169,51 @@ class FixturePipelineIntegrationTests(unittest.TestCase):
             self.assertEqual(records[0]["request_params"]["page_or_cursor_start"], 1)
             self.assertEqual(records[0]["watermark_before"]["time_field"], "pushed_at")
 
+    def test_github_replay_builds_source_items_with_raw_traceability(self) -> None:
+        with temp_config() as config:
+            result = replay_source_window(
+                source_code="github",
+                window="2026-03-01..2026-03-08",
+                config=config,
+            )
+
+            self.assertEqual(len(result["raw_records"]), 2)
+            self.assertEqual(len(result["source_items"]), 2)
+            self.assertEqual(result["crawl_run"]["watermark_after"]["time_field"], "pushed_at")
+            self.assertEqual(result["crawl_run"]["watermark_after"]["external_id"], "987654322")
+
+            first_raw = result["raw_records"][0]
+            first_item = result["source_items"][0]
+            self.assertEqual(first_raw["fetch_url"], "https://github.com/acme/support-agent-workbench")
+            self.assertEqual(first_item["source_id"], "src_github")
+            self.assertEqual(first_item["external_id"], "987654321")
+            self.assertEqual(first_item["title"], "support-agent-workbench")
+            self.assertEqual(first_item["raw_id"], first_raw["raw_id"])
+            self.assertEqual(first_item["current_metrics_json"]["star_count"], 144)
+            self.assertEqual(first_item["author_handle"], "acme")
+
+    def test_github_expected_fixture_bundle_matches_normalized_outputs(self) -> None:
+        with temp_config() as config:
+            result = replay_source_window(
+                source_code="github",
+                window="2026-03-01..2026-03-08",
+                config=config,
+            )
+            expected_path = config.fixtures_dir / "normalizer" / "github_expected_source_items.json"
+            expected_items = json.loads(expected_path.read_text(encoding="utf-8"))
+            actual_items = {item["external_id"]: item for item in result["source_items"]}
+
+            self.assertEqual({item["external_id"] for item in expected_items}, set(actual_items))
+            for expected in expected_items:
+                actual = actual_items[expected["external_id"]]
+                self.assertEqual(actual["source_id"], expected["source_id"])
+                self.assertEqual(actual["title"], expected["title"])
+                self.assertEqual(actual["canonical_url"], expected["canonical_url"])
+                self.assertEqual(actual["linked_homepage_url"], expected["linked_homepage_url"])
+                self.assertEqual(actual["current_metrics_json"], expected["current_metrics_json"])
+                self.assertEqual(actual["topics"], expected["topics"])
+                self.assertEqual(actual["item_status"], expected["item_status"])
+
     def test_replay_marks_terminal_failure_on_invalid_normalized_output(self) -> None:
         with TemporaryDirectory() as tmp_dir:
             fixtures_dir = Path(tmp_dir)
@@ -234,6 +279,28 @@ class FixturePipelineIntegrationTests(unittest.TestCase):
             task = store.all_tasks()[-1]
             self.assertEqual(task["status"], "failed_retryable")
             self.assertEqual(task["last_error_type"], "storage_write_failed")
+
+    def test_same_window_rerun_reuses_existing_raw_records(self) -> None:
+        with temp_config() as config:
+            first = replay_source_window(
+                source_code="product_hunt",
+                window="2026-03-01..2026-03-08",
+                config=config,
+            )
+            second = replay_source_window(
+                source_code="product_hunt",
+                window="2026-03-01..2026-03-08",
+                config=config,
+            )
+
+            self.assertEqual(
+                [record["raw_id"] for record in first["raw_records"]],
+                [record["raw_id"] for record in second["raw_records"]],
+            )
+
+            raw_index_path = config.raw_store_dir / "raw_records.json"
+            raw_index = json.loads(raw_index_path.read_text(encoding="utf-8"))
+            self.assertEqual(len(raw_index), 2)
 
     def test_candidate_prescreen_writes_workspace_documents_from_fixtures(self) -> None:
         with TemporaryDirectory() as tmp_dir:
