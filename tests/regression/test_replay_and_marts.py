@@ -121,19 +121,70 @@ class ReplayAndMartRegressionTests(unittest.TestCase):
         with temp_config() as config:
             mart = build_default_mart(config)
             categories = {row["category_code"]: row["product_count"] for row in mart["top_jtbd_products_30d"]}
-            self.assertEqual(categories["research_ops"], 2)
-            self.assertEqual(categories["qa_automation"], 1)
+            self.assertEqual(categories["JTBD_KNOWLEDGE_RESEARCH"], 2)
+            self.assertEqual(categories["JTBD_DEV_TOOLS_TESTING"], 1)
             self.assertNotIn("unresolved", categories)
 
             attention_rows = {(row["category_code"], row["attention_band"]): row["product_count"] for row in mart["attention_distribution_30d"]}
-            self.assertEqual(attention_rows[("research_ops", "high")], 1)
-            self.assertEqual(attention_rows[("research_ops", "medium")], 1)
-            self.assertNotIn(("qa_automation", None), attention_rows)
+            self.assertEqual(attention_rows[("JTBD_KNOWLEDGE_RESEARCH", "high")], 1)
+            self.assertEqual(attention_rows[("JTBD_KNOWLEDGE_RESEARCH", "medium")], 1)
+            self.assertNotIn(("JTBD_DEV_TOOLS_TESTING", None), attention_rows)
 
             unresolved_rows = {row["review_issue_id"]: row for row in mart["unresolved_registry_view"]}
             self.assertEqual(len(unresolved_rows), 1)
             self.assertTrue(unresolved_rows["rev_003"]["is_effective_unresolved"])
             self.assertFalse(unresolved_rows["rev_003"]["is_stale"])
+
+    def test_mart_builder_emits_fact_dimensions_and_dashboard_contract(self) -> None:
+        with temp_config() as config:
+            mart = build_default_mart(config)
+
+            facts = {row["product_id"]: row for row in mart["fact_product_observation"]}
+            self.assertCountEqual(facts, ["prod_001", "prod_002", "prod_004"])
+            self.assertEqual(facts["prod_001"]["taxonomy_primary_code"], "JTBD_KNOWLEDGE_RESEARCH")
+            self.assertEqual(facts["prod_004"]["taxonomy_primary_code"], "JTBD_DEV_TOOLS_TESTING")
+            self.assertEqual(facts["prod_002"]["attention_metric_definition_version"], "attention_metric_v1")
+            self.assertEqual(facts["prod_002"]["attention_formula_version"], "attention_v1")
+            self.assertEqual(facts["prod_001"]["metric_version"], "source_metric_registry_v4")
+
+            products = {row["product_id"]: row for row in mart["dim_product"]}
+            self.assertEqual(products["prod_001"]["current_primary_persona_code"], "researcher")
+            self.assertEqual(products["prod_004"]["current_delivery_form_code"], "web_app")
+            self.assertTrue(products["prod_003"]["is_unresolved"])
+
+            sources = {row["source_id"]: row for row in mart["dim_source"]}
+            self.assertEqual(sources["src_github"]["source_name"], "GitHub")
+            self.assertTrue(sources["src_product_hunt"]["enabled"])
+
+            taxonomy = {row["category_code"]: row for row in mart["dim_taxonomy"]}
+            self.assertEqual(taxonomy["JTBD_KNOWLEDGE_RESEARCH"]["parent_code"], "JTBD_KNOWLEDGE")
+            self.assertEqual(taxonomy["JTBD_DEV_TOOLS_TESTING"]["parent_code"], "JTBD_DEV_TOOLS")
+
+            personas = {row["code"]: row for row in mart["dim_persona"]}
+            self.assertEqual(personas["researcher"]["label"], "Researcher / 研究人员")
+            self.assertTrue(personas["unknown"]["is_unknown"])
+
+            delivery_forms = {row["code"]: row for row in mart["dim_delivery_form"]}
+            self.assertEqual(delivery_forms["web_app"]["label"], "Web App / Web 应用")
+
+            dashboard_contract = mart["dashboard_read_contract"]
+            self.assertEqual(dashboard_contract["main_report_dataset"], "fact_product_observation")
+            self.assertEqual(dashboard_contract["main_report_semantics"], "effective resolved taxonomy")
+            self.assertFalse(dashboard_contract["runtime_detail_join_allowed"])
+
+    def test_drill_down_trace_covers_main_report_and_unresolved_paths(self) -> None:
+        with temp_config() as config:
+            mart = build_default_mart(config)
+            trace = {row["product_id"]: row for row in mart["drill_down_trace"]}
+
+            self.assertEqual(trace["prod_001"]["path_type"], "source_to_main_mart")
+            self.assertTrue(trace["prod_001"]["main_report_included"])
+            self.assertEqual(trace["prod_001"]["evidence_ids"], ["ev_prod_001_homepage", "ev_prod_001_description"])
+
+            self.assertEqual(trace["prod_003"]["path_type"], "effective_unresolved_registry")
+            self.assertFalse(trace["prod_003"]["main_report_included"])
+            self.assertTrue(trace["prod_003"]["unresolved_registry_required"])
+            self.assertEqual(trace["prod_003"]["review_issue_ids"], ["rev_003"])
 
     def test_mart_build_replays_same_window_with_new_task(self) -> None:
         with temp_config() as config:
@@ -149,6 +200,66 @@ class ReplayAndMartRegressionTests(unittest.TestCase):
             self.assertEqual(mart_tasks[1]["parent_task_id"], mart_tasks[0]["task_id"])
             self.assertEqual(mart_tasks[1]["status"], "succeeded")
 
+    def test_dashboard_reconciliation_and_drill_down_cli_follow_mart_outputs(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            env = os.environ.copy()
+            env.update(
+                {
+                    "APO_RAW_STORE_DIR": str(root / "raw_store"),
+                    "APO_TASK_STORE_PATH": str(root / "task_store" / "tasks.json"),
+                    "APO_MART_OUTPUT_DIR": str(root / "marts"),
+                }
+            )
+
+            install = subprocess.run(
+                [sys.executable, "-m", "src.cli", "install"],
+                cwd=REPO_ROOT,
+                env=env,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(install.returncode, 0, msg=install.stderr)
+
+            build = subprocess.run(
+                [sys.executable, "-m", "src.cli", "build-mart-window"],
+                cwd=REPO_ROOT,
+                env=env,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(build.returncode, 0, msg=build.stderr)
+
+            mart_path = root / "marts" / "mart_window.json"
+            reconciliation = subprocess.run(
+                [sys.executable, "-m", "src.cli", "dashboard-reconciliation", "--mart-path", str(mart_path)],
+                cwd=REPO_ROOT,
+                env=env,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(reconciliation.returncode, 0, msg=reconciliation.stderr)
+            reconciliation_payload = json.loads(reconciliation.stdout)
+            self.assertTrue(reconciliation_payload["all_passed"])
+            self.assertEqual(reconciliation_payload["pass_rate"], 1.0)
+
+            drill_down = subprocess.run(
+                [sys.executable, "-m", "src.cli", "product-drill-down", "--mart-path", str(mart_path), "--product-id", "prod_003"],
+                cwd=REPO_ROOT,
+                env=env,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(drill_down.returncode, 0, msg=drill_down.stderr)
+            drill_down_payload = json.loads(drill_down.stdout)
+            self.assertFalse(drill_down_payload["main_report_included"])
+            self.assertEqual(drill_down_payload["effective_taxonomy_code"], "unresolved")
+            self.assertEqual(drill_down_payload["trace_refs"]["review_issue_ids"], ["rev_003"])
+
     def test_mart_builder_only_consumes_active_effective_results(self) -> None:
         with TemporaryDirectory() as tmp_dir:
             fixtures_dir = Path(tmp_dir)
@@ -163,7 +274,7 @@ class ReplayAndMartRegressionTests(unittest.TestCase):
                     "effective_taxonomy": {
                         "label_role": "primary",
                         "result_status": "pending_review",
-                        "category_code": "research_ops",
+                        "category_code": "JTBD_KNOWLEDGE_RESEARCH",
                     },
                     "effective_scores": {"attention_band": "high"},
                 }
@@ -178,7 +289,7 @@ class ReplayAndMartRegressionTests(unittest.TestCase):
                 REPO_ROOT / "configs" / "source_registry.yaml",
             )
             categories = {row["category_code"]: row["product_count"] for row in mart["top_jtbd_products_30d"]}
-            self.assertEqual(categories["research_ops"], 2)
+            self.assertEqual(categories["JTBD_KNOWLEDGE_RESEARCH"], 2)
 
     def test_mart_builder_prefers_canonical_taxonomy_assignments_over_prebaked_effective_taxonomy(self) -> None:
         with TemporaryDirectory() as tmp_dir:
@@ -186,7 +297,7 @@ class ReplayAndMartRegressionTests(unittest.TestCase):
             (fixtures_dir / "marts").mkdir(parents=True, exist_ok=True)
 
             mart_fixture = json.loads((REPO_ROOT / "fixtures" / "marts" / "effective_results_window.json").read_text(encoding="utf-8"))
-            mart_fixture["records"][2]["effective_taxonomy"]["category_code"] = "research_ops"
+            mart_fixture["records"][2]["effective_taxonomy"]["category_code"] = "JTBD_KNOWLEDGE_RESEARCH"
             (fixtures_dir / "marts" / "effective_results_window.json").write_text(
                 json.dumps(mart_fixture, indent=2, ensure_ascii=True) + "\n",
                 encoding="utf-8",
@@ -199,7 +310,7 @@ class ReplayAndMartRegressionTests(unittest.TestCase):
             categories = {row["category_code"]: row["product_count"] for row in mart["top_jtbd_products_30d"]}
             unresolved_rows = {row["review_issue_id"]: row for row in mart["unresolved_registry_view"]}
 
-            self.assertEqual(categories["research_ops"], 2)
+            self.assertEqual(categories["JTBD_KNOWLEDGE_RESEARCH"], 2)
             self.assertNotIn("unresolved", categories)
             self.assertTrue(unresolved_rows["rev_003"]["is_effective_unresolved"])
 
@@ -235,7 +346,7 @@ class ReplayAndMartRegressionTests(unittest.TestCase):
             categories = {row["category_code"]: row["product_count"] for row in mart["top_jtbd_products_30d"]}
             unresolved_rows = {row["review_issue_id"]: row for row in mart["unresolved_registry_view"]}
 
-            self.assertEqual(categories["research_ops"], 1)
+            self.assertEqual(categories["JTBD_KNOWLEDGE_RESEARCH"], 1)
             self.assertNotIn("unresolved", categories)
             self.assertTrue(unresolved_rows[applied["review_issue"]["review_issue_id"]]["is_effective_unresolved"])
 
@@ -272,7 +383,7 @@ class ReplayAndMartRegressionTests(unittest.TestCase):
             categories = {row["category_code"]: row["product_count"] for row in mart["top_jtbd_products_30d"]}
             unresolved_rows = {row["review_issue_id"]: row for row in mart["unresolved_registry_view"]}
 
-            self.assertEqual(categories["research_ops"], 2)
+            self.assertEqual(categories["JTBD_KNOWLEDGE_RESEARCH"], 2)
             self.assertFalse(unresolved_rows[applied["review_issue"]["review_issue_id"]]["is_effective_unresolved"])
 
     def test_consumption_contract_examples_match_fixture_records(self) -> None:

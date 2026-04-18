@@ -223,8 +223,8 @@ last_frozen_version: repo_mapping_v2
 当前最小可运行骨架已经落成，以下命令约定已映射到实际入口：
 
 - `make install`
-  - 初始化 `.runtime/raw_store/`、`.runtime/task_store/tasks.json`、`.runtime/marts/`
-  - 其中 `.runtime/task_store/tasks.json` 只是本地骨架与 fixture/replay harness；canonical runtime backend 仍以 `15_tech_stack_and_runtime.md` 与 `18_runtime_task_and_replay_contracts.md` 中冻结的主关系库 task table 为准
+  - 初始化 `.runtime/raw_store/`、`.runtime/task_store/tasks.json`、`.runtime/task_store/review_issues.json`、`.runtime/task_store/processing_errors.json` 与 `.runtime/marts/`
+  - 其中 `.runtime/task_store/*.json` 只作为本地骨架与 fixture/replay/review harness；canonical runtime backend 仍以 `15_tech_stack_and_runtime.md` 与 `18_runtime_task_and_replay_contracts.md` 中冻结的主关系库 task table 为准
 - `make lint`
   - 运行仓库内最小 Python lint 检查
 - `make typecheck`
@@ -239,6 +239,22 @@ last_frozen_version: repo_mapping_v2
   - 当前已实现 `product_hunt` 与 `github` 的 fixture replay
 - `make build-mart-window`
   - 当前已实现最小 mart fixture rebuild
+- `python3 -m src.cli dashboard-view [--mart-path <path>]`
+  - 当前已实现 mart-backed dashboard payload 读取路径；默认从本地默认 mart fixture rebuild 生成 dashboard 视图
+- `python3 -m src.cli dashboard-reconciliation [--mart-path <path>]`
+  - 当前已实现本地 Phase1-F/Phase1-G dashboard reconciliation 检查；只对 mart-backed dashboard contract 做对账，不等于完整 Phase1 exit gate
+- `python3 -m src.cli product-drill-down --product-id <id> [--mart-path <path>]`
+  - 当前已实现从 mart-backed drill-down trace 回链 `product / observation / evidence / review_issue` 的本地 CLI 路径
+- `python3 -m src.cli trigger-taxonomy-review --source-item-path <path> --record-path <path>`
+  - 当前已实现 Phase1-D taxonomy unresolved / low-confidence -> local `review_issue` store 的最小 CLI 落点
+- `python3 -m src.cli trigger-entity-review --source-item-path <path> --existing-products-path <path>`
+  - 当前已实现 `entity_merge_uncertainty` -> local `review_issue` store 的最小 CLI 落点
+- `python3 -m src.cli trigger-score-review --score-snapshot-path <path> --issue-type <issue_type>`
+  - 当前已实现 `score_conflict` / `suspicious_result` -> local `review_issue` store 的最小 CLI 落点
+- `python3 -m src.cli review-queue --open-only`
+  - 当前已实现从 `.runtime/task_store/review_issues.json` 派生 `review_queue_view` 的本地 CLI 读取路径
+- `python3 -m src.cli resolve-taxonomy-review --record-path <path> --review-issue-id <id> ...`
+  - 当前已实现 taxonomy review writeback 与 `P0 override -> approver required` 的本地 maker-checker CLI 路径
 
 测试目录与当前最小基线的固定映射：
 

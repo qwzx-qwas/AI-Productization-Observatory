@@ -121,11 +121,17 @@ python3 -m src.cli fill-gold-set-staging-until-complete --source github --initia
 python3 -m src.cli replay-window --source product_hunt --window 2026-03-01..2026-03-08
 python3 -m src.cli replay-window --source github --window 2026-03-01..2026-03-08
 python3 -m src.cli build-mart-window
+python3 -m src.cli trigger-taxonomy-review --source-item-path /tmp/source_item.json --record-path /tmp/taxonomy_review_record.json
+python3 -m src.cli trigger-entity-review --source-item-path /tmp/source_item.json --existing-products-path /tmp/existing_products.json
+python3 -m src.cli trigger-score-review --score-snapshot-path /tmp/score_snapshot.json --issue-type score_conflict
+python3 -m src.cli review-queue --open-only
 ```
 
-`make install` 当前执行的是本地 bootstrap：创建 `.runtime/` 目录、校验最小运行前提，不强依赖系统 `pip` 是否可用。
+`make install` 当前执行的是本地 bootstrap：创建 `.runtime/` 目录、校验最小运行前提，不强依赖系统 `pip` 是否可用。当前 bootstrap 会初始化 raw/task/mart 目录，以及 `APO_TASK_STORE_PATH` 同级的 `review_issues.json`、`processing_errors.json` 本地 file-backed control-plane baseline。
 
 `make replay-window` 与 `make build-mart-window` 都会把 task state 写入 `APO_TASK_STORE_PATH`；当前最小基线已经保证并行 CLI 运行时不会把 task store 写坏。
+
+`trigger-taxonomy-review`、`trigger-entity-review`、`trigger-score-review`、`review-queue` 与 `resolve-taxonomy-review` 当前提供的是本地 file-backed `review_issue` / `review_queue_view` / taxonomy maker-checker baseline，用于验证 `Phase1-D -> Phase1-E` 的最小可执行链路；它们不是 `15_tech_stack_and_runtime.md` 中最终 DB-backed control plane 的替代声明。
 
 当前阶段命令边界说明：
 

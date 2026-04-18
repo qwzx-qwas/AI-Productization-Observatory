@@ -146,25 +146,40 @@
 
 ### Phase1-E review / error / replay / unresolved 控制平面
 
-- current_status: `partial_scaffold_with_runtime_guards`
+- current_status: `baseline_complete_ready_for_phase1_f`
 - canonical_basis: `08`, `09`, `12`, `13`, `14`, `18`, `17`
 - repo_landing:
   - `src/review/review_packet_builder.py`
+  - `src/review/store.py`
+  - `src/review/runtime.py`
   - `schemas/review_packet.schema.json`
   - `src/runtime/tasks.py`
+  - `src/runtime/processing_errors.py`
   - `src/runtime/replay.py`
 - test_paths:
   - `tests/contract/test_contracts.py`
+  - `tests/integration/test_phase1_review_runtime.py`
   - `tests/regression/test_replay_and_marts.py`
+  - `tests/unit/test_review_issue_store.py`
+  - `tests/unit/test_processing_error_store.py`
   - `tests/unit/test_runtime.py`
 - current_evidence:
   - `review_packet` schema 已存在并受 contract test 约束
+  - `src/review/store.py` 已提供 file-backed `review_issue` registry、派生 `review_queue_view` 与 taxonomy review writeback / unresolved registry helper，并由 unit test 覆盖 open / resolve 路径
+  - `src/runtime/tasks.py` + `src/runtime/processing_errors.py` 已把 retryable failure、terminal failure、blocked replay 写回 file-backed `processing_error` registry，且成功重放会回写 resolved 状态
+  - `src/review/runtime.py` + `trigger-taxonomy-review` 已把当前 taxonomy classifier 的 unresolved / low-confidence 触发自动接入 `review_issue` store，并可把 record snapshot 写成可继续 resolve 的本地 artifact
+  - `trigger-entity-review` 已把 `entity_merge_uncertainty` 接入同一套 file-backed `review_issue` store，并可按 `P0` 进入 `high_impact_merge` bucket
+  - `trigger-score-review` 已为 `score_conflict` / `suspicious_result` 提供 store-backed review packet / queue 入口，而不额外发明未冻结的 scorer 自动裁决规则
+  - `review-queue` 与 `resolve-taxonomy-review` 已提供本地 `review_queue_view` / taxonomy maker-checker CLI 落点，integration test 已覆盖 open queue、resolve writeback 与 `P0 override -> approver required`
   - blocked replay、retryable failure、terminal failure 已有最小 runtime/regression 断言
-  - `review_packet_builder.py` 已提供 taxonomy review packet、taxonomy resolution writeback 与 unresolved registry 的本地 harness helper
   - `src/marts/builder.py` 已可优先从 canonical `taxonomy_assignment` / `review_issue` fixture 记录派生 effective taxonomy 与 `unresolved_registry_view`
-- blockers_to_close:
-  - 尚无 `review_issue` / `processing_error` 写回闭环
-  - unresolved registry / maker-checker 仍未作为真实控制平面对象落地
+  - `docs/phase1_e_acceptance_evidence.md` 已记录当前 local baseline 的 manual trace / acceptance evidence
+- ready_to_advance:
+  - 已形成 `review_issue` / `processing_error` 分流、maker-checker gate、blocked replay gate、`unresolved_registry_view` 与 sample-pool layering 的本地可执行基线
+  - 以上边界已足以支撑 `Phase1-F` 继续只消费 effective resolved result 与 unresolved backlog 视图
+- carry_forward_notes:
+  - 当前 `review_issue` / `processing_error` 仍是 file-backed baseline；这不阻塞进入 `Phase1-F`，但也不应被表述为已完成 `15_tech_stack_and_runtime.md` 的 DB-backed 最终控制平面
+  - 当前 manual trace / acceptance evidence 已满足 `Phase1-E -> Phase1-F` 基线推进，但仍不能替代 `Phase1-G` 所需的 dashboard reconciliation、sampling 与退出评审证据包
 
 ### Phase1-F mart、dashboard 与 drill-down 消费层
 
@@ -179,26 +194,35 @@
   - fixture-backed mart builder 已实现
   - regression 已断言 main mart 仅消费 effective resolved primary 结果，并过滤 `unresolved`
   - `fixtures/marts/consumption_contract_examples.json` 已为 drill-down trace 提供最小消费样例
+  - `Phase1-E` 当前已形成 `review_issue` / `review_queue_view` / `processing_error` / `unresolved_registry_view` 的本地可执行基线，因此 `Phase1-F` 的输入前置条件已满足
 - blockers_to_close:
   - 当前只有 fixture-backed consumption contract，没有真实 dashboard 或 drill-down UI
   - 当前不能把 fixture mart 结果等同于完整 Phase1 dashboard 验收
 
 ### Phase1-G 验证、验收与退出评审
 
-- current_status: `baseline_evidence_only_not_exit_ready`
-- canonical_basis: `01`, `14`, `17`, `25`
+- current_status: `local_acceptance_path_ready_not_exit_ready`
+- canonical_basis: `01`, `11`, `14`, `17`, `25`
 - repo_landing:
   - `tests/`
   - `docs/phase1_a_baseline.md`
+  - `docs/phase1_g_acceptance_evidence.md`
+  - `src/marts/presentation.py`
+  - `src/cli.py`
 - test_paths:
   - `tests/contract/test_contracts.py`
   - `tests/integration/test_pipeline.py`
   - `tests/regression/test_replay_and_marts.py`
+  - `tests/unit/test_mart_presentation.py`
 - current_evidence:
   - Phase1-A 所需的 config/schema/gold-set 基线验证已可执行
   - 当前仓库已具备最小 fixture replay、candidate prescreen、mart consumption 与 runtime guard 测试
+  - `src/marts/presentation.py` 已提供 mart-backed `dashboard_view`、`dashboard_reconciliation` 与 `product_drill_down` 的本地读取/对账骨架，且不重新 join 运行层细表
+  - `python3 -m src.cli dashboard-view`、`dashboard-reconciliation` 与 `product-drill-down` 已形成可直接执行的本地 Phase1-G reconciliation / manual trace 路径
+  - `docs/phase1_g_acceptance_evidence.md` 已把当前 fixture-backed dashboard reconciliation、manual trace walkthrough 与 remaining blockers 收敛成单独 evidence 文档
 - blockers_to_close:
-  - Phase1 Exit Checklist 中要求的 GitHub 完整抓取周期、端到端 trace、review/error 分流闭环、dashboard reconciliation 等条件尚不能宣称完成
+  - 当前 dashboard reconciliation 只覆盖 fixture-backed local baseline，不等于 `01` / `14` 所要求的完整 release-level dashboard reconciliation gate
+  - Phase1 Exit Checklist 中要求的 GitHub 完整抓取周期、merge spot-check / taxonomy audit / score audit / unresolved audit、owner merge/release judgment 等条件尚不能宣称完成
 
 ## 4. Substage Dependency Graph
 

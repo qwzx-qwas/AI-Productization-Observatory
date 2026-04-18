@@ -84,6 +84,70 @@ def build_taxonomy_review_issue(
     }
 
 
+def build_review_issue_artifacts(
+    *,
+    target_type: str,
+    target_id: str,
+    target_summary: str,
+    issue_type: str,
+    current_auto_result: dict[str, Any],
+    related_evidence: list[dict[str, Any]],
+    conflict_point: str,
+    recommended_action: str,
+    upstream_downstream_links: list[dict[str, Any]],
+    config_dir,
+    schema_dir,
+    priority_code: str | None = None,
+    created_at: str | None = None,
+) -> dict[str, Any]:
+    rules = load_yaml(config_dir / "review_rules_v0.yaml")
+    _validate_issue_type(issue_type, rules)
+    _validate_priority(priority_code, rules, allow_none=True)
+    if not current_auto_result:
+        raise ContractValidationError("Review packet requires a non-empty current_auto_result")
+
+    packet = {
+        "target_summary": target_summary,
+        "issue_type": issue_type,
+        "current_auto_result": current_auto_result,
+        "related_evidence": related_evidence[: max(1, min(len(related_evidence), 3))],
+        "conflict_point": conflict_point,
+        "recommended_action": recommended_action,
+        "upstream_downstream_links": upstream_downstream_links,
+    }
+    validate_instance(packet, schema_dir / "review_packet.schema.json")
+
+    timestamp = created_at or utc_now_iso()
+    issue_priority = priority_code or _default_priority_for_generic_issue(issue_type)
+    _validate_priority(issue_priority, rules, allow_none=False)
+    review_issue = {
+        "review_issue_id": _stable_issue_id(issue_type, target_type, target_id),
+        "issue_type": issue_type,
+        "target_type": target_type,
+        "target_id": target_id,
+        "priority_code": issue_priority,
+        "status": "open",
+        "assigned_to": None,
+        "reviewer": None,
+        "reviewed_at": None,
+        "resolution_action": None,
+        "approver": None,
+        "approved_at": None,
+        "maker_checker_required": _maker_checker_required(issue_priority, resolution_action=None),
+        "payload_json": packet,
+        "resolution_payload_json": None,
+        "created_at": timestamp,
+        "updated_at": timestamp,
+        "resolved_at": None,
+        "resolution_notes": None,
+    }
+    return {
+        "review_packet": packet,
+        "review_issue": review_issue,
+        "review_queue_view": build_review_queue_entry(review_issue, config_dir=config_dir),
+    }
+
+
 def resolve_taxonomy_review_issue(
     review_issue: dict[str, Any],
     current_assignment: dict[str, Any],
@@ -390,6 +454,14 @@ def _default_priority_for_issue(issue_type: str, current_assignment: dict[str, A
     if issue_type == "taxonomy_conflict":
         return "P1"
     if current_assignment.get("category_code") == "unresolved":
+        return "P1"
+    return "P2"
+
+
+def _default_priority_for_generic_issue(issue_type: str) -> str:
+    if issue_type == "entity_merge_uncertainty":
+        return "P1"
+    if issue_type in {"score_conflict", "suspicious_result", "taxonomy_conflict"}:
         return "P1"
     return "P2"
 

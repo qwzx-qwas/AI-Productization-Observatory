@@ -30,6 +30,8 @@ SCREENING_POSITIVE_DATA_PATH = REPO_ROOT / "docs" / "screening_calibration_asset
 SCREENING_NEGATIVE_DATA_PATH = REPO_ROOT / "docs" / "screening_calibration_assets" / "screening_negative_set" / "screening_negative_set_candidates.yaml"
 SCREENING_BOUNDARY_DATA_PATH = REPO_ROOT / "docs" / "screening_calibration_assets" / "screening_boundary_set" / "screening_boundary_set_candidates.yaml"
 PHASE1_A_BASELINE_PATH = REPO_ROOT / "docs" / "phase1_a_baseline.md"
+PHASE1_E_ACCEPTANCE_EVIDENCE_PATH = REPO_ROOT / "docs" / "phase1_e_acceptance_evidence.md"
+PHASE1_G_ACCEPTANCE_EVIDENCE_PATH = REPO_ROOT / "docs" / "phase1_g_acceptance_evidence.md"
 
 EXPECTED_MVP_REFERENCE_SAMPLE_COUNTS = {
     "gold_set": 134,
@@ -265,10 +267,18 @@ class ContractCommandTests(unittest.TestCase):
         result = self.run_cli("--help")
         self.assertEqual(result.returncode, 0)
         self.assertIn("dedupe-staging-semantic-duplicates", result.stdout)
+        self.assertIn("dashboard-reconciliation", result.stdout)
+        self.assertIn("dashboard-view", result.stdout)
         self.assertIn("fill-gold-set-staging-until-complete", result.stdout)
+        self.assertIn("product-drill-down", result.stdout)
         self.assertIn("replay-window", result.stdout)
+        self.assertIn("review-queue", result.stdout)
         self.assertIn("run-candidate-prescreen", result.stdout)
+        self.assertIn("trigger-entity-review", result.stdout)
+        self.assertIn("trigger-score-review", result.stdout)
+        self.assertIn("trigger-taxonomy-review", result.stdout)
         self.assertIn("archive-duplicate-candidate-records", result.stdout)
+        self.assertIn("resolve-taxonomy-review", result.stdout)
         self.assertIn("validate-candidate-workspace", result.stdout)
 
     def test_fill_cli_help_includes_wait_controls(self) -> None:
@@ -650,6 +660,8 @@ class ContractCommandTests(unittest.TestCase):
             self.assertTrue((root / "task_store").is_dir())
             self.assertTrue((root / "marts").is_dir())
             self.assertEqual((root / "task_store" / "tasks.json").read_text(encoding="utf-8").strip(), "[]")
+            self.assertEqual((root / "task_store" / "review_issues.json").read_text(encoding="utf-8").strip(), "[]")
+            self.assertEqual((root / "task_store" / "processing_errors.json").read_text(encoding="utf-8").strip(), "[]")
 
 
 class ScreeningCalibrationAssetContractTests(unittest.TestCase):
@@ -773,3 +785,36 @@ class Phase1ABaselineContractTests(unittest.TestCase):
         self.assertIn("`src/collectors/github.py` 与 `fixtures/collector/github_qf_agent_window.json` 已把 GitHub `selection_rule_version + query_slice_id + pushed window + page` replay contract 显式落到仓库", content)
         self.assertIn("`entity_resolver.py`、`observation_builder.py`、`evidence_extractor.py`、`product_profiler.py`、`taxonomy_classifier.py`、`score_engine.py` 已提供 Phase1-D baseline 规则实现", content)
         self.assertIn("当前没有新增的 `Phase1-A` blocker", content)
+
+
+class Phase1EAcceptanceEvidenceContractTests(unittest.TestCase):
+    def test_document_overview_registers_phase1_e_acceptance_evidence(self) -> None:
+        content = DOCUMENT_OVERVIEW_PATH.read_text(encoding="utf-8")
+        self.assertIn("`docs/phase1_e_acceptance_evidence.md`", content)
+        self.assertIn("`Phase1-E acceptance evidence`", content)
+
+    def test_phase1_e_acceptance_evidence_tracks_cli_and_manual_trace(self) -> None:
+        content = PHASE1_E_ACCEPTANCE_EVIDENCE_PATH.read_text(encoding="utf-8")
+        self.assertIn("`trigger-entity-review`", content)
+        self.assertIn("`trigger-taxonomy-review`", content)
+        self.assertIn("`review-queue`", content)
+        self.assertIn("`trigger-score-review`", content)
+        self.assertIn("`resolve-taxonomy-review`", content)
+        self.assertIn("review writeback walkthrough", content)
+        self.assertIn("blocked replay", content)
+
+
+class Phase1GAcceptanceEvidenceContractTests(unittest.TestCase):
+    def test_document_overview_registers_phase1_g_acceptance_evidence(self) -> None:
+        content = DOCUMENT_OVERVIEW_PATH.read_text(encoding="utf-8")
+        self.assertIn("`docs/phase1_g_acceptance_evidence.md`", content)
+        self.assertIn("`Phase1-G acceptance evidence`", content)
+
+    def test_phase1_g_acceptance_evidence_tracks_local_reconciliation_paths_and_blockers(self) -> None:
+        content = PHASE1_G_ACCEPTANCE_EVIDENCE_PATH.read_text(encoding="utf-8")
+        self.assertIn("`dashboard-reconciliation`", content)
+        self.assertIn("`dashboard-view`", content)
+        self.assertIn("`product-drill-down`", content)
+        self.assertIn("merge spot-check", content)
+        self.assertIn("GitHub 完整抓取周期", content)
+        self.assertIn("不等于 Phase1 退出评审通过", content)

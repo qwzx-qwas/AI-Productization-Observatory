@@ -605,6 +605,18 @@ last_frozen_version: governance_v2
    - repo path：`docs/screening_calibration_assets/`
    - owner：`review_owner`
    - status：`implemented`
+   (22) 第 22 行
+   - doc：`phase1_prompt.md`
+   - artifact：`Phase1-E acceptance evidence`
+   - repo path：`docs/phase1_e_acceptance_evidence.md`
+   - owner：`phase1_owner`
+   - status：`implemented`
+   (23) 第 23 行
+   - doc：`phase1_prompt.md`
+   - artifact：`Phase1-G acceptance evidence`
+   - repo path：`docs/phase1_g_acceptance_evidence.md`
+   - owner：`phase1_owner`
+   - status：`implemented`
 
 
 ## Artifact Source Of Truth Policy

@@ -27,8 +27,18 @@ from src.common.files import dump_json, load_json, load_yaml
 from src.common.logging_utils import configure_logging, get_logger
 from src.common.schema import validate_schema_document
 from src.devtools.quality import format_python, lint_python, typecheck_python
+from src.marts.presentation import build_dashboard_view, build_product_drill_down, reconcile_dashboard_view
 from src.runtime.migrations import migration_plan
-from src.runtime.replay import build_mart_window, replay_source_window
+from src.runtime.processing_errors import default_processing_error_store_path
+from src.runtime.replay import build_default_mart, build_mart_window, replay_source_window
+from src.review.runtime import (
+    list_review_queue,
+    resolve_taxonomy_review_from_record_path,
+    trigger_entity_review_from_source_item,
+    trigger_score_review_from_snapshot,
+    trigger_taxonomy_review_from_source_item,
+)
+from src.review.store import default_review_issue_store_path
 
 
 def _require_mapping(value: object, description: str) -> dict[str, object]:
@@ -1140,6 +1150,75 @@ def build_parser() -> argparse.ArgumentParser:
 
     subparsers.add_parser("build-mart-window", help="Build the default mart fixture into a local mart artifact.")
 
+    dashboard_view_parser = subparsers.add_parser(
+        "dashboard-view",
+        help="Render the mart-backed dashboard payload without rejoining runtime tables.",
+    )
+    dashboard_view_parser.add_argument("--mart-path")
+
+    dashboard_reconciliation_parser = subparsers.add_parser(
+        "dashboard-reconciliation",
+        help="Run the local mart-backed dashboard reconciliation checks for Phase1-F/Phase1-G.",
+    )
+    dashboard_reconciliation_parser.add_argument("--mart-path")
+
+    drill_down_parser = subparsers.add_parser(
+        "product-drill-down",
+        help="Render one mart-backed drill-down payload for a product trace path.",
+    )
+    drill_down_parser.add_argument("--product-id", required=True)
+    drill_down_parser.add_argument("--mart-path")
+
+    trigger_review_parser = subparsers.add_parser(
+        "trigger-taxonomy-review",
+        help="Run the Phase1-D taxonomy path for one source_item JSON and persist any triggered review_issue.",
+    )
+    trigger_review_parser.add_argument("--source-item-path", required=True)
+    trigger_review_parser.add_argument("--record-path")
+    trigger_review_parser.add_argument("--issue-type")
+    trigger_review_parser.add_argument("--priority-code")
+    trigger_review_parser.add_argument("--created-at")
+
+    review_queue_parser = subparsers.add_parser(
+        "review-queue",
+        help="Render the local file-backed review_queue_view derived from review_issues.json.",
+    )
+    review_queue_parser.add_argument("--open-only", action="store_true")
+
+    resolve_review_parser = subparsers.add_parser(
+        "resolve-taxonomy-review",
+        help="Apply taxonomy review resolution and optional maker-checker approval to a record snapshot.",
+    )
+    resolve_review_parser.add_argument("--record-path", required=True)
+    resolve_review_parser.add_argument("--review-issue-id", required=True)
+    resolve_review_parser.add_argument("--resolution-action", required=True)
+    resolve_review_parser.add_argument("--resolution-notes", required=True)
+    resolve_review_parser.add_argument("--reviewer", required=True)
+    resolve_review_parser.add_argument("--reviewed-at")
+    resolve_review_parser.add_argument("--approver")
+    resolve_review_parser.add_argument("--approved-at")
+    resolve_review_parser.add_argument("--override-category-code")
+    resolve_review_parser.add_argument("--unresolved-mode")
+    resolve_review_parser.add_argument("--output-path")
+
+    trigger_entity_parser = subparsers.add_parser(
+        "trigger-entity-review",
+        help="Run the entity resolver on one source_item JSON and persist entity_merge_uncertainty when review is required.",
+    )
+    trigger_entity_parser.add_argument("--source-item-path", required=True)
+    trigger_entity_parser.add_argument("--existing-products-path", required=True)
+    trigger_entity_parser.add_argument("--priority-code")
+    trigger_entity_parser.add_argument("--created-at")
+
+    trigger_score_parser = subparsers.add_parser(
+        "trigger-score-review",
+        help="Persist a score_conflict or suspicious_result review issue from a traceable score snapshot JSON.",
+    )
+    trigger_score_parser.add_argument("--score-snapshot-path", required=True)
+    trigger_score_parser.add_argument("--issue-type", required=True)
+    trigger_score_parser.add_argument("--priority-code")
+    trigger_score_parser.add_argument("--created-at")
+
     migrate_parser = subparsers.add_parser("migrate", help="Show the reserved migration entrypoint plan.")
     migrate_parser.add_argument("--plan", action="store_true")
 
@@ -1174,7 +1253,19 @@ def bootstrap_install(config: AppConfig) -> str:
     config.mart_output_dir.mkdir(parents=True, exist_ok=True)
     if not config.task_store_path.exists():
         dump_json(config.task_store_path, [])
+    review_issue_store_path = default_review_issue_store_path(config.task_store_path)
+    if not review_issue_store_path.exists():
+        dump_json(review_issue_store_path, [])
+    processing_error_store_path = default_processing_error_store_path(config.task_store_path)
+    if not processing_error_store_path.exists():
+        dump_json(processing_error_store_path, [])
     return "bootstrap_complete"
+
+
+def _load_or_build_mart(config: AppConfig, mart_path: str | None) -> dict[str, object]:
+    if mart_path:
+        return _require_mapping(load_json(Path(mart_path)), f"mart:{mart_path}")
+    return _require_mapping(build_default_mart(config), "default mart")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -1388,6 +1479,106 @@ def main(argv: list[str] | None = None) -> int:
                 f"task_id={result['task_id']} mart_rows={len(mart['top_jtbd_products_30d'])} "
                 f"attention_rows={len(mart['attention_distribution_30d'])}"
             )
+            return 0
+
+        if args.command == "dashboard-view":
+            mart = _load_or_build_mart(config, args.mart_path)
+            print(json.dumps(build_dashboard_view(mart), ensure_ascii=True))
+            return 0
+
+        if args.command == "dashboard-reconciliation":
+            mart = _load_or_build_mart(config, args.mart_path)
+            print(json.dumps(reconcile_dashboard_view(mart), ensure_ascii=True))
+            return 0
+
+        if args.command == "product-drill-down":
+            mart = _load_or_build_mart(config, args.mart_path)
+            print(json.dumps(build_product_drill_down(mart, product_id=args.product_id), ensure_ascii=True))
+            return 0
+
+        if args.command == "trigger-taxonomy-review":
+            source_item = _require_mapping(
+                load_json(Path(args.source_item_path)),
+                f"trigger-taxonomy-review:{args.source_item_path}",
+            )
+            result = trigger_taxonomy_review_from_source_item(
+                source_item,
+                config_dir=config.config_dir,
+                schema_dir=config.schema_dir,
+                task_store_path=config.task_store_path,
+                record_path=Path(args.record_path) if args.record_path else None,
+                issue_type=args.issue_type,
+                priority_code=args.priority_code,
+                created_at=args.created_at,
+            )
+            print(json.dumps(result, ensure_ascii=True))
+            return 0
+
+        if args.command == "review-queue":
+            entries = list_review_queue(
+                config_dir=config.config_dir,
+                task_store_path=config.task_store_path,
+                open_only=args.open_only,
+            )
+            print(json.dumps(entries, ensure_ascii=True))
+            return 0
+
+        if args.command == "resolve-taxonomy-review":
+            result = resolve_taxonomy_review_from_record_path(
+                Path(args.record_path),
+                config_dir=config.config_dir,
+                schema_dir=config.schema_dir,
+                task_store_path=config.task_store_path,
+                review_issue_id=args.review_issue_id,
+                resolution_action=args.resolution_action,
+                resolution_notes=args.resolution_notes,
+                reviewer=args.reviewer,
+                reviewed_at=args.reviewed_at,
+                approver=args.approver,
+                approved_at=args.approved_at,
+                override_category_code=args.override_category_code,
+                unresolved_mode=args.unresolved_mode,
+                output_path=Path(args.output_path) if args.output_path else None,
+            )
+            print(json.dumps(result, ensure_ascii=True))
+            return 0
+
+        if args.command == "trigger-entity-review":
+            source_item = _require_mapping(
+                load_json(Path(args.source_item_path)),
+                f"trigger-entity-review:{args.source_item_path}",
+            )
+            existing_products = _require_list(
+                load_json(Path(args.existing_products_path)),
+                f"trigger-entity-review:{args.existing_products_path}",
+            )
+            result = trigger_entity_review_from_source_item(
+                source_item,
+                existing_products=existing_products,
+                config_dir=config.config_dir,
+                schema_dir=config.schema_dir,
+                task_store_path=config.task_store_path,
+                priority_code=args.priority_code,
+                created_at=args.created_at,
+            )
+            print(json.dumps(result, ensure_ascii=True))
+            return 0
+
+        if args.command == "trigger-score-review":
+            score_snapshot = _require_mapping(
+                load_json(Path(args.score_snapshot_path)),
+                f"trigger-score-review:{args.score_snapshot_path}",
+            )
+            result = trigger_score_review_from_snapshot(
+                score_snapshot,
+                issue_type=args.issue_type,
+                config_dir=config.config_dir,
+                schema_dir=config.schema_dir,
+                task_store_path=config.task_store_path,
+                priority_code=args.priority_code,
+                created_at=args.created_at,
+            )
+            print(json.dumps(result, ensure_ascii=True))
             return 0
 
         if args.command == "migrate":

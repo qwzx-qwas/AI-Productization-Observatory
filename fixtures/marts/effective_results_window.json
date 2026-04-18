@@ -10,10 +10,22 @@
       "source_item_id": "srcitem_ph_1001_v1",
       "observation_id": "obs_prod_001_20260310",
       "observed_at": "2026-03-10T10:00:00Z",
+      "relation_type": "launch",
+      "product": {
+        "normalized_name": "desk research copilot",
+        "primary_domain": "deskresearch.example.com",
+        "canonical_homepage_url": "https://deskresearch.example.com",
+        "canonical_repo_url": null
+      },
+      "effective_profile": {
+        "profile_version": "product_profiler_v1",
+        "primary_persona_code": "researcher",
+        "delivery_form_code": "web_app"
+      },
       "effective_taxonomy": {
         "label_role": "primary",
         "result_status": "active",
-        "category_code": "research_ops"
+        "category_code": "JTBD_KNOWLEDGE_RESEARCH"
       },
       "taxonomy_assignments": [
         {
@@ -22,7 +34,7 @@
           "taxonomy_version": "v0",
           "label_level": 1,
           "label_role": "primary",
-          "category_code": "research_ops",
+          "category_code": "JTBD_KNOWLEDGE_RESEARCH",
           "confidence": 0.91,
           "rationale": "Primary evidence shows desk research and internal knowledge retrieval.",
           "assigned_by": "taxonomy_classifier",
@@ -44,8 +56,11 @@
       ],
       "review_issues": [],
       "effective_scores": {
+        "attention_raw_value": 128,
+        "attention_normalized_value": 0.92,
         "attention_band": "high",
-        "build_evidence_band": "high"
+        "build_evidence_band": "high",
+        "commercial_band": "high"
       },
       "drill_down_refs": {
         "product_id": "prod_001",
@@ -65,10 +80,22 @@
       "source_item_id": "srcitem_gh_2002_v1",
       "observation_id": "obs_prod_002_20260312",
       "observed_at": "2026-03-12T12:00:00Z",
+      "relation_type": "repo",
+      "product": {
+        "normalized_name": "support agent workbench",
+        "primary_domain": "acme.example.com/support-agent-workbench",
+        "canonical_homepage_url": "https://acme.example.com/support-agent-workbench",
+        "canonical_repo_url": "https://github.com/acme/support-agent-workbench"
+      },
+      "effective_profile": {
+        "profile_version": "product_profiler_v1",
+        "primary_persona_code": "support_agent",
+        "delivery_form_code": "web_app"
+      },
       "effective_taxonomy": {
         "label_role": "primary",
         "result_status": "active",
-        "category_code": "research_ops"
+        "category_code": "JTBD_KNOWLEDGE_RESEARCH"
       },
       "taxonomy_assignments": [
         {
@@ -77,7 +104,7 @@
           "taxonomy_version": "v0",
           "label_level": 1,
           "label_role": "primary",
-          "category_code": "research_ops",
+          "category_code": "JTBD_KNOWLEDGE_RESEARCH",
           "confidence": 0.84,
           "rationale": "Repository evidence supports research and retrieval workflows.",
           "assigned_by": "taxonomy_classifier",
@@ -99,8 +126,11 @@
       ],
       "review_issues": [],
       "effective_scores": {
+        "attention_raw_value": 144,
+        "attention_normalized_value": 0.56,
         "attention_band": "medium",
-        "build_evidence_band": "medium"
+        "build_evidence_band": "medium",
+        "commercial_band": null
       },
       "drill_down_refs": {
         "product_id": "prod_002",
@@ -119,6 +149,18 @@
       "source_item_id": "srcitem_ph_1099_v1",
       "observation_id": "obs_prod_003_20260315",
       "observed_at": "2026-03-15T16:00:00Z",
+      "relation_type": "launch",
+      "product": {
+        "normalized_name": "ambiguous research workflow copilot",
+        "primary_domain": "ambiguous.example.com",
+        "canonical_homepage_url": "https://ambiguous.example.com",
+        "canonical_repo_url": null
+      },
+      "effective_profile": {
+        "profile_version": "product_profiler_v1",
+        "primary_persona_code": "unknown",
+        "delivery_form_code": "web_app"
+      },
       "effective_taxonomy": {
         "label_role": "primary",
         "result_status": "active",
@@ -131,9 +173,9 @@
           "taxonomy_version": "v0",
           "label_level": 1,
           "label_role": "primary",
-          "category_code": "research_ops",
+          "category_code": "JTBD_KNOWLEDGE_RESEARCH",
           "confidence": 0.58,
-          "rationale": "Initial auto result leaned research_ops but adjacent workflow evidence conflicted.",
+          "rationale": "Initial auto result leaned knowledge research but adjacent workflow evidence conflicted.",
           "assigned_by": "taxonomy_classifier",
           "model_or_rule_version": "taxonomy_classifier_v1",
           "assigned_at": "2026-03-15T16:05:00Z",
@@ -195,7 +237,7 @@
             "target_summary": "Ambiguous taxonomy between research ops and workflow automation.",
             "issue_type": "taxonomy_conflict",
             "current_auto_result": {
-              "category_code": "research_ops",
+              "category_code": "JTBD_KNOWLEDGE_RESEARCH",
               "confidence": 0.58
             },
             "related_evidence": [
@@ -224,8 +266,11 @@
         }
       ],
       "effective_scores": {
+        "attention_raw_value": 61,
+        "attention_normalized_value": 0.81,
         "attention_band": "high",
-        "build_evidence_band": "low"
+        "build_evidence_band": "low",
+        "commercial_band": null
       },
       "drill_down_refs": {
         "product_id": "prod_003",
@@ -257,10 +302,22 @@
       "source_item_id": "srcitem_ph_1002_v1",
       "observation_id": "obs_prod_004_20260316",
       "observed_at": "2026-03-16T08:00:00Z",
+      "relation_type": "launch",
+      "product": {
+        "normalized_name": "sprint qa agent",
+        "primary_domain": "sprintqa.example.com",
+        "canonical_homepage_url": "https://sprintqa.example.com",
+        "canonical_repo_url": null
+      },
+      "effective_profile": {
+        "profile_version": "product_profiler_v1",
+        "primary_persona_code": "developer",
+        "delivery_form_code": "web_app"
+      },
       "effective_taxonomy": {
         "label_role": "primary",
         "result_status": "active",
-        "category_code": "qa_automation"
+        "category_code": "JTBD_DEV_TOOLS_TESTING"
       },
       "taxonomy_assignments": [
         {
@@ -269,7 +326,7 @@
           "taxonomy_version": "v0",
           "label_level": 1,
           "label_role": "primary",
-          "category_code": "qa_automation",
+          "category_code": "JTBD_DEV_TOOLS_TESTING",
           "confidence": 0.86,
           "rationale": "Product evidence centers on QA and release automation workflows.",
           "assigned_by": "taxonomy_classifier",
@@ -291,8 +348,11 @@
       ],
       "review_issues": [],
       "effective_scores": {
+        "attention_raw_value": 96,
+        "attention_normalized_value": null,
         "attention_band": null,
-        "build_evidence_band": "high"
+        "build_evidence_band": "high",
+        "commercial_band": null
       },
       "drill_down_refs": {
         "product_id": "prod_004",

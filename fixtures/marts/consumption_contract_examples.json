@@ -12,7 +12,7 @@
       "product_id": "prod_001",
       "expected_outcome": {
         "main_report_included": true,
-        "main_mart_category_code": "research_ops",
+        "main_mart_category_code": "JTBD_KNOWLEDGE_RESEARCH",
         "attention_band": "high"
       },
       "test_refs": [
@@ -31,7 +31,7 @@
       "product_id": "prod_004",
       "expected_outcome": {
         "main_report_included": true,
-        "main_mart_category_code": "qa_automation",
+        "main_mart_category_code": "JTBD_DEV_TOOLS_TESTING",
         "attention_band": null
       },
       "test_refs": [

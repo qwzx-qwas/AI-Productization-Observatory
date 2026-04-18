@@ -21,6 +21,7 @@ from src.common.constants import (
 from src.common.errors import BlockedReplayError, ContractValidationError
 from src.common.files import dump_json, ensure_parent, load_json, utc_now, utc_now_iso
 from src.runtime.models import TaskRecord
+from src.runtime.processing_errors import FileProcessingErrorStore, default_processing_error_store_path
 
 if os.name == "nt":
     import msvcrt
@@ -37,6 +38,10 @@ class FileTaskStore:
     @property
     def lock_path(self) -> Path:
         return self.store_path.with_name(f"{self.store_path.name}.lock")
+
+    @property
+    def processing_error_store(self) -> FileProcessingErrorStore:
+        return FileProcessingErrorStore(default_processing_error_store_path(self.store_path))
 
     @contextmanager
     def _exclusive_lock(self):
@@ -323,7 +328,9 @@ class FileTaskStore:
         return self.update_task(task_id, lease_expires_at=new_expiry)
 
     def succeed(self, task_id: str) -> dict[str, Any]:
-        return self.update_task(task_id, status="succeeded", finished_at=utc_now_iso(), lease_owner=None, lease_expires_at=None)
+        updated = self.update_task(task_id, status="succeeded", finished_at=utc_now_iso(), lease_owner=None, lease_expires_at=None)
+        self.processing_error_store.resolve_for_task(updated, resolved_at=updated["finished_at"])
+        return updated
 
     def _next_retry_time(self, attempt_count: int) -> str:
         delay_seconds = min(DEFAULT_RETRY_BASE_DELAY_SECONDS * (2 ** max(attempt_count - 1, 0)), DEFAULT_RETRY_MAX_DELAY_SECONDS)
@@ -346,10 +353,20 @@ class FileTaskStore:
         }
         if retryable:
             changes["available_at"] = self._next_retry_time(attempt_count)
-        return self.update_task(task_id, **changes)
+        updated = self.update_task(task_id, **changes)
+        self.processing_error_store.record_failure(
+            updated,
+            error_type=error_type,
+            error_message=message,
+            retry_count=attempt_count,
+            resolution_status="retry_scheduled" if retryable else "open",
+            failed_at=updated["finished_at"],
+            next_retry_at=updated.get("available_at") if retryable else None,
+        )
+        return updated
 
     def block(self, task_id: str, reason: str) -> dict[str, Any]:
-        return self.update_task(
+        updated = self.update_task(
             task_id,
             status="blocked",
             last_error_type="blocked_replay",
@@ -358,6 +375,16 @@ class FileTaskStore:
             lease_expires_at=None,
             finished_at=utc_now_iso(),
         )
+        self.processing_error_store.record_failure(
+            updated,
+            error_type="blocked_replay",
+            error_message=reason,
+            retry_count=int(updated["attempt_count"]),
+            resolution_status="blocked",
+            failed_at=updated["finished_at"],
+            next_retry_at=None,
+        )
+        return updated
 
     def cancel(self, task_id: str, reason: str) -> dict[str, Any]:
         return self.update_task(
@@ -417,6 +444,15 @@ class FileTaskStore:
                 blocked_snapshot["status"] = "blocked"
                 self._validate_task_snapshot(blocked_snapshot)
                 self._write(tasks)
+                self.processing_error_store.record_failure(
+                    blocked_snapshot,
+                    error_type="blocked_replay",
+                    error_message=blocked_snapshot["last_error_message"],
+                    retry_count=int(blocked_snapshot["attempt_count"]),
+                    resolution_status="blocked",
+                    failed_at=blocked_snapshot["finished_at"],
+                    next_retry_at=None,
+                )
                 raise BlockedReplayError(blocked_task.task_id)
 
             record = self._enqueue_in_tasks(
