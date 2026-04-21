@@ -46,6 +46,13 @@ sources:
     time_field: pushed_at
     selection_rule_version: github_qsv1
     current_phase_runtime_note: current-phase live candidate discovery path
+    discovery_capabilities:
+      fixture_supported: true
+      replay_supported: true
+      live_supported: true
+      live_enabled_in_current_phase: true
+      current_phase_live_status: enabled
+      future_live_boundary_preserved: true
     candidate_gate:
       gate_version: github_candidate_gate_v1
       min_summary_chars: 24
@@ -182,6 +189,13 @@ sources:
     time_field: published_at
     selection_rule_version: product_hunt_published_window_v1
     current_phase_runtime_note: retain fixture/replay/contract only; current phase does not execute live candidate discovery
+    discovery_capabilities:
+      fixture_supported: true
+      replay_supported: true
+      live_supported: true
+      live_enabled_in_current_phase: false
+      current_phase_live_status: deferred
+      future_live_boundary_preserved: true
     query_slices:
       - query_family: published_launches
         query_slice_id: ph_published_launches

@@ -1,0 +1,66 @@
+{
+  "failed_task_id": "dfed2ab23e619004",
+  "failed_status": "failed_retryable",
+  "failed_error_type": "network_error",
+  "failed_error_message": "configured GitHub live failure injection on page 2",
+  "failed_resume_state": {
+    "logical_watermark": {
+      "external_id": "1173965223",
+      "pushed_at": "2026-03-05T23:47:07Z",
+      "time_field": "pushed_at"
+    },
+    "pending_windows": [
+      {
+        "page": 2,
+        "window_end": "2026-03-05",
+        "window_start": "2026-03-05"
+      }
+    ],
+    "query_slice_id": "qf_ai_workflow",
+    "source_window_end": "2026-03-05",
+    "source_window_start": "2026-03-05"
+  },
+  "failed_durable_logical_watermark": {
+    "external_id": "1173965223",
+    "pushed_at": "2026-03-05T23:47:07Z",
+    "time_field": "pushed_at"
+  },
+  "resumed_task_id": "a3da467ff6a243e2",
+  "resumed_status": "succeeded",
+  "resumed_parent_task_id": "dfed2ab23e619004",
+  "resumed_resume_from_task_id": "dfed2ab23e619004",
+  "resumed_request_params": {
+    "fetch_mode": "search_repositories",
+    "page_or_cursor_end": 3,
+    "page_or_cursor_start": 2,
+    "query_slice_id": "qf_ai_workflow",
+    "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2026-03-05..2026-03-05",
+    "selection_rule_version": "github_qsv1",
+    "time_field": "pushed_at",
+    "window_end": "2026-03-05",
+    "window_start": "2026-03-05"
+  },
+  "resumed_watermark_after": {
+    "external_id": "1173969834",
+    "pushed_at": "2026-03-05T23:56:36Z",
+    "time_field": "pushed_at"
+  },
+  "raw_count": 200,
+  "raw_unique_crawl_run_ids": [
+    "7eb6e76c2d24224f",
+    "9c3a9564a566aff0"
+  ],
+  "outside_window_count": 0,
+  "min_pushed_at": {
+    "external_id": "879981313",
+    "full_name": "jalpatel11/jalpatel11",
+    "pushed_at": "2026-03-05T00:01:08Z",
+    "html_url": "https://github.com/jalpatel11/jalpatel11"
+  },
+  "max_pushed_at": {
+    "external_id": "1173969834",
+    "full_name": "Jacob-Ritchey/Embrangle",
+    "pushed_at": "2026-03-05T23:56:36Z",
+    "html_url": "https://github.com/Jacob-Ritchey/Embrangle"
+  }
+}

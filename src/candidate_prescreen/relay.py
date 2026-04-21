@@ -431,6 +431,12 @@ def _screen_outcome(
     failure_code: str | None,
     failure_message: str | None,
     normalized_result: dict[str, Any] | None,
+    request_url: str | None,
+    response_id: str | None,
+    provider_usage: dict[str, int] | None,
+    api_style: str | None,
+    model: str | None,
+    attempts: list[dict[str, Any]],
 ) -> dict[str, Any]:
     return {
         "transport_status": transport_status,
@@ -444,6 +450,13 @@ def _screen_outcome(
         "failure_code": failure_code,
         "failure_message": failure_message,
         "normalized_result": normalized_result,
+        "request_url": request_url,
+        "response_id": response_id,
+        "provider_usage": provider_usage,
+        "api_style": api_style,
+        "model": model,
+        "attempt_count": len(attempts),
+        "attempts": attempts,
     }
 
 
@@ -452,6 +465,12 @@ def _successful_screen_outcome(
     request_id: str | None,
     http_status: int | None,
     normalized_result: dict[str, Any],
+    request_url: str,
+    response_id: str | None,
+    provider_usage: dict[str, int] | None,
+    api_style: str,
+    model: str,
+    attempts: list[dict[str, Any]],
 ) -> dict[str, Any]:
     return _screen_outcome(
         transport_status=OUTCOME_SUCCEEDED,
@@ -465,6 +484,12 @@ def _successful_screen_outcome(
         failure_code=None,
         failure_message=None,
         normalized_result=normalized_result,
+        request_url=request_url,
+        response_id=response_id,
+        provider_usage=provider_usage,
+        api_style=api_style,
+        model=model,
+        attempts=attempts,
     )
 
 
@@ -475,6 +500,12 @@ def _failed_screen_outcome(
     mapped_error_type: str,
     failure_code: str,
     failure_message: str,
+    request_url: str | None,
+    response_id: str | None,
+    provider_usage: dict[str, int] | None,
+    api_style: str | None,
+    model: str | None,
+    attempts: list[dict[str, Any]],
     transport_status: str = OUTCOME_SUCCEEDED,
     provider_response_status: str = OUTCOME_FAILED,
     content_status: str = OUTCOME_FAILED,
@@ -493,6 +524,12 @@ def _failed_screen_outcome(
         failure_code=failure_code,
         failure_message=failure_message,
         normalized_result=None,
+        request_url=request_url,
+        response_id=response_id,
+        provider_usage=provider_usage,
+        api_style=api_style,
+        model=model,
+        attempts=attempts,
     )
 
 
@@ -547,6 +584,80 @@ def relay_preflight(
         "api_style": relay_config.api_style,
         "auth_style": relay_config.auth_style,
         "client_version": relay_config.client_version,
+    }
+
+
+def _normalize_provider_usage(value: Any) -> dict[str, int] | None:
+    if not isinstance(value, dict):
+        return None
+    normalized: dict[str, int] = {}
+    for key, raw_value in value.items():
+        if isinstance(raw_value, bool):
+            continue
+        if isinstance(raw_value, int):
+            normalized[str(key)] = raw_value
+            continue
+        if not isinstance(raw_value, dict):
+            continue
+        for nested_key, nested_value in raw_value.items():
+            if isinstance(nested_value, bool):
+                continue
+            if isinstance(nested_value, int):
+                normalized[f"{key}.{nested_key}"] = nested_value
+    return normalized or None
+
+
+def _extract_provider_audit(body: dict[str, Any], *, api_style: str) -> tuple[str | None, dict[str, int] | None]:
+    response_id = body.get("id")
+    if not isinstance(response_id, str) or not response_id.strip():
+        response_id = body.get("request_id")
+    normalized_response_id = response_id.strip() if isinstance(response_id, str) and response_id.strip() else None
+    if api_style == "openai_compatible":
+        return normalized_response_id, _normalize_provider_usage(body.get("usage"))
+    usage = body.get("usage")
+    if usage is None and isinstance(body.get("result"), dict):
+        usage = body["result"].get("usage")
+    return normalized_response_id, _normalize_provider_usage(usage)
+
+
+def _attempt_event(
+    *,
+    attempt: int,
+    request_url: str,
+    api_style: str,
+    model: str,
+    transport_status: str,
+    provider_response_status: str,
+    content_status: str,
+    schema_status: str,
+    business_status: str,
+    http_status: int | None,
+    request_id: str | None,
+    response_id: str | None,
+    provider_usage: dict[str, int] | None,
+    mapped_error_type: str | None,
+    failure_code: str | None,
+    failure_message: str | None,
+    retry_scheduled: bool,
+) -> dict[str, Any]:
+    return {
+        "attempt": attempt,
+        "request_url": request_url,
+        "api_style": api_style,
+        "model": model,
+        "transport_status": transport_status,
+        "provider_response_status": provider_response_status,
+        "content_status": content_status,
+        "schema_status": schema_status,
+        "business_status": business_status,
+        "http_status": http_status,
+        "request_id": request_id,
+        "response_id": response_id,
+        "provider_usage": provider_usage,
+        "mapped_error_type": mapped_error_type,
+        "failure_code": failure_code,
+        "failure_message": failure_message,
+        "retry_scheduled": retry_scheduled,
     }
 
 
@@ -617,6 +728,12 @@ def screen_candidate(
                 mapped_error_type="json_schema_validation_failed",
                 failure_code="output_schema_validation_failed",
                 failure_message=str(exc),
+                request_url=str(fixture_path),
+                response_id=None,
+                provider_usage=None,
+                api_style="fixture",
+                model=str(normalized["channel_metadata"].get("model") or "fixture-relay"),
+                attempts=[],
                 transport_status=OUTCOME_SUCCEEDED,
                 provider_response_status=OUTCOME_SUCCEEDED,
                 content_status=OUTCOME_SUCCEEDED,
@@ -625,6 +742,12 @@ def screen_candidate(
             request_id=None,
             http_status=None,
             normalized_result=normalized,
+            request_url=str(fixture_path),
+            response_id=None,
+            provider_usage=None,
+            api_style="fixture",
+            model=str(normalized["channel_metadata"].get("model") or "fixture-relay"),
+            attempts=[],
         )
 
     relay_config = RelayConfig.from_env(timeout_seconds, relay_client_version)
@@ -642,6 +765,7 @@ def screen_candidate(
         candidate_input=candidate_input,
         prompt_contract=prompt_contract,
     )
+    attempts: list[dict[str, Any]] = []
 
     def _wait_before_retry(error: ProcessingError, attempt_index: int) -> None:
         if retry_sleep_seconds <= 0 or attempt_index >= max_retries:
@@ -707,57 +831,229 @@ def screen_candidate(
         except urllib.error.HTTPError as exc:
             error_type = "api_429" if exc.code == 429 else "dependency_unavailable"
             last_error = ProcessingError(error_type, f"Relay returned HTTP {exc.code}")
+            attempts.append(
+                _attempt_event(
+                    attempt=attempt + 1,
+                    request_url=request_url,
+                    api_style=relay_config.api_style,
+                    model=relay_config.model,
+                    transport_status=OUTCOME_FAILED,
+                    provider_response_status=OUTCOME_FAILED,
+                    content_status=OUTCOME_FAILED,
+                    schema_status=OUTCOME_FAILED,
+                    business_status=OUTCOME_FAILED,
+                    http_status=exc.code,
+                    request_id=None,
+                    response_id=None,
+                    provider_usage=None,
+                    mapped_error_type=last_error.error_type,
+                    failure_code=last_error.error_type,
+                    failure_message=str(last_error),
+                    retry_scheduled=attempt < max_retries and RETRY_POLICY.get(error_type, {}).get("retryable") is True,
+                )
+            )
             _wait_before_retry(last_error, attempt)
             continue
         except urllib.error.URLError as exc:
             last_error = ProcessingError("network_error", f"Relay network error: {exc.reason}")
+            attempts.append(
+                _attempt_event(
+                    attempt=attempt + 1,
+                    request_url=request_url,
+                    api_style=relay_config.api_style,
+                    model=relay_config.model,
+                    transport_status=OUTCOME_FAILED,
+                    provider_response_status=OUTCOME_FAILED,
+                    content_status=OUTCOME_FAILED,
+                    schema_status=OUTCOME_FAILED,
+                    business_status=OUTCOME_FAILED,
+                    http_status=None,
+                    request_id=None,
+                    response_id=None,
+                    provider_usage=None,
+                    mapped_error_type=last_error.error_type,
+                    failure_code=last_error.error_type,
+                    failure_message=str(last_error),
+                    retry_scheduled=attempt < max_retries,
+                )
+            )
             _wait_before_retry(last_error, attempt)
             continue
         except SocketTimeout as exc:
             last_error = ProcessingError("provider_timeout", "Relay timed out")
+            attempts.append(
+                _attempt_event(
+                    attempt=attempt + 1,
+                    request_url=request_url,
+                    api_style=relay_config.api_style,
+                    model=relay_config.model,
+                    transport_status=OUTCOME_FAILED,
+                    provider_response_status=OUTCOME_FAILED,
+                    content_status=OUTCOME_FAILED,
+                    schema_status=OUTCOME_FAILED,
+                    business_status=OUTCOME_FAILED,
+                    http_status=None,
+                    request_id=None,
+                    response_id=None,
+                    provider_usage=None,
+                    mapped_error_type=last_error.error_type,
+                    failure_code=last_error.error_type,
+                    failure_message=str(last_error),
+                    retry_scheduled=attempt < max_retries,
+                )
+            )
             _wait_before_retry(last_error, attempt)
             continue
         last_error = None
         if not raw_body.strip():
+            attempts.append(
+                _attempt_event(
+                    attempt=attempt + 1,
+                    request_url=request_url,
+                    api_style=relay_config.api_style,
+                    model=relay_config.model,
+                    transport_status=OUTCOME_SUCCEEDED,
+                    provider_response_status=OUTCOME_SUCCEEDED,
+                    content_status=OUTCOME_FAILED,
+                    schema_status=OUTCOME_FAILED,
+                    business_status=OUTCOME_FAILED,
+                    http_status=http_status,
+                    request_id=request_id,
+                    response_id=None,
+                    provider_usage=None,
+                    mapped_error_type="dependency_unavailable",
+                    failure_code="provider_empty_completion",
+                    failure_message="Relay returned an empty HTTP 200 body",
+                    retry_scheduled=False,
+                )
+            )
             return _failed_screen_outcome(
                 request_id=request_id,
                 http_status=http_status,
                 mapped_error_type="dependency_unavailable",
                 failure_code="provider_empty_completion",
                 failure_message="Relay returned an empty HTTP 200 body",
+                request_url=request_url,
+                response_id=None,
+                provider_usage=None,
+                api_style=relay_config.api_style,
+                model=relay_config.model,
+                attempts=attempts,
                 transport_status=OUTCOME_SUCCEEDED,
                 provider_response_status=OUTCOME_SUCCEEDED,
             )
         try:
             body = json.loads(raw_body)
         except json.JSONDecodeError as exc:
+            attempts.append(
+                _attempt_event(
+                    attempt=attempt + 1,
+                    request_url=request_url,
+                    api_style=relay_config.api_style,
+                    model=relay_config.model,
+                    transport_status=OUTCOME_SUCCEEDED,
+                    provider_response_status=OUTCOME_SUCCEEDED,
+                    content_status=OUTCOME_FAILED,
+                    schema_status=OUTCOME_FAILED,
+                    business_status=OUTCOME_FAILED,
+                    http_status=http_status,
+                    request_id=request_id,
+                    response_id=None,
+                    provider_usage=None,
+                    mapped_error_type="parse_failure",
+                    failure_code="parse_failure",
+                    failure_message="Relay returned invalid JSON",
+                    retry_scheduled=False,
+                )
+            )
             return _failed_screen_outcome(
                 request_id=request_id,
                 http_status=http_status,
                 mapped_error_type="parse_failure",
                 failure_code="parse_failure",
                 failure_message="Relay returned invalid JSON",
+                request_url=request_url,
+                response_id=None,
+                provider_usage=None,
+                api_style=relay_config.api_style,
+                model=relay_config.model,
+                attempts=attempts,
                 transport_status=OUTCOME_SUCCEEDED,
                 provider_response_status=OUTCOME_SUCCEEDED,
             )
         if not isinstance(body, dict):
+            attempts.append(
+                _attempt_event(
+                    attempt=attempt + 1,
+                    request_url=request_url,
+                    api_style=relay_config.api_style,
+                    model=relay_config.model,
+                    transport_status=OUTCOME_SUCCEEDED,
+                    provider_response_status=OUTCOME_FAILED,
+                    content_status=OUTCOME_FAILED,
+                    schema_status=OUTCOME_FAILED,
+                    business_status=OUTCOME_FAILED,
+                    http_status=http_status,
+                    request_id=request_id,
+                    response_id=None,
+                    provider_usage=None,
+                    mapped_error_type="schema_drift",
+                    failure_code="provider_schema_drift",
+                    failure_message="Relay response body must be an object",
+                    retry_scheduled=False,
+                )
+            )
             return _failed_screen_outcome(
                 request_id=request_id,
                 http_status=http_status,
                 mapped_error_type="schema_drift",
                 failure_code="provider_schema_drift",
                 failure_message="Relay response body must be an object",
+                request_url=request_url,
+                response_id=None,
+                provider_usage=None,
+                api_style=relay_config.api_style,
+                model=relay_config.model,
+                attempts=attempts,
                 transport_status=OUTCOME_SUCCEEDED,
             )
+        response_id, provider_usage = _extract_provider_audit(body, api_style=relay_config.api_style)
         try:
             result = _extract_result_object(body, api_style=relay_config.api_style)
         except RelayOutcomeError as exc:
+            attempts.append(
+                _attempt_event(
+                    attempt=attempt + 1,
+                    request_url=request_url,
+                    api_style=relay_config.api_style,
+                    model=relay_config.model,
+                    transport_status=exc.transport_status,
+                    provider_response_status=exc.provider_response_status,
+                    content_status=exc.content_status,
+                    schema_status=exc.schema_status,
+                    business_status=exc.business_status,
+                    http_status=http_status,
+                    request_id=request_id,
+                    response_id=response_id,
+                    provider_usage=provider_usage,
+                    mapped_error_type=exc.mapped_error_type,
+                    failure_code=exc.failure_code,
+                    failure_message=exc.failure_message,
+                    retry_scheduled=False,
+                )
+            )
             return _failed_screen_outcome(
                 request_id=request_id,
                 http_status=http_status,
                 mapped_error_type=exc.mapped_error_type,
                 failure_code=exc.failure_code,
                 failure_message=exc.failure_message,
+                request_url=request_url,
+                response_id=response_id,
+                provider_usage=provider_usage,
+                api_style=relay_config.api_style,
+                model=relay_config.model,
+                attempts=attempts,
                 transport_status=exc.transport_status,
                 provider_response_status=exc.provider_response_status,
                 content_status=exc.content_status,
@@ -776,20 +1072,74 @@ def screen_candidate(
         try:
             validate_normalized_llm_prescreen(normalized)
         except ContractValidationError as exc:
+            attempts.append(
+                _attempt_event(
+                    attempt=attempt + 1,
+                    request_url=request_url,
+                    api_style=relay_config.api_style,
+                    model=relay_config.model,
+                    transport_status=OUTCOME_SUCCEEDED,
+                    provider_response_status=OUTCOME_SUCCEEDED,
+                    content_status=OUTCOME_SUCCEEDED,
+                    schema_status=OUTCOME_FAILED,
+                    business_status=OUTCOME_FAILED,
+                    http_status=http_status,
+                    request_id=request_id,
+                    response_id=response_id,
+                    provider_usage=provider_usage,
+                    mapped_error_type="json_schema_validation_failed",
+                    failure_code="output_schema_validation_failed",
+                    failure_message=str(exc),
+                    retry_scheduled=False,
+                )
+            )
             return _failed_screen_outcome(
                 request_id=request_id,
                 http_status=http_status,
                 mapped_error_type="json_schema_validation_failed",
                 failure_code="output_schema_validation_failed",
                 failure_message=str(exc),
+                request_url=request_url,
+                response_id=response_id,
+                provider_usage=provider_usage,
+                api_style=relay_config.api_style,
+                model=relay_config.model,
+                attempts=attempts,
                 transport_status=OUTCOME_SUCCEEDED,
                 provider_response_status=OUTCOME_SUCCEEDED,
                 content_status=OUTCOME_SUCCEEDED,
             )
+        attempts.append(
+            _attempt_event(
+                attempt=attempt + 1,
+                request_url=request_url,
+                api_style=relay_config.api_style,
+                model=relay_config.model,
+                transport_status=OUTCOME_SUCCEEDED,
+                provider_response_status=OUTCOME_SUCCEEDED,
+                content_status=OUTCOME_SUCCEEDED,
+                schema_status=OUTCOME_SUCCEEDED,
+                business_status=OUTCOME_SUCCEEDED,
+                http_status=http_status,
+                request_id=request_id,
+                response_id=response_id,
+                provider_usage=provider_usage,
+                mapped_error_type=None,
+                failure_code=None,
+                failure_message=None,
+                retry_scheduled=False,
+            )
+        )
         return _successful_screen_outcome(
             request_id=request_id,
             http_status=http_status,
             normalized_result=normalized,
+            request_url=request_url,
+            response_id=response_id,
+            provider_usage=provider_usage,
+            api_style=relay_config.api_style,
+            model=relay_config.model,
+            attempts=attempts,
         )
     if last_error is None:
         last_error = ProcessingError("dependency_unavailable", "Relay request failed before any response was received")
@@ -799,5 +1149,11 @@ def screen_candidate(
         mapped_error_type=last_error.error_type,
         failure_code=last_error.error_type,
         failure_message=str(last_error),
+        request_url=request_url,
+        response_id=None,
+        provider_usage=None,
+        api_style=relay_config.api_style,
+        model=relay_config.model,
+        attempts=attempts,
         transport_status=OUTCOME_FAILED,
     )

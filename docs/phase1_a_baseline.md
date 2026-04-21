@@ -4,7 +4,7 @@
 
 它不是新的 canonical 规范；Phase1 是否可以继续推进，仍以 canonical 文档、机器可读 artifact、冻结决策与真实测试/验证结果为准。
 
-最后核对时间：`2026-04-10`
+最后核对时间：`2026-04-21`
 
 ## 1. Canonical Basis
 
@@ -96,13 +96,15 @@
   - `configs/source_registry.yaml` 已把 GitHub 固定为 `official_github_rest_api`，并把 Product Hunt 标记为 deferred live ingestion
   - `configs/source_registry.yaml` 已把 GitHub 默认 `selection_rule_version` 固定为 `github_qsv1`
   - `src/collectors/github.py` 与 `fixtures/collector/github_qf_agent_window.json` 已把 GitHub `selection_rule_version + query_slice_id + pushed window + page` replay contract 显式落到仓库
+  - `src/collectors/github.py` 已在 live collector 内对 GitHub search 返回结果追加 `pushed_at` leaf-window guardrail，避免 search index / payload 漂移把窗外 repo 写进当前窗口
+  - `docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/matrix_summary.json` 已把 GitHub live 验收扩展到 `3 windows x 3 query slices`，并对每个组合完成首跑、same-window rerun 与一次受控失败恢复
 - blockers_to_close:
   - Product Hunt live ingestion 不是当前阶段 deliverable；不能把它误写成 runnable baseline 前提
-  - GitHub live collector -> raw -> source_item 的下游闭环仍未在当前仓库形成完整 Phase1-C 证据
+  - 当前 GitHub live 覆盖已经从单窗口扩展到多窗口多 slice，但仍不能把这组 acceptance evidence 直接表述为 `01_phase_plan_and_exit_criteria.md` 已批准的“完整抓取周期”
 
 ### Phase1-C 原始落盘、规范化与 traceability 主链
 
-- current_status: `partial_runnable_fixture_chain`
+- current_status: `github_live_runnable_with_real_acceptance_evidence`
 - canonical_basis: `08`, `09`, `13`, `15`, `16`, `18`
 - repo_landing:
   - `src/runtime/replay.py`
@@ -116,9 +118,13 @@
 - current_evidence:
   - 当前已存在 `product_hunt fixture -> raw_source_record -> source_item` 最小回放链路
   - integration / regression 已覆盖 same-window replay、blocked replay、raw-store dedupe 与 fixture window mismatch
+  - `docs/phase1_e_acceptance_evidence.md` 与 `docs/acceptance_artifacts/github_live_acceptance_2026-04-20/` 已记录单窗口 GitHub live 主链修复前后证据
+  - `docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/matrix_summary.json` 已把真实 GitHub live 验收扩展到 `2025-03-05..2025-03-05`、`2025-03-12..2025-03-12`、`2025-03-19..2025-03-19` 三个窗口与 `qf_ai_workflow`、`qf_ai_assistant`、`qf_copilot` 三个 frozen slices
+  - 上述 9 个 live 组合累计验证 `1544` 条首跑 durable raw，且 `all_reruns_reused_durable_raw = true`、`all_outside_window_zero_after_resume = true`
+  - 首次真实 live 观测捕获到 GitHub search 返回 payload 的 `pushed_at` 漂出窗口，随后已在 `src/collectors/github.py` 内补上 leaf-window guardrail，并用同窗重跑确认 `outside_window_count = 0`
 - blockers_to_close:
-  - 当前可验证链路仍以 Product Hunt fixture replay 为主
-  - GitHub live collector -> raw -> source_item 的主链证据尚未在当前仓库中落成
+  - Product Hunt 当前仍只保留 fixture / replay / contract，不属于本阶段 live acceptance 覆盖范围
+  - 当前 GitHub live acceptance 已具备多窗口多 slice 证据，但 `完整抓取周期` 的 owner 口径仍未在 `01_phase_plan_and_exit_criteria.md` 与当前 freeze boundary 之间完成统一裁定
 
 ### Phase1-D 实体、观测、证据、分类与评分派生链
 
@@ -219,7 +225,8 @@
   - 当前仓库已具备最小 fixture replay、candidate prescreen、mart consumption 与 runtime guard 测试
   - `src/marts/presentation.py` 已提供 mart-backed `dashboard_view`、`dashboard_reconciliation` 与 `product_drill_down` 的本地读取/对账骨架，且不重新 join 运行层细表
   - `python3 -m src.cli dashboard-view`、`dashboard-reconciliation` 与 `product-drill-down` 已形成可直接执行的本地 Phase1-G reconciliation / manual trace 路径
-  - `docs/phase1_g_acceptance_evidence.md` 已把当前 fixture-backed dashboard reconciliation、manual trace walkthrough 与 remaining blockers 收敛成单独 evidence 文档
+  - `docs/phase1_g_acceptance_evidence.md` 已把当前 fixture-backed dashboard reconciliation、manual trace walkthrough、machine release judgment 与 remaining blockers 收敛成单独 evidence 文档
+  - `docs/acceptance_artifacts/llm_relay_validation_2026-04-20/probe_success_escalated.json` 与 `probe_retry_timeout_escalated.json` 已记录真实 provider POST、usage 计数与 retry evidence；这补齐了此前 `replay-window` 只覆盖采集链路、看不到 provider API 调用审计的缺口
 - blockers_to_close:
   - 当前 dashboard reconciliation 只覆盖 fixture-backed local baseline，不等于 `01` / `14` 所要求的完整 release-level dashboard reconciliation gate
   - Phase1 Exit Checklist 中要求的 GitHub 完整抓取周期、merge spot-check / taxonomy audit / score audit / unresolved audit、owner merge/release judgment 等条件尚不能宣称完成
@@ -291,7 +298,21 @@
 
 这些值当前可以实现、验证和引用，但仍必须保持可替换，不得硬编码成“永久业务真理”。
 
-## 7. Current Conclusion
+## 7. Cross-doc Consistency Check
+
+- 当前 live source 边界：`configs/source_registry.yaml`、`configs/candidate_prescreen_workflow.yaml`、`README.md`、`docs/phase1_e_acceptance_evidence.md` 与 `docs/phase1_g_acceptance_evidence.md` 现已一致表述为“GitHub 是当前 live 主路径，Product Hunt 继续 deferred，仅保留 fixture / replay / contract”。
+- Phase1 状态措辞：`docs/phase1_a_baseline.md`、`docs/phase1_e_acceptance_evidence.md`、`docs/phase1_g_acceptance_evidence.md` 现统一为“GitHub live acceptance 已从单窗口扩展到多窗口多 slice；machine judgment 当前为 conditional-go，但仍不是 Phase1 exit sign-off”。
+- 验收覆盖范围与未覆盖范围：上述文档现统一把已覆盖范围限定为 GitHub live matrix、LLM relay provider audit、fixture-backed dashboard reconciliation 与 audit-ready report；未覆盖范围仍包括 Product Hunt live、manual audit judgment、owner release judgment。
+- owner 决策依赖项：`DEC-002`、`DEC-003`、`DEC-005`、`DEC-014`、`DEC-015`、`DEC-025` 在三份文档中的依赖关系现已一致，且均未把 `current_default` 写成永久业务结论。
+- release judgment 落点：`README.md`、`docs/phase1_g_acceptance_evidence.md` 与 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json` 现一致表述为“可输出 machine judgment，但最终 release sign-off 仍归 owner”。
+- 冲突项 1：`01_phase_plan_and_exit_criteria.md` 仍把 `Product Hunt 完成至少一个完整抓取周期` 写入 Phase1 Exit Checklist，而当前 freeze boundary 明确 Product Hunt deferred。
+  建议裁定人：Phase1 pipeline owner。
+  建议处理：在 `01_phase_plan_and_exit_criteria.md` 保留 checklist 原文，但新增 conflict note，明确当前不能据此要求本阶段落地 Product Hunt live。
+- 冲突项 2：`01_phase_plan_and_exit_criteria.md` 的 `GitHub 完成至少一个完整抓取周期` 尚未定义与当前多窗口多 slice acceptance matrix 的对应关系。
+  建议裁定人：Phase1 pipeline owner。
+  建议处理：由 owner 明确“完整抓取周期”的窗口口径、最小 slice 覆盖和是否需要连续周频 run，再决定能否把当前 matrix 提升为 exit evidence 的一部分。
+
+## 8. Current Conclusion
 
 当前仓库已经满足 `Phase1-A` 的三项核心交付：
 

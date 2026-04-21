@@ -15,7 +15,7 @@ from socket import timeout as SocketTimeout
 from time import sleep
 from typing import Any, Callable
 
-from src.candidate_prescreen.config import query_slice_config, source_config
+from src.candidate_prescreen.config import query_slice_config, require_live_discovery_allowed, source_config
 from src.candidate_prescreen.relay import clean_raw_evidence_excerpt
 from src.common.config import require_environment_variable
 from src.common.errors import ContractValidationError, ProcessingError
@@ -321,6 +321,7 @@ def discover_candidates(
             )
         return normalized_items[:limit]
     if source_code == "github":
+        require_live_discovery_allowed(workflow_config, source_code)
         return _discover_github_live(
             workflow_config,
             window=window,
@@ -331,6 +332,7 @@ def discover_candidates(
             run_id=run_id,
         )
     if source_code == "product_hunt":
+        require_live_discovery_allowed(workflow_config, source_code)
         return _discover_product_hunt_live(
             workflow_config,
             window=window,

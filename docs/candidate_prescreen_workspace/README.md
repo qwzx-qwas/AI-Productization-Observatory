@@ -62,6 +62,18 @@ set -a && source .env && set +a && python3 -m src.cli fill-gold-set-staging-unti
   --retry-sleep-seconds 30
 ```
 
+### 3. 用 `phase1-g-audit-ready-report` 物化当前 audit-ready evidence
+
+这一步不会替代人工抽样判断或 owner sign-off，但会把当前 workspace、staging、review store 与 mart-backed reconciliation 汇总成一个可审阅的 `Phase1-G` 准备报告，并同步产出 machine release judgment、unresolved/audit summary 与 `owner_required_signoff`。
+
+```bash
+python3 -m src.cli phase1-g-audit-ready-report
+```
+
+默认输出：
+
+- `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json`
+
 ## Why This Pattern
 
 - `fill-gold-set-staging-until-complete` 更适合“消费已有 workspace + 少量近期 live 数据”，不适合直接拿大历史大时间窗做穷尽抓取。
@@ -80,5 +92,6 @@ set -a && source .env && set +a && python3 -m src.cli fill-gold-set-staging-unti
 
 - 第一阶段的目标是把候选样本稳定落到 `docs/candidate_prescreen_workspace/`，而不是立即写满 staging。
 - 第二阶段再让 `fill-gold-set-staging-until-complete` 优先消费已有 workspace，必要时只补最近窗口的少量 live 数据。
+- Product Hunt 当前阶段仍保持 frozen boundary：fixture / replay / contract only。`run-candidate-prescreen` 与 `fill-gold-set-staging-until-complete` 的 live discovery 当前只允许 GitHub，不要尝试把 Product Hunt 当成本轮 live source。
 - 如果某个自然月结果密度偏高，优先继续拆窗，例如拆成半月窗或周窗；不要把时间窗越拉越长。
 - 如果已经跑到 `2026-04-08` 并收到 `future_window_exhausted`，应按“窗口已消费完成”记录，而不是按“流程异常”回退整批任务。

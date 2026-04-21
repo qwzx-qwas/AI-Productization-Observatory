@@ -1,0 +1,3714 @@
+[
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "0db2a20c646102abd389a13396b3096b198d92563b337af7fee29376f3d52325",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "896221342",
+    "fetch_url": "https://github.com/blazickjp/web-browser-mcp-server",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "fb67ead26a739bf67c77",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/896221342/0db2a20c646102abd389a13396b3096b198d92563b337af7fee29376f3d52325.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:46.917249Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "de5f17231782249f457677bef10e582a54494290a15983bbb94c2089bf448f88",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943049964",
+    "fetch_url": "https://github.com/zhangzhongnan928/mcp-blockchain-server",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "6bae81715bfc6905fcdb",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943049964/de5f17231782249f457677bef10e582a54494290a15983bbb94c2089bf448f88.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:46.937047Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "dc35b14b3fa2a3e1df91a2ab4b514f7b0030316bc1009b1d1424dd6f24224fcf",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "903245958",
+    "fetch_url": "https://github.com/qpd-v/mcp-delete",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "e8bd94203e1f84253117",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/903245958/dc35b14b3fa2a3e1df91a2ab4b514f7b0030316bc1009b1d1424dd6f24224fcf.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:46.958139Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "d489295ed2c27f303f3950604de5e0133a29e6c34e09ce8e3d1aa2c5c8e6c26c",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "941316011",
+    "fetch_url": "https://github.com/Michaelzag/RooArmy",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "ba7c07f1760c897c3855",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/941316011/d489295ed2c27f303f3950604de5e0133a29e6c34e09ce8e3d1aa2c5c8e6c26c.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:46.977706Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "587a9fa96cd8b9a0e6c20420b0262531a444156db0b86f3a319ebbff5db948b7",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943273418",
+    "fetch_url": "https://github.com/kownacki/ai-assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "5206bf87dd9b94bab03b",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943273418/587a9fa96cd8b9a0e6c20420b0262531a444156db0b86f3a319ebbff5db948b7.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:46.998943Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "d7919347ead636607650ca72bdcd205562c98801e0cfc78118f91dd681913736",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "885563942",
+    "fetch_url": "https://github.com/epfl-nlp/NLP4Education",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "9b965bbd54cf8e556a99",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/885563942/d7919347ead636607650ca72bdcd205562c98801e0cfc78118f91dd681913736.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.019254Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "021162cf97ec2ffc99883ff35c2f632335426ff415808cb34efb0e7051be2cc5",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "942104078",
+    "fetch_url": "https://github.com/Sasquatch3663/AI-assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "278e991bb1ac5b68a49e",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/942104078/021162cf97ec2ffc99883ff35c2f632335426ff415808cb34efb0e7051be2cc5.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.039578Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "0d86b4235808562bde90738c865d6794eab987622055f6889a0524dcd880cd66",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "942700034",
+    "fetch_url": "https://github.com/potpie-ai/AI-COSS",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "760190bf2a36104d98bd",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/942700034/0d86b4235808562bde90738c865d6794eab987622055f6889a0524dcd880cd66.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.063615Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "5e9e331b30ffb278b2e320fd2c84f461319af3c2e84208e1b70e1f8ba0be0bb1",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "895654109",
+    "fetch_url": "https://github.com/GetStream/awesome-stream",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "5cc2750d7cfae064109a",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/895654109/5e9e331b30ffb278b2e320fd2c84f461319af3c2e84208e1b70e1f8ba0be0bb1.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.085297Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "faa39748f0aa6ed3bc6739bfd60dba22cc3fd5a2eaa538a9caaf428335c3eb46",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "827131553",
+    "fetch_url": "https://github.com/codio-extensions/custom-assistant-example-multiturn-chat",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "5c4241b82ef55fa5dbaf",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/827131553/faa39748f0aa6ed3bc6739bfd60dba22cc3fd5a2eaa538a9caaf428335c3eb46.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.105580Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "1d28e8ed3362717c39166ff19f36e58fee4d0415c6452e450e9dcbf3fc68f729",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "936313666",
+    "fetch_url": "https://github.com/cafakleinn/SUSTAINForiOS",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "ec4bc951895366f810c3",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/936313666/1d28e8ed3362717c39166ff19f36e58fee4d0415c6452e450e9dcbf3fc68f729.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.127090Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "1783435d3768f175a0dcec939d8ac2f23ae0e0cc103916133901e8c5ebe22fe2",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943484473",
+    "fetch_url": "https://github.com/nartankaplan/AiAssistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "9f1f8fb091ef1d989a3a",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943484473/1783435d3768f175a0dcec939d8ac2f23ae0e0cc103916133901e8c5ebe22fe2.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.146869Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "a75d61bae85ebfffd571e51f55770cc1aea8f3e87be6ed7358c1b36ca75435fd",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "939288697",
+    "fetch_url": "https://github.com/PALue352/AI-Assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "1fdd6ad15badbbd43d23",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/939288697/a75d61bae85ebfffd571e51f55770cc1aea8f3e87be6ed7358c1b36ca75435fd.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.167644Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "bc59fce2df7d7937868d3f25a66ff751900400e6bc0df7e47b591e1e4e475e11",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "870718877",
+    "fetch_url": "https://github.com/apoorvnandan/tensor.h",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "7af2d31114dd61500d0d",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/870718877/bc59fce2df7d7937868d3f25a66ff751900400e6bc0df7e47b591e1e4e475e11.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.190318Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "9e78a75549ea3d97f6f1f5de715ce6db52e72815f48c9612c07d624704862329",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "932114266",
+    "fetch_url": "https://github.com/karan9970/Solar-ai-assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "e3411584fb979b087117",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/932114266/9e78a75549ea3d97f6f1f5de715ce6db52e72815f48c9612c07d624704862329.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.210112Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "240cfe1819e8f382fe32b59817e1d980dea119d30f53a305959b32340f345a90",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "942972853",
+    "fetch_url": "https://github.com/kapeed54/AI-Assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "b32e685aafce754556be",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/942972853/240cfe1819e8f382fe32b59817e1d980dea119d30f53a305959b32340f345a90.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.229916Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "aac198126402e46025d990a47f494c58ddcf3d533e7d6b9ee902a1cd4a85be88",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943282806",
+    "fetch_url": "https://github.com/yaswanth-tech/AI-assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "e4e477f4d6a84d47302a",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943282806/aac198126402e46025d990a47f494c58ddcf3d533e7d6b9ee902a1cd4a85be88.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.250770Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "2b6445374efd267a06c226183d6d31ebdf417c173cc51d8247c4c7846f2356cd",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943122327",
+    "fetch_url": "https://github.com/gunaasin/ai-assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "21c03738e259986fcecc",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943122327/2b6445374efd267a06c226183d6d31ebdf417c173cc51d8247c4c7846f2356cd.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.270063Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "c0c517c333d04174081ac012a3cc07e6f47919a40870e9445dbc35ca9b0c11f9",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943313292",
+    "fetch_url": "https://github.com/spandanaims19/AI-assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "870378883d8c922d60fd",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943313292/c0c517c333d04174081ac012a3cc07e6f47919a40870e9445dbc35ca9b0c11f9.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.290351Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "db827ab9f7df685b32309c79cbf80667a1a07713f7a3f296e3d4b59e7b6956c3",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943019203",
+    "fetch_url": "https://github.com/Kipngetich222/AI_Assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "46fdb074fe5fc391a1f8",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943019203/db827ab9f7df685b32309c79cbf80667a1a07713f7a3f296e3d4b59e7b6956c3.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.308926Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "afc9ef0d755e953b65a44e670a629a0c1b02141b09e248d12a07ff13c845922f",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943576544",
+    "fetch_url": "https://github.com/luisja01/AI_assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "e4fe64eb80dd7041ee71",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943576544/afc9ef0d755e953b65a44e670a629a0c1b02141b09e248d12a07ff13c845922f.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.328007Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "0f6a9760f2160b19260b72727f93ec7e5ac035613029735c4f42b638b39298e1",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "942857380",
+    "fetch_url": "https://github.com/cobe1305/ai-assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "552f61b0a93b7107f70c",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/942857380/0f6a9760f2160b19260b72727f93ec7e5ac035613029735c4f42b638b39298e1.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.346723Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "9907a4eb6b87c84934a37fa2c74fcbe097a436778c913e34e3f62e2da4da4f1a",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943456809",
+    "fetch_url": "https://github.com/legoeland06/ai-assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "44368057a5ce1b186e01",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943456809/9907a4eb6b87c84934a37fa2c74fcbe097a436778c913e34e3f62e2da4da4f1a.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.365961Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "0c6462c690962c4954d2fd992d7540bdecddbd61e923d6e189e6285645cad8ff",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "926976785",
+    "fetch_url": "https://github.com/SebbieMzingKe/AI-Assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "2b08806bb7b11d70efca",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/926976785/0c6462c690962c4954d2fd992d7540bdecddbd61e923d6e189e6285645cad8ff.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.384857Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "c03221547ead028d9a9a95c53d9dbde3621002918a40ab9a7b3b5de003a012b3",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "940838957",
+    "fetch_url": "https://github.com/Getnett/ai-cursor-chat",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "4eb06e0ec72ec64d9263",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/940838957/c03221547ead028d9a9a95c53d9dbde3621002918a40ab9a7b3b5de003a012b3.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.404538Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "a41566c2f40fd26d3e50403b6ca3955bec2207a7f663070e3313f3a7b873309a",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "766584080",
+    "fetch_url": "https://github.com/Stephen5421/CORTEX_AI_ASSISTANT",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "86f4a4cf7ce249a12cc2",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/766584080/a41566c2f40fd26d3e50403b6ca3955bec2207a7f663070e3313f3a7b873309a.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.423295Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "20fabb13b74fa29538da6c7ded8676c0427e82484703dfc6f26f62cd18cfedb0",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "941139371",
+    "fetch_url": "https://github.com/Vogulev/fitness_ai_assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "2a04ef32c2486551ea46",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/941139371/20fabb13b74fa29538da6c7ded8676c0427e82484703dfc6f26f62cd18cfedb0.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.443026Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "f0b65ff26f3645c8e08b28c171a668a434d501c02429caa76c659c0aa4fb1642",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943524126",
+    "fetch_url": "https://github.com/clementeaf/email-ai-assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "b7947ba18510d32f40b1",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943524126/f0b65ff26f3645c8e08b28c171a668a434d501c02429caa76c659c0aa4fb1642.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.462447Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "14b0117ede67c1584c66bdf7b177f97fd530546a0325ebeccba142768569ca90",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "940198248",
+    "fetch_url": "https://github.com/aashnaxdogra/leetcode-AI-assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "a968111155fdd851b38b",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/940198248/14b0117ede67c1584c66bdf7b177f97fd530546a0325ebeccba142768569ca90.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.482363Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "4a88be0950c0090b806d7d44a0eaebe942815a92aba0ae656fa3b72dff5a0e5a",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943263989",
+    "fetch_url": "https://github.com/Sachin1043/Chatbot-AI-Assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "17a97e3427cd2ec30dcb",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943263989/4a88be0950c0090b806d7d44a0eaebe942815a92aba0ae656fa3b72dff5a0e5a.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.501255Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "c16e70058ddbf1c4d846f346fa2e92c9616b766d22f4e657767c02284fb185bb",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943413476",
+    "fetch_url": "https://github.com/bskcorona-github/line-ai-assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "ddb8e15118cfe20ce745",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943413476/c16e70058ddbf1c4d846f346fa2e92c9616b766d22f4e657767c02284fb185bb.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.521125Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "c9835f9bf8248bdd0543e9b6cb0f0ed1a557aebba03f4d8ea84d09d52ef805e4",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "941959438",
+    "fetch_url": "https://github.com/Dhruvin-Virani/Personal-AI",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "ca0962882fcd0059695a",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/941959438/c9835f9bf8248bdd0543e9b6cb0f0ed1a557aebba03f4d8ea84d09d52ef805e4.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.540088Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "7a6aa49e5fd27e44aa844c16244d1c7961530b43f9eac56a4ecba18dfe47d3ba",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "912101771",
+    "fetch_url": "https://github.com/luigisaetta/ai-assistant-4-datascience",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "9193d304f4345da7a7e7",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/912101771/7a6aa49e5fd27e44aa844c16244d1c7961530b43f9eac56a4ecba18dfe47d3ba.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.560060Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "ed8ec24ce62752fa9300ea6bde2be8fb7b46400b0f5ad6b94317e8b16ad9e27a",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943092884",
+    "fetch_url": "https://github.com/Abs-Futy7/Multilingual-AI-Voice-Assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "4d32113586604a2a9f31",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943092884/ed8ec24ce62752fa9300ea6bde2be8fb7b46400b0f5ad6b94317e8b16ad9e27a.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.579088Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "65901948e6de0b21a01ebe43388b05e8b2ed3a0b5be3e6b72dee30c1a6f9bb66",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943213358",
+    "fetch_url": "https://github.com/yuvraj0892/ashq",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "6eb62c9a511618a4bec0",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943213358/65901948e6de0b21a01ebe43388b05e8b2ed3a0b5be3e6b72dee30c1a6f9bb66.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.599031Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "80f2cb84a7cc32270335de17fa6221e50d41fa1993979a58bd8d269d39a1ccee",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "941918491",
+    "fetch_url": "https://github.com/M-HARIS-MINHAS/Unit-convertor-project",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "7352c8e6bdba2f96cc77",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/941918491/80f2cb84a7cc32270335de17fa6221e50d41fa1993979a58bd8d269d39a1ccee.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.618431Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "881ccc49798c3f6eeeb8b864521f0ccfd733f7a89cb671f0deda847ab65caf30",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "942802873",
+    "fetch_url": "https://github.com/Prureddy/Legal_Chatbot",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "0f867c802b5282b5e7f9",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/942802873/881ccc49798c3f6eeeb8b864521f0ccfd733f7a89cb671f0deda847ab65caf30.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.638227Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "e9db30059c3088e111f7aa10fd5792a386c42d4df8d65a41339d88217d6d8806",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "920167334",
+    "fetch_url": "https://github.com/zw4315/GEMI",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "0bc6bfacca5fb8c5c2b8",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/920167334/e9db30059c3088e111f7aa10fd5792a386c42d4df8d65a41339d88217d6d8806.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.659202Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "9596f6b2ad91306aeb90f7c0a112761d519d1dece5b4dbb675a5b217bba25245",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "942609368",
+    "fetch_url": "https://github.com/grasshopco/god-mode",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "3a5e7780ac4f9357b178",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/942609368/9596f6b2ad91306aeb90f7c0a112761d519d1dece5b4dbb675a5b217bba25245.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.679988Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "e1dd055ab8f46760b2988253109ffc1afac671f8e03607fd753dfc1570152aab",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "942974037",
+    "fetch_url": "https://github.com/ravisohal/GenerativeAI-TalkingAI-Assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "80be5a6ad6ce032a8477",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/942974037/e1dd055ab8f46760b2988253109ffc1afac671f8e03607fd753dfc1570152aab.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.698440Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "80c45d9e4973e40818eda3038048d7e02d12e51678ead8c1f419768684b452b7",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943065442",
+    "fetch_url": "https://github.com/itstanvi/Desktop-controlled-through-AI-Assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "63a38c4880f4a0938254",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943065442/80c45d9e4973e40818eda3038048d7e02d12e51678ead8c1f419768684b452b7.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.717735Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "f26ac1a0de363afd1eb4847439f4372da5a2bfb375a6601606ff21a4e2db5be0",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "941617473",
+    "fetch_url": "https://github.com/Rounak4456/Augenblick_CodeGeass",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "84fef13e1882e3ebe04c",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/941617473/f26ac1a0de363afd1eb4847439f4372da5a2bfb375a6601606ff21a4e2db5be0.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.736833Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "49bfa1a4c4b592e884c36b600be2f774e5bdb28558ce76283ec7d8fa27df018a",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943143115",
+    "fetch_url": "https://github.com/mohdcodes/arbaazcodee-terminal-like-portfolio",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "10236285f65d0da051d4",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943143115/49bfa1a4c4b592e884c36b600be2f774e5bdb28558ce76283ec7d8fa27df018a.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.756829Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "900a18b4efff24f5e816e7a12d84a46cb359f4401450429967211489d771474e",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "942998118",
+    "fetch_url": "https://github.com/deachne/MCP-server-template",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "cd6a37b6c9cff77fccf4",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/942998118/900a18b4efff24f5e816e7a12d84a46cb359f4401450429967211489d771474e.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.776164Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "6f98275c3db025962e3a7f21bbabfc282275444a51b1ca4880f4d6ea4e03957e",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943115172",
+    "fetch_url": "https://github.com/Kate-prompt/Kate-prompt",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "258f62dffa4cc69cc431",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943115172/6f98275c3db025962e3a7f21bbabfc282275444a51b1ca4880f4d6ea4e03957e.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.796063Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "3afac09d38d87f47ec4e69df3fcbd97a7f00143664747f02aa5ff8abaf12fa53",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943110396",
+    "fetch_url": "https://github.com/rstropek/2025-03-05-webinar",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "8d097f03993da5865ea1",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943110396/3afac09d38d87f47ec4e69df3fcbd97a7f00143664747f02aa5ff8abaf12fa53.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.814991Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "ae27ea041d6af055e315f3f9c0aa83114508ae90ff490fa741bb37746d1cdbcd",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "929123444",
+    "fetch_url": "https://github.com/PaloAltoNetworks/airs-nemo-guardrails",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "97a8935bab77377ce163",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/929123444/ae27ea041d6af055e315f3f9c0aa83114508ae90ff490fa741bb37746d1cdbcd.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.834145Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "387b4345492831b34adb0e633f4fd1c5c47259742e7f1caa75eb7dd399d56a51",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "942979712",
+    "fetch_url": "https://github.com/trkrdispatch/chat",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "f92b4b350a63216dce5f",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/942979712/387b4345492831b34adb0e633f4fd1c5c47259742e7f1caa75eb7dd399d56a51.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.851638Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "0338cbf53d9cb5c998d9839bf65ce844732d7a936cf0f5b7df088ded1cb09ec6",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943429067",
+    "fetch_url": "https://github.com/ronitmishra2/AI-for-writers",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "611878b630b808af3363",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943429067/0338cbf53d9cb5c998d9839bf65ce844732d7a936cf0f5b7df088ded1cb09ec6.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.871519Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "aa4025447c1c2dc7aa53c26d922228813f64ac3e5b1d3a7a217b1fea19d3d74c",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "942975355",
+    "fetch_url": "https://github.com/sisl/LeRAAT",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "01e601a65c9f13dfa51b",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/942975355/aa4025447c1c2dc7aa53c26d922228813f64ac3e5b1d3a7a217b1fea19d3d74c.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.892761Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "a25a124fc53e2fc91bb8310c55f030cf6d40335377ac765a2f619075b47aba11",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943075050",
+    "fetch_url": "https://github.com/DeepenKumarSahoo/ShopAssist_2.0",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "22f6165cf44c96470aa1",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943075050/a25a124fc53e2fc91bb8310c55f030cf6d40335377ac765a2f619075b47aba11.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.912496Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "8f3e2b4440386631b1cb3ff07a6c3e61275eaa54e1f245dd7b7cf500660d4d1f",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "930852379",
+    "fetch_url": "https://github.com/abhishekKumar253/openai-assistant-api",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "1a17e0dd44c2b780d9d7",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/930852379/8f3e2b4440386631b1cb3ff07a6c3e61275eaa54e1f245dd7b7cf500660d4d1f.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.931137Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "699233f6f05e88f52cadd4992fd7826ead605401ec1bf517c92f4648c14e40f6",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943565070",
+    "fetch_url": "https://github.com/BuildSchool/awesome-llm-apps",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "a09f0e26fdd6fc32f4c8",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943565070/699233f6f05e88f52cadd4992fd7826ead605401ec1bf517c92f4648c14e40f6.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.951408Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "c0aa45c8a345bf91a9a0fd99db8874cad7b4d49fc027101bc2d30d6005658372",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943387991",
+    "fetch_url": "https://github.com/brolag/real-state-website-example",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "668d0d8d1686cecec03f",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943387991/c0aa45c8a345bf91a9a0fd99db8874cad7b4d49fc027101bc2d30d6005658372.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.970593Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "42f22f3203d78d4776361667957db381e60f5b863ce7b30a787c2420e7f1fa53",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943483389",
+    "fetch_url": "https://github.com/GIREESH7963/ETEMC",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "dc2f304369b634dbda27",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943483389/42f22f3203d78d4776361667957db381e60f5b863ce7b30a787c2420e7f1fa53.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:47.991952Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "e9aa8a37d22b62118f9dec29b32fb15ebf0d2b3d408b1542508788ab9d71493b",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "942396382",
+    "fetch_url": "https://github.com/baofreeman/AI-ASSITANT",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "9c79ab38a1f4d553fbe5",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/942396382/e9aa8a37d22b62118f9dec29b32fb15ebf0d2b3d408b1542508788ab9d71493b.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.011780Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "2a0b749b81bdcfac89d3325f1ebed9058b6689c8d4f0e8037103ce5c97fe9351",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "858744279",
+    "fetch_url": "https://github.com/mymapss/beat-cancer",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "7685f9d8788d8863678d",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/858744279/2a0b749b81bdcfac89d3325f1ebed9058b6689c8d4f0e8037103ce5c97fe9351.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.033053Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "eae61f53d8e5540423886703eedc759defad304343bce20518f12747dc58410b",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "975866941",
+    "fetch_url": "https://github.com/mcp-research/pl728__substack-fetcher-mcp",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "4d2f5ebe67074f1d0262",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/975866941/eae61f53d8e5540423886703eedc759defad304343bce20518f12747dc58410b.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.053782Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "85edb9f8cd50f9ad3d92958a720128fa7d712f50947d25dd410895d0e821837b",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943154844",
+    "fetch_url": "https://github.com/umiddev29/Jarvis-project",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "95d09b97c92f4da4241f",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943154844/85edb9f8cd50f9ad3d92958a720128fa7d712f50947d25dd410895d0e821837b.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.074969Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "548bb46ca55811025b6522a5f7d6c7271d35459fe939d1c5d770b2ddc3a98b25",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "934745019",
+    "fetch_url": "https://github.com/toxa-dev/frontendmentor.io-08-recipe-page",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "0864db7b02a8881400d8",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/934745019/548bb46ca55811025b6522a5f7d6c7271d35459fe939d1c5d770b2ddc3a98b25.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.095593Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "2833fddcf40ed20db3698a39a508dbefe7615712c4b7f6e6337bf7ec76e6d3e3",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "942965435",
+    "fetch_url": "https://github.com/zhangzhongnan928/mcp-coinbase-commerce",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "dd65c5595bb4d7d2ac4b",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/942965435/2833fddcf40ed20db3698a39a508dbefe7615712c4b7f6e6337bf7ec76e6d3e3.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.115493Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "69559e8d0500ac5da58fe2ca4f739d4be4ea1792044be7abcfbea996a90e60b0",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943522841",
+    "fetch_url": "https://github.com/jaihirasinghani/JarvisLite-A-lightweight-version-of-an-AI-assistant-like-Jarvis.",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "90f230dabcd5f5556f0b",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943522841/69559e8d0500ac5da58fe2ca4f739d4be4ea1792044be7abcfbea996a90e60b0.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.135495Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "131e1a2f98b9fdb55e00f67eec235849d0c0e0780e7fa7ae97351b0733b7136b",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943328996",
+    "fetch_url": "https://github.com/P666R/Feature-Dashboard",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "2ce06bea5ddb66f09580",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943328996/131e1a2f98b9fdb55e00f67eec235849d0c0e0780e7fa7ae97351b0733b7136b.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.155533Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "d2e295d37087041fae0cc926b35822ff1f28aebb81a5f88712b61c6e804f0fce",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "941708737",
+    "fetch_url": "https://github.com/minhp03/Chatbot_genImage",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "50b8d56466a16920ddf4",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/941708737/d2e295d37087041fae0cc926b35822ff1f28aebb81a5f88712b61c6e804f0fce.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.175028Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "c2da8b5f4d02ac92fc5fb7bc89f7bb7a64ad54a151aa8cbf5cf82b4c20896dd8",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "925441548",
+    "fetch_url": "https://github.com/komer3/linode-mcp",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "68357c262de2f121b17d",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/925441548/c2da8b5f4d02ac92fc5fb7bc89f7bb7a64ad54a151aa8cbf5cf82b4c20896dd8.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.196032Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "fa84e34f5f084a08eaf001129a9ddacfdc5c0fb89b5a8507630fe477e199de9d",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "942851081",
+    "fetch_url": "https://github.com/Ludvig-Hedin/AA",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "ed8c2e73fcd674895138",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/942851081/fa84e34f5f084a08eaf001129a9ddacfdc5c0fb89b5a8507630fe477e199de9d.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.216072Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "2b70a47d9caf59f1d18eb5a49f1319bd682a873c7a598b6fcb805357edc7c51b",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943553496",
+    "fetch_url": "https://github.com/charlieradford/marcus",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "76f2fac4e33aba64fec9",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943553496/2b70a47d9caf59f1d18eb5a49f1319bd682a873c7a598b6fcb805357edc7c51b.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.237739Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "620115fa93df2f9c22884b735f27b97e894b73fb763143397cbf864e04ccc9ec",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "928230026",
+    "fetch_url": "https://github.com/BilalAlam173/documents-ingestor-pipeline",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "878b1711ecd15bbd7693",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/928230026/620115fa93df2f9c22884b735f27b97e894b73fb763143397cbf864e04ccc9ec.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.257545Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "182c9300c9d912f8b423e33e53945c016be261a0e71af667686ad113ee3ae253",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943199106",
+    "fetch_url": "https://github.com/Nikro/drupal-crawl-for-ai",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "ce29f646e426b4b62274",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943199106/182c9300c9d912f8b423e33e53945c016be261a0e71af667686ad113ee3ae253.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.286824Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "1b93652a2464b04945d837ca42ef944282d5977e27beb273b0ce4e42b4820af0",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943396550",
+    "fetch_url": "https://github.com/mjan112a/riccimar5",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "1aca36f20b11c37375aa",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943396550/1b93652a2464b04945d837ca42ef944282d5977e27beb273b0ce4e42b4820af0.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.307512Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "f28a1882dfd139e776fc345eee8e08581fa40c664b159c5a62947e00451ef7d4",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "872312337",
+    "fetch_url": "https://github.com/rompio/Application-Kannon-47",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "f33a45a1a0e8ff334514",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/872312337/f28a1882dfd139e776fc345eee8e08581fa40c664b159c5a62947e00451ef7d4.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.328289Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "d6513dfd9b05f13c144870f654c512a6277cbde201450de357aa09286d05c93a",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "941054593",
+    "fetch_url": "https://github.com/AndonMitev/base-flashblocks",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "290e66043b7e3b1f388c",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/941054593/d6513dfd9b05f13c144870f654c512a6277cbde201450de357aa09286d05c93a.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.347823Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "a94397ae2091acc95110f0698d04d227f9ae75dcd7ad5070dd9efbbbe2788ac3",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "937724086",
+    "fetch_url": "https://github.com/zhongchen/mcp-server",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "d15d29a4966a86c2254f",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/937724086/a94397ae2091acc95110f0698d04d227f9ae75dcd7ad5070dd9efbbbe2788ac3.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.369431Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "445897163bc68cfe3683d40074a88a21b41dc3225be901341247362870cc1fb2",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943140904",
+    "fetch_url": "https://github.com/shaadfazal/Conversational_AI_interface",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "15c10bafa3b922520b1a",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943140904/445897163bc68cfe3683d40074a88a21b41dc3225be901341247362870cc1fb2.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.388817Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "9006044de2ed29965d9de38b192858fee197ee120802b443564ce8403f8e4b2b",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "941388571",
+    "fetch_url": "https://github.com/UBU11/Doraemon-Bot",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "ede64ab74b6bcaf20099",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/941388571/9006044de2ed29965d9de38b192858fee197ee120802b443564ce8403f8e4b2b.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.409451Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "d5c5da503a1e575a9040aaec5d944028c074e6589bbfeea80d9131a27520ae51",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "929782562",
+    "fetch_url": "https://github.com/Razuldev/Telegram-Bot",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "1c3bc9a2dcc74e3d2942",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/929782562/d5c5da503a1e575a9040aaec5d944028c074e6589bbfeea80d9131a27520ae51.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.429840Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "55026b6762e30db26c44e70b60c3a7736cf2104b1405ebbcb5bea452db4d6571",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943083658",
+    "fetch_url": "https://github.com/SintraAICoupon/Sintra-AI-Coupon",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "373289f67706a585f35b",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943083658/55026b6762e30db26c44e70b60c3a7736cf2104b1405ebbcb5bea452db4d6571.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.453961Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "5dbb7bf9f8bfad6c26f1e3a9c28e6d4add66b72c4eceef36a97d61bcf3655e88",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "942451080",
+    "fetch_url": "https://github.com/ramuannam/Smart-Research-Assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "f4af0bb08a69fa21f206",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/942451080/5dbb7bf9f8bfad6c26f1e3a9c28e6d4add66b72c4eceef36a97d61bcf3655e88.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.474242Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "0d569613d3820c04eed92510dabb4b2dcc253153be814617e46faa4017aef769",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "939604091",
+    "fetch_url": "https://github.com/Jnan-py/youtube-video-insight-ai",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "f6a5175355d89bb2ab05",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/939604091/0d569613d3820c04eed92510dabb4b2dcc253153be814617e46faa4017aef769.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.494172Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "816c0643275e28bfb87006cd0f5eb823aa7b944b8b07e389024d2e5a526c332e",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943035491",
+    "fetch_url": "https://github.com/hellotorax123/ShopAssist2",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "efcbdc4e45a4546ad813",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943035491/816c0643275e28bfb87006cd0f5eb823aa7b944b8b07e389024d2e5a526c332e.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.514220Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "db34a7dca0686abace74660105f0df133cac6ef98c46298be70ba4530dbd5ea3",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "531928834",
+    "fetch_url": "https://github.com/OtonyeR/OtonyeR",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "47a152beb277d21a6e50",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/531928834/db34a7dca0686abace74660105f0df133cac6ef98c46298be70ba4530dbd5ea3.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.534804Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "843547449a1db3788b67bee76d22a341e2afd05dd8ae04ddb9e868eb94efe7b7",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943414576",
+    "fetch_url": "https://github.com/abtGIT/ShopAssist-AI-ShopAssist-2.0",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "a291d5d6ad330e053894",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943414576/843547449a1db3788b67bee76d22a341e2afd05dd8ae04ddb9e868eb94efe7b7.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.554674Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "9c2f72d513438387e1e6192e79be665db5e030c6aa13bac357628d80e74640ad",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "937434051",
+    "fetch_url": "https://github.com/mwufi/beamnative",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "9e22fae2b55726e511af",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/937434051/9c2f72d513438387e1e6192e79be665db5e030c6aa13bac357628d80e74640ad.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.576018Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "fef181dfde94b37916b7f1953d5c2d8b5ccf3a470bd2bca67e014764533c5b55",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943334463",
+    "fetch_url": "https://github.com/Rikhil-Nell/SmartSpeech-V2",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "9921933e64a74ed72c40",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943334463/fef181dfde94b37916b7f1953d5c2d8b5ccf3a470bd2bca67e014764533c5b55.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.597118Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "c11b373145904660a2b715b2e95ab11cc72ccc8675008a9b36ba541c794f33e4",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943383907",
+    "fetch_url": "https://github.com/solawish/Swagger.AIChat",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "4439ba4cb0756fa73675",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943383907/c11b373145904660a2b715b2e95ab11cc72ccc8675008a9b36ba541c794f33e4.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.617859Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "674bd0e534eea49eb8120fbec94751ba72b607688256524cabcc5a7440a53bef",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943350227",
+    "fetch_url": "https://github.com/wricardo/go-mcp",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "35fec2828f6b0984d742",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943350227/674bd0e534eea49eb8120fbec94751ba72b607688256524cabcc5a7440a53bef.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.636949Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "b21e5849d932cd179d65d22a5925ae31f781fa9afe056efbe4de35e9adf85479",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943066344",
+    "fetch_url": "https://github.com/NeoVand/DrillDown",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "71f3d3f72009eac849db",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943066344/b21e5849d932cd179d65d22a5925ae31f781fa9afe056efbe4de35e9adf85479.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.658597Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "a17d76097b2c8649618e3519676eeac3c56c9991fc017c93c942c4cda5a0d5a2",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943335498",
+    "fetch_url": "https://github.com/ArshadCXPoint/ArshadCXPoint",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "98ac10af85d788811684",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943335498/a17d76097b2c8649618e3519676eeac3c56c9991fc017c93c942c4cda5a0d5a2.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.679300Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "159ff45f485cb5e6486ceebefabfceaa7357f6c19cf58bc7fc20f4a74821e8b2",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "941397499",
+    "fetch_url": "https://github.com/VijeshVS/auto-pilot",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "20cdf86d419f4a61c1db",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/941397499/159ff45f485cb5e6486ceebefabfceaa7357f6c19cf58bc7fc20f4a74821e8b2.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.700105Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "1e74d8a94ae6dccd26f58018de48f48d94bb639acfbf3388e86680ae22f3cfb2",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "939194603",
+    "fetch_url": "https://github.com/qiuzan2001/PhoneAssistAgent",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "67397791384a410e7d45",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/939194603/1e74d8a94ae6dccd26f58018de48f48d94bb639acfbf3388e86680ae22f3cfb2.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.719855Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "22266ba4effe67ad73d7495faea6e70d387bde70266c598ae05f4c5544b106ac",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "942301064",
+    "fetch_url": "https://github.com/aniket-work/Hands-On-How-Companies-Will-Build-Collaborative-Agentic-AI-Workflows",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "d3205ad51fd26d00f934",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/942301064/22266ba4effe67ad73d7495faea6e70d387bde70266c598ae05f4c5544b106ac.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.742431Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "147d5b8b04ff80bd16e5c9227f037b558244c4612a45b40324a8ffbfd954e461",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "699207057",
+    "fetch_url": "https://github.com/Margarit-Kyurkchyan/Margarit-Kyurkchyan",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "46cfeff8349ebaf76ff2",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/699207057/147d5b8b04ff80bd16e5c9227f037b558244c4612a45b40324a8ffbfd954e461.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.762594Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "ed9778b6a8181a4a69d2876930a5e8bdd8af06f3d7dee2d59d8b1a0e323c2574",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943085886",
+    "fetch_url": "https://github.com/glaucofox/salesman-bot",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "391ae64803e019606ff4",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943085886/ed9778b6a8181a4a69d2876930a5e8bdd8af06f3d7dee2d59d8b1a0e323c2574.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.784055Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "8e8e72c9078eaf611cd4d8d853affe208462ccecf6cf496b2a2346cc9080a0c0",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "942833569",
+    "fetch_url": "https://github.com/marciob/prompt-code-generator",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "242d9d8aee8a062a9216",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/942833569/8e8e72c9078eaf611cd4d8d853affe208462ccecf6cf496b2a2346cc9080a0c0.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.803889Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "54bce5e70795706e744d4fbbd0cafca53b5cbcc51890f5844adc7cc8246ef750",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "892791821",
+    "fetch_url": "https://github.com/AnishIndukur/Companion_App",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "f83f33f1d34a54382578",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/892791821/54bce5e70795706e744d4fbbd0cafca53b5cbcc51890f5844adc7cc8246ef750.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.826334Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "0e31472ecd3480707b6c53940a0e3d51992da1cd56905a2febc9b1ffbbe45f79",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "942964967",
+    "fetch_url": "https://github.com/rogerHuntGauntlet/Rogers-Build-Guide",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "1cc4ecc3587b9aedad24",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/942964967/0e31472ecd3480707b6c53940a0e3d51992da1cd56905a2febc9b1ffbbe45f79.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.848081Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "31ef91188baaabba09d47d1a0b2fea7796f43f10328f96ad0125b9455aa388ec",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943131784",
+    "fetch_url": "https://github.com/yogesh537/ydsecurity",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "60c8bb91ce6d3bd40410",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943131784/31ef91188baaabba09d47d1a0b2fea7796f43f10328f96ad0125b9455aa388ec.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.869205Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "e4568b9785729ed957b18fde9d5150532e6452b00e67321d59a1331b032b0fa8",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "937315528",
+    "fetch_url": "https://github.com/candywal/alignment-drift-old",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "03e2126f51dbde817026",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/937315528/e4568b9785729ed957b18fde9d5150532e6452b00e67321d59a1331b032b0fa8.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.889053Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "99010660f50d69ebedd5e63830909e808f988c187449512065bc02972042a64e",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "941693639",
+    "fetch_url": "https://github.com/akankshakusf/Project-GenAI-Chatbot-with-RAG-and-Session-Memory",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "85ff35e46410aa5820dd",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/941693639/99010660f50d69ebedd5e63830909e808f988c187449512065bc02972042a64e.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.910581Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "1236bef0d86d6637f3bb9e69891406e2669c0fba40442c943672cc3361ae01a2",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "932971484",
+    "fetch_url": "https://github.com/amirhnazerii/Multimodal-Interactive-LLM-Chatbot",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "717607c80982a5a2a0d4",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/932971484/1236bef0d86d6637f3bb9e69891406e2669c0fba40442c943672cc3361ae01a2.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.931048Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "e6b169ca32864ce93b528c2cad91b5c118ca874c492db2770ddc3ba35ee607e6",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943482728",
+    "fetch_url": "https://github.com/t-ober/deepresearch",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "1e56960c26e3354e8483",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943482728/e6b169ca32864ce93b528c2cad91b5c118ca874c492db2770ddc3ba35ee607e6.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.953055Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "4ce23292eb169d73aaaf4d555c58034ead23d8357d953f572de600e23342e6a1",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "939502628",
+    "fetch_url": "https://github.com/AmayVikram/FlowFin",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "9d28afd098a1b44551cc",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/939502628/4ce23292eb169d73aaaf4d555c58034ead23d8357d953f572de600e23342e6a1.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.972694Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "4e51287fb9ec1a816f7086cd113758d21026fa49d8da91786afa78d013e7ea67",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943375933",
+    "fetch_url": "https://github.com/BenjedouNaim/Dochat",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "a84f9199e0ca58c010c9",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943375933/4e51287fb9ec1a816f7086cd113758d21026fa49d8da91786afa78d013e7ea67.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:48.994316Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "fcf5837b02d64517f6e2b9ddbdec2bbb939b5b1f2325df2b97b60060325f7c61",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "939626714",
+    "fetch_url": "https://github.com/alanwilhelm/botwell",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "63398926b9a4db1c182c",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/939626714/fcf5837b02d64517f6e2b9ddbdec2bbb939b5b1f2325df2b97b60060325f7c61.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.017974Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "09d3021e643937c654f78a3877d017edff0dd5afd2a00e5c8d33f7085fec9509",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943264910",
+    "fetch_url": "https://github.com/ashishkupa/swagstore",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "7aed44536a0c74fb8835",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943264910/09d3021e643937c654f78a3877d017edff0dd5afd2a00e5c8d33f7085fec9509.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.041363Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "00c3ec7fd6853c6f1b994cc996dcdc5a86af3089c3281f318f77fb263f46b7ed",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "909205623",
+    "fetch_url": "https://github.com/okoliechykwuka/happyai-chat",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "4816f24473f8cecae5a0",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/909205623/00c3ec7fd6853c6f1b994cc996dcdc5a86af3089c3281f318f77fb263f46b7ed.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.062209Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "63c332cfdcfe0c9b42074a620f1ba2a6792923ecb7e290bbde07618266683720",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "929351682",
+    "fetch_url": "https://github.com/Dimona/telegram-assistant-bot",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "d3c5d32f843fe4194cbe",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/929351682/63c332cfdcfe0c9b42074a620f1ba2a6792923ecb7e290bbde07618266683720.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.083024Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "caa6ef9158be2e4b1faca2da869043b5976e11facaea32e33a1af2e95ac5e789",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "941763654",
+    "fetch_url": "https://github.com/GouthamChandrappa/RAG_AGENTIC_CHATBOT",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "251d0e1941e87c8b6ef2",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/941763654/caa6ef9158be2e4b1faca2da869043b5976e11facaea32e33a1af2e95ac5e789.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.103449Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "cb20c7d57a4eb62e967b55c3314a402b5a0567eb8033d51c129a231017a8caaf",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "939597533",
+    "fetch_url": "https://github.com/Jnan-py/video-insight-ai",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "8a3996196cc3e48e3823",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/939597533/cb20c7d57a4eb62e967b55c3314a402b5a0567eb8033d51c129a231017a8caaf.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.124632Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "2ad43c0dc250e3ce1574fe0bc273b91d5ac3bb616be964191f81e2c8a324228d",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "891878168",
+    "fetch_url": "https://github.com/InshaSadaf/LLM-Multimodal",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "fe76b5654ff24efc9080",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/891878168/2ad43c0dc250e3ce1574fe0bc273b91d5ac3bb616be964191f81e2c8a324228d.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.145110Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "a20c0c84b410006f01e8bacfc70c8dd3cc24a811d7dfeb3d04b3d01754b458b8",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943504247",
+    "fetch_url": "https://github.com/snowanderson/firebase-cf-isia",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "34d152bd40845787e144",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943504247/a20c0c84b410006f01e8bacfc70c8dd3cc24a811d7dfeb3d04b3d01754b458b8.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.165837Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "207c78829b9580cca9038768d579b8a3ff2a6196c51a769da155ef1e2937e576",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943091758",
+    "fetch_url": "https://github.com/gkunal8019/Simple-RAG-Implementation-with-Gradio-ChatInterface",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "70e394c15d115fc62125",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943091758/207c78829b9580cca9038768d579b8a3ff2a6196c51a769da155ef1e2937e576.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.185989Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "6fd1bc708eca39a8b50afde5f533a2a65842f3cd104f526ba552f9f8511fa027",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "911347418",
+    "fetch_url": "https://github.com/EffortlessGT/Psychbuddy",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "80615459dd324499b855",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/911347418/6fd1bc708eca39a8b50afde5f533a2a65842f3cd104f526ba552f9f8511fa027.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.207519Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "3b6fd3092015bee96b5440f9427508b3e7acaa9cec96ab1a08ebe29ce0733911",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "941650406",
+    "fetch_url": "https://github.com/augment-human-agency/AugmentSDK",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "f1d9efa51699a8573146",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/941650406/3b6fd3092015bee96b5440f9427508b3e7acaa9cec96ab1a08ebe29ce0733911.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.229729Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "7eac967178c8a93c9bfa64e194fbb09b667b997b9990c671165136e345973ed3",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943086168",
+    "fetch_url": "https://github.com/saketh1999/get-cheap-flight-agent",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "ff77e2096fdcaeb3b9a9",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943086168/7eac967178c8a93c9bfa64e194fbb09b667b997b9990c671165136e345973ed3.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.250754Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "52aba99ebc8afd35b0a4471c8fb855a604e2053e649928e4a2a68420fb87896d",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "941087437",
+    "fetch_url": "https://github.com/yevgenisl/vibebook",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "8533597337614522d089",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/941087437/52aba99ebc8afd35b0a4471c8fb855a604e2053e649928e4a2a68420fb87896d.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.270887Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "a16199c22683c2879367440a30e90643f96fdf3e7402c6b59bd63d37c9e37bdb",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943216789",
+    "fetch_url": "https://github.com/suyashk15/insurance-chatbot",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "a9603419377f7c158ace",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943216789/a16199c22683c2879367440a30e90643f96fdf3e7402c6b59bd63d37c9e37bdb.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.292893Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "36e7728e384029da9f43821c9222de6cbbc34994eb0ad98be0a26b5ab6f3754f",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943269231",
+    "fetch_url": "https://github.com/ragingrahul/RakeUp",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "ce78f78894d653ee0f3a",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943269231/36e7728e384029da9f43821c9222de6cbbc34994eb0ad98be0a26b5ab6f3754f.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.312344Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "d21e9f97a33b0b595fb3565bff0841b0e6130f7e9625455259f6114f127745dc",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "941676144",
+    "fetch_url": "https://github.com/varunkamath/codex",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "4578b47da20d5cf32792",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/941676144/d21e9f97a33b0b595fb3565bff0841b0e6130f7e9625455259f6114f127745dc.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.333981Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "d6030a2267f4281e262af55e596b0f1ab8d1aa9af028480570b3ef67a8219d26",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943238194",
+    "fetch_url": "https://github.com/Aadi2084/Youtube-Assistant",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "2dbc37602e01f42e0846",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943238194/d6030a2267f4281e262af55e596b0f1ab8d1aa9af028480570b3ef67a8219d26.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.354673Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "703ccb4116466ac58afbf78543605fb7cb348dcdbfecb5e25f8d7379b78654b2",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943261474",
+    "fetch_url": "https://github.com/luisriverag/ollama_gitai",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "1443e8897db1b3e4f296",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943261474/703ccb4116466ac58afbf78543605fb7cb348dcdbfecb5e25f8d7379b78654b2.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.376554Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "abc446d124c95a0d1d9fd55abb8984e506c74839d6977e35af71f71348e46b93",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943006872",
+    "fetch_url": "https://github.com/guan-wei-huang31/RAG-Gemini-Chat",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "dfb290a84e71a148d350",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943006872/abc446d124c95a0d1d9fd55abb8984e506c74839d6977e35af71f71348e46b93.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.396674Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "a556f402b5e2e90062f8a5173d1e882c4ea26853d732a2ce91886dcac2d2f2d6",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943082100",
+    "fetch_url": "https://github.com/BabahAjimm/awesome-generative-ai",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "2d94ea39b082c1b3e82e",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943082100/a556f402b5e2e90062f8a5173d1e882c4ea26853d732a2ce91886dcac2d2f2d6.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.422156Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "4180c1208d2423b5b4db315d0c00cf02079a4a7a9bebbd317496505ffd351919",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "919690718",
+    "fetch_url": "https://github.com/guangyusong/giskard",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "36160a347721c7cc4a58",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/919690718/4180c1208d2423b5b4db315d0c00cf02079a4a7a9bebbd317496505ffd351919.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.443052Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "958bdce3528d4e2becd63e8276030206f7a936b20d71190bae3d20edd7ff9511",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943011448",
+    "fetch_url": "https://github.com/mingxuanchen778/deep-research",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "e886f1721bfed340343e",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943011448/958bdce3528d4e2becd63e8276030206f7a936b20d71190bae3d20edd7ff9511.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.465448Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "e75a07bb954e773363076bc87eeeab92522cb42b85b506c222c2c4dcec6b6407",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "943061919",
+    "fetch_url": "https://github.com/SEOMate-AI-Re/SEOMate-AI-Review",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "2b78e0d8c8e1afc68719",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/943061919/e75a07bb954e773363076bc87eeeab92522cb42b85b506c222c2c4dcec6b6407.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.492342Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "ef14c4f9fd2f8ee9e049efe3a685bce4d51f681d4011dc8b88448a7b1b12451f",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "908343238",
+    "fetch_url": "https://github.com/withfuture/emmanuel",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "5a93915e4f3c11bab3ee",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/908343238/ef14c4f9fd2f8ee9e049efe3a685bce4d51f681d4011dc8b88448a7b1b12451f.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.515988Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T09:10:07.366941Z",
+    "content_hash": "fb4cba32f292ba4ab2aad3cfccfa6c0a850c0485abacb9763ce44a993fa8e037",
+    "crawl_run_id": "c2dc0f0058555344",
+    "external_id": "942894531",
+    "fetch_url": "https://github.com/gonnect-uk/wren-covenversation-ai",
+    "fetched_at": "2026-04-20T09:10:07.366941Z",
+    "http_status": null,
+    "raw_id": "89e9973bbc3637074c3a",
+    "raw_payload_ref": "src_github/window_start=2025-03-05/942894531/fb4cba32f292ba4ab2aad3cfccfa6c0a850c0485abacb9763ce44a993fa8e037.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T09:12:49.538607Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  }
+]

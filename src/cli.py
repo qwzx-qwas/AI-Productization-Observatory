@@ -9,6 +9,7 @@ from datetime import date
 from pathlib import Path
 
 from src.candidate_prescreen.config import load_candidate_prescreen_config
+from src.candidate_prescreen.audit import default_phase1_g_audit_report_path, write_phase1_g_audit_ready_report
 from src.candidate_prescreen.fill_controller import fill_gold_set_staging_until_complete
 from src.candidate_prescreen.prompt_contract import candidate_prescreener_prompt_contract
 from src.candidate_prescreen.relay import relay_preflight
@@ -696,6 +697,17 @@ def _validate_candidate_prescreen_config(config_dir: Path, schema_dir: Path) -> 
     if unresolved_risk_levels != ["low", "medium", "high"]:
         raise ContractValidationError("candidate prescreen unresolved_risk_levels must stay [low, medium, high]")
 
+    execution_boundary = _require_mapping(workflow.get("execution_boundary"), "candidate_prescreen_workflow.yaml:execution_boundary")
+    expected_execution_boundary = {
+        "current_phase_default_live_source": "github",
+        "product_hunt_current_phase_mode": "fixture_replay_contract_only",
+        "product_hunt_live_discovery_status": "deferred",
+        "product_hunt_future_live_path": "official_product_hunt_graphql_api_with_token_auth",
+    }
+    for field_name, expected_value in expected_execution_boundary.items():
+        if execution_boundary.get(field_name) != expected_value:
+            raise ContractValidationError(f"candidate prescreen execution boundary drifted at {field_name}")
+
     sources = _require_list(workflow.get("sources"), "candidate_prescreen_workflow.yaml:sources")
     if len(sources) != 2:
         raise ContractValidationError("candidate prescreen workflow must register exactly github and product_hunt sources")
@@ -709,6 +721,37 @@ def _validate_candidate_prescreen_config(config_dir: Path, schema_dir: Path) -> 
     )
     if github_source is None or product_hunt_source is None:
         raise ContractValidationError("candidate prescreen workflow must include github and product_hunt source entries")
+
+    expected_discovery_capabilities = {
+        "github": {
+            "fixture_supported": True,
+            "replay_supported": True,
+            "live_supported": True,
+            "live_enabled_in_current_phase": True,
+            "current_phase_live_status": "enabled",
+            "future_live_boundary_preserved": True,
+        },
+        "product_hunt": {
+            "fixture_supported": True,
+            "replay_supported": True,
+            "live_supported": True,
+            "live_enabled_in_current_phase": False,
+            "current_phase_live_status": "deferred",
+            "future_live_boundary_preserved": True,
+        },
+    }
+    for source_name, source_entry in {"github": github_source, "product_hunt": product_hunt_source}.items():
+        discovery_capabilities = _require_mapping(
+            source_entry.get("discovery_capabilities"),
+            f"candidate_prescreen_workflow.yaml:{source_name}:discovery_capabilities",
+        )
+        for field_name, expected_value in expected_discovery_capabilities[source_name].items():
+            actual_value = discovery_capabilities.get(field_name)
+            if actual_value != expected_value:
+                raise ContractValidationError(
+                    f"candidate prescreen {source_name} discovery_capabilities drifted at {field_name}"
+                )
+
     if github_source.get("source_id") != "src_github" or github_source.get("time_field") != "pushed_at":
         raise ContractValidationError("candidate prescreen github source must stay bound to src_github + pushed_at")
     if github_source.get("selection_rule_version") != "github_qsv1":
@@ -1093,6 +1136,11 @@ def build_parser() -> argparse.ArgumentParser:
         "probe-candidate-prescreen-relay",
         help="Send one minimal candidate-prescreener request to the relay to verify real API traffic.",
     )
+    relay_probe_parser = subparsers.choices["probe-candidate-prescreen-relay"]
+    relay_probe_parser.add_argument("--output-path")
+    relay_probe_parser.add_argument("--max-retries", type=int, default=0)
+    relay_probe_parser.add_argument("--request-interval-seconds", type=int, default=0)
+    relay_probe_parser.add_argument("--retry-sleep-seconds", type=int, default=0)
 
     candidate_parser = subparsers.add_parser(
         "run-candidate-prescreen",
@@ -1144,9 +1192,11 @@ def build_parser() -> argparse.ArgumentParser:
     typecheck_parser = subparsers.add_parser("typecheck", help="Run annotation coverage checks on Python modules.")
     typecheck_parser.add_argument("paths", nargs="*", default=["src", "tests"])
 
-    replay_parser = subparsers.add_parser("replay-window", help="Replay a deterministic per-source window fixture.")
+    replay_parser = subparsers.add_parser("replay-window", help="Replay a per-source window from fixture or GitHub live discovery.")
     replay_parser.add_argument("--source", required=True)
     replay_parser.add_argument("--window", required=True)
+    replay_parser.add_argument("--live", action="store_true")
+    replay_parser.add_argument("--query-slice")
 
     subparsers.add_parser("build-mart-window", help="Build the default mart fixture into a local mart artifact.")
 
@@ -1161,6 +1211,13 @@ def build_parser() -> argparse.ArgumentParser:
         help="Run the local mart-backed dashboard reconciliation checks for Phase1-F/Phase1-G.",
     )
     dashboard_reconciliation_parser.add_argument("--mart-path")
+
+    phase1_g_audit_parser = subparsers.add_parser(
+        "phase1-g-audit-ready-report",
+        help="Materialize the local Phase1-G audit-ready report without claiming manual audit or owner sign-off.",
+    )
+    phase1_g_audit_parser.add_argument("--mart-path")
+    phase1_g_audit_parser.add_argument("--output-path")
 
     drill_down_parser = subparsers.add_parser(
         "product-drill-down",
@@ -1377,15 +1434,18 @@ def main(argv: list[str] | None = None) -> int:
                 ),
                 fixture_path=None,
                 timeout_seconds=int(llm_prescreen["timeout_seconds_default"]),
-                max_retries=0,
-                request_interval_seconds=0,
-                retry_sleep_seconds=0,
+                max_retries=args.max_retries,
+                request_interval_seconds=args.request_interval_seconds,
+                retry_sleep_seconds=args.retry_sleep_seconds,
             )
+            if args.output_path:
+                dump_json(Path(args.output_path), result)
             logger.info(
                 "probe-candidate-prescreen-relay "
-                f"request_id={result['channel_metadata'].get('request_id')} model={result['channel_metadata'].get('model')}"
+                f"request_id={result.get('request_id')} response_id={result.get('response_id')} "
+                f"attempt_count={result.get('attempt_count')} business_status={result.get('business_status')}"
             )
-            print(json.dumps(result["channel_metadata"], ensure_ascii=True))
+            print(json.dumps(result, ensure_ascii=True))
             return 0
 
         if args.command == "run-candidate-prescreen":
@@ -1457,7 +1517,13 @@ def main(argv: list[str] | None = None) -> int:
             return 0
 
         if args.command == "replay-window":
-            result = replay_source_window(source_code=args.source, window=args.window, config=config)
+            result = replay_source_window(
+                source_code=args.source,
+                window=args.window,
+                config=config,
+                use_live=args.live,
+                query_slice_id=args.query_slice,
+            )
             replay_logger = get_logger(
                 "cli",
                 source_id=result["crawl_run"]["source_id"],
@@ -1489,6 +1555,18 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "dashboard-reconciliation":
             mart = _load_or_build_mart(config, args.mart_path)
             print(json.dumps(reconcile_dashboard_view(mart), ensure_ascii=True))
+            return 0
+
+        if args.command == "phase1-g-audit-ready-report":
+            mart = _load_or_build_mart(config, args.mart_path)
+            output_path = Path(args.output_path) if args.output_path else default_phase1_g_audit_report_path(config)
+            report = write_phase1_g_audit_ready_report(config, mart=mart, output_path=output_path)
+            logger.info(
+                "phase1-g-audit-ready-report "
+                f"output_path={output_path} "
+                f"owner_review_package={report['gate_status']['owner_review_package']}"
+            )
+            print(json.dumps(report, ensure_ascii=True))
             return 0
 
         if args.command == "product-drill-down":

@@ -20,7 +20,12 @@ from pathlib import Path
 from time import sleep
 from typing import Any, Callable
 
-from src.candidate_prescreen.config import load_candidate_prescreen_config, query_slice_config, source_config
+from src.candidate_prescreen.config import (
+    load_candidate_prescreen_config,
+    query_slice_config,
+    require_live_discovery_allowed,
+    source_config,
+)
 from src.candidate_prescreen.prompt_contract import candidate_prescreener_prompt_contract
 from src.candidate_prescreen.relay import (
     clean_raw_evidence_excerpt,
@@ -92,6 +97,7 @@ class LiveDiscoveryCursor:
         initial_window: str | None,
         query_slice_id: str | None,
     ) -> "LiveDiscoveryCursor":
+        require_live_discovery_allowed(workflow_config, source_code)
         window_text = initial_window or _default_initial_window()
         window_start, window_end = _parse_window(window_text)
         if query_slice_id is not None:

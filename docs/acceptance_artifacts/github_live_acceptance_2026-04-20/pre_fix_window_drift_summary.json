@@ -1,0 +1,54 @@
+{
+  "task_id": "c9436ddf8314f74d",
+  "crawl_run_id": "0d07ccfae314816e",
+  "raw_count": 206,
+  "watermark_before": {
+    "external_id": "gh_seed_0000",
+    "pushed_at": "2026-03-05T00:00:00Z",
+    "time_field": "pushed_at"
+  },
+  "watermark_after": {
+    "external_id": "1158968230",
+    "pushed_at": "2026-04-13T21:24:58Z",
+    "time_field": "pushed_at"
+  },
+  "outside_window_count": 6,
+  "outside_window_examples": [
+    {
+      "external_id": "1164230955",
+      "full_name": "afridpasha/Intelli-Credit",
+      "pushed_at": "2026-03-06T14:55:21Z",
+      "html_url": "https://github.com/afridpasha/Intelli-Credit"
+    },
+    {
+      "external_id": "1159226804",
+      "full_name": "Marremurten/workshop-rhyme-ai-workflow",
+      "pushed_at": "2026-03-09T08:58:59Z",
+      "html_url": "https://github.com/Marremurten/workshop-rhyme-ai-workflow"
+    },
+    {
+      "external_id": "1173018449",
+      "full_name": "liboyao091-cmd/ai-os",
+      "pushed_at": "2026-03-09T23:54:22Z",
+      "html_url": "https://github.com/liboyao091-cmd/ai-os"
+    },
+    {
+      "external_id": "1173521944",
+      "full_name": "Zhaoyibinn/ultralytics_sam3",
+      "pushed_at": "2026-03-27T04:10:45Z",
+      "html_url": "https://github.com/Zhaoyibinn/ultralytics_sam3"
+    },
+    {
+      "external_id": "1173306866",
+      "full_name": "guan-mingyu266/ASL-Gesture-Recognition",
+      "pushed_at": "2026-03-27T04:11:51Z",
+      "html_url": "https://github.com/guan-mingyu266/ASL-Gesture-Recognition"
+    },
+    {
+      "external_id": "1158968230",
+      "full_name": "NeXifyAI-cloud/opencarbox",
+      "pushed_at": "2026-04-13T21:24:58Z",
+      "html_url": "https://github.com/NeXifyAI-cloud/opencarbox"
+    }
+  ]
+}

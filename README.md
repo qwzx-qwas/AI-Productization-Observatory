@@ -102,6 +102,8 @@ make validate-candidate-workspace
 make run-candidate-prescreen SOURCE=github WINDOW=2026-03-01..2026-03-08 QUERY_SLICE=qf_agent
 make handoff-candidates-to-staging
 python3 -m src.cli fill-gold-set-staging-until-complete --source github --initial-window 2026-03-29..2026-04-02 --live-limit 1 --provider-request-interval-seconds 60 --retry-sleep-seconds 30
+python3 -m src.cli check-candidate-prescreen-relay
+python3 -m src.cli probe-candidate-prescreen-relay --output-path docs/acceptance_artifacts/llm_relay_validation_2026-04-20/probe_success_escalated.json
 make replay-window SOURCE=product_hunt WINDOW=2026-03-01..2026-03-08
 make replay-window SOURCE=github WINDOW=2026-03-01..2026-03-08
 make build-mart-window
@@ -118,6 +120,8 @@ python3 -m src.cli validate-candidate-workspace
 python3 -m src.cli run-candidate-prescreen --source github --window 2026-03-01..2026-03-08 --query-slice qf_agent --provider-request-interval-seconds 60 --retry-sleep-seconds 30
 python3 -m src.cli handoff-candidates-to-staging
 python3 -m src.cli fill-gold-set-staging-until-complete --source github --initial-window 2026-03-29..2026-04-02 --live-limit 1 --provider-request-interval-seconds 60 --retry-sleep-seconds 30
+python3 -m src.cli check-candidate-prescreen-relay
+python3 -m src.cli probe-candidate-prescreen-relay --output-path docs/acceptance_artifacts/llm_relay_validation_2026-04-20/probe_success_escalated.json
 python3 -m src.cli replay-window --source product_hunt --window 2026-03-01..2026-03-08
 python3 -m src.cli replay-window --source github --window 2026-03-01..2026-03-08
 python3 -m src.cli build-mart-window
@@ -138,6 +142,9 @@ python3 -m src.cli review-queue --open-only
 - `make replay-window SOURCE=product_hunt ...` 与 `python3 -m src.cli replay-window --source product_hunt ...` 只对应 Product Hunt fixture / replay baseline，不代表当前阶段支持 Product Hunt live source ingestion。
 - `make replay-window SOURCE=github ...` 与 `python3 -m src.cli replay-window --source github ...` 只对应 GitHub fixture / replay baseline，用于验证 `crawl_run -> raw_source_record -> source_item` 主链；它不是当前 live discovery / live intake 的替代入口。
 - `make run-candidate-prescreen SOURCE=github ...` 与等价 CLI 是当前阶段保留的 live candidate discovery 路径；其默认执行方向也应理解为优先 GitHub，而不是 Product Hunt。
+- `python3 -m src.cli check-candidate-prescreen-relay` 只验证 relay 配置与 host 可达性，不代表已经发生 provider API 调用。
+- `python3 -m src.cli probe-candidate-prescreen-relay --output-path <path>` 会落出独立 JSON 审计 artifact，用于验证真实 provider POST、usage 计数与 retry 行为；它比“本地已配置 token”更接近真实调用证据，但也不替代正式 candidate prescreen 业务输出。
+- `python3 -m src.cli phase1-g-audit-ready-report` 会把当前 workspace、staging、mart-backed reconciliation 汇总成 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json`，并输出 machine release judgment、unresolved/audit summary 与 `owner_required_signoff`；它不替代 owner 最终 sign-off。
 - Product Hunt 的 official GraphQL API + token auth 路线继续保留为 future integration boundary，但本阶段不落地 live 抓取，也不把 `PRODUCT_HUNT_TOKEN` 视为完成本阶段的必需前提。
 
 本地默认配置由 [`.env.example`](.env.example) 提供，未显式设置时会回退到仓库内 `configs/`、`schemas/`、`fixtures/` 与 `.runtime/`。
@@ -201,6 +208,7 @@ git rm --cached .env
 - `fill-gold-set-staging-until-complete` 默认不会写 `gold_set/gold_set_300/`；它只更新 `docs/candidate_prescreen_workspace/` 与 `docs/gold_set_300_real_asset_staging/`，formal gold set 写回仍需独立执行。
 - `fill-gold-set-staging-until-complete` 若未传 `--query-slice`，会按 `candidate_prescreen_workflow.yaml` 中启用的 GitHub query slices 顺序循环；每一轮会重新从 staging YAML 读盘统计，而不是信任内存态或单次 LLM 回复。
 - relay/provider 响应当前会先收敛为 canonical outcome envelope；只有 transport / provider_response / content / schema / business 五层均成功时，`llm_prescreen.status` 才会写成 `succeeded`。`provider_empty_completion` 当前按 retryable `dependency_unavailable` 处理，而 `schema_drift` / `json_schema_validation_failed` / `parse_failure` 仍会把 fill loop 拉入 `blocked`。
+- 若需要单独核证 provider API 是否真的被调用，应使用 `probe-candidate-prescreen-relay --output-path ...` 并检查输出中的 `request_url`、`response_id`、`provider_usage` 与 `attempts[*].retry_scheduled`；不要把“token 已配置”或“仅执行了 replay-window”误当成 provider 调用证据。
 - live discovery / relay 请求之间会按配置执行固定节流等待；retryable technical failure 命中后，fill loop 会先写审计日志，再等待一个 backoff 窗口后继续下一轮。
 - 若 live discovery 命中 `schema_drift`、`json_schema_validation_failed`、`parse_failure` 或 `resume_state_invalid` 这类 terminal technical failure，`fill-gold-set-staging-until-complete` 会停止并返回 `status = blocked`，而不是无休止自旋。
 - 当前 Phase0 MVP 参考样本集固定口径为：`134 gold_set + 75 approved_for_staging + 162 rejected_after_human_review + 28 on_hold`；继续扩充 staging carrier 属于 post-MVP 增长，而不是继续推进 Phase0 的硬前提。
@@ -231,6 +239,9 @@ make validate-env
 - gold set：已写入真实双标 + adjudication 样本，当前 `gold_set/README.md` 为 `implemented`
 - MVP reference sample set：已冻结到当前分层口径 `134 / 75 / 162 / 28`，并以 formal gold set + screening calibration assets 的职责分层继续推进
 - 候选预筛工作流：已补齐 GitHub live candidate discovery、LLM relay 预筛、中间文档落盘与 staging handoff 入口；Product Hunt 继续保留候选发现 contract / fixture / replay 边界，但本阶段暂不落地 live discovery；candidate workspace 与 staging 仍不等于 formal gold set
+- GitHub live acceptance：已从单窗口扩展到 `3 windows x 3 query slices` 的真实联网矩阵，证据位于 `docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/`
+- LLM provider audit：已提供独立 relay probe artifact，可核证真实 POST、usage 与 retry 行为，证据位于 `docs/acceptance_artifacts/llm_relay_validation_2026-04-20/`
+- release judgment baseline：`docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json` 当前可输出 machine judgment `conditional-go`，但 final release sign-off 仍保留给 owner
 
 ## 当前剩余事项
 
@@ -240,6 +251,9 @@ make validate-env
 - `fixtures/extractor/` 与 `fixtures/scoring/` 仍是预留目录，当前不能宣称已具备对应模块的已交付 fixture 覆盖
 - 当前可运行基线仍以 deterministic fixture replay 和本地 file-backed task store harness 为主，不应表述为已完成 live source 接入或最终生产 runtime backend
 - Product Hunt live source ingestion / live candidate discovery 本阶段暂缓；当前仓库仍可保留 Product Hunt 的 contract / fixture / replay / source boundary，但不能把它写成默认启用或已落地
+- 当前 machine judgment 虽为 `conditional-go`，但仍有两类 owner 待签字事项：
+  - `01_phase_plan_and_exit_criteria.md` 中 `GitHub / Product Hunt 完整抓取周期` 与当前 deferred/live 边界的 gate interpretation
+  - merge spot-check、taxonomy audit、score audit、attention audit、unresolved audit 的人工 judgment 与最终 release sign-off
 
 ## 最小回链示例
 

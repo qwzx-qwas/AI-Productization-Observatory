@@ -1,0 +1,118 @@
+{
+  "task_ids": [
+    "0da2bb81081c1243",
+    "2970d738cb41bf57"
+  ],
+  "task_statuses": [
+    "succeeded",
+    "succeeded"
+  ],
+  "run1_request_params": {
+    "fetch_mode": "search_repositories",
+    "page_or_cursor_end": 3,
+    "page_or_cursor_start": 1,
+    "query_slice_id": "qf_ai_workflow",
+    "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2026-03-05..2026-03-05",
+    "selection_rule_version": "github_qsv1",
+    "time_field": "pushed_at",
+    "window_end": "2026-03-05",
+    "window_start": "2026-03-05"
+  },
+  "run1_watermark_before": {
+    "external_id": "gh_seed_0000",
+    "pushed_at": "2026-03-05T00:00:00Z",
+    "time_field": "pushed_at"
+  },
+  "run1_watermark_after": {
+    "external_id": "1173969834",
+    "pushed_at": "2026-03-05T23:56:36Z",
+    "time_field": "pushed_at"
+  },
+  "run2_parent_task_id": "0da2bb81081c1243",
+  "run2_resume_from_task_id": null,
+  "run2_request_params": {
+    "fetch_mode": "search_repositories",
+    "page_or_cursor_end": 3,
+    "page_or_cursor_start": 1,
+    "query_slice_id": "qf_ai_workflow",
+    "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2026-03-05..2026-03-05",
+    "selection_rule_version": "github_qsv1",
+    "time_field": "pushed_at",
+    "window_end": "2026-03-05",
+    "window_start": "2026-03-05"
+  },
+  "run2_watermark_after": {
+    "external_id": "1173969834",
+    "pushed_at": "2026-03-05T23:56:36Z",
+    "time_field": "pushed_at"
+  },
+  "raw_count": 200,
+  "raw_unique_crawl_run_ids": [
+    "1fedbc8f745fcd96"
+  ],
+  "outside_window_count": 0,
+  "min_pushed_at": {
+    "external_id": "879981313",
+    "full_name": "jalpatel11/jalpatel11",
+    "pushed_at": "2026-03-05T00:01:08Z",
+    "html_url": "https://github.com/jalpatel11/jalpatel11"
+  },
+  "max_pushed_at": {
+    "external_id": "1173969834",
+    "full_name": "Jacob-Ritchey/Embrangle",
+    "pushed_at": "2026-03-05T23:56:36Z",
+    "html_url": "https://github.com/Jacob-Ritchey/Embrangle"
+  },
+  "normalized_source_item_examples": [
+    {
+      "raw_id": "ebb6b9982c463bcbeb8c",
+      "source_id": "src_github",
+      "external_id": "1155587652",
+      "canonical_url": "https://github.com/samueljklee/attractor",
+      "linked_homepage_url": null,
+      "linked_repo_url": null,
+      "title": "attractor",
+      "author_name": "samueljklee",
+      "author_handle": "samueljklee",
+      "published_at": "2026-03-05T08:08:32Z",
+      "raw_text_excerpt": "DOT-based pipeline runner for multi-stage AI workflows. Implements the StrongDM Attractor nlspec.\n\n# Attractor\n\nAn implementation of [StrongDM's Attractor](https://github.com/strongdm/attractor) -- a DOT-based pipeline runner for orchestrating multi-stage AI workflows.\n\nAttractor lets you define AI workflows as Graphviz DOT files. Each node in the graph is a task (LLM call, human review, conditional branch, shell command) and edges define the flow between them. The engine walks the graph, calling LLMs at each stage, branching on conditions, and producing results.\n\n```dot digraph Pipeline { graph [goal=\"Build a REST API\"]\n\nstart [shape=Mdiamond] plan [shape=box, prompt=\"Create a plan for: $goal\"] implement [shape=box, prompt=\"Write the code for: $goal\"] review [shape=diamond] done [shape=Msquare]\n\nstart -> plan -> implement -> review review -> done [condition=\"outcome = success\"] review -> implement [condition=\"outcome = fail\"] } ```\n\n## What is this?\n\nStrongDM published a set of [natural language specifications](https://github.com/strongdm/attractor) (nlspecs) describing a 3-layer AI workflow platform:\n\n1. **Unified LLM Client** -- single interface across OpenAI, Anthropic, Google Gemini, and any OpenAI-compatible server 2. **Coding Agent Loop** -- autonomous agentic loop pairing LLMs with developer tools 3. **Attractor Pipeline Engine** -- DOT-graph orchestrator that chains LLM calls into workflows\n\nThey published the specs but no implementation. This repo is an implementation of those specs.\n\n## Quick Start\n\nRequires Python 3.12+ and [uv](https://docs.astral.sh/uv/).\n\n```bash # Clone and install git clone https://github.com/samueljklee/attractor.git cd attractor uv sync\n\n# Run a pipeline via CLI (requires API key) ANTHROPIC_API_KEY=sk-... uv run python -m attractor_pipeline.cli run examples/fibonacci.dot --no-tools\n\n# Run with OpenAI OPENAI_API_KEY=sk-... uv run python -m attractor_pipeline.cli run examples/fibonacci.dot --no-tools --provider openai --model gpt-4.1-mini\n\n# Run with Gemini GOOGLE_API_KEY=... uv run python -m attractor_pipeline.cli run examples/fibonacci.dot --no-tools --provider gemini --model gemini-2.5-flash\n\n# Validate a pipeline (no API key needed) uv run python -m attractor_pipeline.cli validate examples/fibonacci.dot\n\n# Start the HTTP server ANTHROPIC_API_KEY=sk-... uv run python -m attractor_server --port 8080 ```\n\n## HTTP Server\n\nAttractor exposes a REST API with SSE event streaming (spec S9.5-9.6):\n\n```bash # Start server uv run python -m attractor_server --port 8080\n\n# Submit a pipeline curl -X POST http://localhost:8080/pipelines \\ -H \"Content-Type: application/json\" \\ -d '{\"dot_source\": \"digraph { start [shape=Mdiamond]; task [shape=box, prompt=\\\"Write a haiku\\\"]; done [shape=Msquare]; start -> task -> done }\"}'\n\n# Watch events in real-time (SSE) curl -N http://localhost:8080/pipelines/{id}/events\n\n# Check status curl http://localhost:8080/pipelines/{id}\n\n# Cancel a running pipeline curl -X POST http://localhost:8080/pipelines/{id}/cancel ```\n\n### 9 Endpoints\n\n| Method | Path | Description | |--------|------|-------------| | `POST` | `/pipelines` | Start a pipeline from DOT source | | `GET` | `/pipelines/{id}` | Pipeline status and progress | | `GET` | `/pipelines/{id}/events` | SSE event stream (real-time) | | `POST` | `/pipelines/{id}/cancel` | Cancel a running pipeline | | `GET` | `/pipelines/{id}/graph` | Graph structure as JSON | | `GET` | `/pipelines/{id}/questions` | Pending human gate questions | | `POST` | `/pipelines/{id}/questions/{qid}/answer` | Answer a human gate question | | `GET` | `/pipelines/{id}/checkpoint` | Checkpoint state | | `GET` | `/pipelines/{id}/context` | Context key-value store |\n\n### SSE Event Types\n\n``` event: pipeline.started data: {\"id\": \"abc123\", \"name\": \"MyPipeline\", \"goal\": \"Build a widget\"}\n\nevent: pipeline.completed data: {\"id\": \"abc123\", \"duration\": 12.3, \"nodes_completed\": 5}\n\nevent: interview.started data: {\"qid\": \"q_abc\", \"question\": \"Deploy to production?\", \"stage\": \"gate\"}\n\nevent: pipeline.failed data: {\"id\": \"abc123\", \"error\": \"...\", \"duration\": 8.1} ```\n\nLate-connecting SSE clients receive the full event history replay.\n\n## How It Works\n\n### Node Shapes\n\n| Shape | Node Type | What It Does | |-------|-----------|-------------| | `Mdiamond` | Start | Entry point (no-op) | | `box` | Codergen | Calls an LLM with the node's prompt | | `diamond` | Conditional | Branches based on edge conditions | | `house` | Human Gate | Waits for human approval (CLI or HTTP) | | `hexagon` | Manager | Supervisor: runs a child pipeline, retries on failure | | `parallelogram` | Tool | Runs a shell command | | `component` | Parallel | Fans out to concurrent branches | | `tripleoctagon` | Fan-In | Collects results from parallel branches | | `Msquare` | Exit | Terminal node (pipeline complete) |\n\n### Variable Expansion\n\nNode prompts support `$variable` and `${variable}` expansion from the pipeline context:\n\n```dot digraph { graph [goal=\"Build a CLI tool\"] start [shape=Mdiamond] plan [shape=box, prompt=\"Plan: $goal\"] implement [shape=box, prompt=\"Implement: $goal using ${language}\"] done [shape=Msquare] start -> plan -> implement -> done } ```\n\nEscaped `\\$literal` produces a literal `$` (no expansion).\n\n### Model Stylesheets\n\nAssign LLM models to nodes using CSS-like selectors:\n\n```dot digraph Pipeline { graph [ goal=\"Build feature X\", model_stylesheet=\" * { llm_model: claude-sonnet-4-5; llm_provider: anthropic; } .critical { llm_model: claude-opus-4-6; reasoning_effort: high; } #final_review { llm_model: gpt-5.2; llm_provider: openai; } \" ] plan [shape=box] review [shape=box, class=\"critical\"] done [shape=Msquare] } ```\n\nSpecificity: `*` (0) < `shape` (1) < `.class` (2) < `#id` (3). Explicit node attributes always override.\n\n### Parallel Execution\n\n```dot digraph { start [shape=Mdiamond] fork [shape=component] a [shape=box, prompt=\"Approach A\"] b [shape=box, prompt=\"Approach B\"] c [shape=box, prompt=\"Approach C\"] join [shape=tripleoctagon] done [shape=Msquare]\n\nstart -> fork fork -> a -> join fork -> b -> join fork -> c -> join join -> done } ```\n\n### Supervisor / Manager Loop\n\nA hexagon node runs a child pipeline and retries if it fails:\n\n```dot digraph { start [shape=Mdiamond] supervisor [shape=hexagon, child_graph=\"child.dot\", max_iterations=\"3\"] done [shape=Msquare] start -> supervisor -> done } ```\n\n### System Prompt Layering\n\nThe system prompt is composed from 4 layers (highest priority wins):\n\n1. **Profile** -- provider-specific base (Claude Code style, codex-rs style) 2. **Pipeline goal** -- `[GOAL]` section from the DOT graph 3. **Node instruction** -- `[INSTRUCTION]` from per-node `system_prompt` attribute 4. **User override** -- replaces everything if set\n\n### Three-Layer Architecture\n\n``` HTTP Server (REST + SSE)            <-- 9 endpoints, real-time events | v DOT File (.dot) | v Attractor Pipeline Engine          <-- Parses DOT, walks graph, runs handlers | v Coding Agent Loop                   <-- Agentic loop with tools (read/write/edit/shell) | v Unified LLM Client                  <-- Provider adapters + middleware | v Provider APIs                       <-- Claude, GPT, Gemini, Ollama, vLLM ```\n\n### High-Level API\n\nUse the SDK directly without pipelines:\n\n```python from attractor_llm.generate import generate, generate_object, stream\n\n# Simple text generation text = await generate(client, \"claude-sonnet-4-5\", \"Explain recursion\")\n\n# With automatic tool loop text = await generate(client, \"claude-sonnet-4-5\", \"Read config.py\", tools=[read_file_tool], max_rounds=5)\n\n# Structured JSON output data = await generate_object(client, \"claude-sonnet-4-5\", \"Extract entities from: ...\", schema={\"type\": \"object\", ...})\n\n# Streaming async for chunk in stream(client, \"claude-sonnet-4-5\", \"Write a poem\"): print(chunk, end=\"\") ```\n\n### Middleware\n\nIntercept LLM requests and responses for logging, caching, token counting, rate limiting:",
+      "current_summary": "DOT-based pipeline runner for multi-stage AI workflows. Implements the StrongDM Attractor nlspec.",
+      "current_metrics_json": {
+        "star_count": 22,
+        "fork_count": 4,
+        "watcher_count": 22
+      },
+      "topics": null,
+      "language": "Python",
+      "item_status": "active",
+      "first_observed_at": "2026-03-05T08:08:32Z",
+      "latest_observed_at": "2026-04-20T03:21:20.886106Z",
+      "normalization_version": "github_v1"
+    },
+    {
+      "raw_id": "343e918ff5525080448f",
+      "source_id": "src_github",
+      "external_id": "1172637338",
+      "canonical_url": "https://github.com/hidden-salmon/awesome-cli",
+      "linked_homepage_url": "https://clihub.ai",
+      "linked_repo_url": null,
+      "title": "awesome-cli",
+      "author_name": "hidden-salmon",
+      "author_handle": "hidden-salmon",
+      "published_at": "2026-03-05T17:22:58Z",
+      "raw_text_excerpt": "A curated list of 1633 command-line tools, auto-discovered and updated daily\n\n<div align=\"center\">\n\n# Awesome CLI Tools\n\nA curated list of **1633** command-line tools, automatically discovered and updated daily.\n\n[Submit a tool](https://github.com/hidden-salmon/awesome-cli/issues/new?template=submit-tool.yml) \u00b7 [Browse on clihub.ai](https://clihub.ai)\n\n</div>\n\n---\n\n## Legend\n\n\ud83e\udd80 Rust \u00b7 \ud83d\udc39 Go \u00b7 \ud83d\udc0d Python \u00b7 \ud83d\udcc7 TypeScript \u00b7 \u26a1 C \u00b7 \u26a1 Zig \u00b7 \ud83d\udc1a Shell \u00b7 \ud83d\udc8e Ruby \u00b7 \u2615 Java\n\n## Contents\n\n- [\ud83d\udd27 Developer Tools](#developer-tools) (1299) - [\ud83d\udcbb Shell & Terminal](#shell-terminal) (196) - [\ud83d\udcc1 File Management](#file-management) (13) - [\ud83d\udd00 Git & Version Control](#git-version-control) (30) - [\ud83d\udcdd Text Processing](#text-processing) (46) - [\ud83c\udf10 Networking](#networking) (25) - [\ud83d\udcca System Monitoring](#system-monitoring) (13) - [\ud83d\uddc4\ufe0f Data & Databases](#data-databases) (21) - [\u2601\ufe0f Cloud & DevOps](#cloud-devops) (33) - [\ud83e\udd16 AI & LLM](#ai-llm) (47) - [\ud83d\udd12 Security](#security) (11) - [\u26a1 Productivity](#productivity) (21) - [\ud83c\udfa8 Media & Images](#media-images) (15) - [\ud83d\udce6 Package Managers](#package-managers) (11) - [\ud83d\udcda Documentation](#documentation) (6)\n\n## \ud83d\udd27 Developer Tools\n\n> Build tools, compilers, linters, and dev utilities\n\n- [**thefuck**](https://github.com/nvbn/thefuck) \ud83d\udc0d \u2014 Magnificent app which corrects your previous console command. \u2b50 96k - [**nvm**](https://github.com/nvm-sh/nvm) \ud83d\udc1a \u2014 Node Version Manager - POSIX-compliant bash script to manage multiple active node.js versions. \u2b50 92k - [**neovim**](https://github.com/neovim/neovim) \u26a1 \u2014 Hyperextensible Vim-based text editor \u2014 the future of Vim. \u2b50 85k - [**sherlock**](https://github.com/sherlock-project/sherlock) \ud83d\udc0d \u2014 Hunt down social media accounts by username across social networks. \u2b50 73k - [**tabby**](https://github.com/Eugeny/tabby) \ud83d\udcc7 \u2014 A terminal for a more modern age. \u2b50 69k - [**OpenHands**](https://github.com/OpenHands/OpenHands) \ud83d\udc0d \u2014 \ud83d\ude4c OpenHands: AI-Driven Development. \u2b50 69k - [**alacritty**](https://github.com/alacritty/alacritty) \ud83e\udd80 \u2014 A cross-platform, OpenGL terminal emulator. \u2b50 63k - [**nerd-fonts**](https://github.com/ryanoasis/nerd-fonts)  \u2014 Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts: Hack, Source Code Pro, more. Glyph\u2026. \u2b50 62k - [**git**](https://github.com/git/git) \u26a1 \u2014 Git Source Code Mirror - This is a publish-only repository but pull requests can be turned into patches to the mailing\u2026. \u2b50 59k - [**cline**](https://github.com/cline/cline) \ud83d\udcc7 \u2014 Autonomous coding agent right in your IDE, capable of creating/editing files, executing commands, using the browser,\u2026. \u2b50 59k - [**pi-hole**](https://github.com/pi-hole/pi-hole) \ud83d\udc1a \u2014 A black hole for Internet advertisements. \u2b50 56k - [**rich**](https://github.com/Textualize/rich) \ud83d\udc0d \u2014 Rich is a Python library for rich text and beautiful formatting in the terminal. \u2b50 56k - [**termux-app**](https://github.com/termux/termux-app) \u2615 \u2014 Termux - a terminal emulator application for Android OS extendible by variety of packages. \u2b50 51k - [**acme.sh**](https://github.com/acmesh-official/acme.sh) \ud83d\udc1a \u2014 A pure Unix shell script ACME client for SSL / TLS certificate automation. \u2b50 46k - [**hyper**](https://github.com/vercel/hyper) \ud83d\udcc7 \u2014 A terminal built on web technologies. \u2b50 45k - [**pyenv**](https://github.com/pyenv/pyenv) \ud83d\udc1a \u2014 Simple Python version management. \u2b50 44k - [**cobra**](https://github.com/spf13/cobra) \ud83d\udc39 \u2014 A Commander for modern Go CLI interactions. \u2b50 43k - [**Win11Debloat**](https://github.com/Raphire/Win11Debloat)  \u2014 A simple, lightweight PowerShell script to remove pre-installed apps, disable telemetry, as well as perform various\u2026. \u2b50 41k - [**bubbletea**](https://github.com/charmbracelet/bubbletea) \ud83d\udc39 \u2014 A powerful little TUI framework \ud83c\udfd7. \u2b50 40k - [**shellcheck**](https://github.com/koalaman/shellcheck) \u03bb \u2014 ShellCheck, a static analysis tool for shell scripts. \u2b50 39k - [**nushell**](https://github.com/nushell/nushell) \ud83e\udd80 \u2014 A new type of shell. \u2b50 39k - [**ui-ux-pro-max-skill**](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) \ud83d\udc0d \u2014 An AI SKILL that provide design intelligence for building professional UI/UX multiple platforms. \u2b50 37k - [**oh-my-opencode**](https://github.com/code-yeongyu/oh-my-opencode) \ud83d\udcc7 \u2014 the best agent harness. \u2b50 37k - [**tmux**](https://github.com/tmux/tmux) \u26a1 \u2014 Terminal multiplexer \u2014 split panes, detach sessions, pair program. \u2b50 36k - [**ink**](https://github.com/vadimdemedes/ink) \ud83d\udcc7 \u2014 \ud83c\udf08 React for interactive command-line apps. \u2b50 35k - [**zsh-autosuggestions**](https://github.com/zsh-users/zsh-autosuggestions) \ud83d\udc1a \u2014 Fish-like autosuggestions for zsh. \u2b50 35k - [**fish-shell**](https://github.com/fish-shell/fish-shell) \ud83e\udd80 \u2014 The user-friendly command line shell. \u2b50 33k - [**glances**](https://github.com/nicolargo/glances) \ud83d\udc0d \u2014 Glances an Eye on your system. A top/htop alternative for GNU/Linux, BSD, Mac OS and Windows operating systems. \u2b50 32k - [**continue**](https://github.com/continuedev/continue) \ud83d\udcc7 \u2014 \u23e9 Source-controlled AI checks, enforceable in CI. Powered by the open-source Continue CLI. \u2b50 32k - [**kitty**](https://github.com/kovidgoyal/kitty) \ud83d\udc0d \u2014 If you live in the terminal, kitty is made for you! Cross-platform, fast, feature-rich, GPU based. \u2b50 32k - [**jumpserver**](https://github.com/jumpserver/jumpserver) \ud83d\udc0d \u2014 JumpServer is an open-source Privileged Access Management (PAM) platform that provides DevOps and IT teams with\u2026. \u2b50 30k - [**WindTerm**](https://github.com/kingToolbox/WindTerm) \u26a1 \u2014 A professional cross-platform SSH/Sftp/Shell/Telnet/Tmux/Serial terminal. \u2b50 30k - [**zellij**](https://github.com/zellij-org/zellij) \ud83e\udd80 \u2014 A terminal workspace with batteries included. \u2b50 30k - [**wttr.in**](https://github.com/chubin/wttr.in) \ud83d\udc0d \u2014 :partly_sunny: The right way to check the weather. \u2b50 29k - [**create-t3-app**](https://github.com/t3-oss/create-t3-app) \ud83d\udcc7 \u2014 The best way to start a full-stack, typesafe Next.js app. \u2b50 29k - [**atuin**](https://github.com/atuinsh/atuin) \ud83e\udd80 \u2014 \u2728 Magical shell history. \u2b50 29k - [**nx**](https://github.com/nrwl/nx) \ud83d\udcc7 \u2014 The Monorepo Platform that amplifies both developers and AI agents. Nx optimizes your builds, scales your CI, and\u2026. \u2b50 28k - [**python-fire**](https://github.com/google/python-fire) \ud83d\udc0d \u2014 Python Fire is a library for automatically generating command line interfaces (CLIs) from absolutely any Python object. \u2b50 28k - [**the_silver_searcher**](https://github.com/ggreer/the_silver_searcher) \u26a1 \u2014 A code-searching tool similar to ack, but faster. \u2b50 27k - [**angular-cli**](https://github.com/angular/angular-cli) \ud83d\udcc7 \u2014 CLI tool for Angular. \u2b50 27k - [**iTerm2-Color-Schemes**](https://github.com/mbadolato/iTerm2-Color-Schemes) \ud83d\udc1a \u2014 Over 450 terminal color schemes/themes for iTerm/iTerm2. Includes ports to Terminal, Konsole, PuTTY, Xresources, XRDB,\u2026. \u2b50 27k - [**Warp**](https://github.com/warpdotdev/Warp)  \u2014 Warp is the agentic development environment, built for coding with multiple AI agents. \u2b50 26k - [**cool-retro-term**](https://github.com/Swordfish90/cool-retro-term)  \u2014 A good looking terminal emulator which mimics the old cathode display... \u2b50 25k - [**Awesome-Linux-Software**](https://github.com/luong-komorebi/Awesome-Linux-Software)  \u2014 \ud83d\udc27 A list of awesome Linux softwares. \u2b50 25k - [**wezterm**](https://github.com/wezterm/wezterm) \ud83e\udd80 \u2014 A GPU-accelerated cross-platform terminal emulator and multiplexer written by @wez and implemented in Rust. \u2b50 25k - [**exa**](https://github.com/ogham/exa) \ud83e\udd80 \u2014 A modern replacement for \u2018ls\u2019. \u2b50 24k - [**hyperfine**](https://github.com/sharkdp/hyperfine) \ud83e\udd80 \u2014 A command-line benchmarking tool \u2014 measure execution times. \u2b50 23k - [**gum**](https://github.com/charmbracelet/gum) \ud83d\udc39 \u2014 A tool for glamorous shell scripts \ud83c\udf80. \u2b50 23k - [**coreutils**](https://github.com/uutils/coreutils) \ud83e\udd80 \u2014 Cross-platform Rust rewrite of the GNU coreutils. \u2b50 23k - [**svgo**](https://github.com/svg/svgo) \ud83d\udcc7 \u2014 \u2699\ufe0f Node.js tool for optimizing SVG files. \u2b50 22k - [**zsh-syntax-highlighting**](https://github.com/zsh-users/zsh-syntax-highlighting) \ud83d\udc1a \u2014 Fish shell like syntax highlighting for Zsh. \u2b50 22k - [**cli**](https://github.com/spicetify/cli) \ud83d\udcc7 \u2014",
+      "current_summary": "A curated list of 1633 command-line tools, auto-discovered and updated daily",
+      "current_metrics_json": {
+        "star_count": 3,
+        "fork_count": 0,
+        "watcher_count": 3
+      },
+      "topics": null,
+      "language": null,
+      "item_status": "active",
+      "first_observed_at": "2026-03-05T17:22:58Z",
+      "latest_observed_at": "2026-04-20T03:21:20.886106Z",
+      "normalization_version": "github_v1"
+    }
+  ]
+}

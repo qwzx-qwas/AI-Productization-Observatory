@@ -1,0 +1,166 @@
+{
+  "window": "2025-03-05..2025-03-05",
+  "query_slice_id": "qf_ai_workflow",
+  "run1": {
+    "returncode": 0,
+    "task_id": "5dd2164820b713b5",
+    "raw_records": 19,
+    "source_items": 19,
+    "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_ai_workflow/run1.log",
+    "task_status": "succeeded",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 1,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_workflow",
+      "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    },
+    "watermark_after": {
+      "external_id": "943566024",
+      "pushed_at": "2025-03-05T23:21:26Z",
+      "time_field": "pushed_at"
+    },
+    "checkpoint_page": 1,
+    "raw_count": 19,
+    "outside_window_count": 0,
+    "raw_unique_crawl_run_ids": [
+      "38b0cff7eb8f4abd"
+    ],
+    "min_pushed_at": {
+      "external_id": "942951799",
+      "full_name": "piscodev/Counterfeit-Tablet-Identification",
+      "pushed_at": "2025-03-05T01:01:21Z",
+      "html_url": "https://github.com/piscodev/Counterfeit-Tablet-Identification"
+    },
+    "max_pushed_at": {
+      "external_id": "943566024",
+      "full_name": "Sharmuta69/OpenVino",
+      "pushed_at": "2025-03-05T23:21:26Z",
+      "html_url": "https://github.com/Sharmuta69/OpenVino"
+    }
+  },
+  "rerun": {
+    "returncode": 0,
+    "task_id": "17bd87bf5872ca23",
+    "raw_records": 19,
+    "source_items": 19,
+    "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_ai_workflow/rerun.log",
+    "task_status": "succeeded",
+    "parent_task_id": "5dd2164820b713b5",
+    "resume_from_task_id": null,
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 1,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_workflow",
+      "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "watermark_after": {
+      "external_id": "943566024",
+      "pushed_at": "2025-03-05T23:21:26Z",
+      "time_field": "pushed_at"
+    },
+    "checkpoint_page": 1,
+    "raw_count": 19,
+    "outside_window_count": 0,
+    "raw_unique_crawl_run_ids": [
+      "38b0cff7eb8f4abd"
+    ],
+    "durable_raw_unchanged": true
+  },
+  "failure_recovery": {
+    "failpoint_page": 1,
+    "failure": {
+      "returncode": 2,
+      "task_id": "65d3eb203b9369c6",
+      "raw_records": null,
+      "source_items": null,
+      "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_ai_workflow/failure.log",
+      "task_status": "failed_retryable",
+      "error_type": "network_error",
+      "error_message": "configured GitHub live failure injection on page 1",
+      "resume_state": {
+        "logical_watermark": {
+          "external_id": "gh_seed_0000",
+          "pushed_at": "2025-03-05T00:00:00Z",
+          "time_field": "pushed_at"
+        },
+        "pending_windows": [
+          {
+            "page": 1,
+            "window_end": "2025-03-05",
+            "window_start": "2025-03-05"
+          }
+        ],
+        "query_slice_id": "qf_ai_workflow",
+        "source_window_end": "2025-03-05",
+        "source_window_start": "2025-03-05"
+      },
+      "durable_logical_watermark": {
+        "external_id": "gh_seed_0000",
+        "pushed_at": "2025-03-05T00:00:00Z",
+        "time_field": "pushed_at"
+      },
+      "checkpoint_page": 1,
+      "raw_count": 19,
+      "outside_window_count": 0
+    },
+    "resume": {
+      "returncode": 0,
+      "task_id": "16dbd3632adb4a7b",
+      "raw_records": 19,
+      "source_items": 19,
+      "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_ai_workflow/resume.log",
+      "task_status": "succeeded",
+      "parent_task_id": "65d3eb203b9369c6",
+      "resume_from_task_id": "65d3eb203b9369c6",
+      "request_params": {
+        "fetch_mode": "search_repositories",
+        "page_or_cursor_end": 1,
+        "page_or_cursor_start": 1,
+        "query_slice_id": "qf_ai_workflow",
+        "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+        "selection_rule_version": "github_qsv1",
+        "time_field": "pushed_at",
+        "window_end": "2025-03-05",
+        "window_start": "2025-03-05"
+      },
+      "watermark_after": {
+        "external_id": "943566024",
+        "pushed_at": "2025-03-05T23:21:26Z",
+        "time_field": "pushed_at"
+      },
+      "checkpoint_page": 1,
+      "raw_count": 19,
+      "outside_window_count": 0,
+      "raw_unique_crawl_run_ids": [
+        "38b0cff7eb8f4abd"
+      ],
+      "min_pushed_at": {
+        "external_id": "942951799",
+        "full_name": "piscodev/Counterfeit-Tablet-Identification",
+        "pushed_at": "2025-03-05T01:01:21Z",
+        "html_url": "https://github.com/piscodev/Counterfeit-Tablet-Identification"
+      },
+      "max_pushed_at": {
+        "external_id": "943566024",
+        "full_name": "Sharmuta69/OpenVino",
+        "pushed_at": "2025-03-05T23:21:26Z",
+        "html_url": "https://github.com/Sharmuta69/OpenVino"
+      }
+    }
+  }
+}

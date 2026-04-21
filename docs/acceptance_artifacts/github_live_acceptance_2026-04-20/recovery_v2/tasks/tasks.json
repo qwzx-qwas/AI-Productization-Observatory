@@ -1,0 +1,151 @@
+[
+  {
+    "attempt_count": 1,
+    "available_at": "2026-04-20T03:34:40.004098Z",
+    "created_at": "2026-04-20T03:32:30.808452Z",
+    "finished_at": "2026-04-20T03:34:10.004076Z",
+    "last_error_message": "configured GitHub live failure injection on page 2",
+    "last_error_type": "network_error",
+    "lease_expires_at": null,
+    "lease_owner": null,
+    "max_attempts": 5,
+    "parent_task_id": null,
+    "payload_json": {
+      "discovery_mode": "live",
+      "durable_logical_watermark": {
+        "external_id": "1173965223",
+        "pushed_at": "2026-03-05T23:47:07Z",
+        "time_field": "pushed_at"
+      },
+      "heartbeat_interval_seconds": 10,
+      "idempotency_key": "pull_collect:github:2026-03-05:2026-03-05",
+      "idempotent_write": true,
+      "lease_timeout_seconds": 30,
+      "query_slice_id": "qf_ai_workflow",
+      "replay_basis": "github_search_repositories_live",
+      "replay_reason": "same_window_live_replay",
+      "request_params": {
+        "fetch_mode": "search_repositories",
+        "page_or_cursor_end": 1,
+        "page_or_cursor_start": 1,
+        "query_slice_id": "qf_ai_workflow",
+        "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2026-03-05..2026-03-05",
+        "selection_rule_version": "github_qsv1",
+        "time_field": "pushed_at",
+        "window_end": "2026-03-05",
+        "window_start": "2026-03-05"
+      },
+      "requested_at": "2026-04-20T03:32:30.797888Z",
+      "resume_checkpoint_verified": true,
+      "resume_state": {
+        "logical_watermark": {
+          "external_id": "1173965223",
+          "pushed_at": "2026-03-05T23:47:07Z",
+          "time_field": "pushed_at"
+        },
+        "pending_windows": [
+          {
+            "page": 2,
+            "window_end": "2026-03-05",
+            "window_start": "2026-03-05"
+          }
+        ],
+        "query_slice_id": "qf_ai_workflow",
+        "source_window_end": "2026-03-05",
+        "source_window_start": "2026-03-05"
+      },
+      "run_unit": "per_source + per_window",
+      "selection_rule_version": "github_qsv1",
+      "source_code": "github",
+      "task_type": "pull_collect",
+      "watermark_before": {
+        "external_id": "gh_seed_0000",
+        "pushed_at": "2026-03-05T00:00:00Z",
+        "time_field": "pushed_at"
+      },
+      "window_end": "2026-03-05",
+      "window_key": null,
+      "window_start": "2026-03-05"
+    },
+    "scheduled_at": "2026-04-20T03:32:30.808443Z",
+    "source_id": "src_github",
+    "started_at": "2026-04-20T03:32:30.848103Z",
+    "status": "failed_retryable",
+    "target_id": null,
+    "target_type": null,
+    "task_id": "dfed2ab23e619004",
+    "task_scope": "per_source_window",
+    "task_type": "pull_collect",
+    "updated_at": "2026-04-20T03:34:10.015268Z",
+    "window_end": "2026-03-05",
+    "window_start": "2026-03-05"
+  },
+  {
+    "attempt_count": 0,
+    "available_at": "2026-04-20T03:34:53.249758Z",
+    "created_at": "2026-04-20T03:34:53.249763Z",
+    "finished_at": "2026-04-20T03:36:44.842979Z",
+    "last_error_message": null,
+    "last_error_type": null,
+    "lease_expires_at": null,
+    "lease_owner": null,
+    "max_attempts": 5,
+    "parent_task_id": "dfed2ab23e619004",
+    "payload_json": {
+      "crawl_run_id": "7eb6e76c2d24224f",
+      "discovery_mode": "live",
+      "finished_at": "2026-04-20T03:36:44.818884Z",
+      "heartbeat_interval_seconds": 10,
+      "idempotency_key": "pull_collect:github:2026-03-05:2026-03-05",
+      "idempotent_write": true,
+      "lease_timeout_seconds": 30,
+      "query_slice_id": "qf_ai_workflow",
+      "replay_basis": "github_search_repositories_live",
+      "replay_reason": "same_window_live_replay",
+      "request_params": {
+        "fetch_mode": "search_repositories",
+        "page_or_cursor_end": 3,
+        "page_or_cursor_start": 2,
+        "query_slice_id": "qf_ai_workflow",
+        "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2026-03-05..2026-03-05",
+        "selection_rule_version": "github_qsv1",
+        "time_field": "pushed_at",
+        "window_end": "2026-03-05",
+        "window_start": "2026-03-05"
+      },
+      "requested_at": "2026-04-20T03:34:53.237591Z",
+      "resume_checkpoint_verified": true,
+      "resume_from_task_id": "dfed2ab23e619004",
+      "run_status": "success",
+      "run_unit": "per_source + per_window",
+      "selection_rule_version": "github_qsv1",
+      "source_code": "github",
+      "task_type": "pull_collect",
+      "watermark_after": {
+        "external_id": "1173969834",
+        "pushed_at": "2026-03-05T23:56:36Z",
+        "time_field": "pushed_at"
+      },
+      "watermark_before": {
+        "external_id": "1173965223",
+        "pushed_at": "2026-03-05T23:47:07Z",
+        "time_field": "pushed_at"
+      },
+      "window_end": "2026-03-05",
+      "window_key": null,
+      "window_start": "2026-03-05"
+    },
+    "scheduled_at": "2026-04-20T03:34:53.249754Z",
+    "source_id": "src_github",
+    "started_at": "2026-04-20T03:34:53.291406Z",
+    "status": "succeeded",
+    "target_id": null,
+    "target_type": null,
+    "task_id": "a3da467ff6a243e2",
+    "task_scope": "per_source_window",
+    "task_type": "pull_collect",
+    "updated_at": "2026-04-20T03:36:44.855284Z",
+    "window_end": "2026-03-05",
+    "window_start": "2026-03-05"
+  }
+]

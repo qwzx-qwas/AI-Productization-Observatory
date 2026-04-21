@@ -1,0 +1,1516 @@
+{
+  "generated_at": "2026-04-20T09:08:51.488663Z",
+  "selection_basis": {
+    "windows": [
+      "2025-03-05..2025-03-05",
+      "2025-03-12..2025-03-12",
+      "2025-03-19..2025-03-19"
+    ],
+    "query_slices": [
+      "qf_ai_workflow",
+      "qf_ai_assistant",
+      "qf_copilot"
+    ],
+    "rationale": "one-day GitHub windows chosen from read-only probes to keep all selected frozen slices below the 1000-result cap while preserving real live replay coverage",
+    "controlled_failure_strategy": "use APO_GITHUB_LIVE_FAIL_ON_PAGE=1 for matrix breadth to validate retryable failure checkpoint/resume without exceeding GitHub core README hydration budget; retain existing Phase1-E page-2 partial-raw evidence as depth coverage"
+  },
+  "combos": [
+    {
+      "window": "2025-03-05..2025-03-05",
+      "query_slice_id": "qf_ai_workflow",
+      "run1": {
+        "returncode": 0,
+        "task_id": "5dd2164820b713b5",
+        "raw_records": 19,
+        "source_items": 19,
+        "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_ai_workflow/run1.log",
+        "task_status": "succeeded",
+        "request_params": {
+          "fetch_mode": "search_repositories",
+          "page_or_cursor_end": 1,
+          "page_or_cursor_start": 1,
+          "query_slice_id": "qf_ai_workflow",
+          "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+          "selection_rule_version": "github_qsv1",
+          "time_field": "pushed_at",
+          "window_end": "2025-03-05",
+          "window_start": "2025-03-05"
+        },
+        "watermark_before": {
+          "external_id": "gh_seed_0000",
+          "pushed_at": "2025-03-05T00:00:00Z",
+          "time_field": "pushed_at"
+        },
+        "watermark_after": {
+          "external_id": "943566024",
+          "pushed_at": "2025-03-05T23:21:26Z",
+          "time_field": "pushed_at"
+        },
+        "checkpoint_page": 1,
+        "raw_count": 19,
+        "outside_window_count": 0,
+        "raw_unique_crawl_run_ids": [
+          "38b0cff7eb8f4abd"
+        ],
+        "min_pushed_at": {
+          "external_id": "942951799",
+          "full_name": "piscodev/Counterfeit-Tablet-Identification",
+          "pushed_at": "2025-03-05T01:01:21Z",
+          "html_url": "https://github.com/piscodev/Counterfeit-Tablet-Identification"
+        },
+        "max_pushed_at": {
+          "external_id": "943566024",
+          "full_name": "Sharmuta69/OpenVino",
+          "pushed_at": "2025-03-05T23:21:26Z",
+          "html_url": "https://github.com/Sharmuta69/OpenVino"
+        }
+      },
+      "rerun": {
+        "returncode": 0,
+        "task_id": "17bd87bf5872ca23",
+        "raw_records": 19,
+        "source_items": 19,
+        "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_ai_workflow/rerun.log",
+        "task_status": "succeeded",
+        "parent_task_id": "5dd2164820b713b5",
+        "resume_from_task_id": null,
+        "request_params": {
+          "fetch_mode": "search_repositories",
+          "page_or_cursor_end": 1,
+          "page_or_cursor_start": 1,
+          "query_slice_id": "qf_ai_workflow",
+          "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+          "selection_rule_version": "github_qsv1",
+          "time_field": "pushed_at",
+          "window_end": "2025-03-05",
+          "window_start": "2025-03-05"
+        },
+        "watermark_after": {
+          "external_id": "943566024",
+          "pushed_at": "2025-03-05T23:21:26Z",
+          "time_field": "pushed_at"
+        },
+        "checkpoint_page": 1,
+        "raw_count": 19,
+        "outside_window_count": 0,
+        "raw_unique_crawl_run_ids": [
+          "38b0cff7eb8f4abd"
+        ],
+        "durable_raw_unchanged": true
+      },
+      "failure_recovery": {
+        "failpoint_page": 1,
+        "failure": {
+          "returncode": 2,
+          "task_id": "65d3eb203b9369c6",
+          "raw_records": null,
+          "source_items": null,
+          "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_ai_workflow/failure.log",
+          "task_status": "failed_retryable",
+          "error_type": "network_error",
+          "error_message": "configured GitHub live failure injection on page 1",
+          "resume_state": {
+            "logical_watermark": {
+              "external_id": "gh_seed_0000",
+              "pushed_at": "2025-03-05T00:00:00Z",
+              "time_field": "pushed_at"
+            },
+            "pending_windows": [
+              {
+                "page": 1,
+                "window_end": "2025-03-05",
+                "window_start": "2025-03-05"
+              }
+            ],
+            "query_slice_id": "qf_ai_workflow",
+            "source_window_end": "2025-03-05",
+            "source_window_start": "2025-03-05"
+          },
+          "durable_logical_watermark": {
+            "external_id": "gh_seed_0000",
+            "pushed_at": "2025-03-05T00:00:00Z",
+            "time_field": "pushed_at"
+          },
+          "checkpoint_page": 1,
+          "raw_count": 19,
+          "outside_window_count": 0
+        },
+        "resume": {
+          "returncode": 0,
+          "task_id": "16dbd3632adb4a7b",
+          "raw_records": 19,
+          "source_items": 19,
+          "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_ai_workflow/resume.log",
+          "task_status": "succeeded",
+          "parent_task_id": "65d3eb203b9369c6",
+          "resume_from_task_id": "65d3eb203b9369c6",
+          "request_params": {
+            "fetch_mode": "search_repositories",
+            "page_or_cursor_end": 1,
+            "page_or_cursor_start": 1,
+            "query_slice_id": "qf_ai_workflow",
+            "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+            "selection_rule_version": "github_qsv1",
+            "time_field": "pushed_at",
+            "window_end": "2025-03-05",
+            "window_start": "2025-03-05"
+          },
+          "watermark_after": {
+            "external_id": "943566024",
+            "pushed_at": "2025-03-05T23:21:26Z",
+            "time_field": "pushed_at"
+          },
+          "checkpoint_page": 1,
+          "raw_count": 19,
+          "outside_window_count": 0,
+          "raw_unique_crawl_run_ids": [
+            "38b0cff7eb8f4abd"
+          ],
+          "min_pushed_at": {
+            "external_id": "942951799",
+            "full_name": "piscodev/Counterfeit-Tablet-Identification",
+            "pushed_at": "2025-03-05T01:01:21Z",
+            "html_url": "https://github.com/piscodev/Counterfeit-Tablet-Identification"
+          },
+          "max_pushed_at": {
+            "external_id": "943566024",
+            "full_name": "Sharmuta69/OpenVino",
+            "pushed_at": "2025-03-05T23:21:26Z",
+            "html_url": "https://github.com/Sharmuta69/OpenVino"
+          }
+        }
+      }
+    },
+    {
+      "window": "2025-03-05..2025-03-05",
+      "query_slice_id": "qf_ai_assistant",
+      "run1": {
+        "returncode": 0,
+        "task_id": "f06dfd534f13cbcf",
+        "raw_records": 128,
+        "source_items": 128,
+        "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_ai_assistant/run1.log",
+        "task_status": "succeeded",
+        "request_params": {
+          "fetch_mode": "search_repositories",
+          "page_or_cursor_end": 2,
+          "page_or_cursor_start": 1,
+          "query_slice_id": "qf_ai_assistant",
+          "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+          "selection_rule_version": "github_qsv1",
+          "time_field": "pushed_at",
+          "window_end": "2025-03-05",
+          "window_start": "2025-03-05"
+        },
+        "watermark_before": {
+          "external_id": "gh_seed_0000",
+          "pushed_at": "2025-03-05T00:00:00Z",
+          "time_field": "pushed_at"
+        },
+        "watermark_after": {
+          "external_id": "943576544",
+          "pushed_at": "2025-03-05T23:57:01Z",
+          "time_field": "pushed_at"
+        },
+        "checkpoint_page": 2,
+        "raw_count": 128,
+        "outside_window_count": 0,
+        "raw_unique_crawl_run_ids": [
+          "c2dc0f0058555344"
+        ],
+        "min_pushed_at": {
+          "external_id": "919690718",
+          "full_name": "guangyusong/giskard",
+          "pushed_at": "2025-03-05T00:16:31Z",
+          "html_url": "https://github.com/guangyusong/giskard"
+        },
+        "max_pushed_at": {
+          "external_id": "943576544",
+          "full_name": "luisja01/AI_assistant",
+          "pushed_at": "2025-03-05T23:57:01Z",
+          "html_url": "https://github.com/luisja01/AI_assistant"
+        }
+      },
+      "rerun": {
+        "returncode": 0,
+        "task_id": "daad20be47b3eec8",
+        "raw_records": 128,
+        "source_items": 128,
+        "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_ai_assistant/rerun.log",
+        "task_status": "succeeded",
+        "parent_task_id": "f06dfd534f13cbcf",
+        "resume_from_task_id": null,
+        "request_params": {
+          "fetch_mode": "search_repositories",
+          "page_or_cursor_end": 2,
+          "page_or_cursor_start": 1,
+          "query_slice_id": "qf_ai_assistant",
+          "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+          "selection_rule_version": "github_qsv1",
+          "time_field": "pushed_at",
+          "window_end": "2025-03-05",
+          "window_start": "2025-03-05"
+        },
+        "watermark_after": {
+          "external_id": "943576544",
+          "pushed_at": "2025-03-05T23:57:01Z",
+          "time_field": "pushed_at"
+        },
+        "checkpoint_page": 2,
+        "raw_count": 128,
+        "outside_window_count": 0,
+        "raw_unique_crawl_run_ids": [
+          "c2dc0f0058555344"
+        ],
+        "durable_raw_unchanged": true
+      },
+      "failure_recovery": {
+        "failpoint_page": 1,
+        "failure": {
+          "returncode": 2,
+          "task_id": "0bca97577254eb26",
+          "raw_records": null,
+          "source_items": null,
+          "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_ai_assistant/failure.log",
+          "task_status": "failed_retryable",
+          "error_type": "network_error",
+          "error_message": "configured GitHub live failure injection on page 1",
+          "resume_state": {
+            "logical_watermark": {
+              "external_id": "gh_seed_0000",
+              "pushed_at": "2025-03-05T00:00:00Z",
+              "time_field": "pushed_at"
+            },
+            "pending_windows": [
+              {
+                "page": 1,
+                "window_end": "2025-03-05",
+                "window_start": "2025-03-05"
+              }
+            ],
+            "query_slice_id": "qf_ai_assistant",
+            "source_window_end": "2025-03-05",
+            "source_window_start": "2025-03-05"
+          },
+          "durable_logical_watermark": {
+            "external_id": "gh_seed_0000",
+            "pushed_at": "2025-03-05T00:00:00Z",
+            "time_field": "pushed_at"
+          },
+          "checkpoint_page": 1,
+          "raw_count": 128,
+          "outside_window_count": 0
+        },
+        "resume": {
+          "returncode": 0,
+          "task_id": "e62eb011a3690893",
+          "raw_records": 128,
+          "source_items": 128,
+          "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_ai_assistant/resume.log",
+          "task_status": "succeeded",
+          "parent_task_id": "0bca97577254eb26",
+          "resume_from_task_id": "0bca97577254eb26",
+          "request_params": {
+            "fetch_mode": "search_repositories",
+            "page_or_cursor_end": 2,
+            "page_or_cursor_start": 1,
+            "query_slice_id": "qf_ai_assistant",
+            "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+            "selection_rule_version": "github_qsv1",
+            "time_field": "pushed_at",
+            "window_end": "2025-03-05",
+            "window_start": "2025-03-05"
+          },
+          "watermark_after": {
+            "external_id": "943576544",
+            "pushed_at": "2025-03-05T23:57:01Z",
+            "time_field": "pushed_at"
+          },
+          "checkpoint_page": 2,
+          "raw_count": 128,
+          "outside_window_count": 0,
+          "raw_unique_crawl_run_ids": [
+            "c2dc0f0058555344"
+          ],
+          "min_pushed_at": {
+            "external_id": "919690718",
+            "full_name": "guangyusong/giskard",
+            "pushed_at": "2025-03-05T00:16:31Z",
+            "html_url": "https://github.com/guangyusong/giskard"
+          },
+          "max_pushed_at": {
+            "external_id": "943576544",
+            "full_name": "luisja01/AI_assistant",
+            "pushed_at": "2025-03-05T23:57:01Z",
+            "html_url": "https://github.com/luisja01/AI_assistant"
+          }
+        }
+      }
+    },
+    {
+      "window": "2025-03-05..2025-03-05",
+      "query_slice_id": "qf_copilot",
+      "run1": {
+        "returncode": 0,
+        "task_id": "3cece3dc121c2a80",
+        "raw_records": 349,
+        "source_items": 349,
+        "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_copilot/run1.log",
+        "task_status": "succeeded",
+        "request_params": {
+          "fetch_mode": "search_repositories",
+          "page_or_cursor_end": 4,
+          "page_or_cursor_start": 1,
+          "query_slice_id": "qf_copilot",
+          "query_text": "copilot in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+          "selection_rule_version": "github_qsv1",
+          "time_field": "pushed_at",
+          "window_end": "2025-03-05",
+          "window_start": "2025-03-05"
+        },
+        "watermark_before": {
+          "external_id": "gh_seed_0000",
+          "pushed_at": "2025-03-05T00:00:00Z",
+          "time_field": "pushed_at"
+        },
+        "watermark_after": {
+          "external_id": "943580316",
+          "pushed_at": "2025-03-05T23:59:48Z",
+          "time_field": "pushed_at"
+        },
+        "checkpoint_page": 4,
+        "raw_count": 349,
+        "outside_window_count": 0,
+        "raw_unique_crawl_run_ids": [
+          "fd12323078df8fd9"
+        ],
+        "min_pushed_at": {
+          "external_id": "942949240",
+          "full_name": "bblazin303/skills-copilot-codespaces-vscode",
+          "pushed_at": "2025-03-05T00:03:14Z",
+          "html_url": "https://github.com/bblazin303/skills-copilot-codespaces-vscode"
+        },
+        "max_pushed_at": {
+          "external_id": "943580316",
+          "full_name": "danyntavares/skills-copilot-codespaces-vscode",
+          "pushed_at": "2025-03-05T23:59:48Z",
+          "html_url": "https://github.com/danyntavares/skills-copilot-codespaces-vscode"
+        }
+      },
+      "rerun": {
+        "returncode": 0,
+        "task_id": "314af03a1c7c79ef",
+        "raw_records": 349,
+        "source_items": 349,
+        "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_copilot/rerun.log",
+        "task_status": "succeeded",
+        "parent_task_id": "3cece3dc121c2a80",
+        "resume_from_task_id": null,
+        "request_params": {
+          "fetch_mode": "search_repositories",
+          "page_or_cursor_end": 4,
+          "page_or_cursor_start": 1,
+          "query_slice_id": "qf_copilot",
+          "query_text": "copilot in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+          "selection_rule_version": "github_qsv1",
+          "time_field": "pushed_at",
+          "window_end": "2025-03-05",
+          "window_start": "2025-03-05"
+        },
+        "watermark_after": {
+          "external_id": "943580316",
+          "pushed_at": "2025-03-05T23:59:48Z",
+          "time_field": "pushed_at"
+        },
+        "checkpoint_page": 4,
+        "raw_count": 349,
+        "outside_window_count": 0,
+        "raw_unique_crawl_run_ids": [
+          "fd12323078df8fd9"
+        ],
+        "durable_raw_unchanged": true
+      },
+      "failure_recovery": {
+        "failpoint_page": 1,
+        "failure": {
+          "returncode": 2,
+          "task_id": "25334ff00b259eb4",
+          "raw_records": null,
+          "source_items": null,
+          "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_copilot/failure.log",
+          "task_status": "failed_retryable",
+          "error_type": "network_error",
+          "error_message": "configured GitHub live failure injection on page 1",
+          "resume_state": {
+            "logical_watermark": {
+              "external_id": "gh_seed_0000",
+              "pushed_at": "2025-03-05T00:00:00Z",
+              "time_field": "pushed_at"
+            },
+            "pending_windows": [
+              {
+                "page": 1,
+                "window_end": "2025-03-05",
+                "window_start": "2025-03-05"
+              }
+            ],
+            "query_slice_id": "qf_copilot",
+            "source_window_end": "2025-03-05",
+            "source_window_start": "2025-03-05"
+          },
+          "durable_logical_watermark": {
+            "external_id": "gh_seed_0000",
+            "pushed_at": "2025-03-05T00:00:00Z",
+            "time_field": "pushed_at"
+          },
+          "checkpoint_page": 1,
+          "raw_count": 349,
+          "outside_window_count": 0
+        },
+        "resume": {
+          "returncode": 0,
+          "task_id": "6746859cf3cf27b8",
+          "raw_records": 349,
+          "source_items": 349,
+          "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_copilot/resume.log",
+          "task_status": "succeeded",
+          "parent_task_id": "25334ff00b259eb4",
+          "resume_from_task_id": "25334ff00b259eb4",
+          "request_params": {
+            "fetch_mode": "search_repositories",
+            "page_or_cursor_end": 4,
+            "page_or_cursor_start": 1,
+            "query_slice_id": "qf_copilot",
+            "query_text": "copilot in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+            "selection_rule_version": "github_qsv1",
+            "time_field": "pushed_at",
+            "window_end": "2025-03-05",
+            "window_start": "2025-03-05"
+          },
+          "watermark_after": {
+            "external_id": "943580316",
+            "pushed_at": "2025-03-05T23:59:48Z",
+            "time_field": "pushed_at"
+          },
+          "checkpoint_page": 4,
+          "raw_count": 349,
+          "outside_window_count": 0,
+          "raw_unique_crawl_run_ids": [
+            "fd12323078df8fd9"
+          ],
+          "min_pushed_at": {
+            "external_id": "942949240",
+            "full_name": "bblazin303/skills-copilot-codespaces-vscode",
+            "pushed_at": "2025-03-05T00:03:14Z",
+            "html_url": "https://github.com/bblazin303/skills-copilot-codespaces-vscode"
+          },
+          "max_pushed_at": {
+            "external_id": "943580316",
+            "full_name": "danyntavares/skills-copilot-codespaces-vscode",
+            "pushed_at": "2025-03-05T23:59:48Z",
+            "html_url": "https://github.com/danyntavares/skills-copilot-codespaces-vscode"
+          }
+        }
+      }
+    },
+    {
+      "window": "2025-03-12..2025-03-12",
+      "query_slice_id": "qf_ai_workflow",
+      "run1": {
+        "returncode": 0,
+        "task_id": "852956d6876e130e",
+        "raw_records": 24,
+        "source_items": 24,
+        "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-12_2025-03-12__qf_ai_workflow/run1.log",
+        "task_status": "succeeded",
+        "request_params": {
+          "fetch_mode": "search_repositories",
+          "page_or_cursor_end": 1,
+          "page_or_cursor_start": 1,
+          "query_slice_id": "qf_ai_workflow",
+          "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-12..2025-03-12",
+          "selection_rule_version": "github_qsv1",
+          "time_field": "pushed_at",
+          "window_end": "2025-03-12",
+          "window_start": "2025-03-12"
+        },
+        "watermark_before": {
+          "external_id": "gh_seed_0000",
+          "pushed_at": "2025-03-12T00:00:00Z",
+          "time_field": "pushed_at"
+        },
+        "watermark_after": {
+          "external_id": "926566365",
+          "pushed_at": "2025-03-12T21:23:22Z",
+          "time_field": "pushed_at"
+        },
+        "checkpoint_page": 1,
+        "raw_count": 24,
+        "outside_window_count": 0,
+        "raw_unique_crawl_run_ids": [
+          "6e92e770fc3cff8c"
+        ],
+        "min_pushed_at": {
+          "external_id": "946594706",
+          "full_name": "Tya4567/RTD",
+          "pushed_at": "2025-03-12T02:01:15Z",
+          "html_url": "https://github.com/Tya4567/RTD"
+        },
+        "max_pushed_at": {
+          "external_id": "926566365",
+          "full_name": "jasongraydon01/openwebui-experimental",
+          "pushed_at": "2025-03-12T21:23:22Z",
+          "html_url": "https://github.com/jasongraydon01/openwebui-experimental"
+        }
+      },
+      "rerun": {
+        "returncode": 0,
+        "task_id": "be95091c7fce9f68",
+        "raw_records": 24,
+        "source_items": 24,
+        "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-12_2025-03-12__qf_ai_workflow/rerun.log",
+        "task_status": "succeeded",
+        "parent_task_id": "852956d6876e130e",
+        "resume_from_task_id": null,
+        "request_params": {
+          "fetch_mode": "search_repositories",
+          "page_or_cursor_end": 1,
+          "page_or_cursor_start": 1,
+          "query_slice_id": "qf_ai_workflow",
+          "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-12..2025-03-12",
+          "selection_rule_version": "github_qsv1",
+          "time_field": "pushed_at",
+          "window_end": "2025-03-12",
+          "window_start": "2025-03-12"
+        },
+        "watermark_after": {
+          "external_id": "926566365",
+          "pushed_at": "2025-03-12T21:23:22Z",
+          "time_field": "pushed_at"
+        },
+        "checkpoint_page": 1,
+        "raw_count": 24,
+        "outside_window_count": 0,
+        "raw_unique_crawl_run_ids": [
+          "6e92e770fc3cff8c"
+        ],
+        "durable_raw_unchanged": true
+      },
+      "failure_recovery": {
+        "failpoint_page": 1,
+        "failure": {
+          "returncode": 2,
+          "task_id": "9ab3c58d26ae7abb",
+          "raw_records": null,
+          "source_items": null,
+          "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-12_2025-03-12__qf_ai_workflow/failure.log",
+          "task_status": "failed_retryable",
+          "error_type": "network_error",
+          "error_message": "configured GitHub live failure injection on page 1",
+          "resume_state": {
+            "logical_watermark": {
+              "external_id": "gh_seed_0000",
+              "pushed_at": "2025-03-12T00:00:00Z",
+              "time_field": "pushed_at"
+            },
+            "pending_windows": [
+              {
+                "page": 1,
+                "window_end": "2025-03-12",
+                "window_start": "2025-03-12"
+              }
+            ],
+            "query_slice_id": "qf_ai_workflow",
+            "source_window_end": "2025-03-12",
+            "source_window_start": "2025-03-12"
+          },
+          "durable_logical_watermark": {
+            "external_id": "gh_seed_0000",
+            "pushed_at": "2025-03-12T00:00:00Z",
+            "time_field": "pushed_at"
+          },
+          "checkpoint_page": 1,
+          "raw_count": 24,
+          "outside_window_count": 0
+        },
+        "resume": {
+          "returncode": 0,
+          "task_id": "7b4be75b0f0babd8",
+          "raw_records": 24,
+          "source_items": 24,
+          "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-12_2025-03-12__qf_ai_workflow/resume.log",
+          "task_status": "succeeded",
+          "parent_task_id": "9ab3c58d26ae7abb",
+          "resume_from_task_id": "9ab3c58d26ae7abb",
+          "request_params": {
+            "fetch_mode": "search_repositories",
+            "page_or_cursor_end": 1,
+            "page_or_cursor_start": 1,
+            "query_slice_id": "qf_ai_workflow",
+            "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-12..2025-03-12",
+            "selection_rule_version": "github_qsv1",
+            "time_field": "pushed_at",
+            "window_end": "2025-03-12",
+            "window_start": "2025-03-12"
+          },
+          "watermark_after": {
+            "external_id": "926566365",
+            "pushed_at": "2025-03-12T21:23:22Z",
+            "time_field": "pushed_at"
+          },
+          "checkpoint_page": 1,
+          "raw_count": 24,
+          "outside_window_count": 0,
+          "raw_unique_crawl_run_ids": [
+            "6e92e770fc3cff8c"
+          ],
+          "min_pushed_at": {
+            "external_id": "946594706",
+            "full_name": "Tya4567/RTD",
+            "pushed_at": "2025-03-12T02:01:15Z",
+            "html_url": "https://github.com/Tya4567/RTD"
+          },
+          "max_pushed_at": {
+            "external_id": "926566365",
+            "full_name": "jasongraydon01/openwebui-experimental",
+            "pushed_at": "2025-03-12T21:23:22Z",
+            "html_url": "https://github.com/jasongraydon01/openwebui-experimental"
+          }
+        }
+      }
+    },
+    {
+      "window": "2025-03-12..2025-03-12",
+      "query_slice_id": "qf_ai_assistant",
+      "run1": {
+        "returncode": 0,
+        "task_id": "391c44a1d1931e6a",
+        "raw_records": 172,
+        "source_items": 172,
+        "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-12_2025-03-12__qf_ai_assistant/run1.log",
+        "task_status": "succeeded",
+        "request_params": {
+          "fetch_mode": "search_repositories",
+          "page_or_cursor_end": 2,
+          "page_or_cursor_start": 1,
+          "query_slice_id": "qf_ai_assistant",
+          "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-12..2025-03-12",
+          "selection_rule_version": "github_qsv1",
+          "time_field": "pushed_at",
+          "window_end": "2025-03-12",
+          "window_start": "2025-03-12"
+        },
+        "watermark_before": {
+          "external_id": "gh_seed_0000",
+          "pushed_at": "2025-03-12T00:00:00Z",
+          "time_field": "pushed_at"
+        },
+        "watermark_after": {
+          "external_id": "947586028",
+          "pushed_at": "2025-03-12T23:59:15Z",
+          "time_field": "pushed_at"
+        },
+        "checkpoint_page": 2,
+        "raw_count": 172,
+        "outside_window_count": 0,
+        "raw_unique_crawl_run_ids": [
+          "56ced13767173fad"
+        ],
+        "min_pushed_at": {
+          "external_id": "946957024",
+          "full_name": "honeyvig/ChatGPT-Powered-Chatbot-",
+          "pushed_at": "2025-03-12T00:01:59Z",
+          "html_url": "https://github.com/honeyvig/ChatGPT-Powered-Chatbot-"
+        },
+        "max_pushed_at": {
+          "external_id": "947586028",
+          "full_name": "tylervu12/OuraAssistant",
+          "pushed_at": "2025-03-12T23:59:15Z",
+          "html_url": "https://github.com/tylervu12/OuraAssistant"
+        }
+      },
+      "rerun": {
+        "returncode": 0,
+        "task_id": "5fed11c796729f82",
+        "raw_records": 172,
+        "source_items": 172,
+        "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-12_2025-03-12__qf_ai_assistant/rerun.log",
+        "task_status": "succeeded",
+        "parent_task_id": "391c44a1d1931e6a",
+        "resume_from_task_id": null,
+        "request_params": {
+          "fetch_mode": "search_repositories",
+          "page_or_cursor_end": 2,
+          "page_or_cursor_start": 1,
+          "query_slice_id": "qf_ai_assistant",
+          "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-12..2025-03-12",
+          "selection_rule_version": "github_qsv1",
+          "time_field": "pushed_at",
+          "window_end": "2025-03-12",
+          "window_start": "2025-03-12"
+        },
+        "watermark_after": {
+          "external_id": "947586028",
+          "pushed_at": "2025-03-12T23:59:15Z",
+          "time_field": "pushed_at"
+        },
+        "checkpoint_page": 2,
+        "raw_count": 172,
+        "outside_window_count": 0,
+        "raw_unique_crawl_run_ids": [
+          "56ced13767173fad"
+        ],
+        "durable_raw_unchanged": true
+      },
+      "failure_recovery": {
+        "failpoint_page": 1,
+        "failure": {
+          "returncode": 2,
+          "task_id": "02c194551c42ccf7",
+          "raw_records": null,
+          "source_items": null,
+          "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-12_2025-03-12__qf_ai_assistant/failure.log",
+          "task_status": "failed_retryable",
+          "error_type": "network_error",
+          "error_message": "configured GitHub live failure injection on page 1",
+          "resume_state": {
+            "logical_watermark": {
+              "external_id": "gh_seed_0000",
+              "pushed_at": "2025-03-12T00:00:00Z",
+              "time_field": "pushed_at"
+            },
+            "pending_windows": [
+              {
+                "page": 1,
+                "window_end": "2025-03-12",
+                "window_start": "2025-03-12"
+              }
+            ],
+            "query_slice_id": "qf_ai_assistant",
+            "source_window_end": "2025-03-12",
+            "source_window_start": "2025-03-12"
+          },
+          "durable_logical_watermark": {
+            "external_id": "gh_seed_0000",
+            "pushed_at": "2025-03-12T00:00:00Z",
+            "time_field": "pushed_at"
+          },
+          "checkpoint_page": 1,
+          "raw_count": 172,
+          "outside_window_count": 0
+        },
+        "resume": {
+          "returncode": 0,
+          "task_id": "876549b634b0ed81",
+          "raw_records": 172,
+          "source_items": 172,
+          "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-12_2025-03-12__qf_ai_assistant/resume.log",
+          "task_status": "succeeded",
+          "parent_task_id": "02c194551c42ccf7",
+          "resume_from_task_id": "02c194551c42ccf7",
+          "request_params": {
+            "fetch_mode": "search_repositories",
+            "page_or_cursor_end": 2,
+            "page_or_cursor_start": 1,
+            "query_slice_id": "qf_ai_assistant",
+            "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-12..2025-03-12",
+            "selection_rule_version": "github_qsv1",
+            "time_field": "pushed_at",
+            "window_end": "2025-03-12",
+            "window_start": "2025-03-12"
+          },
+          "watermark_after": {
+            "external_id": "947586028",
+            "pushed_at": "2025-03-12T23:59:15Z",
+            "time_field": "pushed_at"
+          },
+          "checkpoint_page": 2,
+          "raw_count": 172,
+          "outside_window_count": 0,
+          "raw_unique_crawl_run_ids": [
+            "56ced13767173fad"
+          ],
+          "min_pushed_at": {
+            "external_id": "946957024",
+            "full_name": "honeyvig/ChatGPT-Powered-Chatbot-",
+            "pushed_at": "2025-03-12T00:01:59Z",
+            "html_url": "https://github.com/honeyvig/ChatGPT-Powered-Chatbot-"
+          },
+          "max_pushed_at": {
+            "external_id": "947586028",
+            "full_name": "tylervu12/OuraAssistant",
+            "pushed_at": "2025-03-12T23:59:15Z",
+            "html_url": "https://github.com/tylervu12/OuraAssistant"
+          }
+        }
+      }
+    },
+    {
+      "window": "2025-03-12..2025-03-12",
+      "query_slice_id": "qf_copilot",
+      "run1": {
+        "returncode": 0,
+        "task_id": "f10731a693e912ea",
+        "raw_records": 348,
+        "source_items": 348,
+        "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-12_2025-03-12__qf_copilot/run1.log",
+        "task_status": "succeeded",
+        "request_params": {
+          "fetch_mode": "search_repositories",
+          "page_or_cursor_end": 4,
+          "page_or_cursor_start": 1,
+          "query_slice_id": "qf_copilot",
+          "query_text": "copilot in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-12..2025-03-12",
+          "selection_rule_version": "github_qsv1",
+          "time_field": "pushed_at",
+          "window_end": "2025-03-12",
+          "window_start": "2025-03-12"
+        },
+        "watermark_before": {
+          "external_id": "gh_seed_0000",
+          "pushed_at": "2025-03-12T00:00:00Z",
+          "time_field": "pushed_at"
+        },
+        "watermark_after": {
+          "external_id": "947585124",
+          "pushed_at": "2025-03-12T23:37:22Z",
+          "time_field": "pushed_at"
+        },
+        "checkpoint_page": 4,
+        "raw_count": 348,
+        "outside_window_count": 0,
+        "raw_unique_crawl_run_ids": [
+          "ee43a98a062510e5"
+        ],
+        "min_pushed_at": {
+          "external_id": "946954016",
+          "full_name": "Lul4t3ch/CopilotStudio",
+          "pushed_at": "2025-03-12T00:07:44Z",
+          "html_url": "https://github.com/Lul4t3ch/CopilotStudio"
+        },
+        "max_pushed_at": {
+          "external_id": "947585124",
+          "full_name": "andreis/connections",
+          "pushed_at": "2025-03-12T23:37:22Z",
+          "html_url": "https://github.com/andreis/connections"
+        }
+      },
+      "rerun": {
+        "returncode": 0,
+        "task_id": "9c8229115b3c4fcd",
+        "raw_records": 348,
+        "source_items": 348,
+        "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-12_2025-03-12__qf_copilot/rerun.log",
+        "task_status": "succeeded",
+        "parent_task_id": "f10731a693e912ea",
+        "resume_from_task_id": null,
+        "request_params": {
+          "fetch_mode": "search_repositories",
+          "page_or_cursor_end": 4,
+          "page_or_cursor_start": 1,
+          "query_slice_id": "qf_copilot",
+          "query_text": "copilot in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-12..2025-03-12",
+          "selection_rule_version": "github_qsv1",
+          "time_field": "pushed_at",
+          "window_end": "2025-03-12",
+          "window_start": "2025-03-12"
+        },
+        "watermark_after": {
+          "external_id": "947585124",
+          "pushed_at": "2025-03-12T23:37:22Z",
+          "time_field": "pushed_at"
+        },
+        "checkpoint_page": 4,
+        "raw_count": 348,
+        "outside_window_count": 0,
+        "raw_unique_crawl_run_ids": [
+          "ee43a98a062510e5"
+        ],
+        "durable_raw_unchanged": true
+      },
+      "failure_recovery": {
+        "failpoint_page": 1,
+        "failure": {
+          "returncode": 2,
+          "task_id": "faf8ab29e84cec53",
+          "raw_records": null,
+          "source_items": null,
+          "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-12_2025-03-12__qf_copilot/failure.log",
+          "task_status": "failed_retryable",
+          "error_type": "network_error",
+          "error_message": "configured GitHub live failure injection on page 1",
+          "resume_state": {
+            "logical_watermark": {
+              "external_id": "gh_seed_0000",
+              "pushed_at": "2025-03-12T00:00:00Z",
+              "time_field": "pushed_at"
+            },
+            "pending_windows": [
+              {
+                "page": 1,
+                "window_end": "2025-03-12",
+                "window_start": "2025-03-12"
+              }
+            ],
+            "query_slice_id": "qf_copilot",
+            "source_window_end": "2025-03-12",
+            "source_window_start": "2025-03-12"
+          },
+          "durable_logical_watermark": {
+            "external_id": "gh_seed_0000",
+            "pushed_at": "2025-03-12T00:00:00Z",
+            "time_field": "pushed_at"
+          },
+          "checkpoint_page": 1,
+          "raw_count": 348,
+          "outside_window_count": 0
+        },
+        "resume": {
+          "returncode": 0,
+          "task_id": "09ed789fbb6a79e4",
+          "raw_records": 348,
+          "source_items": 348,
+          "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-12_2025-03-12__qf_copilot/resume.log",
+          "task_status": "succeeded",
+          "parent_task_id": "faf8ab29e84cec53",
+          "resume_from_task_id": "faf8ab29e84cec53",
+          "request_params": {
+            "fetch_mode": "search_repositories",
+            "page_or_cursor_end": 4,
+            "page_or_cursor_start": 1,
+            "query_slice_id": "qf_copilot",
+            "query_text": "copilot in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-12..2025-03-12",
+            "selection_rule_version": "github_qsv1",
+            "time_field": "pushed_at",
+            "window_end": "2025-03-12",
+            "window_start": "2025-03-12"
+          },
+          "watermark_after": {
+            "external_id": "947585124",
+            "pushed_at": "2025-03-12T23:37:22Z",
+            "time_field": "pushed_at"
+          },
+          "checkpoint_page": 4,
+          "raw_count": 348,
+          "outside_window_count": 0,
+          "raw_unique_crawl_run_ids": [
+            "ee43a98a062510e5"
+          ],
+          "min_pushed_at": {
+            "external_id": "946954016",
+            "full_name": "Lul4t3ch/CopilotStudio",
+            "pushed_at": "2025-03-12T00:07:44Z",
+            "html_url": "https://github.com/Lul4t3ch/CopilotStudio"
+          },
+          "max_pushed_at": {
+            "external_id": "947585124",
+            "full_name": "andreis/connections",
+            "pushed_at": "2025-03-12T23:37:22Z",
+            "html_url": "https://github.com/andreis/connections"
+          }
+        }
+      }
+    },
+    {
+      "window": "2025-03-19..2025-03-19",
+      "query_slice_id": "qf_ai_workflow",
+      "run1": {
+        "returncode": 0,
+        "task_id": "b0b82e8801deb364",
+        "raw_records": 11,
+        "source_items": 11,
+        "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_ai_workflow/run1.log",
+        "task_status": "succeeded",
+        "request_params": {
+          "fetch_mode": "search_repositories",
+          "page_or_cursor_end": 1,
+          "page_or_cursor_start": 1,
+          "query_slice_id": "qf_ai_workflow",
+          "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+          "selection_rule_version": "github_qsv1",
+          "time_field": "pushed_at",
+          "window_end": "2025-03-19",
+          "window_start": "2025-03-19"
+        },
+        "watermark_before": {
+          "external_id": "gh_seed_0000",
+          "pushed_at": "2025-03-19T00:00:00Z",
+          "time_field": "pushed_at"
+        },
+        "watermark_after": {
+          "external_id": "951441892",
+          "pushed_at": "2025-03-19T18:35:15Z",
+          "time_field": "pushed_at"
+        },
+        "checkpoint_page": 1,
+        "raw_count": 11,
+        "outside_window_count": 0,
+        "raw_unique_crawl_run_ids": [
+          "321100fccff175ab"
+        ],
+        "min_pushed_at": {
+          "external_id": "951011722",
+          "full_name": "New-World-2019/dify-dev",
+          "pushed_at": "2025-03-19T03:06:19Z",
+          "html_url": "https://github.com/New-World-2019/dify-dev"
+        },
+        "max_pushed_at": {
+          "external_id": "951441892",
+          "full_name": "kashikhan1/dbtalker",
+          "pushed_at": "2025-03-19T18:35:15Z",
+          "html_url": "https://github.com/kashikhan1/dbtalker"
+        }
+      },
+      "rerun": {
+        "returncode": 0,
+        "task_id": "eec80ad1dc3dc91e",
+        "raw_records": 11,
+        "source_items": 11,
+        "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_ai_workflow/rerun.log",
+        "task_status": "succeeded",
+        "parent_task_id": "b0b82e8801deb364",
+        "resume_from_task_id": null,
+        "request_params": {
+          "fetch_mode": "search_repositories",
+          "page_or_cursor_end": 1,
+          "page_or_cursor_start": 1,
+          "query_slice_id": "qf_ai_workflow",
+          "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+          "selection_rule_version": "github_qsv1",
+          "time_field": "pushed_at",
+          "window_end": "2025-03-19",
+          "window_start": "2025-03-19"
+        },
+        "watermark_after": {
+          "external_id": "951441892",
+          "pushed_at": "2025-03-19T18:35:15Z",
+          "time_field": "pushed_at"
+        },
+        "checkpoint_page": 1,
+        "raw_count": 11,
+        "outside_window_count": 0,
+        "raw_unique_crawl_run_ids": [
+          "321100fccff175ab"
+        ],
+        "durable_raw_unchanged": true
+      },
+      "failure_recovery": {
+        "failpoint_page": 1,
+        "failure": {
+          "returncode": 2,
+          "task_id": "89d1394332726101",
+          "raw_records": null,
+          "source_items": null,
+          "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_ai_workflow/failure.log",
+          "task_status": "failed_retryable",
+          "error_type": "network_error",
+          "error_message": "configured GitHub live failure injection on page 1",
+          "resume_state": {
+            "logical_watermark": {
+              "external_id": "gh_seed_0000",
+              "pushed_at": "2025-03-19T00:00:00Z",
+              "time_field": "pushed_at"
+            },
+            "pending_windows": [
+              {
+                "page": 1,
+                "window_end": "2025-03-19",
+                "window_start": "2025-03-19"
+              }
+            ],
+            "query_slice_id": "qf_ai_workflow",
+            "source_window_end": "2025-03-19",
+            "source_window_start": "2025-03-19"
+          },
+          "durable_logical_watermark": {
+            "external_id": "gh_seed_0000",
+            "pushed_at": "2025-03-19T00:00:00Z",
+            "time_field": "pushed_at"
+          },
+          "checkpoint_page": 1,
+          "raw_count": 11,
+          "outside_window_count": 0
+        },
+        "resume": {
+          "returncode": 0,
+          "task_id": "c5af42a3354c9cbc",
+          "raw_records": 11,
+          "source_items": 11,
+          "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_ai_workflow/resume.log",
+          "task_status": "succeeded",
+          "parent_task_id": "89d1394332726101",
+          "resume_from_task_id": "89d1394332726101",
+          "request_params": {
+            "fetch_mode": "search_repositories",
+            "page_or_cursor_end": 1,
+            "page_or_cursor_start": 1,
+            "query_slice_id": "qf_ai_workflow",
+            "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+            "selection_rule_version": "github_qsv1",
+            "time_field": "pushed_at",
+            "window_end": "2025-03-19",
+            "window_start": "2025-03-19"
+          },
+          "watermark_after": {
+            "external_id": "951441892",
+            "pushed_at": "2025-03-19T18:35:15Z",
+            "time_field": "pushed_at"
+          },
+          "checkpoint_page": 1,
+          "raw_count": 11,
+          "outside_window_count": 0,
+          "raw_unique_crawl_run_ids": [
+            "321100fccff175ab"
+          ],
+          "min_pushed_at": {
+            "external_id": "951011722",
+            "full_name": "New-World-2019/dify-dev",
+            "pushed_at": "2025-03-19T03:06:19Z",
+            "html_url": "https://github.com/New-World-2019/dify-dev"
+          },
+          "max_pushed_at": {
+            "external_id": "951441892",
+            "full_name": "kashikhan1/dbtalker",
+            "pushed_at": "2025-03-19T18:35:15Z",
+            "html_url": "https://github.com/kashikhan1/dbtalker"
+          }
+        }
+      }
+    },
+    {
+      "window": "2025-03-19..2025-03-19",
+      "query_slice_id": "qf_ai_assistant",
+      "run1": {
+        "returncode": 0,
+        "task_id": "6835fdf0e0e70a9f",
+        "raw_records": 171,
+        "source_items": 171,
+        "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_ai_assistant/run1.log",
+        "task_status": "succeeded",
+        "request_params": {
+          "fetch_mode": "search_repositories",
+          "page_or_cursor_end": 2,
+          "page_or_cursor_start": 1,
+          "query_slice_id": "qf_ai_assistant",
+          "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+          "selection_rule_version": "github_qsv1",
+          "time_field": "pushed_at",
+          "window_end": "2025-03-19",
+          "window_start": "2025-03-19"
+        },
+        "watermark_before": {
+          "external_id": "gh_seed_0000",
+          "pushed_at": "2025-03-19T00:00:00Z",
+          "time_field": "pushed_at"
+        },
+        "watermark_after": {
+          "external_id": "948515847",
+          "pushed_at": "2025-03-19T23:44:57Z",
+          "time_field": "pushed_at"
+        },
+        "checkpoint_page": 2,
+        "raw_count": 171,
+        "outside_window_count": 0,
+        "raw_unique_crawl_run_ids": [
+          "7753cdde361bdb1f"
+        ],
+        "min_pushed_at": {
+          "external_id": "943712946",
+          "full_name": "mrudulapatteparapu/256_AI_HW",
+          "pushed_at": "2025-03-19T00:07:29Z",
+          "html_url": "https://github.com/mrudulapatteparapu/256_AI_HW"
+        },
+        "max_pushed_at": {
+          "external_id": "948515847",
+          "full_name": "mshojaei77/ReActMCP",
+          "pushed_at": "2025-03-19T23:44:57Z",
+          "html_url": "https://github.com/mshojaei77/ReActMCP"
+        }
+      },
+      "rerun": {
+        "returncode": 0,
+        "task_id": "b9b06285e36820f7",
+        "raw_records": 171,
+        "source_items": 171,
+        "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_ai_assistant/rerun.log",
+        "task_status": "succeeded",
+        "parent_task_id": "6835fdf0e0e70a9f",
+        "resume_from_task_id": null,
+        "request_params": {
+          "fetch_mode": "search_repositories",
+          "page_or_cursor_end": 2,
+          "page_or_cursor_start": 1,
+          "query_slice_id": "qf_ai_assistant",
+          "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+          "selection_rule_version": "github_qsv1",
+          "time_field": "pushed_at",
+          "window_end": "2025-03-19",
+          "window_start": "2025-03-19"
+        },
+        "watermark_after": {
+          "external_id": "948515847",
+          "pushed_at": "2025-03-19T23:44:57Z",
+          "time_field": "pushed_at"
+        },
+        "checkpoint_page": 2,
+        "raw_count": 171,
+        "outside_window_count": 0,
+        "raw_unique_crawl_run_ids": [
+          "7753cdde361bdb1f"
+        ],
+        "durable_raw_unchanged": true
+      },
+      "failure_recovery": {
+        "failpoint_page": 1,
+        "failure": {
+          "returncode": 2,
+          "task_id": "bf9c0b3ce28365c3",
+          "raw_records": null,
+          "source_items": null,
+          "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_ai_assistant/failure.log",
+          "task_status": "failed_retryable",
+          "error_type": "network_error",
+          "error_message": "configured GitHub live failure injection on page 1",
+          "resume_state": {
+            "logical_watermark": {
+              "external_id": "gh_seed_0000",
+              "pushed_at": "2025-03-19T00:00:00Z",
+              "time_field": "pushed_at"
+            },
+            "pending_windows": [
+              {
+                "page": 1,
+                "window_end": "2025-03-19",
+                "window_start": "2025-03-19"
+              }
+            ],
+            "query_slice_id": "qf_ai_assistant",
+            "source_window_end": "2025-03-19",
+            "source_window_start": "2025-03-19"
+          },
+          "durable_logical_watermark": {
+            "external_id": "gh_seed_0000",
+            "pushed_at": "2025-03-19T00:00:00Z",
+            "time_field": "pushed_at"
+          },
+          "checkpoint_page": 1,
+          "raw_count": 171,
+          "outside_window_count": 0
+        },
+        "resume": {
+          "returncode": 0,
+          "task_id": "6ccfff1a591277ef",
+          "raw_records": 171,
+          "source_items": 171,
+          "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_ai_assistant/resume.log",
+          "task_status": "succeeded",
+          "parent_task_id": "bf9c0b3ce28365c3",
+          "resume_from_task_id": "bf9c0b3ce28365c3",
+          "request_params": {
+            "fetch_mode": "search_repositories",
+            "page_or_cursor_end": 2,
+            "page_or_cursor_start": 1,
+            "query_slice_id": "qf_ai_assistant",
+            "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+            "selection_rule_version": "github_qsv1",
+            "time_field": "pushed_at",
+            "window_end": "2025-03-19",
+            "window_start": "2025-03-19"
+          },
+          "watermark_after": {
+            "external_id": "948515847",
+            "pushed_at": "2025-03-19T23:44:57Z",
+            "time_field": "pushed_at"
+          },
+          "checkpoint_page": 2,
+          "raw_count": 171,
+          "outside_window_count": 0,
+          "raw_unique_crawl_run_ids": [
+            "7753cdde361bdb1f"
+          ],
+          "min_pushed_at": {
+            "external_id": "943712946",
+            "full_name": "mrudulapatteparapu/256_AI_HW",
+            "pushed_at": "2025-03-19T00:07:29Z",
+            "html_url": "https://github.com/mrudulapatteparapu/256_AI_HW"
+          },
+          "max_pushed_at": {
+            "external_id": "948515847",
+            "full_name": "mshojaei77/ReActMCP",
+            "pushed_at": "2025-03-19T23:44:57Z",
+            "html_url": "https://github.com/mshojaei77/ReActMCP"
+          }
+        }
+      }
+    },
+    {
+      "window": "2025-03-19..2025-03-19",
+      "query_slice_id": "qf_copilot",
+      "run1": {
+        "returncode": 0,
+        "task_id": "0d19a0b1418af476",
+        "raw_records": 322,
+        "source_items": 322,
+        "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_copilot/run1.log",
+        "task_status": "succeeded",
+        "request_params": {
+          "fetch_mode": "search_repositories",
+          "page_or_cursor_end": 4,
+          "page_or_cursor_start": 1,
+          "query_slice_id": "qf_copilot",
+          "query_text": "copilot in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+          "selection_rule_version": "github_qsv1",
+          "time_field": "pushed_at",
+          "window_end": "2025-03-19",
+          "window_start": "2025-03-19"
+        },
+        "watermark_before": {
+          "external_id": "gh_seed_0000",
+          "pushed_at": "2025-03-19T00:00:00Z",
+          "time_field": "pushed_at"
+        },
+        "watermark_after": {
+          "external_id": "951589305",
+          "pushed_at": "2025-03-19T23:48:10Z",
+          "time_field": "pushed_at"
+        },
+        "checkpoint_page": 4,
+        "raw_count": 322,
+        "outside_window_count": 0,
+        "raw_unique_crawl_run_ids": [
+          "a1b16e0e1431a920"
+        ],
+        "min_pushed_at": {
+          "external_id": "950952536",
+          "full_name": "Jared92L/TRIAL-RUN",
+          "pushed_at": "2025-03-19T00:00:45Z",
+          "html_url": "https://github.com/Jared92L/TRIAL-RUN"
+        },
+        "max_pushed_at": {
+          "external_id": "951589305",
+          "full_name": "WallaceAlbuquerque/DesafioCopilot",
+          "pushed_at": "2025-03-19T23:48:10Z",
+          "html_url": "https://github.com/WallaceAlbuquerque/DesafioCopilot"
+        }
+      },
+      "rerun": {
+        "returncode": 0,
+        "task_id": "4a39ef32ffc054a0",
+        "raw_records": 322,
+        "source_items": 322,
+        "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_copilot/rerun.log",
+        "task_status": "succeeded",
+        "parent_task_id": "0d19a0b1418af476",
+        "resume_from_task_id": null,
+        "request_params": {
+          "fetch_mode": "search_repositories",
+          "page_or_cursor_end": 4,
+          "page_or_cursor_start": 1,
+          "query_slice_id": "qf_copilot",
+          "query_text": "copilot in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+          "selection_rule_version": "github_qsv1",
+          "time_field": "pushed_at",
+          "window_end": "2025-03-19",
+          "window_start": "2025-03-19"
+        },
+        "watermark_after": {
+          "external_id": "951589305",
+          "pushed_at": "2025-03-19T23:48:10Z",
+          "time_field": "pushed_at"
+        },
+        "checkpoint_page": 4,
+        "raw_count": 322,
+        "outside_window_count": 0,
+        "raw_unique_crawl_run_ids": [
+          "a1b16e0e1431a920"
+        ],
+        "durable_raw_unchanged": true
+      },
+      "failure_recovery": {
+        "failpoint_page": 1,
+        "failure": {
+          "returncode": 2,
+          "task_id": "89ca0783ef30f42f",
+          "raw_records": null,
+          "source_items": null,
+          "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_copilot/failure.log",
+          "task_status": "failed_retryable",
+          "error_type": "network_error",
+          "error_message": "configured GitHub live failure injection on page 1",
+          "resume_state": {
+            "logical_watermark": {
+              "external_id": "gh_seed_0000",
+              "pushed_at": "2025-03-19T00:00:00Z",
+              "time_field": "pushed_at"
+            },
+            "pending_windows": [
+              {
+                "page": 1,
+                "window_end": "2025-03-19",
+                "window_start": "2025-03-19"
+              }
+            ],
+            "query_slice_id": "qf_copilot",
+            "source_window_end": "2025-03-19",
+            "source_window_start": "2025-03-19"
+          },
+          "durable_logical_watermark": {
+            "external_id": "gh_seed_0000",
+            "pushed_at": "2025-03-19T00:00:00Z",
+            "time_field": "pushed_at"
+          },
+          "checkpoint_page": 1,
+          "raw_count": 322,
+          "outside_window_count": 0
+        },
+        "resume": {
+          "returncode": 0,
+          "task_id": "54d742ff661cc004",
+          "raw_records": 322,
+          "source_items": 322,
+          "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_copilot/resume.log",
+          "task_status": "succeeded",
+          "parent_task_id": "89ca0783ef30f42f",
+          "resume_from_task_id": "89ca0783ef30f42f",
+          "request_params": {
+            "fetch_mode": "search_repositories",
+            "page_or_cursor_end": 4,
+            "page_or_cursor_start": 1,
+            "query_slice_id": "qf_copilot",
+            "query_text": "copilot in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+            "selection_rule_version": "github_qsv1",
+            "time_field": "pushed_at",
+            "window_end": "2025-03-19",
+            "window_start": "2025-03-19"
+          },
+          "watermark_after": {
+            "external_id": "951589305",
+            "pushed_at": "2025-03-19T23:48:10Z",
+            "time_field": "pushed_at"
+          },
+          "checkpoint_page": 4,
+          "raw_count": 322,
+          "outside_window_count": 0,
+          "raw_unique_crawl_run_ids": [
+            "a1b16e0e1431a920"
+          ],
+          "min_pushed_at": {
+            "external_id": "950952536",
+            "full_name": "Jared92L/TRIAL-RUN",
+            "pushed_at": "2025-03-19T00:00:45Z",
+            "html_url": "https://github.com/Jared92L/TRIAL-RUN"
+          },
+          "max_pushed_at": {
+            "external_id": "951589305",
+            "full_name": "WallaceAlbuquerque/DesafioCopilot",
+            "pushed_at": "2025-03-19T23:48:10Z",
+            "html_url": "https://github.com/WallaceAlbuquerque/DesafioCopilot"
+          }
+        }
+      }
+    }
+  ],
+  "combo_count": 9,
+  "all_reruns_reused_durable_raw": true,
+  "all_outside_window_zero_after_resume": true
+}

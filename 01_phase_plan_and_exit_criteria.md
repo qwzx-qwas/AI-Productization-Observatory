@@ -190,6 +190,15 @@ last_frozen_version: unfrozen
 - [ ] `review_issue` / `processing_error` 两条路径分流稳定
 - [ ] 30 / 90 天 top JTBD 可按固定口径稳定重算
 
+### Phase1 Exit Checklist Conflict Note
+
+- 截至 `2026-04-20`，当前 freeze board 与 source boundary 文档已明确：GitHub 是当前阶段 live 主路径，Product Hunt 继续 deferred，仅保留 fixture / replay / contract 与 future integration seam。
+- 因此，上述 `Product Hunt 完成至少一个完整抓取周期` 目前与当前阶段执行边界存在冲突；该 checklist 项在 owner 明确解释前，不应被实现侧自行改写为“本阶段必须恢复 Product Hunt live”。
+- 同日仓库已补齐 GitHub 多窗口多 slice live acceptance matrix，但 `GitHub 完成至少一个完整抓取周期` 与该 matrix 之间的映射关系也尚未在本文件中冻结。
+- 截至 `2026-04-21`，`docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json` 已把上述两项继续登记为 `pending gate interpretation decision`，并据此给出 machine judgment `conditional-go` 而非最终 `go`。
+- 当前要求：保留 checklist 原文，同时把这两项视为 `pending gate interpretation decision`；是否将现有 GitHub matrix 折算为 exit evidence、以及 Product Hunt 项是否延期到 future phase，需由 Phase1 pipeline owner 明确裁定。
+- 在 owner 裁定前，任何实现侧或文档侧都不得把 `Product Hunt deferred` 改写成“必须恢复 live 才能继续”，也不得把当前 GitHub matrix 擅自写成已满足 `完整抓取周期` 的最终结论。
+
 ### Phase1 Quantitative Gates
 
 - 自动 merge 抽检精度：`precision >= 0.95`

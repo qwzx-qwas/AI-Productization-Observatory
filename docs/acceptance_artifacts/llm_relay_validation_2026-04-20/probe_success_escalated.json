@@ -1,0 +1,52 @@
+{
+  "api_style": "openai_compatible",
+  "attempt_count": 1,
+  "attempts": [
+    {
+      "api_style": "openai_compatible",
+      "attempt": 1,
+      "business_status": "failed",
+      "content_status": "failed",
+      "failure_code": "provider_empty_completion",
+      "failure_message": "OpenAI-compatible response must provide non-empty message.content text",
+      "http_status": 200,
+      "mapped_error_type": "dependency_unavailable",
+      "model": "gpt-5.3-codex",
+      "provider_response_status": "succeeded",
+      "provider_usage": {
+        "completion_tokens": 853,
+        "completion_tokens_details.reasoning_tokens": 220,
+        "prompt_tokens": 481,
+        "prompt_tokens_details.cached_tokens": 0,
+        "total_tokens": 1334
+      },
+      "request_id": null,
+      "request_url": "https://airouter.service.itstudio.club/v1/chat/completions",
+      "response_id": "resp_0f2aaadd6df5b6380169e5efc466ac81918462e643305f0a04",
+      "retry_scheduled": false,
+      "schema_status": "failed",
+      "transport_status": "succeeded"
+    }
+  ],
+  "business_status": "failed",
+  "content_status": "failed",
+  "failure_code": "provider_empty_completion",
+  "failure_message": "OpenAI-compatible response must provide non-empty message.content text",
+  "http_status": 200,
+  "mapped_error_type": "dependency_unavailable",
+  "model": "gpt-5.3-codex",
+  "normalized_result": null,
+  "provider_response_status": "succeeded",
+  "provider_usage": {
+    "completion_tokens": 853,
+    "completion_tokens_details.reasoning_tokens": 220,
+    "prompt_tokens": 481,
+    "prompt_tokens_details.cached_tokens": 0,
+    "total_tokens": 1334
+  },
+  "request_id": null,
+  "request_url": "https://airouter.service.itstudio.club/v1/chat/completions",
+  "response_id": "resp_0f2aaadd6df5b6380169e5efc466ac81918462e643305f0a04",
+  "schema_status": "failed",
+  "transport_status": "succeeded"
+}

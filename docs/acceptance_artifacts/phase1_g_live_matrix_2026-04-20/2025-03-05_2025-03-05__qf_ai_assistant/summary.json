@@ -1,0 +1,166 @@
+{
+  "window": "2025-03-05..2025-03-05",
+  "query_slice_id": "qf_ai_assistant",
+  "run1": {
+    "returncode": 0,
+    "task_id": "f06dfd534f13cbcf",
+    "raw_records": 128,
+    "source_items": 128,
+    "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_ai_assistant/run1.log",
+    "task_status": "succeeded",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    },
+    "watermark_after": {
+      "external_id": "943576544",
+      "pushed_at": "2025-03-05T23:57:01Z",
+      "time_field": "pushed_at"
+    },
+    "checkpoint_page": 2,
+    "raw_count": 128,
+    "outside_window_count": 0,
+    "raw_unique_crawl_run_ids": [
+      "c2dc0f0058555344"
+    ],
+    "min_pushed_at": {
+      "external_id": "919690718",
+      "full_name": "guangyusong/giskard",
+      "pushed_at": "2025-03-05T00:16:31Z",
+      "html_url": "https://github.com/guangyusong/giskard"
+    },
+    "max_pushed_at": {
+      "external_id": "943576544",
+      "full_name": "luisja01/AI_assistant",
+      "pushed_at": "2025-03-05T23:57:01Z",
+      "html_url": "https://github.com/luisja01/AI_assistant"
+    }
+  },
+  "rerun": {
+    "returncode": 0,
+    "task_id": "daad20be47b3eec8",
+    "raw_records": 128,
+    "source_items": 128,
+    "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_ai_assistant/rerun.log",
+    "task_status": "succeeded",
+    "parent_task_id": "f06dfd534f13cbcf",
+    "resume_from_task_id": null,
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "watermark_after": {
+      "external_id": "943576544",
+      "pushed_at": "2025-03-05T23:57:01Z",
+      "time_field": "pushed_at"
+    },
+    "checkpoint_page": 2,
+    "raw_count": 128,
+    "outside_window_count": 0,
+    "raw_unique_crawl_run_ids": [
+      "c2dc0f0058555344"
+    ],
+    "durable_raw_unchanged": true
+  },
+  "failure_recovery": {
+    "failpoint_page": 1,
+    "failure": {
+      "returncode": 2,
+      "task_id": "0bca97577254eb26",
+      "raw_records": null,
+      "source_items": null,
+      "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_ai_assistant/failure.log",
+      "task_status": "failed_retryable",
+      "error_type": "network_error",
+      "error_message": "configured GitHub live failure injection on page 1",
+      "resume_state": {
+        "logical_watermark": {
+          "external_id": "gh_seed_0000",
+          "pushed_at": "2025-03-05T00:00:00Z",
+          "time_field": "pushed_at"
+        },
+        "pending_windows": [
+          {
+            "page": 1,
+            "window_end": "2025-03-05",
+            "window_start": "2025-03-05"
+          }
+        ],
+        "query_slice_id": "qf_ai_assistant",
+        "source_window_end": "2025-03-05",
+        "source_window_start": "2025-03-05"
+      },
+      "durable_logical_watermark": {
+        "external_id": "gh_seed_0000",
+        "pushed_at": "2025-03-05T00:00:00Z",
+        "time_field": "pushed_at"
+      },
+      "checkpoint_page": 1,
+      "raw_count": 128,
+      "outside_window_count": 0
+    },
+    "resume": {
+      "returncode": 0,
+      "task_id": "e62eb011a3690893",
+      "raw_records": 128,
+      "source_items": 128,
+      "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_ai_assistant/resume.log",
+      "task_status": "succeeded",
+      "parent_task_id": "0bca97577254eb26",
+      "resume_from_task_id": "0bca97577254eb26",
+      "request_params": {
+        "fetch_mode": "search_repositories",
+        "page_or_cursor_end": 2,
+        "page_or_cursor_start": 1,
+        "query_slice_id": "qf_ai_assistant",
+        "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+        "selection_rule_version": "github_qsv1",
+        "time_field": "pushed_at",
+        "window_end": "2025-03-05",
+        "window_start": "2025-03-05"
+      },
+      "watermark_after": {
+        "external_id": "943576544",
+        "pushed_at": "2025-03-05T23:57:01Z",
+        "time_field": "pushed_at"
+      },
+      "checkpoint_page": 2,
+      "raw_count": 128,
+      "outside_window_count": 0,
+      "raw_unique_crawl_run_ids": [
+        "c2dc0f0058555344"
+      ],
+      "min_pushed_at": {
+        "external_id": "919690718",
+        "full_name": "guangyusong/giskard",
+        "pushed_at": "2025-03-05T00:16:31Z",
+        "html_url": "https://github.com/guangyusong/giskard"
+      },
+      "max_pushed_at": {
+        "external_id": "943576544",
+        "full_name": "luisja01/AI_assistant",
+        "pushed_at": "2025-03-05T23:57:01Z",
+        "html_url": "https://github.com/luisja01/AI_assistant"
+      }
+    }
+  }
+}

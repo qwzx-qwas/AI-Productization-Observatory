@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import json
+import os
 import shutil
+import urllib.parse
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -69,6 +71,32 @@ def _prepare_stub_gold_set_dir(target: Path) -> Path:
         if entry.is_dir():
             shutil.rmtree(entry)
     return gold_set_dir
+
+
+def _github_live_repo_item(
+    *,
+    repo_id: int,
+    name: str,
+    full_name: str,
+    pushed_at: str,
+    description: str = "AI repository used for live collector integration testing.",
+) -> dict[str, object]:
+    return {
+        "id": repo_id,
+        "full_name": full_name,
+        "name": name,
+        "html_url": f"https://github.com/{full_name}",
+        "description": description,
+        "homepage": f"https://example.com/{name}",
+        "owner": {"login": full_name.split("/", 1)[0]},
+        "topics": ["agent", "automation"],
+        "language": "Python",
+        "stargazers_count": 42,
+        "forks_count": 7,
+        "watchers_count": 42,
+        "pushed_at": pushed_at,
+        "archived": False,
+    }
 
 
 class FixturePipelineIntegrationTests(unittest.TestCase):
@@ -213,6 +241,290 @@ class FixturePipelineIntegrationTests(unittest.TestCase):
                 self.assertEqual(actual["current_metrics_json"], expected["current_metrics_json"])
                 self.assertEqual(actual["topics"], expected["topics"])
                 self.assertEqual(actual["item_status"], expected["item_status"])
+
+    def test_github_live_replay_builds_raw_records_and_source_items(self) -> None:
+        search_requests: list[str] = []
+        live_items = [
+            _github_live_repo_item(
+                repo_id=987654321,
+                name="support-agent-workbench",
+                full_name="acme/support-agent-workbench",
+                pushed_at="2026-03-05T12:34:56Z",
+                description="AI assistant workspace for support teams that triages inbox tickets and drafts replies.",
+            ),
+            _github_live_repo_item(
+                repo_id=987654322,
+                name="sales-agent-console",
+                full_name="acme/sales-agent-console",
+                pushed_at="2026-03-06T09:20:11Z",
+                description="Copilot console for pipeline follow-up, call prep, and CRM note generation.",
+            ),
+        ]
+        readmes = {
+            "acme/support-agent-workbench": "# Support Agent Workbench\n\nREADME for live replay validation.",
+            "acme/sales-agent-console": "# Sales Agent Console\n\nREADME for live replay validation.",
+        }
+
+        def fake_json_request(url: str, *, headers: dict[str, str], timeout_seconds: int, request_interval_seconds: int, sleep_fn= None) -> dict[str, object]:
+            del headers, timeout_seconds, request_interval_seconds, sleep_fn
+            search_requests.append(url)
+            return {"total_count": 2, "incomplete_results": False, "items": live_items}
+
+        with temp_config() as config:
+            with patch("src.collectors.github.require_environment_variable", return_value="test-token"):
+                with patch("src.collectors.github._json_request", side_effect=fake_json_request):
+                    with patch("src.collectors.github._read_github_readme", side_effect=lambda full_name, *_args: readmes[full_name]):
+                        result = replay_source_window(
+                            source_code="github",
+                            window="2026-03-01..2026-03-08",
+                            config=config,
+                            use_live=True,
+                            query_slice_id="qf_agent",
+                        )
+
+            self.assertEqual(len(result["raw_records"]), 2)
+            self.assertEqual(len(result["source_items"]), 2)
+            self.assertEqual(result["crawl_run"]["request_params"]["selection_rule_version"], "github_qsv1")
+            self.assertEqual(result["crawl_run"]["request_params"]["query_slice_id"], "qf_agent")
+            self.assertEqual(result["crawl_run"]["watermark_before"]["pushed_at"], "2026-03-01T00:00:00Z")
+            self.assertEqual(result["crawl_run"]["watermark_after"]["external_id"], "987654322")
+
+            parsed = urllib.parse.urlparse(search_requests[0])
+            query_text = urllib.parse.parse_qs(parsed.query)["q"][0]
+            self.assertIn("pushed:2026-03-01..2026-03-08", query_text)
+
+            task = FileTaskStore(config.task_store_path).all_tasks()[-1]
+            self.assertEqual(task["payload_json"]["request_params"]["query_slice_id"], "qf_agent")
+            self.assertEqual(task["payload_json"]["watermark_after"]["external_id"], "987654322")
+
+    def test_github_live_same_window_rerun_reuses_existing_raw_records(self) -> None:
+        live_items = [
+            _github_live_repo_item(
+                repo_id=987654321,
+                name="support-agent-workbench",
+                full_name="acme/support-agent-workbench",
+                pushed_at="2026-03-05T12:34:56Z",
+            ),
+            _github_live_repo_item(
+                repo_id=987654322,
+                name="sales-agent-console",
+                full_name="acme/sales-agent-console",
+                pushed_at="2026-03-06T09:20:11Z",
+            ),
+        ]
+
+        def fake_json_request(url: str, *, headers: dict[str, str], timeout_seconds: int, request_interval_seconds: int, sleep_fn= None) -> dict[str, object]:
+            del url, headers, timeout_seconds, request_interval_seconds, sleep_fn
+            return {"total_count": 2, "incomplete_results": False, "items": live_items}
+
+        with temp_config() as config:
+            with patch("src.collectors.github.require_environment_variable", return_value="test-token"):
+                with patch("src.collectors.github._json_request", side_effect=fake_json_request):
+                    with patch("src.collectors.github._read_github_readme", return_value=""):
+                        first = replay_source_window(
+                            source_code="github",
+                            window="2026-03-01..2026-03-08",
+                            config=config,
+                            use_live=True,
+                            query_slice_id="qf_agent",
+                        )
+                        second = replay_source_window(
+                            source_code="github",
+                            window="2026-03-01..2026-03-08",
+                            config=config,
+                            use_live=True,
+                            query_slice_id="qf_agent",
+                        )
+
+            self.assertEqual(
+                [record["raw_id"] for record in first["raw_records"]],
+                [record["raw_id"] for record in second["raw_records"]],
+            )
+
+            raw_index = json.loads((config.raw_store_dir / "raw_records.json").read_text(encoding="utf-8"))
+            self.assertEqual(len(raw_index), 2)
+
+    def test_github_live_replay_filters_items_that_drift_outside_leaf_window(self) -> None:
+        live_items = [
+            _github_live_repo_item(
+                repo_id=987654321,
+                name="support-agent-workbench",
+                full_name="acme/support-agent-workbench",
+                pushed_at="2026-03-05T12:34:56Z",
+            ),
+            _github_live_repo_item(
+                repo_id=987654399,
+                name="late-workflow-repo",
+                full_name="acme/late-workflow-repo",
+                pushed_at="2026-03-09T08:58:59Z",
+            ),
+        ]
+
+        def fake_json_request(url: str, *, headers: dict[str, str], timeout_seconds: int, request_interval_seconds: int, sleep_fn= None) -> dict[str, object]:
+            del url, headers, timeout_seconds, request_interval_seconds, sleep_fn
+            return {"total_count": 2, "incomplete_results": False, "items": live_items}
+
+        with temp_config() as config:
+            with patch("src.collectors.github.require_environment_variable", return_value="test-token"):
+                with patch("src.collectors.github._json_request", side_effect=fake_json_request):
+                    with patch("src.collectors.github._read_github_readme", return_value=""):
+                        result = replay_source_window(
+                            source_code="github",
+                            window="2026-03-05..2026-03-05",
+                            config=config,
+                            use_live=True,
+                            query_slice_id="qf_ai_workflow",
+                        )
+
+            self.assertEqual(len(result["raw_records"]), 1)
+            self.assertEqual(len(result["source_items"]), 1)
+            self.assertEqual(result["raw_records"][0]["external_id"], "987654321")
+            self.assertEqual(result["crawl_run"]["watermark_after"]["external_id"], "987654321")
+
+            raw_index = json.loads((config.raw_store_dir / "raw_records.json").read_text(encoding="utf-8"))
+            self.assertEqual(len(raw_index), 1)
+
+    def test_github_live_retryable_failure_persists_partial_raw_and_resumes_from_checkpoint(self) -> None:
+        page_one_items = [
+            _github_live_repo_item(
+                repo_id=100000 + index,
+                name=f"agent-app-{index:03d}",
+                full_name=f"acme/agent-app-{index:03d}",
+                pushed_at=f"2026-03-{5 + ((index // 24) % 4):02d}T{index % 24:02d}:00:00Z",
+            )
+            for index in range(100)
+        ]
+        page_two_item = _github_live_repo_item(
+            repo_id=100100,
+            name="agent-app-100",
+            full_name="acme/agent-app-100",
+            pushed_at="2026-03-08T23:59:59Z",
+        )
+        page_two_failed = {"value": False}
+
+        def fake_json_request(url: str, *, headers: dict[str, str], timeout_seconds: int, request_interval_seconds: int, sleep_fn= None) -> dict[str, object]:
+            del headers, timeout_seconds, request_interval_seconds, sleep_fn
+            parsed = urllib.parse.urlparse(url)
+            page = int(urllib.parse.parse_qs(parsed.query)["page"][0])
+            if page == 1:
+                return {"total_count": 101, "incomplete_results": False, "items": page_one_items}
+            if not page_two_failed["value"]:
+                page_two_failed["value"] = True
+                raise ProcessingError("network_error", "simulated page 2 timeout")
+            return {"total_count": 101, "incomplete_results": False, "items": [page_two_item]}
+
+        with temp_config() as config:
+            with patch("src.collectors.github.require_environment_variable", return_value="test-token"):
+                with patch("src.collectors.github._json_request", side_effect=fake_json_request):
+                    with patch("src.collectors.github._read_github_readme", return_value=""):
+                        with self.assertRaises(ProcessingError) as first_error:
+                            replay_source_window(
+                                source_code="github",
+                                window="2026-03-01..2026-03-08",
+                                config=config,
+                                use_live=True,
+                                query_slice_id="qf_agent",
+                            )
+
+                        self.assertEqual(first_error.exception.error_type, "network_error")
+                        store = FileTaskStore(config.task_store_path)
+                        failed_task = store.all_tasks()[-1]
+                        self.assertEqual(failed_task["status"], "failed_retryable")
+                        self.assertEqual(failed_task["payload_json"]["resume_state"]["pending_windows"][0]["page"], 2)
+                        self.assertEqual(failed_task["payload_json"]["durable_logical_watermark"]["external_id"], "100095")
+
+                        raw_index_after_failure = json.loads((config.raw_store_dir / "raw_records.json").read_text(encoding="utf-8"))
+                        self.assertEqual(len(raw_index_after_failure), 100)
+
+                        resumed = replay_source_window(
+                            source_code="github",
+                            window="2026-03-01..2026-03-08",
+                            config=config,
+                            use_live=True,
+                            query_slice_id="qf_agent",
+                        )
+
+            self.assertEqual(resumed["crawl_run"]["request_params"]["page_or_cursor_start"], 2)
+            self.assertEqual(resumed["crawl_run"]["watermark_after"]["external_id"], "100100")
+
+            tasks = FileTaskStore(config.task_store_path).all_tasks()
+            self.assertEqual(tasks[-1]["payload_json"]["resume_from_task_id"], failed_task["task_id"])
+            raw_index_after_resume = json.loads((config.raw_store_dir / "raw_records.json").read_text(encoding="utf-8"))
+            self.assertEqual(len(raw_index_after_resume), 101)
+
+    def test_github_live_failpoint_persists_partial_raw_and_resume_state(self) -> None:
+        page_one_items = [
+            _github_live_repo_item(
+                repo_id=100000 + index,
+                name=f"workflow-app-{index:03d}",
+                full_name=f"acme/workflow-app-{index:03d}",
+                pushed_at=f"2026-03-05T{index % 24:02d}:00:00Z",
+            )
+            for index in range(100)
+        ]
+
+        def fake_json_request(url: str, *, headers: dict[str, str], timeout_seconds: int, request_interval_seconds: int, sleep_fn= None) -> dict[str, object]:
+            del headers, timeout_seconds, request_interval_seconds, sleep_fn
+            parsed = urllib.parse.urlparse(url)
+            page = int(urllib.parse.parse_qs(parsed.query)["page"][0])
+            if page == 1:
+                return {"total_count": 101, "incomplete_results": False, "items": page_one_items}
+            self.fail("configured page-2 failpoint should prevent the second search request")
+
+        with temp_config() as config:
+            with patch.dict(os.environ, {"APO_GITHUB_LIVE_FAIL_ON_PAGE": "2"}, clear=False):
+                with patch("src.collectors.github.require_environment_variable", return_value="test-token"):
+                    with patch("src.collectors.github._json_request", side_effect=fake_json_request):
+                        with patch("src.collectors.github._read_github_readme", return_value=""):
+                            with self.assertRaises(ProcessingError) as ctx:
+                                replay_source_window(
+                                    source_code="github",
+                                    window="2026-03-05..2026-03-05",
+                                    config=config,
+                                    use_live=True,
+                                    query_slice_id="qf_ai_workflow",
+                                )
+
+            self.assertEqual(ctx.exception.error_type, "network_error")
+            failed_task = FileTaskStore(config.task_store_path).all_tasks()[-1]
+            self.assertEqual(failed_task["status"], "failed_retryable")
+            self.assertEqual(failed_task["payload_json"]["resume_state"]["pending_windows"][0]["page"], 2)
+            self.assertEqual(failed_task["payload_json"]["durable_logical_watermark"]["external_id"], "100095")
+
+            raw_index_after_failure = json.loads((config.raw_store_dir / "raw_records.json").read_text(encoding="utf-8"))
+            self.assertEqual(len(raw_index_after_failure), 100)
+
+    def test_github_live_marks_terminal_failure_on_invalid_normalized_output(self) -> None:
+        invalid_item = _github_live_repo_item(
+            repo_id=222001,
+            name="invalid-agent-app",
+            full_name="acme/invalid-agent-app",
+            pushed_at="2026-03-05T12:34:56Z",
+        )
+        invalid_item["pushed_at"] = ["not", "a", "timestamp"]
+
+        def fake_json_request(url: str, *, headers: dict[str, str], timeout_seconds: int, request_interval_seconds: int, sleep_fn= None) -> dict[str, object]:
+            del url, headers, timeout_seconds, request_interval_seconds, sleep_fn
+            return {"total_count": 1, "incomplete_results": False, "items": [invalid_item]}
+
+        with temp_config() as config:
+            with patch("src.collectors.github.require_environment_variable", return_value="test-token"):
+                with patch("src.collectors.github._json_request", side_effect=fake_json_request):
+                    with patch("src.collectors.github._read_github_readme", return_value=""):
+                        with self.assertRaises(ProcessingError) as ctx:
+                            replay_source_window(
+                                source_code="github",
+                                window="2026-03-01..2026-03-08",
+                                config=config,
+                                use_live=True,
+                                query_slice_id="qf_agent",
+                            )
+
+            self.assertEqual(ctx.exception.error_type, "json_schema_validation_failed")
+            task = FileTaskStore(config.task_store_path).all_tasks()[-1]
+            self.assertEqual(task["status"], "failed_terminal")
+            self.assertEqual(task["last_error_type"], "json_schema_validation_failed")
+            self.assertEqual(task["payload_json"]["request_params"]["query_slice_id"], "qf_agent")
 
     def test_replay_marks_terminal_failure_on_invalid_normalized_output(self) -> None:
         with TemporaryDirectory() as tmp_dir:
@@ -551,11 +863,11 @@ class FixturePipelineIntegrationTests(unittest.TestCase):
             ) as config:
                 summary = fill_gold_set_staging_until_complete(
                     config,
-                    source_code="product_hunt",
+                    source_code="github",
                     initial_window="2026-03-01..2026-03-08",
-                    query_slice_id="ph_published_launches",
+                    query_slice_id="qf_agent",
                     live_limit=1,
-                    discovery_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "product_hunt_window.json",
+                    discovery_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "github_qf_agent_window.json",
                     llm_fixture_path=REPO_ROOT / "fixtures" / "candidate_prescreen" / "llm_prescreen_responses.json",
                 )
 

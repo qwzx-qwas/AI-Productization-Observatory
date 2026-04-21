@@ -1,0 +1,166 @@
+{
+  "window": "2025-03-19..2025-03-19",
+  "query_slice_id": "qf_copilot",
+  "run1": {
+    "returncode": 0,
+    "task_id": "0d19a0b1418af476",
+    "raw_records": 322,
+    "source_items": 322,
+    "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_copilot/run1.log",
+    "task_status": "succeeded",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 4,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_copilot",
+      "query_text": "copilot in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-19",
+      "window_start": "2025-03-19"
+    },
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-19T00:00:00Z",
+      "time_field": "pushed_at"
+    },
+    "watermark_after": {
+      "external_id": "951589305",
+      "pushed_at": "2025-03-19T23:48:10Z",
+      "time_field": "pushed_at"
+    },
+    "checkpoint_page": 4,
+    "raw_count": 322,
+    "outside_window_count": 0,
+    "raw_unique_crawl_run_ids": [
+      "a1b16e0e1431a920"
+    ],
+    "min_pushed_at": {
+      "external_id": "950952536",
+      "full_name": "Jared92L/TRIAL-RUN",
+      "pushed_at": "2025-03-19T00:00:45Z",
+      "html_url": "https://github.com/Jared92L/TRIAL-RUN"
+    },
+    "max_pushed_at": {
+      "external_id": "951589305",
+      "full_name": "WallaceAlbuquerque/DesafioCopilot",
+      "pushed_at": "2025-03-19T23:48:10Z",
+      "html_url": "https://github.com/WallaceAlbuquerque/DesafioCopilot"
+    }
+  },
+  "rerun": {
+    "returncode": 0,
+    "task_id": "4a39ef32ffc054a0",
+    "raw_records": 322,
+    "source_items": 322,
+    "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_copilot/rerun.log",
+    "task_status": "succeeded",
+    "parent_task_id": "0d19a0b1418af476",
+    "resume_from_task_id": null,
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 4,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_copilot",
+      "query_text": "copilot in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-19",
+      "window_start": "2025-03-19"
+    },
+    "watermark_after": {
+      "external_id": "951589305",
+      "pushed_at": "2025-03-19T23:48:10Z",
+      "time_field": "pushed_at"
+    },
+    "checkpoint_page": 4,
+    "raw_count": 322,
+    "outside_window_count": 0,
+    "raw_unique_crawl_run_ids": [
+      "a1b16e0e1431a920"
+    ],
+    "durable_raw_unchanged": true
+  },
+  "failure_recovery": {
+    "failpoint_page": 1,
+    "failure": {
+      "returncode": 2,
+      "task_id": "89ca0783ef30f42f",
+      "raw_records": null,
+      "source_items": null,
+      "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_copilot/failure.log",
+      "task_status": "failed_retryable",
+      "error_type": "network_error",
+      "error_message": "configured GitHub live failure injection on page 1",
+      "resume_state": {
+        "logical_watermark": {
+          "external_id": "gh_seed_0000",
+          "pushed_at": "2025-03-19T00:00:00Z",
+          "time_field": "pushed_at"
+        },
+        "pending_windows": [
+          {
+            "page": 1,
+            "window_end": "2025-03-19",
+            "window_start": "2025-03-19"
+          }
+        ],
+        "query_slice_id": "qf_copilot",
+        "source_window_end": "2025-03-19",
+        "source_window_start": "2025-03-19"
+      },
+      "durable_logical_watermark": {
+        "external_id": "gh_seed_0000",
+        "pushed_at": "2025-03-19T00:00:00Z",
+        "time_field": "pushed_at"
+      },
+      "checkpoint_page": 1,
+      "raw_count": 322,
+      "outside_window_count": 0
+    },
+    "resume": {
+      "returncode": 0,
+      "task_id": "54d742ff661cc004",
+      "raw_records": 322,
+      "source_items": 322,
+      "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_copilot/resume.log",
+      "task_status": "succeeded",
+      "parent_task_id": "89ca0783ef30f42f",
+      "resume_from_task_id": "89ca0783ef30f42f",
+      "request_params": {
+        "fetch_mode": "search_repositories",
+        "page_or_cursor_end": 4,
+        "page_or_cursor_start": 1,
+        "query_slice_id": "qf_copilot",
+        "query_text": "copilot in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+        "selection_rule_version": "github_qsv1",
+        "time_field": "pushed_at",
+        "window_end": "2025-03-19",
+        "window_start": "2025-03-19"
+      },
+      "watermark_after": {
+        "external_id": "951589305",
+        "pushed_at": "2025-03-19T23:48:10Z",
+        "time_field": "pushed_at"
+      },
+      "checkpoint_page": 4,
+      "raw_count": 322,
+      "outside_window_count": 0,
+      "raw_unique_crawl_run_ids": [
+        "a1b16e0e1431a920"
+      ],
+      "min_pushed_at": {
+        "external_id": "950952536",
+        "full_name": "Jared92L/TRIAL-RUN",
+        "pushed_at": "2025-03-19T00:00:45Z",
+        "html_url": "https://github.com/Jared92L/TRIAL-RUN"
+      },
+      "max_pushed_at": {
+        "external_id": "951589305",
+        "full_name": "WallaceAlbuquerque/DesafioCopilot",
+        "pushed_at": "2025-03-19T23:48:10Z",
+        "html_url": "https://github.com/WallaceAlbuquerque/DesafioCopilot"
+      }
+    }
+  }
+}

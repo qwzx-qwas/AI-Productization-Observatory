@@ -1,0 +1,1430 @@
+{
+  "dashboard_reconciliation": {
+    "all_passed": true,
+    "check_count": 6,
+    "pass_rate": 1.0,
+    "passed_count": 6,
+    "window_end": "2026-03-27T00:00:00Z",
+    "window_start": "2026-02-26T00:00:00Z"
+  },
+  "evidence_pack": {
+    "candidate_workspace_dir": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace",
+    "fill_audit_log_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/fill_gold_set_staging_audit.jsonl",
+    "gold_set_staging_dir": "/mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging",
+    "phase1_g_acceptance_evidence_path": "/mnt/d/APO/AI-Productization-Observatory/docs/phase1_g_acceptance_evidence.md",
+    "phase1_g_audit_ready_report_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json",
+    "review_issue_store_path": "/mnt/d/APO/AI-Productization-Observatory/.runtime/task_store/review_issues.json"
+  },
+  "execution_boundary": {
+    "current_phase_default_live_source": "github",
+    "product_hunt_current_phase_mode": "fixture_replay_contract_only",
+    "product_hunt_future_live_path": "official_product_hunt_graphql_api_with_token_auth",
+    "product_hunt_live_discovery_status": "deferred"
+  },
+  "gate_interpretation_conflicts": [
+    {
+      "conflict_id": "phase1_exit_checklist_product_hunt_live_cycle",
+      "conflicting_docs": [
+        "01_phase_plan_and_exit_criteria.md",
+        "03_source_registry_and_collection_spec.md",
+        "09_pipeline_and_module_contracts.md",
+        "17_open_decisions_and_freeze_board.md"
+      ],
+      "safe_progress_made": "GitHub remains the only current-phase live candidate discovery path, Product Hunt live candidate discovery is blocked in code, and the Product Hunt future integration seam stays preserved.",
+      "status": "pending_gate_interpretation_decision",
+      "summary": "Phase1 Exit Checklist still lists a full Product Hunt collection cycle, while the frozen current-phase boundary keeps Product Hunt in fixture/replay/contract mode only."
+    }
+  ],
+  "gate_status": {
+    "future_multi_source_boundary": "implemented",
+    "gate_interpretation": "pending_gate_interpretation_decision",
+    "github_live_candidate_discovery": "implemented",
+    "manual_audit_judgment": "pending_manual_audit_judgment",
+    "manual_audit_preparation": "provisionally_ready",
+    "owner_review_package": "ready_for_owner_review",
+    "owner_signoff": "pending_owner_signoff",
+    "product_hunt_live_boundary": "implemented"
+  },
+  "generated_at": "2026-04-21T04:37:08.422447Z",
+  "manual_audit_preparation": {
+    "attention_audit": {
+      "sample_count": 2,
+      "samples": [
+        {
+          "attention_band": "high",
+          "attention_normalized_value": 0.92,
+          "attention_raw_value": 128,
+          "build_evidence_band": "high",
+          "commercial_band": "high",
+          "main_report_included": true,
+          "normalized_name": "desk research copilot",
+          "observation_id": "obs_prod_001_20260310",
+          "product_id": "prod_001",
+          "source_id": "src_product_hunt",
+          "source_item_id": "srcitem_ph_1001_v1",
+          "taxonomy_primary_code": "JTBD_KNOWLEDGE_RESEARCH",
+          "trace_refs": {
+            "evidence_ids": [
+              "ev_prod_001_homepage",
+              "ev_prod_001_description"
+            ],
+            "observation_id": "obs_prod_001_20260310",
+            "review_issue_ids": [],
+            "source_item_id": "srcitem_ph_1001_v1"
+          }
+        },
+        {
+          "attention_band": null,
+          "attention_normalized_value": null,
+          "attention_raw_value": 96,
+          "build_evidence_band": "high",
+          "commercial_band": null,
+          "main_report_included": true,
+          "normalized_name": "sprint qa agent",
+          "observation_id": "obs_prod_004_20260316",
+          "product_id": "prod_004",
+          "source_id": "src_product_hunt",
+          "source_item_id": "srcitem_ph_1002_v1",
+          "taxonomy_primary_code": "JTBD_DEV_TOOLS_TESTING",
+          "trace_refs": {
+            "evidence_ids": [
+              "ev_prod_004_release_note",
+              "ev_prod_004_smoke_test"
+            ],
+            "observation_id": "obs_prod_004_20260316",
+            "review_issue_ids": [],
+            "source_item_id": "srcitem_ph_1002_v1"
+          }
+        }
+      ],
+      "status": "ready_for_manual_judgment"
+    },
+    "merge_spot_check": {
+      "sample_count": 0,
+      "samples": [],
+      "status": "not_materialized_in_local_baseline"
+    },
+    "score_audit": {
+      "sample_count": 2,
+      "samples": [
+        {
+          "attention_band": "high",
+          "attention_normalized_value": 0.92,
+          "attention_raw_value": 128,
+          "build_evidence_band": "high",
+          "commercial_band": "high",
+          "main_report_included": true,
+          "normalized_name": "desk research copilot",
+          "observation_id": "obs_prod_001_20260310",
+          "product_id": "prod_001",
+          "source_id": "src_product_hunt",
+          "source_item_id": "srcitem_ph_1001_v1",
+          "taxonomy_primary_code": "JTBD_KNOWLEDGE_RESEARCH",
+          "trace_refs": {
+            "evidence_ids": [
+              "ev_prod_001_homepage",
+              "ev_prod_001_description"
+            ],
+            "observation_id": "obs_prod_001_20260310",
+            "review_issue_ids": [],
+            "source_item_id": "srcitem_ph_1001_v1"
+          }
+        },
+        {
+          "attention_band": null,
+          "attention_normalized_value": null,
+          "attention_raw_value": 96,
+          "build_evidence_band": "high",
+          "commercial_band": null,
+          "main_report_included": true,
+          "normalized_name": "sprint qa agent",
+          "observation_id": "obs_prod_004_20260316",
+          "product_id": "prod_004",
+          "source_id": "src_product_hunt",
+          "source_item_id": "srcitem_ph_1002_v1",
+          "taxonomy_primary_code": "JTBD_DEV_TOOLS_TESTING",
+          "trace_refs": {
+            "evidence_ids": [
+              "ev_prod_004_release_note",
+              "ev_prod_004_smoke_test"
+            ],
+            "observation_id": "obs_prod_004_20260316",
+            "review_issue_ids": [],
+            "source_item_id": "srcitem_ph_1002_v1"
+          }
+        }
+      ],
+      "status": "ready_for_manual_judgment"
+    },
+    "screening_status_queues": {
+      "approved_for_staging": {
+        "sample_count": 75,
+        "samples": [
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_rag_e7338be43224.yaml",
+            "candidate_id": "cand_github_qf_rag_e7338be43224",
+            "canonical_url": "https://github.com/patchy631/ai-engineering-hub",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "approved_for_staging",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_rag",
+            "reason": "Human reviewer can make a quick scope decision now; only proceed to deeper review if program policy includes learning hubs or if selecting specific subprojects for independent screening.",
+            "recommended_action": "candidate_pool",
+            "request_id": null,
+            "sample_key": "sample_fbe6af0a0a34236c",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-06-01..2026-04-06",
+            "staging_handoff_status": "written",
+            "title": "ai-engineering-hub"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_rag_b8b42b7bc597.yaml",
+            "candidate_id": "cand_github_qf_rag_b8b42b7bc597",
+            "canonical_url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "approved_for_staging",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_rag",
+            "reason": "High-readability candidate for quick human triage: classify first as resource hub, then split out any truly productized subprojects if needed.",
+            "recommended_action": "candidate_pool",
+            "request_id": null,
+            "sample_key": "sample_1c5a679b984ec709",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-06-01..2026-04-06",
+            "staging_handoff_status": "written",
+            "title": "awesome-llm-apps"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_rag_4d86ff9135b0.yaml",
+            "candidate_id": "cand_github_qf_rag_4d86ff9135b0",
+            "canonical_url": "https://github.com/neuml/rag",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "approved_for_staging",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_rag",
+            "reason": "Repository appears to be a concrete AI application (Streamlit RAG app) with deploy/run instructions and configurable runtime behavior. It is more than a concept note, but human review should verify production maturity, maintenance activity, and whether it meets inclusion thresholds beyond a demo/reference implementation.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_40eda6543d888a14",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-06-01..2026-04-06",
+            "staging_handoff_status": "written",
+            "title": "rag"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_copilot_79d47f808a83.yaml",
+            "candidate_id": "cand_github_qf_copilot_79d47f808a83",
+            "canonical_url": "https://github.com/spring-ai-alibaba/copilot",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "approved_for_staging",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_copilot",
+            "reason": "High-value next step: inspect repository tree and recent commits for actual implementation modules (agent/tool orchestration, code edit pipeline, scaffold generation) before any promotion decision.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_3ba978f7d7d494f6",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-06-01..2026-04-06",
+            "staging_handoff_status": "written",
+            "title": "copilot"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_chatbot_bf46b7af1b88.yaml",
+            "candidate_id": "cand_github_qf_chatbot_bf46b7af1b88",
+            "canonical_url": "https://github.com/zhaoyingjun/chatbot",
+            "confidence_summary": {
+              "persona_confidence": "medium",
+              "scope_confidence": "medium",
+              "taxonomy_confidence": "medium"
+            },
+            "human_review_status": "approved_for_staging",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_chatbot",
+            "reason": "Repository combines two tracks (general chatbot/model-training + ShoppingAgent product workflow). Evidence shows practical AI productization signals, but scope is broad and partly roadmap-oriented, so classification risk is non-trivial.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_09cec600aa4c94fe",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-06-01..2026-04-06",
+            "staging_handoff_status": "written",
+            "title": "chatbot"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_chatbot_8e0f2a454ad4.yaml",
+            "candidate_id": "cand_github_qf_chatbot_8e0f2a454ad4",
+            "canonical_url": "https://github.com/alibaba/spring-ai-alibaba",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "approved_for_staging",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_chatbot",
+            "reason": "Needs a quick taxonomy decision first: include as AI app framework candidate or exclude from chatbot slice as supporting infrastructure.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_75f4c020ace4d6da",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-06-01..2026-04-06",
+            "staging_handoff_status": "written",
+            "title": "spring-ai-alibaba"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_chatbot_39cab9febf4c.yaml",
+            "candidate_id": "cand_github_qf_chatbot_39cab9febf4c",
+            "canonical_url": "https://github.com/dbpedia/chatbot",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "approved_for_staging",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_chatbot",
+            "reason": "Ready for quick human first-pass: likely exclude from active candidate pool unless reviewer is intentionally collecting legacy/reference chatbot implementations.",
+            "recommended_action": "candidate_pool",
+            "request_id": null,
+            "sample_key": "sample_a23674ff471861d1",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-06-01..2026-04-06",
+            "staging_handoff_status": "written",
+            "title": "chatbot"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_workflow_edbe85c86a6e.yaml",
+            "candidate_id": "cand_github_qf_ai_workflow_edbe85c86a6e",
+            "canonical_url": "https://github.com/ComposioHQ/awesome-claude-skills",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "approved_for_staging",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_ai_workflow",
+            "reason": "If in doubt, split into two records for human review: (1) this repo as a curated ecosystem index, (2) Composio/connect-apps as a potential productized automation platform.",
+            "recommended_action": "candidate_pool",
+            "request_id": null,
+            "sample_key": "sample_02fb78e6a2d8da91",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-06-01..2026-04-06",
+            "staging_handoff_status": "written",
+            "title": "awesome-claude-skills"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_assistant_79d470bb524e.yaml",
+            "candidate_id": "cand_github_qf_ai_assistant_79d470bb524e",
+            "canonical_url": "https://github.com/mem0ai/mem0",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "approved_for_staging",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_ai_assistant",
+            "reason": "Strong fit as AI-agent memory infrastructure with concrete productization signals (SDK/API, hosted + self-hosted, integrations), but performance claims are self-reported and should be verified before candidate_pool promotion.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_7e81203b216a22f7",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-06-01..2026-04-06",
+            "staging_handoff_status": "written",
+            "title": "mem0"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_assistant_2cd2782d869c.yaml",
+            "candidate_id": "cand_github_qf_ai_assistant_2cd2782d869c",
+            "canonical_url": "https://github.com/openclaw/openclaw",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "approved_for_staging",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_ai_assistant",
+            "reason": "Repository strongly presents as a productized, self-hosted personal AI assistant with broad channel integrations and onboarding. However, evidence is mostly self-description; independent validation of maturity, single-user vs team scope, and practical deployability is still needed.",
+            "recommended_action": "candidate_pool",
+            "request_id": null,
+            "sample_key": "sample_e8054ed12220536e",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-06-01..2026-04-06",
+            "staging_handoff_status": "written",
+            "title": "openclaw"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_assistant_288a67500c73.yaml",
+            "candidate_id": "cand_github_qf_ai_assistant_288a67500c73",
+            "canonical_url": "https://github.com/ChatGPTNextWeb/NextChat",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "approved_for_staging",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_ai_assistant",
+            "reason": "Human reviewer should quickly inspect repo activity metrics, release artifacts, enterprise docs/screens, and any independent usage signals before deciding candidate_pool inclusion.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_b0a1677c31280f18",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-06-01..2026-04-06",
+            "staging_handoff_status": "written",
+            "title": "NextChat"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_cefeaa3e098d.yaml",
+            "candidate_id": "cand_github_qf_agent_cefeaa3e098d",
+            "canonical_url": "https://github.com/kerberos-io/agent",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "approved_for_staging",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_agent",
+            "reason": "Repository emphasizes deployment, camera ingest, recording, streaming, encryption, and integrations. AI/ML is only referenced as a possible capability in the broader Kerberos.io ecosystem, not clearly as core functionality of this specific repo.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_4cef913d221938d9",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-06-01..2026-04-06",
+            "staging_handoff_status": "written",
+            "title": "agent"
+          }
+        ],
+        "status": "ready_for_manual_judgment"
+      },
+      "on_hold": {
+        "sample_count": 28,
+        "samples": [
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-06/cand_github_qf_rag_408d7dd2839c.yaml",
+            "candidate_id": "cand_github_qf_rag_408d7dd2839c",
+            "canonical_url": "https://github.com/NVIDIA-AI-Blueprints/rag",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "on_hold",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_rag",
+            "reason": "Repository appears to be a production-oriented RAG reference solution/blueprint with deployment, governance, and operations details, but final inclusion should confirm whether the observatory scope prefers end-user products vs. developer reference stacks.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_b3574f058acf160b",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2026-01-01..2026-04-06",
+            "staging_handoff_status": "not_started",
+            "title": "rag"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-06/cand_github_qf_copilot_108fc741a81d.yaml",
+            "candidate_id": "cand_github_qf_copilot_108fc741a81d",
+            "canonical_url": "https://github.com/socfortress/CoPilot",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "on_hold",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_copilot",
+            "reason": "Fastest human check: scan docs and dependency manifests for model/provider integrations; if none found, mark as non-AI adjacent tooling.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_242c9c28793fa769",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2026-01-01..2026-04-06",
+            "staging_handoff_status": "not_started",
+            "title": "CoPilot"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-06/cand_github_qf_chatbot_f4818c7c3570.yaml",
+            "candidate_id": "cand_github_qf_chatbot_f4818c7c3570",
+            "canonical_url": "https://github.com/gunthercox/ChatterBot",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "on_hold",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_chatbot",
+            "reason": "Repository evidence strongly indicates a developer-facing Python chatbot engine/library, not a standalone AI product. It appears relevant to chatbot infrastructure discovery but may be legacy/non-LLM architecture and needs recency/activity verification within the requested time window.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_a9480cf600a819ab",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2026-01-01..2026-04-06",
+            "staging_handoff_status": "not_started",
+            "title": "ChatterBot"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-06/cand_github_qf_ai_workflow_f441139943fd.yaml",
+            "candidate_id": "cand_github_qf_ai_workflow_f441139943fd",
+            "canonical_url": "https://github.com/activepieces/activepieces",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "on_hold",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_ai_workflow",
+            "reason": "Repository shows plausible workflow product signals, but product boundary or delivery maturity remains too unclear for direct staging promotion.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_1f68ca040832c9ab",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2026-01-01..2026-04-06",
+            "staging_handoff_status": "not_started",
+            "title": "activepieces"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-06/cand_github_qf_ai_assistant_76407fd60578.yaml",
+            "candidate_id": "cand_github_qf_ai_assistant_76407fd60578",
+            "canonical_url": "https://github.com/ollama/ollama",
+            "confidence_summary": {
+              "persona_confidence": "medium",
+              "scope_confidence": "medium",
+              "taxonomy_confidence": "medium"
+            },
+            "human_review_status": "on_hold",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_ai_assistant",
+            "reason": "Human reviewer should make a quick scope decision first; if infrastructure is allowed, this is likely a strong candidate for deeper evaluation, otherwise route to adjacent infra/platform lane.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_878532b5d1c4327d",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2026-01-01..2026-04-06",
+            "staging_handoff_status": "not_started",
+            "title": "ollama"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2026-01-01_2026-04-06/cand_github_qf_agent_68c4d1863537.yaml",
+            "candidate_id": "cand_github_qf_agent_68c4d1863537",
+            "canonical_url": "https://github.com/grafana/agent",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "on_hold",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_agent",
+            "reason": "Fast-path human review: validate taxonomy boundary (AI product vs general DevOps observability) and decide if successor migration policy applies.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_8111611bea6605c9",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2026-01-01..2026-04-06",
+            "staging_handoff_status": "not_started",
+            "title": "agent"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_copilot_ba743a424bdc.yaml",
+            "candidate_id": "cand_github_qf_copilot_ba743a424bdc",
+            "canonical_url": "https://github.com/CopilotKit/CopilotKit",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "on_hold",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_copilot",
+            "reason": "Ready for quick human first-pass: high signal repo, but requires boundary decision and adoption verification before candidate_pool consideration.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_8d8809fe23299fb9",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-06-01..2026-04-06",
+            "staging_handoff_status": "not_started",
+            "title": "CopilotKit"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_workflow_99a3695a5af1.yaml",
+            "candidate_id": "cand_github_qf_ai_workflow_99a3695a5af1",
+            "canonical_url": "https://github.com/julep-ai/julep",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "on_hold",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_ai_workflow",
+            "reason": "High-value for quick human pass: lifecycle status and scope policy are the only major blockers; core categorization is straightforward.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_53faec46c0d847fb",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-06-01..2026-04-06",
+            "staging_handoff_status": "not_started",
+            "title": "julep"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_ai_workflow_08f87407cb38.yaml",
+            "candidate_id": "cand_github_qf_ai_workflow_08f87407cb38",
+            "canonical_url": "https://github.com/awslabs/aidlc-workflows",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "on_hold",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_ai_workflow",
+            "reason": "Repository shows plausible workflow product signals, but product boundary or delivery maturity remains too unclear for direct staging promotion.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_0b6d2bed080e711f",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-06-01..2026-04-06",
+            "staging_handoff_status": "not_started",
+            "title": "aidlc-workflows"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_rag_cc99a5025095.yaml",
+            "candidate_id": "cand_github_qf_rag_cc99a5025095",
+            "canonical_url": "https://github.com/svpino/youtube-rag",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "on_hold",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_rag",
+            "reason": "Repository shows plausible RAG application signals, but product boundary or delivery maturity remains too unclear for direct staging promotion.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_6e1036ee610152de",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-03-01..2025-03-31",
+            "staging_handoff_status": "not_started",
+            "title": "youtube-rag"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_chatbot_a7260cb832f0.yaml",
+            "candidate_id": "cand_github_qf_chatbot_a7260cb832f0",
+            "canonical_url": "https://github.com/AilyticMinds/AilyticMinds",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "on_hold",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_chatbot",
+            "reason": "Repository shows plausible chatbot application signals, but product boundary or delivery maturity remains too unclear for direct staging promotion.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_69ad0ad892533a0b",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-03-01..2025-03-31",
+            "staging_handoff_status": "not_started",
+            "title": "AilyticMinds"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_ai_assistant_7294b58d8c3b.yaml",
+            "candidate_id": "cand_github_qf_ai_assistant_7294b58d8c3b",
+            "canonical_url": "https://github.com/maynetee/codeselect",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "low",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "on_hold",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_ai_assistant",
+            "reason": "Repository shows plausible assistant application signals, but product boundary or delivery maturity remains too unclear for direct staging promotion.",
+            "recommended_action": "hold",
+            "request_id": null,
+            "sample_key": "sample_5f687a2bdee3e730",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-03-01..2025-03-31",
+            "staging_handoff_status": "not_started",
+            "title": "codeselect"
+          }
+        ],
+        "status": "ready_for_manual_judgment"
+      },
+      "rejected_after_human_review": {
+        "sample_count": 162,
+        "samples": [
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_copilot_714c3b15a13c.yaml",
+            "candidate_id": "cand_github_qf_copilot_714c3b15a13c",
+            "canonical_url": "https://github.com/Copilot-Language/copilot",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "medium",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "rejected_after_human_review",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_copilot",
+            "reason": "Repository is educational or workshop material rather than a productized AI application.",
+            "recommended_action": "reject",
+            "request_id": null,
+            "sample_key": "sample_8cba9ca81d480829",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-06-01..2026-04-06",
+            "staging_handoff_status": "written",
+            "title": "copilot"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_48dda93216f9.yaml",
+            "candidate_id": "cand_github_qf_agent_48dda93216f9",
+            "canonical_url": "https://github.com/puppetlabs/puppet-agent",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "high",
+              "taxonomy_confidence": "medium"
+            },
+            "human_review_status": "rejected_after_human_review",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_agent",
+            "reason": "Repository is an archived package-build and runtime bundling repository for Puppet agent, not an AI application or product.",
+            "recommended_action": "reject",
+            "request_id": null,
+            "sample_key": "sample_70fef592ba408c0e",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-01-01..2025-01-31",
+            "staging_handoff_status": "not_started",
+            "title": "puppet-agent"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_0892f30f987c.yaml",
+            "candidate_id": "cand_github_qf_agent_0892f30f987c",
+            "canonical_url": "https://github.com/run-llama/multi-agent-concierge",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "medium",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "rejected_after_human_review",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_agent",
+            "reason": "Repository is an example implementation for developers to build their own multi-agent system rather than a productized end-user AI application.",
+            "recommended_action": "reject",
+            "request_id": null,
+            "sample_key": "sample_0edf445db2eb48ff",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-01-01..2025-01-31",
+            "staging_handoff_status": "not_started",
+            "title": "multi-agent-concierge"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_a2444a11f76e.yaml",
+            "candidate_id": "cand_github_qf_agent_a2444a11f76e",
+            "canonical_url": "https://github.com/huawei-noah/SMARTS",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "medium",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "rejected_after_human_review",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_agent",
+            "reason": "Repository is a simulation and reinforcement-learning research platform for autonomous driving rather than an end-user AI application or product surface.",
+            "recommended_action": "reject",
+            "request_id": null,
+            "sample_key": "sample_cc2ded168dadf5b2",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-01-01..2025-01-31",
+            "staging_handoff_status": "not_started",
+            "title": "SMARTS"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-01-01_2025-01-31/cand_github_qf_agent_9df15e42be9f.yaml",
+            "candidate_id": "cand_github_qf_agent_9df15e42be9f",
+            "canonical_url": "https://github.com/ysymyth/awesome-language-agents",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "medium",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "rejected_after_human_review",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_agent",
+            "reason": "Repository is a curated paper/resource list about language agents rather than a deployable end-user AI application or product surface.",
+            "recommended_action": "reject",
+            "request_id": null,
+            "sample_key": "sample_9139da302479721c",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-01-01..2025-01-31",
+            "staging_handoff_status": "not_started",
+            "title": "awesome-language-agents"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-06-01_2026-04-06/cand_github_qf_agent_ba753c9e7e54.yaml",
+            "candidate_id": "cand_github_qf_agent_ba753c9e7e54",
+            "canonical_url": "https://github.com/buildkite/agent",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "medium",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "rejected_after_human_review",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_agent",
+            "reason": "Repository is primarily a component, framework, integration artifact, or starter rather than an end-user AI product.",
+            "recommended_action": "reject",
+            "request_id": null,
+            "sample_key": "sample_4bbdabac9eb715ea",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-06-01..2026-04-06",
+            "staging_handoff_status": "not_started",
+            "title": "agent"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_agent_aa47c2768930.yaml",
+            "candidate_id": "cand_github_qf_agent_aa47c2768930",
+            "canonical_url": "https://github.com/CopilotKit/open-mcp-client",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "medium",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "rejected_after_human_review",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_agent",
+            "reason": "Repository is primarily a component, framework, integration artifact, or starter rather than an end-user AI product.",
+            "recommended_action": "reject",
+            "request_id": null,
+            "sample_key": "sample_c3964e962bcabeed",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-04-01..2025-04-30",
+            "staging_handoff_status": "not_started",
+            "title": "open-mcp-client"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_agent_70504c673b6b.yaml",
+            "candidate_id": "cand_github_qf_agent_70504c673b6b",
+            "canonical_url": "https://github.com/liaokongVFX/LangChain-Chinese-Getting-Started-Guide",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "medium",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "rejected_after_human_review",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_agent",
+            "reason": "Repository is educational or workshop material rather than a productized AI application.",
+            "recommended_action": "reject",
+            "request_id": null,
+            "sample_key": "sample_bb70134d1375bd48",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-04-01..2025-04-30",
+            "staging_handoff_status": "not_started",
+            "title": "LangChain-Chinese-Getting-Started-Guide"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_agent_60f137e8db43.yaml",
+            "candidate_id": "cand_github_qf_agent_60f137e8db43",
+            "canonical_url": "https://github.com/Ne0nd0g/merlin",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "medium",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "rejected_after_human_review",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_agent",
+            "reason": "Repository is educational or workshop material rather than a productized AI application.",
+            "recommended_action": "reject",
+            "request_id": null,
+            "sample_key": "sample_0de6888c935cf8f4",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-04-01..2025-04-30",
+            "staging_handoff_status": "not_started",
+            "title": "merlin"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_agent_2ebff47f264a.yaml",
+            "candidate_id": "cand_github_qf_agent_2ebff47f264a",
+            "canonical_url": "https://github.com/business-science/awesome-generative-ai-data-scientist",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "medium",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "rejected_after_human_review",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_agent",
+            "reason": "Repository is educational or workshop material rather than a productized AI application.",
+            "recommended_action": "reject",
+            "request_id": null,
+            "sample_key": "sample_a25d764b6cb80d89",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-04-01..2025-04-30",
+            "staging_handoff_status": "not_started",
+            "title": "awesome-generative-ai-data-scientist"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-04-01_2025-04-30/cand_github_qf_agent_2134d3f6e67d.yaml",
+            "candidate_id": "cand_github_qf_agent_2134d3f6e67d",
+            "canonical_url": "https://github.com/iam-veeramalla/ai-assisted-devops",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "medium",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "rejected_after_human_review",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_agent",
+            "reason": "Repository is educational or workshop material rather than a productized AI application.",
+            "recommended_action": "reject",
+            "request_id": null,
+            "sample_key": "sample_ff2d6a6c4c8bb086",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-04-01..2025-04-30",
+            "staging_handoff_status": "not_started",
+            "title": "ai-assisted-devops"
+          },
+          {
+            "candidate_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/candidate_prescreen_workspace/github/2025-03-01_2025-03-31/cand_github_qf_rag_cb5c33725061.yaml",
+            "candidate_id": "cand_github_qf_rag_cb5c33725061",
+            "canonical_url": "https://github.com/Jenqyang/LLM-Powered-RAG-System",
+            "confidence_summary": {
+              "persona_confidence": "low",
+              "scope_confidence": "medium",
+              "taxonomy_confidence": "low"
+            },
+            "human_review_status": "rejected_after_human_review",
+            "llm_prescreen_status": "succeeded",
+            "query_slice_id": "qf_rag",
+            "reason": "Repository is educational or workshop material rather than a productized AI application.",
+            "recommended_action": "reject",
+            "request_id": null,
+            "sample_key": "sample_0704f13912750f9a",
+            "selection_rule_version": "github_qsv1",
+            "source": "github",
+            "source_window": "2025-03-01..2025-03-31",
+            "staging_handoff_status": "not_started",
+            "title": "LLM-Powered-RAG-System"
+          }
+        ],
+        "status": "ready_for_manual_judgment"
+      }
+    },
+    "taxonomy_audit": {
+      "sample_count": 3,
+      "samples": [
+        {
+          "attention_band": null,
+          "attention_normalized_value": null,
+          "attention_raw_value": 96,
+          "build_evidence_band": "high",
+          "commercial_band": null,
+          "main_report_included": true,
+          "normalized_name": "sprint qa agent",
+          "observation_id": "obs_prod_004_20260316",
+          "product_id": "prod_004",
+          "source_id": "src_product_hunt",
+          "source_item_id": "srcitem_ph_1002_v1",
+          "taxonomy_primary_code": "JTBD_DEV_TOOLS_TESTING",
+          "trace_refs": {
+            "evidence_ids": [
+              "ev_prod_004_release_note",
+              "ev_prod_004_smoke_test"
+            ],
+            "observation_id": "obs_prod_004_20260316",
+            "review_issue_ids": [],
+            "source_item_id": "srcitem_ph_1002_v1"
+          }
+        },
+        {
+          "attention_band": "high",
+          "attention_normalized_value": 0.92,
+          "attention_raw_value": 128,
+          "build_evidence_band": "high",
+          "commercial_band": "high",
+          "main_report_included": true,
+          "normalized_name": "desk research copilot",
+          "observation_id": "obs_prod_001_20260310",
+          "product_id": "prod_001",
+          "source_id": "src_product_hunt",
+          "source_item_id": "srcitem_ph_1001_v1",
+          "taxonomy_primary_code": "JTBD_KNOWLEDGE_RESEARCH",
+          "trace_refs": {
+            "evidence_ids": [
+              "ev_prod_001_homepage",
+              "ev_prod_001_description"
+            ],
+            "observation_id": "obs_prod_001_20260310",
+            "review_issue_ids": [],
+            "source_item_id": "srcitem_ph_1001_v1"
+          }
+        },
+        {
+          "attention_band": "medium",
+          "attention_normalized_value": 0.56,
+          "attention_raw_value": 144,
+          "build_evidence_band": "medium",
+          "commercial_band": null,
+          "main_report_included": true,
+          "normalized_name": "support agent workbench",
+          "observation_id": "obs_prod_002_20260312",
+          "product_id": "prod_002",
+          "source_id": "src_github",
+          "source_item_id": "srcitem_gh_2002_v1",
+          "taxonomy_primary_code": "JTBD_KNOWLEDGE_RESEARCH",
+          "trace_refs": {
+            "evidence_ids": [
+              "ev_prod_002_readme"
+            ],
+            "observation_id": "obs_prod_002_20260312",
+            "review_issue_ids": [],
+            "source_item_id": "srcitem_gh_2002_v1"
+          }
+        }
+      ],
+      "status": "ready_for_manual_judgment"
+    },
+    "unresolved_audit": {
+      "sample_count": 1,
+      "samples": [
+        {
+          "effective_taxonomy_code": "unresolved",
+          "priority_code": "P1",
+          "product_id": "prod_003",
+          "resolution_action": "mark_unresolved",
+          "resolution_notes": "Adjacent taxonomy confusion remains unresolved after review closure.",
+          "review_issue_id": "rev_003",
+          "trace_refs": {
+            "evidence_ids": [
+              "ev_prod_003_conflict_note"
+            ],
+            "observation_id": "obs_prod_003_20260315",
+            "review_issue_ids": [
+              "rev_003"
+            ],
+            "source_item_id": "srcitem_ph_1099_v1"
+          }
+        }
+      ],
+      "status": "ready_for_manual_judgment"
+    }
+  },
+  "release_judgment": {
+    "judgment": "conditional-go",
+    "owner_required_signoff": [
+      {
+        "decision": "Review the merge spot-check evidence pack and explicitly confirm whether current results are release-usable.",
+        "evidence_refs": [
+          "docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json",
+          "docs/phase1_g_acceptance_evidence.md"
+        ],
+        "item_id": "owner_merge_spot_check",
+        "owner": "project owner"
+      },
+      {
+        "decision": "Review the taxonomy audit evidence pack and explicitly confirm whether current results are release-usable.",
+        "evidence_refs": [
+          "docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json",
+          "docs/phase1_g_acceptance_evidence.md"
+        ],
+        "item_id": "owner_taxonomy_audit",
+        "owner": "project owner"
+      },
+      {
+        "decision": "Review the score audit evidence pack and explicitly confirm whether current results are release-usable.",
+        "evidence_refs": [
+          "docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json",
+          "docs/phase1_g_acceptance_evidence.md"
+        ],
+        "item_id": "owner_score_audit",
+        "owner": "project owner"
+      },
+      {
+        "decision": "Review the attention audit evidence pack and explicitly confirm whether current results are release-usable.",
+        "evidence_refs": [
+          "docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json",
+          "docs/phase1_g_acceptance_evidence.md"
+        ],
+        "item_id": "owner_attention_audit",
+        "owner": "project owner"
+      },
+      {
+        "decision": "Review the unresolved audit evidence pack and explicitly confirm whether current results are release-usable.",
+        "evidence_refs": [
+          "docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json",
+          "docs/phase1_g_acceptance_evidence.md"
+        ],
+        "item_id": "owner_unresolved_audit",
+        "owner": "project owner"
+      },
+      {
+        "decision": "Interpret the Phase1 Exit Checklist conflict: confirm whether the existing GitHub live matrix counts toward the GitHub full-cycle gate and whether the Product Hunt full-cycle line stays deferred outside the current release.",
+        "evidence_refs": [
+          "01_phase_plan_and_exit_criteria.md",
+          "docs/phase1_a_baseline.md",
+          "docs/phase1_e_acceptance_evidence.md",
+          "docs/phase1_g_acceptance_evidence.md"
+        ],
+        "item_id": "owner_phase1_gate_interpretation",
+        "owner": "Phase1 pipeline owner"
+      },
+      {
+        "decision": "Apply the final merge/release judgment under DEC-025 after reviewing the audit package and unresolved items.",
+        "evidence_refs": [
+          "17_open_decisions_and_freeze_board.md",
+          "14_test_plan_and_acceptance.md",
+          "docs/phase1_g_acceptance_evidence.md"
+        ],
+        "item_id": "owner_release_decision",
+        "owner": "project owner"
+      }
+    ],
+    "rationale": [
+      "GitHub remains the only current-phase live candidate discovery path, matching the frozen source boundary.",
+      "Product Hunt remains deferred in the current phase, while the official GraphQL plus token-auth live seam stays preserved for future reactivation.",
+      "Local mart-backed dashboard reconciliation currently passes all materialized checks.",
+      "Merge spot-check evidence is not materialized in the local baseline, so the absence of sampled merge-risk cases cannot be treated as a completed release audit.",
+      "The Phase1 exit checklist still contains a Product Hunt full-cycle requirement that conflicts with the frozen deferred boundary, so release interpretation remains owner-gated.",
+      "DEC-025 keeps final merge/release sign-off with the owner, so this report can only provide a machine judgment plus required owner decisions."
+    ],
+    "release_conditions": [
+      "Manual audit: merge spot-check",
+      "Manual audit: taxonomy audit",
+      "Manual audit: score audit",
+      "Manual audit: attention audit",
+      "Manual audit: unresolved audit",
+      "Phase1 Exit Checklist still lists a full Product Hunt collection cycle, while the frozen current-phase boundary keeps Product Hunt in fixture/replay/contract mode only."
+    ],
+    "unresolved_audit_summary": [
+      {
+        "blocks_release": false,
+        "evidence": [
+          "execution_boundary.current_phase_default_live_source='github'",
+          "source_runtime_boundaries.github.discovery_capabilities.live_enabled_in_current_phase=true"
+        ],
+        "impact_scope": "current-phase live discovery coverage and operator default execution path",
+        "item_id": "github_live_path",
+        "risk_level": "low",
+        "status": "implemented",
+        "title": "GitHub remains the only current-phase live candidate discovery path"
+      },
+      {
+        "blocks_release": false,
+        "evidence": [
+          "execution_boundary.product_hunt_current_phase_mode='fixture_replay_contract_only'",
+          "execution_boundary.product_hunt_live_discovery_status='deferred'",
+          "source_runtime_boundaries.product_hunt.discovery_capabilities.live_supported=true",
+          "source_runtime_boundaries.product_hunt.discovery_capabilities.live_enabled_in_current_phase=false",
+          "source_runtime_boundaries.product_hunt.discovery_capabilities.future_live_boundary_preserved=true"
+        ],
+        "impact_scope": "current-phase source boundary, Product Hunt contract continuity, and future non-breaking reactivation",
+        "item_id": "product_hunt_deferred_boundary",
+        "risk_level": "low",
+        "status": "implemented",
+        "title": "Product Hunt stays deferred while preserving the future live integration seam"
+      },
+      {
+        "blocks_release": false,
+        "evidence": [
+          "dashboard_reconciliation.check_count=6",
+          "dashboard_reconciliation.passed_count=6",
+          "dashboard_reconciliation.pass_rate=1.0"
+        ],
+        "impact_scope": "dashboard-facing consumption contract, drill-down traceability baseline, and local release usability signal",
+        "item_id": "dashboard_reconciliation",
+        "risk_level": "low",
+        "status": "passed",
+        "title": "Mart-backed dashboard reconciliation baseline"
+      },
+      {
+        "blocks_release": true,
+        "evidence": [
+          "manual_audit_preparation.merge_spot_check.status='not_materialized_in_local_baseline'",
+          "manual_audit_preparation.merge_spot_check.sample_count=0"
+        ],
+        "impact_scope": "release usability judgment, quality sampling, and unresolved/review risk validation",
+        "item_id": "merge_spot_check",
+        "risk_level": "medium",
+        "status": "not_materialized_in_local_baseline",
+        "title": "Manual audit: merge spot-check"
+      },
+      {
+        "blocks_release": true,
+        "evidence": [
+          "manual_audit_preparation.taxonomy_audit.status='ready_for_manual_judgment'",
+          "manual_audit_preparation.taxonomy_audit.sample_count=3"
+        ],
+        "impact_scope": "release usability judgment, quality sampling, and unresolved/review risk validation",
+        "item_id": "taxonomy_audit",
+        "risk_level": "medium",
+        "status": "ready_for_manual_judgment",
+        "title": "Manual audit: taxonomy audit"
+      },
+      {
+        "blocks_release": true,
+        "evidence": [
+          "manual_audit_preparation.score_audit.status='ready_for_manual_judgment'",
+          "manual_audit_preparation.score_audit.sample_count=2"
+        ],
+        "impact_scope": "release usability judgment, quality sampling, and unresolved/review risk validation",
+        "item_id": "score_audit",
+        "risk_level": "medium",
+        "status": "ready_for_manual_judgment",
+        "title": "Manual audit: score audit"
+      },
+      {
+        "blocks_release": true,
+        "evidence": [
+          "manual_audit_preparation.attention_audit.status='ready_for_manual_judgment'",
+          "manual_audit_preparation.attention_audit.sample_count=2"
+        ],
+        "impact_scope": "release usability judgment, quality sampling, and unresolved/review risk validation",
+        "item_id": "attention_audit",
+        "risk_level": "medium",
+        "status": "ready_for_manual_judgment",
+        "title": "Manual audit: attention audit"
+      },
+      {
+        "blocks_release": true,
+        "evidence": [
+          "manual_audit_preparation.unresolved_audit.status='ready_for_manual_judgment'",
+          "manual_audit_preparation.unresolved_audit.sample_count=1"
+        ],
+        "impact_scope": "release usability judgment, quality sampling, and unresolved/review risk validation",
+        "item_id": "unresolved_audit",
+        "risk_level": "medium",
+        "status": "ready_for_manual_judgment",
+        "title": "Manual audit: unresolved audit"
+      },
+      {
+        "blocks_release": true,
+        "evidence": [
+          "01_phase_plan_and_exit_criteria.md",
+          "03_source_registry_and_collection_spec.md",
+          "09_pipeline_and_module_contracts.md",
+          "17_open_decisions_and_freeze_board.md"
+        ],
+        "impact_scope": "Phase1 exit checklist interpretation and whether current evidence can be counted as release gating evidence",
+        "item_id": "phase1_exit_checklist_product_hunt_live_cycle",
+        "risk_level": "high",
+        "status": "pending_gate_interpretation_decision",
+        "title": "Phase1 Exit Checklist still lists a full Product Hunt collection cycle, while the frozen current-phase boundary keeps Product Hunt in fixture/replay/contract mode only."
+      }
+    ]
+  },
+  "report_type": "phase1_g_audit_ready_report",
+  "report_version": "phase1_g_audit_ready_v1",
+  "source_runtime_boundaries": [
+    {
+      "candidate_document_count": 265,
+      "current_phase_runtime_note": "current-phase live candidate discovery path",
+      "discovery_capabilities": {
+        "current_phase_live_status": "enabled",
+        "fixture_supported": true,
+        "future_live_boundary_preserved": true,
+        "live_enabled_in_current_phase": true,
+        "live_supported": true,
+        "replay_supported": true
+      },
+      "discovery_modes": [
+        "live"
+      ],
+      "human_review_status_counts": {
+        "approved_for_staging": 75,
+        "on_hold": 28,
+        "rejected_after_human_review": 162
+      },
+      "llm_prescreen_status_counts": {
+        "failed": 135,
+        "succeeded": 130
+      },
+      "query_slice_ids": [
+        "qf_agent",
+        "qf_ai_assistant",
+        "qf_ai_workflow",
+        "qf_chatbot",
+        "qf_copilot",
+        "qf_rag"
+      ],
+      "source_code": "github",
+      "source_id": "src_github",
+      "source_name": "GitHub",
+      "staging_handoff_status_counts": {
+        "not_started": 189,
+        "written": 76
+      },
+      "windows": [
+        "2025-01-01..2025-01-31",
+        "2025-01-01..2026-04-06",
+        "2025-02-01..2025-02-28",
+        "2025-03-01..2025-03-31",
+        "2025-04-01..2025-04-30",
+        "2025-06-01..2026-04-06",
+        "2026-01-01..2026-04-06"
+      ]
+    },
+    {
+      "candidate_document_count": 0,
+      "current_phase_runtime_note": "retain fixture/replay/contract only; current phase does not execute live candidate discovery",
+      "discovery_capabilities": {
+        "current_phase_live_status": "deferred",
+        "fixture_supported": true,
+        "future_live_boundary_preserved": true,
+        "live_enabled_in_current_phase": false,
+        "live_supported": true,
+        "replay_supported": true
+      },
+      "discovery_modes": [],
+      "human_review_status_counts": {},
+      "llm_prescreen_status_counts": {},
+      "query_slice_ids": [],
+      "source_code": "product_hunt",
+      "source_id": "src_product_hunt",
+      "source_name": "Product Hunt",
+      "staging_handoff_status_counts": {},
+      "windows": []
+    }
+  ],
+  "staging_summary": {
+    "is_complete": false,
+    "next_open_slot": {
+      "sample_slot_id": "GS300-135",
+      "staging_document_path": "/mnt/d/APO/AI-Productization-Observatory/docs/gold_set_300_real_asset_staging/gold_set_300_staging_batch_09_samples_121_135.yaml"
+    },
+    "total_empty": 166,
+    "total_filled": 134,
+    "total_slots": 300
+  },
+  "workspace_summary": {
+    "candidate_document_count": 265,
+    "sources": [
+      {
+        "candidate_document_count": 265,
+        "current_phase_runtime_note": "current-phase live candidate discovery path",
+        "discovery_capabilities": {
+          "current_phase_live_status": "enabled",
+          "fixture_supported": true,
+          "future_live_boundary_preserved": true,
+          "live_enabled_in_current_phase": true,
+          "live_supported": true,
+          "replay_supported": true
+        },
+        "discovery_modes": [
+          "live"
+        ],
+        "human_review_status_counts": {
+          "approved_for_staging": 75,
+          "on_hold": 28,
+          "rejected_after_human_review": 162
+        },
+        "llm_prescreen_status_counts": {
+          "failed": 135,
+          "succeeded": 130
+        },
+        "query_slice_ids": [
+          "qf_agent",
+          "qf_ai_assistant",
+          "qf_ai_workflow",
+          "qf_chatbot",
+          "qf_copilot",
+          "qf_rag"
+        ],
+        "source_code": "github",
+        "source_id": "src_github",
+        "source_name": "GitHub",
+        "staging_handoff_status_counts": {
+          "not_started": 189,
+          "written": 76
+        },
+        "windows": [
+          "2025-01-01..2025-01-31",
+          "2025-01-01..2026-04-06",
+          "2025-02-01..2025-02-28",
+          "2025-03-01..2025-03-31",
+          "2025-04-01..2025-04-30",
+          "2025-06-01..2026-04-06",
+          "2026-01-01..2026-04-06"
+        ]
+      },
+      {
+        "candidate_document_count": 0,
+        "current_phase_runtime_note": "retain fixture/replay/contract only; current phase does not execute live candidate discovery",
+        "discovery_capabilities": {
+          "current_phase_live_status": "deferred",
+          "fixture_supported": true,
+          "future_live_boundary_preserved": true,
+          "live_enabled_in_current_phase": false,
+          "live_supported": true,
+          "replay_supported": true
+        },
+        "discovery_modes": [],
+        "human_review_status_counts": {},
+        "llm_prescreen_status_counts": {},
+        "query_slice_ids": [],
+        "source_code": "product_hunt",
+        "source_id": "src_product_hunt",
+        "source_name": "Product Hunt",
+        "staging_handoff_status_counts": {},
+        "windows": []
+      }
+    ]
+  }
+}

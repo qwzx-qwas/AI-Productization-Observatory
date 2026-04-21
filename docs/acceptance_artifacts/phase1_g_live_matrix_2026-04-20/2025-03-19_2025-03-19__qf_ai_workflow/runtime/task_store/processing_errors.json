@@ -1,0 +1,21 @@
+[
+  {
+    "created_at": "2026-04-20T10:08:50.546497Z",
+    "error_id": "perr_89d1394332726101",
+    "error_message": "configured GitHub live failure injection on page 1",
+    "error_type": "network_error",
+    "first_failed_at": "2026-04-20T10:08:50.546497Z",
+    "last_failed_at": "2026-04-20T10:08:50.546497Z",
+    "module_name": "pull_collector",
+    "next_retry_at": "2026-04-20T10:09:20.546526Z",
+    "raw_id": null,
+    "resolution_status": "retry_scheduled",
+    "retry_count": 1,
+    "run_id": "89d1394332726101",
+    "source_id": "src_github",
+    "source_item_id": null,
+    "target_id": null,
+    "target_type": null,
+    "updated_at": "2026-04-20T10:08:50.546497Z"
+  }
+]

@@ -1,0 +1,166 @@
+{
+  "window": "2025-03-05..2025-03-05",
+  "query_slice_id": "qf_copilot",
+  "run1": {
+    "returncode": 0,
+    "task_id": "3cece3dc121c2a80",
+    "raw_records": 349,
+    "source_items": 349,
+    "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_copilot/run1.log",
+    "task_status": "succeeded",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 4,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_copilot",
+      "query_text": "copilot in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-05T00:00:00Z",
+      "time_field": "pushed_at"
+    },
+    "watermark_after": {
+      "external_id": "943580316",
+      "pushed_at": "2025-03-05T23:59:48Z",
+      "time_field": "pushed_at"
+    },
+    "checkpoint_page": 4,
+    "raw_count": 349,
+    "outside_window_count": 0,
+    "raw_unique_crawl_run_ids": [
+      "fd12323078df8fd9"
+    ],
+    "min_pushed_at": {
+      "external_id": "942949240",
+      "full_name": "bblazin303/skills-copilot-codespaces-vscode",
+      "pushed_at": "2025-03-05T00:03:14Z",
+      "html_url": "https://github.com/bblazin303/skills-copilot-codespaces-vscode"
+    },
+    "max_pushed_at": {
+      "external_id": "943580316",
+      "full_name": "danyntavares/skills-copilot-codespaces-vscode",
+      "pushed_at": "2025-03-05T23:59:48Z",
+      "html_url": "https://github.com/danyntavares/skills-copilot-codespaces-vscode"
+    }
+  },
+  "rerun": {
+    "returncode": 0,
+    "task_id": "314af03a1c7c79ef",
+    "raw_records": 349,
+    "source_items": 349,
+    "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_copilot/rerun.log",
+    "task_status": "succeeded",
+    "parent_task_id": "3cece3dc121c2a80",
+    "resume_from_task_id": null,
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 4,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_copilot",
+      "query_text": "copilot in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-05",
+      "window_start": "2025-03-05"
+    },
+    "watermark_after": {
+      "external_id": "943580316",
+      "pushed_at": "2025-03-05T23:59:48Z",
+      "time_field": "pushed_at"
+    },
+    "checkpoint_page": 4,
+    "raw_count": 349,
+    "outside_window_count": 0,
+    "raw_unique_crawl_run_ids": [
+      "fd12323078df8fd9"
+    ],
+    "durable_raw_unchanged": true
+  },
+  "failure_recovery": {
+    "failpoint_page": 1,
+    "failure": {
+      "returncode": 2,
+      "task_id": "25334ff00b259eb4",
+      "raw_records": null,
+      "source_items": null,
+      "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_copilot/failure.log",
+      "task_status": "failed_retryable",
+      "error_type": "network_error",
+      "error_message": "configured GitHub live failure injection on page 1",
+      "resume_state": {
+        "logical_watermark": {
+          "external_id": "gh_seed_0000",
+          "pushed_at": "2025-03-05T00:00:00Z",
+          "time_field": "pushed_at"
+        },
+        "pending_windows": [
+          {
+            "page": 1,
+            "window_end": "2025-03-05",
+            "window_start": "2025-03-05"
+          }
+        ],
+        "query_slice_id": "qf_copilot",
+        "source_window_end": "2025-03-05",
+        "source_window_start": "2025-03-05"
+      },
+      "durable_logical_watermark": {
+        "external_id": "gh_seed_0000",
+        "pushed_at": "2025-03-05T00:00:00Z",
+        "time_field": "pushed_at"
+      },
+      "checkpoint_page": 1,
+      "raw_count": 349,
+      "outside_window_count": 0
+    },
+    "resume": {
+      "returncode": 0,
+      "task_id": "6746859cf3cf27b8",
+      "raw_records": 349,
+      "source_items": 349,
+      "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-05_2025-03-05__qf_copilot/resume.log",
+      "task_status": "succeeded",
+      "parent_task_id": "25334ff00b259eb4",
+      "resume_from_task_id": "25334ff00b259eb4",
+      "request_params": {
+        "fetch_mode": "search_repositories",
+        "page_or_cursor_end": 4,
+        "page_or_cursor_start": 1,
+        "query_slice_id": "qf_copilot",
+        "query_text": "copilot in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-05..2025-03-05",
+        "selection_rule_version": "github_qsv1",
+        "time_field": "pushed_at",
+        "window_end": "2025-03-05",
+        "window_start": "2025-03-05"
+      },
+      "watermark_after": {
+        "external_id": "943580316",
+        "pushed_at": "2025-03-05T23:59:48Z",
+        "time_field": "pushed_at"
+      },
+      "checkpoint_page": 4,
+      "raw_count": 349,
+      "outside_window_count": 0,
+      "raw_unique_crawl_run_ids": [
+        "fd12323078df8fd9"
+      ],
+      "min_pushed_at": {
+        "external_id": "942949240",
+        "full_name": "bblazin303/skills-copilot-codespaces-vscode",
+        "pushed_at": "2025-03-05T00:03:14Z",
+        "html_url": "https://github.com/bblazin303/skills-copilot-codespaces-vscode"
+      },
+      "max_pushed_at": {
+        "external_id": "943580316",
+        "full_name": "danyntavares/skills-copilot-codespaces-vscode",
+        "pushed_at": "2025-03-05T23:59:48Z",
+        "html_url": "https://github.com/danyntavares/skills-copilot-codespaces-vscode"
+      }
+    }
+  }
+}

@@ -67,6 +67,7 @@ last_frozen_version: pipeline_v2
 
 - GitHub 仍是当前阶段默认 live candidate discovery 路径。
 - Product Hunt 继续保留 module contract、fixture / replay、`published_at` window replay 语义与 future live integration boundary，但当前阶段不执行 Product Hunt live pull collection 或 live candidate discovery。
+- candidate prescreener 的 live discovery 必须先通过 source capability gate；当前阶段只允许对 `live_enabled_in_current_phase = true` 的 source 发起 live candidate discovery，其他 source 只能走 fixture / replay / contract 路径。
 
 ## 2. Module Contracts
 
@@ -161,6 +162,7 @@ last_frozen_version: pipeline_v2
 - `preconditions`:
   - source 已启用
   - source window 明确
+  - source-specific discovery capability 已校验；若当前阶段 live discovery 未启用，则只能走 fixture / replay，不得静默回落成 live 请求
   - GitHub discovery 必须携带 `selection_rule_version + query_slice_id`
   - Product Hunt discovery 必须携带 `published_at` window
 - `outputs`:

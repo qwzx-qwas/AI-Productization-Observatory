@@ -325,6 +325,7 @@ taxonomy / annotation 最小样例说明还应覆盖：
 - score audit：对 `high attention` 与 `high build evidence` 样本优先抽查
 - attention audit：抽查 `source_metric_registry` 默认主指标是否与 source bias / 解释边界一致，且未把 `activity` / `adoption` 信号误混入 attention
 - unresolved audit：抽查 unresolved 是否真的证据不足，而不是模型偷懒
+- 上述抽样可以先由自动化生成 audit-ready sample lists、聚合视图、drill-down 引用和 reconciliation 报告；但这些准备物不等于人工 judgment，也不替代最终 owner sign-off
 
 ## 7. Owner / Merge / Release Rules
 

@@ -11,6 +11,7 @@ from src.candidate_prescreen.config import build_analysis_run_key, build_sample_
 from src.candidate_prescreen.relay import PAYLOAD_BUILDER_VERSION, build_relay_candidate_input
 from src.candidate_prescreen.workflow import archive_duplicate_candidate_records, archive_future_window_candidate_records, run_candidate_prescreen
 from src.candidate_prescreen.review_card import normalize_llm_result
+from src.common.errors import ContractValidationError
 from src.common.files import dump_yaml, load_yaml, utc_now_iso
 from tests.helpers import temp_config
 
@@ -248,6 +249,25 @@ class CandidatePrescreenWorkflowUnitTests(unittest.TestCase):
             self.assertEqual(record["source_window"], "2026-03-01..2026-03-08")
             self.assertEqual(record["summary"], "AI assistant for sales teams and meeting follow-up workflows.")
             self.assertEqual(record["raw_evidence_excerpt"], "Assistant workspace for sales call prep, notes, and follow-up tasks.")
+
+    def test_run_candidate_prescreen_blocks_product_hunt_live_discovery_in_current_phase(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            candidate_workspace = Path(tmp_dir) / "candidate_workspace"
+
+            with temp_config(candidate_workspace_dir=candidate_workspace) as config:
+                with self.assertRaisesRegex(
+                    ContractValidationError,
+                    "Current-phase live candidate discovery is not enabled for product_hunt",
+                ):
+                    run_candidate_prescreen(
+                        config,
+                        source_code="product_hunt",
+                        window="2026-03-01..2026-03-08",
+                        query_slice_id="ph_published_launches",
+                        limit=1,
+                        discovery_fixture_path=None,
+                        llm_fixture_path=None,
+                    )
 
     def test_run_candidate_prescreen_rejects_invalid_url_before_writing_candidate_doc(self) -> None:
         with TemporaryDirectory() as tmp_dir:

@@ -29,6 +29,47 @@ def source_config(workflow_config: dict[str, Any], source_code: str) -> dict[str
     raise ContractValidationError(f"candidate_prescreen_workflow.yaml is missing source definition for {source_code}")
 
 
+def execution_boundary_config(workflow_config: dict[str, Any]) -> dict[str, Any]:
+    boundary = workflow_config.get("execution_boundary")
+    if not isinstance(boundary, dict):
+        raise ContractValidationError("candidate_prescreen_workflow.yaml:execution_boundary must be a mapping")
+    return boundary
+
+
+def discovery_capabilities_config(workflow_config: dict[str, Any], source_code: str) -> dict[str, Any]:
+    source = source_config(workflow_config, source_code)
+    capabilities = source.get("discovery_capabilities")
+    if not isinstance(capabilities, dict):
+        raise ContractValidationError(
+            f"candidate_prescreen_workflow.yaml:{source_code}:discovery_capabilities must be a mapping"
+        )
+    return capabilities
+
+
+def live_discovery_allowed(workflow_config: dict[str, Any], source_code: str) -> bool:
+    capabilities = discovery_capabilities_config(workflow_config, source_code)
+    live_supported = capabilities.get("live_supported")
+    live_enabled = capabilities.get("live_enabled_in_current_phase")
+    if not isinstance(live_supported, bool) or not isinstance(live_enabled, bool):
+        raise ContractValidationError(
+            f"candidate_prescreen_workflow.yaml:{source_code}:discovery_capabilities live flags must be booleans"
+        )
+    return live_supported and live_enabled
+
+
+def require_live_discovery_allowed(workflow_config: dict[str, Any], source_code: str) -> None:
+    if live_discovery_allowed(workflow_config, source_code):
+        return
+    source = source_config(workflow_config, source_code)
+    capabilities = discovery_capabilities_config(workflow_config, source_code)
+    status = capabilities.get("current_phase_live_status")
+    note = source.get("current_phase_runtime_note")
+    raise ContractValidationError(
+        f"Current-phase live candidate discovery is not enabled for {source_code}: "
+        f"status={status!r}; note={note!r}"
+    )
+
+
 def query_slice_config(workflow_config: dict[str, Any], source_code: str, query_slice_id: str | None) -> dict[str, Any]:
     source = source_config(workflow_config, source_code)
     slices = source.get("query_slices")

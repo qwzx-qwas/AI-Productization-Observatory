@@ -35,13 +35,18 @@
 - taxonomy review writeback 的本地 CLI 路径
 - `P0 taxonomy override -> approver required` 的 maker-checker gate
 - blocked replay -> `processing_error.resolution_status = blocked` 的回归证据
+- GitHub live `replay-window` 的真实 `raw_source_record -> source_item` 主链、same-window rerun 与 checkpoint/resume 证据
+- GitHub live matrix 的 `3 windows x 3 query slices` 扩面验收
+- LLM relay / provider 的真实 POST、usage 计数与 timeout retry 审计证据
 
-当前仍未把这份文档扩写为 `Phase1-G` 退出评审证据包；dashboard reconciliation、sampling 与 release judgment 仍需在后续阶段补齐。
+当前仍未把这份文档本身扩写为 `Phase1-G` 退出评审证据包；相关 dashboard reconciliation、sampling 与 machine release judgment 现已转移到 `docs/phase1_g_acceptance_evidence.md` 与 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json`，owner 最终 sign-off 仍待后续补齐。
 
 ## 3. 可执行入口
 
 当前本地 CLI 入口如下：
 
+- `replay-window`
+- `python3 -m src.cli replay-window --source github --window <window> --live --query-slice <query_slice_id>`
 - `trigger-taxonomy-review`
 - `python3 -m src.cli trigger-taxonomy-review --source-item-path <path> --record-path <path>`
 - `trigger-entity-review`
@@ -163,19 +168,139 @@
   - queue bucket 进入 `score_conflict`
   - 当前 score review path 采用显式 trigger snapshot，而不是在缺少冻结 heuristics 时私自新增 scorer 自动判据
 
+### 4.7 GitHub live matrix walkthrough
+
+目标：把原先单窗口 GitHub live 验收扩展成多窗口多 slice 的稳定验证，并继续保留单窗口 page-2 partial-raw 证据作为深度补充。
+
+执行路径：
+
+1. 执行 `python3 -m src.cli validate-env --require GITHUB_TOKEN APO_LLM_RELAY_TOKEN`、`validate-configs`、`validate-schemas`，确认 live 前置条件成立。
+2. 保留既有单窗口证据 `2026-03-05..2026-03-05 / qf_ai_workflow` 作为 leaf-window guardrail 修复与 page-2 partial raw depth coverage。
+3. 另外选择三个真实一日窗口：`2025-03-05..2025-03-05`、`2025-03-12..2025-03-12`、`2025-03-19..2025-03-19`。
+4. 在每个窗口上分别执行 `qf_ai_workflow`、`qf_ai_assistant`、`qf_copilot` 三个 frozen slices，并对每个组合完成：
+   - 首跑
+   - same-window rerun
+   - 一次 `APO_GITHUB_LIVE_FAIL_ON_PAGE=1` 受控失败恢复
+5. 对每个组合记录 `raw/source_item` 数、`outside_window_count`、`watermark before/after`、`resume_from_task_id` 与 checkpoint page，确认 rerun 不重复制造 durable raw，resume 从 durable checkpoint 继续。
+
+本轮实际证据：
+
+- 前置校验：
+  - `python3 -m src.cli validate-env --require GITHUB_TOKEN APO_LLM_RELAY_TOKEN`
+  - `python3 -m src.cli validate-configs`
+  - `python3 -m src.cli validate-schemas`
+- 单窗口深度证据仍保留：
+  - [docs/acceptance_artifacts/github_live_acceptance_2026-04-20/main_v2_summary.json](/mnt/d/APO/AI-Productization-Observatory/docs/acceptance_artifacts/github_live_acceptance_2026-04-20/main_v2_summary.json)
+  - [docs/acceptance_artifacts/github_live_acceptance_2026-04-20/recovery_v2_summary.json](/mnt/d/APO/AI-Productization-Observatory/docs/acceptance_artifacts/github_live_acceptance_2026-04-20/recovery_v2_summary.json)
+- 多窗口多 slice 扩面证据：
+  - [docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/matrix_summary.json](/mnt/d/APO/AI-Productization-Observatory/docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/matrix_summary.json)
+  - 观察结果：
+    - `combo_count = 9`
+    - 窗口覆盖：`2025-03-05..2025-03-05`、`2025-03-12..2025-03-12`、`2025-03-19..2025-03-19`
+    - slice 覆盖：`qf_ai_workflow`、`qf_ai_assistant`、`qf_copilot`
+    - 首跑累计 `raw_records = 1544`
+    - 按窗口分布：`496 / 544 / 504`
+    - 按 slice 分布：`54 / 471 / 1019`
+    - `all_reruns_reused_durable_raw = true`
+    - `all_outside_window_zero_after_resume = true`
+    - 所有 9 个失败 run 均为 `failed_retryable`
+    - 所有 9 个 resume run 均为 `succeeded`
+    - 所有 9 个 resume run 都带 `resume_from_task_id`
+    - 所有 9 个受控失败都保留了 checkpoint page，并从该 page 续跑
+- 示例组合 1：
+  - `2025-03-05..2025-03-05 / qf_ai_workflow`
+  - 首跑 `raw_records = 19`、`source_items = 19`
+  - `watermark_before = 2025-03-05T00:00:00Z / gh_seed_0000`
+  - `watermark_after = 2025-03-05T23:21:26Z / 943566024`
+  - rerun `durable_raw_unchanged = true`
+  - 受控失败后的 resume `page_or_cursor_start = 1`
+- 示例组合 2：
+  - `2025-03-12..2025-03-12 / qf_ai_assistant`
+  - 首跑 `raw_records = 172`
+  - `checkpoint_page = 2`
+  - `watermark_after = 2025-03-12T23:59:15Z / 947586028`
+- 示例组合 3：
+  - `2025-03-19..2025-03-19 / qf_copilot`
+  - 首跑 `raw_records = 322`
+  - `checkpoint_page = 4`
+  - `watermark_after = 2025-03-19T23:48:10Z / 951589305`
+
+### 4.8 LLM relay / provider audit walkthrough
+
+目标：验证一条明确会触发 provider 推理的链路，补齐真实请求发生、usage 计数与 retry 行为的可审计证据。
+
+执行路径：
+
+1. 先执行 `python3 -m src.cli check-candidate-prescreen-relay`，确认 relay base URL、model、api_style 与 auth_style 可解析。
+2. 运行 `python3 -m src.cli probe-candidate-prescreen-relay --output-path docs/acceptance_artifacts/llm_relay_validation_2026-04-20/probe_success_escalated.json`，记录真实 provider POST 的返回 envelope。
+3. 再以 `APO_LLM_RELAY_TIMEOUT_SECONDS=1` 运行 `python3 -m src.cli probe-candidate-prescreen-relay --max-retries 2 --retry-sleep-seconds 1 --output-path docs/acceptance_artifacts/llm_relay_validation_2026-04-20/probe_retry_timeout_escalated.json`，验证 timeout retry 审计。
+4. 对照 `08_schema_contracts.md` 与 `09_pipeline_and_module_contracts.md`，确认 provider 调用证据属于 relay outcome envelope，而不是 `candidate_prescreen_record` 的持久化最小字段。
+
+本轮实际证据：
+
+- relay 配置探针：
+  - `python3 -m src.cli check-candidate-prescreen-relay`
+  - 观察结果：`base_url = https://airouter.service.itstudio.club/v1`、`model = gpt-5.3-codex`、`api_style = openai_compatible`
+- 成功发起真实 provider 请求的审计输出：
+  - [docs/acceptance_artifacts/llm_relay_validation_2026-04-20/probe_success_escalated.json](/mnt/d/APO/AI-Productization-Observatory/docs/acceptance_artifacts/llm_relay_validation_2026-04-20/probe_success_escalated.json)
+  - 观察结果：
+    - `request_url = https://airouter.service.itstudio.club/v1/chat/completions`
+    - `http_status = 200`
+    - `provider_response_status = succeeded`
+    - `response_id = resp_0f2aaadd6df5b6380169e5efc466ac81918462e643305f0a04`
+    - `provider_usage.prompt_tokens = 481`
+    - `provider_usage.completion_tokens = 853`
+    - `provider_usage.total_tokens = 1334`
+    - `provider_usage.completion_tokens_details.reasoning_tokens = 220`
+    - 当前该响应因 `message.content` 为空被正确映射为 `provider_empty_completion`，因此没有被误记成成功 prescreen
+- timeout retry 审计输出：
+  - [docs/acceptance_artifacts/llm_relay_validation_2026-04-20/probe_retry_timeout_escalated.json](/mnt/d/APO/AI-Productization-Observatory/docs/acceptance_artifacts/llm_relay_validation_2026-04-20/probe_retry_timeout_escalated.json)
+  - 观察结果：
+    - `attempt_count = 3`
+    - 三次尝试的 `failure_code` 都为 `provider_timeout`
+    - attempt 1/2 `retry_scheduled = true`
+    - attempt 3 `retry_scheduled = false`
+- 为什么此前看不到 API 记录：
+  - 先前的 GitHub acceptance 主要验证 `replay-window` 的 collector/raw/source_item 链路，该链路不会触发 provider 推理。
+  - `candidate_prescreen_record` 当前持久化的是 review-card 最小字段与少量 channel metadata，不会默认把完整 provider audit envelope 写回正式记录。
+  - 本轮新增 `probe-candidate-prescreen-relay --output-path` 与 attempt-level audit 后，真实 POST、usage、response_id 与 retry 证据已能在独立 artifact 中闭环。
+
 ## 5. Tests Executed
 
 本轮实际执行并通过：
 
+- `python3 -m src.cli validate-env --require GITHUB_TOKEN APO_LLM_RELAY_TOKEN`
+- `python3 -m src.cli validate-configs`
+- `python3 -m src.cli validate-schemas`
+- `python3 -m src.cli check-candidate-prescreen-relay`
+- `python3 -m src.cli probe-candidate-prescreen-relay --output-path docs/acceptance_artifacts/llm_relay_validation_2026-04-20/probe_success_escalated.json`
+- `python3 -m src.cli probe-candidate-prescreen-relay --max-retries 2 --retry-sleep-seconds 1 --output-path docs/acceptance_artifacts/llm_relay_validation_2026-04-20/probe_retry_timeout_escalated.json`
 - `python3 -m unittest -v tests.integration.test_phase1_review_runtime tests.contract.test_contracts.ContractCommandTests.test_cli_help`
 - `python3 -m unittest -v tests.integration.test_phase1_review_runtime tests.contract.test_contracts.Phase1EAcceptanceEvidenceContractTests`
 - `python3 -m unittest -v tests.unit.test_review_issue_store tests.unit.test_processing_error_store tests.unit.test_runtime tests.regression.test_replay_and_marts`
 - `python3 -m unittest -v tests.unit.test_phase1_derivation tests.integration.test_phase1_derivation`
+- `python3 -m unittest -v tests.integration.test_pipeline.FixturePipelineIntegrationTests.test_github_live_replay_filters_items_that_drift_outside_leaf_window tests.integration.test_pipeline.FixturePipelineIntegrationTests.test_github_live_same_window_rerun_reuses_existing_raw_records tests.integration.test_pipeline.FixturePipelineIntegrationTests.test_github_live_retryable_failure_persists_partial_raw_and_resumes_from_checkpoint tests.integration.test_pipeline.FixturePipelineIntegrationTests.test_github_live_failpoint_persists_partial_raw_and_resume_state`
+- `python3 -m unittest -v tests.unit.test_candidate_prescreen_relay`
 
-## 6. 结论
+## 6. Cross-doc Consistency Check
+
+- 当前 live source 边界：`README.md`、`docs/phase1_a_baseline.md`、`docs/phase1_g_acceptance_evidence.md` 与本文件现一致表述为“GitHub 为当前 live 主路径，Product Hunt 保持 deferred，不以 Product Hunt live 作为本轮验收前提”。
+- Phase1 状态措辞：三份 evidence/baseline 文档现一致表述为“GitHub live acceptance 已扩展到多窗口多 slice，LLM provider 调用链已单独核证；machine judgment 当前可给出 conditional-go，但这仍不是 Phase1 exit sign-off”。
+- 验收覆盖范围与未覆盖范围：本文件已把覆盖范围明确收敛到 GitHub live matrix、LLM relay provider audit、review/error runtime baseline；未覆盖范围仍包括 Product Hunt live、dashboard release-level reconciliation、人工抽检结论与 owner merge/release judgment。
+- owner 决策依赖项：本文件与 `docs/phase1_g_acceptance_evidence.md`、`docs/phase1_a_baseline.md` 现一致依赖 `DEC-002`、`DEC-003`、`DEC-005`、`DEC-022`、`DEC-023`、`DEC-024`、`DEC-025`，未把 `current_default` 或 probe 命令输出写成新的冻结决策。
+- release judgment 落点：`docs/phase1_g_acceptance_evidence.md` 与 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json` 现承担 machine release judgment 与 owner_required_signoff 的汇总，本文件继续只负责 Phase1-E 控制平面证据。
+- 冲突项：`01_phase_plan_and_exit_criteria.md` 的 `GitHub/Product Hunt 完整抓取周期` checklist 项仍未定义与当前 GitHub matrix / Product Hunt deferred boundary 的映射关系。
+  建议裁定人：Phase1 pipeline owner。
+  建议处理：在 `01_phase_plan_and_exit_criteria.md` 显式登记 conflict note，区分“本轮 acceptance 已扩面”与“exit checklist 仍待 owner 解释”。
+
+## 7. 结论
 
 当前仓库已形成一套可执行、可回放、可审阅的 `Phase1-E` 本地 baseline 证据：
 
+- GitHub live `replay-window` 已从单窗口扩展到 `3 windows x 3 query slices` 的真实联网验证
+- same-window rerun 已验证 raw 层幂等；9 个组合均未新增第二套 durable raw
+- retryable failure -> checkpoint -> resume 已在 9 个 live 组合与既有 page-2 深度样例上完成演练
+- LLM relay / provider 调用链已补齐真实 POST、usage 计数、`response_id` 与 timeout retry 审计证据
 - taxonomy review trigger 会自动落到 `review_issue` store
 - entity merge uncertainty 已落到同一套 `review_issue` store
 - score review trigger 已具备 store-backed runtime/CLI 入口

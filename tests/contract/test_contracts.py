@@ -294,6 +294,13 @@ class ContractCommandTests(unittest.TestCase):
         self.assertIn("--provider-request-interval-seconds", result.stdout)
         self.assertIn("--retry-sleep-seconds", result.stdout)
 
+    def test_probe_candidate_prescreen_relay_help_includes_audit_controls(self) -> None:
+        result = self.run_cli("probe-candidate-prescreen-relay", "--help")
+        self.assertEqual(result.returncode, 0)
+        self.assertIn("--output-path", result.stdout)
+        self.assertIn("--max-retries", result.stdout)
+        self.assertIn("--retry-sleep-seconds", result.stdout)
+
     def test_validate_schemas(self) -> None:
         result = self.run_cli("validate-schemas")
         self.assertEqual(result.returncode, 0, msg=result.stderr)
@@ -511,6 +518,21 @@ class ContractCommandTests(unittest.TestCase):
             result = self.run_cli("validate-configs", env={"APO_CONFIG_DIR": str(config_dir)})
             self.assertEqual(result.returncode, 2)
             self.assertIn("candidate_gate", result.stderr)
+
+    def test_validate_configs_rejects_candidate_prescreen_live_boundary_drift(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            config_dir = root / "configs"
+            shutil.copytree(REPO_ROOT / "configs", config_dir)
+
+            workflow_path = config_dir / "candidate_prescreen_workflow.yaml"
+            workflow = yaml.safe_load(workflow_path.read_text(encoding="utf-8"))
+            workflow["sources"][1]["discovery_capabilities"]["live_enabled_in_current_phase"] = True
+            workflow_path.write_text(yaml.safe_dump(workflow, sort_keys=False, allow_unicode=True), encoding="utf-8")
+
+            result = self.run_cli("validate-configs", env={"APO_CONFIG_DIR": str(config_dir)})
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("discovery_capabilities", result.stderr)
 
     def test_validate_configs_rejects_score_schema_required_field_drift(self) -> None:
         with TemporaryDirectory() as tmp_dir:
@@ -815,6 +837,8 @@ class Phase1GAcceptanceEvidenceContractTests(unittest.TestCase):
         self.assertIn("`dashboard-reconciliation`", content)
         self.assertIn("`dashboard-view`", content)
         self.assertIn("`product-drill-down`", content)
+        self.assertIn("`phase1-g-audit-ready-report`", content)
         self.assertIn("merge spot-check", content)
         self.assertIn("GitHub 完整抓取周期", content)
+        self.assertIn("pending gate interpretation decision", content)
         self.assertIn("不等于 Phase1 退出评审通过", content)

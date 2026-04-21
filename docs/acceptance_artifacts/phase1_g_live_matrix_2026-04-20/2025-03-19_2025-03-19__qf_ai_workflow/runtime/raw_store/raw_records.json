@@ -1,0 +1,321 @@
+[
+  {
+    "collected_at": "2026-04-20T10:08:19.622218Z",
+    "content_hash": "d7a5084d90544428ad2c443c5c2312e6dfc8eaecd26ca60708fbb0a344cfdbce",
+    "crawl_run_id": "321100fccff175ab",
+    "external_id": "951029012",
+    "fetch_url": "https://github.com/sudhakarg7/sudhakarg7",
+    "fetched_at": "2026-04-20T10:08:19.622218Z",
+    "http_status": null,
+    "raw_id": "3ee9ac77ee2f48abe792",
+    "raw_payload_ref": "src_github/window_start=2025-03-19/951029012/d7a5084d90544428ad2c443c5c2312e6dfc8eaecd26ca60708fbb0a344cfdbce.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 1,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_workflow",
+      "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-19",
+      "window_start": "2025-03-19"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T10:08:33.419679Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-19T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T10:08:19.622218Z",
+    "content_hash": "b6f147f56059fb831db937184c8c22da0419b004e0317866016cb6a4ebb2da73",
+    "crawl_run_id": "321100fccff175ab",
+    "external_id": "951368574",
+    "fetch_url": "https://github.com/fawadahmad-lab/GenerativeAI-Projects",
+    "fetched_at": "2026-04-20T10:08:19.622218Z",
+    "http_status": null,
+    "raw_id": "7b5ca0bd3fa899353994",
+    "raw_payload_ref": "src_github/window_start=2025-03-19/951368574/b6f147f56059fb831db937184c8c22da0419b004e0317866016cb6a4ebb2da73.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 1,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_workflow",
+      "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-19",
+      "window_start": "2025-03-19"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T10:08:33.440573Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-19T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T10:08:19.622218Z",
+    "content_hash": "14227a4b828abadb7b100a7aa7d390fd34eea505ad27c0e8852109d34e956f3a",
+    "crawl_run_id": "321100fccff175ab",
+    "external_id": "951011722",
+    "fetch_url": "https://github.com/New-World-2019/dify-dev",
+    "fetched_at": "2026-04-20T10:08:19.622218Z",
+    "http_status": null,
+    "raw_id": "e8ef855739a83a00bfbd",
+    "raw_payload_ref": "src_github/window_start=2025-03-19/951011722/14227a4b828abadb7b100a7aa7d390fd34eea505ad27c0e8852109d34e956f3a.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 1,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_workflow",
+      "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-19",
+      "window_start": "2025-03-19"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T10:08:33.463968Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-19T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T10:08:19.622218Z",
+    "content_hash": "c31fa32978050d1fbda6bf5f82f285484bae3a0f0b306ae9dee49784077d30ec",
+    "crawl_run_id": "321100fccff175ab",
+    "external_id": "951279067",
+    "fetch_url": "https://github.com/Stosan/Agentic-RAG-with-VertexAI",
+    "fetched_at": "2026-04-20T10:08:19.622218Z",
+    "http_status": null,
+    "raw_id": "cd2ef7738062507370e1",
+    "raw_payload_ref": "src_github/window_start=2025-03-19/951279067/c31fa32978050d1fbda6bf5f82f285484bae3a0f0b306ae9dee49784077d30ec.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 1,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_workflow",
+      "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-19",
+      "window_start": "2025-03-19"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T10:08:33.484754Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-19T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T10:08:19.622218Z",
+    "content_hash": "1dfe7aa58dc554a1418b109b398be43cce92b9251a0b1625e4f17d104f5eb238",
+    "crawl_run_id": "321100fccff175ab",
+    "external_id": "951421083",
+    "fetch_url": "https://github.com/walterfavaronjr/local-ai-packaged",
+    "fetched_at": "2026-04-20T10:08:19.622218Z",
+    "http_status": null,
+    "raw_id": "75f98c23f060407f9b6b",
+    "raw_payload_ref": "src_github/window_start=2025-03-19/951421083/1dfe7aa58dc554a1418b109b398be43cce92b9251a0b1625e4f17d104f5eb238.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 1,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_workflow",
+      "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-19",
+      "window_start": "2025-03-19"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T10:08:33.508096Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-19T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T10:08:19.622218Z",
+    "content_hash": "0ef06d9c864f8200fe7fd503b7911b32b96a49b72995994fc1b3e83f12198918",
+    "crawl_run_id": "321100fccff175ab",
+    "external_id": "951090503",
+    "fetch_url": "https://github.com/DeepaliSa/MLOpsDiabetes",
+    "fetched_at": "2026-04-20T10:08:19.622218Z",
+    "http_status": null,
+    "raw_id": "779aa9dc9cda855d6bfe",
+    "raw_payload_ref": "src_github/window_start=2025-03-19/951090503/0ef06d9c864f8200fe7fd503b7911b32b96a49b72995994fc1b3e83f12198918.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 1,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_workflow",
+      "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-19",
+      "window_start": "2025-03-19"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T10:08:33.528995Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-19T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T10:08:19.622218Z",
+    "content_hash": "276ae585b2121556566e671c86b1f8eeb28eaafb16b3837667418c4606a976ce",
+    "crawl_run_id": "321100fccff175ab",
+    "external_id": "949524382",
+    "fetch_url": "https://github.com/Pranavharshans/Lumina-AI",
+    "fetched_at": "2026-04-20T10:08:19.622218Z",
+    "http_status": null,
+    "raw_id": "e23d163019115b751387",
+    "raw_payload_ref": "src_github/window_start=2025-03-19/949524382/276ae585b2121556566e671c86b1f8eeb28eaafb16b3837667418c4606a976ce.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 1,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_workflow",
+      "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-19",
+      "window_start": "2025-03-19"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T10:08:33.551172Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-19T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T10:08:19.622218Z",
+    "content_hash": "1de83eb00056815c677b3d1b3625e76a1c17a4509261f5112e665ba2d6151a27",
+    "crawl_run_id": "321100fccff175ab",
+    "external_id": "943752902",
+    "fetch_url": "https://github.com/parrisma/rfq-rag",
+    "fetched_at": "2026-04-20T10:08:19.622218Z",
+    "http_status": null,
+    "raw_id": "6ae4921a28dc132cd0aa",
+    "raw_payload_ref": "src_github/window_start=2025-03-19/943752902/1de83eb00056815c677b3d1b3625e76a1c17a4509261f5112e665ba2d6151a27.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 1,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_workflow",
+      "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-19",
+      "window_start": "2025-03-19"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T10:08:33.571232Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-19T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T10:08:19.622218Z",
+    "content_hash": "83b8ee95de078e798b03be88b4bf03225662a9b6721aacce8d3498eb2d29dfe1",
+    "crawl_run_id": "321100fccff175ab",
+    "external_id": "951441892",
+    "fetch_url": "https://github.com/kashikhan1/dbtalker",
+    "fetched_at": "2026-04-20T10:08:19.622218Z",
+    "http_status": null,
+    "raw_id": "67f0d3d11101f5215a3a",
+    "raw_payload_ref": "src_github/window_start=2025-03-19/951441892/83b8ee95de078e798b03be88b4bf03225662a9b6721aacce8d3498eb2d29dfe1.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 1,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_workflow",
+      "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-19",
+      "window_start": "2025-03-19"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T10:08:33.593152Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-19T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T10:08:19.622218Z",
+    "content_hash": "24e4acb595f9cd7530d64c8c10fc9496a74ab9578990e34ede26de56cff55c6f",
+    "crawl_run_id": "321100fccff175ab",
+    "external_id": "946456033",
+    "fetch_url": "https://github.com/raoxiaoya/learn-yolo",
+    "fetched_at": "2026-04-20T10:08:19.622218Z",
+    "http_status": null,
+    "raw_id": "dceb7676db894f011db9",
+    "raw_payload_ref": "src_github/window_start=2025-03-19/946456033/24e4acb595f9cd7530d64c8c10fc9496a74ab9578990e34ede26de56cff55c6f.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 1,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_workflow",
+      "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-19",
+      "window_start": "2025-03-19"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T10:08:33.616884Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-19T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  },
+  {
+    "collected_at": "2026-04-20T10:08:19.622218Z",
+    "content_hash": "6f56fff3a94a64e2b1a4d69a898ef0211ddc25db51224aeeec1ad637cfe79206",
+    "crawl_run_id": "321100fccff175ab",
+    "external_id": "951446369",
+    "fetch_url": "https://github.com/MyronKoch/OXFORD-3-19-25",
+    "fetched_at": "2026-04-20T10:08:19.622218Z",
+    "http_status": null,
+    "raw_id": "fec1bccf4a8ebce65c69",
+    "raw_payload_ref": "src_github/window_start=2025-03-19/951446369/6f56fff3a94a64e2b1a4d69a898ef0211ddc25db51224aeeec1ad637cfe79206.json.gz",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 1,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_workflow",
+      "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-19",
+      "window_start": "2025-03-19"
+    },
+    "source_id": "src_github",
+    "stored_at": "2026-04-20T10:08:33.647199Z",
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-19T00:00:00Z",
+      "time_field": "pushed_at"
+    }
+  }
+]

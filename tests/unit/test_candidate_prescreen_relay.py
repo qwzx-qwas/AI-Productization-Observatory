@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import json
+import tempfile
 import urllib.error
 import unittest
+from pathlib import Path
 from unittest.mock import patch
 
 from src.candidate_prescreen.relay import (
@@ -215,6 +217,8 @@ class CandidatePrescreenRelayUnitTests(unittest.TestCase):
         self.assertEqual(payload["input"]["raw_evidence_excerpt"], "Useful product evidence.")
         self.assertEqual(result["request_id"], "req_test_123")
         self.assertEqual(result["business_status"], "succeeded")
+        self.assertEqual(result["attempt_count"], 1)
+        self.assertEqual(result["attempts"][0]["request_id"], "req_test_123")
         self.assertEqual(result["normalized_result"]["channel_metadata"]["request_id"], "req_test_123")
 
     def test_screen_candidate_supports_openai_compatible_api(self) -> None:
@@ -237,7 +241,17 @@ class CandidatePrescreenRelayUnitTests(unittest.TestCase):
         def _fake_urlopen(request, timeout, context):
             captured_request["url"] = request.full_url
             captured_request["body"] = json.loads(request.data.decode("utf-8"))
-            return _FakeRelayResponse({"choices": [{"message": {"content": "{}"}}]})
+            return _FakeRelayResponse(
+                {
+                    "id": "chatcmpl_test_123",
+                    "usage": {
+                        "prompt_tokens": 111,
+                        "completion_tokens": 22,
+                        "total_tokens": 133,
+                    },
+                    "choices": [{"message": {"content": "{}"}}],
+                }
+            )
 
         with patch("src.candidate_prescreen.relay.RelayConfig.from_env") as mock_from_env:
             mock_from_env.return_value.base_url = "https://api.third-party.example/v1"
@@ -269,8 +283,118 @@ class CandidatePrescreenRelayUnitTests(unittest.TestCase):
         self.assertEqual(payload["messages"][1]["role"], "user")
         self.assertIn("candidate_input", payload["messages"][1]["content"])
         self.assertEqual(result["request_id"], "req_test_123")
+        self.assertEqual(result["response_id"], "chatcmpl_test_123")
+        self.assertEqual(result["provider_usage"]["prompt_tokens"], 111)
         self.assertEqual(result["business_status"], "failed")
         self.assertEqual(result["failure_code"], "output_schema_validation_failed")
+
+    def test_screen_candidate_fixture_success_path_includes_audit_placeholders(self) -> None:
+        candidate_input = {
+            "source": "github",
+            "source_id": "src_github",
+            "source_window": "2026-03-01..2026-03-08",
+            "time_field": "pushed_at",
+            "external_id": "123",
+            "canonical_url": "https://github.com/example/product",
+            "title": "Product Name",
+            "summary": "AI support workspace.",
+            "raw_evidence_excerpt": "Useful product evidence.",
+            "query_family": "ai_applications_and_products",
+            "query_slice_id": "qf_agent",
+            "selection_rule_version": "github_qsv1",
+        }
+        fixture_payload = {
+            "prompt_version": "candidate_prescreener_fixture_v1",
+            "routing_version": "route_candidate_prescreener_fixture_v1",
+            "relay_client_version": "fixture-relay-client",
+            "model": "fixture-model",
+            "responses": {
+                "github:123": {
+                    "in_observatory_scope": True,
+                    "reason": "clear product evidence",
+                    "decision_snapshot": "candidate_pool",
+                    "scope_boundary_note": "Evidence supports an end-user product interpretation.",
+                    "source_evidence_summary": ["Useful product evidence."],
+                    "evidence_anchors": [
+                        {
+                            "anchor_rank": 1,
+                            "evidence_text": "Useful product evidence.",
+                            "evidence_source_field": "raw_evidence_excerpt",
+                            "why_it_matters": "Shows concrete workflow evidence.",
+                        }
+                    ],
+                    "review_focus_points": [
+                        "Confirm README still matches the shipped workflow.",
+                        "Verify the main category remains product-facing.",
+                    ],
+                    "uncertainty_points": [],
+                    "recommend_candidate_pool": True,
+                    "recommended_action": "candidate_pool",
+                    "confidence_summary": {
+                        "scope_confidence": "high",
+                        "taxonomy_confidence": "medium",
+                        "persona_confidence": "medium",
+                    },
+                    "handoff_readiness_hint": {
+                        "suggested_action": "candidate_pool",
+                        "rationale": "Enough evidence is present for first-pass review.",
+                    },
+                    "persona_candidates": [
+                        {
+                            "persona_code": "support_agent",
+                            "confidence_rank": 1,
+                            "rationale": "Targets support workflows.",
+                            "supporting_evidence_anchors": [1],
+                        }
+                    ],
+                    "taxonomy_hints": {
+                        "primary_category_code": "JTBD_SALES_SUPPORT",
+                        "secondary_category_code": None,
+                        "primary_persona_code": "support_agent",
+                        "delivery_form_code": None,
+                        "main_category_candidate": {
+                            "category_code": "JTBD_SALES_SUPPORT",
+                            "rationale": "Fits support usage.",
+                            "supporting_evidence_anchors": [1],
+                        },
+                        "adjacent_category_candidate": {
+                            "category_code": "JTBD_KNOWLEDGE_ASSISTANCE",
+                            "rationale_for_similarity": "The assistant also has knowledge-like behavior.",
+                            "supporting_evidence_anchors": [1],
+                        },
+                        "adjacent_category_rejected_reason": "Support workflow evidence is stronger than the adjacent category signal.",
+                    },
+                    "assessment_hints": {
+                        "evidence_strength": "high",
+                        "build_evidence_band": "high",
+                        "need_clarity_band": "low",
+                        "unresolved_risk": "low",
+                    },
+                }
+            },
+        }
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            fixture_path = Path(tmpdir) / "relay_fixture.json"
+            fixture_path.write_text(json.dumps(fixture_payload, ensure_ascii=True), encoding="utf-8")
+            result = screen_candidate(
+                candidate_input,
+                prompt_version="candidate_prescreener_v1",
+                routing_version="route_candidate_prescreener_v1",
+                relay_transport="http_json_relay",
+                relay_client_version="relay_candidate_prescreener_v1",
+                prompt_contract={"prompt_spec_ref": "10_prompt_specs/candidate_prescreener_v1.md"},
+                fixture_path=fixture_path,
+                timeout_seconds=30,
+                max_retries=0,
+            )
+
+        self.assertEqual(result["business_status"], "succeeded")
+        self.assertEqual(result["request_url"], str(fixture_path))
+        self.assertEqual(result["api_style"], "fixture")
+        self.assertEqual(result["model"], "fixture-model")
+        self.assertEqual(result["attempt_count"], 0)
+        self.assertEqual(result["attempts"], [])
 
     def test_screen_candidate_supports_openai_compatible_content_parts_in_response(self) -> None:
         candidate_input = {
@@ -537,6 +661,10 @@ class CandidatePrescreenRelayUnitTests(unittest.TestCase):
                 )
 
         self.assertEqual(slept, [12])
+        self.assertEqual(result["attempt_count"], 2)
+        self.assertEqual(result["attempts"][0]["mapped_error_type"], "network_error")
+        self.assertTrue(result["attempts"][0]["retry_scheduled"])
+        self.assertEqual(result["attempts"][1]["failure_code"], "provider_empty_completion")
         self.assertEqual(result["business_status"], "failed")
         self.assertEqual(result["failure_code"], "provider_empty_completion")
         self.assertEqual(result["mapped_error_type"], "dependency_unavailable")

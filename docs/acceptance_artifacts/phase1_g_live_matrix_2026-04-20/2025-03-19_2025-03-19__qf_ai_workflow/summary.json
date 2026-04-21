@@ -1,0 +1,166 @@
+{
+  "window": "2025-03-19..2025-03-19",
+  "query_slice_id": "qf_ai_workflow",
+  "run1": {
+    "returncode": 0,
+    "task_id": "b0b82e8801deb364",
+    "raw_records": 11,
+    "source_items": 11,
+    "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_ai_workflow/run1.log",
+    "task_status": "succeeded",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 1,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_workflow",
+      "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-19",
+      "window_start": "2025-03-19"
+    },
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-19T00:00:00Z",
+      "time_field": "pushed_at"
+    },
+    "watermark_after": {
+      "external_id": "951441892",
+      "pushed_at": "2025-03-19T18:35:15Z",
+      "time_field": "pushed_at"
+    },
+    "checkpoint_page": 1,
+    "raw_count": 11,
+    "outside_window_count": 0,
+    "raw_unique_crawl_run_ids": [
+      "321100fccff175ab"
+    ],
+    "min_pushed_at": {
+      "external_id": "951011722",
+      "full_name": "New-World-2019/dify-dev",
+      "pushed_at": "2025-03-19T03:06:19Z",
+      "html_url": "https://github.com/New-World-2019/dify-dev"
+    },
+    "max_pushed_at": {
+      "external_id": "951441892",
+      "full_name": "kashikhan1/dbtalker",
+      "pushed_at": "2025-03-19T18:35:15Z",
+      "html_url": "https://github.com/kashikhan1/dbtalker"
+    }
+  },
+  "rerun": {
+    "returncode": 0,
+    "task_id": "eec80ad1dc3dc91e",
+    "raw_records": 11,
+    "source_items": 11,
+    "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_ai_workflow/rerun.log",
+    "task_status": "succeeded",
+    "parent_task_id": "b0b82e8801deb364",
+    "resume_from_task_id": null,
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 1,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_workflow",
+      "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-19",
+      "window_start": "2025-03-19"
+    },
+    "watermark_after": {
+      "external_id": "951441892",
+      "pushed_at": "2025-03-19T18:35:15Z",
+      "time_field": "pushed_at"
+    },
+    "checkpoint_page": 1,
+    "raw_count": 11,
+    "outside_window_count": 0,
+    "raw_unique_crawl_run_ids": [
+      "321100fccff175ab"
+    ],
+    "durable_raw_unchanged": true
+  },
+  "failure_recovery": {
+    "failpoint_page": 1,
+    "failure": {
+      "returncode": 2,
+      "task_id": "89d1394332726101",
+      "raw_records": null,
+      "source_items": null,
+      "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_ai_workflow/failure.log",
+      "task_status": "failed_retryable",
+      "error_type": "network_error",
+      "error_message": "configured GitHub live failure injection on page 1",
+      "resume_state": {
+        "logical_watermark": {
+          "external_id": "gh_seed_0000",
+          "pushed_at": "2025-03-19T00:00:00Z",
+          "time_field": "pushed_at"
+        },
+        "pending_windows": [
+          {
+            "page": 1,
+            "window_end": "2025-03-19",
+            "window_start": "2025-03-19"
+          }
+        ],
+        "query_slice_id": "qf_ai_workflow",
+        "source_window_end": "2025-03-19",
+        "source_window_start": "2025-03-19"
+      },
+      "durable_logical_watermark": {
+        "external_id": "gh_seed_0000",
+        "pushed_at": "2025-03-19T00:00:00Z",
+        "time_field": "pushed_at"
+      },
+      "checkpoint_page": 1,
+      "raw_count": 11,
+      "outside_window_count": 0
+    },
+    "resume": {
+      "returncode": 0,
+      "task_id": "c5af42a3354c9cbc",
+      "raw_records": 11,
+      "source_items": 11,
+      "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_ai_workflow/resume.log",
+      "task_status": "succeeded",
+      "parent_task_id": "89d1394332726101",
+      "resume_from_task_id": "89d1394332726101",
+      "request_params": {
+        "fetch_mode": "search_repositories",
+        "page_or_cursor_end": 1,
+        "page_or_cursor_start": 1,
+        "query_slice_id": "qf_ai_workflow",
+        "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+        "selection_rule_version": "github_qsv1",
+        "time_field": "pushed_at",
+        "window_end": "2025-03-19",
+        "window_start": "2025-03-19"
+      },
+      "watermark_after": {
+        "external_id": "951441892",
+        "pushed_at": "2025-03-19T18:35:15Z",
+        "time_field": "pushed_at"
+      },
+      "checkpoint_page": 1,
+      "raw_count": 11,
+      "outside_window_count": 0,
+      "raw_unique_crawl_run_ids": [
+        "321100fccff175ab"
+      ],
+      "min_pushed_at": {
+        "external_id": "951011722",
+        "full_name": "New-World-2019/dify-dev",
+        "pushed_at": "2025-03-19T03:06:19Z",
+        "html_url": "https://github.com/New-World-2019/dify-dev"
+      },
+      "max_pushed_at": {
+        "external_id": "951441892",
+        "full_name": "kashikhan1/dbtalker",
+        "pushed_at": "2025-03-19T18:35:15Z",
+        "html_url": "https://github.com/kashikhan1/dbtalker"
+      }
+    }
+  }
+}

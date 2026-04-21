@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 from typing import Any, Callable
 
+from src.candidate_prescreen.config import load_candidate_prescreen_config, query_slice_config, require_live_discovery_allowed, source_config
+from src.collectors.github import collect_live_window as collect_github_live_window
 from src.collectors.github import collect_fixture_window as collect_github_fixture_window
 from src.collectors.product_hunt import collect_fixture_window as collect_product_hunt_fixture_window
 from src.common.config import AppConfig
@@ -53,26 +55,44 @@ def replay_source_window(
     window: str,
     config: AppConfig,
     fixture_name: str | None = None,
+    use_live: bool = False,
+    query_slice_id: str | None = None,
+    timeout_seconds: int = 30,
+    request_interval_seconds: int = 0,
 ) -> dict[str, object]:
     window_start, window_end = parse_window(window)
     source_spec = _SOURCE_REPLAY_REGISTRY.get(source_code)
     if source_spec is None:
         supported = ", ".join(sorted(_SOURCE_REPLAY_REGISTRY))
         raise ConfigError(f"Unsupported replay source: {source_code}. Supported sources: {supported}")
+    if use_live and source_code != "github":
+        raise ConfigError("Live replay is only implemented for github in the current phase")
 
-    fixture_path = config.fixtures_dir / "collector" / (fixture_name or str(source_spec["default_fixture_name"]))
+    fixture_path = None if use_live else config.fixtures_dir / "collector" / (fixture_name or str(source_spec["default_fixture_name"]))
     source_id = str(source_spec["source_id"])
+    workflow_config = load_candidate_prescreen_config(config.config_dir) if use_live and source_code == "github" else None
 
     payload = _build_replay_payload(
         source_code=source_code,
         window_start=window_start,
         window_end=window_end,
         fixture_path=fixture_path,
+        workflow_config=workflow_config,
+        query_slice_id=query_slice_id,
+        use_live=use_live,
+    )
+    payload = _attach_retryable_resume_state(
+        FileTaskStore(config.task_store_path),
+        source_id=source_id,
+        window_start=window_start,
+        window_end=window_end,
+        payload=payload,
+        use_live=use_live,
     )
     payload.update(
         {
-            "replay_reason": "same_window_fixture_replay",
-            "replay_basis": "deterministic_fixture",
+            "replay_reason": "same_window_live_replay" if use_live else "same_window_fixture_replay",
+            "replay_basis": "github_search_repositories_live" if use_live else "deterministic_fixture",
             "requested_at": utc_now_iso(),
         }
     )
@@ -92,14 +112,21 @@ def replay_source_window(
     task_store.start(task.task_id)
     task_store.heartbeat(task.task_id, worker_id="local-cli")
 
+    collector_state: dict[str, Any] = {}
     try:
         collector_output = _collect_source_window(
+            config=config,
             source_code=source_code,
             fixture_path=fixture_path,
             window_start=window_start,
             window_end=window_end,
             payload=payload,
             collector=source_spec["collector"],
+            workflow_config=workflow_config,
+            use_live=use_live,
+            timeout_seconds=timeout_seconds,
+            request_interval_seconds=request_interval_seconds,
+            state=collector_state,
         )
         raw_store = FileRawStore(config.raw_store_dir)
         raw_records = raw_store.store_items(collector_output["crawl_run"], collector_output["items"])
@@ -107,10 +134,18 @@ def replay_source_window(
         normalizer = source_spec["normalizer"]
         source_items = [normalizer(record, raw_store, source_item_schema) for record in raw_records]
     except ProcessingError as exc:
+        _persist_partial_live_progress(
+            config=config,
+            task_store=task_store,
+            task_id=task.task_id,
+            payload=payload,
+            source_code=source_code,
+            use_live=use_live,
+            collector_state=collector_state,
+        )
         task_store.fail(task.task_id, exc.error_type, str(exc))
         raise
 
-    task_store.succeed(task.task_id)
     crawl_run = dict(collector_output["crawl_run"])
     crawl_run["run_status"] = "success"
     crawl_run["finished_at"] = utc_now_iso()
@@ -120,6 +155,9 @@ def replay_source_window(
         items=collector_output["items"],
         watermark_before=crawl_run["watermark_before"],
     )
+    task_payload = _with_run_context(payload, crawl_run)
+    task_store.update_task(task.task_id, payload_json=task_payload)
+    task_store.succeed(task.task_id)
 
     return {
         "task_id": task.task_id,
@@ -189,12 +227,32 @@ def _build_replay_payload(
     source_code: str,
     window_start: str,
     window_end: str,
-    fixture_path: Path,
+    fixture_path: Path | None,
+    workflow_config: dict[str, Any] | None,
+    query_slice_id: str | None,
+    use_live: bool,
 ) -> dict[str, Any]:
     payload = default_payload(source_code=source_code, window_start=window_start, window_end=window_end, task_type="pull_collect")
     if source_code != "github":
         return payload
 
+    if use_live:
+        if workflow_config is None:
+            raise ConfigError("GitHub live replay requires candidate prescreen workflow config")
+        require_live_discovery_allowed(workflow_config, source_code)
+        source = source_config(workflow_config, source_code)
+        slice_config = query_slice_config(workflow_config, source_code, query_slice_id)
+        selection_rule_version = source.get("selection_rule_version")
+        effective_query_slice_id = slice_config.get("query_slice_id")
+        if not selection_rule_version or not effective_query_slice_id:
+            raise ProcessingError("parse_failure", "GitHub live replay requires selection_rule_version and query_slice_id")
+        payload["selection_rule_version"] = selection_rule_version
+        payload["query_slice_id"] = effective_query_slice_id
+        payload["discovery_mode"] = "live"
+        return payload
+
+    if fixture_path is None:
+        raise ConfigError("Fixture replay requires fixture_path")
     try:
         fixture = load_json(fixture_path)
     except (OSError, json.JSONDecodeError) as exc:
@@ -213,24 +271,46 @@ def _build_replay_payload(
 
     payload["selection_rule_version"] = selection_rule_version
     payload["query_slice_id"] = query_slice_id
+    payload["discovery_mode"] = "fixture"
     return payload
 
 
 def _collect_source_window(
     *,
+    config: AppConfig,
     source_code: str,
-    fixture_path: Path,
+    fixture_path: Path | None,
     window_start: str,
     window_end: str,
     payload: dict[str, Any],
     collector: object,
+    workflow_config: dict[str, Any] | None,
+    use_live: bool,
+    timeout_seconds: int,
+    request_interval_seconds: int,
+    state: dict[str, Any],
 ) -> dict[str, Any]:
+    if use_live:
+        if source_code != "github" or workflow_config is None:
+            raise ConfigError("Live collection is only available for github with workflow config")
+        return collect_github_live_window(
+            workflow_config=workflow_config,
+            window_start=window_start,
+            window_end=window_end,
+            query_slice_id=str(payload.get("query_slice_id") or ""),
+            timeout_seconds=timeout_seconds,
+            request_interval_seconds=request_interval_seconds,
+            resume_state=payload.get("resume_state") if isinstance(payload.get("resume_state"), dict) else None,
+            state=state,
+        )
+
+    if fixture_path is None:
+        raise ConfigError(f"Fixture replay for source {source_code} requires fixture_path")
     expected_window_start = f"{window_start}T00:00:00Z" if "T" not in window_start else window_start
     expected_window_end = f"{window_end}T00:00:00Z" if "T" not in window_end else window_end
     collector_fn = collector if callable(collector) else None
     if collector_fn is None:
         raise ConfigError(f"Collector for source {source_code} is not callable")
-
     if source_code == "github":
         return collector_fn(
             fixture_path,
@@ -264,6 +344,13 @@ def _compute_watermark_after(
     else:
         raise ConfigError(f"Unsupported replay source for watermark calculation: {source_code}")
 
+    if not items:
+        return {
+            marker_field_name: watermark_before.get(marker_field_name, time_field_name),
+            time_field_name: watermark_before.get(time_field_name),
+            "external_id": watermark_before.get("external_id"),
+        }
+
     best_item = max(items, key=lambda item: (str(item.get(time_field_name) or ""), str(item.get("external_id") or "")))
     best_time_value = best_item.get(time_field_name)
     best_external_id = best_item.get("external_id")
@@ -278,3 +365,79 @@ def _compute_watermark_after(
         time_field_name: best_time_value,
         "external_id": best_external_id,
     }
+
+
+def _attach_retryable_resume_state(
+    task_store: FileTaskStore,
+    *,
+    source_id: str,
+    window_start: str,
+    window_end: str,
+    payload: dict[str, Any],
+    use_live: bool,
+) -> dict[str, Any]:
+    if not use_live or payload.get("source_code") != "github":
+        return payload
+
+    previous = task_store.latest_matching_task(source_id, "pull_collect", window_start, window_end)
+    if not previous or previous.get("status") != "failed_retryable":
+        return payload
+
+    previous_payload = previous.get("payload_json")
+    if not isinstance(previous_payload, dict):
+        return payload
+    if previous_payload.get("source_code") != "github":
+        return payload
+    if previous_payload.get("query_slice_id") != payload.get("query_slice_id"):
+        return payload
+    resume_state = previous_payload.get("resume_state")
+    if not isinstance(resume_state, dict):
+        return payload
+
+    next_payload = dict(payload)
+    next_payload["resume_state"] = resume_state
+    next_payload["resume_from_task_id"] = previous.get("task_id")
+    return next_payload
+
+
+def _persist_partial_live_progress(
+    *,
+    config: AppConfig,
+    task_store: FileTaskStore,
+    task_id: str,
+    payload: dict[str, Any],
+    source_code: str,
+    use_live: bool,
+    collector_state: dict[str, Any],
+) -> None:
+    if not use_live or source_code != "github":
+        return
+
+    next_payload = dict(payload)
+    resume_state = collector_state.get("resume_state")
+    if isinstance(resume_state, dict):
+        next_payload["resume_state"] = resume_state
+    crawl_run = collector_state.get("crawl_run")
+    collected_items = collector_state.get("collected_items")
+    if isinstance(crawl_run, dict):
+        next_payload["request_params"] = crawl_run.get("request_params")
+        next_payload["watermark_before"] = crawl_run.get("watermark_before")
+    logical_watermark = collector_state.get("logical_watermark")
+    if isinstance(logical_watermark, dict):
+        next_payload["durable_logical_watermark"] = logical_watermark
+    task_store.update_task(task_id, payload_json=next_payload)
+
+    if isinstance(crawl_run, dict) and isinstance(collected_items, list) and collected_items:
+        FileRawStore(config.raw_store_dir).store_items(crawl_run, collected_items)
+
+
+def _with_run_context(payload: dict[str, Any], crawl_run: dict[str, Any]) -> dict[str, Any]:
+    next_payload = dict(payload)
+    next_payload["request_params"] = crawl_run.get("request_params")
+    next_payload["watermark_before"] = crawl_run.get("watermark_before")
+    next_payload["watermark_after"] = crawl_run.get("watermark_after")
+    next_payload["crawl_run_id"] = crawl_run.get("crawl_run_id")
+    next_payload["run_status"] = crawl_run.get("run_status")
+    next_payload["finished_at"] = crawl_run.get("finished_at")
+    next_payload.pop("resume_state", None)
+    return next_payload

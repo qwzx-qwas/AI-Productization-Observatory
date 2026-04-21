@@ -1,0 +1,166 @@
+{
+  "window": "2025-03-19..2025-03-19",
+  "query_slice_id": "qf_ai_assistant",
+  "run1": {
+    "returncode": 0,
+    "task_id": "6835fdf0e0e70a9f",
+    "raw_records": 171,
+    "source_items": 171,
+    "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_ai_assistant/run1.log",
+    "task_status": "succeeded",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-19",
+      "window_start": "2025-03-19"
+    },
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-19T00:00:00Z",
+      "time_field": "pushed_at"
+    },
+    "watermark_after": {
+      "external_id": "948515847",
+      "pushed_at": "2025-03-19T23:44:57Z",
+      "time_field": "pushed_at"
+    },
+    "checkpoint_page": 2,
+    "raw_count": 171,
+    "outside_window_count": 0,
+    "raw_unique_crawl_run_ids": [
+      "7753cdde361bdb1f"
+    ],
+    "min_pushed_at": {
+      "external_id": "943712946",
+      "full_name": "mrudulapatteparapu/256_AI_HW",
+      "pushed_at": "2025-03-19T00:07:29Z",
+      "html_url": "https://github.com/mrudulapatteparapu/256_AI_HW"
+    },
+    "max_pushed_at": {
+      "external_id": "948515847",
+      "full_name": "mshojaei77/ReActMCP",
+      "pushed_at": "2025-03-19T23:44:57Z",
+      "html_url": "https://github.com/mshojaei77/ReActMCP"
+    }
+  },
+  "rerun": {
+    "returncode": 0,
+    "task_id": "b9b06285e36820f7",
+    "raw_records": 171,
+    "source_items": 171,
+    "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_ai_assistant/rerun.log",
+    "task_status": "succeeded",
+    "parent_task_id": "6835fdf0e0e70a9f",
+    "resume_from_task_id": null,
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 2,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_assistant",
+      "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-19",
+      "window_start": "2025-03-19"
+    },
+    "watermark_after": {
+      "external_id": "948515847",
+      "pushed_at": "2025-03-19T23:44:57Z",
+      "time_field": "pushed_at"
+    },
+    "checkpoint_page": 2,
+    "raw_count": 171,
+    "outside_window_count": 0,
+    "raw_unique_crawl_run_ids": [
+      "7753cdde361bdb1f"
+    ],
+    "durable_raw_unchanged": true
+  },
+  "failure_recovery": {
+    "failpoint_page": 1,
+    "failure": {
+      "returncode": 2,
+      "task_id": "bf9c0b3ce28365c3",
+      "raw_records": null,
+      "source_items": null,
+      "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_ai_assistant/failure.log",
+      "task_status": "failed_retryable",
+      "error_type": "network_error",
+      "error_message": "configured GitHub live failure injection on page 1",
+      "resume_state": {
+        "logical_watermark": {
+          "external_id": "gh_seed_0000",
+          "pushed_at": "2025-03-19T00:00:00Z",
+          "time_field": "pushed_at"
+        },
+        "pending_windows": [
+          {
+            "page": 1,
+            "window_end": "2025-03-19",
+            "window_start": "2025-03-19"
+          }
+        ],
+        "query_slice_id": "qf_ai_assistant",
+        "source_window_end": "2025-03-19",
+        "source_window_start": "2025-03-19"
+      },
+      "durable_logical_watermark": {
+        "external_id": "gh_seed_0000",
+        "pushed_at": "2025-03-19T00:00:00Z",
+        "time_field": "pushed_at"
+      },
+      "checkpoint_page": 1,
+      "raw_count": 171,
+      "outside_window_count": 0
+    },
+    "resume": {
+      "returncode": 0,
+      "task_id": "6ccfff1a591277ef",
+      "raw_records": 171,
+      "source_items": 171,
+      "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-19_2025-03-19__qf_ai_assistant/resume.log",
+      "task_status": "succeeded",
+      "parent_task_id": "bf9c0b3ce28365c3",
+      "resume_from_task_id": "bf9c0b3ce28365c3",
+      "request_params": {
+        "fetch_mode": "search_repositories",
+        "page_or_cursor_end": 2,
+        "page_or_cursor_start": 1,
+        "query_slice_id": "qf_ai_assistant",
+        "query_text": "\"ai assistant\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-19..2025-03-19",
+        "selection_rule_version": "github_qsv1",
+        "time_field": "pushed_at",
+        "window_end": "2025-03-19",
+        "window_start": "2025-03-19"
+      },
+      "watermark_after": {
+        "external_id": "948515847",
+        "pushed_at": "2025-03-19T23:44:57Z",
+        "time_field": "pushed_at"
+      },
+      "checkpoint_page": 2,
+      "raw_count": 171,
+      "outside_window_count": 0,
+      "raw_unique_crawl_run_ids": [
+        "7753cdde361bdb1f"
+      ],
+      "min_pushed_at": {
+        "external_id": "943712946",
+        "full_name": "mrudulapatteparapu/256_AI_HW",
+        "pushed_at": "2025-03-19T00:07:29Z",
+        "html_url": "https://github.com/mrudulapatteparapu/256_AI_HW"
+      },
+      "max_pushed_at": {
+        "external_id": "948515847",
+        "full_name": "mshojaei77/ReActMCP",
+        "pushed_at": "2025-03-19T23:44:57Z",
+        "html_url": "https://github.com/mshojaei77/ReActMCP"
+      }
+    }
+  }
+}

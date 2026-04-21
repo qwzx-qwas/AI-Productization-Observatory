@@ -1,0 +1,166 @@
+{
+  "window": "2025-03-12..2025-03-12",
+  "query_slice_id": "qf_ai_workflow",
+  "run1": {
+    "returncode": 0,
+    "task_id": "852956d6876e130e",
+    "raw_records": 24,
+    "source_items": 24,
+    "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-12_2025-03-12__qf_ai_workflow/run1.log",
+    "task_status": "succeeded",
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 1,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_workflow",
+      "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-12..2025-03-12",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-12",
+      "window_start": "2025-03-12"
+    },
+    "watermark_before": {
+      "external_id": "gh_seed_0000",
+      "pushed_at": "2025-03-12T00:00:00Z",
+      "time_field": "pushed_at"
+    },
+    "watermark_after": {
+      "external_id": "926566365",
+      "pushed_at": "2025-03-12T21:23:22Z",
+      "time_field": "pushed_at"
+    },
+    "checkpoint_page": 1,
+    "raw_count": 24,
+    "outside_window_count": 0,
+    "raw_unique_crawl_run_ids": [
+      "6e92e770fc3cff8c"
+    ],
+    "min_pushed_at": {
+      "external_id": "946594706",
+      "full_name": "Tya4567/RTD",
+      "pushed_at": "2025-03-12T02:01:15Z",
+      "html_url": "https://github.com/Tya4567/RTD"
+    },
+    "max_pushed_at": {
+      "external_id": "926566365",
+      "full_name": "jasongraydon01/openwebui-experimental",
+      "pushed_at": "2025-03-12T21:23:22Z",
+      "html_url": "https://github.com/jasongraydon01/openwebui-experimental"
+    }
+  },
+  "rerun": {
+    "returncode": 0,
+    "task_id": "be95091c7fce9f68",
+    "raw_records": 24,
+    "source_items": 24,
+    "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-12_2025-03-12__qf_ai_workflow/rerun.log",
+    "task_status": "succeeded",
+    "parent_task_id": "852956d6876e130e",
+    "resume_from_task_id": null,
+    "request_params": {
+      "fetch_mode": "search_repositories",
+      "page_or_cursor_end": 1,
+      "page_or_cursor_start": 1,
+      "query_slice_id": "qf_ai_workflow",
+      "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-12..2025-03-12",
+      "selection_rule_version": "github_qsv1",
+      "time_field": "pushed_at",
+      "window_end": "2025-03-12",
+      "window_start": "2025-03-12"
+    },
+    "watermark_after": {
+      "external_id": "926566365",
+      "pushed_at": "2025-03-12T21:23:22Z",
+      "time_field": "pushed_at"
+    },
+    "checkpoint_page": 1,
+    "raw_count": 24,
+    "outside_window_count": 0,
+    "raw_unique_crawl_run_ids": [
+      "6e92e770fc3cff8c"
+    ],
+    "durable_raw_unchanged": true
+  },
+  "failure_recovery": {
+    "failpoint_page": 1,
+    "failure": {
+      "returncode": 2,
+      "task_id": "9ab3c58d26ae7abb",
+      "raw_records": null,
+      "source_items": null,
+      "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-12_2025-03-12__qf_ai_workflow/failure.log",
+      "task_status": "failed_retryable",
+      "error_type": "network_error",
+      "error_message": "configured GitHub live failure injection on page 1",
+      "resume_state": {
+        "logical_watermark": {
+          "external_id": "gh_seed_0000",
+          "pushed_at": "2025-03-12T00:00:00Z",
+          "time_field": "pushed_at"
+        },
+        "pending_windows": [
+          {
+            "page": 1,
+            "window_end": "2025-03-12",
+            "window_start": "2025-03-12"
+          }
+        ],
+        "query_slice_id": "qf_ai_workflow",
+        "source_window_end": "2025-03-12",
+        "source_window_start": "2025-03-12"
+      },
+      "durable_logical_watermark": {
+        "external_id": "gh_seed_0000",
+        "pushed_at": "2025-03-12T00:00:00Z",
+        "time_field": "pushed_at"
+      },
+      "checkpoint_page": 1,
+      "raw_count": 24,
+      "outside_window_count": 0
+    },
+    "resume": {
+      "returncode": 0,
+      "task_id": "7b4be75b0f0babd8",
+      "raw_records": 24,
+      "source_items": 24,
+      "log_path": "docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/2025-03-12_2025-03-12__qf_ai_workflow/resume.log",
+      "task_status": "succeeded",
+      "parent_task_id": "9ab3c58d26ae7abb",
+      "resume_from_task_id": "9ab3c58d26ae7abb",
+      "request_params": {
+        "fetch_mode": "search_repositories",
+        "page_or_cursor_end": 1,
+        "page_or_cursor_start": 1,
+        "query_slice_id": "qf_ai_workflow",
+        "query_text": "\"ai workflow\" in:name,description,readme,topics is:public fork:false archived:false mirror:false pushed:2025-03-12..2025-03-12",
+        "selection_rule_version": "github_qsv1",
+        "time_field": "pushed_at",
+        "window_end": "2025-03-12",
+        "window_start": "2025-03-12"
+      },
+      "watermark_after": {
+        "external_id": "926566365",
+        "pushed_at": "2025-03-12T21:23:22Z",
+        "time_field": "pushed_at"
+      },
+      "checkpoint_page": 1,
+      "raw_count": 24,
+      "outside_window_count": 0,
+      "raw_unique_crawl_run_ids": [
+        "6e92e770fc3cff8c"
+      ],
+      "min_pushed_at": {
+        "external_id": "946594706",
+        "full_name": "Tya4567/RTD",
+        "pushed_at": "2025-03-12T02:01:15Z",
+        "html_url": "https://github.com/Tya4567/RTD"
+      },
+      "max_pushed_at": {
+        "external_id": "926566365",
+        "full_name": "jasongraydon01/openwebui-experimental",
+        "pushed_at": "2025-03-12T21:23:22Z",
+        "html_url": "https://github.com/jasongraydon01/openwebui-experimental"
+      }
+    }
+  }
+}
