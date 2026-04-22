@@ -1214,7 +1214,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     phase1_g_audit_parser = subparsers.add_parser(
         "phase1-g-audit-ready-report",
-        help="Materialize the local Phase1-G audit-ready report without claiming manual audit or owner sign-off.",
+        help="Materialize the local Phase1-G audit-ready report without claiming sampled human verdict or owner sign-off.",
     )
     phase1_g_audit_parser.add_argument("--mart-path")
     phase1_g_audit_parser.add_argument("--output-path")

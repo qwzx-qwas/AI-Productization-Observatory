@@ -181,8 +181,8 @@ last_frozen_version: unfrozen
 
 ### Phase1 Exit Checklist
 
-- [ ] Product Hunt 完成至少一个完整抓取周期
 - [ ] GitHub 完成至少一个完整抓取周期
+- [ ] 当前 live source 边界保持 `GitHub live / Product Hunt deferred`，且 Product Hunt future seam 未被破坏
 - [ ] same-window rerun 结果可控
 - [ ] `observation` 可回溯到 `source_item` 与 raw
 - [ ] `build / clarity / attention` 三类评分稳定输出
@@ -190,14 +190,36 @@ last_frozen_version: unfrozen
 - [ ] `review_issue` / `processing_error` 两条路径分流稳定
 - [ ] 30 / 90 天 top JTBD 可按固定口径稳定重算
 
-### Phase1 Exit Checklist Conflict Note
+### Phase1 Exit Checklist Owner Note
 
-- 截至 `2026-04-20`，当前 freeze board 与 source boundary 文档已明确：GitHub 是当前阶段 live 主路径，Product Hunt 继续 deferred，仅保留 fixture / replay / contract 与 future integration seam。
-- 因此，上述 `Product Hunt 完成至少一个完整抓取周期` 目前与当前阶段执行边界存在冲突；该 checklist 项在 owner 明确解释前，不应被实现侧自行改写为“本阶段必须恢复 Product Hunt live”。
-- 同日仓库已补齐 GitHub 多窗口多 slice live acceptance matrix，但 `GitHub 完成至少一个完整抓取周期` 与该 matrix 之间的映射关系也尚未在本文件中冻结。
-- 截至 `2026-04-21`，`docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json` 已把上述两项继续登记为 `pending gate interpretation decision`，并据此给出 machine judgment `conditional-go` 而非最终 `go`。
-- 当前要求：保留 checklist 原文，同时把这两项视为 `pending gate interpretation decision`；是否将现有 GitHub matrix 折算为 exit evidence、以及 Product Hunt 项是否延期到 future phase，需由 Phase1 pipeline owner 明确裁定。
-- 在 owner 裁定前，任何实现侧或文档侧都不得把 `Product Hunt deferred` 改写成“必须恢复 live 才能继续”，也不得把当前 GitHub matrix 擅自写成已满足 `完整抓取周期` 的最终结论。
+- 截至 `2026-04-21`，`DEC-029` 已冻结：Product Hunt 不作为当前 Phase1 exit gate，当前阶段继续保持 `fixture / replay / contract + future live seam` 边界。
+- 因此，当前 Phase1 Exit Checklist 不再把 `Product Hunt 完成至少一个完整抓取周期` 作为 release 前的阻塞 gate；实现与验收文档应改为核对 `GitHub live / Product Hunt deferred` 的边界是否保持一致。
+- 这项 owner 裁定不会删除 Product Hunt 的接口、契约或 future seam，也不把 Product Hunt live 重新定义成当前阶段 deliverable。
+- `GitHub 完成至少一个完整抓取周期` 仍是当前 exit gate 项；现有 GitHub live matrix 可以作为 exit evidence 的组成部分，但不得在 owner sign-off 前被表述为自动获得最终 `go`。
+
+### 当前 Phase1 完整周期折算规则
+
+- 按 `DEC-029` 的当前冻结口径，Phase1 的最小完整抓取周期判据暂折算为 GitHub `3 windows x 3 query slices` live matrix 达标；该折算仅用于当前 Phase1 exit gate，不改变 `GitHub live / Product Hunt deferred` 边界，也不把 Product Hunt live 重新纳入当前 deliverable。
+- 只有当以下条件同时满足时，当前 evidence 才可将 `GitHub 完成至少一个完整抓取周期` 记为达标：
+  - GitHub matrix 中每个 `window x query_slice` 组合都已完成并留档 `首跑`、`same-window rerun` 与 `可恢复失败演练`
+  - 每个组合在 rerun / resume 后都满足 `outside_window_count = 0`
+  - rerun / resume 过程中 durable raw 只允许复用已落盘记录，不得因补跑或恢复重复制造新的 raw 记录
+  - checkpoint / resume 证据可验证：window 未变化、checkpoint 已校验、恢复从最后一个 durable checkpoint 继续，且未提前推进最终 watermark 或跳过失败分段
+  - 上述证据都可回溯到对应的 run id、window、`query_slice_id` 与 failure / resume artifact
+- 只要 GitHub `3 x 3` matrix 同时满足以上条件，即可将当前 Phase1 gate 中的“完整抓取周期”记为已满足；若后续 owner 扩大窗口数、slice 数或 source 范围，应以新的冻结决策覆盖此折算规则。
+
+### Phase1 Audit Workflow Boundary
+
+- 五项 release audit 统一采用三段式流程：`machine_pre_audit -> human_sampled_verdict -> owner_signoff`
+- 五项审计对象固定为：
+  - `merge_spot_check`
+  - `taxonomy_audit`
+  - `score_audit`
+  - `attention_audit`
+  - `unresolved_audit`
+- `machine_pre_audit` 可由 Codex 以当前可执行覆盖范围物化为 audit-ready sample lists、聚合视图、drill-down 引用与 reconciliation evidence。
+- `human_sampled_verdict` 由人工基于抽样方法记录 workflow 状态 `completed / flagged / pending`，并在同一对象内记录 sampled `review_verdict = accept / reject / pending`；未完成人工抽样时不得伪造为已通过。
+- `owner_signoff` 记录 owner 对每项审计与最终 release 的签字状态；在 owner sign-off 仍为 `pending` 时，机器侧最多只能给出 `conditional-go`，不得自动给出最终 `go`。
 
 ### Phase1 Quantitative Gates
 

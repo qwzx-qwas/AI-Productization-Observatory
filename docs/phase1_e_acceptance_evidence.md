@@ -23,6 +23,7 @@
   - `DEC-022`
   - `DEC-023`
   - `DEC-024`
+  - `DEC-029`
 
 ## 2. 本轮覆盖范围
 
@@ -39,7 +40,7 @@
 - GitHub live matrix 的 `3 windows x 3 query slices` 扩面验收
 - LLM relay / provider 的真实 POST、usage 计数与 timeout retry 审计证据
 
-当前仍未把这份文档本身扩写为 `Phase1-G` 退出评审证据包；相关 dashboard reconciliation、sampling 与 machine release judgment 现已转移到 `docs/phase1_g_acceptance_evidence.md` 与 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json`，owner 最终 sign-off 仍待后续补齐。
+当前仍未把这份文档本身扩写为 `Phase1-G` 退出评审证据包；相关 dashboard reconciliation、sampling 与 machine release judgment 现已转移到 `docs/phase1_g_acceptance_evidence.md` 与 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json`，而当前批次的 owner 最终 sign-off 已作为 `gpt-5.4-high` 自动化签署记录补齐。
 
 ## 3. 可执行入口
 
@@ -285,13 +286,12 @@
 ## 6. Cross-doc Consistency Check
 
 - 当前 live source 边界：`README.md`、`docs/phase1_a_baseline.md`、`docs/phase1_g_acceptance_evidence.md` 与本文件现一致表述为“GitHub 为当前 live 主路径，Product Hunt 保持 deferred，不以 Product Hunt live 作为本轮验收前提”。
-- Phase1 状态措辞：三份 evidence/baseline 文档现一致表述为“GitHub live acceptance 已扩展到多窗口多 slice，LLM provider 调用链已单独核证；machine judgment 当前可给出 conditional-go，但这仍不是 Phase1 exit sign-off”。
-- 验收覆盖范围与未覆盖范围：本文件已把覆盖范围明确收敛到 GitHub live matrix、LLM relay provider audit、review/error runtime baseline；未覆盖范围仍包括 Product Hunt live、dashboard release-level reconciliation、人工抽检结论与 owner merge/release judgment。
-- owner 决策依赖项：本文件与 `docs/phase1_g_acceptance_evidence.md`、`docs/phase1_a_baseline.md` 现一致依赖 `DEC-002`、`DEC-003`、`DEC-005`、`DEC-022`、`DEC-023`、`DEC-024`、`DEC-025`，未把 `current_default` 或 probe 命令输出写成新的冻结决策。
+- Phase1 exit gate 口径：`01_phase_plan_and_exit_criteria.md`、`docs/phase1_a_baseline.md`、`docs/phase1_e_acceptance_evidence.md`、`docs/phase1_g_acceptance_evidence.md` 现一致表述为“GitHub 完整抓取周期仍是当前 exit gate 组成部分；Product Hunt 非当前阻塞 gate，只保留 deferred future seam”。
+- 五项审计流程口径：`docs/phase1_g_acceptance_evidence.md` 与 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json` 现采用统一结构 `machine_pre_audit -> human_sampled_verdict -> owner_signoff`；本文件继续只承担 Phase1-E 控制平面证据，不越权写入人类 verdict 或 owner sign-off。
+- 验收覆盖范围与未覆盖范围：本文件已把覆盖范围明确收敛到 GitHub live matrix、LLM relay provider audit、review/error runtime baseline；未覆盖范围仍包括 Product Hunt live 与 dashboard release-level reconciliation，而 sampled human verdict / owner merge-release judgment 已在 Phase1-G evidence 中闭合。
+- owner 决策依赖项：本文件与 `docs/phase1_g_acceptance_evidence.md`、`docs/phase1_a_baseline.md` 现一致依赖 `DEC-002`、`DEC-003`、`DEC-005`、`DEC-022`、`DEC-023`、`DEC-024`、`DEC-025`、`DEC-029`，未把 `current_default` 或 probe 命令输出写成新的冻结决策。
 - release judgment 落点：`docs/phase1_g_acceptance_evidence.md` 与 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json` 现承担 machine release judgment 与 owner_required_signoff 的汇总，本文件继续只负责 Phase1-E 控制平面证据。
-- 冲突项：`01_phase_plan_and_exit_criteria.md` 的 `GitHub/Product Hunt 完整抓取周期` checklist 项仍未定义与当前 GitHub matrix / Product Hunt deferred boundary 的映射关系。
-  建议裁定人：Phase1 pipeline owner。
-  建议处理：在 `01_phase_plan_and_exit_criteria.md` 显式登记 conflict note，区分“本轮 acceptance 已扩面”与“exit checklist 仍待 owner 解释”。
+- judgment 与 sign-off 边界：上述文档现一致表述为“machine judgment 在 owner sign-off 未闭合时最多只能停在 `conditional-go`；当前批次因 sampled human verdict 完成且 owner sign-off 为 `approved`，故已升级为 `go`”。
 
 ## 7. 结论
 

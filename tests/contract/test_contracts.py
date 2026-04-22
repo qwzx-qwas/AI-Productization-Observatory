@@ -840,5 +840,6 @@ class Phase1GAcceptanceEvidenceContractTests(unittest.TestCase):
         self.assertIn("`phase1-g-audit-ready-report`", content)
         self.assertIn("merge spot-check", content)
         self.assertIn("GitHub 完整抓取周期", content)
-        self.assertIn("pending gate interpretation decision", content)
+        self.assertIn("machine_pre_audit", content)
+        self.assertIn("owner-review-ready", content)
         self.assertIn("不等于 Phase1 退出评审通过", content)

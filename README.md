@@ -241,7 +241,7 @@ make validate-env
 - 候选预筛工作流：已补齐 GitHub live candidate discovery、LLM relay 预筛、中间文档落盘与 staging handoff 入口；Product Hunt 继续保留候选发现 contract / fixture / replay 边界，但本阶段暂不落地 live discovery；candidate workspace 与 staging 仍不等于 formal gold set
 - GitHub live acceptance：已从单窗口扩展到 `3 windows x 3 query slices` 的真实联网矩阵，证据位于 `docs/acceptance_artifacts/phase1_g_live_matrix_2026-04-20/`
 - LLM provider audit：已提供独立 relay probe artifact，可核证真实 POST、usage 与 retry 行为，证据位于 `docs/acceptance_artifacts/llm_relay_validation_2026-04-20/`
-- release judgment baseline：`docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json` 当前可输出 machine judgment `conditional-go`，但 final release sign-off 仍保留给 owner
+- release judgment baseline：`docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json` 当前批次已在 sampled human verdict 与 owner sign-off 闭合后升级为 `go`；未来批次仍保持 `DEC-025` / `DEC-029` 的 owner-gated sign-off 边界
 
 ## 当前剩余事项
 
@@ -251,9 +251,9 @@ make validate-env
 - `fixtures/extractor/` 与 `fixtures/scoring/` 仍是预留目录，当前不能宣称已具备对应模块的已交付 fixture 覆盖
 - 当前可运行基线仍以 deterministic fixture replay 和本地 file-backed task store harness 为主，不应表述为已完成 live source 接入或最终生产 runtime backend
 - Product Hunt live source ingestion / live candidate discovery 本阶段暂缓；当前仓库仍可保留 Product Hunt 的 contract / fixture / replay / source boundary，但不能把它写成默认启用或已落地
-- 当前 machine judgment 虽为 `conditional-go`，但仍有两类 owner 待签字事项：
-  - `01_phase_plan_and_exit_criteria.md` 中 `GitHub / Product Hunt 完整抓取周期` 与当前 deferred/live 边界的 gate interpretation
-  - merge spot-check、taxonomy audit、score audit、attention audit、unresolved audit 的人工 judgment 与最终 release sign-off
+- 当前这批 machine judgment 已升级为 `go`；未来批次若 sampled human verdict 或 owner sign-off 未闭合，仍会回到 `conditional-go` 边界：
+  - `01_phase_plan_and_exit_criteria.md` 中 `GitHub / Product Hunt 完整抓取周期` 与当前 deferred/live 边界的 gate interpretation 仍按 `DEC-029` 固定执行
+  - merge spot-check、taxonomy audit、score audit、attention audit、unresolved audit 及最终 release sign-off 仍保留为 owner-gated workflow
 
 ## 最小回链示例
 

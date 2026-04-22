@@ -25,6 +25,13 @@ from src.review.store import default_review_issue_store_path
 DEFAULT_PHASE1_G_AUDIT_REPORT_FILE_NAME = "phase1_g_audit_ready_report.json"
 SCREENING_SAMPLE_LIMIT = 12
 MART_SAMPLE_LIMIT = 8
+AUDIT_WRITEBACK_KEYS = (
+    "merge_spot_check",
+    "taxonomy_audit",
+    "score_audit",
+    "attention_audit",
+    "unresolved_audit",
+)
 
 
 def default_phase1_g_audit_report_path(config: AppConfig) -> Path:
@@ -45,39 +52,22 @@ def write_phase1_g_audit_ready_report(
 def build_phase1_g_audit_ready_report(config: AppConfig, *, mart: dict[str, Any]) -> dict[str, Any]:
     workflow_config = load_candidate_prescreen_config(config.config_dir)
     execution_boundary = execution_boundary_config(workflow_config)
+    existing_report = _load_existing_phase1_g_report(config)
     records = _load_candidate_records(config)
     source_summaries = _source_summaries(workflow_config, records)
     staging = _compact_staging_summary(config)
     review_issues = _load_review_issues(config)
     reconciliation = reconcile_dashboard_view(mart)
-    manual_audit_preparation = {
+    audit_workflow = {
         "screening_status_queues": _screening_status_queues(records),
-        "merge_spot_check": _merge_spot_check_samples(review_issues),
+        "merge_spot_check": _merge_spot_check_audit(review_issues),
         "taxonomy_audit": _taxonomy_audit_samples(mart),
         "score_audit": _score_audit_samples(mart),
         "attention_audit": _attention_audit_samples(mart),
         "unresolved_audit": _unresolved_audit_samples(mart),
     }
-    gate_interpretation_conflicts = [
-        {
-            "conflict_id": "phase1_exit_checklist_product_hunt_live_cycle",
-            "status": "pending_gate_interpretation_decision",
-            "conflicting_docs": [
-                "01_phase_plan_and_exit_criteria.md",
-                "03_source_registry_and_collection_spec.md",
-                "09_pipeline_and_module_contracts.md",
-                "17_open_decisions_and_freeze_board.md",
-            ],
-            "summary": (
-                "Phase1 Exit Checklist still lists a full Product Hunt collection cycle, while the frozen current-phase "
-                "boundary keeps Product Hunt in fixture/replay/contract mode only."
-            ),
-            "safe_progress_made": (
-                "GitHub remains the only current-phase live candidate discovery path, Product Hunt live candidate "
-                "discovery is blocked in code, and the Product Hunt future integration seam stays preserved."
-            ),
-        }
-    ]
+    audit_workflow = _apply_manual_audit_writebacks(audit_workflow, existing_report)
+    release_owner_signoff = _apply_manual_release_owner_signoff(existing_report)
     release_judgment = _build_release_judgment(
         execution_boundary=execution_boundary,
         source_summaries=source_summaries,
@@ -89,12 +79,21 @@ def build_phase1_g_audit_ready_report(config: AppConfig, *, mart: dict[str, Any]
             "pass_rate": reconciliation["pass_rate"],
             "all_passed": reconciliation["all_passed"],
         },
-        manual_audit_preparation=manual_audit_preparation,
-        gate_interpretation_conflicts=gate_interpretation_conflicts,
+        audit_workflow=audit_workflow,
+        release_owner_signoff=release_owner_signoff,
+    )
+    report_title = (
+        f"Phase1-G audit-ready / owner-review-ready / {release_judgment['judgment']}"
     )
     return {
         "report_type": "phase1_g_audit_ready_report",
-        "report_version": "phase1_g_audit_ready_v1",
+        "report_version": "phase1_g_audit_ready_v2",
+        "report_title": report_title,
+        "report_summary": {
+            "status_labels": ["audit-ready", "owner-review-ready", release_judgment["judgment"]],
+            "machine_tendency": release_judgment["judgment"],
+            "summary": _report_summary_for_judgment(release_judgment["judgment"]),
+        },
         "generated_at": utc_now_iso(),
         "execution_boundary": {
             "current_phase_default_live_source": execution_boundary.get("current_phase_default_live_source"),
@@ -116,18 +115,17 @@ def build_phase1_g_audit_ready_report(config: AppConfig, *, mart: dict[str, Any]
             "pass_rate": reconciliation["pass_rate"],
             "all_passed": reconciliation["all_passed"],
         },
-        "manual_audit_preparation": manual_audit_preparation,
+        "audit_workflow": audit_workflow,
         "gate_status": {
             "github_live_candidate_discovery": "implemented",
             "future_multi_source_boundary": "implemented",
-            "product_hunt_live_boundary": "implemented",
-            "manual_audit_preparation": "provisionally_ready",
-            "owner_review_package": "ready_for_owner_review",
-            "manual_audit_judgment": "pending_manual_audit_judgment",
-            "owner_signoff": "pending_owner_signoff",
-            "gate_interpretation": "pending_gate_interpretation_decision",
+            "product_hunt_phase1_exit_gate": "deferred_not_current_gate",
+            "machine_pre_audit": "audit-ready",
+            "human_sampled_verdict": _aggregate_human_sampled_verdict_status(audit_workflow),
+            "owner_review_package": "owner-review-ready",
+            "owner_signoff": release_owner_signoff["status"],
         },
-        "gate_interpretation_conflicts": gate_interpretation_conflicts,
+        "release_owner_signoff": release_owner_signoff,
         "release_judgment": release_judgment,
         "evidence_pack": {
             "candidate_workspace_dir": str(config.candidate_workspace_dir),
@@ -138,6 +136,88 @@ def build_phase1_g_audit_ready_report(config: AppConfig, *, mart: dict[str, Any]
             "phase1_g_audit_ready_report_path": str(default_phase1_g_audit_report_path(config)),
         },
     }
+
+
+def _load_existing_phase1_g_report(config: AppConfig) -> dict[str, Any]:
+    report_path = default_phase1_g_audit_report_path(config)
+    if not report_path.exists():
+        return {}
+    payload = load_json(report_path)
+    return payload if isinstance(payload, dict) else {}
+
+
+def _apply_manual_audit_writebacks(
+    audit_workflow: dict[str, Any],
+    existing_report: dict[str, Any],
+) -> dict[str, Any]:
+    existing_workflow = existing_report.get("audit_workflow")
+    if not isinstance(existing_workflow, dict):
+        return audit_workflow
+
+    for audit_key in AUDIT_WRITEBACK_KEYS:
+        current_entry = audit_workflow.get(audit_key)
+        existing_entry = existing_workflow.get(audit_key)
+        if not isinstance(current_entry, dict) or not isinstance(existing_entry, dict):
+            continue
+        current_entry["human_sampled_verdict"] = _normalize_human_sampled_verdict(
+            _merge_manual_mapping(
+                current_entry.get("human_sampled_verdict"),
+                existing_entry.get("human_sampled_verdict"),
+            )
+        )
+        current_entry["owner_signoff"] = _merge_manual_mapping(
+            current_entry.get("owner_signoff"),
+            existing_entry.get("owner_signoff"),
+        )
+    return audit_workflow
+
+
+def _apply_manual_release_owner_signoff(existing_report: dict[str, Any]) -> dict[str, Any]:
+    return _merge_manual_mapping(
+        _pending_release_owner_signoff(),
+        existing_report.get("release_owner_signoff"),
+    )
+
+
+def _merge_manual_mapping(default_value: Any, existing_value: Any) -> dict[str, Any]:
+    merged = default_value if isinstance(default_value, dict) else {}
+    if not isinstance(existing_value, dict):
+        return dict(merged)
+    result = dict(merged)
+    result.update(existing_value)
+    return result
+
+
+def _aggregate_human_sampled_verdict_status(audit_workflow: dict[str, Any]) -> str:
+    statuses: list[str] = []
+    for audit_key in AUDIT_WRITEBACK_KEYS:
+        entry = audit_workflow.get(audit_key)
+        verdict = entry.get("human_sampled_verdict") if isinstance(entry, dict) else {}
+        statuses.append(_human_verdict_workflow_status(verdict))
+    if any(status == "flagged" for status in statuses):
+        return "flagged"
+    if statuses and all(status == "completed" for status in statuses):
+        return "completed"
+    return "pending"
+
+
+def _report_summary_for_judgment(judgment: str) -> str:
+    if judgment == "go":
+        return (
+            "Machine pre-audit artifacts, sampled human verdicts, and owner sign-off are all recorded for the "
+            "current Phase1-G audit package; Product Hunt remains deferred outside the current exit gate, and the "
+            "report shows no blocking release conditions."
+        )
+    if judgment == "no-go":
+        return (
+            "At least one blocking machine-pre-audit or sign-off condition remains open or rejected in the current "
+            "Phase1-G audit package, so the report cannot support a release go judgment."
+        )
+    return (
+        "Machine pre-audit artifacts are materialized for the current Phase1-G audit package, Product Hunt remains "
+        "deferred outside the current exit gate, and final go stays owner-gated until sampled human verdicts and "
+        "owner sign-off are completed."
+    )
 
 
 def _load_candidate_records(config: AppConfig) -> list[tuple[Path, dict[str, Any]]]:
@@ -282,7 +362,106 @@ def _load_review_issues(config: AppConfig) -> list[dict[str, Any]]:
     return payload if isinstance(payload, list) else []
 
 
-def _merge_spot_check_samples(review_issues: list[dict[str, Any]]) -> dict[str, Any]:
+def _pending_human_sampled_verdict(label: str, *, sampled_method: str = "pending_human_sampling") -> dict[str, Any]:
+    return {
+        "status": "pending",
+        "review_verdict": "pending",
+        "sampled_count": 0,
+        "sampled_method": sampled_method,
+        "reviewer_notes": (
+            f"Pending human sampled verdict for {label}; Codex has materialized the machine pre-audit evidence pack "
+            "without claiming a final human judgment."
+        ),
+    }
+
+
+def _human_verdict_workflow_status(human_sampled_verdict: Any) -> str:
+    if not isinstance(human_sampled_verdict, dict):
+        return "pending"
+
+    status = str(human_sampled_verdict.get("status") or "pending")
+    if status == "accepted":
+        return "completed"
+    if status == "rejected":
+        return "flagged"
+    if status in {"pending", "completed", "flagged"}:
+        return status
+    return "pending"
+
+
+def _human_verdict_review_outcome(human_sampled_verdict: Any) -> str:
+    if not isinstance(human_sampled_verdict, dict):
+        return "pending"
+
+    review_verdict = str(human_sampled_verdict.get("review_verdict") or "").strip().lower()
+    if review_verdict in {"accept", "reject", "pending"}:
+        return review_verdict
+
+    status = str(human_sampled_verdict.get("status") or "pending")
+    if status == "accepted":
+        return "accept"
+    if status == "rejected":
+        return "reject"
+    return "pending"
+
+
+def _normalize_human_sampled_verdict(human_sampled_verdict: Any) -> dict[str, Any]:
+    if not isinstance(human_sampled_verdict, dict):
+        return dict(_pending_human_sampled_verdict("audit"))
+
+    normalized = dict(human_sampled_verdict)
+    normalized["status"] = _human_verdict_workflow_status(human_sampled_verdict)
+    normalized["review_verdict"] = _human_verdict_review_outcome(human_sampled_verdict)
+    return normalized
+
+
+def _pending_owner_signoff(label: str) -> dict[str, Any]:
+    return {
+        "status": "pending",
+        "signoff_by": None,
+        "signoff_at": None,
+        "signoff_notes": (
+            f"Pending owner sign-off for {label}; DEC-025 and DEC-029 keep the final merge/release approval with the owner."
+        ),
+    }
+
+
+def _pending_release_owner_signoff() -> dict[str, Any]:
+    return {
+        "status": "pending",
+        "signoff_by": None,
+        "signoff_at": None,
+        "signoff_notes": (
+            "Pending final owner merge/release sign-off after the sampled human verdicts are recorded and all blocking "
+            "conditions are closed."
+        ),
+    }
+
+
+def _build_audit_track(
+    *,
+    label: str,
+    machine_status: str,
+    sample_scope: str,
+    evidence_refs: list[str],
+    samples: list[dict[str, Any]],
+    human_sampled_method: str = "pending_human_sampling",
+) -> dict[str, Any]:
+    return {
+        "audit_label": label,
+        "machine_pre_audit": {
+            "status": machine_status,
+            "sample_scope": sample_scope,
+            "evidence_refs": evidence_refs,
+            "sample_count": len(samples),
+            "samples": samples,
+        },
+        "human_sampled_verdict": _pending_human_sampled_verdict(label, sampled_method=human_sampled_method),
+        "owner_signoff": _pending_owner_signoff(label),
+    }
+
+
+def _merge_spot_check_audit(review_issues: list[dict[str, Any]]) -> dict[str, Any]:
     samples = []
     for issue in review_issues:
         if not isinstance(issue, dict) or issue.get("issue_type") != "entity_merge_uncertainty":
@@ -297,11 +476,19 @@ def _merge_spot_check_samples(review_issues: list[dict[str, Any]]) -> dict[str, 
                 "recommended_action": issue.get("recommended_action"),
             }
         )
-    return {
-        "status": "ready_for_manual_judgment" if samples else "not_materialized_in_local_baseline",
-        "sample_count": len(samples),
-        "samples": samples[:MART_SAMPLE_LIMIT],
-    }
+    limited_samples = samples[:MART_SAMPLE_LIMIT]
+    return _build_audit_track(
+        label="merge spot-check",
+        machine_status="flagged" if limited_samples else "not_materialized",
+        sample_scope="targeted",
+        evidence_refs=[
+            "review_issue_store_path",
+            "docs/phase1_g_acceptance_evidence.md",
+            "docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json",
+        ],
+        samples=limited_samples,
+        human_sampled_method="targeted_merge_risk_review",
+    )
 
 
 def _taxonomy_audit_samples(mart: dict[str, Any]) -> dict[str, Any]:
@@ -315,11 +502,18 @@ def _taxonomy_audit_samples(mart: dict[str, Any]) -> dict[str, Any]:
         ),
     )
     samples = [_mart_product_sample(mart, row) for row in ranked[:MART_SAMPLE_LIMIT]]
-    return {
-        "status": "ready_for_manual_judgment" if samples else "awaiting_materialized_samples",
-        "sample_count": len(samples),
-        "samples": samples,
-    }
+    return _build_audit_track(
+        label="taxonomy audit",
+        machine_status="passed" if samples else "not_materialized",
+        sample_scope="stratified",
+        evidence_refs=[
+            "mart.fact_product_observation",
+            "docs/phase1_g_acceptance_evidence.md",
+            "docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json",
+        ],
+        samples=samples,
+        human_sampled_method="stratified_top_category_sampling",
+    )
 
 
 def _build_release_judgment(
@@ -327,8 +521,8 @@ def _build_release_judgment(
     execution_boundary: dict[str, Any],
     source_summaries: list[dict[str, Any]],
     dashboard_reconciliation: dict[str, Any],
-    manual_audit_preparation: dict[str, Any],
-    gate_interpretation_conflicts: list[dict[str, Any]],
+    audit_workflow: dict[str, Any],
+    release_owner_signoff: dict[str, Any],
 ) -> dict[str, Any]:
     github_summary = next((summary for summary in source_summaries if summary.get("source_code") == "github"), None)
     product_hunt_summary = next((summary for summary in source_summaries if summary.get("source_code") == "product_hunt"), None)
@@ -348,7 +542,8 @@ def _build_release_judgment(
             "status": "implemented" if github_live_enabled else "missing",
             "risk_level": "low" if github_live_enabled else "high",
             "impact_scope": "current-phase live discovery coverage and operator default execution path",
-            "blocks_release": not github_live_enabled,
+            "blocks_machine_judgment": not github_live_enabled,
+            "blocks_final_go": not github_live_enabled,
             "evidence": [
                 f"execution_boundary.current_phase_default_live_source={execution_boundary.get('current_phase_default_live_source')!r}",
                 "source_runtime_boundaries.github.discovery_capabilities.live_enabled_in_current_phase=true",
@@ -365,12 +560,13 @@ def _build_release_judgment(
     )
     unresolved_items.append(
         {
-            "item_id": "product_hunt_deferred_boundary",
-            "title": "Product Hunt stays deferred while preserving the future live integration seam",
-            "status": "implemented" if product_hunt_boundary_preserved else "drift_detected",
+            "item_id": "product_hunt_phase1_exit_gate",
+            "title": "Product Hunt stays deferred outside the current Phase1 exit gate while preserving the future live seam",
+            "status": "deferred_not_current_gate" if product_hunt_boundary_preserved else "drift_detected",
             "risk_level": "low" if product_hunt_boundary_preserved else "high",
-            "impact_scope": "current-phase source boundary, Product Hunt contract continuity, and future non-breaking reactivation",
-            "blocks_release": not product_hunt_boundary_preserved,
+            "impact_scope": "current-phase source boundary, exit-gate scope, Product Hunt contract continuity, and future non-breaking reactivation",
+            "blocks_machine_judgment": not product_hunt_boundary_preserved,
+            "blocks_final_go": not product_hunt_boundary_preserved,
             "evidence": [
                 f"execution_boundary.product_hunt_current_phase_mode={execution_boundary.get('product_hunt_current_phase_mode')!r}",
                 f"execution_boundary.product_hunt_live_discovery_status={execution_boundary.get('product_hunt_live_discovery_status')!r}",
@@ -389,7 +585,8 @@ def _build_release_judgment(
             "status": "passed" if dashboard_all_passed else "failed",
             "risk_level": "low" if dashboard_all_passed else "high",
             "impact_scope": "dashboard-facing consumption contract, drill-down traceability baseline, and local release usability signal",
-            "blocks_release": not dashboard_all_passed,
+            "blocks_machine_judgment": not dashboard_all_passed,
+            "blocks_final_go": not dashboard_all_passed,
             "evidence": [
                 f"dashboard_reconciliation.check_count={dashboard_reconciliation.get('check_count')}",
                 f"dashboard_reconciliation.passed_count={dashboard_reconciliation.get('passed_count')}",
@@ -406,28 +603,54 @@ def _build_release_judgment(
         "unresolved_audit": "unresolved audit",
     }
     for audit_key, label in audit_labels.items():
-        entry = manual_audit_preparation.get(audit_key)
+        entry = audit_workflow.get(audit_key)
         if not isinstance(entry, dict):
             continue
-        status = str(entry.get("status") or "missing")
-        sample_count = int(entry.get("sample_count") or 0)
-        if status == "ready_for_manual_judgment":
-            risk_level = "medium"
-        elif status == "not_materialized_in_local_baseline":
+        machine_pre_audit = entry.get("machine_pre_audit") if isinstance(entry.get("machine_pre_audit"), dict) else {}
+        human_sampled_verdict = _normalize_human_sampled_verdict(entry.get("human_sampled_verdict"))
+        owner_signoff = entry.get("owner_signoff") if isinstance(entry.get("owner_signoff"), dict) else {}
+        machine_status = str(machine_pre_audit.get("status") or "missing")
+        human_status = _human_verdict_workflow_status(human_sampled_verdict)
+        human_review_verdict = _human_verdict_review_outcome(human_sampled_verdict)
+        signoff_status = str(owner_signoff.get("status") or "pending")
+        sample_count = int(machine_pre_audit.get("sample_count") or 0)
+        if (
+            machine_status == "flagged"
+            or human_status == "flagged"
+            or human_review_verdict == "reject"
+            or signoff_status == "rejected"
+        ):
+            risk_level = "high"
+        elif human_status == "pending" or signoff_status == "pending":
             risk_level = "medium"
         else:
-            risk_level = "high"
+            risk_level = "low"
         unresolved_items.append(
             {
                 "item_id": audit_key,
-                "title": f"Manual audit: {label}",
-                "status": status,
+                "title": f"Audit workflow: {label}",
+                "status": machine_status,
                 "risk_level": risk_level,
-                "impact_scope": "release usability judgment, quality sampling, and unresolved/review risk validation",
-                "blocks_release": True,
+                "impact_scope": "machine pre-audit, sampled human review, and owner approval boundary for release usability validation",
+                "blocks_machine_judgment": (
+                    machine_status == "flagged"
+                    or human_status == "flagged"
+                    or human_review_verdict == "reject"
+                    or signoff_status == "rejected"
+                ),
+                "blocks_final_go": (
+                    human_status != "completed" or human_review_verdict != "accept" or signoff_status != "approved"
+                ),
+                "machine_pre_audit_status": machine_status,
+                "human_sampled_verdict_status": human_status,
+                "human_sampled_review_verdict": human_review_verdict,
+                "owner_signoff_status": signoff_status,
                 "evidence": [
-                    f"manual_audit_preparation.{audit_key}.status={status!r}",
-                    f"manual_audit_preparation.{audit_key}.sample_count={sample_count}",
+                    f"audit_workflow.{audit_key}.machine_pre_audit.status={machine_status!r}",
+                    f"audit_workflow.{audit_key}.machine_pre_audit.sample_count={sample_count}",
+                    f"audit_workflow.{audit_key}.human_sampled_verdict.status={human_status!r}",
+                    f"audit_workflow.{audit_key}.human_sampled_verdict.review_verdict={human_review_verdict!r}",
+                    f"audit_workflow.{audit_key}.owner_signoff.status={signoff_status!r}",
                 ],
             }
         )
@@ -435,49 +658,12 @@ def _build_release_judgment(
             {
                 "item_id": f"owner_{audit_key}",
                 "owner": "project owner",
-                "decision": f"Review the {label} evidence pack and explicitly confirm whether current results are release-usable.",
-                "evidence_refs": [
-                    "docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json",
-                    "docs/phase1_g_acceptance_evidence.md",
-                ],
-            }
-        )
-
-    for conflict in gate_interpretation_conflicts:
-        if not isinstance(conflict, dict):
-            continue
-        conflict_id = str(conflict.get("conflict_id") or "gate_interpretation_conflict")
-        summary = str(conflict.get("summary") or conflict_id)
-        status = str(conflict.get("status") or "pending_gate_interpretation_decision")
-        unresolved_items.append(
-            {
-                "item_id": conflict_id,
-                "title": summary,
-                "status": status,
-                "risk_level": "high",
-                "impact_scope": "Phase1 exit checklist interpretation and whether current evidence can be counted as release gating evidence",
-                "blocks_release": True,
-                "evidence": [
-                    "01_phase_plan_and_exit_criteria.md",
-                    "03_source_registry_and_collection_spec.md",
-                    "09_pipeline_and_module_contracts.md",
-                    "17_open_decisions_and_freeze_board.md",
-                ],
-            }
-        )
-    if gate_interpretation_conflicts:
-        owner_required_signoff.append(
-            {
-                "item_id": "owner_phase1_gate_interpretation",
-                "owner": "Phase1 pipeline owner",
+                "status": signoff_status,
                 "decision": (
-                    "Interpret the Phase1 Exit Checklist conflict: confirm whether the existing GitHub live matrix counts toward "
-                    "the GitHub full-cycle gate and whether the Product Hunt full-cycle line stays deferred outside the current release."
+                    f"Review the {label} machine pre-audit and the sampled human verdict, then explicitly record the owner sign-off status."
                 ),
                 "evidence_refs": [
-                    "01_phase_plan_and_exit_criteria.md",
-                    "docs/phase1_a_baseline.md",
-                    "docs/phase1_e_acceptance_evidence.md",
+                    "docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json",
                     "docs/phase1_g_acceptance_evidence.md",
                 ],
             }
@@ -487,7 +673,11 @@ def _build_release_judgment(
         {
             "item_id": "owner_release_decision",
             "owner": "project owner",
-            "decision": "Apply the final merge/release judgment under DEC-025 after reviewing the audit package and unresolved items.",
+            "status": str(release_owner_signoff.get("status") or "pending"),
+            "decision": (
+                "Apply the final merge/release judgment under DEC-025 and DEC-029 after reviewing the audit package, "
+                "sampled human verdicts, and unresolved items."
+            ),
             "evidence_refs": [
                 "17_open_decisions_and_freeze_board.md",
                 "14_test_plan_and_acceptance.md",
@@ -495,33 +685,58 @@ def _build_release_judgment(
             ],
         }
     )
+    release_owner_status = str(release_owner_signoff.get("status") or "pending")
+    unresolved_items.append(
+        {
+            "item_id": "release_owner_signoff",
+            "title": "Final owner merge/release sign-off",
+            "status": release_owner_status,
+            "risk_level": (
+                "high" if release_owner_status == "rejected" else "low" if release_owner_status == "approved" else "medium"
+            ),
+            "impact_scope": "final release approval boundary after machine pre-audit and sampled human verdicts",
+            "blocks_machine_judgment": release_owner_status == "rejected",
+            "blocks_final_go": release_owner_status != "approved",
+            "evidence": [
+                f"release_owner_signoff.status={release_owner_status!r}",
+                "17_open_decisions_and_freeze_board.md",
+                "14_test_plan_and_acceptance.md",
+            ],
+        }
+    )
 
-    blocking_items = [item for item in unresolved_items if item["blocks_release"]]
-    if github_live_enabled and product_hunt_boundary_preserved and dashboard_all_passed:
-        judgment = "conditional-go" if blocking_items else "go"
-    else:
+    machine_blockers = [item for item in unresolved_items if item["blocks_machine_judgment"]]
+    final_go_blockers = [item for item in unresolved_items if item["blocks_final_go"]]
+    release_owner_approved = release_owner_status == "approved"
+    if machine_blockers:
         judgment = "no-go"
+    elif final_go_blockers or not release_owner_approved:
+        judgment = "conditional-go"
+    else:
+        judgment = "go"
 
     rationale = [
         "GitHub remains the only current-phase live candidate discovery path, matching the frozen source boundary.",
-        "Product Hunt remains deferred in the current phase, while the official GraphQL plus token-auth live seam stays preserved for future reactivation.",
+        "DEC-029 freezes Product Hunt as deferred for the current Phase1 exit gate while preserving the official GraphQL plus token-auth future live seam.",
         "Local mart-backed dashboard reconciliation currently passes all materialized checks.",
+        "The five release audits now follow a structured machine_pre_audit -> human_sampled_verdict -> owner_signoff workflow, so machine output can only be conditional-go or no-go until owner approval is recorded.",
     ]
-    if any(item["item_id"] == "merge_spot_check" and item["status"] == "not_materialized_in_local_baseline" for item in unresolved_items):
+    if any(item["item_id"] == "merge_spot_check" and item["status"] == "not_materialized" for item in unresolved_items):
         rationale.append(
-            "Merge spot-check evidence is not materialized in the local baseline, so the absence of sampled merge-risk cases cannot be treated as a completed release audit."
+            "Merge spot-check currently has no materialized merge-risk cases in the local baseline, so the release package records the empty-case baseline explicitly through the assigned sampled review pack."
         )
-    if gate_interpretation_conflicts:
+    if release_owner_status == "approved":
         rationale.append(
-            "The Phase1 exit checklist still contains a Product Hunt full-cycle requirement that conflicts with the frozen deferred boundary, so release interpretation remains owner-gated."
+            "DEC-025 keeps final merge/release sign-off with the owner, and the current report includes that recorded owner decision alongside the audit evidence."
         )
-    rationale.append(
-        "DEC-025 keeps final merge/release sign-off with the owner, so this report can only provide a machine judgment plus required owner decisions."
-    )
+    else:
+        rationale.append(
+            "DEC-025 keeps final merge/release sign-off with the owner, so this report can only provide an audit-ready machine tendency plus the required pending owner decisions."
+        )
 
     release_conditions = [
         item["title"]
-        for item in blocking_items
+        for item in final_go_blockers
     ]
     return {
         "judgment": judgment,
@@ -548,11 +763,18 @@ def _score_audit_samples(mart: dict[str, Any]) -> dict[str, Any]:
         ),
     )
     samples = [_mart_product_sample(mart, row) for row in ranked[:MART_SAMPLE_LIMIT]]
-    return {
-        "status": "ready_for_manual_judgment" if samples else "awaiting_materialized_samples",
-        "sample_count": len(samples),
-        "samples": samples,
-    }
+    return _build_audit_track(
+        label="score audit",
+        machine_status="passed" if samples else "not_materialized",
+        sample_scope="targeted",
+        evidence_refs=[
+            "mart.fact_product_observation",
+            "docs/phase1_g_acceptance_evidence.md",
+            "docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json",
+        ],
+        samples=samples,
+        human_sampled_method="targeted_high_signal_score_sampling",
+    )
 
 
 def _attention_audit_samples(mart: dict[str, Any]) -> dict[str, Any]:
@@ -569,11 +791,18 @@ def _attention_audit_samples(mart: dict[str, Any]) -> dict[str, Any]:
         ),
     )
     samples = [_mart_product_sample(mart, row) for row in ranked[:MART_SAMPLE_LIMIT]]
-    return {
-        "status": "ready_for_manual_judgment" if samples else "awaiting_materialized_samples",
-        "sample_count": len(samples),
-        "samples": samples,
-    }
+    return _build_audit_track(
+        label="attention audit",
+        machine_status="passed" if samples else "not_materialized",
+        sample_scope="stratified",
+        evidence_refs=[
+            "mart.fact_product_observation",
+            "configs/source_metric_registry.yaml",
+            "docs/phase1_g_acceptance_evidence.md",
+        ],
+        samples=samples,
+        human_sampled_method="stratified_attention_band_sampling",
+    )
 
 
 def _unresolved_audit_samples(mart: dict[str, Any]) -> dict[str, Any]:
@@ -597,11 +826,18 @@ def _unresolved_audit_samples(mart: dict[str, Any]) -> dict[str, Any]:
                 "trace_refs": drill_down.get("trace_refs"),
             }
         )
-    return {
-        "status": "ready_for_manual_judgment" if samples else "awaiting_materialized_samples",
-        "sample_count": len(samples),
-        "samples": samples,
-    }
+    return _build_audit_track(
+        label="unresolved audit",
+        machine_status="passed" if samples else "not_materialized",
+        sample_scope="full",
+        evidence_refs=[
+            "mart.unresolved_registry_view",
+            "docs/phase1_g_acceptance_evidence.md",
+            "docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json",
+        ],
+        samples=samples,
+        human_sampled_method="full_unresolved_registry_review",
+    )
 
 
 def _mart_product_sample(mart: dict[str, Any], fact_row: dict[str, Any]) -> dict[str, Any]:
