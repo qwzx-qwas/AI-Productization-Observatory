@@ -207,7 +207,10 @@
 
 ### Phase1-G 验证、验收与退出评审
 
-- current_status: `local_acceptance_path_ready_not_exit_ready`
+- current_status: `phase1_g_evidence_closed_go_recorded`
+- status_alignment_note:
+  - 本次修复仅为口径一致性小修，用于把本节状态描述对齐到 `docs/phase1_g_acceptance_evidence.md`、`docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json` 与 `01_phase_plan_and_exit_criteria.md` 的当前冻结口径
+  - 该修复不新增政策，不改变 `DEC-029`，也不把 Product Hunt 重新拉回当前 Phase1 gate
 - canonical_basis: `01`, `11`, `14`, `17`, `25`
 - repo_landing:
   - `tests/`
@@ -227,9 +230,10 @@
   - `python3 -m src.cli dashboard-view`、`dashboard-reconciliation` 与 `product-drill-down` 已形成可直接执行的本地 Phase1-G reconciliation / manual trace 路径
   - `docs/phase1_g_acceptance_evidence.md` 已把当前 fixture-backed dashboard reconciliation、manual trace walkthrough、machine release judgment 与 remaining blockers 收敛成单独 evidence 文档
   - `docs/acceptance_artifacts/llm_relay_validation_2026-04-20/probe_success_escalated.json` 与 `probe_retry_timeout_escalated.json` 已记录真实 provider POST、usage 计数与 retry evidence；这补齐了此前 `replay-window` 只覆盖采集链路、看不到 provider API 调用审计的缺口
+  - 当前 `Phase1-G` evidence 与 audit-ready report 已记录 `GitHub 3 windows x 3 query slices`、五项 audit 闭合、以及 `release_owner_signoff.status = approved`，因此当前批次的 release judgment 已落盘为 `go`
 - blockers_to_close:
-  - 当前 dashboard reconciliation 只覆盖 fixture-backed local baseline，不等于 `01` / `14` 所要求的完整 release-level dashboard reconciliation gate
-  - Phase1 Exit Checklist 中要求的 GitHub 完整抓取周期、merge spot-check / taxonomy audit / score audit / unresolved audit、owner merge/release judgment 等条件尚不能宣称完成
+  - 当前本节保留为 Phase1 基线矩阵索引，不改写 `DEC-029` 的 gate 定义；release-level judgment 以 `docs/phase1_g_acceptance_evidence.md` 与 audit-ready report 的已落盘记录为准
+  - 当前仍待进入下一阶段补齐的能力缺口是前端服务化与 DB runtime backend 接入，而不是把 Product Hunt 拉回当前 gate 或扩大当前 source / window 范围
 
 ## 4. Substage Dependency Graph
 
@@ -300,10 +304,11 @@
 
 ## 7. Cross-doc Consistency Check
 
+- 本次修复说明：以下调整仅为口径一致性小修，用于对齐 `01_phase_plan_and_exit_criteria.md`、`docs/phase1_g_acceptance_evidence.md` 与 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json` 的当前已落盘口径，不构成新的政策变更。
 - 当前 live source 边界：`configs/source_registry.yaml`、`configs/candidate_prescreen_workflow.yaml`、`README.md`、`docs/phase1_e_acceptance_evidence.md` 与 `docs/phase1_g_acceptance_evidence.md` 现已一致表述为“GitHub 是当前 live 主路径，Product Hunt 继续 deferred，仅保留 fixture / replay / contract”。
 - Phase1 exit gate 口径：`01_phase_plan_and_exit_criteria.md`、`docs/phase1_a_baseline.md`、`docs/phase1_e_acceptance_evidence.md`、`docs/phase1_g_acceptance_evidence.md` 现统一为“GitHub 完整抓取周期仍是当前 exit gate 组成部分；Product Hunt 非当前阻塞 gate，只保留 deferred future seam”。
 - 五项审计流程口径：上述文档现统一为 `machine_pre_audit -> human_sampled_verdict -> owner_signoff`，且 machine 层在 owner sign-off 前最多只能停在 `conditional-go`；当前批次因 sampled human verdict 与 owner sign-off 已闭合，故已升级为 `go`。
-- 验收覆盖范围与未覆盖范围：上述文档现统一把已覆盖范围限定为 GitHub live matrix、LLM relay provider audit、fixture-backed dashboard reconciliation 与 audit-ready / owner-review-ready report；未覆盖范围仍包括 Product Hunt live、已完成的人类抽样 verdict 与 owner release judgment。
+- 验收覆盖范围与未覆盖范围：上述文档现统一把已覆盖范围限定为 GitHub live matrix、LLM relay provider audit、fixture-backed dashboard reconciliation，以及已闭合 sampled human verdict / owner sign-off 的 audit-ready / owner-review-ready / `go` report；未覆盖范围仍包括 Product Hunt live reactivation、前端服务化交付与 DB runtime backend 接入。
 - owner 决策依赖项：`DEC-002`、`DEC-003`、`DEC-005`、`DEC-014`、`DEC-015`、`DEC-025`、`DEC-029` 在三份文档中的依赖关系现已一致，且均未把 `current_default` 写成永久业务结论。
 - release judgment 落点：`README.md`、`docs/phase1_g_acceptance_evidence.md` 与 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json` 现一致表述为“最终 release sign-off 仍归 owner；当前批次已以 `gpt-5.4-high` 自动化签署记录落盘”。
 - judgment 与 sign-off 边界：三份文档现一致表述为“`conditional-go` = audit-ready 且 owner-review-ready，但 human_sampled_verdict 与 owner_signoff 尚未完成；当前批次因 owner sign-off 为 `approved` 且阻塞项闭合，已满足最终 `go` 条件”。

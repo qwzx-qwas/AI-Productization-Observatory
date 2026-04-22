@@ -432,7 +432,54 @@
   - 本节只对当前批次的回归兜底与冻结时间戳做补充，不改写 report 中已落盘的 `go` judgment、`owner_signoff = approved`、`human_sampled_verdict = completed` 与 `product_hunt_phase1_exit_gate = deferred_not_current_gate`
   - 当前 evidence freeze 与 report 的 release judgment、sign-off 槽位、以及 `GitHub live / Product Hunt deferred` 边界保持一致
 
-## 6. Remaining Blockers
+### 5.2 Release Execution Record
+
+- 本次发布批次时间戳：`2026-04-22T08:00:57Z`
+- 本次发布依据 evidence pair：
+  - `docs/phase1_g_acceptance_evidence.md:412`
+  - `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json:1439`
+- judgment 摘要：
+  - 当前 `phase1-g-audit-ready-report` 重算输出 `generated_at = 2026-04-22T07:49:25.669333Z`
+  - `report_title = Phase1-G audit-ready / owner-review-ready / go`
+  - `report_summary.machine_tendency = go`
+  - `release_judgment.judgment = go`
+  - `release_owner_signoff.status = approved`
+  - `release_judgment.release_conditions = []`
+- 边界摘要：
+  - 本次发布继续保持 `DEC-029` 的当前 gate 解释：`GitHub live / Product Hunt deferred`
+  - Product Hunt 仍只保留 fixture / replay / contract 与 future live seam，不回到当前 Phase1 exit gate
+- 本次串行命令执行摘要：
+  - 所有命令均按“单命令串行执行”完成：前一条命令结束并记录结果后，才执行下一条
+  - `python3 -m src.cli validate-configs`：通过，输出 `validated 10 config artifacts`
+  - `python3 -m src.cli validate-schemas`：通过，输出 `validated 6 schema documents`
+  - `python3 -m src.cli phase1-g-audit-ready-report`：通过，输出 `output_path=.../phase1_g_audit_ready_report.json`、`owner_review_package=owner-review-ready`，并重算出 `report_title = Phase1-G audit-ready / owner-review-ready / go`
+  - `python3 -m unittest -v tests.contract.test_contracts.Phase1GAcceptanceEvidenceContractTests`：通过，`Ran 2 tests`，结果 `OK`
+  - `python3 -m unittest -v tests.contract.test_contracts.FreezeBoardSignoffContractTests`：通过，`Ran 2 tests`，结果 `OK`
+  - `python3 -m unittest discover -s tests -t .`：通过，`Ran 180 tests in 604.657s`，结果 `OK`
+
+## 6. Next Batch Verification Plan
+
+- 计划边界：
+  - 下一批次复核继续只覆盖当前 `DEC-029` 允许的 GitHub live matrix 解释，不扩大 source，不把 Product Hunt 拉回当前 gate，也不扩大窗口家族或 query family 范围
+- `3 windows x 3 slices` 复核执行顺序：
+  - `2025-03-05..2025-03-05`：`qf_ai_workflow -> qf_ai_assistant -> qf_copilot`
+  - `2025-03-12..2025-03-12`：`qf_ai_workflow -> qf_ai_assistant -> qf_copilot`
+  - `2025-03-19..2025-03-19`：`qf_ai_workflow -> qf_ai_assistant -> qf_copilot`
+- same-window rerun 检查项：
+  - 首跑与 rerun 必须保持同一 `selection_rule_version`、`query_slice_id`、`window_start`、`window_end` 与 request params
+  - rerun 必须验证 `durable_raw_unchanged = true` 或等价证据，且不得重复制造新的 durable raw
+  - rerun 后的 `watermark_after`、`checkpoint_page` 与窗口边界必须与首跑可对账，不得发生 window drift
+- `outside_window_count` 检查项：
+  - 每个 `window x slice` 组合在首跑、same-window rerun 与 failure/resume 后都必须保持 `outside_window_count = 0`
+  - 每个组合都需复核 `min_pushed_at` / `max_pushed_at` 或等价窗口证据，证明结果仍留在当前窗口内
+  - 任一组合若出现 `outside_window_count > 0`，本批次复核直接记为失败并进入根因排查，不得以“可解释偏差”放行
+- checkpoint/resume 可验证性检查项：
+  - failure artifact 必须保留 durable logical watermark、pending window/page 与失败 task id
+  - resume 必须显式记录 `resume_from_task_id`，并证明从最后一个 durable checkpoint 继续，而不是跳段重算或提前推进最终 watermark
+  - resume 前后 `window_start` / `window_end` 不得变化；若窗口变化或 checkpoint 不可信，必须停在 `blocked`
+  - 每个组合都应保留可回链的 run id、window、`query_slice_id`、failure log、resume log 与 checkpoint 证据
+
+## 7. Remaining Blockers
 
 当前 Phase1-G 审计收口范围内无新增 blocker。
 
@@ -443,7 +490,7 @@
 - `GitHub live / Product Hunt deferred` 边界
   - `DEC-029` 的 deferred 边界保持不变；Product Hunt 仍不是当前 Phase1 exit gate blocker
 
-## 7. Cross-doc Consistency Check
+## 8. Cross-doc Consistency Check
 
 - 当前 live source 边界：`README.md`、`docs/phase1_a_baseline.md`、`docs/phase1_e_acceptance_evidence.md` 与本文件现一致表述为“GitHub 为当前 live 主路径，Product Hunt deferred，仅保留 fixture / replay / contract”。
 - Phase1 exit gate 口径：`01_phase_plan_and_exit_criteria.md`、`17_open_decisions_and_freeze_board.md`、`docs/phase1_a_baseline.md`、`docs/phase1_e_acceptance_evidence.md`、`docs/phase1_g_acceptance_evidence.md` 现一致表述为“GitHub 完整抓取周期仍是当前 exit gate 组成部分，且当前最小完整周期按 GitHub `3 windows x 3 query slices` matrix 的首跑 + same-window rerun + 可恢复失败演练、`outside_window_count = 0`、durable raw 不重复制造、checkpoint/resume 可验证来计算；Product Hunt 非当前阻塞 gate，只保留 deferred future seam”。
@@ -454,7 +501,7 @@
 - release judgment 落点：`docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json`、`README.md` 与本文件现一致表述为“最终 sign-off 仍归 owner；当前批次已以 `gpt-5.4-high` 自动化签署记录落盘”。
 - 解释层 blocker 收敛：`GitHub 完整抓取周期` 与当前 `3 windows x 3 slices` matrix 的对应关系现已由 `DEC-029` 语境与 `01_phase_plan_and_exit_criteria.md` 的折算规则显式写清；当前这批收口结果已无 human verdict 或 owner sign-off pending 项。
 
-## 8. 当前结论
+## 9. 当前结论
 
 当前仓库已经具备一套可执行、可回放、可审阅的 `Phase1-G local acceptance path baseline`：
 
