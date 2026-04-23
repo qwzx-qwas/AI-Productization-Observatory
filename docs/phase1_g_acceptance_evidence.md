@@ -518,3 +518,149 @@
 - 当前 machine judgment 已升级为 `go`，因为 sampled human verdict 与 owner sign-off 前置条件已在仓库内闭合
 - 在 owner sign-off 未闭合的 future report 里，`conditional-go` 仍不等于 Phase1 退出评审通过
 - Product Hunt live 仍保持 deferred，并不因为本次 `go` 判断而被重新纳入当前 gate
+
+## 10. Release Confirmation Addendum
+
+- 本次发布批次时间戳：`2026-04-22T12:04:31Z`
+- 本次发布确认固定使用 evidence pair：
+  - `docs/phase1_g_acceptance_evidence.md:412`
+  - `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json:1439`
+- judgment 摘要：
+  - `python3 -m src.cli phase1-g-audit-ready-report` 本次重算后保持 `generated_at = 2026-04-22T11:54:16.348756Z`
+  - `report_title = Phase1-G audit-ready / owner-review-ready / go`
+  - `report_summary.machine_tendency = go`
+  - `release_judgment.judgment = go`
+  - `release_owner_signoff.status = approved`
+  - `release_judgment.release_conditions = []`
+- 关键命令摘要：
+  - `python3 -m src.cli validate-configs`：通过，输出 `validated 10 config artifacts`
+  - `python3 -m src.cli validate-schemas`：通过，输出 `validated 6 schema documents`
+  - `python3 -m src.cli phase1-g-audit-ready-report`：通过，输出 `owner_review_package = owner-review-ready`
+  - `python3 -m unittest -v tests.contract.test_contracts.Phase1GAcceptanceEvidenceContractTests`：通过，`Ran 2 tests`，结果 `OK`
+  - `python3 -m unittest -v tests.contract.test_contracts.FreezeBoardSignoffContractTests`：通过，`Ran 2 tests`，结果 `OK`
+  - `python3 -m unittest discover -s tests -t .`：通过，`Ran 182 tests in 547.130s`，结果 `OK`
+- 当前边界摘要：
+  - 本次正式发布继续保持 `DEC-029` 的当前 gate 解释：`GitHub live / Product Hunt deferred`
+  - Product Hunt 仍只保留 fixture / replay / contract 与 future live seam，不回到当前 Phase1 exit gate
+- 与 JSON 报告一致性声明：
+  - 本节只补记本批次正式发布确认与串行验证结果，不改写 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json` 中已落盘的 `go` judgment、`release_owner_signoff.status = approved` 与 `product_hunt_phase1_exit_gate = deferred_not_current_gate`
+  - 当前本文件、固定 evidence pair、以及 JSON report 对 `GitHub live / Product Hunt deferred` 边界保持一致
+
+## 11. Phase2-1 Kickoff Record
+
+- kickoff / parity refresh 时间戳：`2026-04-22T15:18:54Z`
+- kickoff 范围：
+  - 仅启动 `DB runtime backend baseline` 的第一批可执行项
+  - 不改变 `GitHub live / Product Hunt deferred`
+  - 不把 file-backed harness 改写成最终 runtime backend
+  - 不冻结 `migration_tool`、`runtime_db_driver`、`managed_postgresql_vendor`、`secrets_manager`
+- 本批次已执行项：
+  - 已新增 `src/runtime/backend_contract.py`，把 file-backed harness 与 future DB-backed adapter 的共享行为边界固化为 `RuntimeTaskBackend`
+  - 已新增 `src/runtime/db_driver_readiness.py`，把 future DB driver 的可替换 adapter seam 与 canonical error classification 独立为 readiness layer；当前仍由 file-backed runtime contract 持有状态语义
+  - 已新增 `src/runtime/db_shadow.py`，以 injectable fake executor 方式落地 `DB-shadow adapter` 骨架；该实现不连接真实 PostgreSQL，也不触发 runtime cutover
+  - 已新增 `src/runtime/sql/postgresql_task_runtime_phase2_1.sql`，以 tool-agnostic 方式落地 PostgreSQL 17 task-table baseline scaffold
+  - 已把 `src/runtime/migrations.py` 从 reserved entrypoint 升级为可执行 kickoff plan，并补充 `driver_readiness`、`phase2_1_progress`、`phase2_1_acceptance_checklist`、`executed_items`、`not_executed_items`、`blocking_items` 与 `next_command_plan`；本轮进一步写入 `DB driver readiness layer`、`DB-shadow adapter parity` 与关键状态流覆盖进展
+  - 已新增 `tests/unit/runtime_backend_conformance.py`，作为 shared conformance test skeleton
+  - 已把 `tests/unit/test_runtime.py` 扩展为 file-backed harness 与 `DB-shadow adapter` 共跑 shared conformance suite，并新增 fake executor 注入验证与 driver error classification 断言
+  - 已新增 `tests/unit/test_runtime_migrations.py`
+  - 已实际执行 `python3 -m src.cli migrate --plan`，输出：
+    - `status = db_runtime_backend_kickoff_started`
+    - `database_engine = PostgreSQL 17`
+    - `task_table_location = primary relational DB`
+    - `driver_readiness.adapter_mode = shadow_mirror_only`
+    - `driver_readiness.real_db_connection = false`
+    - `phase2_1_progress.driver_readiness_layer_status = shadow_adapter_ready_for_driver_swap`
+    - `migration_tool = null`
+    - `runtime_db_driver = null`
+    - `managed_postgresql_vendor = null`
+    - `secrets_manager = null`
+  - 已实际执行 `python3 -m unittest -v tests.unit.test_runtime_migrations`，结果 `Ran 2 tests in 0.008s`，`OK`
+  - 已实际执行 `python3 -m unittest -v tests.unit.test_runtime tests.regression.test_replay_and_marts`，结果 `Ran 49 tests in 10.744s`，`OK`
+  - shared conformance 本轮新增统一断言：
+    - `claim conflict` 不得覆盖现有 lease，且不制造额外 task side effect
+    - `lease` 在未过期边界可续租，`heartbeat` 命中过期 lease 时必须拒绝
+    - `blocked replay` 不可越权提升为 `succeeded`
+    - `resume checkpoint/window` 非法时必须直接落入 `blocked`
+  - 已实际执行 `python3 -m src.cli validate-configs`，输出 `validated 10 config artifacts`
+  - 已实际执行 `python3 -m src.cli validate-schemas`，输出 `validated 6 schema documents`
+  - 已实际执行 `python3 -m src.cli phase1-g-audit-ready-report`，继续输出 `report_title = Phase1-G audit-ready / owner-review-ready / go`，`generated_at = 2026-04-22T15:18:54.325080Z`
+  - 已实际执行 `python3 -m unittest -v tests.contract.test_contracts.Phase1GAcceptanceEvidenceContractTests`，结果 `Ran 2 tests`，`OK`
+  - 已实际执行 `python3 -m unittest -v tests.contract.test_contracts.FreezeBoardSignoffContractTests`，结果 `Ran 2 tests`，`OK`
+  - 已实际执行 `python3 -m unittest discover -s tests -t .`，结果 `Ran 211 tests in 602.012s`，`OK`
+  - 本批次继续保持固定 evidence pair 对锚点不变：
+    - `docs/phase1_g_acceptance_evidence.md:412`
+    - `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json:1439`
+  - 本批次未改变 `Phase1-G go`、`release_owner_signoff.status = approved`、以及 `GitHub live / Product Hunt deferred` 边界
+- 本批次未执行项：
+  - 未执行真实 PostgreSQL 连接或 DB task table 写入
+  - 未执行真实 PostgreSQL driver-backed `claim / lease / heartbeat / CAS reclaim` 查询路径
+  - 未执行 DB-backed runtime cutover
+  - 未执行 service API 与 frontend serviceization
+- 阻塞项：
+  - 当前无阻塞 kickoff 的未冻结决策冲突
+  - 真实 DB cutover 之前仍保留人类选型边界：`migration_tool`、`runtime_db_driver`、`managed_postgresql_vendor`、`secrets_manager`
+- 下一步命令计划：
+  - `python3 -m src.cli migrate --plan`
+  - `python3 -m unittest -v tests.unit.test_runtime_migrations`
+  - `python3 -m unittest -v tests.unit.test_runtime tests.regression.test_replay_and_marts`
+  - `python3 -m src.cli validate-configs`
+  - `python3 -m src.cli validate-schemas`
+  - `python3 -m src.cli phase1-g-audit-ready-report`
+  - `python3 -m unittest -v tests.contract.test_contracts.Phase1GAcceptanceEvidenceContractTests`
+  - `python3 -m unittest -v tests.contract.test_contracts.FreezeBoardSignoffContractTests`
+  - `python3 -m unittest discover -s tests -t .`
+- 验收基准：
+  - Phase2-1 archived kickoff evidence 继续保留 `db_runtime_backend_kickoff_started` 语义；当前 Phase2-2 plan 已推进为 `db_runtime_backend_migration_spine_started`
+  - 当前 plan 必须继续显式产出 `driver_readiness`、`phase2_1_progress`、`phase2_1_acceptance_checklist`、`executed_items`、`not_executed_items`、`blocking_items` 与 `next_command_plan`，并把 `DB driver readiness layer`、`DB-shadow adapter parity` 与关键状态流覆盖写入 `executed_items` / `phase2_1_acceptance_checklist`
+  - PostgreSQL scaffold 必须继续保持 text primary keys、`JSONB payload_json`、text status codes、`forward-only + additive-first`
+  - file-backed harness 与 `DB-shadow adapter` 必须可共用 `RuntimeTaskBackend` 行为断言，并保持 `claim conflict / lease renew / heartbeat expiry / blocked replay / resume gating` 的共同覆盖
+  - Phase1 发布 judgment 必须继续保持 `go`
+
+## 12. Phase2-2 DB Runtime Migration Spine Record
+
+- migration spine refresh 时间戳：`2026-04-23T05:08:18Z`
+- 本批次范围：
+  - 仅推进 `DB Runtime Backend And Migration Spine` 的 shadow-mode 可执行增量
+  - 不改变 `GitHub live / Product Hunt deferred`
+  - 不把 file-backed harness 改写成最终 runtime backend
+  - 不冻结 `migration_tool`、`runtime_db_driver`、`managed_postgresql_vendor`、`secrets_manager`
+- 本批次已执行项：
+  - 已把 `RuntimeTaskDriverAdapter` 扩展为包含 `verify_runtime_tasks` 的可替换 DB-side conformance seam
+  - 已新增 `RuntimeTaskDriverConformanceReport`，用于记录 `verified` / `drift_detected`、row-level mismatch、checked contracts 与 `cutover_eligible = false`
+  - 已把 `InMemoryPostgresTaskShadowExecutor` 扩展为可对比 DB-shadow row snapshot 与 canonical runtime task snapshot
+  - 已把 `PostgresTaskBackendShadow` 扩展为 `shadow_conformance()`，可在不 resync 的情况下报告 DB 侧 drift evidence
+  - 已把 `src/runtime/migrations.py` 的 plan 推进为：
+    - `phase = Phase2-2`
+    - `status = db_runtime_backend_migration_spine_started`
+    - `driver_conformance_contract.adapter_method = verify_runtime_tasks`
+    - `phase2_2_progress.runtime_backend_spine_status = db_shadow_conformance_ready`
+    - `migration_tool = null`
+    - `runtime_db_driver = null`
+    - `managed_postgresql_vendor = null`
+    - `secrets_manager = null`
+  - 已补充 `tests.unit.test_runtime` 覆盖 DB-shadow verified parity 与 deliberate drift detection
+  - 已更新 `tests.unit.test_runtime_migrations` 覆盖 Phase2-2 migration spine plan
+  - 已重新执行 `python3 -m src.cli phase1-g-audit-ready-report`，继续输出 `report_title = Phase1-G audit-ready / owner-review-ready / go`，`generated_at = 2026-04-23T05:09:36.655674Z`
+- 本批次未执行项：
+  - 未连接真实 PostgreSQL
+  - 未执行真实 driver-backed `claim / lease / heartbeat / CAS reclaim` 查询路径
+  - 未执行 DB-backed runtime cutover
+  - 未执行 service API 与 frontend serviceization
+- 阻塞项：
+  - 当前无阻塞本 shadow-mode Phase2-2 增量的冻结冲突
+  - 真实 DB cutover 与最终依赖命名仍需 owner 后续冻结 `migration_tool`、`runtime_db_driver`、`managed_postgresql_vendor` 与 `secrets_manager`
+
+## 13. Cross-doc Consistency Check Addendum
+
+- 当前阶段状态：
+  - `docs/phase1_a_baseline.md`、`docs/phase1_e_acceptance_evidence.md`、本文件与 `phase2_prompt.md` 现一致记录为“Phase1 正式发布已闭合为 `go`，Phase2-2 DB runtime migration spine 已启动”。
+- 当前边界：
+  - 上述文档现一致保持 `GitHub live / Product Hunt deferred`、mart-first dashboard discipline、以及 file-backed harness 仍是本地 baseline 而不是最终 DB runtime backend。
+- 本批次发布状态：
+  - 本批次正式发布确认现一致回链到固定 evidence pair `docs/phase1_g_acceptance_evidence.md:412` 与 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json:1439`，且 release judgment 继续为 `go`。
+- Phase2-1 已启动状态：
+  - 上述文档现一致表述为“DB runtime backend 基线接入已启动，DB-shadow parity skeleton 与 driver readiness layer 已可运行”，具体落地为 kickoff plan、`RuntimeTaskBackend` contract、`src/runtime/db_driver_readiness.py`、`src/runtime/db_shadow.py`、PostgreSQL task-table SQL scaffold、shared conformance suite 与最小测试，而非实际 cutover。
+- Phase2-2 已启动状态：
+  - 上述文档现一致表述为“DB runtime migration spine 已启动，adapter seam 已扩展到 DB-side row conformance report，DB-shadow 可验证 parity 与 deliberate drift detection”，具体落地为 `RuntimeTaskDriverConformanceReport`、`verify_runtime_tasks`、`shadow_conformance()`、`phase2_2_progress` 与新增 unit coverage，而非真实 PostgreSQL cutover。
+- 未决项归属与 owner 决策边界：
+  - `migration_tool`、`runtime_db_driver`、`managed_postgresql_vendor` 与 `secrets_manager` 仍保持保留人类选型边界；本批次文档与代码均未把这些项写成最终产品依赖。

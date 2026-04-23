@@ -1276,7 +1276,7 @@ def build_parser() -> argparse.ArgumentParser:
     trigger_score_parser.add_argument("--priority-code")
     trigger_score_parser.add_argument("--created-at")
 
-    migrate_parser = subparsers.add_parser("migrate", help="Show the reserved migration entrypoint plan.")
+    migrate_parser = subparsers.add_parser("migrate", help="Show the Phase2 DB runtime migration spine plan.")
     migrate_parser.add_argument("--plan", action="store_true")
 
     return parser
@@ -1662,7 +1662,7 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "migrate":
             if not args.plan:
                 raise ConfigError("Only --plan is implemented in the minimal baseline")
-            print(migration_plan())
+            print(json.dumps(migration_plan(), ensure_ascii=True))
             return 0
 
         raise ConfigError(f"Unsupported command: {args.command}")

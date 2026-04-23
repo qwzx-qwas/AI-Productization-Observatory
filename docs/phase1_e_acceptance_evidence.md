@@ -285,13 +285,18 @@
 
 ## 6. Cross-doc Consistency Check
 
-- 当前 live source 边界：`README.md`、`docs/phase1_a_baseline.md`、`docs/phase1_g_acceptance_evidence.md` 与本文件现一致表述为“GitHub 为当前 live 主路径，Product Hunt 保持 deferred，不以 Product Hunt live 作为本轮验收前提”。
-- Phase1 exit gate 口径：`01_phase_plan_and_exit_criteria.md`、`docs/phase1_a_baseline.md`、`docs/phase1_e_acceptance_evidence.md`、`docs/phase1_g_acceptance_evidence.md` 现一致表述为“GitHub 完整抓取周期仍是当前 exit gate 组成部分；Product Hunt 非当前阻塞 gate，只保留 deferred future seam”。
-- 五项审计流程口径：`docs/phase1_g_acceptance_evidence.md` 与 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json` 现采用统一结构 `machine_pre_audit -> human_sampled_verdict -> owner_signoff`；本文件继续只承担 Phase1-E 控制平面证据，不越权写入人类 verdict 或 owner sign-off。
-- 验收覆盖范围与未覆盖范围：本文件已把覆盖范围明确收敛到 GitHub live matrix、LLM relay provider audit、review/error runtime baseline；未覆盖范围仍包括 Product Hunt live 与 dashboard release-level reconciliation，而 sampled human verdict / owner merge-release judgment 已在 Phase1-G evidence 中闭合。
-- owner 决策依赖项：本文件与 `docs/phase1_g_acceptance_evidence.md`、`docs/phase1_a_baseline.md` 现一致依赖 `DEC-002`、`DEC-003`、`DEC-005`、`DEC-022`、`DEC-023`、`DEC-024`、`DEC-025`、`DEC-029`，未把 `current_default` 或 probe 命令输出写成新的冻结决策。
-- release judgment 落点：`docs/phase1_g_acceptance_evidence.md` 与 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json` 现承担 machine release judgment 与 owner_required_signoff 的汇总，本文件继续只负责 Phase1-E 控制平面证据。
-- judgment 与 sign-off 边界：上述文档现一致表述为“machine judgment 在 owner sign-off 未闭合时最多只能停在 `conditional-go`；当前批次因 sampled human verdict 完成且 owner sign-off 为 `approved`，故已升级为 `go`”。
+- 当前阶段状态：
+  - 本文件继续定位为 `Phase1-E review / error / replay / unresolved` 控制平面证据；与 `docs/phase1_g_acceptance_evidence.md` 和 `phase2_prompt.md` 一致，当前仓库状态为 `Phase1-G go recorded + Phase2-2 DB runtime migration spine started`。
+- 当前边界：
+  - `README.md`、`docs/phase1_a_baseline.md`、`docs/phase1_g_acceptance_evidence.md` 与本文件现一致保持 `GitHub live / Product Hunt deferred`，且 file-backed `review_issue` / `processing_error` / `task_store` 仍只是本地 baseline，不被表述为最终 DB-backed control plane。
+- 本批次发布状态：
+  - 当前批次正式发布确认仍以 `docs/phase1_g_acceptance_evidence.md:412` 与 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json:1439` 为固定 evidence pair；本文件不重写 release judgment，只引用 Phase1-G 已落盘的 `go + approved` 结果。
+- Phase2-1 已启动状态：
+  - `phase2_prompt.md`、`src/runtime/migrations.py`、`src/runtime/db_driver_readiness.py`、`src/runtime/db_shadow.py` 与 `src/runtime/sql/postgresql_task_runtime_phase2_1.sql` 现一致表述为“DB runtime backend 基线接入已启动，DB-shadow parity skeleton 与 driver readiness layer 已可运行”，但当前尚未把 Phase1-E 的 file-backed control plane 切换到 PostgreSQL runtime backend。
+- Phase2-2 已启动状态：
+  - `phase2_prompt.md`、`src/runtime/migrations.py`、`src/runtime/db_driver_readiness.py`、`src/runtime/db_shadow.py` 与 `tests/unit/test_runtime.py` 现一致表述为“DB runtime migration spine 已启动，DB-shadow 可输出 DB-side row conformance report 并检测 drift”，但当前仍未把 Phase1-E 的 file-backed `review_issue` / `processing_error` / `task_store` 控制平面切换到 PostgreSQL runtime backend。
+- 未决项归属与 owner 决策边界：
+  - `migration_tool`、`runtime_db_driver`、`managed_postgresql_vendor` 与 `secrets_manager` 仍处于保留人类选型边界；本文件与 `15_tech_stack_and_runtime.md`、`phase2_prompt.md` 一致，不把这些未决项写成新的 Phase1-E 运行时结论。
 
 ## 7. 结论
 

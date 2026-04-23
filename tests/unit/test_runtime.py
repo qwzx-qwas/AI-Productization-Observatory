@@ -2,17 +2,40 @@ from __future__ import annotations
 
 import unittest
 
-from src.common.errors import ContractValidationError
+from src.common.errors import ContractValidationError, ProcessingError
+from src.runtime.db_driver_readiness import (
+    RuntimeTaskDriverClaimConflict,
+    RuntimeTaskDriverConnectivityError,
+    RuntimeTaskDriverErrorClassifier,
+)
+from src.runtime.db_shadow import InMemoryPostgresTaskShadowExecutor, PostgresTaskBackendShadow
 from src.runtime.models import default_payload
 from src.runtime.tasks import FileTaskStore
-from tests.helpers import temp_config
+from tests.unit.runtime_backend_conformance import RuntimeTaskBackendConformanceMixin
 
 
-class RuntimeUnitTests(unittest.TestCase):
-    def test_task_lifecycle_retryable_failure(self) -> None:
+class FileTaskStoreConformanceTests(RuntimeTaskBackendConformanceMixin, unittest.TestCase):
+    def build_backend(self, config):
+        return FileTaskStore(config.task_store_path)
+
+
+class PostgresTaskBackendShadowConformanceTests(RuntimeTaskBackendConformanceMixin, unittest.TestCase):
+    def build_backend(self, config):
+        return PostgresTaskBackendShadow(
+            config.task_store_path,
+            executor=InMemoryPostgresTaskShadowExecutor(),
+        )
+
+
+class PostgresTaskBackendShadowUnitTests(unittest.TestCase):
+    def test_shadow_executor_tracks_latest_task_snapshot(self) -> None:
+        from tests.helpers import temp_config
+
         with temp_config() as config:
-            store = FileTaskStore(config.task_store_path)
-            task = store.enqueue(
+            executor = InMemoryPostgresTaskShadowExecutor()
+            backend = PostgresTaskBackendShadow(config.task_store_path, executor=executor)
+
+            task = backend.enqueue(
                 task_type="pull_collect",
                 task_scope="per_source_window",
                 source_id="src_product_hunt",
@@ -23,103 +46,122 @@ class RuntimeUnitTests(unittest.TestCase):
                 payload_json=default_payload("product_hunt", "2026-03-01", "2026-03-08"),
                 max_attempts=2,
             )
+            backend.claim(task.task_id, worker_id="worker-shadow")
+            backend.start(task.task_id)
+            backend.block(task.task_id, "manual approval required")
 
-            claimed = store.claim_next(worker_id="worker-a")
-            self.assertEqual(claimed["task_id"], task.task_id)
-            self.assertEqual(claimed["status"], "leased")
+            shadow_task = executor.get_task(task.task_id)
+            self.assertIsNotNone(shadow_task)
+            self.assertEqual(shadow_task["status"], "blocked")
+            self.assertEqual(shadow_task["last_error_type"], "blocked_replay")
+            self.assertGreaterEqual(len(executor.operation_log), 4)
 
-            running = store.start(task.task_id)
-            self.assertEqual(running["status"], "running")
+    def test_shadow_backend_exposes_driver_readiness_metadata(self) -> None:
+        from tests.helpers import temp_config
 
-            heartbeat = store.heartbeat(task.task_id, worker_id="worker-a")
-            self.assertIsNotNone(heartbeat["lease_expires_at"])
-
-            failed = store.fail(task.task_id, "network_error", "temporary failure")
-            self.assertEqual(failed["status"], "failed_retryable")
-            self.assertEqual(failed["attempt_count"], 1)
-            self.assertGreater(failed["available_at"], failed["finished_at"])
-
-    def test_terminal_failure_for_non_retryable_error(self) -> None:
         with temp_config() as config:
-            store = FileTaskStore(config.task_store_path)
-            task = store.enqueue(
-                task_type="normalize_raw",
-                task_scope="per_raw_record",
-                source_id="src_product_hunt",
-                target_type=None,
-                target_id=None,
-                window_start="2026-03-01",
-                window_end="2026-03-08",
-                payload_json=default_payload("product_hunt", "2026-03-01", "2026-03-08"),
-                max_attempts=2,
+            backend = PostgresTaskBackendShadow(
+                config.task_store_path,
+                executor=InMemoryPostgresTaskShadowExecutor(),
             )
 
-            store.claim_next(worker_id="worker-b")
-            store.start(task.task_id)
-            failed = store.fail(task.task_id, "json_schema_validation_failed", "contract mismatch")
-            self.assertEqual(failed["status"], "failed_terminal")
+            readiness = backend.driver_readiness()
+            self.assertEqual(readiness["adapter_mode"], "shadow_mirror_only")
+            self.assertFalse(readiness["real_db_connection"])
+            self.assertIn("migration_tool", readiness["pending_human_selection_fields"])
+            error_codes = {item["code"] for item in readiness["error_categories"]}
+            self.assertEqual(
+                error_codes,
+                {
+                    "claim_conflict",
+                    "lease_expired",
+                    "driver_unavailable",
+                    "driver_timeout",
+                    "driver_protocol_violation",
+                },
+            )
 
-    def test_expired_running_task_can_be_reclaimed_when_write_is_idempotent(self) -> None:
+    def test_shadow_backend_reports_db_side_conformance(self) -> None:
+        from tests.helpers import temp_config
+
         with temp_config() as config:
-            store = FileTaskStore(config.task_store_path)
-            task = store.enqueue(
+            backend = PostgresTaskBackendShadow(
+                config.task_store_path,
+                executor=InMemoryPostgresTaskShadowExecutor(),
+            )
+
+            task = backend.enqueue(
                 task_type="pull_collect",
                 task_scope="per_source_window",
-                source_id="src_product_hunt",
+                source_id="src_github",
                 target_type=None,
                 target_id=None,
                 window_start="2026-03-01",
                 window_end="2026-03-08",
-                payload_json=default_payload("product_hunt", "2026-03-01", "2026-03-08"),
+                payload_json=default_payload("github", "2026-03-01", "2026-03-08"),
                 max_attempts=2,
             )
+            backend.claim(task.task_id, worker_id="worker-shadow")
+            backend.start(task.task_id)
 
-            store.claim(task.task_id, worker_id="worker-a")
-            store.start(task.task_id)
-            store.update_task(task.task_id, lease_expires_at="2000-01-01T00:00:00Z")
+            report = backend.shadow_conformance()
+            self.assertEqual(report["status"], "verified")
+            self.assertEqual(report["checked_task_count"], 1)
+            self.assertEqual(report["mismatch_count"], 0)
+            self.assertFalse(report["cutover_eligible"])
+            self.assertIn("row_snapshot_equivalence", report["checked_contracts"])
 
-            reclaimed = store.claim_next(worker_id="worker-b")
-            self.assertIsNotNone(reclaimed)
-            self.assertEqual(reclaimed["task_id"], task.task_id)
-            self.assertEqual(reclaimed["status"], "leased")
-            self.assertEqual(reclaimed["lease_owner"], "worker-b")
+    def test_shadow_backend_detects_db_side_snapshot_drift_without_resync(self) -> None:
+        from tests.helpers import temp_config
 
-    def test_expired_running_task_stays_unclaimed_without_idempotent_write(self) -> None:
         with temp_config() as config:
-            store = FileTaskStore(config.task_store_path)
-            payload = default_payload("product_hunt", "2026-03-01", "2026-03-08")
-            payload["idempotent_write"] = False
-            task = store.enqueue(
+            executor = InMemoryPostgresTaskShadowExecutor()
+            backend = PostgresTaskBackendShadow(config.task_store_path, executor=executor)
+
+            task = backend.enqueue(
                 task_type="pull_collect",
                 task_scope="per_source_window",
-                source_id="src_product_hunt",
+                source_id="src_github",
                 target_type=None,
                 target_id=None,
                 window_start="2026-03-01",
                 window_end="2026-03-08",
-                payload_json=payload,
+                payload_json=default_payload("github", "2026-03-01", "2026-03-08"),
                 max_attempts=2,
             )
+            drifted_rows = executor.all_runtime_tasks()
+            drifted_rows[0]["status"] = "succeeded"
+            executor.replace_runtime_tasks(drifted_rows)
 
-            store.claim(task.task_id, worker_id="worker-a")
-            store.start(task.task_id)
-            store.update_task(task.task_id, lease_expires_at="2000-01-01T00:00:00Z")
+            report = backend.shadow_conformance()
+            self.assertEqual(report["status"], "drift_detected")
+            self.assertEqual(report["mismatch_count"], 1)
+            self.assertEqual(report["mismatches"][0]["task_id"], task.task_id)
+            self.assertEqual(report["mismatches"][0]["mismatch_type"], "row_mismatch")
 
-            self.assertIsNone(store.claim_next(worker_id="worker-b"))
+    def test_driver_error_classifier_maps_runtime_conflicts_and_technical_failures(self) -> None:
+        classifier = RuntimeTaskDriverErrorClassifier()
 
-    def test_replay_task_requires_reason_and_basis_fields_together(self) -> None:
+        conflict_error = classifier.coerce(RuntimeTaskDriverClaimConflict("lost CAS"), operation="claim")
+        self.assertIsInstance(conflict_error, ContractValidationError)
+        self.assertIn("claim_conflict", str(conflict_error))
+
+        technical_error = classifier.coerce(RuntimeTaskDriverConnectivityError("db down"), operation="replace_runtime_tasks")
+        self.assertIsInstance(technical_error, ProcessingError)
+        self.assertEqual(technical_error.error_type, "dependency_unavailable")
+
+    def test_shadow_backend_coerces_driver_failures_without_rewriting_runtime_semantics(self) -> None:
+        from tests.helpers import temp_config
+
+        class BrokenExecutor(InMemoryPostgresTaskShadowExecutor):
+            def replace_runtime_tasks(self, tasks):
+                raise RuntimeTaskDriverConnectivityError("db unavailable")
+
         with temp_config() as config:
-            store = FileTaskStore(config.task_store_path)
-            payload = default_payload("product_hunt", "2026-03-01", "2026-03-08")
-            payload["replay_reason"] = "same_window_fixture_replay"
-
-            with self.assertRaises(ContractValidationError):
-                store.create_replay_task(
-                    source_id="src_product_hunt",
-                    task_type="pull_collect",
-                    task_scope="per_source_window",
-                    window_start="2026-03-01",
-                    window_end="2026-03-08",
-                    payload_json=payload,
-                    max_attempts=2,
+            with self.assertRaises(ProcessingError) as ctx:
+                PostgresTaskBackendShadow(
+                    config.task_store_path,
+                    executor=BrokenExecutor(),
                 )
+
+        self.assertEqual(ctx.exception.error_type, "dependency_unavailable")

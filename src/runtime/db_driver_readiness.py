@@ -1,0 +1,300 @@
+"""Replaceable DB-driver readiness seam for runtime task backends.
+
+This layer keeps DB-driver concerns deliberately narrow in Phase2:
+future driver work should implement an adapter and reuse the existing
+claim/lease/replay state semantics instead of re-deriving them.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Any, Protocol, runtime_checkable
+
+from src.common.errors import ContractValidationError, ProcessingError
+from src.runtime.backend_contract import TaskSnapshot
+
+
+class RuntimeTaskDriverAdapterError(Exception):
+    """Base class for driver-adapter readiness failures."""
+
+
+class RuntimeTaskDriverClaimConflict(RuntimeTaskDriverAdapterError):
+    """Raised when a DB compare-and-swap claim loses an existing lease owner."""
+
+
+class RuntimeTaskDriverLeaseExpired(RuntimeTaskDriverAdapterError):
+    """Raised when a heartbeat or write targets an expired lease."""
+
+
+class RuntimeTaskDriverConnectivityError(RuntimeTaskDriverAdapterError):
+    """Raised when the driver cannot reach the backing database service."""
+
+
+class RuntimeTaskDriverTimeout(RuntimeTaskDriverAdapterError):
+    """Raised when the driver times out before a DB operation completes."""
+
+
+class RuntimeTaskDriverProtocolError(RuntimeTaskDriverAdapterError):
+    """Raised when an adapter violates the runtime-task row contract."""
+
+
+@dataclass(frozen=True)
+class RuntimeTaskDriverErrorCategory:
+    """Canonical error mapping for future driver-backed runtime adapters."""
+
+    code: str
+    canonical_error_type: str
+    retryable: bool
+    boundary: str
+    resolution_hint: str
+
+    def to_dict(self) -> dict[str, object]:
+        return {
+            "code": self.code,
+            "canonical_error_type": self.canonical_error_type,
+            "retryable": self.retryable,
+            "boundary": self.boundary,
+            "resolution_hint": self.resolution_hint,
+        }
+
+
+@dataclass(frozen=True)
+class RuntimeTaskDriverReadinessSnapshot:
+    """Machine-readable readiness metadata for the current DB-driver seam."""
+
+    adapter_contract: str
+    adapter_mode: str
+    semantics_owner: str
+    real_db_connection: bool
+    shadow_sync_strategy: str
+    pending_human_selection_fields: tuple[str, ...]
+    error_categories: tuple[RuntimeTaskDriverErrorCategory, ...]
+
+    def to_dict(self) -> dict[str, object]:
+        return {
+            "adapter_contract": self.adapter_contract,
+            "adapter_mode": self.adapter_mode,
+            "semantics_owner": self.semantics_owner,
+            "real_db_connection": self.real_db_connection,
+            "shadow_sync_strategy": self.shadow_sync_strategy,
+            "pending_human_selection_fields": list(self.pending_human_selection_fields),
+            "error_categories": [category.to_dict() for category in self.error_categories],
+        }
+
+
+@dataclass(frozen=True)
+class RuntimeTaskDriverConformanceMismatch:
+    """A single row-level drift finding between runtime and DB-shadow state."""
+
+    task_id: str
+    mismatch_type: str
+    detail: str
+    expected: TaskSnapshot | None
+    actual: TaskSnapshot | None
+
+    def to_dict(self) -> dict[str, object]:
+        return {
+            "task_id": self.task_id,
+            "mismatch_type": self.mismatch_type,
+            "detail": self.detail,
+            "expected": self.expected,
+            "actual": self.actual,
+        }
+
+
+@dataclass(frozen=True)
+class RuntimeTaskDriverConformanceReport:
+    """DB-side behavior parity report for the shadow runtime adapter."""
+
+    status: str
+    adapter_mode: str
+    real_db_connection: bool
+    checked_task_count: int
+    mismatch_count: int
+    checked_contracts: tuple[str, ...]
+    cutover_eligible: bool
+    mismatches: tuple[RuntimeTaskDriverConformanceMismatch, ...]
+
+    def to_dict(self) -> dict[str, object]:
+        return {
+            "status": self.status,
+            "adapter_mode": self.adapter_mode,
+            "real_db_connection": self.real_db_connection,
+            "checked_task_count": self.checked_task_count,
+            "mismatch_count": self.mismatch_count,
+            "checked_contracts": list(self.checked_contracts),
+            "cutover_eligible": self.cutover_eligible,
+            "mismatches": [mismatch.to_dict() for mismatch in self.mismatches],
+        }
+
+
+@runtime_checkable
+class RuntimeTaskDriverAdapter(Protocol):
+    """Persistence-facing adapter that a future real DB driver can implement."""
+
+    def replace_runtime_tasks(self, tasks: list[TaskSnapshot]) -> None: ...
+
+    def all_runtime_tasks(self) -> list[TaskSnapshot]: ...
+
+    def readiness_snapshot(self) -> RuntimeTaskDriverReadinessSnapshot: ...
+
+    def verify_runtime_tasks(self, expected_tasks: list[TaskSnapshot]) -> RuntimeTaskDriverConformanceReport: ...
+
+
+class RuntimeTaskDriverErrorClassifier:
+    """Maps adapter exceptions to canonical runtime failure categories."""
+
+    def __init__(self) -> None:
+        self._categories = {
+            "claim_conflict": RuntimeTaskDriverErrorCategory(
+                code="claim_conflict",
+                canonical_error_type="claim_conflict",
+                retryable=False,
+                boundary="runtime_state_semantics",
+                resolution_hint="Refresh the current lease owner and retry claim only after lease expiry or manual requeue.",
+            ),
+            "lease_expired": RuntimeTaskDriverErrorCategory(
+                code="lease_expired",
+                canonical_error_type="lease_expired",
+                retryable=False,
+                boundary="runtime_state_semantics",
+                resolution_hint="Do not extend or write through an expired lease; reclaim only through the CAS-safe resume path.",
+            ),
+            "driver_unavailable": RuntimeTaskDriverErrorCategory(
+                code="driver_unavailable",
+                canonical_error_type="dependency_unavailable",
+                retryable=True,
+                boundary="processing_error_retry_policy",
+                resolution_hint="Treat connectivity loss as a retryable technical dependency outage.",
+            ),
+            "driver_timeout": RuntimeTaskDriverErrorCategory(
+                code="driver_timeout",
+                canonical_error_type="timeout",
+                retryable=True,
+                boundary="processing_error_retry_policy",
+                resolution_hint="Treat slow or stalled DB operations as retryable technical timeouts.",
+            ),
+            "driver_protocol_violation": RuntimeTaskDriverErrorCategory(
+                code="driver_protocol_violation",
+                canonical_error_type="driver_protocol_violation",
+                retryable=False,
+                boundary="runtime_contract_guardrail",
+                resolution_hint="Fix the adapter or row-shape mapping before retrying; do not fold protocol drift into review logic.",
+            ),
+        }
+
+    def categories(self) -> tuple[RuntimeTaskDriverErrorCategory, ...]:
+        return tuple(self._categories.values())
+
+    def classify(self, exc: Exception) -> RuntimeTaskDriverErrorCategory:
+        if isinstance(exc, RuntimeTaskDriverClaimConflict):
+            return self._categories["claim_conflict"]
+        if isinstance(exc, RuntimeTaskDriverLeaseExpired):
+            return self._categories["lease_expired"]
+        if isinstance(exc, (RuntimeTaskDriverTimeout, TimeoutError)):
+            return self._categories["driver_timeout"]
+        if isinstance(exc, (RuntimeTaskDriverConnectivityError, ConnectionError, OSError)):
+            return self._categories["driver_unavailable"]
+        return self._categories["driver_protocol_violation"]
+
+    def coerce(self, exc: Exception, *, operation: str) -> Exception:
+        category = self.classify(exc)
+        message = (
+            f"Runtime DB driver {operation} failed with {category.code}: "
+            f"{category.resolution_hint}"
+        )
+        if category.retryable:
+            return ProcessingError(category.canonical_error_type, message)
+        return ContractValidationError(message)
+
+
+def default_runtime_task_driver_readiness_snapshot() -> RuntimeTaskDriverReadinessSnapshot:
+    """Return the Phase2 readiness contract for shadow-mode DB adapters."""
+
+    classifier = RuntimeTaskDriverErrorClassifier()
+    return RuntimeTaskDriverReadinessSnapshot(
+        adapter_contract="src/runtime/db_driver_readiness.py:RuntimeTaskDriverAdapter",
+        adapter_mode="shadow_mirror_only",
+        semantics_owner="src/runtime/tasks.py:FileTaskStore",
+        real_db_connection=False,
+        shadow_sync_strategy="file-backed state machine remains authoritative; the adapter mirrors task rows for parity only",
+        pending_human_selection_fields=(
+            "migration_tool",
+            "runtime_db_driver",
+            "managed_postgresql_vendor",
+            "secrets_manager",
+        ),
+        error_categories=classifier.categories(),
+    )
+
+
+def compare_runtime_task_snapshots(
+    *,
+    expected_tasks: list[TaskSnapshot],
+    actual_tasks: list[TaskSnapshot],
+    readiness: RuntimeTaskDriverReadinessSnapshot | None = None,
+) -> RuntimeTaskDriverConformanceReport:
+    """Compare canonical runtime snapshots with DB-shadow rows.
+
+    Phase2-2 keeps this as a row-snapshot parity check instead of a real
+    PostgreSQL query path, so DB behavior can be tested without freezing the
+    future driver or migration tool.
+    """
+
+    snapshot = readiness or default_runtime_task_driver_readiness_snapshot()
+    expected_by_id = {str(task.get("task_id")): task for task in expected_tasks}
+    actual_by_id = {str(task.get("task_id")): task for task in actual_tasks}
+    mismatches: list[RuntimeTaskDriverConformanceMismatch] = []
+
+    for task_id in sorted(expected_by_id):
+        expected = expected_by_id[task_id]
+        actual = actual_by_id.get(task_id)
+        if actual is None:
+            mismatches.append(
+                RuntimeTaskDriverConformanceMismatch(
+                    task_id=task_id,
+                    mismatch_type="missing_from_driver",
+                    detail="Runtime task is absent from the DB-shadow adapter.",
+                    expected=expected,
+                    actual=None,
+                )
+            )
+            continue
+        if actual != expected:
+            mismatches.append(
+                RuntimeTaskDriverConformanceMismatch(
+                    task_id=task_id,
+                    mismatch_type="row_mismatch",
+                    detail="DB-shadow row does not match the runtime task snapshot.",
+                    expected=expected,
+                    actual=actual,
+                )
+            )
+
+    for task_id in sorted(set(actual_by_id) - set(expected_by_id)):
+        mismatches.append(
+            RuntimeTaskDriverConformanceMismatch(
+                task_id=task_id,
+                mismatch_type="unexpected_in_driver",
+                detail="DB-shadow adapter has a row that is not present in runtime state.",
+                expected=None,
+                actual=actual_by_id[task_id],
+            )
+        )
+
+    return RuntimeTaskDriverConformanceReport(
+        status="verified" if not mismatches else "drift_detected",
+        adapter_mode=snapshot.adapter_mode,
+        real_db_connection=snapshot.real_db_connection,
+        checked_task_count=len(expected_by_id),
+        mismatch_count=len(mismatches),
+        checked_contracts=(
+            "task_id_row_presence",
+            "row_snapshot_equivalence",
+            "payload_json_equivalence",
+            "status_text_code_equivalence",
+            "lease_owner_and_expiry_equivalence",
+        ),
+        cutover_eligible=False,
+        mismatches=tuple(mismatches),
+    )

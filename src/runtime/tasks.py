@@ -116,6 +116,15 @@ class FileTaskStore:
                 return task
         raise ContractValidationError(f"Unknown task_id: {task_id}")
 
+    def _maybe_get_from_tasks(self, tasks: list[dict[str, Any]], task_id: str | None) -> dict[str, Any] | None:
+        if not task_id:
+            return None
+        for task in tasks:
+            if task["task_id"] == task_id:
+                self._validate_task_snapshot(task)
+                return task
+        return None
+
     def _update_in_tasks(self, tasks: list[dict[str, Any]], task_id: str, **changes: Any) -> dict[str, Any]:
         updated: dict[str, Any] | None = None
         for task in tasks:
@@ -146,6 +155,99 @@ class FileTaskStore:
             and task["window_end"] == window_end
         ]
         return matches[-1] if matches else None
+
+    def _record_blocked_replay(
+        self,
+        tasks: list[dict[str, Any]],
+        *,
+        source_id: str | None,
+        task_type: str,
+        task_scope: str,
+        window_start: str | None,
+        window_end: str | None,
+        payload_json: dict[str, Any],
+        max_attempts: int,
+        parent_task_id: str | None,
+        reason: str,
+    ) -> None:
+        blocked_task = self._enqueue_in_tasks(
+            tasks,
+            task_type=task_type,
+            task_scope=task_scope,
+            source_id=source_id,
+            target_type=None,
+            target_id=None,
+            window_start=window_start,
+            window_end=window_end,
+            payload_json=payload_json,
+            max_attempts=max_attempts,
+            parent_task_id=parent_task_id,
+            status="blocked",
+        )
+        blocked_snapshot = self._update_in_tasks(
+            tasks,
+            blocked_task.task_id,
+            last_error_type="blocked_replay",
+            last_error_message=reason,
+            finished_at=utc_now_iso(),
+            lease_owner=None,
+            lease_expires_at=None,
+        )
+        blocked_snapshot["status"] = "blocked"
+        self._validate_task_snapshot(blocked_snapshot)
+        self._write(tasks)
+        self.processing_error_store.record_failure(
+            blocked_snapshot,
+            error_type="blocked_replay",
+            error_message=blocked_snapshot["last_error_message"],
+            retry_count=int(blocked_snapshot["attempt_count"]),
+            resolution_status="blocked",
+            failed_at=blocked_snapshot["finished_at"],
+            next_retry_at=None,
+        )
+        raise BlockedReplayError(blocked_task.task_id)
+
+    def _resume_block_reason(
+        self,
+        tasks: list[dict[str, Any]],
+        *,
+        parent: dict[str, Any] | None,
+        window_start: str | None,
+        window_end: str | None,
+        payload_json: dict[str, Any],
+    ) -> tuple[dict[str, Any] | None, str | None]:
+        resume_from_task_id = payload_json.get("resume_from_task_id")
+        resume_state = payload_json.get("resume_state")
+        if resume_from_task_id is None and resume_state is None:
+            return parent, None
+
+        if payload_json.get("resume_checkpoint_verified") is not True:
+            return parent, "Resume checkpoint is not verified; replay must stay blocked until a safe checkpoint is confirmed."
+
+        resume_basis = self._maybe_get_from_tasks(tasks, resume_from_task_id) if isinstance(resume_from_task_id, str) else parent
+        if resume_basis is None:
+            return parent, "Resume basis is missing; replay must stay blocked until a safe parent task is identified."
+        if resume_basis.get("status") != "failed_retryable":
+            return resume_basis, "Resume basis is not a retryable technical failure; replay must stay blocked."
+        if resume_basis.get("window_start") != window_start or resume_basis.get("window_end") != window_end:
+            return resume_basis, "Resume window changed; replay must stay blocked until window and checkpoint are aligned."
+
+        previous_payload = resume_basis.get("payload_json")
+        if isinstance(previous_payload, dict):
+            previous_slice = previous_payload.get("query_slice_id")
+            next_slice = payload_json.get("query_slice_id")
+            if previous_slice is not None and next_slice is not None and previous_slice != next_slice:
+                return resume_basis, "Resume checkpoint query_slice_id drifted; replay must stay blocked."
+
+        if isinstance(resume_state, dict):
+            state_window_start = resume_state.get("window_start")
+            state_window_end = resume_state.get("window_end")
+            if state_window_start is not None and state_window_start != window_start:
+                return resume_basis, "Resume state window_start drifted; replay must stay blocked."
+            if state_window_end is not None and state_window_end != window_end:
+                return resume_basis, "Resume state window_end drifted; replay must stay blocked."
+
+        return resume_basis, None
 
     def _enqueue_in_tasks(
         self,
@@ -328,6 +430,9 @@ class FileTaskStore:
         return self.update_task(task_id, lease_expires_at=new_expiry)
 
     def succeed(self, task_id: str) -> dict[str, Any]:
+        task = self.get(task_id)
+        if task["status"] not in {"leased", "running"}:
+            raise ContractValidationError(f"Cannot succeed task from status {task['status']}: {task_id}")
         updated = self.update_task(task_id, status="succeeded", finished_at=utc_now_iso(), lease_owner=None, lease_expires_at=None)
         self.processing_error_store.resolve_for_task(updated, resolved_at=updated["finished_at"])
         return updated
@@ -418,42 +523,39 @@ class FileTaskStore:
             tasks = self._load_tasks_unlocked()
             parent = self._latest_matching_task_from_tasks(tasks, source_id, task_type, window_start, window_end)
             if parent and parent["status"] == "blocked":
-                blocked_task = self._enqueue_in_tasks(
+                self._record_blocked_replay(
                     tasks,
+                    source_id=source_id,
                     task_type=task_type,
                     task_scope=task_scope,
-                    source_id=source_id,
-                    target_type=None,
-                    target_id=None,
                     window_start=window_start,
                     window_end=window_end,
                     payload_json=payload_json,
                     max_attempts=max_attempts,
                     parent_task_id=parent["task_id"],
-                    status="blocked",
+                    reason="Replay basis is blocked; create a smaller safe task or resolve upstream first.",
                 )
-                blocked_snapshot = self._update_in_tasks(
+
+            resume_basis, resume_block_reason = self._resume_block_reason(
+                tasks,
+                parent=parent,
+                window_start=window_start,
+                window_end=window_end,
+                payload_json=payload_json,
+            )
+            if resume_block_reason is not None:
+                self._record_blocked_replay(
                     tasks,
-                    blocked_task.task_id,
-                    last_error_type="blocked_replay",
-                    last_error_message="Replay basis is blocked; create a smaller safe task or resolve upstream first.",
-                    finished_at=utc_now_iso(),
-                    lease_owner=None,
-                    lease_expires_at=None,
+                    source_id=source_id,
+                    task_type=task_type,
+                    task_scope=task_scope,
+                    window_start=window_start,
+                    window_end=window_end,
+                    payload_json=payload_json,
+                    max_attempts=max_attempts,
+                    parent_task_id=resume_basis["task_id"] if resume_basis else parent["task_id"] if parent else None,
+                    reason=resume_block_reason,
                 )
-                blocked_snapshot["status"] = "blocked"
-                self._validate_task_snapshot(blocked_snapshot)
-                self._write(tasks)
-                self.processing_error_store.record_failure(
-                    blocked_snapshot,
-                    error_type="blocked_replay",
-                    error_message=blocked_snapshot["last_error_message"],
-                    retry_count=int(blocked_snapshot["attempt_count"]),
-                    resolution_status="blocked",
-                    failed_at=blocked_snapshot["finished_at"],
-                    next_retry_at=None,
-                )
-                raise BlockedReplayError(blocked_task.task_id)
 
             record = self._enqueue_in_tasks(
                 tasks,

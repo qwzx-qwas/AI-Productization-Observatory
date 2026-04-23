@@ -304,14 +304,18 @@
 
 ## 7. Cross-doc Consistency Check
 
-- 本次修复说明：以下调整仅为口径一致性小修，用于对齐 `01_phase_plan_and_exit_criteria.md`、`docs/phase1_g_acceptance_evidence.md` 与 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json` 的当前已落盘口径，不构成新的政策变更。
-- 当前 live source 边界：`configs/source_registry.yaml`、`configs/candidate_prescreen_workflow.yaml`、`README.md`、`docs/phase1_e_acceptance_evidence.md` 与 `docs/phase1_g_acceptance_evidence.md` 现已一致表述为“GitHub 是当前 live 主路径，Product Hunt 继续 deferred，仅保留 fixture / replay / contract”。
-- Phase1 exit gate 口径：`01_phase_plan_and_exit_criteria.md`、`docs/phase1_a_baseline.md`、`docs/phase1_e_acceptance_evidence.md`、`docs/phase1_g_acceptance_evidence.md` 现统一为“GitHub 完整抓取周期仍是当前 exit gate 组成部分；Product Hunt 非当前阻塞 gate，只保留 deferred future seam”。
-- 五项审计流程口径：上述文档现统一为 `machine_pre_audit -> human_sampled_verdict -> owner_signoff`，且 machine 层在 owner sign-off 前最多只能停在 `conditional-go`；当前批次因 sampled human verdict 与 owner sign-off 已闭合，故已升级为 `go`。
-- 验收覆盖范围与未覆盖范围：上述文档现统一把已覆盖范围限定为 GitHub live matrix、LLM relay provider audit、fixture-backed dashboard reconciliation，以及已闭合 sampled human verdict / owner sign-off 的 audit-ready / owner-review-ready / `go` report；未覆盖范围仍包括 Product Hunt live reactivation、前端服务化交付与 DB runtime backend 接入。
-- owner 决策依赖项：`DEC-002`、`DEC-003`、`DEC-005`、`DEC-014`、`DEC-015`、`DEC-025`、`DEC-029` 在三份文档中的依赖关系现已一致，且均未把 `current_default` 写成永久业务结论。
-- release judgment 落点：`README.md`、`docs/phase1_g_acceptance_evidence.md` 与 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json` 现一致表述为“最终 release sign-off 仍归 owner；当前批次已以 `gpt-5.4-high` 自动化签署记录落盘”。
-- judgment 与 sign-off 边界：三份文档现一致表述为“`conditional-go` = audit-ready 且 owner-review-ready，但 human_sampled_verdict 与 owner_signoff 尚未完成；当前批次因 owner sign-off 为 `approved` 且阻塞项闭合，已满足最终 `go` 条件”。
+- 当前阶段状态：
+  - `docs/phase1_g_acceptance_evidence.md` 与 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json` 当前保持 `go` judgment 已落盘；`phase2_prompt.md` 同步记录 `Phase2-2` 已进入 DB runtime migration spine 执行态。
+- 当前边界：
+  - `01_phase_plan_and_exit_criteria.md`、`README.md`、`docs/phase1_e_acceptance_evidence.md`、`docs/phase1_g_acceptance_evidence.md` 与本文件现一致保持 `GitHub live / Product Hunt deferred`，并继续把 file-backed harness 描述为 local parity / rollback baseline，而不是最终 DB runtime backend。
+- 本批次发布状态：
+  - 当前批次发布确认已固定回链到 `docs/phase1_g_acceptance_evidence.md:412` 与 `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json:1439`；Phase1 发布 judgment 仍为 `go`，且 `release_owner_signoff.status = approved` 未被本批次 Phase2 kickoff 改写。
+- Phase2-1 已启动状态：
+  - `phase2_prompt.md`、`src/runtime/migrations.py`、`src/runtime/db_driver_readiness.py`、`src/runtime/db_shadow.py`、`src/runtime/sql/postgresql_task_runtime_phase2_1.sql` 与 `tests/unit/test_runtime_migrations.py` 现一致记录：`DB runtime backend` 已启动 tool-agnostic baseline 接入，新增 `DB-shadow adapter` parity skeleton、driver readiness layer 与共享 conformance 覆盖，但仍未进行真实 cutover。
+- Phase2-2 已启动状态：
+  - `phase2_prompt.md`、`src/runtime/migrations.py`、`src/runtime/db_driver_readiness.py`、`src/runtime/db_shadow.py`、`tests/unit/test_runtime.py` 与 `tests/unit/test_runtime_migrations.py` 现一致记录：`DB runtime migration spine` 已启动，新增可替换 adapter 的 DB-side row conformance report 与 DB-shadow drift detection；当前仍未连接真实 PostgreSQL，也未进行 runtime cutover。
+- 未决项归属与 owner 决策边界：
+  - `migration_tool`、`runtime_db_driver`、`managed_postgresql_vendor` 与 `secrets_manager` 仍保持 `null` / `TBD_HUMAN` 边界；`15_tech_stack_and_runtime.md`、`17_open_decisions_and_freeze_board.md`、`phase2_prompt.md` 与本文件一致不把这些未决人类选型写成最终依赖。
 
 ## 8. Current Conclusion
 
