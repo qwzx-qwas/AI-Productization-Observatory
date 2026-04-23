@@ -22,8 +22,9 @@ from src.runtime.tasks import FileTaskStore
 class InMemoryPostgresTaskShadowExecutor:
     """A fake PostgreSQL task table used to mirror runtime-task rows in tests."""
 
-    def __init__(self) -> None:
+    def __init__(self, *, sql_contract_text: str | None = None) -> None:
         self._tasks: list[TaskSnapshot] = []
+        self._sql_contract_text = sql_contract_text
         self.operation_log: list[dict[str, int | str]] = []
 
     def replace_runtime_tasks(self, tasks: list[TaskSnapshot]) -> None:
@@ -46,6 +47,7 @@ class InMemoryPostgresTaskShadowExecutor:
             expected_tasks=expected_tasks,
             actual_tasks=self.all_runtime_tasks(),
             readiness=self.readiness_snapshot(),
+            sql_contract_text=self._sql_contract_text,
         )
 
     def get_task(self, task_id: str) -> TaskSnapshot | None:

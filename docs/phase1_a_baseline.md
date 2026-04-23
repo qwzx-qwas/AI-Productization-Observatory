@@ -313,7 +313,7 @@
 - Phase2-1 已启动状态：
   - `phase2_prompt.md`、`src/runtime/migrations.py`、`src/runtime/db_driver_readiness.py`、`src/runtime/db_shadow.py`、`src/runtime/sql/postgresql_task_runtime_phase2_1.sql` 与 `tests/unit/test_runtime_migrations.py` 现一致记录：`DB runtime backend` 已启动 tool-agnostic baseline 接入，新增 `DB-shadow adapter` parity skeleton、driver readiness layer 与共享 conformance 覆盖，但仍未进行真实 cutover。
 - Phase2-2 已启动状态：
-  - `phase2_prompt.md`、`src/runtime/migrations.py`、`src/runtime/db_driver_readiness.py`、`src/runtime/db_shadow.py`、`tests/unit/test_runtime.py` 与 `tests/unit/test_runtime_migrations.py` 现一致记录：`DB runtime migration spine` 已启动，新增可替换 adapter 的 DB-side row conformance report 与 DB-shadow drift detection；当前仍未连接真实 PostgreSQL，也未进行 runtime cutover。
+  - `phase2_prompt.md`、`src/runtime/migrations.py`、`src/runtime/db_driver_readiness.py`、`src/runtime/db_shadow.py`、`tests/unit/test_runtime.py` 与 `tests/unit/test_runtime_migrations.py` 现一致记录：`DB runtime migration spine` 已启动，新增可替换 adapter 的 DB-side row parity + SQL claim / heartbeat / CAS reclaim contract conformance report，以及 DB-shadow drift / SQL contract gap detection；当前仍未连接真实 PostgreSQL，也未进行 runtime cutover。
 - 未决项归属与 owner 决策边界：
   - `migration_tool`、`runtime_db_driver`、`managed_postgresql_vendor` 与 `secrets_manager` 仍保持 `null` / `TBD_HUMAN` 边界；`15_tech_stack_and_runtime.md`、`17_open_decisions_and_freeze_board.md`、`phase2_prompt.md` 与本文件一致不把这些未决人类选型写成最终依赖。
 

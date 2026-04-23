@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 
-from src.runtime.db_driver_readiness import default_runtime_task_driver_readiness_snapshot
+from src.runtime.db_driver_readiness import (
+    default_runtime_task_driver_readiness_snapshot,
+    verify_postgresql_runtime_sql_contracts,
+)
 
 
 TASK_TABLE_COLUMNS: tuple[dict[str, object], ...] = (
@@ -154,6 +157,16 @@ PHASE2_2_ACCEPTANCE_CHECKLIST: tuple[dict[str, object], ...] = (
         ],
     },
     {
+        "check_id": "sql_claim_heartbeat_cas_contract_validation",
+        "status": "done",
+        "detail": "The PostgreSQL scaffold now carries non-executed SQL templates for claim/heartbeat/CAS reclaim, and shadow conformance reports validate the required guard clauses.",
+        "artifacts": [
+            "src/runtime/sql/postgresql_task_runtime_phase2_1.sql",
+            "src/runtime/db_driver_readiness.py",
+            "tests/unit/test_runtime.py",
+        ],
+    },
+    {
         "check_id": "migration_spine_remains_tool_agnostic",
         "status": "done",
         "detail": "The migration spine remains forward-only + additive-first and still does not freeze migration_tool or runtime_db_driver.",
@@ -169,6 +182,7 @@ PHASE2_2_EXECUTED_ITEMS: tuple[str, ...] = (
     "RuntimeTaskDriverAdapter now exposes verify_runtime_tasks as the replaceable DB-side conformance seam.",
     "PostgresTaskBackendShadow now produces a shadow_conformance report for DB row parity without connecting to PostgreSQL.",
     "InMemoryPostgresTaskShadowExecutor verifies task rows against canonical runtime snapshots and reports row drift.",
+    "The PostgreSQL scaffold now includes non-executed SQL claim/heartbeat/CAS reclaim templates, and the conformance report validates their required guard clauses.",
     "Phase2-2 conformance tests cover both verified parity and deliberate DB-shadow drift detection.",
 )
 
@@ -176,12 +190,14 @@ PHASE2_2_PROGRESS: dict[str, object] = {
     "runtime_backend_spine_status": "db_shadow_conformance_ready",
     "adapter_interface_status": "replaceable_driver_adapter_contract_extended",
     "db_side_conformance_status": "shadow_row_snapshot_verification_enabled",
+    "sql_contract_validation_status": "claim_heartbeat_reclaim_templates_verified",
     "real_db_connection_executed": False,
     "runtime_cutover_executed": False,
     "conformance_focus": [
         "replaceable_driver_adapter_interface",
         "db_shadow_row_snapshot_equivalence",
         "db_shadow_drift_detection",
+        "sql_claim_heartbeat_cas_template_validation",
         "technical_error_boundaries_stay_processing_error_or_contract_error",
     ],
 }
@@ -200,6 +216,10 @@ PHASE2_1_NEXT_COMMAND_PLAN: tuple[str, ...] = (
 
 
 def migration_plan() -> dict[str, object]:
+    sql_contract_checks = verify_postgresql_runtime_sql_contracts()
+    sql_contract_status = (
+        "verified" if all(check.status == "verified" for check in sql_contract_checks) else "contract_gap"
+    )
     return {
         "phase": "Phase2-2",
         "status": "db_runtime_backend_migration_spine_started",
@@ -238,10 +258,15 @@ def migration_plan() -> dict[str, object]:
             "adapter_method": "verify_runtime_tasks",
             "report_type": "RuntimeTaskDriverConformanceReport",
             "status_values": ["verified", "drift_detected"],
+            "sql_contract_status_values": ["verified", "contract_gap"],
+            "sql_contract_artifact_path": "src/runtime/sql/postgresql_task_runtime_phase2_1.sql",
+            "sql_contract_status": sql_contract_status,
+            "sql_contract_check_ids": [check.contract_id for check in sql_contract_checks],
             "cutover_eligible": False,
             "real_db_connection": False,
             "purpose": "DB-side row snapshot parity verification in shadow mode.",
         },
+        "sql_contract_checks": [check.to_dict() for check in sql_contract_checks],
         "artifacts": {
             "runtime_backend_contract_path": "src/runtime/backend_contract.py",
             "db_driver_readiness_path": "src/runtime/db_driver_readiness.py",

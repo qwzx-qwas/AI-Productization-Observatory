@@ -47,8 +47,25 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
         )
         self.assertEqual(plan["driver_conformance_contract"]["adapter_method"], "verify_runtime_tasks")
         self.assertEqual(plan["driver_conformance_contract"]["report_type"], "RuntimeTaskDriverConformanceReport")
+        self.assertEqual(plan["driver_conformance_contract"]["sql_contract_status"], "verified")
+        self.assertEqual(
+            set(plan["driver_conformance_contract"]["sql_contract_status_values"]),
+            {"verified", "contract_gap"},
+        )
+        self.assertEqual(
+            set(plan["driver_conformance_contract"]["sql_contract_check_ids"]),
+            {
+                "runtime_task_claim_by_id_cas",
+                "runtime_task_claim_next_cas",
+                "runtime_task_heartbeat_guard",
+                "runtime_task_reclaim_expired_cas",
+            },
+        )
         self.assertFalse(plan["driver_conformance_contract"]["cutover_eligible"])
         self.assertFalse(plan["driver_conformance_contract"]["real_db_connection"])
+        sql_contract_checks = {item["contract_id"]: item for item in plan["sql_contract_checks"]}
+        self.assertEqual(sql_contract_checks["runtime_task_claim_by_id_cas"]["status"], "verified")
+        self.assertEqual(sql_contract_checks["runtime_task_heartbeat_guard"]["status"], "verified")
         self.assertEqual(plan["phase2_1_progress"]["driver_readiness_layer_status"], "shadow_adapter_ready_for_driver_swap")
         self.assertTrue(plan["phase2_1_progress"]["adapter_swap_ready_without_state_rewrite"])
         self.assertFalse(plan["phase2_1_progress"]["real_db_connection_executed"])
@@ -61,10 +78,18 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
             plan["phase2_2_progress"]["adapter_interface_status"],
             "replaceable_driver_adapter_contract_extended",
         )
+        self.assertEqual(
+            plan["phase2_2_progress"]["sql_contract_validation_status"],
+            "claim_heartbeat_reclaim_templates_verified",
+        )
         self.assertFalse(plan["phase2_2_progress"]["real_db_connection_executed"])
         self.assertFalse(plan["phase2_2_progress"]["runtime_cutover_executed"])
         self.assertIn(
             "db_shadow_drift_detection",
+            plan["phase2_2_progress"]["conformance_focus"],
+        )
+        self.assertIn(
+            "sql_claim_heartbeat_cas_template_validation",
             plan["phase2_2_progress"]["conformance_focus"],
         )
         checklist = {item["check_id"]: item for item in plan["phase2_1_acceptance_checklist"]}
@@ -79,6 +104,7 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
         phase2_2_checklist = {item["check_id"]: item for item in plan["phase2_2_acceptance_checklist"]}
         self.assertEqual(phase2_2_checklist["replaceable_driver_adapter_interface"]["status"], "done")
         self.assertEqual(phase2_2_checklist["db_side_behavior_conformance"]["status"], "done")
+        self.assertEqual(phase2_2_checklist["sql_claim_heartbeat_cas_contract_validation"]["status"], "done")
         self.assertEqual(phase2_2_checklist["migration_spine_remains_tool_agnostic"]["status"], "done")
         self.assertEqual(phase2_2_checklist["real_db_cutover_not_executed"]["status"], "pending")
         self.assertIn("python3 -m src.cli phase1-g-audit-ready-report", plan["next_command_plan"])
@@ -96,6 +122,10 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
         )
         self.assertIn(
             "PostgresTaskBackendShadow now produces a shadow_conformance report for DB row parity without connecting to PostgreSQL.",
+            plan["phase2_2_executed_items"],
+        )
+        self.assertIn(
+            "The PostgreSQL scaffold now includes non-executed SQL claim/heartbeat/CAS reclaim templates, and the conformance report validates their required guard clauses.",
             plan["phase2_2_executed_items"],
         )
         self.assertTrue(plan["blocking_items"])
@@ -137,6 +167,12 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
         self.assertIn("lease_expires_at TIMESTAMPTZ", content)
         self.assertIn("parent_task_id TEXT REFERENCES runtime_task (task_id)", content)
         self.assertIn("runtime_task_status_available_idx", content)
+        self.assertIn("-- contract: runtime_task_claim_by_id_cas", content)
+        self.assertIn("FOR UPDATE SKIP LOCKED", content)
+        self.assertIn("-- contract: runtime_task_heartbeat_guard", content)
+        self.assertIn("lease_expires_at > :current_time", content)
+        self.assertIn("-- contract: runtime_task_reclaim_expired_cas", content)
+        self.assertIn("COALESCE((payload_json ->> 'idempotent_write')::boolean, false) IS TRUE", content)
         self.assertNotIn("CREATE TYPE", content)
         self.assertNotIn(" ENUM ", content)
 

@@ -626,21 +626,24 @@
   - 不冻结 `migration_tool`、`runtime_db_driver`、`managed_postgresql_vendor`、`secrets_manager`
 - 本批次已执行项：
   - 已把 `RuntimeTaskDriverAdapter` 扩展为包含 `verify_runtime_tasks` 的可替换 DB-side conformance seam
-  - 已新增 `RuntimeTaskDriverConformanceReport`，用于记录 `verified` / `drift_detected`、row-level mismatch、checked contracts 与 `cutover_eligible = false`
+  - 已新增 `RuntimeTaskDriverConformanceReport` 与 `RuntimeTaskDriverSqlContractCheck`，用于记录 `verified` / `drift_detected`、`sql_contract_status = verified / contract_gap`、row-level mismatch、checked contracts 与 `cutover_eligible = false`
+  - 已把 `src/runtime/sql/postgresql_task_runtime_phase2_1.sql` 扩展为 `DDL + non-executed SQL contract templates`，补齐 `claim_by_id`、`claim_next`、`heartbeat_guard` 与 `reclaim_expired_cas` 的 PostgreSQL-level 契约模板
   - 已把 `InMemoryPostgresTaskShadowExecutor` 扩展为可对比 DB-shadow row snapshot 与 canonical runtime task snapshot
-  - 已把 `PostgresTaskBackendShadow` 扩展为 `shadow_conformance()`，可在不 resync 的情况下报告 DB 侧 drift evidence
+  - 已把 `PostgresTaskBackendShadow` 扩展为 `shadow_conformance()`，可在不 resync 的情况下同时报告 DB 侧 drift evidence 与 SQL contract validation
   - 已把 `src/runtime/migrations.py` 的 plan 推进为：
     - `phase = Phase2-2`
     - `status = db_runtime_backend_migration_spine_started`
     - `driver_conformance_contract.adapter_method = verify_runtime_tasks`
+    - `driver_conformance_contract.sql_contract_status = verified`
     - `phase2_2_progress.runtime_backend_spine_status = db_shadow_conformance_ready`
+    - `phase2_2_progress.sql_contract_validation_status = claim_heartbeat_reclaim_templates_verified`
     - `migration_tool = null`
     - `runtime_db_driver = null`
     - `managed_postgresql_vendor = null`
     - `secrets_manager = null`
-  - 已补充 `tests.unit.test_runtime` 覆盖 DB-shadow verified parity 与 deliberate drift detection
-  - 已更新 `tests.unit.test_runtime_migrations` 覆盖 Phase2-2 migration spine plan
-  - 已重新执行 `python3 -m src.cli phase1-g-audit-ready-report`，继续输出 `report_title = Phase1-G audit-ready / owner-review-ready / go`，`generated_at = 2026-04-23T05:09:36.655674Z`
+  - 已补充 `tests.unit.test_runtime` 覆盖 DB-shadow verified parity、deliberate drift detection 与 deliberate SQL contract gap detection
+  - 已更新 `tests.unit.test_runtime_migrations` 覆盖 Phase2-2 migration spine plan 与 SQL contract metadata
+  - 已重新执行 `python3 -m src.cli phase1-g-audit-ready-report`，继续输出 `report_title = Phase1-G audit-ready / owner-review-ready / go`，`generated_at = 2026-04-23T09:01:06.561298Z`
 - 本批次未执行项：
   - 未连接真实 PostgreSQL
   - 未执行真实 driver-backed `claim / lease / heartbeat / CAS reclaim` 查询路径
@@ -661,6 +664,6 @@
 - Phase2-1 已启动状态：
   - 上述文档现一致表述为“DB runtime backend 基线接入已启动，DB-shadow parity skeleton 与 driver readiness layer 已可运行”，具体落地为 kickoff plan、`RuntimeTaskBackend` contract、`src/runtime/db_driver_readiness.py`、`src/runtime/db_shadow.py`、PostgreSQL task-table SQL scaffold、shared conformance suite 与最小测试，而非实际 cutover。
 - Phase2-2 已启动状态：
-  - 上述文档现一致表述为“DB runtime migration spine 已启动，adapter seam 已扩展到 DB-side row conformance report，DB-shadow 可验证 parity 与 deliberate drift detection”，具体落地为 `RuntimeTaskDriverConformanceReport`、`verify_runtime_tasks`、`shadow_conformance()`、`phase2_2_progress` 与新增 unit coverage，而非真实 PostgreSQL cutover。
+  - 上述文档现一致表述为“DB runtime migration spine 已启动，adapter seam 已扩展到 DB-side row parity + SQL claim / heartbeat / CAS reclaim contract conformance report，DB-shadow 可验证 parity、deliberate drift detection 与 SQL contract gap detection”，具体落地为 `RuntimeTaskDriverConformanceReport`、`RuntimeTaskDriverSqlContractCheck`、`verify_runtime_tasks`、`shadow_conformance()`、`phase2_2_progress`、SQL scaffold templates 与新增 unit coverage，而非真实 PostgreSQL cutover。
 - 未决项归属与 owner 决策边界：
   - `migration_tool`、`runtime_db_driver`、`managed_postgresql_vendor` 与 `secrets_manager` 仍保持保留人类选型边界；本批次文档与代码均未把这些项写成最终产品依赖。

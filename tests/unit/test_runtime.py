@@ -108,8 +108,20 @@ class PostgresTaskBackendShadowUnitTests(unittest.TestCase):
             self.assertEqual(report["status"], "verified")
             self.assertEqual(report["checked_task_count"], 1)
             self.assertEqual(report["mismatch_count"], 0)
+            self.assertEqual(report["sql_contract_status"], "verified")
+            self.assertEqual(report["sql_gap_count"], 0)
             self.assertFalse(report["cutover_eligible"])
             self.assertIn("row_snapshot_equivalence", report["checked_contracts"])
+            sql_contract_ids = {item["contract_id"] for item in report["sql_contract_checks"]}
+            self.assertEqual(
+                sql_contract_ids,
+                {
+                    "runtime_task_claim_by_id_cas",
+                    "runtime_task_claim_next_cas",
+                    "runtime_task_heartbeat_guard",
+                    "runtime_task_reclaim_expired_cas",
+                },
+            )
 
     def test_shadow_backend_detects_db_side_snapshot_drift_without_resync(self) -> None:
         from tests.helpers import temp_config
@@ -136,8 +148,43 @@ class PostgresTaskBackendShadowUnitTests(unittest.TestCase):
             report = backend.shadow_conformance()
             self.assertEqual(report["status"], "drift_detected")
             self.assertEqual(report["mismatch_count"], 1)
+            self.assertEqual(report["sql_contract_status"], "verified")
             self.assertEqual(report["mismatches"][0]["task_id"], task.task_id)
             self.assertEqual(report["mismatches"][0]["mismatch_type"], "row_mismatch")
+
+    def test_shadow_backend_detects_sql_contract_gap_without_cutover(self) -> None:
+        from tests.helpers import temp_config
+
+        broken_sql = """
+        -- contract: runtime_task_heartbeat_guard
+        UPDATE runtime_task
+        SET lease_expires_at = :lease_expires_at,
+            updated_at = :updated_at
+        WHERE task_id = :task_id
+          AND status IN ('leased', 'running')
+          AND lease_owner = :worker_id
+        RETURNING task_id, status, lease_owner, lease_expires_at, updated_at;
+        -- end-contract: runtime_task_heartbeat_guard
+        """
+
+        with temp_config() as config:
+            backend = PostgresTaskBackendShadow(
+                config.task_store_path,
+                executor=InMemoryPostgresTaskShadowExecutor(sql_contract_text=broken_sql),
+            )
+
+            report = backend.shadow_conformance()
+            self.assertEqual(report["status"], "drift_detected")
+            self.assertEqual(report["mismatch_count"], 0)
+            self.assertEqual(report["sql_contract_status"], "contract_gap")
+            self.assertGreater(report["sql_gap_count"], 0)
+            gap_ids = {
+                item["contract_id"]
+                for item in report["sql_contract_checks"]
+                if item["status"] == "contract_gap"
+            }
+            self.assertIn("runtime_task_heartbeat_guard", gap_ids)
+            self.assertIn("runtime_task_claim_by_id_cas", gap_ids)
 
     def test_driver_error_classifier_maps_runtime_conflicts_and_technical_failures(self) -> None:
         classifier = RuntimeTaskDriverErrorClassifier()

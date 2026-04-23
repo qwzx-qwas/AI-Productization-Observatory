@@ -8,10 +8,15 @@ claim/lease/replay state semantics instead of re-deriving them.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Protocol, runtime_checkable
 
 from src.common.errors import ContractValidationError, ProcessingError
 from src.runtime.backend_contract import TaskSnapshot
+
+POSTGRES_RUNTIME_SQL_TEMPLATE_PATH = (
+    Path(__file__).resolve().parent / "sql" / "postgresql_task_runtime_phase2_1.sql"
+)
 
 
 class RuntimeTaskDriverAdapterError(Exception):
@@ -103,6 +108,26 @@ class RuntimeTaskDriverConformanceMismatch:
 
 
 @dataclass(frozen=True)
+class RuntimeTaskDriverSqlContractCheck:
+    """Result of validating one SQL contract template section."""
+
+    contract_id: str
+    status: str
+    detail: str
+    required_fragments: tuple[str, ...]
+    missing_fragments: tuple[str, ...]
+
+    def to_dict(self) -> dict[str, object]:
+        return {
+            "contract_id": self.contract_id,
+            "status": self.status,
+            "detail": self.detail,
+            "required_fragments": list(self.required_fragments),
+            "missing_fragments": list(self.missing_fragments),
+        }
+
+
+@dataclass(frozen=True)
 class RuntimeTaskDriverConformanceReport:
     """DB-side behavior parity report for the shadow runtime adapter."""
 
@@ -111,9 +136,12 @@ class RuntimeTaskDriverConformanceReport:
     real_db_connection: bool
     checked_task_count: int
     mismatch_count: int
+    sql_contract_status: str
+    sql_gap_count: int
     checked_contracts: tuple[str, ...]
     cutover_eligible: bool
     mismatches: tuple[RuntimeTaskDriverConformanceMismatch, ...]
+    sql_contract_checks: tuple[RuntimeTaskDriverSqlContractCheck, ...]
 
     def to_dict(self) -> dict[str, object]:
         return {
@@ -122,9 +150,12 @@ class RuntimeTaskDriverConformanceReport:
             "real_db_connection": self.real_db_connection,
             "checked_task_count": self.checked_task_count,
             "mismatch_count": self.mismatch_count,
+            "sql_contract_status": self.sql_contract_status,
+            "sql_gap_count": self.sql_gap_count,
             "checked_contracts": list(self.checked_contracts),
             "cutover_eligible": self.cutover_eligible,
             "mismatches": [mismatch.to_dict() for mismatch in self.mismatches],
+            "sql_contract_checks": [check.to_dict() for check in self.sql_contract_checks],
         }
 
 
@@ -228,11 +259,150 @@ def default_runtime_task_driver_readiness_snapshot() -> RuntimeTaskDriverReadine
     )
 
 
+SQL_CONTRACT_SPECS: tuple[dict[str, object], ...] = (
+    {
+        "contract_id": "runtime_task_claim_by_id_cas",
+        "required_fragments": (
+            "update runtime_task",
+            "where task_id = :task_id",
+            "status in ('queued', 'failed_retryable')",
+            "available_at <= :current_time",
+            "(lease_expires_at is null or lease_expires_at <= :current_time)",
+            "status = 'leased'",
+            "lease_owner = :worker_id",
+            "lease_expires_at = :lease_expires_at",
+            "returning",
+        ),
+    },
+    {
+        "contract_id": "runtime_task_claim_next_cas",
+        "required_fragments": (
+            "with candidate as",
+            "status in ('queued', 'failed_retryable')",
+            "available_at <= :current_time",
+            "(lease_expires_at is null or lease_expires_at <= :current_time)",
+            "for update skip locked",
+            "limit 1",
+            "status = 'leased'",
+            "lease_owner = :worker_id",
+            "lease_expires_at = :lease_expires_at",
+            "returning",
+        ),
+    },
+    {
+        "contract_id": "runtime_task_heartbeat_guard",
+        "required_fragments": (
+            "update runtime_task",
+            "where task_id = :task_id",
+            "status in ('leased', 'running')",
+            "lease_owner = :worker_id",
+            "lease_expires_at is not null",
+            "lease_expires_at > :current_time",
+            "lease_expires_at = :lease_expires_at",
+            "returning",
+        ),
+    },
+    {
+        "contract_id": "runtime_task_reclaim_expired_cas",
+        "required_fragments": (
+            "update runtime_task",
+            "where task_id = :task_id",
+            "status in ('leased', 'running')",
+            "lease_expires_at is not null",
+            "lease_expires_at <= :current_time",
+            "coalesce((payload_json ->> 'idempotent_write')::boolean, false) is true",
+            "coalesce((payload_json ->> 'resume_checkpoint_verified')::boolean, true) is true",
+            "status = 'leased'",
+            "lease_owner = :worker_id",
+            "lease_expires_at = :lease_expires_at",
+            "returning",
+        ),
+    },
+)
+
+
+def _normalize_sql(sql_text: str) -> str:
+    return " ".join(sql_text.lower().split())
+
+
+def _extract_sql_contract_section(sql_text: str, contract_id: str) -> str | None:
+    start_marker = f"-- contract: {contract_id}"
+    end_marker = f"-- end-contract: {contract_id}"
+    start_index = sql_text.find(start_marker)
+    if start_index < 0:
+        return None
+    start_index += len(start_marker)
+    end_index = sql_text.find(end_marker, start_index)
+    if end_index < 0:
+        return None
+    return sql_text[start_index:end_index]
+
+
+def verify_postgresql_runtime_sql_contracts(
+    *,
+    sql_text: str | None = None,
+    sql_path: Path | None = None,
+) -> tuple[RuntimeTaskDriverSqlContractCheck, ...]:
+    """Validate SQL template sections for claim/heartbeat/CAS guardrails.
+
+    The SQL file stays a non-executed contract artifact in Phase2-2. These checks
+    only prove that the PostgreSQL scaffold carries the required clauses before a
+    future real driver tries to bind or execute them.
+    """
+
+    template_text = sql_text
+    if template_text is None:
+        path = sql_path or POSTGRES_RUNTIME_SQL_TEMPLATE_PATH
+        try:
+            template_text = path.read_text(encoding="utf-8")
+        except OSError as exc:
+            template_text = f"-- missing template: {exc}"
+
+    checks: list[RuntimeTaskDriverSqlContractCheck] = []
+    for spec in SQL_CONTRACT_SPECS:
+        contract_id = str(spec["contract_id"])
+        required_fragments = tuple(str(item) for item in spec["required_fragments"])
+        section = _extract_sql_contract_section(template_text, contract_id)
+        if section is None:
+            checks.append(
+                RuntimeTaskDriverSqlContractCheck(
+                    contract_id=contract_id,
+                    status="contract_gap",
+                    detail="SQL template section is missing from the PostgreSQL contract artifact.",
+                    required_fragments=required_fragments,
+                    missing_fragments=required_fragments,
+                )
+            )
+            continue
+
+        normalized_section = _normalize_sql(section)
+        missing_fragments = tuple(
+            fragment for fragment in required_fragments if fragment not in normalized_section
+        )
+        checks.append(
+            RuntimeTaskDriverSqlContractCheck(
+                contract_id=contract_id,
+                status="verified" if not missing_fragments else "contract_gap",
+                detail=(
+                    "SQL template section retains the required claim/lease/CAS guards."
+                    if not missing_fragments
+                    else "SQL template section is missing required claim/lease/CAS guard clauses."
+                ),
+                required_fragments=required_fragments,
+                missing_fragments=missing_fragments,
+            )
+        )
+
+    return tuple(checks)
+
+
 def compare_runtime_task_snapshots(
     *,
     expected_tasks: list[TaskSnapshot],
     actual_tasks: list[TaskSnapshot],
     readiness: RuntimeTaskDriverReadinessSnapshot | None = None,
+    sql_contract_text: str | None = None,
+    sql_contract_path: Path | None = None,
 ) -> RuntimeTaskDriverConformanceReport:
     """Compare canonical runtime snapshots with DB-shadow rows.
 
@@ -282,19 +452,30 @@ def compare_runtime_task_snapshots(
             )
         )
 
+    sql_contract_checks = verify_postgresql_runtime_sql_contracts(
+        sql_text=sql_contract_text,
+        sql_path=sql_contract_path,
+    )
+    sql_gap_count = sum(1 for check in sql_contract_checks if check.status != "verified")
+    checked_contracts = (
+        "task_id_row_presence",
+        "row_snapshot_equivalence",
+        "payload_json_equivalence",
+        "status_text_code_equivalence",
+        "lease_owner_and_expiry_equivalence",
+        *(check.contract_id for check in sql_contract_checks),
+    )
+
     return RuntimeTaskDriverConformanceReport(
-        status="verified" if not mismatches else "drift_detected",
+        status="verified" if not mismatches and sql_gap_count == 0 else "drift_detected",
         adapter_mode=snapshot.adapter_mode,
         real_db_connection=snapshot.real_db_connection,
         checked_task_count=len(expected_by_id),
         mismatch_count=len(mismatches),
-        checked_contracts=(
-            "task_id_row_presence",
-            "row_snapshot_equivalence",
-            "payload_json_equivalence",
-            "status_text_code_equivalence",
-            "lease_owner_and_expiry_equivalence",
-        ),
+        sql_contract_status="verified" if sql_gap_count == 0 else "contract_gap",
+        sql_gap_count=sql_gap_count,
+        checked_contracts=checked_contracts,
         cutover_eligible=False,
         mismatches=tuple(mismatches),
+        sql_contract_checks=sql_contract_checks,
     )

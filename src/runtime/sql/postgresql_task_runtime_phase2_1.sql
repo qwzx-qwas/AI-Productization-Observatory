@@ -55,3 +55,70 @@ CREATE INDEX IF NOT EXISTS runtime_task_parent_idx
 CREATE INDEX IF NOT EXISTS runtime_task_lease_expiry_idx
     ON runtime_task (lease_expires_at)
     WHERE status IN ('leased', 'running');
+
+-- Phase2-2 SQL contract templates.
+-- These statements are not executed in the current batch. They exist as
+-- PostgreSQL-level contract artifacts so future driver work can prove that
+-- claim/heartbeat/CAS reclaim guards match the file-backed runtime semantics
+-- before any real DB cutover. The :bind markers are abstract placeholders,
+-- not a frozen driver or migration-tool syntax choice.
+
+-- contract: runtime_task_claim_by_id_cas
+UPDATE runtime_task
+SET status = 'leased',
+    lease_owner = :worker_id,
+    lease_expires_at = :lease_expires_at,
+    updated_at = :updated_at
+WHERE task_id = :task_id
+  AND status IN ('queued', 'failed_retryable')
+  AND available_at <= :current_time
+  AND (lease_expires_at IS NULL OR lease_expires_at <= :current_time)
+RETURNING task_id, status, lease_owner, lease_expires_at, updated_at;
+-- end-contract: runtime_task_claim_by_id_cas
+
+-- contract: runtime_task_claim_next_cas
+WITH candidate AS (
+    SELECT task_id
+    FROM runtime_task
+    WHERE status IN ('queued', 'failed_retryable')
+      AND available_at <= :current_time
+      AND (lease_expires_at IS NULL OR lease_expires_at <= :current_time)
+    ORDER BY available_at, scheduled_at, task_id
+    FOR UPDATE SKIP LOCKED
+    LIMIT 1
+)
+UPDATE runtime_task
+SET status = 'leased',
+    lease_owner = :worker_id,
+    lease_expires_at = :lease_expires_at,
+    updated_at = :updated_at
+WHERE task_id = (SELECT task_id FROM candidate)
+RETURNING task_id, status, lease_owner, lease_expires_at, updated_at;
+-- end-contract: runtime_task_claim_next_cas
+
+-- contract: runtime_task_heartbeat_guard
+UPDATE runtime_task
+SET lease_expires_at = :lease_expires_at,
+    updated_at = :updated_at
+WHERE task_id = :task_id
+  AND status IN ('leased', 'running')
+  AND lease_owner = :worker_id
+  AND lease_expires_at IS NOT NULL
+  AND lease_expires_at > :current_time
+RETURNING task_id, status, lease_owner, lease_expires_at, updated_at;
+-- end-contract: runtime_task_heartbeat_guard
+
+-- contract: runtime_task_reclaim_expired_cas
+UPDATE runtime_task
+SET status = 'leased',
+    lease_owner = :worker_id,
+    lease_expires_at = :lease_expires_at,
+    updated_at = :updated_at
+WHERE task_id = :task_id
+  AND status IN ('leased', 'running')
+  AND lease_expires_at IS NOT NULL
+  AND lease_expires_at <= :current_time
+  AND COALESCE((payload_json ->> 'idempotent_write')::boolean, false) IS TRUE
+  AND COALESCE((payload_json ->> 'resume_checkpoint_verified')::boolean, true) IS TRUE
+RETURNING task_id, status, lease_owner, lease_expires_at, updated_at;
+-- end-contract: runtime_task_reclaim_expired_cas
