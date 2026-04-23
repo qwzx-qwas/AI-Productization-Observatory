@@ -15,6 +15,7 @@ from src.runtime.db_driver_readiness import (
     compare_runtime_task_snapshots,
     default_runtime_task_driver_readiness_snapshot,
 )
+from src.runtime.db_driver_repository_stub import RuntimeTaskDriverRepositoryStub
 from src.runtime.models import TaskRecord
 from src.runtime.tasks import FileTaskStore
 
@@ -22,9 +23,17 @@ from src.runtime.tasks import FileTaskStore
 class InMemoryPostgresTaskShadowExecutor:
     """A fake PostgreSQL task table used to mirror runtime-task rows in tests."""
 
-    def __init__(self, *, sql_contract_text: str | None = None) -> None:
+    def __init__(
+        self,
+        *,
+        sql_contract_text: str | None = None,
+        repository_stub: RuntimeTaskDriverRepositoryStub | None = None,
+    ) -> None:
         self._tasks: list[TaskSnapshot] = []
         self._sql_contract_text = sql_contract_text
+        self._repository_stub = repository_stub or RuntimeTaskDriverRepositoryStub(
+            sql_text=sql_contract_text
+        )
         self.operation_log: list[dict[str, int | str]] = []
 
     def replace_runtime_tasks(self, tasks: list[TaskSnapshot]) -> None:
@@ -48,6 +57,7 @@ class InMemoryPostgresTaskShadowExecutor:
             actual_tasks=self.all_runtime_tasks(),
             readiness=self.readiness_snapshot(),
             sql_contract_text=self._sql_contract_text,
+            repository_query_shape_checks=self._repository_stub.verify_query_shape_readiness(),
         )
 
     def get_task(self, task_id: str) -> TaskSnapshot | None:

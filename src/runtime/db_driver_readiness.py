@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
+import re
 from typing import Any, Protocol, runtime_checkable
 
 from src.common.errors import ContractValidationError, ProcessingError
@@ -128,6 +129,32 @@ class RuntimeTaskDriverSqlContractCheck:
 
 
 @dataclass(frozen=True)
+class RuntimeTaskDriverRepositoryQueryShapeCheck:
+    """Result of validating one fake-bound repository query shape."""
+
+    contract_id: str
+    operation: str
+    status: str
+    detail: str
+    expected_binds: tuple[str, ...]
+    missing_binds: tuple[str, ...]
+    required_semantics: tuple[str, ...]
+    missing_semantics: tuple[str, ...]
+
+    def to_dict(self) -> dict[str, object]:
+        return {
+            "contract_id": self.contract_id,
+            "operation": self.operation,
+            "status": self.status,
+            "detail": self.detail,
+            "expected_binds": list(self.expected_binds),
+            "missing_binds": list(self.missing_binds),
+            "required_semantics": list(self.required_semantics),
+            "missing_semantics": list(self.missing_semantics),
+        }
+
+
+@dataclass(frozen=True)
 class RuntimeTaskDriverConformanceReport:
     """DB-side behavior parity report for the shadow runtime adapter."""
 
@@ -135,13 +162,17 @@ class RuntimeTaskDriverConformanceReport:
     adapter_mode: str
     real_db_connection: bool
     checked_task_count: int
+    row_conformance_status: str
     mismatch_count: int
     sql_contract_status: str
     sql_gap_count: int
+    repository_query_shape_status: str
+    repository_gap_count: int
     checked_contracts: tuple[str, ...]
     cutover_eligible: bool
     mismatches: tuple[RuntimeTaskDriverConformanceMismatch, ...]
     sql_contract_checks: tuple[RuntimeTaskDriverSqlContractCheck, ...]
+    repository_query_shape_checks: tuple[RuntimeTaskDriverRepositoryQueryShapeCheck, ...]
 
     def to_dict(self) -> dict[str, object]:
         return {
@@ -149,13 +180,19 @@ class RuntimeTaskDriverConformanceReport:
             "adapter_mode": self.adapter_mode,
             "real_db_connection": self.real_db_connection,
             "checked_task_count": self.checked_task_count,
+            "row_conformance_status": self.row_conformance_status,
             "mismatch_count": self.mismatch_count,
             "sql_contract_status": self.sql_contract_status,
             "sql_gap_count": self.sql_gap_count,
+            "repository_query_shape_status": self.repository_query_shape_status,
+            "repository_gap_count": self.repository_gap_count,
             "checked_contracts": list(self.checked_contracts),
             "cutover_eligible": self.cutover_eligible,
             "mismatches": [mismatch.to_dict() for mismatch in self.mismatches],
             "sql_contract_checks": [check.to_dict() for check in self.sql_contract_checks],
+            "repository_query_shape_checks": [
+                check.to_dict() for check in self.repository_query_shape_checks
+            ],
         }
 
 
@@ -320,6 +357,104 @@ SQL_CONTRACT_SPECS: tuple[dict[str, object], ...] = (
     },
 )
 
+REPOSITORY_QUERY_SHAPE_SPECS: tuple[dict[str, object], ...] = (
+    {
+        "contract_id": "runtime_task_claim_by_id_cas",
+        "operation": "claim",
+        "expected_binds": (
+            "current_time",
+            "lease_expires_at",
+            "task_id",
+            "updated_at",
+            "worker_id",
+        ),
+        "required_semantics": (
+            (
+                "target_task_id_only",
+                "where task_id = :task_id",
+            ),
+            (
+                "claimable_status_gate",
+                "status in ('queued', 'failed_retryable')",
+            ),
+            (
+                "expired_or_unleased_guard",
+                "(lease_expires_at is null or lease_expires_at <= :current_time)",
+            ),
+        ),
+    },
+    {
+        "contract_id": "runtime_task_claim_next_cas",
+        "operation": "claim_next",
+        "expected_binds": (
+            "current_time",
+            "lease_expires_at",
+            "updated_at",
+            "worker_id",
+        ),
+        "required_semantics": (
+            (
+                "ordering_available_at_scheduled_at_task_id",
+                "order by available_at, scheduled_at, task_id",
+            ),
+            (
+                "locking_for_update_skip_locked",
+                "for update skip locked",
+            ),
+            (
+                "single_candidate_limit",
+                "limit 1",
+            ),
+        ),
+    },
+    {
+        "contract_id": "runtime_task_heartbeat_guard",
+        "operation": "heartbeat",
+        "expected_binds": (
+            "current_time",
+            "lease_expires_at",
+            "task_id",
+            "updated_at",
+            "worker_id",
+        ),
+        "required_semantics": (
+            (
+                "owner_must_match",
+                "lease_owner = :worker_id",
+            ),
+            (
+                "live_lease_only",
+                "lease_expires_at > :current_time",
+            ),
+        ),
+    },
+    {
+        "contract_id": "runtime_task_reclaim_expired_cas",
+        "operation": "reclaim_expired",
+        "expected_binds": (
+            "current_time",
+            "lease_expires_at",
+            "task_id",
+            "updated_at",
+            "worker_id",
+        ),
+        "required_semantics": (
+            (
+                "payload_guard_idempotent_write",
+                "coalesce((payload_json ->> 'idempotent_write')::boolean, false) is true",
+            ),
+            (
+                "payload_guard_resume_checkpoint_verified",
+                "coalesce((payload_json ->> 'resume_checkpoint_verified')::boolean, true) is true",
+            ),
+            (
+                "expired_lease_only",
+                "lease_expires_at <= :current_time",
+            ),
+        ),
+    },
+)
+
 
 def _normalize_sql(sql_text: str) -> str:
     return " ".join(sql_text.lower().split())
@@ -336,6 +471,16 @@ def _extract_sql_contract_section(sql_text: str, contract_id: str) -> str | None
     if end_index < 0:
         return None
     return sql_text[start_index:end_index]
+
+
+def extract_sql_contract_section(sql_text: str, contract_id: str) -> str | None:
+    """Return the raw SQL text for one named contract section."""
+
+    return _extract_sql_contract_section(sql_text, contract_id)
+
+
+def _extract_bind_names(section: str) -> tuple[str, ...]:
+    return tuple(sorted(set(re.findall(r":([a-zA-Z_][a-zA-Z0-9_]*)", section))))
 
 
 def verify_postgresql_runtime_sql_contracts(
@@ -396,6 +541,73 @@ def verify_postgresql_runtime_sql_contracts(
     return tuple(checks)
 
 
+def verify_runtime_task_repository_query_shapes(
+    *,
+    sql_text: str | None = None,
+    sql_path: Path | None = None,
+) -> tuple[RuntimeTaskDriverRepositoryQueryShapeCheck, ...]:
+    """Validate bind shape and query-shape semantics for the repository seam."""
+
+    template_text = sql_text
+    if template_text is None:
+        path = sql_path or POSTGRES_RUNTIME_SQL_TEMPLATE_PATH
+        try:
+            template_text = path.read_text(encoding="utf-8")
+        except OSError as exc:
+            template_text = f"-- missing template: {exc}"
+
+    checks: list[RuntimeTaskDriverRepositoryQueryShapeCheck] = []
+    for spec in REPOSITORY_QUERY_SHAPE_SPECS:
+        contract_id = str(spec["contract_id"])
+        operation = str(spec["operation"])
+        expected_binds = tuple(str(item) for item in spec["expected_binds"])
+        required_semantics = tuple(
+            str(item[0]) for item in spec["required_semantics"]  # type: ignore[index]
+        )
+        section = extract_sql_contract_section(template_text, contract_id)
+        if section is None:
+            checks.append(
+                RuntimeTaskDriverRepositoryQueryShapeCheck(
+                    contract_id=contract_id,
+                    operation=operation,
+                    status="repository_gap",
+                    detail="Repository stub cannot prepare a statement because the SQL contract section is missing.",
+                    expected_binds=expected_binds,
+                    missing_binds=expected_binds,
+                    required_semantics=required_semantics,
+                    missing_semantics=required_semantics,
+                )
+            )
+            continue
+
+        normalized_section = _normalize_sql(section)
+        bind_names = set(_extract_bind_names(section))
+        missing_binds = tuple(bind for bind in expected_binds if bind not in bind_names)
+        missing_semantics = tuple(
+            str(name)
+            for name, fragment in spec["required_semantics"]  # type: ignore[index]
+            if str(fragment) not in normalized_section
+        )
+        checks.append(
+            RuntimeTaskDriverRepositoryQueryShapeCheck(
+                contract_id=contract_id,
+                operation=operation,
+                status="verified" if not missing_binds and not missing_semantics else "repository_gap",
+                detail=(
+                    "Repository stub can fake-bind this SQL contract with the expected bind shape and query semantics."
+                    if not missing_binds and not missing_semantics
+                    else "Repository stub is missing required bind markers or query semantics for this SQL contract."
+                ),
+                expected_binds=expected_binds,
+                missing_binds=missing_binds,
+                required_semantics=required_semantics,
+                missing_semantics=missing_semantics,
+            )
+        )
+
+    return tuple(checks)
+
+
 def compare_runtime_task_snapshots(
     *,
     expected_tasks: list[TaskSnapshot],
@@ -403,6 +615,7 @@ def compare_runtime_task_snapshots(
     readiness: RuntimeTaskDriverReadinessSnapshot | None = None,
     sql_contract_text: str | None = None,
     sql_contract_path: Path | None = None,
+    repository_query_shape_checks: tuple[RuntimeTaskDriverRepositoryQueryShapeCheck, ...] | None = None,
 ) -> RuntimeTaskDriverConformanceReport:
     """Compare canonical runtime snapshots with DB-shadow rows.
 
@@ -456,7 +669,13 @@ def compare_runtime_task_snapshots(
         sql_text=sql_contract_text,
         sql_path=sql_contract_path,
     )
+    repository_checks = repository_query_shape_checks or verify_runtime_task_repository_query_shapes(
+        sql_text=sql_contract_text,
+        sql_path=sql_contract_path,
+    )
     sql_gap_count = sum(1 for check in sql_contract_checks if check.status != "verified")
+    repository_gap_count = sum(1 for check in repository_checks if check.status != "verified")
+    row_conformance_status = "verified" if not mismatches else "drift_detected"
     checked_contracts = (
         "task_id_row_presence",
         "row_snapshot_equivalence",
@@ -464,18 +683,27 @@ def compare_runtime_task_snapshots(
         "status_text_code_equivalence",
         "lease_owner_and_expiry_equivalence",
         *(check.contract_id for check in sql_contract_checks),
+        *(f"repository_query_shape:{check.contract_id}" for check in repository_checks),
     )
 
     return RuntimeTaskDriverConformanceReport(
-        status="verified" if not mismatches and sql_gap_count == 0 else "drift_detected",
+        status=(
+            "verified"
+            if row_conformance_status == "verified" and sql_gap_count == 0 and repository_gap_count == 0
+            else "drift_detected"
+        ),
         adapter_mode=snapshot.adapter_mode,
         real_db_connection=snapshot.real_db_connection,
         checked_task_count=len(expected_by_id),
+        row_conformance_status=row_conformance_status,
         mismatch_count=len(mismatches),
         sql_contract_status="verified" if sql_gap_count == 0 else "contract_gap",
         sql_gap_count=sql_gap_count,
+        repository_query_shape_status="verified" if repository_gap_count == 0 else "repository_gap",
+        repository_gap_count=repository_gap_count,
         checked_contracts=checked_contracts,
         cutover_eligible=False,
         mismatches=tuple(mismatches),
         sql_contract_checks=sql_contract_checks,
+        repository_query_shape_checks=tuple(repository_checks),
     )

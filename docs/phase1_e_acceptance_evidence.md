@@ -294,7 +294,7 @@
 - Phase2-1 已启动状态：
   - `phase2_prompt.md`、`src/runtime/migrations.py`、`src/runtime/db_driver_readiness.py`、`src/runtime/db_shadow.py` 与 `src/runtime/sql/postgresql_task_runtime_phase2_1.sql` 现一致表述为“DB runtime backend 基线接入已启动，DB-shadow parity skeleton 与 driver readiness layer 已可运行”，但当前尚未把 Phase1-E 的 file-backed control plane 切换到 PostgreSQL runtime backend。
 - Phase2-2 已启动状态：
-  - `phase2_prompt.md`、`src/runtime/migrations.py`、`src/runtime/db_driver_readiness.py`、`src/runtime/db_shadow.py` 与 `tests/unit/test_runtime.py` 现一致表述为“DB runtime migration spine 已启动，DB-shadow 可输出 DB-side row parity + SQL claim / heartbeat / CAS reclaim contract conformance report，并检测 drift / SQL contract gaps”，但当前仍未把 Phase1-E 的 file-backed `review_issue` / `processing_error` / `task_store` 控制平面切换到 PostgreSQL runtime backend。
+  - `phase2_prompt.md`、`src/runtime/migrations.py`、`src/runtime/db_driver_readiness.py`、`src/runtime/db_driver_repository_stub.py`、`src/runtime/db_shadow.py` 与 `tests/unit/test_runtime.py` 现一致表述为“DB runtime migration spine 已启动，DB-shadow 可输出 DB-side row parity + SQL claim / heartbeat / CAS reclaim contract conformance report，并可显式区分 row drift、SQL contract gap 与 repository/query-shape gap；最小 repository seam 只做 fake-bound query-shape readiness，不连接真实 PostgreSQL”，但当前仍未把 Phase1-E 的 file-backed `review_issue` / `processing_error` / `task_store` 控制平面切换到 PostgreSQL runtime backend。
 - 未决项归属与 owner 决策边界：
   - `migration_tool`、`runtime_db_driver`、`managed_postgresql_vendor` 与 `secrets_manager` 仍处于保留人类选型边界；本文件与 `15_tech_stack_and_runtime.md`、`phase2_prompt.md` 一致，不把这些未决项写成新的 Phase1-E 运行时结论。
 

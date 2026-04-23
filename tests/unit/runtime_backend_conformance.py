@@ -92,6 +92,106 @@ class RuntimeTaskBackendConformanceMixin:
             self.assertEqual(snapshot["lease_owner"], "worker-a")
             self.assertEqual(len(backend.all_tasks()), 1)
 
+    def test_claim_next_prefers_earliest_available_then_scheduled_task(self) -> None:
+        with temp_config() as config:
+            backend = self.build_backend(config)
+            later_available = backend.enqueue(
+                task_type="pull_collect",
+                task_scope="per_source_window",
+                source_id="src_product_hunt",
+                target_type=None,
+                target_id=None,
+                window_start="2026-03-01",
+                window_end="2026-03-08",
+                payload_json=default_payload("product_hunt", "2026-03-01", "2026-03-08"),
+                max_attempts=2,
+            )
+            same_available_later_schedule = backend.enqueue(
+                task_type="pull_collect",
+                task_scope="per_source_window",
+                source_id="src_product_hunt",
+                target_type=None,
+                target_id=None,
+                window_start="2026-03-01",
+                window_end="2026-03-08",
+                payload_json=default_payload("product_hunt", "2026-03-01", "2026-03-08"),
+                max_attempts=2,
+            )
+            earliest = backend.enqueue(
+                task_type="pull_collect",
+                task_scope="per_source_window",
+                source_id="src_product_hunt",
+                target_type=None,
+                target_id=None,
+                window_start="2026-03-01",
+                window_end="2026-03-08",
+                payload_json=default_payload("product_hunt", "2026-03-01", "2026-03-08"),
+                max_attempts=2,
+            )
+
+            backend.update_task(
+                later_available.task_id,
+                available_at="2000-01-01T00:00:10Z",
+                scheduled_at="2000-01-01T00:00:00Z",
+            )
+            backend.update_task(
+                same_available_later_schedule.task_id,
+                available_at="2000-01-01T00:00:00Z",
+                scheduled_at="2000-01-01T00:00:10Z",
+            )
+            backend.update_task(
+                earliest.task_id,
+                available_at="2000-01-01T00:00:00Z",
+                scheduled_at="2000-01-01T00:00:00Z",
+            )
+
+            claimed = backend.claim_next(worker_id="worker-order")
+            self.assertIsNotNone(claimed)
+            self.assertEqual(claimed["task_id"], earliest.task_id)
+
+    def test_claim_next_skips_active_lease_and_returns_next_eligible_task(self) -> None:
+        with temp_config() as config:
+            backend = self.build_backend(config)
+            active_lease = backend.enqueue(
+                task_type="pull_collect",
+                task_scope="per_source_window",
+                source_id="src_product_hunt",
+                target_type=None,
+                target_id=None,
+                window_start="2026-03-01",
+                window_end="2026-03-08",
+                payload_json=default_payload("product_hunt", "2026-03-01", "2026-03-08"),
+                max_attempts=2,
+            )
+            next_eligible = backend.enqueue(
+                task_type="pull_collect",
+                task_scope="per_source_window",
+                source_id="src_product_hunt",
+                target_type=None,
+                target_id=None,
+                window_start="2026-03-01",
+                window_end="2026-03-08",
+                payload_json=default_payload("product_hunt", "2026-03-01", "2026-03-08"),
+                max_attempts=2,
+            )
+
+            backend.update_task(
+                active_lease.task_id,
+                available_at="2000-01-01T00:00:00Z",
+                scheduled_at="2000-01-01T00:00:00Z",
+            )
+            backend.update_task(
+                next_eligible.task_id,
+                available_at="2000-01-01T00:00:05Z",
+                scheduled_at="2000-01-01T00:00:05Z",
+            )
+            backend.claim(active_lease.task_id, worker_id="worker-lock")
+
+            claimed = backend.claim_next(worker_id="worker-next")
+            self.assertIsNotNone(claimed)
+            self.assertEqual(claimed["task_id"], next_eligible.task_id)
+            self.assertEqual(backend.get(active_lease.task_id)["lease_owner"], "worker-lock")
+
     def test_heartbeat_renews_lease_before_expiry(self) -> None:
         with temp_config() as config:
             backend = self.build_backend(config)

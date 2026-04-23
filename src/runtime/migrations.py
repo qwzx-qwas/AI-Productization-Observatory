@@ -5,6 +5,7 @@ from __future__ import annotations
 from src.runtime.db_driver_readiness import (
     default_runtime_task_driver_readiness_snapshot,
     verify_postgresql_runtime_sql_contracts,
+    verify_runtime_task_repository_query_shapes,
 )
 
 
@@ -137,6 +138,15 @@ PHASE2_1_BLOCKERS: tuple[str, ...] = (
 
 PHASE2_2_ACCEPTANCE_CHECKLIST: tuple[dict[str, object], ...] = (
     {
+        "check_id": "driver_repository_stub_readiness",
+        "status": "done",
+        "detail": "A minimal driver repository stub now consumes SQL contract sections through fake-bound statement capture and bind-shape validation only.",
+        "artifacts": [
+            "src/runtime/db_driver_repository_stub.py",
+            "tests/unit/test_runtime_driver_repository_stub.py",
+        ],
+    },
+    {
         "check_id": "replaceable_driver_adapter_interface",
         "status": "done",
         "detail": "RuntimeTaskDriverAdapter now includes DB-side row conformance verification without naming a concrete driver.",
@@ -149,9 +159,10 @@ PHASE2_2_ACCEPTANCE_CHECKLIST: tuple[dict[str, object], ...] = (
     {
         "check_id": "db_side_behavior_conformance",
         "status": "done",
-        "detail": "DB-shadow rows are compared against canonical runtime task snapshots after mirror sync, and drift can be reported without resyncing.",
+        "detail": "DB-shadow conformance now distinguishes row drift, SQL contract gaps, and repository/query-shape gaps without a live database.",
         "artifacts": [
             "src/runtime/db_driver_readiness.py",
+            "src/runtime/db_driver_repository_stub.py",
             "src/runtime/db_shadow.py",
             "tests/unit/test_runtime.py",
         ],
@@ -172,6 +183,27 @@ PHASE2_2_ACCEPTANCE_CHECKLIST: tuple[dict[str, object], ...] = (
         "detail": "The migration spine remains forward-only + additive-first and still does not freeze migration_tool or runtime_db_driver.",
     },
     {
+        "check_id": "claim_next_ordering_and_lock_contract",
+        "status": "done",
+        "detail": "claim_next ordering stays explicit as available_at -> scheduled_at -> task_id, and active leases stay non-claimable while the next eligible task can still be selected.",
+        "artifacts": [
+            "src/runtime/tasks.py",
+            "src/runtime/sql/postgresql_task_runtime_phase2_1.sql",
+            "tests/unit/runtime_backend_conformance.py",
+            "tests/unit/test_runtime_driver_repository_stub.py",
+        ],
+    },
+    {
+        "check_id": "reclaim_payload_guard_contract",
+        "status": "done",
+        "detail": "Expired-lease reclaim stays guarded by payload_json.idempotent_write and payload_json.resume_checkpoint_verified in both runtime behavior coverage and repository query-shape readiness checks.",
+        "artifacts": [
+            "src/runtime/sql/postgresql_task_runtime_phase2_1.sql",
+            "tests/unit/runtime_backend_conformance.py",
+            "tests/unit/test_runtime_driver_repository_stub.py",
+        ],
+    },
+    {
         "check_id": "real_db_cutover_not_executed",
         "status": "pending",
         "detail": "No live PostgreSQL connection, driver-backed write path, or runtime cutover is performed in Phase2-2.",
@@ -180,16 +212,18 @@ PHASE2_2_ACCEPTANCE_CHECKLIST: tuple[dict[str, object], ...] = (
 
 PHASE2_2_EXECUTED_ITEMS: tuple[str, ...] = (
     "RuntimeTaskDriverAdapter now exposes verify_runtime_tasks as the replaceable DB-side conformance seam.",
-    "PostgresTaskBackendShadow now produces a shadow_conformance report for DB row parity without connecting to PostgreSQL.",
-    "InMemoryPostgresTaskShadowExecutor verifies task rows against canonical runtime snapshots and reports row drift.",
+    "A minimal RuntimeTaskDriverRepositoryStub now fake-binds SQL contract sections, captures statement selection, and verifies bind/query-shape readiness without connecting to PostgreSQL.",
+    "PostgresTaskBackendShadow now produces a shadow_conformance report that distinguishes row drift, SQL contract gaps, and repository/query-shape gaps without connecting to PostgreSQL.",
+    "InMemoryPostgresTaskShadowExecutor verifies task rows against canonical runtime snapshots and reuses the repository stub's query-shape readiness checks.",
     "The PostgreSQL scaffold now includes non-executed SQL claim/heartbeat/CAS reclaim templates, and the conformance report validates their required guard clauses.",
-    "Phase2-2 conformance tests cover both verified parity and deliberate DB-shadow drift detection.",
+    "Phase2-2 conformance tests now make claim_next ordering/lock semantics and reclaim payload guards explicit across the shared backend matrix and repository stub coverage.",
 )
 
 PHASE2_2_PROGRESS: dict[str, object] = {
-    "runtime_backend_spine_status": "db_shadow_conformance_ready",
+    "runtime_backend_spine_status": "db_shadow_and_repository_stub_ready",
     "adapter_interface_status": "replaceable_driver_adapter_contract_extended",
     "db_side_conformance_status": "shadow_row_snapshot_verification_enabled",
+    "repository_stub_status": "fake_bound_query_shape_ready",
     "sql_contract_validation_status": "claim_heartbeat_reclaim_templates_verified",
     "real_db_connection_executed": False,
     "runtime_cutover_executed": False,
@@ -198,6 +232,9 @@ PHASE2_2_PROGRESS: dict[str, object] = {
         "db_shadow_row_snapshot_equivalence",
         "db_shadow_drift_detection",
         "sql_claim_heartbeat_cas_template_validation",
+        "repository_query_shape_statement_selection",
+        "claim_next_ordering_and_skip_locked_readiness",
+        "reclaim_payload_guard_readiness",
         "technical_error_boundaries_stay_processing_error_or_contract_error",
     ],
 }
@@ -217,8 +254,14 @@ PHASE2_1_NEXT_COMMAND_PLAN: tuple[str, ...] = (
 
 def migration_plan() -> dict[str, object]:
     sql_contract_checks = verify_postgresql_runtime_sql_contracts()
+    repository_query_shape_checks = verify_runtime_task_repository_query_shapes()
     sql_contract_status = (
         "verified" if all(check.status == "verified" for check in sql_contract_checks) else "contract_gap"
+    )
+    repository_query_shape_status = (
+        "verified"
+        if all(check.status == "verified" for check in repository_query_shape_checks)
+        else "repository_gap"
     )
     return {
         "phase": "Phase2-2",
@@ -258,21 +301,33 @@ def migration_plan() -> dict[str, object]:
             "adapter_method": "verify_runtime_tasks",
             "report_type": "RuntimeTaskDriverConformanceReport",
             "status_values": ["verified", "drift_detected"],
+            "row_conformance_status_values": ["verified", "drift_detected"],
             "sql_contract_status_values": ["verified", "contract_gap"],
+            "repository_query_shape_status_values": ["verified", "repository_gap"],
             "sql_contract_artifact_path": "src/runtime/sql/postgresql_task_runtime_phase2_1.sql",
+            "repository_stub_path": "src/runtime/db_driver_repository_stub.py",
             "sql_contract_status": sql_contract_status,
             "sql_contract_check_ids": [check.contract_id for check in sql_contract_checks],
+            "repository_query_shape_status": repository_query_shape_status,
+            "repository_query_shape_check_ids": [
+                check.contract_id for check in repository_query_shape_checks
+            ],
             "cutover_eligible": False,
             "real_db_connection": False,
-            "purpose": "DB-side row snapshot parity verification in shadow mode.",
+            "purpose": "DB-side row parity plus repository query-shape readiness verification in shadow mode.",
         },
         "sql_contract_checks": [check.to_dict() for check in sql_contract_checks],
+        "repository_query_shape_checks": [
+            check.to_dict() for check in repository_query_shape_checks
+        ],
         "artifacts": {
             "runtime_backend_contract_path": "src/runtime/backend_contract.py",
             "db_driver_readiness_path": "src/runtime/db_driver_readiness.py",
+            "db_driver_repository_stub_path": "src/runtime/db_driver_repository_stub.py",
             "db_shadow_backend_path": "src/runtime/db_shadow.py",
             "shared_conformance_suite_path": "tests/unit/runtime_backend_conformance.py",
             "file_backed_conformance_test_path": "tests/unit/test_runtime.py",
+            "repository_stub_test_path": "tests/unit/test_runtime_driver_repository_stub.py",
             "sql_template_path": "src/runtime/sql/postgresql_task_runtime_phase2_1.sql",
             "migration_plan_test_path": "tests/unit/test_runtime_migrations.py",
         },
@@ -299,7 +354,7 @@ def migration_plan() -> dict[str, object]:
         "task_table_columns": list(TASK_TABLE_COLUMNS),
         "next_command_plan": list(PHASE2_1_NEXT_COMMAND_PLAN),
         "next_steps": [
-            "Use the DB-side conformance report as the next guardrail before choosing any migration tool.",
+            "Use the DB-side conformance report and repository query-shape readiness as the next guardrails before choosing any migration tool.",
             "Keep the file-backed harness as the runnable baseline until DB adapter parity tests close.",
             "Swap the fake executor behind src/runtime/db_shadow.py for a real driver-backed repository only after owner decisions freeze runtime_db_driver and migration_tool.",
         ],

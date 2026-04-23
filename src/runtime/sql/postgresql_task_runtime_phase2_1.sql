@@ -77,6 +77,11 @@ RETURNING task_id, status, lease_owner, lease_expires_at, updated_at;
 -- end-contract: runtime_task_claim_by_id_cas
 
 -- contract: runtime_task_claim_next_cas
+-- claim_next contract:
+--   1. earliest available_at first
+--   2. then scheduled_at
+--   3. then task_id as deterministic tie-breaker
+--   4. active rows stay protected by FOR UPDATE SKIP LOCKED
 WITH candidate AS (
     SELECT task_id
     FROM runtime_task
@@ -109,6 +114,9 @@ RETURNING task_id, status, lease_owner, lease_expires_at, updated_at;
 -- end-contract: runtime_task_heartbeat_guard
 
 -- contract: runtime_task_reclaim_expired_cas
+-- reclaim contract:
+--   automatic reclaim is only query-shape-ready when payload_json proves
+--   idempotent_write = true and resume_checkpoint_verified = true.
 UPDATE runtime_task
 SET status = 'leased',
     lease_owner = :worker_id,

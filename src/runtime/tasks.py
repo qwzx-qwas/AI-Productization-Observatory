@@ -359,6 +359,17 @@ class FileTaskStore:
         payload = task["payload_json"]
         return bool(payload.get("idempotent_write")) and bool(payload.get("resume_checkpoint_verified", True))
 
+    @staticmethod
+    def _claim_next_sort_key(task: dict[str, Any]) -> tuple[str, str, str]:
+        # Keep the local harness aligned with the PostgreSQL contract artifact:
+        # claim_next always prefers the earliest available task, then scheduled_at,
+        # then task_id, while active leases remain non-claimable.
+        return (
+            str(task["available_at"]),
+            str(task["scheduled_at"]),
+            str(task["task_id"]),
+        )
+
     def claim(self, task_id: str, worker_id: str) -> dict[str, Any]:
         with self._exclusive_lock():
             tasks = self._load_tasks_unlocked()
@@ -389,7 +400,7 @@ class FileTaskStore:
         with self._exclusive_lock():
             tasks = self._load_tasks_unlocked()
             current_iso = utc_now_iso()
-            for task in tasks:
+            for task in sorted(tasks, key=self._claim_next_sort_key):
                 available = task["available_at"] <= current_iso
                 claimable = (
                     task["status"] in {"queued", "failed_retryable"}

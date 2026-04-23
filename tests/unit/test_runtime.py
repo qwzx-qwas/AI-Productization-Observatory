@@ -107,11 +107,18 @@ class PostgresTaskBackendShadowUnitTests(unittest.TestCase):
             report = backend.shadow_conformance()
             self.assertEqual(report["status"], "verified")
             self.assertEqual(report["checked_task_count"], 1)
+            self.assertEqual(report["row_conformance_status"], "verified")
             self.assertEqual(report["mismatch_count"], 0)
             self.assertEqual(report["sql_contract_status"], "verified")
             self.assertEqual(report["sql_gap_count"], 0)
+            self.assertEqual(report["repository_query_shape_status"], "verified")
+            self.assertEqual(report["repository_gap_count"], 0)
             self.assertFalse(report["cutover_eligible"])
             self.assertIn("row_snapshot_equivalence", report["checked_contracts"])
+            self.assertIn(
+                "repository_query_shape:runtime_task_claim_next_cas",
+                report["checked_contracts"],
+            )
             sql_contract_ids = {item["contract_id"] for item in report["sql_contract_checks"]}
             self.assertEqual(
                 sql_contract_ids,
@@ -147,10 +154,94 @@ class PostgresTaskBackendShadowUnitTests(unittest.TestCase):
 
             report = backend.shadow_conformance()
             self.assertEqual(report["status"], "drift_detected")
+            self.assertEqual(report["row_conformance_status"], "drift_detected")
             self.assertEqual(report["mismatch_count"], 1)
             self.assertEqual(report["sql_contract_status"], "verified")
+            self.assertEqual(report["repository_query_shape_status"], "verified")
             self.assertEqual(report["mismatches"][0]["task_id"], task.task_id)
             self.assertEqual(report["mismatches"][0]["mismatch_type"], "row_mismatch")
+
+    def test_shadow_backend_detects_repository_query_shape_gap_without_row_drift(self) -> None:
+        from tests.helpers import temp_config
+
+        repository_gap_sql = """
+        -- contract: runtime_task_claim_by_id_cas
+        UPDATE runtime_task
+        SET status = 'leased',
+            lease_owner = :worker_id,
+            lease_expires_at = :lease_expires_at,
+            updated_at = :updated_at
+        WHERE task_id = :task_id
+          AND status IN ('queued', 'failed_retryable')
+          AND available_at <= :current_time
+          AND (lease_expires_at IS NULL OR lease_expires_at <= :current_time)
+        RETURNING task_id, status, lease_owner, lease_expires_at, updated_at;
+        -- end-contract: runtime_task_claim_by_id_cas
+        -- contract: runtime_task_claim_next_cas
+        WITH candidate AS (
+            SELECT task_id
+            FROM runtime_task
+            WHERE status IN ('queued', 'failed_retryable')
+              AND available_at <= :current_time
+              AND (lease_expires_at IS NULL OR lease_expires_at <= :current_time)
+            FOR UPDATE SKIP LOCKED
+            LIMIT 1
+        )
+        UPDATE runtime_task
+        SET status = 'leased',
+            lease_owner = :worker_id,
+            lease_expires_at = :lease_expires_at,
+            updated_at = :updated_at
+        WHERE task_id = (SELECT task_id FROM candidate)
+        RETURNING task_id, status, lease_owner, lease_expires_at, updated_at;
+        -- end-contract: runtime_task_claim_next_cas
+        -- contract: runtime_task_heartbeat_guard
+        UPDATE runtime_task
+        SET lease_expires_at = :lease_expires_at,
+            updated_at = :updated_at
+        WHERE task_id = :task_id
+          AND status IN ('leased', 'running')
+          AND lease_owner = :worker_id
+          AND lease_expires_at IS NOT NULL
+          AND lease_expires_at > :current_time
+        RETURNING task_id, status, lease_owner, lease_expires_at, updated_at;
+        -- end-contract: runtime_task_heartbeat_guard
+        -- contract: runtime_task_reclaim_expired_cas
+        UPDATE runtime_task
+        SET status = 'leased',
+            lease_owner = :worker_id,
+            lease_expires_at = :lease_expires_at,
+            updated_at = :updated_at
+        WHERE task_id = :task_id
+          AND status IN ('leased', 'running')
+          AND lease_expires_at IS NOT NULL
+          AND lease_expires_at <= :current_time
+          AND COALESCE((payload_json ->> 'idempotent_write')::boolean, false) IS TRUE
+          AND COALESCE((payload_json ->> 'resume_checkpoint_verified')::boolean, true) IS TRUE
+        RETURNING task_id, status, lease_owner, lease_expires_at, updated_at;
+        -- end-contract: runtime_task_reclaim_expired_cas
+        """
+
+        with temp_config() as config:
+            backend = PostgresTaskBackendShadow(
+                config.task_store_path,
+                executor=InMemoryPostgresTaskShadowExecutor(sql_contract_text=repository_gap_sql),
+            )
+
+            report = backend.shadow_conformance()
+            self.assertEqual(report["status"], "drift_detected")
+            self.assertEqual(report["row_conformance_status"], "verified")
+            self.assertEqual(report["mismatch_count"], 0)
+            self.assertEqual(report["sql_contract_status"], "verified")
+            self.assertEqual(report["sql_gap_count"], 0)
+            self.assertEqual(report["repository_query_shape_status"], "repository_gap")
+            self.assertGreater(report["repository_gap_count"], 0)
+            gap_ids = {
+                item["contract_id"]
+                for item in report["repository_query_shape_checks"]
+                if item["status"] == "repository_gap"
+            }
+            self.assertIn("runtime_task_claim_next_cas", gap_ids)
 
     def test_shadow_backend_detects_sql_contract_gap_without_cutover(self) -> None:
         from tests.helpers import temp_config
@@ -175,9 +266,12 @@ class PostgresTaskBackendShadowUnitTests(unittest.TestCase):
 
             report = backend.shadow_conformance()
             self.assertEqual(report["status"], "drift_detected")
+            self.assertEqual(report["row_conformance_status"], "verified")
             self.assertEqual(report["mismatch_count"], 0)
             self.assertEqual(report["sql_contract_status"], "contract_gap")
             self.assertGreater(report["sql_gap_count"], 0)
+            self.assertEqual(report["repository_query_shape_status"], "repository_gap")
+            self.assertGreater(report["repository_gap_count"], 0)
             gap_ids = {
                 item["contract_id"]
                 for item in report["sql_contract_checks"]
