@@ -293,17 +293,26 @@ last_frozen_version: phase2_prompt_productization_v1
 - 已新增 `src/runtime/db_driver_repository_stub.py`，作为最小 `driver repository stub`：
   - 直接消费当前 SQL contract sections
   - 仅做 fake-bound statement selection / bind-shape verification / query-shape readiness
+  - 通过 fake result-row mapping harness 验证未来 driver 返回行可无损映射回 `TaskSnapshot`
+  - 显式覆盖稳定字段名、`null` 保留、timestamp/status/worker/lease/heartbeat/attempt/error 字段、field loss、潜在 rename 与 status 语义漂移
   - 不连接真实数据库
   - 不命名真实 driver vendor
 - 已把 `src/runtime/db_shadow.py` 的 fake PostgreSQL executor 扩展为可验证 DB-shadow row snapshot 与 canonical runtime task snapshot 的一致性；`PostgresTaskBackendShadow.shadow_conformance()` 现同时报告 row drift evidence、SQL contract validation 与 repository/query-shape readiness 结果。
 - 已把 `python3 -m src.cli migrate --plan` 推进为：
   - `phase = Phase2-2`
   - `status = db_runtime_backend_migration_spine_started`
+  - `cli_evidence_surface.stage = stub_shadow_readiness_validation_only`
   - `driver_conformance_contract.adapter_method = verify_runtime_tasks`
   - `driver_conformance_contract.sql_contract_status = verified`
   - `driver_conformance_contract.repository_query_shape_status = verified`
+  - `driver_conformance_contract.result_row_mapping_status = verified`
+  - `gap_summaries.query_shape_row_shape_gap`
+  - `gap_summaries.semantic_conformance_gap`
+  - `gap_summaries.operational_readiness_owner_decision_gap`
+  - `decision_packet_draft.status = draft_criteria_only / do_not_freeze`
   - `phase2_2_progress.runtime_backend_spine_status = db_shadow_and_repository_stub_ready`
   - `phase2_2_progress.repository_stub_status = fake_bound_query_shape_ready`
+  - `phase2_2_progress.repository_result_shape_status = fake_result_row_mapping_ready`
   - `phase2_2_progress.sql_contract_validation_status = claim_heartbeat_reclaim_templates_verified`
   - `migration_tool = null`
   - `runtime_db_driver = null`
@@ -312,9 +321,9 @@ last_frozen_version: phase2_prompt_productization_v1
 - 已补充测试覆盖：
   - `tests.unit.runtime_backend_conformance`：显式覆盖 `claim_next` 的 `available_at -> scheduled_at -> task_id` 排序与 active lease 跳过语义
   - `tests.unit.test_runtime`：显式区分 row drift、SQL contract gap 与 repository/query-shape gap
-  - `tests.unit.test_runtime_driver_repository_stub`：显式覆盖 fake-bound statement selection、`claim_next` 排序/锁语义约束与 reclaim payload guards
-  - `tests.unit.test_runtime_migrations`：覆盖 Phase2-2 plan、repository stub metadata 与 query-shape readiness metadata
-- 已重新执行 `python3 -m src.cli phase1-g-audit-ready-report`，继续输出 `report_title = Phase1-G audit-ready / owner-review-ready / go`，`generated_at = 2026-04-23T10:59:20.836865Z`。
+  - `tests.unit.test_runtime_driver_repository_stub`：显式覆盖 fake-bound statement selection、result-row mapping、`claim_next` 排序/锁语义约束与 reclaim payload guards
+  - `tests.unit.test_runtime_migrations`：覆盖 Phase2-2 plan、repository stub metadata、query-shape readiness、result-row mapping、三类 gap summary 与 admission criteria decision packet draft
+- 已重新执行 `python3 -m src.cli phase1-g-audit-ready-report`，继续输出 `report_title = Phase1-G audit-ready / owner-review-ready / go`，`generated_at = 2026-04-24T01:34:53.697545Z`。
 
 #### 本批次未执行项
 
@@ -322,6 +331,7 @@ last_frozen_version: phase2_prompt_productization_v1
 - 未执行真实 driver-backed `claim / lease / heartbeat / CAS reclaim` 查询路径。
 - 未执行 runtime backend cutover。
 - 未改变 file-backed harness 的 local parity / rollback baseline 角色。
+- 未冻结任何 `migration_tool`、`runtime_db_driver`、`managed_postgresql_vendor` 或 `secrets_manager` 名称；本批次只输出 admission criteria draft 与 provisional recommendation。
 
 #### 本批次验收基准
 
@@ -332,7 +342,9 @@ last_frozen_version: phase2_prompt_productization_v1
   - `row_conformance_status = verified / drift_detected`
   - `sql_contract_status = verified / contract_gap`
   - `repository_query_shape_status = verified / repository_gap`
-- `driver repository stub` 必须只消费 SQL contract artifact，不连接真实 DB，并以 fake-bound execution 方式验证 statement selection、required bind shape、`claim_next` 排序/锁语义约束与 reclaim payload guards。
+- `driver repository stub` 必须只消费 SQL contract artifact，不连接真实 DB，并以 fake-bound execution 方式验证 statement selection、required bind shape、`claim_next` 排序/锁语义约束与 reclaim payload guards；其 result-row mapping harness 只证明 fake row shape 可无损映射到 `TaskSnapshot`，不得描述为真实 driver integration。
+- `migrate --plan` 必须把 `repository_query_shape_status` 与三类 gap summary 共同输出，避免把 query-shape readiness 误读为 runtime DB cutover 完成。
+- admission criteria decision packet draft 可建议冻结评估标准，但不得冻结产品名、vendor 名、driver 名或 migration tool 名；若真实 driver / migration tool 证据不足，必须输出 blocker 与 safe_next_step。
 - 技术 driver failure 仍只能映射到 `processing_error` / retry policy 或 runtime `ContractValidationError`；不得折叠为 review 语义。
 - PostgreSQL scaffold 继续保持 text primary key、`JSONB payload_json`、text status code、forward-only + additive-first，不引入 DB enum。
 - file-backed harness 与 DB-shadow adapter 继续共跑 shared conformance suite，不依赖真实数据库连接。

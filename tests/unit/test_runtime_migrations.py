@@ -17,6 +17,13 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
         self.assertEqual(plan["phase"], "Phase2-2")
         self.assertEqual(plan["status"], "db_runtime_backend_migration_spine_started")
         self.assertEqual(plan["policy"], "forward-only + additive-first")
+        self.assertEqual(
+            plan["cli_evidence_surface"]["stage"],
+            "stub_shadow_readiness_validation_only",
+        )
+        self.assertFalse(plan["cli_evidence_surface"]["real_db_connection"])
+        self.assertFalse(plan["cli_evidence_surface"]["runtime_cutover_executed"])
+        self.assertEqual(plan["cli_evidence_surface"]["cutover_claim"], "not_completed")
         self.assertEqual(plan["backend_baseline"]["database_engine"], "PostgreSQL 17")
         self.assertEqual(plan["backend_baseline"]["task_table_location"], "primary relational DB")
         self.assertIn("17_open_decisions_and_freeze_board.md:DEC-007", plan["canonical_basis"])
@@ -61,12 +68,24 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
             "verified",
         )
         self.assertEqual(
+            plan["driver_conformance_contract"]["result_row_mapping_status"],
+            "verified",
+        )
+        self.assertEqual(
             set(plan["driver_conformance_contract"]["sql_contract_status_values"]),
             {"verified", "contract_gap"},
         )
         self.assertEqual(
             set(plan["driver_conformance_contract"]["repository_query_shape_status_values"]),
             {"verified", "repository_gap"},
+        )
+        self.assertEqual(
+            set(plan["driver_conformance_contract"]["result_row_mapping_status_values"]),
+            {"verified", "row_shape_gap"},
+        )
+        self.assertIn(
+            "lease_expires_at",
+            plan["driver_conformance_contract"]["result_row_mapping_checked_fields"],
         )
         self.assertEqual(
             set(plan["driver_conformance_contract"]["sql_contract_check_ids"]),
@@ -94,6 +113,43 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
         repository_checks = {item["contract_id"]: item for item in plan["repository_query_shape_checks"]}
         self.assertEqual(repository_checks["runtime_task_claim_next_cas"]["status"], "verified")
         self.assertEqual(repository_checks["runtime_task_reclaim_expired_cas"]["status"], "verified")
+        row_mapping = plan["result_row_mapping_report"]
+        self.assertEqual(row_mapping["status"], "verified")
+        self.assertEqual(row_mapping["harness_mode"], "fake_result_row_mapping_only")
+        self.assertFalse(row_mapping["real_db_connection"])
+        self.assertIn("lease_owner", row_mapping["semantic_fields"])
+        self.assertIn("lease_expires_at", row_mapping["timestamp_fields"])
+        self.assertIn("finished_at", row_mapping["null_fields_preserved"])
+        gap_summaries = plan["gap_summaries"]
+        self.assertEqual(gap_summaries["query_shape_row_shape_gap"]["status"], "verified")
+        self.assertEqual(
+            gap_summaries["semantic_conformance_gap"]["status"],
+            "stub_validated_real_driver_gap",
+        )
+        self.assertEqual(
+            gap_summaries["operational_readiness_owner_decision_gap"]["status"],
+            "owner_decision_required",
+        )
+        self.assertTrue(
+            all(
+                value is None
+                for value in gap_summaries["operational_readiness_owner_decision_gap"][
+                    "reserved_human_selections"
+                ].values()
+            )
+        )
+        decision_packet = plan["decision_packet_draft"]
+        self.assertEqual(decision_packet["decision_scope"]["status"], "draft_criteria_only")
+        self.assertFalse(decision_packet["decision_scope"]["real_database_connection"])
+        self.assertFalse(decision_packet["decision_scope"]["runtime_cutover"])
+        self.assertIn(
+            "claim / lease / heartbeat / CAS reclaim semantic validation",
+            decision_packet["frozen_criteria_recommended"],
+        )
+        self.assertEqual(
+            decision_packet["provisional_recommendation_without_freeze"]["status"],
+            "do_not_freeze",
+        )
         self.assertEqual(plan["phase2_1_progress"]["driver_readiness_layer_status"], "shadow_adapter_ready_for_driver_swap")
         self.assertTrue(plan["phase2_1_progress"]["adapter_swap_ready_without_state_rewrite"])
         self.assertFalse(plan["phase2_1_progress"]["real_db_connection_executed"])
@@ -114,6 +170,10 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
             "fake_bound_query_shape_ready",
         )
         self.assertEqual(
+            plan["phase2_2_progress"]["repository_result_shape_status"],
+            "fake_result_row_mapping_ready",
+        )
+        self.assertEqual(
             plan["phase2_2_progress"]["sql_contract_validation_status"],
             "claim_heartbeat_reclaim_templates_verified",
         )
@@ -125,6 +185,10 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
         )
         self.assertIn(
             "sql_claim_heartbeat_cas_template_validation",
+            plan["phase2_2_progress"]["conformance_focus"],
+        )
+        self.assertIn(
+            "repository_result_row_mapping_to_task_snapshot",
             plan["phase2_2_progress"]["conformance_focus"],
         )
         self.assertIn(
@@ -148,6 +212,7 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
         self.assertEqual(phase2_2_checklist["driver_repository_stub_readiness"]["status"], "done")
         self.assertEqual(phase2_2_checklist["replaceable_driver_adapter_interface"]["status"], "done")
         self.assertEqual(phase2_2_checklist["db_side_behavior_conformance"]["status"], "done")
+        self.assertEqual(phase2_2_checklist["repository_result_shape_mapping"]["status"], "done")
         self.assertEqual(phase2_2_checklist["sql_claim_heartbeat_cas_contract_validation"]["status"], "done")
         self.assertEqual(phase2_2_checklist["migration_spine_remains_tool_agnostic"]["status"], "done")
         self.assertEqual(phase2_2_checklist["claim_next_ordering_and_lock_contract"]["status"], "done")
@@ -168,6 +233,10 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
         )
         self.assertIn(
             "A minimal RuntimeTaskDriverRepositoryStub now fake-binds SQL contract sections, captures statement selection, and verifies bind/query-shape readiness without connecting to PostgreSQL.",
+            plan["phase2_2_executed_items"],
+        )
+        self.assertIn(
+            "The repository stub now validates fake result-row mapping back into TaskSnapshot so future driver-returned rows have an explicit losslessness harness before any real driver is selected.",
             plan["phase2_2_executed_items"],
         )
         self.assertIn(

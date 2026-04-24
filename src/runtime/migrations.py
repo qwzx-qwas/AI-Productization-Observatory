@@ -7,6 +7,7 @@ from src.runtime.db_driver_readiness import (
     verify_postgresql_runtime_sql_contracts,
     verify_runtime_task_repository_query_shapes,
 )
+from src.runtime.db_driver_repository_stub import RuntimeTaskDriverRepositoryStub
 
 
 TASK_TABLE_COLUMNS: tuple[dict[str, object], ...] = (
@@ -168,6 +169,15 @@ PHASE2_2_ACCEPTANCE_CHECKLIST: tuple[dict[str, object], ...] = (
         ],
     },
     {
+        "check_id": "repository_result_shape_mapping",
+        "status": "done",
+        "detail": "The repository stub now validates fake driver result rows as losslessly mappable to TaskSnapshot, including null, timestamp, status, worker, lease, heartbeat, attempt, and error fields.",
+        "artifacts": [
+            "src/runtime/db_driver_repository_stub.py",
+            "tests/unit/test_runtime_driver_repository_stub.py",
+        ],
+    },
+    {
         "check_id": "sql_claim_heartbeat_cas_contract_validation",
         "status": "done",
         "detail": "The PostgreSQL scaffold now carries non-executed SQL templates for claim/heartbeat/CAS reclaim, and shadow conformance reports validate the required guard clauses.",
@@ -213,6 +223,7 @@ PHASE2_2_ACCEPTANCE_CHECKLIST: tuple[dict[str, object], ...] = (
 PHASE2_2_EXECUTED_ITEMS: tuple[str, ...] = (
     "RuntimeTaskDriverAdapter now exposes verify_runtime_tasks as the replaceable DB-side conformance seam.",
     "A minimal RuntimeTaskDriverRepositoryStub now fake-binds SQL contract sections, captures statement selection, and verifies bind/query-shape readiness without connecting to PostgreSQL.",
+    "The repository stub now validates fake result-row mapping back into TaskSnapshot so future driver-returned rows have an explicit losslessness harness before any real driver is selected.",
     "PostgresTaskBackendShadow now produces a shadow_conformance report that distinguishes row drift, SQL contract gaps, and repository/query-shape gaps without connecting to PostgreSQL.",
     "InMemoryPostgresTaskShadowExecutor verifies task rows against canonical runtime snapshots and reuses the repository stub's query-shape readiness checks.",
     "The PostgreSQL scaffold now includes non-executed SQL claim/heartbeat/CAS reclaim templates, and the conformance report validates their required guard clauses.",
@@ -224,6 +235,7 @@ PHASE2_2_PROGRESS: dict[str, object] = {
     "adapter_interface_status": "replaceable_driver_adapter_contract_extended",
     "db_side_conformance_status": "shadow_row_snapshot_verification_enabled",
     "repository_stub_status": "fake_bound_query_shape_ready",
+    "repository_result_shape_status": "fake_result_row_mapping_ready",
     "sql_contract_validation_status": "claim_heartbeat_reclaim_templates_verified",
     "real_db_connection_executed": False,
     "runtime_cutover_executed": False,
@@ -233,6 +245,7 @@ PHASE2_2_PROGRESS: dict[str, object] = {
         "db_shadow_drift_detection",
         "sql_claim_heartbeat_cas_template_validation",
         "repository_query_shape_statement_selection",
+        "repository_result_row_mapping_to_task_snapshot",
         "claim_next_ordering_and_skip_locked_readiness",
         "reclaim_payload_guard_readiness",
         "technical_error_boundaries_stay_processing_error_or_contract_error",
@@ -252,9 +265,153 @@ PHASE2_1_NEXT_COMMAND_PLAN: tuple[str, ...] = (
 )
 
 
+def _gap_summaries(
+    *,
+    repository_query_shape_status: str,
+    result_row_mapping_status: str,
+    sql_contract_status: str,
+) -> dict[str, object]:
+    query_and_row_shape_status = (
+        "verified"
+        if repository_query_shape_status == "verified" and result_row_mapping_status == "verified"
+        else "gap"
+    )
+    return {
+        "query_shape_row_shape_gap": {
+            "status": query_and_row_shape_status,
+            "repository_query_shape_status": repository_query_shape_status,
+            "result_row_mapping_status": result_row_mapping_status,
+            "detail": (
+                "Repository statement shape and fake result-row mapping are verified in stub/shadow readiness only."
+                if query_and_row_shape_status == "verified"
+                else "Repository statement shape or fake result-row mapping still has a readiness gap."
+            ),
+            "not_cutover_evidence": "This is not a real driver-backed query path and does not prove runtime DB cutover.",
+        },
+        "semantic_conformance_gap": {
+            "status": "stub_validated_real_driver_gap",
+            "sql_contract_status": sql_contract_status,
+            "detail": "Claim, lease, heartbeat, and CAS reclaim semantics are covered by file-backed/shared conformance, SQL templates, and fake-bound checks, but not by a real PostgreSQL driver execution path.",
+            "technical_review_boundary": "Driver timeouts, schema failures, parse failures, and contract failures remain processing_error or contract errors; taxonomy uncertainty and score conflict remain review semantics.",
+        },
+        "operational_readiness_owner_decision_gap": {
+            "status": "owner_decision_required",
+            "detail": "Operational readiness is blocked on owner freeze/signoff before selecting concrete runtime dependencies or entering a real PostgreSQL shadow connection phase.",
+            "real_db_connection": False,
+            "runtime_cutover_executed": False,
+            "reserved_human_selections": {
+                "migration_tool": None,
+                "runtime_db_driver": None,
+                "managed_postgresql_vendor": None,
+                "secrets_manager": None,
+            },
+            "reserved_selection_reason": "owner freeze not yet completed",
+        },
+    }
+
+
+def _admission_decision_packet_draft() -> dict[str, object]:
+    criteria = [
+        "expand-backfill-contract migration rhythm",
+        "forward-only main path and explicit roll-forward strategy",
+        "claim / lease / heartbeat / CAS reclaim semantic validation",
+        "technical failure and review semantic split",
+        "fixed evidence pair preservation",
+    ]
+    return {
+        "decision_scope": {
+            "status": "draft_criteria_only",
+            "freezes": "admission / evaluation criteria only",
+            "does_not_freeze": [
+                "product names",
+                "vendor names",
+                "driver names",
+                "migration tool names",
+            ],
+            "real_database_connection": False,
+            "runtime_cutover": False,
+        },
+        "frozen_criteria_recommended": criteria,
+        "evidence_mapping": [
+            {
+                "criterion": "expand-backfill-contract migration rhythm",
+                "status": "criteria_defined_with_stub_evidence",
+                "evidence": [
+                    "15_tech_stack_and_runtime.md: forward-only plus additive-first / expand-backfill-contract discipline",
+                    "src/runtime/migrations.py: policy and migration_spine_remains_tool_agnostic",
+                    "tests.unit.test_runtime_migrations",
+                ],
+                "gap": "No concrete migration_tool has owner signoff, and no real migration execution has occurred.",
+            },
+            {
+                "criterion": "forward-only main path and explicit roll-forward strategy",
+                "status": "criteria_defined_with_stub_evidence",
+                "evidence": [
+                    "src/runtime/migrations.py: policy = forward-only + additive-first",
+                    "17_open_decisions_and_freeze_board.md:DEC-027",
+                ],
+                "gap": "Future tool selection must prove explicit roll-forward behavior before freeze.",
+            },
+            {
+                "criterion": "claim / lease / heartbeat / CAS reclaim semantic validation",
+                "status": "stub_validated_real_driver_gap",
+                "evidence": [
+                    "tests.unit.test_runtime",
+                    "tests.unit.runtime_backend_conformance",
+                    "tests.unit.test_runtime_driver_repository_stub",
+                    "src/runtime/sql/postgresql_task_runtime_phase2_1.sql",
+                ],
+                "gap": "No real driver-backed PostgreSQL execution path has validated these semantics yet.",
+            },
+            {
+                "criterion": "technical failure and review semantic split",
+                "status": "criteria_defined_with_regression_evidence",
+                "evidence": [
+                    "src/runtime/db_driver_readiness.py: RuntimeTaskDriverErrorClassifier",
+                    "tests.unit.test_runtime",
+                    "tests.regression.test_replay_and_marts",
+                ],
+                "gap": "Future driver exceptions must continue mapping to processing_error or contract errors, not review issues.",
+            },
+            {
+                "criterion": "fixed evidence pair preservation",
+                "status": "preserve_existing_semantics",
+                "evidence": [
+                    "docs/phase1_g_acceptance_evidence.md:412",
+                    "docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json:1439",
+                ],
+                "gap": "Regenerated evidence must not rewrite the existing Phase1-G go / owner-signoff meaning.",
+            },
+        ],
+        "gaps_and_risks": [
+            "The fake harness may still differ from a real driver result object.",
+            "Row-shape readiness is not production database readiness.",
+            "repository_query_shape_status can be misread as cutover unless paired with real_db_connection=false and cutover_eligible=false.",
+            "Vendor, driver, and tool freeze cannot happen before owner signoff.",
+            "The fixed evidence pair must keep its existing Phase1-G go / owner-signoff semantics if evidence is regenerated.",
+        ],
+        "owner_required_decision": [
+            "Accept or reject freezing these admission criteria.",
+            "Allow later selection of a concrete migration_tool.",
+            "Allow later selection of a concrete runtime_db_driver.",
+            "Allow a later real PostgreSQL shadow connection phase.",
+            "Allow later runtime cutover planning.",
+        ],
+        "provisional_recommendation_without_freeze": {
+            "status": "do_not_freeze",
+            "recommendation": "Use the criteria as a draft gate and keep building stub/shadow conformance evidence until owner signoff authorizes concrete dependency selection.",
+            "blocker": "runtime_db_driver and migration_tool admission criteria are not fully satisfied by real driver or migration-tool evidence.",
+            "safe_next_step": "Extend evidence around stub/shadow row-shape, SQL-contract, and semantic conformance without naming final dependencies or opening a real DB connection.",
+            "readiness_claim": "Readiness improved at the fake/stub layer only; runtime cutover is not ready.",
+        },
+    }
+
+
 def migration_plan() -> dict[str, object]:
     sql_contract_checks = verify_postgresql_runtime_sql_contracts()
     repository_query_shape_checks = verify_runtime_task_repository_query_shapes()
+    repository_stub = RuntimeTaskDriverRepositoryStub()
+    result_row_mapping_report = repository_stub.verify_result_row_mapping_readiness()
     sql_contract_status = (
         "verified" if all(check.status == "verified" for check in sql_contract_checks) else "contract_gap"
     )
@@ -263,10 +420,23 @@ def migration_plan() -> dict[str, object]:
         if all(check.status == "verified" for check in repository_query_shape_checks)
         else "repository_gap"
     )
+    gap_summaries = _gap_summaries(
+        repository_query_shape_status=repository_query_shape_status,
+        result_row_mapping_status=result_row_mapping_report.status,
+        sql_contract_status=sql_contract_status,
+    )
     return {
         "phase": "Phase2-2",
         "status": "db_runtime_backend_migration_spine_started",
         "policy": "forward-only + additive-first",
+        "cli_evidence_surface": {
+            "stage": "stub_shadow_readiness_validation_only",
+            "real_db_connection": False,
+            "runtime_cutover_executed": False,
+            "cutover_claim": "not_completed",
+            "reserved_selection_reason": "owner freeze not yet completed",
+            "warning": "repository_query_shape_status and result_row_mapping_status are readiness checks only, not proof of real PostgreSQL cutover.",
+        },
         "canonical_basis": [
             "15_tech_stack_and_runtime.md",
             "18_runtime_task_and_replay_contracts.md",
@@ -304,6 +474,7 @@ def migration_plan() -> dict[str, object]:
             "row_conformance_status_values": ["verified", "drift_detected"],
             "sql_contract_status_values": ["verified", "contract_gap"],
             "repository_query_shape_status_values": ["verified", "repository_gap"],
+            "result_row_mapping_status_values": ["verified", "row_shape_gap"],
             "sql_contract_artifact_path": "src/runtime/sql/postgresql_task_runtime_phase2_1.sql",
             "repository_stub_path": "src/runtime/db_driver_repository_stub.py",
             "sql_contract_status": sql_contract_status,
@@ -312,14 +483,19 @@ def migration_plan() -> dict[str, object]:
             "repository_query_shape_check_ids": [
                 check.contract_id for check in repository_query_shape_checks
             ],
+            "result_row_mapping_status": result_row_mapping_report.status,
+            "result_row_mapping_checked_fields": list(result_row_mapping_report.expected_fields),
             "cutover_eligible": False,
             "real_db_connection": False,
-            "purpose": "DB-side row parity plus repository query-shape readiness verification in shadow mode.",
+            "purpose": "DB-side row parity plus repository query-shape and fake result-row mapping readiness verification in shadow mode.",
         },
         "sql_contract_checks": [check.to_dict() for check in sql_contract_checks],
         "repository_query_shape_checks": [
             check.to_dict() for check in repository_query_shape_checks
         ],
+        "result_row_mapping_report": result_row_mapping_report.to_dict(),
+        "gap_summaries": gap_summaries,
+        "decision_packet_draft": _admission_decision_packet_draft(),
         "artifacts": {
             "runtime_backend_contract_path": "src/runtime/backend_contract.py",
             "db_driver_readiness_path": "src/runtime/db_driver_readiness.py",

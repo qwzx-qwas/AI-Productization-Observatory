@@ -58,6 +58,52 @@ class RuntimeTaskDriverRepositoryStubUnitTests(unittest.TestCase):
             reclaim.required_semantics,
         )
 
+    def test_repository_stub_validates_fake_result_row_mapping_to_task_snapshot(self) -> None:
+        repository = RuntimeTaskDriverRepositoryStub()
+
+        report = repository.verify_result_row_mapping_readiness()
+
+        self.assertEqual(report.status, "verified")
+        self.assertFalse(report.real_db_connection)
+        self.assertEqual(report.harness_mode, "fake_result_row_mapping_only")
+        self.assertIn("lease_owner", report.semantic_fields)
+        self.assertIn("lease_expires_at", report.timestamp_fields)
+        self.assertIn("finished_at", report.null_fields_preserved)
+        self.assertEqual(report.missing_fields, ())
+        self.assertEqual(report.extra_fields, ())
+        self.assertEqual(report.value_mismatches, ())
+        self.assertEqual(report.status_semantic_drift, ())
+        self.assertIsNotNone(report.mapped_snapshot)
+        self.assertEqual(report.mapped_snapshot["status"], "leased")
+        self.assertEqual(report.mapped_snapshot["last_error_type"], "timeout")
+
+    def test_repository_stub_detects_result_row_shape_gap_and_rename_risk(self) -> None:
+        repository = RuntimeTaskDriverRepositoryStub()
+        snapshot = repository.sample_task_snapshot_for_row_mapping()
+        row = repository.fake_result_row_from_snapshot(snapshot)
+        row["taskStatus"] = row.pop("status")
+        row["lease_owner"] = "stale-worker"
+
+        report = repository.map_result_row_to_task_snapshot(row, expected_snapshot=snapshot)
+
+        self.assertEqual(report.status, "row_shape_gap")
+        self.assertIn("status", report.missing_fields)
+        self.assertIn("taskStatus", report.extra_fields)
+        self.assertIn("taskStatus", report.misleading_rename_candidates)
+        self.assertIsNone(report.mapped_snapshot)
+
+    def test_repository_stub_detects_result_row_status_semantic_drift(self) -> None:
+        repository = RuntimeTaskDriverRepositoryStub()
+        snapshot = repository.sample_task_snapshot_for_row_mapping()
+        row = repository.fake_result_row_from_snapshot(snapshot)
+        row["status"] = "driver_only_status"
+
+        report = repository.map_result_row_to_task_snapshot(row, expected_snapshot=snapshot)
+
+        self.assertEqual(report.status, "row_shape_gap")
+        self.assertIn("status", report.status_semantic_drift)
+        self.assertIn("status", report.value_mismatches)
+
     def test_repository_stub_rejects_query_shape_gap_before_fake_execution(self) -> None:
         broken_sql = """
         -- contract: runtime_task_claim_next_cas
