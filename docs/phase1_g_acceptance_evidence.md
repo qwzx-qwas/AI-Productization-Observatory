@@ -629,7 +629,8 @@
   - 已把 `RuntimeTaskDriverAdapter` 扩展为包含 `verify_runtime_tasks` 的可替换 DB-side conformance seam
   - 已新增 `RuntimeTaskDriverConformanceReport`、`RuntimeTaskDriverSqlContractCheck` 与 repository/query-shape checks，用于记录 `verified` / `drift_detected`、`row_conformance_status`、`sql_contract_status = verified / contract_gap`、`repository_query_shape_status = verified / repository_gap`、row-level mismatch、checked contracts 与 `cutover_eligible = false`
   - 已把 `src/runtime/sql/postgresql_task_runtime_phase2_1.sql` 扩展为 `DDL + non-executed SQL contract templates`，补齐 `claim_by_id`、`claim_next`、`heartbeat_guard` 与 `reclaim_expired_cas` 的 PostgreSQL-level 契约模板
-  - 已新增 `src/runtime/db_driver_repository_stub.py`，以 fake-bound statement capture 方式直接消费上述 SQL contract sections，并验证 required bind shape、statement selection、`claim_next` 排序/锁语义约束与 reclaim payload guards；本批次进一步加入 fake result-row mapping harness，验证未来 driver 返回行在字段名、`null`、timestamp、status、worker、lease、heartbeat、attempt 与 error 字段上可无损映射回 `TaskSnapshot`
+  - 已新增 `src/runtime/db_driver_repository_stub.py`，以 fake-bound statement capture 方式直接消费上述 SQL contract sections，并验证 required bind shape、statement selection、`claim_next` 排序/锁语义约束与 reclaim payload guards；本批次进一步加入 fake result-row mapping harness，验证未来 driver 返回行在字段名、`null`、timestamp/timezone、status、worker、lease、heartbeat、attempt 与 error 字段上可无损映射回 `TaskSnapshot`
+  - 本批次进一步扩展 row-shape conformance：positive variants 覆盖 canonical dict、mapping-like row、aware datetime row 与 all-nullable-preserved row；negative controls 覆盖缺字段、额外字段、rename risk、status semantic drift、timezone drift 与 nullability drift
   - 已把 `InMemoryPostgresTaskShadowExecutor` 扩展为可对比 DB-shadow row snapshot 与 canonical runtime task snapshot
   - 已把 `PostgresTaskBackendShadow` 扩展为 `shadow_conformance()`，可在不 resync 的情况下同时报告 DB 侧 row drift evidence、SQL contract validation 与 repository/query-shape readiness
   - 已把 `src/runtime/migrations.py` 的 plan 推进为：
@@ -639,6 +640,8 @@
     - `driver_conformance_contract.sql_contract_status = verified`
     - `driver_conformance_contract.repository_query_shape_status = verified`
     - `driver_conformance_contract.result_row_mapping_status = verified`
+    - `driver_conformance_contract.result_row_mapping_positive_variant_count = 4`
+    - `driver_conformance_contract.result_row_gap_control_status = gap_controls_detected`
     - `cli_evidence_surface.stage = stub_shadow_readiness_validation_only`
     - `gap_summaries.query_shape_row_shape_gap.status = verified`
     - `gap_summaries.semantic_conformance_gap.status = stub_validated_real_driver_gap`
@@ -654,9 +657,9 @@
     - `secrets_manager = null`
   - 已补充 `tests.unit.runtime_backend_conformance`，显式覆盖 `claim_next` 的 `available_at -> scheduled_at -> task_id` 排序与 active lease 跳过语义
   - 已补充 `tests.unit.test_runtime`，显式覆盖 DB-shadow verified parity、deliberate drift detection、deliberate SQL contract gap detection 与 deliberate repository/query-shape gap detection
-  - 已更新 `tests.unit.test_runtime_driver_repository_stub`，覆盖 fake-bound statement capture、result-row mapping、result-row shape gap、status semantic drift、`claim_next` 排序/锁语义约束与 reclaim payload guards
-  - 已更新 `tests.unit.test_runtime_migrations`，覆盖 Phase2-2 migration spine plan、repository stub metadata、query-shape readiness metadata、row mapping report、三类 gap summaries 与 admission decision packet draft
-  - 已重新执行 `python3 -m src.cli phase1-g-audit-ready-report`，继续输出 `report_title = Phase1-G audit-ready / owner-review-ready / go`，`generated_at = 2026-04-24T01:34:53.697545Z`
+  - 已更新 `tests.unit.test_runtime_driver_repository_stub`，覆盖 fake-bound statement capture、result-row mapping、driver-like row variants、result-row shape gap、缺字段、额外字段、rename risk、status semantic drift、timezone drift、nullability drift、`claim_next` 排序/锁语义约束与 reclaim payload guards
+  - 已更新 `tests.unit.test_runtime_migrations`，覆盖 Phase2-2 migration spine plan、repository stub metadata、query-shape readiness metadata、row variant reports、negative gap controls、三类 gap summaries 与 admission decision packet draft
+  - 已重新执行 `python3 -m src.cli phase1-g-audit-ready-report`，继续输出 `report_title = Phase1-G audit-ready / owner-review-ready / go`，`generated_at = 2026-04-24T02:35:42.576300Z`
 - 本批次未执行项：
   - 未连接真实 PostgreSQL
   - 未执行真实 driver-backed `claim / lease / heartbeat / CAS reclaim` 查询路径
@@ -667,13 +670,13 @@
   - `python3 -m src.cli migrate --plan`：通过，继续输出 `status = db_runtime_backend_migration_spine_started`、`repository_query_shape_status = verified`，并保持 `migration_tool`、`runtime_db_driver`、`managed_postgresql_vendor`、`secrets_manager` 全部为 `null`
   - `python3 -m unittest -v tests.unit.test_runtime_migrations`：通过，`Ran 2 tests in 0.025s`
   - `python3 -m unittest -v tests.unit.test_runtime tests.regression.test_replay_and_marts`：通过，`Ran 57 tests in 12.749s`
-  - `python3 -m unittest -v tests.unit.test_runtime_driver_repository_stub`：通过，`Ran 6 tests in 0.027s`
+  - `python3 -m unittest -v tests.unit.test_runtime_driver_repository_stub`：通过，`Ran 9 tests in 0.028s`
   - `python3 -m src.cli validate-configs`：通过，输出 `validated 10 config artifacts`
   - `python3 -m src.cli validate-schemas`：通过，输出 `validated 6 schema documents`
-  - `python3 -m src.cli phase1-g-audit-ready-report`：通过，输出 `owner_review_package=owner-review-ready`，并重算出 `generated_at = 2026-04-24T01:34:53.697545Z`
+  - `python3 -m src.cli phase1-g-audit-ready-report`：通过，输出 `owner_review_package=owner-review-ready`，并重算出 `generated_at = 2026-04-24T02:35:42.576300Z`
   - `python3 -m unittest -v tests.contract.test_contracts.Phase1GAcceptanceEvidenceContractTests`：通过，`Ran 2 tests`
   - `python3 -m unittest -v tests.contract.test_contracts.FreezeBoardSignoffContractTests`：通过，`Ran 2 tests`
-  - `python3 -m unittest discover -s tests -t .`：通过，`Ran 225 tests in 615.717s`
+  - `python3 -m unittest discover -s tests -t .`：通过，`Ran 228 tests in 620.883s`
 - 阻塞项：
   - 当前无阻塞本 shadow-mode Phase2-2 增量的冻结冲突
   - 真实 DB cutover 与最终依赖命名仍需 owner 后续冻结 `migration_tool`、`runtime_db_driver`、`managed_postgresql_vendor` 与 `secrets_manager`
@@ -689,6 +692,6 @@
 - Phase2-1 已启动状态：
   - 上述文档现一致表述为“DB runtime backend 基线接入已启动，DB-shadow parity skeleton 与 driver readiness layer 已可运行”，具体落地为 kickoff plan、`RuntimeTaskBackend` contract、`src/runtime/db_driver_readiness.py`、`src/runtime/db_shadow.py`、PostgreSQL task-table SQL scaffold、shared conformance suite 与最小测试，而非实际 cutover。
 - Phase2-2 已启动状态：
-  - 上述文档现一致表述为“DB runtime migration spine 已启动，adapter seam 已扩展到 DB-side row parity + SQL claim / heartbeat / CAS reclaim contract conformance report，并补齐最小 fake-bound driver repository stub readiness 与 fake result-row mapping harness；当前 conformance 可显式区分 row drift、SQL contract gap、repository/query-shape gap、query/row-shape gap、semantic conformance gap 与 owner decision gap”，具体落地为 `RuntimeTaskDriverConformanceReport`、`RuntimeTaskDriverSqlContractCheck`、`RuntimeTaskDriverRowMappingReport`、`src/runtime/db_driver_repository_stub.py`、`verify_runtime_tasks`、`shadow_conformance()`、`phase2_2_progress`、`gap_summaries`、`decision_packet_draft`、SQL scaffold templates 与新增 unit coverage，而非真实 PostgreSQL cutover。
+  - 上述文档现一致表述为“DB runtime migration spine 已启动，adapter seam 已扩展到 DB-side row parity + SQL claim / heartbeat / CAS reclaim contract conformance report，并补齐最小 fake-bound driver repository stub readiness、fake result-row mapping harness、real-driver-like row variants 与 row-shape negative controls；当前 conformance 可显式区分 row drift、SQL contract gap、repository/query-shape gap、query/row-shape gap、semantic conformance gap 与 owner decision gap”，具体落地为 `RuntimeTaskDriverConformanceReport`、`RuntimeTaskDriverSqlContractCheck`、`RuntimeTaskDriverRowMappingReport`、`src/runtime/db_driver_repository_stub.py`、`verify_runtime_tasks`、`shadow_conformance()`、`phase2_2_progress`、`gap_summaries`、`decision_packet_draft`、SQL scaffold templates 与新增 unit coverage，而非真实 PostgreSQL cutover。
 - 未决项归属与 owner 决策边界：
   - `migration_tool`、`runtime_db_driver`、`managed_postgresql_vendor` 与 `secrets_manager` 仍保持保留人类选型边界且在机器可读输出中保持 `null`；本批次文档与代码均未把这些项写成最终产品依赖。admission criteria draft 只建议评估标准，不代表 owner decision。

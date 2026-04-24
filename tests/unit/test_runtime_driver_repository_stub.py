@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import datetime
 import unittest
 
 from src.runtime.db_driver_readiness import RuntimeTaskDriverProtocolError
@@ -73,9 +74,40 @@ class RuntimeTaskDriverRepositoryStubUnitTests(unittest.TestCase):
         self.assertEqual(report.extra_fields, ())
         self.assertEqual(report.value_mismatches, ())
         self.assertEqual(report.status_semantic_drift, ())
+        self.assertEqual(report.timestamp_semantic_drift, ())
+        self.assertEqual(report.nullability_drift, ())
         self.assertIsNotNone(report.mapped_snapshot)
         self.assertEqual(report.mapped_snapshot["status"], "leased")
         self.assertEqual(report.mapped_snapshot["last_error_type"], "timeout")
+
+    def test_repository_stub_validates_driver_like_result_row_variants(self) -> None:
+        repository = RuntimeTaskDriverRepositoryStub()
+
+        reports = {
+            report.row_variant: report
+            for report in repository.verify_driver_like_result_row_variants()
+        }
+
+        self.assertEqual(
+            set(reports),
+            {
+                "canonical_dict",
+                "mapping_like_driver_row",
+                "aware_datetime_driver_row",
+                "all_nullable_fields_preserved_as_null",
+            },
+        )
+        self.assertTrue(all(report.status == "verified" for report in reports.values()))
+        self.assertIn(
+            "scheduled_at",
+            reports["aware_datetime_driver_row"].normalized_datetime_fields,
+        )
+        self.assertEqual(reports["aware_datetime_driver_row"].timestamp_semantic_drift, ())
+        self.assertIn(
+            "source_id",
+            reports["all_nullable_fields_preserved_as_null"].null_fields_preserved,
+        )
+        self.assertEqual(reports["all_nullable_fields_preserved_as_null"].nullability_drift, ())
 
     def test_repository_stub_detects_result_row_shape_gap_and_rename_risk(self) -> None:
         repository = RuntimeTaskDriverRepositoryStub()
@@ -103,6 +135,44 @@ class RuntimeTaskDriverRepositoryStubUnitTests(unittest.TestCase):
         self.assertEqual(report.status, "row_shape_gap")
         self.assertIn("status", report.status_semantic_drift)
         self.assertIn("status", report.value_mismatches)
+
+    def test_repository_stub_detects_timezone_and_nullability_drift_controls(self) -> None:
+        repository = RuntimeTaskDriverRepositoryStub()
+        snapshot = repository.sample_task_snapshot_for_row_mapping()
+        row = repository.fake_result_row_from_snapshot(snapshot)
+        row["scheduled_at"] = datetime(2026, 4, 24, 0, 0, 0)
+        row["task_id"] = None
+
+        report = repository.map_result_row_to_task_snapshot(
+            row,
+            expected_snapshot=snapshot,
+            row_variant="combined_negative_control",
+        )
+
+        self.assertEqual(report.status, "row_shape_gap")
+        self.assertIn("scheduled_at", report.timestamp_semantic_drift)
+        self.assertIn("task_id", report.nullability_drift)
+        self.assertIn("task_id", report.value_mismatches)
+
+    def test_repository_stub_negative_gap_controls_stay_auditable(self) -> None:
+        repository = RuntimeTaskDriverRepositoryStub()
+
+        reports = {
+            report.row_variant: report
+            for report in repository.verify_result_row_gap_controls()
+        }
+
+        self.assertTrue(all(report.status == "row_shape_gap" for report in reports.values()))
+        self.assertIn("task_id", reports["missing_required_task_id_control"].missing_fields)
+        self.assertIn("driver_row_number", reports["extra_driver_column_control"].extra_fields)
+        self.assertIn("taskStatus", reports["renamed_status_control"].misleading_rename_candidates)
+        self.assertIn("status", reports["status_semantic_drift_control"].status_semantic_drift)
+        self.assertIn(
+            "scheduled_at",
+            reports["naive_timestamp_timezone_control"].timestamp_semantic_drift,
+        )
+        self.assertIn("task_id", reports["nullability_drift_control"].nullability_drift)
+        self.assertIn("lease_owner", reports["nullability_drift_control"].nullability_drift)
 
     def test_repository_stub_rejects_query_shape_gap_before_fake_execution(self) -> None:
         broken_sql = """

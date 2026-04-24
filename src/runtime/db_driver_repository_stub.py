@@ -7,7 +7,9 @@ vendor, or claim that the runtime has cut over from the file-backed harness.
 
 from __future__ import annotations
 
+from collections.abc import Iterator, Mapping
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Protocol
 
@@ -58,6 +60,57 @@ TASK_SNAPSHOT_SEMANTIC_FIELDS: tuple[str, ...] = (
     "last_error_type",
     "last_error_message",
 )
+TASK_SNAPSHOT_REQUIRED_FIELDS: tuple[str, ...] = tuple(
+    field for field in TASK_SNAPSHOT_FIELDS if field not in TASK_SNAPSHOT_NULLABLE_FIELDS
+)
+
+
+def _timestamp_to_utc_iso(value: object) -> tuple[object, bool]:
+    if value is None:
+        return None, False
+    if isinstance(value, datetime):
+        if value.tzinfo is None or value.utcoffset() is None:
+            return value.isoformat(timespec="seconds"), True
+        utc_value = value.astimezone(timezone.utc).replace(tzinfo=None)
+        return f"{utc_value.isoformat(timespec='seconds')}Z", False
+    if isinstance(value, str):
+        if not value:
+            return value, True
+        try:
+            parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        except ValueError:
+            return value, True
+        if parsed.tzinfo is None or parsed.utcoffset() is None:
+            return value, True
+        utc_value = parsed.astimezone(timezone.utc).replace(tzinfo=None)
+        return f"{utc_value.isoformat(timespec='seconds')}Z", False
+    return value, True
+
+
+def _normalize_snapshot_for_compare(snapshot: TaskSnapshot) -> TaskSnapshot:
+    normalized: TaskSnapshot = {}
+    for field in TASK_SNAPSHOT_FIELDS:
+        value = snapshot.get(field)
+        if field in TASK_SNAPSHOT_TIMESTAMP_FIELDS:
+            value, _ = _timestamp_to_utc_iso(value)
+        normalized[field] = value
+    return normalized
+
+
+class RuntimeTaskDriverMappingRow(Mapping[str, object]):
+    """Mapping-like fake driver row used to exercise adapter normalization."""
+
+    def __init__(self, values: Mapping[str, object]) -> None:
+        self._values = dict(values)
+
+    def __getitem__(self, key: str) -> object:
+        return self._values[key]
+
+    def __iter__(self) -> Iterator[str]:
+        return iter(self._values)
+
+    def __len__(self) -> int:
+        return len(self._values)
 
 
 @dataclass(frozen=True)
@@ -83,6 +136,10 @@ class RuntimeTaskDriverRowMappingReport:
     value_mismatches: tuple[str, ...]
     status_semantic_drift: tuple[str, ...]
     misleading_rename_candidates: tuple[str, ...]
+    timestamp_semantic_drift: tuple[str, ...]
+    nullability_drift: tuple[str, ...]
+    normalized_datetime_fields: tuple[str, ...]
+    row_variant: str = "canonical_dict"
     real_db_connection: bool = False
     harness_mode: str = "fake_result_row_mapping_only"
 
@@ -102,6 +159,10 @@ class RuntimeTaskDriverRowMappingReport:
             "value_mismatches": list(self.value_mismatches),
             "status_semantic_drift": list(self.status_semantic_drift),
             "misleading_rename_candidates": list(self.misleading_rename_candidates),
+            "timestamp_semantic_drift": list(self.timestamp_semantic_drift),
+            "nullability_drift": list(self.nullability_drift),
+            "normalized_datetime_fields": list(self.normalized_datetime_fields),
+            "row_variant": self.row_variant,
             "real_db_connection": self.real_db_connection,
             "harness_mode": self.harness_mode,
         }
@@ -236,13 +297,116 @@ class RuntimeTaskDriverRepositoryStub:
 
         snapshot = self.sample_task_snapshot_for_row_mapping()
         row = self.fake_result_row_from_snapshot(snapshot)
-        return self.map_result_row_to_task_snapshot(row, expected_snapshot=snapshot)
+        return self.map_result_row_to_task_snapshot(
+            row,
+            expected_snapshot=snapshot,
+            row_variant="canonical_dict",
+        )
+
+    def verify_driver_like_result_row_variants(self) -> tuple[RuntimeTaskDriverRowMappingReport, ...]:
+        """Exercise positive fake row variants likely to appear behind adapters."""
+
+        snapshot = self.sample_task_snapshot_for_row_mapping()
+        canonical_row = self.fake_result_row_from_snapshot(snapshot)
+        datetime_row = {
+            field: (
+                datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+                if field in TASK_SNAPSHOT_TIMESTAMP_FIELDS and value is not None
+                else value
+            )
+            for field, value in canonical_row.items()
+        }
+        nullable_snapshot = dict(snapshot)
+        for field in TASK_SNAPSHOT_NULLABLE_FIELDS:
+            nullable_snapshot[field] = None
+        nullable_row = self.fake_result_row_from_snapshot(nullable_snapshot)
+        return (
+            self.map_result_row_to_task_snapshot(
+                canonical_row,
+                expected_snapshot=snapshot,
+                row_variant="canonical_dict",
+            ),
+            self.map_result_row_to_task_snapshot(
+                RuntimeTaskDriverMappingRow(canonical_row),
+                expected_snapshot=snapshot,
+                row_variant="mapping_like_driver_row",
+            ),
+            self.map_result_row_to_task_snapshot(
+                datetime_row,
+                expected_snapshot=snapshot,
+                row_variant="aware_datetime_driver_row",
+            ),
+            self.map_result_row_to_task_snapshot(
+                nullable_row,
+                expected_snapshot=nullable_snapshot,
+                row_variant="all_nullable_fields_preserved_as_null",
+            ),
+        )
+
+    def verify_result_row_gap_controls(self) -> tuple[RuntimeTaskDriverRowMappingReport, ...]:
+        """Return negative controls for row-shape, rename, null, and timezone gaps."""
+
+        snapshot = self.sample_task_snapshot_for_row_mapping()
+        canonical_row = self.fake_result_row_from_snapshot(snapshot)
+
+        missing_row = dict(canonical_row)
+        missing_row.pop("task_id")
+
+        extra_row = dict(canonical_row)
+        extra_row["driver_row_number"] = 1
+
+        rename_row = dict(canonical_row)
+        rename_row["taskStatus"] = rename_row.pop("status")
+
+        status_row = dict(canonical_row)
+        status_row["status"] = "driver_only_status"
+
+        naive_timestamp_row = dict(canonical_row)
+        naive_timestamp_row["scheduled_at"] = datetime(2026, 4, 24, 0, 0, 0)
+
+        nullability_row = dict(canonical_row)
+        nullability_row["task_id"] = None
+        nullability_row["lease_owner"] = None
+
+        return (
+            self.map_result_row_to_task_snapshot(
+                missing_row,
+                expected_snapshot=snapshot,
+                row_variant="missing_required_task_id_control",
+            ),
+            self.map_result_row_to_task_snapshot(
+                extra_row,
+                expected_snapshot=snapshot,
+                row_variant="extra_driver_column_control",
+            ),
+            self.map_result_row_to_task_snapshot(
+                rename_row,
+                expected_snapshot=snapshot,
+                row_variant="renamed_status_control",
+            ),
+            self.map_result_row_to_task_snapshot(
+                status_row,
+                expected_snapshot=snapshot,
+                row_variant="status_semantic_drift_control",
+            ),
+            self.map_result_row_to_task_snapshot(
+                naive_timestamp_row,
+                expected_snapshot=snapshot,
+                row_variant="naive_timestamp_timezone_control",
+            ),
+            self.map_result_row_to_task_snapshot(
+                nullability_row,
+                expected_snapshot=snapshot,
+                row_variant="nullability_drift_control",
+            ),
+        )
 
     def map_result_row_to_task_snapshot(
         self,
-        row: dict[str, object],
+        row: Mapping[str, object],
         *,
         expected_snapshot: TaskSnapshot | None = None,
+        row_variant: str = "custom_row",
     ) -> RuntimeTaskDriverRowMappingReport:
         """Validate that a fake result row maps losslessly to TaskSnapshot.
 
@@ -259,19 +423,57 @@ class RuntimeTaskDriverRepositoryStub:
         mapped_snapshot: TaskSnapshot | None = None
         value_mismatches: tuple[str, ...] = ()
         null_fields_preserved: tuple[str, ...] = ()
+        timestamp_semantic_drift = tuple(
+            field
+            for field in TASK_SNAPSHOT_TIMESTAMP_FIELDS
+            if field in row_fields and _timestamp_to_utc_iso(row[field])[1]
+        )
+        nullability_drift = tuple(
+            field
+            for field in TASK_SNAPSHOT_REQUIRED_FIELDS
+            if field in row_fields and row[field] is None
+        )
+        normalized_datetime_fields: tuple[str, ...] = ()
 
         if not missing_fields:
-            mapped_snapshot = {field: row[field] for field in TASK_SNAPSHOT_FIELDS}
+            mapped_snapshot = {}
+            normalized_datetime_fields_list: list[str] = []
+            for field in TASK_SNAPSHOT_FIELDS:
+                value = row[field]
+                if field in TASK_SNAPSHOT_TIMESTAMP_FIELDS:
+                    normalized_value, _ = _timestamp_to_utc_iso(value)
+                    if isinstance(value, datetime):
+                        normalized_datetime_fields_list.append(field)
+                    mapped_snapshot[field] = normalized_value
+                else:
+                    mapped_snapshot[field] = value
+            normalized_datetime_fields = tuple(normalized_datetime_fields_list)
             null_fields_preserved = tuple(
                 field
                 for field in TASK_SNAPSHOT_NULLABLE_FIELDS
                 if field in mapped_snapshot and mapped_snapshot[field] is None
             )
             if expected_snapshot is not None:
+                expected_for_compare = _normalize_snapshot_for_compare(expected_snapshot)
                 value_mismatches = tuple(
                     field
                     for field in TASK_SNAPSHOT_FIELDS
-                    if mapped_snapshot.get(field) != expected_snapshot.get(field)
+                    if mapped_snapshot.get(field) != expected_for_compare.get(field)
+                )
+                nullability_drift = tuple(
+                    sorted(
+                        set(nullability_drift)
+                        | {
+                            field
+                            for field in TASK_SNAPSHOT_NULLABLE_FIELDS
+                            if expected_for_compare.get(field) is None and mapped_snapshot.get(field) is not None
+                        }
+                        | {
+                            field
+                            for field in TASK_SNAPSHOT_NULLABLE_FIELDS
+                            if expected_for_compare.get(field) is not None and mapped_snapshot.get(field) is None
+                        }
+                    )
                 )
 
         status_value = row.get("status")
@@ -294,6 +496,8 @@ class RuntimeTaskDriverRepositoryStub:
             + len(extra_fields)
             + len(value_mismatches)
             + len(status_semantic_drift)
+            + len(timestamp_semantic_drift)
+            + len(nullability_drift)
         )
         status = "verified" if gap_count == 0 else "row_shape_gap"
         return RuntimeTaskDriverRowMappingReport(
@@ -315,6 +519,10 @@ class RuntimeTaskDriverRepositoryStub:
             value_mismatches=value_mismatches,
             status_semantic_drift=status_semantic_drift,
             misleading_rename_candidates=misleading_rename_candidates,
+            timestamp_semantic_drift=timestamp_semantic_drift,
+            nullability_drift=nullability_drift,
+            normalized_datetime_fields=normalized_datetime_fields,
+            row_variant=row_variant,
         )
 
     def claim(

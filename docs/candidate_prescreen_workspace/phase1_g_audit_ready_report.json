@@ -1201,7 +1201,7 @@
     "owner_signoff": "approved",
     "product_hunt_phase1_exit_gate": "deferred_not_current_gate"
   },
-  "generated_at": "2026-04-24T01:34:53.697545Z",
+  "generated_at": "2026-04-24T02:35:42.576300Z",
   "release_judgment": {
     "judgment": "go",
     "owner_required_signoff": [

@@ -72,6 +72,31 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
             "verified",
         )
         self.assertEqual(
+            plan["driver_conformance_contract"]["result_row_mapping_positive_variant_count"],
+            4,
+        )
+        self.assertEqual(
+            set(plan["driver_conformance_contract"]["result_row_mapping_positive_variants"]),
+            {
+                "canonical_dict",
+                "mapping_like_driver_row",
+                "aware_datetime_driver_row",
+                "all_nullable_fields_preserved_as_null",
+            },
+        )
+        self.assertEqual(
+            plan["driver_conformance_contract"]["result_row_gap_control_status"],
+            "gap_controls_detected",
+        )
+        self.assertIn(
+            "naive_timestamp_timezone_control",
+            plan["driver_conformance_contract"]["result_row_gap_control_variants"],
+        )
+        self.assertIn(
+            "nullability_drift_control",
+            plan["driver_conformance_contract"]["result_row_gap_control_variants"],
+        )
+        self.assertEqual(
             set(plan["driver_conformance_contract"]["sql_contract_status_values"]),
             {"verified", "contract_gap"},
         )
@@ -120,6 +145,35 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
         self.assertIn("lease_owner", row_mapping["semantic_fields"])
         self.assertIn("lease_expires_at", row_mapping["timestamp_fields"])
         self.assertIn("finished_at", row_mapping["null_fields_preserved"])
+        self.assertEqual(row_mapping["timestamp_semantic_drift"], [])
+        self.assertEqual(row_mapping["nullability_drift"], [])
+        variant_reports = {
+            item["row_variant"]: item for item in plan["result_row_mapping_variant_reports"]
+        }
+        self.assertEqual(variant_reports["mapping_like_driver_row"]["status"], "verified")
+        self.assertEqual(variant_reports["aware_datetime_driver_row"]["status"], "verified")
+        self.assertIn(
+            "scheduled_at",
+            variant_reports["aware_datetime_driver_row"]["normalized_datetime_fields"],
+        )
+        self.assertEqual(
+            variant_reports["all_nullable_fields_preserved_as_null"]["nullability_drift"],
+            [],
+        )
+        gap_controls = {
+            item["row_variant"]: item for item in plan["result_row_gap_control_reports"]
+        }
+        self.assertTrue(all(item["status"] == "row_shape_gap" for item in gap_controls.values()))
+        self.assertIn("driver_row_number", gap_controls["extra_driver_column_control"]["extra_fields"])
+        self.assertIn(
+            "taskStatus",
+            gap_controls["renamed_status_control"]["misleading_rename_candidates"],
+        )
+        self.assertIn(
+            "scheduled_at",
+            gap_controls["naive_timestamp_timezone_control"]["timestamp_semantic_drift"],
+        )
+        self.assertIn("task_id", gap_controls["nullability_drift_control"]["nullability_drift"])
         gap_summaries = plan["gap_summaries"]
         self.assertEqual(gap_summaries["query_shape_row_shape_gap"]["status"], "verified")
         self.assertEqual(
@@ -192,6 +246,14 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
             plan["phase2_2_progress"]["conformance_focus"],
         )
         self.assertIn(
+            "driver_like_row_variant_mapping_to_task_snapshot",
+            plan["phase2_2_progress"]["conformance_focus"],
+        )
+        self.assertIn(
+            "row_shape_gap_negative_controls",
+            plan["phase2_2_progress"]["conformance_focus"],
+        )
+        self.assertIn(
             "claim_next_ordering_and_skip_locked_readiness",
             plan["phase2_2_progress"]["conformance_focus"],
         )
@@ -236,7 +298,11 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
             plan["phase2_2_executed_items"],
         )
         self.assertIn(
-            "The repository stub now validates fake result-row mapping back into TaskSnapshot so future driver-returned rows have an explicit losslessness harness before any real driver is selected.",
+            "The repository stub now validates fake result-row mapping back into TaskSnapshot across canonical dict, mapping-like, aware datetime, and nullable-preservation variants before any real driver is selected.",
+            plan["phase2_2_executed_items"],
+        )
+        self.assertIn(
+            "The repository stub now carries negative row-shape controls for missing fields, extra fields, rename risk, status semantic drift, timezone drift, and nullability drift.",
             plan["phase2_2_executed_items"],
         )
         self.assertIn(

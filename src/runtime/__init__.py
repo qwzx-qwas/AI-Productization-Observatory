@@ -13,6 +13,7 @@ from src.runtime.db_driver_readiness import (
 )
 from src.runtime.db_driver_repository_stub import (
     CaptureRuntimeTaskDriverRepositoryExecutor,
+    RuntimeTaskDriverMappingRow,
     RuntimeTaskDriverRowMappingReport,
     RuntimeTaskDriverRepositoryStub,
 )
@@ -22,6 +23,7 @@ __all__ = [
     "InMemoryPostgresTaskShadowExecutor",
     "PostgresTaskBackendShadow",
     "CaptureRuntimeTaskDriverRepositoryExecutor",
+    "RuntimeTaskDriverMappingRow",
     "RuntimeTaskBackend",
     "RuntimeTaskDriverAdapter",
     "RuntimeTaskDriverConformanceReport",

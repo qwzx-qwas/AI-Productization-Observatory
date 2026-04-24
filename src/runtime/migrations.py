@@ -171,7 +171,7 @@ PHASE2_2_ACCEPTANCE_CHECKLIST: tuple[dict[str, object], ...] = (
     {
         "check_id": "repository_result_shape_mapping",
         "status": "done",
-        "detail": "The repository stub now validates fake driver result rows as losslessly mappable to TaskSnapshot, including null, timestamp, status, worker, lease, heartbeat, attempt, and error fields.",
+        "detail": "The repository stub now validates multiple fake driver-like result rows as losslessly mappable to TaskSnapshot, including mapping-like rows, aware datetimes, null preservation, timestamp timezone guards, status semantics, worker, lease, heartbeat, attempt, and error fields.",
         "artifacts": [
             "src/runtime/db_driver_repository_stub.py",
             "tests/unit/test_runtime_driver_repository_stub.py",
@@ -223,7 +223,8 @@ PHASE2_2_ACCEPTANCE_CHECKLIST: tuple[dict[str, object], ...] = (
 PHASE2_2_EXECUTED_ITEMS: tuple[str, ...] = (
     "RuntimeTaskDriverAdapter now exposes verify_runtime_tasks as the replaceable DB-side conformance seam.",
     "A minimal RuntimeTaskDriverRepositoryStub now fake-binds SQL contract sections, captures statement selection, and verifies bind/query-shape readiness without connecting to PostgreSQL.",
-    "The repository stub now validates fake result-row mapping back into TaskSnapshot so future driver-returned rows have an explicit losslessness harness before any real driver is selected.",
+    "The repository stub now validates fake result-row mapping back into TaskSnapshot across canonical dict, mapping-like, aware datetime, and nullable-preservation variants before any real driver is selected.",
+    "The repository stub now carries negative row-shape controls for missing fields, extra fields, rename risk, status semantic drift, timezone drift, and nullability drift.",
     "PostgresTaskBackendShadow now produces a shadow_conformance report that distinguishes row drift, SQL contract gaps, and repository/query-shape gaps without connecting to PostgreSQL.",
     "InMemoryPostgresTaskShadowExecutor verifies task rows against canonical runtime snapshots and reuses the repository stub's query-shape readiness checks.",
     "The PostgreSQL scaffold now includes non-executed SQL claim/heartbeat/CAS reclaim templates, and the conformance report validates their required guard clauses.",
@@ -246,6 +247,8 @@ PHASE2_2_PROGRESS: dict[str, object] = {
         "sql_claim_heartbeat_cas_template_validation",
         "repository_query_shape_statement_selection",
         "repository_result_row_mapping_to_task_snapshot",
+        "driver_like_row_variant_mapping_to_task_snapshot",
+        "row_shape_gap_negative_controls",
         "claim_next_ordering_and_skip_locked_readiness",
         "reclaim_payload_guard_readiness",
         "technical_error_boundaries_stay_processing_error_or_contract_error",
@@ -412,6 +415,8 @@ def migration_plan() -> dict[str, object]:
     repository_query_shape_checks = verify_runtime_task_repository_query_shapes()
     repository_stub = RuntimeTaskDriverRepositoryStub()
     result_row_mapping_report = repository_stub.verify_result_row_mapping_readiness()
+    result_row_variant_reports = repository_stub.verify_driver_like_result_row_variants()
+    result_row_gap_control_reports = repository_stub.verify_result_row_gap_controls()
     sql_contract_status = (
         "verified" if all(check.status == "verified" for check in sql_contract_checks) else "contract_gap"
     )
@@ -420,9 +425,20 @@ def migration_plan() -> dict[str, object]:
         if all(check.status == "verified" for check in repository_query_shape_checks)
         else "repository_gap"
     )
+    result_row_mapping_status = (
+        "verified"
+        if result_row_mapping_report.status == "verified"
+        and all(report.status == "verified" for report in result_row_variant_reports)
+        else "row_shape_gap"
+    )
+    row_gap_control_status = (
+        "gap_controls_detected"
+        if all(report.status == "row_shape_gap" for report in result_row_gap_control_reports)
+        else "gap_control_incomplete"
+    )
     gap_summaries = _gap_summaries(
         repository_query_shape_status=repository_query_shape_status,
-        result_row_mapping_status=result_row_mapping_report.status,
+        result_row_mapping_status=result_row_mapping_status,
         sql_contract_status=sql_contract_status,
     )
     return {
@@ -483,8 +499,16 @@ def migration_plan() -> dict[str, object]:
             "repository_query_shape_check_ids": [
                 check.contract_id for check in repository_query_shape_checks
             ],
-            "result_row_mapping_status": result_row_mapping_report.status,
+            "result_row_mapping_status": result_row_mapping_status,
             "result_row_mapping_checked_fields": list(result_row_mapping_report.expected_fields),
+            "result_row_mapping_positive_variants": [
+                report.row_variant for report in result_row_variant_reports
+            ],
+            "result_row_mapping_positive_variant_count": len(result_row_variant_reports),
+            "result_row_gap_control_status": row_gap_control_status,
+            "result_row_gap_control_variants": [
+                report.row_variant for report in result_row_gap_control_reports
+            ],
             "cutover_eligible": False,
             "real_db_connection": False,
             "purpose": "DB-side row parity plus repository query-shape and fake result-row mapping readiness verification in shadow mode.",
@@ -494,6 +518,12 @@ def migration_plan() -> dict[str, object]:
             check.to_dict() for check in repository_query_shape_checks
         ],
         "result_row_mapping_report": result_row_mapping_report.to_dict(),
+        "result_row_mapping_variant_reports": [
+            report.to_dict() for report in result_row_variant_reports
+        ],
+        "result_row_gap_control_reports": [
+            report.to_dict() for report in result_row_gap_control_reports
+        ],
         "gap_summaries": gap_summaries,
         "decision_packet_draft": _admission_decision_packet_draft(),
         "artifacts": {
