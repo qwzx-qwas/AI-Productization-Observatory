@@ -7,7 +7,7 @@ vendor, or claim that the runtime has cut over from the file-backed harness.
 
 from __future__ import annotations
 
-from collections.abc import Iterator, Mapping
+from collections.abc import Iterator, Mapping, Sequence
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -111,6 +111,14 @@ class RuntimeTaskDriverMappingRow(Mapping[str, object]):
 
     def __len__(self) -> int:
         return len(self._values)
+
+
+class RuntimeTaskDriverAttributeRow:
+    """Attribute-like fake driver row used to exercise adapter normalization."""
+
+    def __init__(self, values: Mapping[str, object]) -> None:
+        for key, value in values.items():
+            setattr(self, key, value)
 
 
 @dataclass(frozen=True)
@@ -332,6 +340,17 @@ class RuntimeTaskDriverRepositoryStub:
                 row_variant="mapping_like_driver_row",
             ),
             self.map_result_row_to_task_snapshot(
+                tuple(canonical_row[field] for field in TASK_SNAPSHOT_FIELDS),
+                field_names=TASK_SNAPSHOT_FIELDS,
+                expected_snapshot=snapshot,
+                row_variant="tuple_like_driver_row_with_column_names",
+            ),
+            self.map_result_row_to_task_snapshot(
+                RuntimeTaskDriverAttributeRow(canonical_row),
+                expected_snapshot=snapshot,
+                row_variant="attribute_like_driver_row",
+            ),
+            self.map_result_row_to_task_snapshot(
                 datetime_row,
                 expected_snapshot=snapshot,
                 row_variant="aware_datetime_driver_row",
@@ -403,20 +422,22 @@ class RuntimeTaskDriverRepositoryStub:
 
     def map_result_row_to_task_snapshot(
         self,
-        row: Mapping[str, object],
+        row: object,
         *,
+        field_names: Sequence[str] | None = None,
         expected_snapshot: TaskSnapshot | None = None,
         row_variant: str = "custom_row",
     ) -> RuntimeTaskDriverRowMappingReport:
         """Validate that a fake result row maps losslessly to TaskSnapshot.
 
-        Real driver rows may later be dictionaries, mapping-like row objects, or
-        adapter-normalized records. Phase2-2 only proves the required result
-        shape: stable field names, preserved nulls, text status semantics, and
-        no silent field loss or rename.
+        Real driver rows may later be dictionaries, mapping-like row objects,
+        tuple-like rows paired with cursor column names, or attribute-like row
+        records. Phase2-2 only proves the required result shape: stable field
+        names, preserved nulls, text status semantics, and no silent field loss
+        or rename.
         """
 
-        row_fields = set(row)
+        row_mapping, row_fields = self._coerce_fake_driver_row(row, field_names=field_names)
         expected_fields = set(TASK_SNAPSHOT_FIELDS)
         missing_fields = tuple(field for field in TASK_SNAPSHOT_FIELDS if field not in row_fields)
         extra_fields = tuple(sorted(row_fields - expected_fields))
@@ -426,12 +447,12 @@ class RuntimeTaskDriverRepositoryStub:
         timestamp_semantic_drift = tuple(
             field
             for field in TASK_SNAPSHOT_TIMESTAMP_FIELDS
-            if field in row_fields and _timestamp_to_utc_iso(row[field])[1]
+            if field in row_fields and _timestamp_to_utc_iso(row_mapping[field])[1]
         )
         nullability_drift = tuple(
             field
             for field in TASK_SNAPSHOT_REQUIRED_FIELDS
-            if field in row_fields and row[field] is None
+            if field in row_fields and row_mapping[field] is None
         )
         normalized_datetime_fields: tuple[str, ...] = ()
 
@@ -439,7 +460,7 @@ class RuntimeTaskDriverRepositoryStub:
             mapped_snapshot = {}
             normalized_datetime_fields_list: list[str] = []
             for field in TASK_SNAPSHOT_FIELDS:
-                value = row[field]
+                value = row_mapping[field]
                 if field in TASK_SNAPSHOT_TIMESTAMP_FIELDS:
                     normalized_value, _ = _timestamp_to_utc_iso(value)
                     if isinstance(value, datetime):
@@ -476,7 +497,7 @@ class RuntimeTaskDriverRepositoryStub:
                     )
                 )
 
-        status_value = row.get("status")
+        status_value = row_mapping.get("status")
         status_semantic_drift = (
             ("status",)
             if status_value is not None and str(status_value) not in TASK_STATUSES
@@ -524,6 +545,42 @@ class RuntimeTaskDriverRepositoryStub:
             normalized_datetime_fields=normalized_datetime_fields,
             row_variant=row_variant,
         )
+
+    def _coerce_fake_driver_row(
+        self,
+        row: object,
+        *,
+        field_names: Sequence[str] | None = None,
+    ) -> tuple[dict[str, object], set[str]]:
+        """Normalize supported fake row shapes without importing a real driver."""
+
+        if isinstance(row, Mapping):
+            row_mapping = {str(key): value for key, value in row.items()}
+            return row_mapping, set(row_mapping)
+
+        if field_names is not None:
+            if isinstance(row, Sequence) and not isinstance(row, (str, bytes, bytearray)):
+                names = tuple(str(field) for field in field_names)
+                values = tuple(row)
+                row_mapping = {
+                    field: values[index]
+                    for index, field in enumerate(names)
+                    if index < len(values)
+                }
+                for index in range(len(names), len(values)):
+                    row_mapping[f"__extra_position_{index}"] = values[index]
+                return row_mapping, set(row_mapping)
+            return {}, set()
+
+        if hasattr(row, "__dict__"):
+            row_mapping = {
+                str(key): value
+                for key, value in vars(row).items()
+                if not key.startswith("_")
+            }
+            return row_mapping, set(row_mapping)
+
+        return {}, set()
 
     def claim(
         self,

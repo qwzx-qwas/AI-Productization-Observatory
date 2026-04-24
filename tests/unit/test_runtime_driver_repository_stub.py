@@ -93,6 +93,8 @@ class RuntimeTaskDriverRepositoryStubUnitTests(unittest.TestCase):
             {
                 "canonical_dict",
                 "mapping_like_driver_row",
+                "tuple_like_driver_row_with_column_names",
+                "attribute_like_driver_row",
                 "aware_datetime_driver_row",
                 "all_nullable_fields_preserved_as_null",
             },
@@ -101,6 +103,14 @@ class RuntimeTaskDriverRepositoryStubUnitTests(unittest.TestCase):
         self.assertIn(
             "scheduled_at",
             reports["aware_datetime_driver_row"].normalized_datetime_fields,
+        )
+        self.assertEqual(
+            reports["tuple_like_driver_row_with_column_names"].mapped_snapshot["task_id"],
+            "row-shape-task",
+        )
+        self.assertEqual(
+            reports["attribute_like_driver_row"].mapped_snapshot["status"],
+            "leased",
         )
         self.assertEqual(reports["aware_datetime_driver_row"].timestamp_semantic_drift, ())
         self.assertIn(

@@ -220,11 +220,60 @@ PHASE2_2_ACCEPTANCE_CHECKLIST: tuple[dict[str, object], ...] = (
     },
 )
 
+REAL_DRIVER_ADAPTER_ACCEPTANCE_CHECKLIST: tuple[dict[str, object], ...] = (
+    {
+        "check_id": "candidate_standard_only",
+        "status": "draft_criteria_only",
+        "detail": "This checklist is a candidate acceptance standard for a later real shadow DB phase; it does not approve a real driver, real DB connection, or cutover.",
+    },
+    {
+        "check_id": "row_object_normalization",
+        "status": "fixture_contract_defined",
+        "detail": "A future adapter must normalize driver row objects into the TaskSnapshot-compatible repository shape without field loss or renamed-field ambiguity.",
+        "required_row_shapes": [
+            "mapping-like rows",
+            "tuple-like rows with explicit column names",
+            "object-attribute-like rows",
+        ],
+    },
+    {
+        "check_id": "timezone_aware_datetime_preservation",
+        "status": "fixture_contract_defined",
+        "detail": "Timestamp fields must preserve timezone-aware datetime semantics and normalize to UTC evidence; naive or unparsable timestamps remain contract gaps.",
+    },
+    {
+        "check_id": "nullable_field_preservation",
+        "status": "fixture_contract_defined",
+        "detail": "Valid null values for nullable TaskSnapshot fields must remain present as null and must not be misclassified as missing fields.",
+    },
+    {
+        "check_id": "status_review_technical_semantics",
+        "status": "fixture_contract_defined",
+        "detail": "Task status, review semantics, and technical failure semantics must not drift; adapter protocol failures remain processing_error or contract errors, not review issues.",
+    },
+    {
+        "check_id": "negative_gap_controls",
+        "status": "fixture_contract_defined",
+        "detail": "Missing fields, extra fields, rename risk, status semantic drift, timezone drift, and nullability drift must be reported as auditable gaps before any real driver is accepted.",
+    },
+    {
+        "check_id": "shadow_only_evidence_surface",
+        "status": "must_hold_until_owner_approval",
+        "detail": "Evidence must continue to report real_db_connection=false and cutover_eligible=false until owner separately approves a real shadow DB phase.",
+    },
+    {
+        "check_id": "reserved_dependency_names",
+        "status": "must_remain_null_until_owner_freeze",
+        "detail": "migration_tool, runtime_db_driver, managed_postgresql_vendor, and secrets_manager must remain null in machine-readable evidence until owner freeze.",
+    },
+)
+
 PHASE2_2_EXECUTED_ITEMS: tuple[str, ...] = (
     "RuntimeTaskDriverAdapter now exposes verify_runtime_tasks as the replaceable DB-side conformance seam.",
     "A minimal RuntimeTaskDriverRepositoryStub now fake-binds SQL contract sections, captures statement selection, and verifies bind/query-shape readiness without connecting to PostgreSQL.",
-    "The repository stub now validates fake result-row mapping back into TaskSnapshot across canonical dict, mapping-like, aware datetime, and nullable-preservation variants before any real driver is selected.",
+    "The repository stub now validates fake result-row mapping back into TaskSnapshot across canonical dict, mapping-like, tuple-like, attribute-like, aware datetime, and nullable-preservation variants before any real driver is selected.",
     "The repository stub now carries negative row-shape controls for missing fields, extra fields, rename risk, status semantic drift, timezone drift, and nullability drift.",
+    "A draft real-driver-adapter acceptance checklist now records candidate criteria for a later real shadow DB phase without approving a driver, vendor, migration tool, secrets manager, real DB connection, or cutover.",
     "PostgresTaskBackendShadow now produces a shadow_conformance report that distinguishes row drift, SQL contract gaps, and repository/query-shape gaps without connecting to PostgreSQL.",
     "InMemoryPostgresTaskShadowExecutor verifies task rows against canonical runtime snapshots and reuses the repository stub's query-shape readiness checks.",
     "The PostgreSQL scaffold now includes non-executed SQL claim/heartbeat/CAS reclaim templates, and the conformance report validates their required guard clauses.",
@@ -248,6 +297,7 @@ PHASE2_2_PROGRESS: dict[str, object] = {
         "repository_query_shape_statement_selection",
         "repository_result_row_mapping_to_task_snapshot",
         "driver_like_row_variant_mapping_to_task_snapshot",
+        "real_driver_adapter_acceptance_checklist_candidate_only",
         "row_shape_gap_negative_controls",
         "claim_next_ordering_and_skip_locked_readiness",
         "reclaim_payload_guard_readiness",
@@ -317,6 +367,7 @@ def _admission_decision_packet_draft() -> dict[str, object]:
     criteria = [
         "expand-backfill-contract migration rhythm",
         "forward-only main path and explicit roll-forward strategy",
+        "real-driver-adapter row normalization acceptance checklist",
         "claim / lease / heartbeat / CAS reclaim semantic validation",
         "technical failure and review semantic split",
         "fixed evidence pair preservation",
@@ -356,6 +407,16 @@ def _admission_decision_packet_draft() -> dict[str, object]:
                 "gap": "Future tool selection must prove explicit roll-forward behavior before freeze.",
             },
             {
+                "criterion": "real-driver-adapter row normalization acceptance checklist",
+                "status": "candidate_standard_only_with_fixture_evidence",
+                "evidence": [
+                    "src/runtime/migrations.py: real_driver_adapter_acceptance_checklist",
+                    "tests.contract.test_contracts.RuntimeDriverAdapterNormalizationContractTests",
+                    "tests.unit.test_runtime_driver_repository_stub",
+                ],
+                "gap": "Fixture-only adapter normalization evidence does not approve a real driver or real DB shadow phase.",
+            },
+            {
                 "criterion": "claim / lease / heartbeat / CAS reclaim semantic validation",
                 "status": "stub_validated_real_driver_gap",
                 "evidence": [
@@ -388,6 +449,8 @@ def _admission_decision_packet_draft() -> dict[str, object]:
         ],
         "gaps_and_risks": [
             "The fake harness may still differ from a real driver result object.",
+            "The real-driver-adapter acceptance checklist is a criteria draft only.",
+            "Fixture-only contract tests only prove local normalization-contract semantics.",
             "Row-shape readiness is not production database readiness.",
             "repository_query_shape_status can be misread as cutover unless paired with real_db_connection=false and cutover_eligible=false.",
             "Vendor, driver, and tool freeze cannot happen before owner signoff.",
@@ -513,6 +576,9 @@ def migration_plan() -> dict[str, object]:
             "real_db_connection": False,
             "purpose": "DB-side row parity plus repository query-shape and fake result-row mapping readiness verification in shadow mode.",
         },
+        "real_driver_adapter_acceptance_checklist": list(
+            REAL_DRIVER_ADAPTER_ACCEPTANCE_CHECKLIST
+        ),
         "sql_contract_checks": [check.to_dict() for check in sql_contract_checks],
         "repository_query_shape_checks": [
             check.to_dict() for check in repository_query_shape_checks

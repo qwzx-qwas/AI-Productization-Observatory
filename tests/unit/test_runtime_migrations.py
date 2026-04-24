@@ -73,13 +73,15 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
         )
         self.assertEqual(
             plan["driver_conformance_contract"]["result_row_mapping_positive_variant_count"],
-            4,
+            6,
         )
         self.assertEqual(
             set(plan["driver_conformance_contract"]["result_row_mapping_positive_variants"]),
             {
                 "canonical_dict",
                 "mapping_like_driver_row",
+                "tuple_like_driver_row_with_column_names",
+                "attribute_like_driver_row",
                 "aware_datetime_driver_row",
                 "all_nullable_fields_preserved_as_null",
             },
@@ -151,6 +153,11 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
             item["row_variant"]: item for item in plan["result_row_mapping_variant_reports"]
         }
         self.assertEqual(variant_reports["mapping_like_driver_row"]["status"], "verified")
+        self.assertEqual(
+            variant_reports["tuple_like_driver_row_with_column_names"]["status"],
+            "verified",
+        )
+        self.assertEqual(variant_reports["attribute_like_driver_row"]["status"], "verified")
         self.assertEqual(variant_reports["aware_datetime_driver_row"]["status"], "verified")
         self.assertIn(
             "scheduled_at",
@@ -250,6 +257,10 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
             plan["phase2_2_progress"]["conformance_focus"],
         )
         self.assertIn(
+            "real_driver_adapter_acceptance_checklist_candidate_only",
+            plan["phase2_2_progress"]["conformance_focus"],
+        )
+        self.assertIn(
             "row_shape_gap_negative_controls",
             plan["phase2_2_progress"]["conformance_focus"],
         )
@@ -280,6 +291,22 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
         self.assertEqual(phase2_2_checklist["claim_next_ordering_and_lock_contract"]["status"], "done")
         self.assertEqual(phase2_2_checklist["reclaim_payload_guard_contract"]["status"], "done")
         self.assertEqual(phase2_2_checklist["real_db_cutover_not_executed"]["status"], "pending")
+        adapter_checklist = {
+            item["check_id"]: item for item in plan["real_driver_adapter_acceptance_checklist"]
+        }
+        self.assertEqual(adapter_checklist["candidate_standard_only"]["status"], "draft_criteria_only")
+        self.assertIn(
+            "tuple-like rows with explicit column names",
+            adapter_checklist["row_object_normalization"]["required_row_shapes"],
+        )
+        self.assertEqual(
+            adapter_checklist["shadow_only_evidence_surface"]["status"],
+            "must_hold_until_owner_approval",
+        )
+        self.assertEqual(
+            adapter_checklist["reserved_dependency_names"]["status"],
+            "must_remain_null_until_owner_freeze",
+        )
         self.assertIn("python3 -m src.cli phase1-g-audit-ready-report", plan["next_command_plan"])
         self.assertIn(
             "A DB-driver readiness layer now separates replaceable adapter concerns and canonical error classification from the runtime state machine.",
@@ -298,7 +325,7 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
             plan["phase2_2_executed_items"],
         )
         self.assertIn(
-            "The repository stub now validates fake result-row mapping back into TaskSnapshot across canonical dict, mapping-like, aware datetime, and nullable-preservation variants before any real driver is selected.",
+            "The repository stub now validates fake result-row mapping back into TaskSnapshot across canonical dict, mapping-like, tuple-like, attribute-like, aware datetime, and nullable-preservation variants before any real driver is selected.",
             plan["phase2_2_executed_items"],
         )
         self.assertIn(

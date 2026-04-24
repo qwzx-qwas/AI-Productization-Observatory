@@ -15,6 +15,8 @@ import yaml
 from src.common.config import require_environment_variable
 from src.common.errors import ConfigError, ContractValidationError
 from src.common.schema import validate_instance
+from src.runtime.db_driver_repository_stub import RuntimeTaskDriverRepositoryStub
+from src.runtime.migrations import migration_plan
 from tests.helpers import REPO_ROOT
 
 
@@ -843,3 +845,94 @@ class Phase1GAcceptanceEvidenceContractTests(unittest.TestCase):
         self.assertIn("machine_pre_audit", content)
         self.assertIn("owner-review-ready", content)
         self.assertIn("不等于 Phase1 退出评审通过", content)
+
+
+class RuntimeDriverAdapterNormalizationContractTests(unittest.TestCase):
+    def test_fixture_only_adapter_normalization_variants_and_gap_controls(self) -> None:
+        repository = RuntimeTaskDriverRepositoryStub()
+
+        variant_reports = {
+            report.row_variant: report
+            for report in repository.verify_driver_like_result_row_variants()
+        }
+        self.assertEqual(
+            set(variant_reports),
+            {
+                "canonical_dict",
+                "mapping_like_driver_row",
+                "tuple_like_driver_row_with_column_names",
+                "attribute_like_driver_row",
+                "aware_datetime_driver_row",
+                "all_nullable_fields_preserved_as_null",
+            },
+        )
+        self.assertTrue(all(report.status == "verified" for report in variant_reports.values()))
+        self.assertFalse(any(report.real_db_connection for report in variant_reports.values()))
+        self.assertEqual(
+            variant_reports["tuple_like_driver_row_with_column_names"].mapped_snapshot["status"],
+            "leased",
+        )
+        self.assertEqual(
+            variant_reports["attribute_like_driver_row"].mapped_snapshot["task_id"],
+            "row-shape-task",
+        )
+        self.assertIn(
+            "scheduled_at",
+            variant_reports["aware_datetime_driver_row"].normalized_datetime_fields,
+        )
+        self.assertIn(
+            "source_id",
+            variant_reports["all_nullable_fields_preserved_as_null"].null_fields_preserved,
+        )
+        self.assertEqual(
+            variant_reports["all_nullable_fields_preserved_as_null"].missing_fields,
+            (),
+        )
+
+        gap_controls = {
+            report.row_variant: report
+            for report in repository.verify_result_row_gap_controls()
+        }
+        self.assertTrue(all(report.status == "row_shape_gap" for report in gap_controls.values()))
+        self.assertIn("task_id", gap_controls["missing_required_task_id_control"].missing_fields)
+        self.assertIn("driver_row_number", gap_controls["extra_driver_column_control"].extra_fields)
+        self.assertIn(
+            "taskStatus",
+            gap_controls["renamed_status_control"].misleading_rename_candidates,
+        )
+        self.assertIn("status", gap_controls["status_semantic_drift_control"].status_semantic_drift)
+        self.assertIn(
+            "scheduled_at",
+            gap_controls["naive_timestamp_timezone_control"].timestamp_semantic_drift,
+        )
+        self.assertIn("task_id", gap_controls["nullability_drift_control"].nullability_drift)
+
+    def test_migration_plan_exposes_adapter_checklist_without_cutover_claim(self) -> None:
+        plan = migration_plan()
+
+        self.assertFalse(plan["cli_evidence_surface"]["real_db_connection"])
+        self.assertFalse(plan["cli_evidence_surface"]["runtime_cutover_executed"])
+        self.assertFalse(plan["driver_conformance_contract"]["cutover_eligible"])
+        self.assertFalse(plan["driver_conformance_contract"]["real_db_connection"])
+        self.assertTrue(all(value is None for value in plan["reserved_human_selections"].values()))
+
+        checklist = {
+            item["check_id"]: item for item in plan["real_driver_adapter_acceptance_checklist"]
+        }
+        self.assertEqual(checklist["candidate_standard_only"]["status"], "draft_criteria_only")
+        self.assertEqual(
+            checklist["row_object_normalization"]["status"],
+            "fixture_contract_defined",
+        )
+        self.assertEqual(
+            checklist["shadow_only_evidence_surface"]["status"],
+            "must_hold_until_owner_approval",
+        )
+        self.assertEqual(
+            checklist["reserved_dependency_names"]["status"],
+            "must_remain_null_until_owner_freeze",
+        )
+        self.assertIn(
+            "Fixture-only adapter normalization evidence does not approve a real driver",
+            plan["decision_packet_draft"]["evidence_mapping"][2]["gap"],
+        )
