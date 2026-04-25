@@ -281,6 +281,57 @@ last_frozen_version: phase2_prompt_productization_v1
   - 回退到 file-backed harness 作为唯一执行入口
   - 保留 migration 草案与 parity failure evidence，不宣布 cutover
 
+#### Phase2-2 Human Decision Options Guardrails
+
+本节记录 owner 已确认的 `Phase2-2` shadow-validation planning 边界；它不替代 canonical runtime / replay / migration contract，也不授权真实 PostgreSQL 连接、migration execution、Docker 或 runtime cutover。
+
+- shadow validation phase:
+  - 允许进入 non-production PostgreSQL shadow validation planning
+  - 仍为 explicit-command-only planning，不是 production launch，也不是 runtime cutover
+  - production runtime backend 保持不变，file-backed harness 继续作为 local parity / rollback baseline
+- runtime DB driver candidate:
+  - `psycopg3 sync` 是 Phase2-2 shadow-phase driver candidate
+  - 它不是 final production runtime driver freeze
+  - upper business logic 不得直接绑定 psycopg3；必须保留 repository adapter seam
+  - Phase2-2 保持 sync-first；asyncpg / async psycopg 等 async evaluation deferred until real concurrency evidence
+- migration tool candidate:
+  - Alembic 是 migration-layer evaluation candidate
+  - 它只用于 future shadow migration validation，不是 final production migration-tool freeze
+  - Alembic 不得把 SQLAlchemy 强加到 runtime adapter layer
+- migration style:
+  - Phase2-2 使用 reviewed raw SQL migrations only
+  - 本任务不得创建 real Alembic migration files；如需示例，只能是 documentation-only draft examples
+  - migration-only minimal SQLAlchemy metadata 仍是 deferred optional idea；runtime SQLAlchemy adapter 不批准
+- PostgreSQL operating model:
+  - 首个 real shadow target 规划为 PostgreSQL 17 local Docker/dev shadow DB，后续可评估 `single_vps`
+  - managed PostgreSQL vendors deferred, not rejected；当前只保持 portable config boundary，不做 vendor lock-in 设计
+  - future real acceptance evidence must record DB version and relevant environment details
+- Docker persistence:
+  - default shadow DB mode should be disposable
+  - named Docker volume may be explicitly enabled only for debugging
+  - future acceptance evidence must come from a clean disposable shadow DB, not from a reused debug volume
+- secrets / config:
+  - shadow DB DSN env var name is `APO_SHADOW_DATABASE_URL`
+  - local `.env` may carry real local values, but `.env` remains ignored and must not be read or committed
+  - repository examples may contain placeholders only, e.g. `<shadow_user>`, `<shadow_password>`, `<shadow_db>`
+  - cloud secrets managers are deferred, not rejected; no secrets-manager provider interface is frozen here
+- no-cutover states:
+  - `real_db_connection=false` in plan-only mode
+  - `cutover_eligible=false`
+  - `runtime_cutover_executed=false`
+  - DB backend must not become the default runtime backend without later separate owner approval
+- evidence taxonomy must stay distinct:
+  - fixture-only readiness
+  - stub/shadow conformance
+  - real driver readiness
+  - real DB readiness
+  - cutover readiness
+
+The fixed Phase1-G evidence pair remains release-signoff evidence only and must not be reinterpreted as real driver, real DB, migration execution, or cutover evidence:
+
+- `docs/phase1_g_acceptance_evidence.md:412`
+- `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json:1439`
+
 #### 本批次已执行项
 
 - 已把 `src/runtime/db_driver_readiness.py` 的可替换 adapter seam 从 readiness-only 扩展为包含 `verify_runtime_tasks` 与 SQL contract validation 的 DB-side conformance seam；该接口仍不命名真实 driver。

@@ -34,6 +34,7 @@ SCREENING_BOUNDARY_DATA_PATH = REPO_ROOT / "docs" / "screening_calibration_asset
 PHASE1_A_BASELINE_PATH = REPO_ROOT / "docs" / "phase1_a_baseline.md"
 PHASE1_E_ACCEPTANCE_EVIDENCE_PATH = REPO_ROOT / "docs" / "phase1_e_acceptance_evidence.md"
 PHASE1_G_ACCEPTANCE_EVIDENCE_PATH = REPO_ROOT / "docs" / "phase1_g_acceptance_evidence.md"
+ENV_EXAMPLE_PATH = REPO_ROOT / ".env.example"
 
 EXPECTED_MVP_REFERENCE_SAMPLE_COUNTS = {
     "gold_set": 134,
@@ -388,6 +389,27 @@ class ContractCommandTests(unittest.TestCase):
         self.assertIn("GITHUB_TOKEN=[REDACTED]", result.stderr)
         self.assertNotIn("your_github_token_here", result.stderr)
         self.assertIn("APO_CONFIG_DIR=", result.stderr)
+
+    def test_validate_env_redacts_shadow_database_url(self) -> None:
+        shadow_url = "postgresql://shadow_user:shadow_password@localhost:5432/shadow_db"
+        result = self.run_cli(
+            "validate-env",
+            "--require",
+            "APO_SHADOW_DATABASE_URL",
+            env={"APO_SHADOW_DATABASE_URL": shadow_url},
+        )
+        self.assertEqual(result.returncode, 0, msg=result.stderr)
+        self.assertIn("APO_SHADOW_DATABASE_URL=[REDACTED]", result.stderr)
+        self.assertNotIn(shadow_url, result.stderr)
+        self.assertNotIn("shadow_password", result.stderr)
+
+    def test_env_example_uses_placeholder_shadow_database_url(self) -> None:
+        content = ENV_EXAMPLE_PATH.read_text(encoding="utf-8")
+        self.assertIn(
+            "APO_SHADOW_DATABASE_URL=postgresql://<shadow_user>:<shadow_password>@localhost:5432/<shadow_db>",
+            content,
+        )
+        self.assertNotIn("shadow_user:shadow_password", content)
 
     def test_validate_env_fails_when_resolved_config_path_is_missing(self) -> None:
         missing_dir = REPO_ROOT / "does-not-exist-config-dir"

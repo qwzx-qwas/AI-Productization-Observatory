@@ -22,7 +22,16 @@ from src.common.constants import (
 from src.common.errors import ConfigError
 
 
-_SENSITIVE_ENV_NAME_PARTS = ("KEY", "TOKEN", "SECRET", "CREDENTIAL", "PASSWORD")
+_SENSITIVE_ENV_NAME_PARTS = (
+    "KEY",
+    "TOKEN",
+    "SECRET",
+    "CREDENTIAL",
+    "PASSWORD",
+    "DATABASE_URL",
+    "DSN",
+    "URL",
+)
 _SECRET_LOG_PLACEHOLDER = "[REDACTED]"
 
 

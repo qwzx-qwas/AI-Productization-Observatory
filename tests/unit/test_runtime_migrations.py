@@ -22,6 +22,7 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
             "stub_shadow_readiness_validation_only",
         )
         self.assertFalse(plan["cli_evidence_surface"]["real_db_connection"])
+        self.assertFalse(plan["cli_evidence_surface"]["cutover_eligible"])
         self.assertFalse(plan["cli_evidence_surface"]["runtime_cutover_executed"])
         self.assertEqual(plan["cli_evidence_surface"]["cutover_claim"], "not_completed")
         self.assertEqual(plan["backend_baseline"]["database_engine"], "PostgreSQL 17")
@@ -31,6 +32,46 @@ class RuntimeMigrationPlanUnitTests(unittest.TestCase):
         self.assertIn("17_open_decisions_and_freeze_board.md:DEC-027", plan["canonical_basis"])
         self.assertIn("17_open_decisions_and_freeze_board.md:DEC-029", plan["canonical_basis"])
         self.assertTrue(all(value is None for value in plan["reserved_human_selections"].values()))
+        candidates = plan["shadow_phase_candidates"]
+        self.assertEqual(
+            candidates["runtime_db_driver_candidate"]["name"],
+            "psycopg3 sync",
+        )
+        self.assertEqual(
+            candidates["runtime_db_driver_candidate"]["status"],
+            "shadow_phase_candidate_only",
+        )
+        self.assertFalse(candidates["runtime_db_driver_candidate"]["final_freeze"])
+        self.assertEqual(
+            candidates["migration_tool_candidate"]["name"],
+            "Alembic",
+        )
+        self.assertFalse(candidates["migration_tool_candidate"]["final_freeze"])
+        self.assertFalse(
+            candidates["migration_tool_candidate"]["runtime_sqlalchemy_adapter_approved"]
+        )
+        self.assertTrue(candidates["migration_style"]["reviewed_raw_sql_migrations_only"])
+        self.assertFalse(candidates["migration_style"]["real_alembic_migration_files_created"])
+        self.assertEqual(
+            candidates["shadow_config"]["env_var"],
+            "APO_SHADOW_DATABASE_URL",
+        )
+        guardrails = plan["plan_only_evidence_guardrails"]
+        self.assertFalse(guardrails["real_db_connection"])
+        self.assertFalse(guardrails["cutover_eligible"])
+        self.assertFalse(guardrails["runtime_cutover_executed"])
+        self.assertEqual(
+            guardrails["real_driver_readiness"],
+            "blocked_until_owner_approved_real_shadow_driver_evidence",
+        )
+        self.assertIn(
+            "psycopg3 can connect to non-production shadow PostgreSQL",
+            guardrails["future_real_shadow_evidence_gates"],
+        )
+        readiness_taxonomy = plan["readiness_taxonomy"]
+        self.assertEqual(readiness_taxonomy["real_driver_readiness"], "not_claimed")
+        self.assertEqual(readiness_taxonomy["real_db_readiness"], "not_claimed")
+        self.assertEqual(readiness_taxonomy["cutover_readiness"], "not_claimed")
         self.assertEqual(plan["artifacts"]["runtime_backend_contract_path"], "src/runtime/backend_contract.py")
         self.assertEqual(plan["artifacts"]["db_driver_readiness_path"], "src/runtime/db_driver_readiness.py")
         self.assertEqual(

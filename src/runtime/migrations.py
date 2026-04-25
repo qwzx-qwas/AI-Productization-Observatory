@@ -305,6 +305,63 @@ PHASE2_2_PROGRESS: dict[str, object] = {
     ],
 }
 
+PHASE2_2_SHADOW_PHASE_CANDIDATES: dict[str, object] = {
+    "runtime_db_driver_candidate": {
+        "name": "psycopg3 sync",
+        "status": "shadow_phase_candidate_only",
+        "final_freeze": False,
+        "runtime_binding_boundary": "preserve repository adapter seam; upper business logic must not bind directly to psycopg3",
+        "async_evaluation": "deferred_until_real_concurrency_evidence",
+    },
+    "migration_tool_candidate": {
+        "name": "Alembic",
+        "status": "migration_layer_shadow_validation_candidate_only",
+        "final_freeze": False,
+        "runtime_sqlalchemy_adapter_approved": False,
+    },
+    "migration_style": {
+        "reviewed_raw_sql_migrations_only": True,
+        "real_alembic_migration_files_created": False,
+        "sqlalchemy_metadata_option": "deferred_optional_migration_only_not_approved_now",
+    },
+    "postgresql_shadow_operating_model": {
+        "first_shadow_target": "PostgreSQL 17 local Docker/dev shadow DB after explicit owner-approved command",
+        "default_persistence": "disposable",
+        "debug_named_volume_allowed": "explicit_debug_only",
+        "managed_vendor_status": "deferred_not_rejected",
+    },
+    "shadow_config": {
+        "env_var": "APO_SHADOW_DATABASE_URL",
+        "placeholder_example": "postgresql://<shadow_user>:<shadow_password>@localhost:5432/<shadow_db>",
+        "real_values_location": "ignored local .env only",
+        "cloud_secrets_manager_status": "deferred_not_rejected",
+    },
+}
+
+PHASE2_2_PLAN_ONLY_EVIDENCE_GUARDRAILS: dict[str, object] = {
+    "real_db_connection": False,
+    "cutover_eligible": False,
+    "runtime_cutover_executed": False,
+    "fixture_only_readiness": "available_as_local_parity_baseline",
+    "stub_shadow_conformance": "available_without_real_db_connection",
+    "real_driver_readiness": "blocked_until_owner_approved_real_shadow_driver_evidence",
+    "real_db_readiness": "blocked_until_owner_approved_real_shadow_db_evidence",
+    "cutover_readiness": "blocked_until_later_separate_owner_cutover_approval",
+    "phase1_g_evidence_pair_meaning": "release_signoff_anchor_only_not_real_db_evidence",
+    "future_real_shadow_evidence_gates": [
+        "psycopg3 can connect to non-production shadow PostgreSQL",
+        "Alembic can apply reviewed raw SQL migration to a clean shadow DB",
+        "runtime_task row can round-trip through real driver and DB",
+        "UTC behavior with Asia/Shanghai input/display/round-trip coverage is preserved",
+        "nullable field semantics do not drift",
+        "status / review / technical failure classification does not get confused",
+        "claim / lease / heartbeat / expired CAS reclaim pass real DB validation",
+        "negative controls still fail correctly",
+        "evidence artifacts are redacted and do not leak secrets",
+        "plan output distinguishes fixture-only readiness, real driver readiness, real DB readiness, and cutover readiness",
+    ],
+}
+
 PHASE2_1_NEXT_COMMAND_PLAN: tuple[str, ...] = (
     "python3 -m src.cli migrate --plan",
     "python3 -m unittest -v tests.unit.test_runtime_migrations",
@@ -511,6 +568,7 @@ def migration_plan() -> dict[str, object]:
         "cli_evidence_surface": {
             "stage": "stub_shadow_readiness_validation_only",
             "real_db_connection": False,
+            "cutover_eligible": False,
             "runtime_cutover_executed": False,
             "cutover_claim": "not_completed",
             "reserved_selection_reason": "owner freeze not yet completed",
@@ -544,6 +602,15 @@ def migration_plan() -> dict[str, object]:
             "runtime_db_driver": None,
             "managed_postgresql_vendor": None,
             "secrets_manager": None,
+        },
+        "shadow_phase_candidates": dict(PHASE2_2_SHADOW_PHASE_CANDIDATES),
+        "plan_only_evidence_guardrails": dict(PHASE2_2_PLAN_ONLY_EVIDENCE_GUARDRAILS),
+        "readiness_taxonomy": {
+            "fixture_only_readiness": "local file-backed harness and fixture/replay evidence only",
+            "stub_shadow_conformance": "DB-shadow and repository-stub conformance without a live DB connection",
+            "real_driver_readiness": "not_claimed",
+            "real_db_readiness": "not_claimed",
+            "cutover_readiness": "not_claimed",
         },
         "driver_readiness": default_runtime_task_driver_readiness_snapshot().to_dict(),
         "driver_conformance_contract": {
