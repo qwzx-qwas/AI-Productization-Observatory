@@ -334,6 +334,13 @@ The fixed Phase1-G evidence pair remains release-signoff evidence only and must 
 
 #### 本批次已执行项
 
+- 已新增 explicit-command-only real shadow validation surface：
+  - `python3 -m src.cli migrate --shadow-validate`
+  - `make migrate-shadow-validate`
+- 该命令只允许在当前 shell/session 提供 `APO_SHADOW_DATABASE_URL`，并在执行前拒绝非 localhost、非 shadow-named user/database 的 DSN。
+- 该命令只对 local disposable PostgreSQL shadow DB 执行 reviewed raw SQL scaffold apply 与 shadow-only checks；输出可在真实连接成功时报告 `real_db_connection = true`，但必须继续保持 `cutover_eligible = false` 与 `runtime_cutover_executed = false`。
+- 已将 `psycopg[binary]` 声明为 `shadow-validation` optional extra；这是 shadow-validation dependency surface，不是 final production runtime driver freeze。
+- Alembic 仍是 migration-layer evaluation candidate；当前命令不需要 Alembic，也不创建 real Alembic migration files。
 - 已把 `src/runtime/db_driver_readiness.py` 的可替换 adapter seam 从 readiness-only 扩展为包含 `verify_runtime_tasks` 与 SQL contract validation 的 DB-side conformance seam；该接口仍不命名真实 driver。
 - 已新增 `RuntimeTaskDriverConformanceReport`、`RuntimeTaskDriverSqlContractCheck` 与 row-level mismatch report，用于区分 `verified` / `drift_detected`、`sql_contract_status = verified / contract_gap`，并继续显式 `cutover_eligible = false`。
 - 已把 `src/runtime/sql/postgresql_task_runtime_phase2_1.sql` 从纯 DDL scaffold 扩展为 `DDL + non-executed SQL contract templates`，补齐：

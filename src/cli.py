@@ -32,6 +32,7 @@ from src.marts.presentation import build_dashboard_view, build_product_drill_dow
 from src.runtime.migrations import migration_plan
 from src.runtime.processing_errors import default_processing_error_store_path
 from src.runtime.replay import build_default_mart, build_mart_window, replay_source_window
+from src.runtime.shadow_validation import run_postgresql_shadow_validation
 from src.review.runtime import (
     list_review_queue,
     resolve_taxonomy_review_from_record_path,
@@ -1278,6 +1279,11 @@ def build_parser() -> argparse.ArgumentParser:
 
     migrate_parser = subparsers.add_parser("migrate", help="Show the Phase2 DB runtime migration spine plan.")
     migrate_parser.add_argument("--plan", action="store_true")
+    migrate_parser.add_argument(
+        "--shadow-validate",
+        action="store_true",
+        help="Run owner-approved local PostgreSQL shadow validation using APO_SHADOW_DATABASE_URL.",
+    )
 
     return parser
 
@@ -1660,9 +1666,15 @@ def main(argv: list[str] | None = None) -> int:
             return 0
 
         if args.command == "migrate":
-            if not args.plan:
-                raise ConfigError("Only --plan is implemented in the minimal baseline")
-            print(json.dumps(migration_plan(), ensure_ascii=True))
+            if args.plan and args.shadow_validate:
+                raise ConfigError("Use either --plan or --shadow-validate, not both")
+            if args.plan:
+                print(json.dumps(migration_plan(), ensure_ascii=True))
+                return 0
+            if args.shadow_validate:
+                print(json.dumps(run_postgresql_shadow_validation(), ensure_ascii=True))
+                return 0
+            raise ConfigError("Use --plan or --shadow-validate")
             return 0
 
         raise ConfigError(f"Unsupported command: {args.command}")

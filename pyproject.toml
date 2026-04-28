@@ -13,6 +13,12 @@ dependencies = [
   "jsonschema>=4.10",
 ]
 
+[project.optional-dependencies]
+# Shadow-validation only; this is not a production driver freeze.
+shadow-validation = [
+  "psycopg[binary]>=3.1,<4",
+]
+
 [project.scripts]
 apo-observatory = "src.cli:main"
 

@@ -364,7 +364,9 @@ PHASE2_2_PLAN_ONLY_EVIDENCE_GUARDRAILS: dict[str, object] = {
 
 PHASE2_1_NEXT_COMMAND_PLAN: tuple[str, ...] = (
     "python3 -m src.cli migrate --plan",
+    "python3 -m src.cli migrate --shadow-validate  # only after owner approval, local disposable PostgreSQL, and APO_SHADOW_DATABASE_URL",
     "python3 -m unittest -v tests.unit.test_runtime_migrations",
+    "python3 -m unittest -v tests.unit.test_runtime_shadow_validation",
     "python3 -m unittest -v tests.unit.test_runtime tests.regression.test_replay_and_marts",
     "python3 -m src.cli validate-configs",
     "python3 -m src.cli validate-schemas",
@@ -667,6 +669,8 @@ def migration_plan() -> dict[str, object]:
             "shared_conformance_suite_path": "tests/unit/runtime_backend_conformance.py",
             "file_backed_conformance_test_path": "tests/unit/test_runtime.py",
             "repository_stub_test_path": "tests/unit/test_runtime_driver_repository_stub.py",
+            "shadow_validation_path": "src/runtime/shadow_validation.py",
+            "shadow_validation_test_path": "tests/unit/test_runtime_shadow_validation.py",
             "sql_template_path": "src/runtime/sql/postgresql_task_runtime_phase2_1.sql",
             "migration_plan_test_path": "tests/unit/test_runtime_migrations.py",
         },
@@ -695,6 +699,7 @@ def migration_plan() -> dict[str, object]:
         "next_steps": [
             "Use the DB-side conformance report and repository query-shape readiness as the next guardrails before choosing any migration tool.",
             "Keep the file-backed harness as the runnable baseline until DB adapter parity tests close.",
+            "Run python3 -m src.cli migrate --shadow-validate only against a local disposable shadow PostgreSQL DSN after explicit owner approval.",
             "Swap the fake executor behind src/runtime/db_shadow.py for a real driver-backed repository only after owner decisions freeze runtime_db_driver and migration_tool.",
         ],
     }

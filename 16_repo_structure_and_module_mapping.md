@@ -251,6 +251,9 @@ last_frozen_version: repo_mapping_v2
   - 当前已实现 `entity_merge_uncertainty` -> local `review_issue` store 的最小 CLI 落点
 - `python3 -m src.cli trigger-score-review --score-snapshot-path <path> --issue-type <issue_type>`
   - 当前已实现 `score_conflict` / `suspicious_result` -> local `review_issue` store 的最小 CLI 落点
+- `python3 -m src.cli migrate --shadow-validate`
+  - 当前已实现 owner-approved local-only PostgreSQL 17 shadow validation 命令；只读取当前 shell/session 中的 `APO_SHADOW_DATABASE_URL`，要求 DSN 指向 localhost 且 user/database 名显式包含 `shadow`
+  - 该命令只对 disposable shadow DB 应用 reviewed raw SQL task-table scaffold 并执行 task row round-trip / timezone / nullable / claim / heartbeat / reclaim / negative-control checks；它不执行 runtime cutover，不把 DB backend 设为默认，也不冻结 production driver、migration tool、managed vendor 或 secrets manager
 - `python3 -m src.cli review-queue --open-only`
   - 当前已实现从 `.runtime/task_store/review_issues.json` 派生 `review_queue_view` 的本地 CLI 读取路径
 - `python3 -m src.cli resolve-taxonomy-review --record-path <path> --review-issue-id <id> ...`

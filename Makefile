@@ -5,7 +5,7 @@ REPLAY_SOURCE ?= product_hunt
 PRESCREEN_SOURCE ?= github
 QUERY_SLICE ?=
 
-.PHONY: install lint format typecheck test validate-schemas validate-configs validate-gold-set validate-candidate-workspace archive-duplicate-candidate-records validate-env replay-window build-mart-window migrate-plan run-candidate-prescreen handoff-candidates-to-staging fill-gold-set-staging-until-complete
+.PHONY: install lint format typecheck test validate-schemas validate-configs validate-gold-set validate-candidate-workspace archive-duplicate-candidate-records validate-env replay-window build-mart-window migrate-plan migrate-shadow-validate run-candidate-prescreen handoff-candidates-to-staging fill-gold-set-staging-until-complete
 
 install:
 	$(PYTHON) -m src.cli install
@@ -49,6 +49,9 @@ build-mart-window:
 
 migrate-plan:
 	$(PYTHON) -m src.cli migrate --plan
+
+migrate-shadow-validate:
+	$(PYTHON) -m src.cli migrate --shadow-validate
 
 run-candidate-prescreen:
 	@if [ -z "$(WINDOW)" ]; then echo "WINDOW is required, for example 2026-03-01..2026-03-08"; exit 2; fi
