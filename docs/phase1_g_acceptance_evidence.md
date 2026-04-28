@@ -592,8 +592,8 @@
     - `docs/candidate_prescreen_workspace/phase1_g_audit_ready_report.json:1439`
   - 本批次未改变 `Phase1-G go`、`release_owner_signoff.status = approved`、以及 `GitHub live / Product Hunt deferred` 边界
 - 本批次未执行项：
-  - 未执行真实 PostgreSQL 连接或 DB task table 写入
-  - 未执行真实 PostgreSQL driver-backed `claim / lease / heartbeat / CAS reclaim` 查询路径
+  - 不再适用：此前未执行真实 PostgreSQL 连接或 DB task table 写入；`2026-04-28` 后续批次已在 disposable local PostgreSQL 17 shadow DB 上完成真实连接与 reviewed raw SQL scaffold apply
+  - 不再适用：此前未执行真实 PostgreSQL driver-backed `claim / lease / heartbeat / CAS reclaim` 查询路径；`2026-04-28` 后续批次已完成 shadow-only `claim / heartbeat / reclaim / claim_next` SQL checks
   - 未执行 DB-backed runtime cutover
   - 未执行 service API 与 frontend serviceization
 - 阻塞项：
@@ -662,8 +662,8 @@
   - 已更新 `tests.unit.test_runtime_migrations`，覆盖 Phase2-2 migration spine plan、repository stub metadata、query-shape readiness metadata、row variant reports、negative gap controls、三类 gap summaries 与 admission decision packet draft
   - 已重新执行 `python3 -m src.cli phase1-g-audit-ready-report`，继续输出 `report_title = Phase1-G audit-ready / owner-review-ready / go`，`generated_at = 2026-04-24T02:35:42.576300Z`
 - 本批次未执行项：
-  - 未连接真实 PostgreSQL
-  - 未执行真实 driver-backed `claim / lease / heartbeat / CAS reclaim` 查询路径
+  - 不再适用：此前未连接真实 PostgreSQL；`2026-04-28` 后续批次已在 disposable local PostgreSQL 17 shadow DB 上完成真实连接
+  - 不再适用：此前未执行真实 driver-backed `claim / lease / heartbeat / CAS reclaim` 查询路径；`2026-04-28` 后续批次已完成 shadow-only `claim / heartbeat / reclaim / claim_next` SQL checks
   - 未执行 DB-backed runtime cutover
   - 未执行 service API 与 frontend serviceization
   - 未冻结任何具体 migration tool、runtime driver、managed PostgreSQL vendor 或 secrets manager 名称
@@ -693,6 +693,6 @@
 - Phase2-1 已启动状态：
   - 上述文档现一致表述为“DB runtime backend 基线接入已启动，DB-shadow parity skeleton 与 driver readiness layer 已可运行”，具体落地为 kickoff plan、`RuntimeTaskBackend` contract、`src/runtime/db_driver_readiness.py`、`src/runtime/db_shadow.py`、PostgreSQL task-table SQL scaffold、shared conformance suite 与最小测试，而非实际 cutover。
 - Phase2-2 已启动状态：
-  - 上述文档现一致表述为“DB runtime migration spine 已启动，adapter seam 已扩展到 DB-side row parity + SQL claim / heartbeat / CAS reclaim contract conformance report，并补齐最小 fake-bound driver repository stub readiness、fake result-row mapping harness、real-driver-like row variants、fixture-only adapter normalization contract tests、real-driver-adapter acceptance checklist candidate standard 与 row-shape negative controls；当前 conformance 可显式区分 row drift、SQL contract gap、repository/query-shape gap、query/row-shape gap、semantic conformance gap 与 owner decision gap”，具体落地为 `RuntimeTaskDriverConformanceReport`、`RuntimeTaskDriverSqlContractCheck`、`RuntimeTaskDriverRowMappingReport`、`src/runtime/db_driver_repository_stub.py`、`verify_runtime_tasks`、`shadow_conformance()`、`phase2_2_progress`、`gap_summaries`、`decision_packet_draft`、SQL scaffold templates、`real_driver_adapter_acceptance_checklist` 与新增 unit / contract coverage，而非真实 PostgreSQL cutover。
+  - 上述文档现一致表述为“DB runtime migration spine 已启动，adapter seam 已扩展到 DB-side row parity + SQL claim / heartbeat / CAS reclaim contract conformance report，并补齐最小 fake-bound driver repository stub readiness、fake result-row mapping harness、real-driver-like row variants、fixture-only adapter normalization contract tests、real-driver-adapter acceptance checklist candidate standard、row-shape negative controls 与 local-only real PostgreSQL shadow validation command；当前 conformance 可显式区分 row drift、SQL contract gap、repository/query-shape gap、query/row-shape gap、semantic conformance gap 与 owner decision gap”，具体落地为 `RuntimeTaskDriverConformanceReport`、`RuntimeTaskDriverSqlContractCheck`、`RuntimeTaskDriverRowMappingReport`、`src/runtime/db_driver_repository_stub.py`、`src/runtime/shadow_validation.py`、`verify_runtime_tasks`、`shadow_conformance()`、`phase2_2_progress`、`gap_summaries`、`decision_packet_draft`、SQL scaffold templates、`real_driver_adapter_acceptance_checklist`、`migrate --shadow-validate` 与新增 unit / contract coverage；`2026-04-28` 后续批次已实际连接 disposable local PostgreSQL 17 shadow DB 并通过，记录 `real_db_connection = true`，但仍不是真实 PostgreSQL cutover。
 - 未决项归属与 owner 决策边界：
   - `migration_tool`、`runtime_db_driver`、`managed_postgresql_vendor` 与 `secrets_manager` 仍保持保留人类选型边界且在机器可读输出中保持 `null`；本批次文档与代码均未把这些项写成最终产品依赖。admission criteria draft 与 real-driver-adapter acceptance checklist 只建议评估标准，不代表 owner decision。

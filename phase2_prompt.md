@@ -191,8 +191,8 @@ last_frozen_version: phase2_prompt_productization_v1
 
 #### 本批次未执行项
 
-- 未执行真实 PostgreSQL 连接、真实 DB task table 落库或 runtime backend cutover。
-- 未执行真实 PostgreSQL driver-backed `claim / lease / heartbeat / CAS reclaim` 查询路径。
+- 截至该 archived Phase2-1 批次，未执行真实 PostgreSQL 连接、真实 DB task table 落库或 runtime backend cutover；后续 `2026-04-28` local-only disposable shadow validation 已完成真实 PostgreSQL shadow connection，但仍未执行 runtime cutover。
+- 截至该 archived Phase2-1 批次，未执行真实 PostgreSQL driver-backed `claim / lease / heartbeat / CAS reclaim` 查询路径；后续 `2026-04-28` local-only disposable shadow validation 已完成对应 shadow-only SQL checks。
 - 未执行 service API、frontend serviceization、dashboard framework 选型或 secrets manager 选型。
 - 未改变 `GitHub live / Product Hunt deferred` 边界，也未扩大 source / window / query family 范围。
 
@@ -250,7 +250,7 @@ last_frozen_version: phase2_prompt_productization_v1
 - Phase2-1 已启动状态：
   - 本文件与 `src/runtime/migrations.py`、`src/runtime/backend_contract.py`、`src/runtime/db_driver_readiness.py`、`src/runtime/db_shadow.py`、`src/runtime/sql/postgresql_task_runtime_phase2_1.sql`、`tests/unit/runtime_backend_conformance.py`、`tests/unit/test_runtime.py`、`tests/unit/test_runtime_migrations.py` 现一致表述为“DB runtime backend baseline 接入已启动，DB-shadow parity skeleton 与 driver readiness layer 已可运行，但尚未 cutover”。
 - Phase2-2 已启动状态：
-  - 本文件与 `src/runtime/migrations.py`、`src/runtime/db_driver_readiness.py`、`src/runtime/db_shadow.py`、`tests/unit/test_runtime.py`、`tests/unit/test_runtime_migrations.py` 现一致表述为“DB runtime migration spine 已启动，adapter seam 已扩展到 DB-side row parity + SQL claim / heartbeat / CAS reclaim contract conformance report，DB-shadow 可验证 parity、drift 与 SQL contract gaps，但尚未连接真实 PostgreSQL 或 cutover”。
+  - 本文件与 `src/runtime/migrations.py`、`src/runtime/db_driver_readiness.py`、`src/runtime/db_shadow.py`、`src/runtime/shadow_validation.py`、`tests/unit/test_runtime.py`、`tests/unit/test_runtime_migrations.py`、`tests/unit/test_runtime_shadow_validation.py` 现一致表述为“DB runtime migration spine 已启动，adapter seam 已扩展到 DB-side row parity + SQL claim / heartbeat / CAS reclaim contract conformance report，DB-shadow 可验证 parity、drift 与 SQL contract gaps；后续 owner-approved local-only PostgreSQL 17 disposable shadow validation 已实际连接并通过，但未执行 runtime cutover，也未声明 production DB readiness”。
 - 未决项归属与 owner 决策边界：
   - 保留人类选型仍由 owner 后续裁决；当前文档与代码只提供可替换 scaffolding，不把 `migration_tool`、`runtime_db_driver`、`managed_postgresql_vendor` 或 `secrets_manager` 冻结成最终依赖。
 
@@ -386,11 +386,23 @@ The fixed Phase1-G evidence pair remains release-signoff evidence only and must 
   - `tests.unit.test_runtime_migrations`：覆盖 Phase2-2 plan、repository stub metadata、query-shape readiness、row variant reports、negative gap controls、real-driver-adapter acceptance checklist draft、三类 gap summary 与 admission criteria decision packet draft
   - `tests.contract.test_contracts.RuntimeDriverAdapterNormalizationContractTests`：以 fixture-only / fake-row contract test 覆盖 mapping-like、tuple-like、attribute-like、aware datetime、nullable preservation、缺字段、额外字段、rename risk、status semantic drift、timezone drift 与 nullability drift；该测试不导入真实 DB driver、不连接 PostgreSQL、不触发 cutover
 - 已重新执行 `python3 -m src.cli phase1-g-audit-ready-report`，继续输出 `report_title = Phase1-G audit-ready / owner-review-ready / go`，`generated_at = 2026-04-24T02:35:42.576300Z`。
+- 已在 `2026-04-28` 后续环境修复批次实际执行 owner-approved local-only real PostgreSQL shadow validation：
+  - `python3 -m src.cli migrate --shadow-validate`：通过，输出 `status = real_postgresql_shadow_validation_passed`
+  - disposable DB：官方 `postgres:17` Docker image，运行时版本 `PostgreSQL 17.9`
+  - shadow DSN 仅通过当前 shell/session 环境变量提供，记录形态为 `postgresql://apo_shadow_user:[REDACTED]@127.0.0.1:55432/apo_shadow`
+  - `real_db_connection = true`
+  - `cutover_eligible = false`
+  - `runtime_cutover_executed = false`
+  - `production_db_readiness_claimed = false`
+  - `runtime_cutover_readiness_claimed = false`
+  - `runtime_db_driver = null`，`migration_tool = null`，`managed_postgresql_vendor = null`，`secrets_manager = null`
+  - shadow-only checks 全部通过：`psycopg_shadow_connection`、`raw_sql_runtime_task_ddl_applied`、`runtime_task_row_round_trip`、`utc_and_asia_shanghai_round_trip`、`nullable_fields_preserved`、`claim_by_id_cas`、`heartbeat_guard`、`expired_cas_reclaim`、`negative_reclaim_payload_guard`、`claim_next_ordering_and_lock_contract`、`negative_status_semantic_control`
+  - disposable container 已清理；该证据只证明 local disposable shadow DB validation，不批准 production DB use、runtime DB backend cutover、final driver freeze 或 migration-tool freeze
 
 #### 本批次未执行项
 
-- 未连接真实 PostgreSQL。
-- 未执行真实 driver-backed `claim / lease / heartbeat / CAS reclaim` 查询路径。
+- 不再适用：此前未连接真实 PostgreSQL；`2026-04-28` 后续批次已在 local disposable PostgreSQL 17 shadow DB 上完成真实连接与 shadow-only checks。
+- 不再适用：此前未执行真实 PostgreSQL-backed `claim / lease / heartbeat / CAS reclaim` shadow checks；`2026-04-28` 后续批次已完成对应 shadow-only SQL checks。
 - 未执行 runtime backend cutover。
 - 未改变 file-backed harness 的 local parity / rollback baseline 角色。
 - 未冻结任何 `migration_tool`、`runtime_db_driver`、`managed_postgresql_vendor` 或 `secrets_manager` 名称；本批次只输出 admission criteria draft、real-driver-adapter acceptance checklist candidate standard 与 provisional recommendation。
