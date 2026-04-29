@@ -12,13 +12,13 @@ from pathlib import Path
 from typing import Any
 
 from src.common.config import AppConfig
-from src.common.files import utc_now_iso
+from src.common.constants import TASK_STATUSES
+from src.common.errors import ContractValidationError
+from src.common.files import load_json, utc_now_iso
 from src.marts.presentation import build_dashboard_view, build_product_drill_down, reconcile_dashboard_view
-from src.review.review_packet_builder import OPEN_REVIEW_STATUSES
-from src.review.runtime import list_review_queue
-from src.review.store import FileReviewIssueStore, default_review_issue_store_path
-from src.runtime.processing_errors import FileProcessingErrorStore, default_processing_error_store_path
-from src.runtime.tasks import FileTaskStore
+from src.review.review_packet_builder import OPEN_REVIEW_STATUSES, build_review_queue_entry
+from src.review.store import default_review_issue_store_path
+from src.runtime.processing_errors import default_processing_error_store_path
 
 _PHASE2_3_EVIDENCE_REFS = [
     {
@@ -45,6 +45,51 @@ _PENDING_HUMAN_SELECTIONS = {
     "secrets_manager": None,
     "dashboard_framework": None,
 }
+
+_SUPPORTED_OPERATOR_READ_COMMANDS = [
+    {
+        "command": "operator_api_contract",
+        "response_view": "operator_api_contract_catalog",
+        "required_context": [],
+        "required_params": [],
+        "optional_params": ["request_id"],
+    },
+    {
+        "command": "operator_api_snapshot",
+        "response_view": "operator_api_snapshot",
+        "required_context": ["config", "mart"],
+        "required_params": [],
+        "optional_params": ["product_id", "open_review_only", "request_id"],
+    },
+    {
+        "command": "operator_dashboard_view",
+        "response_view": "dashboard_mart_view",
+        "required_context": ["mart"],
+        "required_params": [],
+        "optional_params": ["request_id"],
+    },
+    {
+        "command": "operator_product_drill_down",
+        "response_view": "product_drill_down",
+        "required_context": ["mart"],
+        "required_params": ["product_id"],
+        "optional_params": ["request_id"],
+    },
+    {
+        "command": "operator_review_queue",
+        "response_view": "review_queue_view",
+        "required_context": ["config"],
+        "required_params": [],
+        "optional_params": ["open_only", "review_issue_id", "request_id"],
+    },
+    {
+        "command": "operator_task_inspection",
+        "response_view": "task_inspection_view",
+        "required_context": ["config"],
+        "required_params": [],
+        "optional_params": ["task_id", "status", "request_id"],
+    },
+]
 
 
 def build_operator_api_snapshot(
@@ -79,6 +124,129 @@ def build_operator_api_snapshot(
     }
 
 
+def build_operator_api_contract_response(request_id: str | None = None) -> dict[str, Any]:
+    """Return the read-only operator API capability catalog."""
+
+    operation = "operator_api_contract_catalog"
+    view = operator_api_capability_catalog()
+    return _operator_view_response(operation=operation, request_id=request_id, view=view)
+
+
+def build_operator_dashboard_response(
+    *,
+    mart: dict[str, Any],
+    request_id: str | None = None,
+) -> dict[str, Any]:
+    """Return only the dashboard/mart service view with audit metadata."""
+
+    operation = "operator_dashboard_mart_view"
+    view = dashboard_mart_view(mart)
+    return _operator_view_response(operation=operation, request_id=request_id, view=view)
+
+
+def build_operator_product_drill_down_response(
+    *,
+    mart: dict[str, Any],
+    product_id: str,
+    request_id: str | None = None,
+) -> dict[str, Any]:
+    """Return only the trace-only product drill-down service view."""
+
+    operation = "operator_product_drill_down"
+    view = product_drill_down_view(mart, product_id=product_id)
+    return _operator_view_response(operation=operation, request_id=request_id, view=view)
+
+
+def build_operator_review_queue_response(
+    *,
+    config: AppConfig,
+    open_only: bool = False,
+    review_issue_id: str | None = None,
+    request_id: str | None = None,
+) -> dict[str, Any]:
+    """Return only the review queue service view with review semantics intact."""
+
+    operation = "operator_review_queue_view"
+    view = review_queue_view(config=config, open_only=open_only, review_issue_id=review_issue_id)
+    return _operator_view_response(operation=operation, request_id=request_id, view=view)
+
+
+def build_operator_task_inspection_response(
+    *,
+    task_store_path: Path,
+    task_id: str | None = None,
+    status: str | None = None,
+    request_id: str | None = None,
+) -> dict[str, Any]:
+    """Return only the runtime task inspection service view."""
+
+    operation = "operator_task_inspection_view"
+    view = task_inspection_view(task_store_path, task_id=task_id, status=status)
+    return _operator_view_response(operation=operation, request_id=request_id, view=view)
+
+
+def dispatch_operator_read(
+    command: str,
+    params: dict[str, Any] | None = None,
+    *,
+    config: AppConfig | None = None,
+    mart: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Dispatch a framework-neutral operator read command.
+
+    This is the narrow adapter seam for a later web framework or control-plane
+    shell. It intentionally accepts already-loaded read models so the service
+    layer does not decide how to build marts, claim tasks, or open write paths.
+    """
+
+    if not isinstance(command, str) or not command:
+        raise ContractValidationError("operator read command must be a non-empty string")
+    if params is None:
+        normalized_params: dict[str, Any] = {}
+    elif isinstance(params, dict):
+        normalized_params = dict(params)
+    else:
+        raise ContractValidationError("operator read params must be a mapping")
+    _reject_unknown_params(command, normalized_params)
+    request_id = _optional_string(normalized_params.get("request_id"), "request_id")
+    if command == "operator_api_contract":
+        return build_operator_api_contract_response(request_id=request_id)
+    if command == "operator_api_snapshot":
+        return build_operator_api_snapshot(
+            config=_require_config(config, command),
+            mart=_require_mart(mart, command),
+            product_id=_optional_string(normalized_params.get("product_id"), "product_id"),
+            open_review_only=_optional_bool(normalized_params.get("open_review_only"), "open_review_only"),
+            request_id=request_id,
+        )
+    if command == "operator_dashboard_view":
+        return build_operator_dashboard_response(
+            mart=_require_mart(mart, command),
+            request_id=request_id,
+        )
+    if command == "operator_product_drill_down":
+        return build_operator_product_drill_down_response(
+            mart=_require_mart(mart, command),
+            product_id=_required_string(normalized_params.get("product_id"), "product_id"),
+            request_id=request_id,
+        )
+    if command == "operator_review_queue":
+        return build_operator_review_queue_response(
+            config=_require_config(config, command),
+            open_only=_optional_bool(normalized_params.get("open_only"), "open_only"),
+            review_issue_id=_optional_string(normalized_params.get("review_issue_id"), "review_issue_id"),
+            request_id=request_id,
+        )
+    if command == "operator_task_inspection":
+        return build_operator_task_inspection_response(
+            task_store_path=_require_config(config, command).task_store_path,
+            task_id=_optional_string(normalized_params.get("task_id"), "task_id"),
+            status=_optional_string(normalized_params.get("status"), "status"),
+            request_id=request_id,
+        )
+    raise ContractValidationError(f"Unsupported operator read command: {command}")
+
+
 def service_audit_envelope(
     *,
     operation: str,
@@ -102,24 +270,76 @@ def service_audit_envelope(
     }
 
 
+def _operator_view_response(
+    *,
+    operation: str,
+    request_id: str | None,
+    view: dict[str, Any],
+) -> dict[str, Any]:
+    evidence_refs = list(_PHASE2_3_EVIDENCE_REFS)
+    return {
+        "audit": service_audit_envelope(
+            operation=operation,
+            request_id=request_id,
+            evidence_refs=evidence_refs,
+        ),
+        "api_contract": operator_api_contract(),
+        "view": view,
+        "cutover_guardrails": cutover_guardrails(),
+        "evidence_refs": evidence_refs,
+    }
+
+
 def operator_api_contract() -> dict[str, Any]:
     """Describe the framework-neutral contract exposed by this module."""
 
     return {
+        "service_contract_version": "operator_api_contract_v1",
         "phase": "Phase2-3",
         "status": "service_api_contract_started",
         "framework_binding": None,
         "write_paths_enabled": False,
+        "approved_write_operations": [],
+        "blocked_write_operations": [
+            "task_submission",
+            "review_resolution",
+            "replay_trigger",
+            "runtime_cutover",
+        ],
         "dashboard_read_policy": "mart_or_materialized_view_first",
         "drill_down_policy": "traceability_only_no_metric_recompute",
         "review_state_policy": "preserve_review_issue_status_and_maker_checker_fields",
         "task_state_policy": "preserve_runtime_task_status_and_blocked_replay_semantics",
         "endpoint_shapes": [
+            "operator_api_contract_catalog",
             "dashboard_mart_view",
             "product_drill_down",
             "review_queue_view",
             "task_inspection_view",
         ],
+    }
+
+
+def operator_api_capability_catalog() -> dict[str, Any]:
+    """Describe available read commands without exposing service write paths."""
+
+    contract = operator_api_contract()
+    return {
+        "view_type": "operator_api_contract_catalog",
+        "service_contract_version": contract["service_contract_version"],
+        "framework_binding": contract["framework_binding"],
+        "write_paths_enabled": contract["write_paths_enabled"],
+        "approved_write_operations": list(contract["approved_write_operations"]),
+        "blocked_write_operations": list(contract["blocked_write_operations"]),
+        "supported_read_commands": [dict(command) for command in _SUPPORTED_OPERATOR_READ_COMMANDS],
+        "write_operations_not_available": [
+            "task_submission",
+            "review_resolution",
+            "replay_trigger",
+            "runtime_cutover",
+        ],
+        "guardrails": cutover_guardrails(),
+        "evidence_refs": list(_PHASE2_3_EVIDENCE_REFS),
     }
 
 
@@ -160,7 +380,10 @@ def dashboard_mart_view(mart: dict[str, Any]) -> dict[str, Any]:
 def product_drill_down_view(mart: dict[str, Any], *, product_id: str) -> dict[str, Any]:
     """Expose trace-only product drill-down without redeciding mart metrics."""
 
-    drill_down = build_product_drill_down(mart, product_id=product_id)
+    try:
+        drill_down = build_product_drill_down(mart, product_id=product_id)
+    except KeyError as exc:
+        raise ContractValidationError(f"Product drill-down trace is unavailable for product_id={product_id}") from exc
     trace_refs = drill_down["trace_refs"]
     return {
         "view_type": "product_drill_down",
@@ -171,22 +394,27 @@ def product_drill_down_view(mart: dict[str, Any], *, product_id: str) -> dict[st
     }
 
 
-def review_queue_view(*, config: AppConfig, open_only: bool = False) -> dict[str, Any]:
+def review_queue_view(
+    *,
+    config: AppConfig,
+    open_only: bool = False,
+    review_issue_id: str | None = None,
+) -> dict[str, Any]:
     """Expose review queue state without flattening it into success/failure."""
 
-    store = FileReviewIssueStore(default_review_issue_store_path(config.task_store_path))
-    issues = store.all_issues()
-    queue_entries = list_review_queue(config_dir=config.config_dir, task_store_path=config.task_store_path, open_only=open_only)
-    issue_by_id = {issue.get("review_issue_id"): issue for issue in issues}
+    issues = _read_json_list(default_review_issue_store_path(config.task_store_path), "review_issue store")
+    filtered = issues if not open_only else [issue for issue in issues if issue.get("status") in OPEN_REVIEW_STATUSES]
+    if review_issue_id is not None:
+        filtered = [issue for issue in filtered if issue.get("review_issue_id") == review_issue_id]
     entries = []
-    for queue_entry in queue_entries:
-        issue = issue_by_id.get(queue_entry.get("review_issue_id"), {})
+    for issue in filtered:
         merged = dict(issue)
-        merged.update(queue_entry)
+        merged.update(build_review_queue_entry(issue, config_dir=config.config_dir))
         entries.append(merged)
     return {
         "view_type": "review_queue_view",
         "open_only": open_only,
+        "review_issue_id": review_issue_id,
         "state_model": "review_issue",
         "generic_success_failure_flattening_allowed": False,
         "maker_checker_bypass_allowed": False,
@@ -203,15 +431,29 @@ def review_queue_view(*, config: AppConfig, open_only: bool = False) -> dict[str
     }
 
 
-def task_inspection_view(task_store_path: Path) -> dict[str, Any]:
+def task_inspection_view(
+    task_store_path: Path,
+    *,
+    task_id: str | None = None,
+    status: str | None = None,
+) -> dict[str, Any]:
     """Expose task and processing-error state while preserving blocked replay."""
 
-    task_store = FileTaskStore(task_store_path)
-    processing_error_store = FileProcessingErrorStore(default_processing_error_store_path(task_store_path))
-    tasks = task_store.all_tasks()
-    processing_errors = processing_error_store.all_errors()
+    if status is not None and status not in TASK_STATUSES:
+        raise ContractValidationError(f"Unsupported task status filter: {status}")
+    tasks = _read_json_list(task_store_path, "task store")
+    processing_errors = _read_json_list(default_processing_error_store_path(task_store_path), "processing_error store")
+    if task_id is not None:
+        tasks = [task for task in tasks if task.get("task_id") == task_id]
+        processing_errors = [error for error in processing_errors if error.get("run_id") == task_id]
+    if status is not None:
+        tasks = [task for task in tasks if task.get("status") == status]
+        task_ids = {task.get("task_id") for task in tasks}
+        processing_errors = [error for error in processing_errors if error.get("run_id") in task_ids]
     return {
         "view_type": "task_inspection_view",
+        "task_id": task_id,
+        "status": status,
         "state_model": "runtime_task",
         "generic_success_failure_flattening_allowed": False,
         "blocked_replay_bypass_allowed": False,
@@ -329,7 +571,69 @@ def _extract_review_evidence_refs(entry: dict[str, Any]) -> list[dict[str, Any]]
     return [dict(item) for item in related if isinstance(item, dict)]
 
 
+def _require_config(config: AppConfig | None, command: str) -> AppConfig:
+    if not isinstance(config, AppConfig):
+        raise ContractValidationError(f"{command} requires AppConfig")
+    return config
+
+
+def _require_mart(mart: dict[str, Any] | None, command: str) -> dict[str, Any]:
+    if not isinstance(mart, dict):
+        raise ContractValidationError(f"{command} requires a preloaded mart read model")
+    return mart
+
+
+def _reject_unknown_params(command: str, params: dict[str, Any]) -> None:
+    catalog_entry = next(
+        (entry for entry in _SUPPORTED_OPERATOR_READ_COMMANDS if entry["command"] == command),
+        None,
+    )
+    if catalog_entry is None:
+        return
+    allowed_params = set(catalog_entry["required_params"]) | set(catalog_entry["optional_params"])
+    unknown_params = sorted(set(params) - allowed_params)
+    if unknown_params:
+        joined = ", ".join(unknown_params)
+        raise ContractValidationError(f"{command} received unsupported params: {joined}")
+
+
+def _required_string(value: object, field_name: str) -> str:
+    if isinstance(value, Path):
+        return str(value)
+    if not isinstance(value, str) or not value:
+        raise ContractValidationError(f"{field_name} must be a non-empty string")
+    return value
+
+
+def _optional_string(value: object, field_name: str) -> str | None:
+    if value is None:
+        return None
+    return _required_string(value, field_name)
+
+
+def _optional_bool(value: object, field_name: str) -> bool:
+    if value is None:
+        return False
+    if not isinstance(value, bool):
+        raise ContractValidationError(f"{field_name} must be a boolean")
+    return value
+
+
 def _stable_request_id(operation: str, generated_at: str) -> str:
     seed = f"{operation}:{generated_at}"
     digest = hashlib.sha256(seed.encode("utf-8")).hexdigest()[:16]
     return f"opapi_{digest}"
+
+
+def _read_json_list(path: Path, description: str) -> list[dict[str, Any]]:
+    if not path.exists():
+        return []
+    payload = load_json(path)
+    if not isinstance(payload, list):
+        raise ContractValidationError(f"{description} must contain a JSON list: {path}")
+    rows: list[dict[str, Any]] = []
+    for index, item in enumerate(payload):
+        if not isinstance(item, dict):
+            raise ContractValidationError(f"{description}[{index}] must be a JSON object: {path}")
+        rows.append(dict(item))
+    return rows

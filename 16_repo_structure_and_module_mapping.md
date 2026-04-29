@@ -53,6 +53,7 @@ last_frozen_version: repo_mapping_v2
   - task orchestration / replay / retry helpers
 - `src/service/`
   - framework-neutral service API / operator control-plane contract helpers
+  - plain Python read dispatch adapters only; no web framework binding, runtime cutover path, or service write path is frozen here
 - `fixtures/`
   - deterministic fixtures
 - `gold_set/`
@@ -253,6 +254,16 @@ last_frozen_version: repo_mapping_v2
   - 当前已实现从 mart-backed drill-down trace 回链 `product / observation / evidence / review_issue` 的本地 CLI 路径
 - `python3 -m src.cli operator-api-snapshot [--mart-path <path>] [--product-id <id>] [--open-review-only]`
   - 当前已实现 Phase2-3 framework-neutral operator API read snapshot；该入口组合 mart-backed dashboard view、trace-only product drill-down、review queue view 与 task inspection view，并输出 read-only audit envelope；未传 `--mart-path` 时只从默认 fixture 派生 mart payload，不创建 runtime task；不冻结 dashboard/web framework，不执行 runtime cutover，不把 DB-backed runtime 设为默认，也不声明 production DB readiness
+- `python3 -m src.cli operator-api-contract [--request-id <id>]`
+  - 当前已实现 Phase2-3 read-only operator API capability catalog；只列出 supported read commands、required params、required caller-provided context、blocked write operations、no-cutover guardrails 与 evidence refs，不开放 task submission / review resolution / replay trigger / runtime cutover 写入口
+- `python3 -m src.cli operator-dashboard-view [--mart-path <path>]`
+  - 当前已实现 Phase2-3 dashboard/mart 单视图 inspect surface；只读 mart payload，不现场拼运行层细表
+- `python3 -m src.cli operator-product-drill-down --product-id <id> [--mart-path <path>]`
+  - 当前已实现 Phase2-3 product drill-down 单视图 inspect surface；只用于 evidence / review / source / observation trace，不重新裁决业务指标
+- `python3 -m src.cli operator-review-queue [--open-only] [--review-issue-id <id>]`
+  - 当前已实现 Phase2-3 review queue 单视图 inspect surface；保留 `review_issue` / maker-checker 语义，不扁平化成 generic success/failure
+- `python3 -m src.cli operator-task-inspection [--task-id <id>] [--status <task_status>]`
+  - 当前已实现 Phase2-3 task inspection 单视图 inspect surface；保留 runtime task status、blocked replay 与 processing_error 边界，不自动放行 blocked replay
 - `python3 -m src.cli trigger-taxonomy-review --source-item-path <path> --record-path <path>`
   - 当前已实现 Phase1-D taxonomy unresolved / low-confidence -> local `review_issue` store 的最小 CLI 落点
 - `python3 -m src.cli trigger-entity-review --source-item-path <path> --existing-products-path <path>`

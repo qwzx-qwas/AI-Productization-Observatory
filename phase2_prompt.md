@@ -455,7 +455,13 @@ The fixed Phase1-G evidence pair remains release-signoff evidence only and must 
   - `src/service/__init__.py`
 - 已新增本地 CLI inspect surface：
   - `python3 -m src.cli operator-api-snapshot [--mart-path <path>] [--product-id <id>] [--open-review-only]`
+  - `python3 -m src.cli operator-api-contract [--request-id <id>]`
+  - `python3 -m src.cli operator-dashboard-view [--mart-path <path>]`
+  - `python3 -m src.cli operator-product-drill-down --product-id <id> [--mart-path <path>]`
+  - `python3 -m src.cli operator-review-queue [--open-only] [--review-issue-id <id>]`
+  - `python3 -m src.cli operator-task-inspection [--task-id <id>] [--status <task_status>]`
 - 若未传 `--mart-path`，`operator-api-snapshot` 从默认 fixture 派生只读 mart payload，不创建 runtime task，不写 `.runtime/marts/`，也不把 mart rebuild 伪装成 service read。
+- `operator-dashboard-view` 与 `operator-product-drill-down` 同样采用只读 mart payload 路径；`operator-review-queue` 与 `operator-task-inspection` 只读本地 store JSON，不通过 file-store lock helper 创建 `.lock` 文件。
 - 当前 service snapshot 只组合既有只读视图：
   - dashboard/mart view 继续消费 `src/marts/presentation.py` 的 mart-backed payload 与 reconciliation，不现场 join 运行层细表
   - product drill-down 只用于 traceability / evidence refs / review context，不重新裁决 taxonomy、score 或 unresolved 语义
@@ -470,6 +476,8 @@ The fixed Phase1-G evidence pair remains release-signoff evidence only and must 
   - `runtime_cutover_executed = false`
   - `production_db_readiness_claimed = false`
   - canonical / evidence refs
+- 当前 service contract 显式标识 `service_contract_version = operator_api_contract_v1`，并保持 `approved_write_operations = []`；`task_submission`、`review_resolution`、`replay_trigger` 与 `runtime_cutover` 仍列为 blocked write operations，不在本增量内开放。
+- 当前 operator API contract catalog 只暴露 supported read commands、required params、required caller-provided context、blocked write operations、no-cutover guardrails 与 evidence refs；它不提供 task submission、review resolution、replay trigger 或 runtime cutover write API。
 - 当前 service contract 显式输出 no-cutover guardrails：
   - `db_backed_runtime_default = false`
   - `real_db_connection = false`
@@ -483,6 +491,9 @@ The fixed Phase1-G evidence pair remains release-signoff evidence only and must 
   - `secrets_manager = null`
   - `dashboard_framework = null`
 - 已新增 `tests.unit.test_operator_api`，覆盖 mart-first discipline、drill-down evidence refs、service audit envelope、review state non-flattening、blocked replay / maker-checker bypass guardrails，以及 service layer 不声明 DB cutover 或 production DB readiness。
+- 后续 contract-first 增量已新增 plain Python `dispatch_operator_read(command, params, *, config, mart)` adapter seam，供未来 web framework 或 operator shell 复用现有只读 view builders；该 seam 要求调用方传入已加载 mart / config，不负责 mart rebuild、task claim、review writeback 或任何 service write path。
+- 当前 operator contract tests 已补充 stable JSON shape、audit envelope、no-cutover guardrails、per-view required fields、dispatch adapter、operator API contract catalog、invalid task status、bad dispatch params/context、missing mart path 与 unknown product drill-down 负控；这些负控均保持技术/config/contract failure，不把消费层错误写入 review issue，也不创建 service write side effects。
+- 当前 Phase2-3 read-only service/operator API contract 已达到 Phase2-4 read-only frontend/serviceization 的入口准备状态：Phase2-4 可消费 catalog 与单视图 read payload 作为前端预览 / adapter 输入；这不表示 Phase2-4 frontend 已实现，不冻结 dashboard framework，也不批准 service write API、runtime cutover 或 production DB readiness。
 - 本批次不新增 web framework、不冻结 dashboard framework、不新增 DB-backed runtime 默认入口、不执行 runtime cutover，也不改变 Phase2-2 local disposable PostgreSQL shadow-validation evidence 的边界。
 
 #### 本批次未执行项

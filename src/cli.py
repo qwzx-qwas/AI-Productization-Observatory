@@ -34,7 +34,7 @@ from src.runtime.migrations import migration_plan
 from src.runtime.processing_errors import default_processing_error_store_path
 from src.runtime.replay import build_default_mart, build_mart_window, replay_source_window
 from src.runtime.shadow_validation import run_postgresql_shadow_validation
-from src.service.operator_api import build_operator_api_snapshot
+from src.service.operator_api import dispatch_operator_read
 from src.review.runtime import (
     list_review_queue,
     resolve_taxonomy_review_from_record_path,
@@ -1238,6 +1238,43 @@ def build_parser() -> argparse.ArgumentParser:
     operator_api_parser.add_argument("--open-review-only", action="store_true")
     operator_api_parser.add_argument("--request-id")
 
+    operator_contract_parser = subparsers.add_parser(
+        "operator-api-contract",
+        help="Render the Phase2-3 operator API read-only capability catalog.",
+    )
+    operator_contract_parser.add_argument("--request-id")
+
+    operator_dashboard_parser = subparsers.add_parser(
+        "operator-dashboard-view",
+        help="Render only the Phase2-3 operator dashboard/mart read view.",
+    )
+    operator_dashboard_parser.add_argument("--mart-path")
+    operator_dashboard_parser.add_argument("--request-id")
+
+    operator_product_parser = subparsers.add_parser(
+        "operator-product-drill-down",
+        help="Render only the Phase2-3 operator product drill-down evidence trace.",
+    )
+    operator_product_parser.add_argument("--product-id", required=True)
+    operator_product_parser.add_argument("--mart-path")
+    operator_product_parser.add_argument("--request-id")
+
+    operator_review_parser = subparsers.add_parser(
+        "operator-review-queue",
+        help="Render only the Phase2-3 operator review queue read view.",
+    )
+    operator_review_parser.add_argument("--open-only", action="store_true")
+    operator_review_parser.add_argument("--review-issue-id")
+    operator_review_parser.add_argument("--request-id")
+
+    operator_task_parser = subparsers.add_parser(
+        "operator-task-inspection",
+        help="Render only the Phase2-3 operator task inspection read view.",
+    )
+    operator_task_parser.add_argument("--task-id")
+    operator_task_parser.add_argument("--status")
+    operator_task_parser.add_argument("--request-id")
+
     trigger_review_parser = subparsers.add_parser(
         "trigger-taxonomy-review",
         help="Run the Phase1-D taxonomy path for one source_item JSON and persist any triggered review_issue.",
@@ -1338,13 +1375,19 @@ def bootstrap_install(config: AppConfig) -> str:
 
 def _load_or_build_mart(config: AppConfig, mart_path: str | None) -> dict[str, object]:
     if mart_path:
-        return _require_mapping(load_json(Path(mart_path)), f"mart:{mart_path}")
+        path = Path(mart_path)
+        if not path.exists():
+            raise ConfigError(f"Mart path does not exist: {path}")
+        return _require_mapping(load_json(path), f"mart:{mart_path}")
     return _require_mapping(build_default_mart(config), "default mart")
 
 
 def _load_or_read_mart(config: AppConfig, mart_path: str | None) -> dict[str, object]:
     if mart_path:
-        return _require_mapping(load_json(Path(mart_path)), f"mart:{mart_path}")
+        path = Path(mart_path)
+        if not path.exists():
+            raise ConfigError(f"Mart path does not exist: {path}")
+        return _require_mapping(load_json(path), f"mart:{mart_path}")
     mart = build_mart_from_fixture(
         config.fixtures_dir / "marts" / "effective_results_window.json",
         config.config_dir / "source_registry.yaml",
@@ -1605,12 +1648,94 @@ def main(argv: list[str] | None = None) -> int:
             mart = _load_or_read_mart(config, args.mart_path)
             print(
                 json.dumps(
-                    build_operator_api_snapshot(
+                    dispatch_operator_read(
+                        "operator_api_snapshot",
+                        {
+                            "product_id": args.product_id,
+                            "open_review_only": args.open_review_only,
+                            "request_id": args.request_id,
+                        },
                         config=config,
                         mart=mart,
-                        product_id=args.product_id,
-                        open_review_only=args.open_review_only,
-                        request_id=args.request_id,
+                    ),
+                    ensure_ascii=True,
+                )
+            )
+            return 0
+
+        if args.command == "operator-api-contract":
+            print(
+                json.dumps(
+                    dispatch_operator_read(
+                        "operator_api_contract",
+                        {"request_id": args.request_id},
+                    ),
+                    ensure_ascii=True,
+                )
+            )
+            return 0
+
+        if args.command == "operator-dashboard-view":
+            mart = _load_or_read_mart(config, args.mart_path)
+            print(
+                json.dumps(
+                    dispatch_operator_read(
+                        "operator_dashboard_view",
+                        {"request_id": args.request_id},
+                        config=config,
+                        mart=mart,
+                    ),
+                    ensure_ascii=True,
+                )
+            )
+            return 0
+
+        if args.command == "operator-product-drill-down":
+            mart = _load_or_read_mart(config, args.mart_path)
+            print(
+                json.dumps(
+                    dispatch_operator_read(
+                        "operator_product_drill_down",
+                        {
+                            "product_id": args.product_id,
+                            "request_id": args.request_id,
+                        },
+                        config=config,
+                        mart=mart,
+                    ),
+                    ensure_ascii=True,
+                )
+            )
+            return 0
+
+        if args.command == "operator-review-queue":
+            print(
+                json.dumps(
+                    dispatch_operator_read(
+                        "operator_review_queue",
+                        {
+                            "open_only": args.open_only,
+                            "review_issue_id": args.review_issue_id,
+                            "request_id": args.request_id,
+                        },
+                        config=config,
+                    ),
+                    ensure_ascii=True,
+                )
+            )
+            return 0
+
+        if args.command == "operator-task-inspection":
+            print(
+                json.dumps(
+                    dispatch_operator_read(
+                        "operator_task_inspection",
+                        {
+                            "task_id": args.task_id,
+                            "status": args.status,
+                            "request_id": args.request_id,
+                        },
+                        config=config,
                     ),
                     ensure_ascii=True,
                 )
