@@ -448,6 +448,50 @@ The fixed Phase1-G evidence pair remains release-signoff evidence only and must 
   - 继续使用现有 CLI 作为唯一写路径
   - 记录接口缺口并回退到 contract-only 交付
 
+#### 本批次已执行项
+
+- 已新增 framework-neutral service/operator contract layer：
+  - `src/service/operator_api.py`
+  - `src/service/__init__.py`
+- 已新增本地 CLI inspect surface：
+  - `python3 -m src.cli operator-api-snapshot [--mart-path <path>] [--product-id <id>] [--open-review-only]`
+- 若未传 `--mart-path`，`operator-api-snapshot` 从默认 fixture 派生只读 mart payload，不创建 runtime task，不写 `.runtime/marts/`，也不把 mart rebuild 伪装成 service read。
+- 当前 service snapshot 只组合既有只读视图：
+  - dashboard/mart view 继续消费 `src/marts/presentation.py` 的 mart-backed payload 与 reconciliation，不现场 join 运行层细表
+  - product drill-down 只用于 traceability / evidence refs / review context，不重新裁决 taxonomy、score 或 unresolved 语义
+  - review queue view 保留 `review_issue` 状态、`issue_type`、`priority_code`、queue bucket、resolution 与 maker-checker 字段，不把 review 状态压平成 generic success/failure
+  - task inspection view 保留 runtime task `status`、`parent_task_id`、replay fields、blocked replay flag 与 `processing_error` resolution status，不自动放行 blocked replay
+- 当前 service snapshot 顶层包含 read-only audit envelope：
+  - `request_id`
+  - `operation = operator_api_snapshot`
+  - `generated_at`
+  - `read_only = true`
+  - `side_effects = []`
+  - `runtime_cutover_executed = false`
+  - `production_db_readiness_claimed = false`
+  - canonical / evidence refs
+- 当前 service contract 显式输出 no-cutover guardrails：
+  - `db_backed_runtime_default = false`
+  - `real_db_connection = false`
+  - `cutover_eligible = false`
+  - `runtime_cutover_executed = false`
+  - `production_db_readiness_claimed = false`
+  - `runtime_cutover_readiness_claimed = false`
+  - `runtime_db_driver = null`
+  - `migration_tool = null`
+  - `managed_postgresql_vendor = null`
+  - `secrets_manager = null`
+  - `dashboard_framework = null`
+- 已新增 `tests.unit.test_operator_api`，覆盖 mart-first discipline、drill-down evidence refs、service audit envelope、review state non-flattening、blocked replay / maker-checker bypass guardrails，以及 service layer 不声明 DB cutover 或 production DB readiness。
+- 本批次不新增 web framework、不冻结 dashboard framework、不新增 DB-backed runtime 默认入口、不执行 runtime cutover，也不改变 Phase2-2 local disposable PostgreSQL shadow-validation evidence 的边界。
+
+#### 本批次未执行项
+
+- 未执行 service write API、task submission write path、review resolution write path 或 replay trigger write path。
+- 未执行 frontend serviceization。
+- 未执行 runtime DB cutover。
+- 未声明 production DB readiness、runtime cutover readiness 或 DB-backed runtime default readiness。
+
 ### Phase2-4 Frontend Serviceization
 
 - 输入：

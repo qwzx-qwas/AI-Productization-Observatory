@@ -28,11 +28,13 @@ from src.common.files import dump_json, load_json, load_yaml
 from src.common.logging_utils import configure_logging, get_logger
 from src.common.schema import validate_schema_document
 from src.devtools.quality import format_python, lint_python, typecheck_python
+from src.marts.builder import build_mart_from_fixture
 from src.marts.presentation import build_dashboard_view, build_product_drill_down, reconcile_dashboard_view
 from src.runtime.migrations import migration_plan
 from src.runtime.processing_errors import default_processing_error_store_path
 from src.runtime.replay import build_default_mart, build_mart_window, replay_source_window
 from src.runtime.shadow_validation import run_postgresql_shadow_validation
+from src.service.operator_api import build_operator_api_snapshot
 from src.review.runtime import (
     list_review_queue,
     resolve_taxonomy_review_from_record_path,
@@ -1227,6 +1229,15 @@ def build_parser() -> argparse.ArgumentParser:
     drill_down_parser.add_argument("--product-id", required=True)
     drill_down_parser.add_argument("--mart-path")
 
+    operator_api_parser = subparsers.add_parser(
+        "operator-api-snapshot",
+        help="Render the Phase2-3 framework-neutral operator API read snapshot.",
+    )
+    operator_api_parser.add_argument("--mart-path")
+    operator_api_parser.add_argument("--product-id")
+    operator_api_parser.add_argument("--open-review-only", action="store_true")
+    operator_api_parser.add_argument("--request-id")
+
     trigger_review_parser = subparsers.add_parser(
         "trigger-taxonomy-review",
         help="Run the Phase1-D taxonomy path for one source_item JSON and persist any triggered review_issue.",
@@ -1329,6 +1340,16 @@ def _load_or_build_mart(config: AppConfig, mart_path: str | None) -> dict[str, o
     if mart_path:
         return _require_mapping(load_json(Path(mart_path)), f"mart:{mart_path}")
     return _require_mapping(build_default_mart(config), "default mart")
+
+
+def _load_or_read_mart(config: AppConfig, mart_path: str | None) -> dict[str, object]:
+    if mart_path:
+        return _require_mapping(load_json(Path(mart_path)), f"mart:{mart_path}")
+    mart = build_mart_from_fixture(
+        config.fixtures_dir / "marts" / "effective_results_window.json",
+        config.config_dir / "source_registry.yaml",
+    )
+    return _require_mapping(mart, "default read-only mart")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -1578,6 +1599,22 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "product-drill-down":
             mart = _load_or_build_mart(config, args.mart_path)
             print(json.dumps(build_product_drill_down(mart, product_id=args.product_id), ensure_ascii=True))
+            return 0
+
+        if args.command == "operator-api-snapshot":
+            mart = _load_or_read_mart(config, args.mart_path)
+            print(
+                json.dumps(
+                    build_operator_api_snapshot(
+                        config=config,
+                        mart=mart,
+                        product_id=args.product_id,
+                        open_review_only=args.open_review_only,
+                        request_id=args.request_id,
+                    ),
+                    ensure_ascii=True,
+                )
+            )
             return 0
 
         if args.command == "trigger-taxonomy-review":

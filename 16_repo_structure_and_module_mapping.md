@@ -51,6 +51,8 @@ last_frozen_version: repo_mapping_v2
   - mart builder / SQL templates
 - `src/runtime/`
   - task orchestration / replay / retry helpers
+- `src/service/`
+  - framework-neutral service API / operator control-plane contract helpers
 - `fixtures/`
   - deterministic fixtures
 - `gold_set/`
@@ -118,6 +120,10 @@ last_frozen_version: repo_mapping_v2
    - module：Analytics Mart Builder
    - canonical spec：`09`, `11`
    - repo path：`src/marts/`
+   (14) 第 14 行
+   - module：Service API / Operator Control Plane
+   - canonical spec：`09`, `11`, `12`, `13`, `15`, `18`
+   - repo path：`src/service/`
 
 
 ## 3. 文档 -> Artifact -> 路径
@@ -245,6 +251,8 @@ last_frozen_version: repo_mapping_v2
   - 当前已实现本地 Phase1-F/Phase1-G dashboard reconciliation 检查；只对 mart-backed dashboard contract 做对账，不等于完整 Phase1 exit gate
 - `python3 -m src.cli product-drill-down --product-id <id> [--mart-path <path>]`
   - 当前已实现从 mart-backed drill-down trace 回链 `product / observation / evidence / review_issue` 的本地 CLI 路径
+- `python3 -m src.cli operator-api-snapshot [--mart-path <path>] [--product-id <id>] [--open-review-only]`
+  - 当前已实现 Phase2-3 framework-neutral operator API read snapshot；该入口组合 mart-backed dashboard view、trace-only product drill-down、review queue view 与 task inspection view，并输出 read-only audit envelope；未传 `--mart-path` 时只从默认 fixture 派生 mart payload，不创建 runtime task；不冻结 dashboard/web framework，不执行 runtime cutover，不把 DB-backed runtime 设为默认，也不声明 production DB readiness
 - `python3 -m src.cli trigger-taxonomy-review --source-item-path <path> --record-path <path>`
   - 当前已实现 Phase1-D taxonomy unresolved / low-confidence -> local `review_issue` store 的最小 CLI 落点
 - `python3 -m src.cli trigger-entity-review --source-item-path <path> --existing-products-path <path>`
