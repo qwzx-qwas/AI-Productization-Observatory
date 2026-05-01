@@ -18,6 +18,10 @@ dependencies = [
 shadow-validation = [
   "psycopg[binary]>=3.1,<4",
 ]
+# Phase2-4 read-only preview surface only; this does not freeze the production dashboard framework.
+phase2-4-preview = [
+  "streamlit>=1.32,<2",
+]
 
 [project.scripts]
 apo-observatory = "src.cli:main"

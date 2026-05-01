@@ -16,7 +16,7 @@ depends_on:
   - RUNTIME-TASK-REPLAY-CONTRACTS
 supersedes: []
 implementation_ready: true
-last_frozen_version: phase2_prompt_productization_v1
+last_frozen_version: phase2_prompt_productization_v2
 ---
 
 # Phase2 Prompt Productization
@@ -93,6 +93,12 @@ last_frozen_version: phase2_prompt_productization_v1
   - DB baseline、文本主键、forward-only migration、非 enum vocab expression 保持不变。
 - `DEC-029`
   - 当前阶段仍是 `GitHub live / Product Hunt deferred`；Product Hunt 不进入当前 gate，也不得被 Phase2 设计隐式拉回。
+- `DEC-030`
+  - Streamlit 只被批准用于 Phase2-4 read-only preview / adaptor surface，不冻结 production dashboard/frontend framework。
+  - `psycopg3 sync` 只被批准为首个 runtime DB driver conformance-validation candidate，不批准 runtime cutover、DB-backed runtime default 或 production DB readiness。
+  - raw reviewed SQL 是 migration semantics 的 canonical source of truth；Alembic 后续至多作为 runner / scaffold / history wrapper 评估，autogenerate 不具备权威性。
+  - managed PostgreSQL vendor freeze 延后；Phase3 不连接也不集成 SQL service provider。
+  - environment variables 是 runtime secret interface；local `.env` 仅限 gitignored development usage，CI 使用 GitHub Actions secrets，production secret backend 延后。
 
 ## 4. Phase2 目标与边界
 
@@ -290,31 +296,36 @@ last_frozen_version: phase2_prompt_productization_v1
   - 仍为 explicit-command-only planning，不是 production launch，也不是 runtime cutover
   - production runtime backend 保持不变，file-backed harness 继续作为 local parity / rollback baseline
 - runtime DB driver candidate:
-  - `psycopg3 sync` 是 Phase2-2 shadow-phase driver candidate
-  - 它不是 final production runtime driver freeze
+  - `psycopg3 sync` 是首个 runtime DB driver conformance-validation candidate
+  - 它只用于验证既有 runtime task / row-shape / timezone / CAS / replay conformance contracts
+  - 它不是 final production runtime driver freeze，不是 runtime cutover approval，也不把 DB-backed runtime 设为默认
   - upper business logic 不得直接绑定 psycopg3；必须保留 repository adapter seam
   - Phase2-2 保持 sync-first；asyncpg / async psycopg 等 async evaluation deferred until real concurrency evidence
-- migration tool candidate:
-  - Alembic 是 migration-layer evaluation candidate
-  - 它只用于 future shadow migration validation，不是 final production migration-tool freeze
-  - Alembic 不得把 SQLAlchemy 强加到 runtime adapter layer
 - migration style:
+  - raw reviewed SQL 是 canonical migration source of truth
   - Phase2-2 使用 reviewed raw SQL migrations only
+  - Alembic 可后续作为 runner / scaffold / history wrapper 评估，但不是 authoritative migration semantics source
+  - Alembic autogenerate 不具备权威性
+  - Alembic 不得把 SQLAlchemy 强加到 runtime adapter layer
   - 本任务不得创建 real Alembic migration files；如需示例，只能是 documentation-only draft examples
   - migration-only minimal SQLAlchemy metadata 仍是 deferred optional idea；runtime SQLAlchemy adapter 不批准
 - PostgreSQL operating model:
   - 首个 real shadow target 规划为 PostgreSQL 17 local Docker/dev shadow DB，后续可评估 `single_vps`
   - managed PostgreSQL vendors deferred, not rejected；当前只保持 portable config boundary，不做 vendor lock-in 设计
+  - Phase3 不连接、不集成 SQL service provider；只允许保留 future-facing interfaces / evaluation hooks
   - future real acceptance evidence must record DB version and relevant environment details
 - Docker persistence:
   - default shadow DB mode should be disposable
   - named Docker volume may be explicitly enabled only for debugging
   - future acceptance evidence must come from a clean disposable shadow DB, not from a reused debug volume
 - secrets / config:
+  - environment variables 是 runtime secret interface
   - shadow DB DSN env var name is `APO_SHADOW_DATABASE_URL`
   - local `.env` may carry real local values, but `.env` remains ignored and must not be read or committed
+  - CI may use GitHub Actions secrets
   - repository examples may contain placeholders only, e.g. `<shadow_user>`, `<shadow_password>`, `<shadow_db>`
-  - cloud secrets managers are deferred, not rejected; no secrets-manager provider interface is frozen here
+  - production secret backend is deferred; cloud secrets managers are deferred, not rejected; no secrets-manager provider interface is frozen here
+  - CLI output, evidence docs, logs, and exceptions must redact real DSNs, passwords, tokens, and secret values
 - no-cutover states:
   - `real_db_connection=false` in plan-only mode
   - `cutover_eligible=false`
@@ -340,7 +351,7 @@ The fixed Phase1-G evidence pair remains release-signoff evidence only and must 
 - 该命令只允许在当前 shell/session 提供 `APO_SHADOW_DATABASE_URL`，并在执行前拒绝非 localhost、非 shadow-named user/database 的 DSN。
 - 该命令只对 local disposable PostgreSQL shadow DB 执行 reviewed raw SQL scaffold apply 与 shadow-only checks；输出可在真实连接成功时报告 `real_db_connection = true`，但必须继续保持 `cutover_eligible = false` 与 `runtime_cutover_executed = false`。
 - 已将 `psycopg[binary]` 声明为 `shadow-validation` optional extra；这是 shadow-validation dependency surface，不是 final production runtime driver freeze。
-- Alembic 仍是 migration-layer evaluation candidate；当前命令不需要 Alembic，也不创建 real Alembic migration files。
+- raw reviewed SQL 仍是 migration source of truth；Alembic 后续至多作为 runner / scaffold / history wrapper 评估，当前命令不需要 Alembic，也不创建 real Alembic migration files。
 - 已把 `src/runtime/db_driver_readiness.py` 的可替换 adapter seam 从 readiness-only 扩展为包含 `verify_runtime_tasks` 与 SQL contract validation 的 DB-side conformance seam；该接口仍不命名真实 driver。
 - 已新增 `RuntimeTaskDriverConformanceReport`、`RuntimeTaskDriverSqlContractCheck` 与 row-level mismatch report，用于区分 `verified` / `drift_detected`、`sql_contract_status = verified / contract_gap`，并继续显式 `cutover_eligible = false`。
 - 已把 `src/runtime/sql/postgresql_task_runtime_phase2_1.sql` 从纯 DDL scaffold 扩展为 `DDL + non-executed SQL contract templates`，补齐：
@@ -511,10 +522,12 @@ The fixed Phase1-G evidence pair remains release-signoff evidence only and must 
   - `docs/phase1_g_acceptance_evidence.md`
   - 已冻结的 mart / drill-down contract
 - 输出：
-  - 面向产品使用的 dashboard shell
-  - 基于 service API 的 drill-down 与 review / replay 观察入口
+  - Streamlit read-only preview / adaptor surface
+  - 基于 service API 的 drill-down 与 review / replay 观察入口的只读预览
   - 前端与 mart/service API 的 contract tests
 - 验收门槛：
+  - Phase2-4 保持 read-only frontend/serviceization preview/adaptor work，不声明 productized frontend completion
+  - Streamlit 仅作为 Phase2-4 read-only preview/adaptor 选择，不冻结 production dashboard/frontend framework
   - 前端不直接访问运行层细表或 object store
   - 所有主页面指标均可与既有 dashboard reconciliation checks 对账
   - `dashboard card -> drill-down -> evidence trace` 在前端路径上可复现
@@ -527,6 +540,20 @@ The fixed Phase1-G evidence pair remains release-signoff evidence only and must 
   - 保留前端为 read-only preview
   - 继续让 CLI / service API 承担正式核证入口
   - 对未冻结框架保持 adapter / contract-first 结构，避免重写
+
+#### 当前人工批准边界
+
+- `DEC-030` 只批准 Streamlit 用作 Phase2-4 read-only preview / adaptor surface。
+- 这不表示 Phase2-4 frontend 已完成，不冻结 production dashboard/frontend framework，也不批准 service write API。
+- 该 preview 只能消费 Phase2-3 read-only operator catalog、mart-backed view payload 与 drill-down evidence refs。
+- 不得新增 task submission、review resolution、replay trigger、runtime cutover 或 write-intent endpoint。
+- no-cutover guardrails 必须继续保持：`cutover_eligible=false`、`runtime_cutover_executed=false`、`production_db_readiness_claimed=false`、DB-backed runtime 不成为默认。
+
+#### 当前实现增量
+
+- 已新增 `src/service/preview_adapter.py` 与 `python3 -m src.cli operator-preview-model`，作为 Phase2-4 framework-neutral read-only preview model；它通过 `dispatch_operator_read` 消费 Phase2-3 operator API contract catalog、dashboard mart view、product drill-down、review queue read view 与 task inspection read view，并保留 audit envelope、preview navigation metadata、contract checks、evidence refs 与 no-cutover guardrails。
+- 已新增 `src/frontend/streamlit_preview.py`，作为 optional Streamlit read-only renderer；该模块无 top-level Streamlit import，Streamlit 仅通过 `phase2-4-preview` optional extra 显式安装，未安装时不影响 core CLI / tests，只在显式 preview invocation 时报告 optional dependency 缺失。
+- 当前实现不声明 Phase2-4 frontend completion，不冻结 production dashboard/frontend framework，不新增 service write API、mutation UI、task submission、review resolution、replay trigger、runtime cutover、DB-backed runtime default 或 production DB readiness claim。
 
 ### Phase2-5 Cutover, Regression, And Productized Release Evidence
 
@@ -556,11 +583,13 @@ The fixed Phase1-G evidence pair remains release-signoff evidence only and must 
 ## 6. 前端服务化目标与验收基准
 
 - 目标：
-  - 让 dashboard 从“本地 CLI + 文档 walkthrough”升级为“service-backed product surface”，但仍只消费 mart / materialized view 与 drill-down refs。
+  - Phase2-4 只把 dashboard 从“本地 CLI + 文档 walkthrough”推进为“service-backed read-only preview / adaptor surface”，仍只消费 mart / materialized view 与 drill-down refs。
+  - Streamlit 可用于该 read-only preview，但 production dashboard/frontend framework 继续延后冻结。
 - 必守纪律：
   - 不现场推导 total score / composite score
   - 不绕过 mart 直接拼运行层细表
   - 不把未通过 review / maker-checker 的高影响结果显示成最终已生效结果
+  - 不新增 task submission、review resolution、replay trigger、runtime cutover 或 write-intent endpoint
 - 最低验收基准：
   - dashboard 主视图与 `dashboard-reconciliation` 的预定义检查 `100%` 一致
   - 至少一组 `dashboard card -> drill-down -> evidence trace` 样本链路 `100%` 可回放

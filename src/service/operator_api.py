@@ -252,6 +252,7 @@ def service_audit_envelope(
     operation: str,
     request_id: str | None = None,
     evidence_refs: list[dict[str, Any]] | None = None,
+    phase: str = "Phase2-3",
 ) -> dict[str, Any]:
     """Build a read-only audit envelope for later service adapters."""
 
@@ -261,7 +262,7 @@ def service_audit_envelope(
         "request_id": normalized_request_id,
         "operation": operation,
         "generated_at": generated_at,
-        "phase": "Phase2-3",
+        "phase": phase,
         "read_only": True,
         "side_effects": [],
         "runtime_cutover_executed": False,

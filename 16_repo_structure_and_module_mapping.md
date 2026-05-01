@@ -9,7 +9,7 @@ depends_on:
   - PROMPT-CONTRACTS-V1
 supersedes: []
 implementation_ready: true
-last_frozen_version: repo_mapping_v2
+last_frozen_version: repo_mapping_v3
 ---
 
 # Repo Structure And Module Mapping
@@ -19,7 +19,8 @@ last_frozen_version: repo_mapping_v2
 补充约束：
 
 - `DEC-007` 冻结后，默认代码实现按 Python 模块布局组织
-- 在首个 collector + mart 跑通前，不要求单独冻结 dashboard framework 的 repo 落点
+- `DEC-030` 批准 Streamlit 仅用于 Phase2-4 read-only preview / adaptor surface；这不冻结 production dashboard/frontend framework，也不表示当前已有 Streamlit 实现
+- Phase2-4 frontend/serviceization repo 落点若后续创建，必须复用 `src/service/` 的 read-only dispatch / catalog contract，不得新增 service write path、runtime cutover path 或 DB-backed runtime default path
 
 ## 1. 顶层目录职责
 
@@ -54,6 +55,10 @@ last_frozen_version: repo_mapping_v2
 - `src/service/`
   - framework-neutral service API / operator control-plane contract helpers
   - plain Python read dispatch adapters only; no web framework binding, runtime cutover path, or service write path is frozen here
+  - Phase2-4 Streamlit preview, if added later, may consume these read-only adapters but must not move framework-specific logic into the runtime/task layer
+- `src/frontend/`
+  - optional preview-only frontend adapters
+  - current Phase2-4 Streamlit renderer is isolated here, imports Streamlit only when explicitly invoked, and consumes `src/service/preview_adapter.py`; it does not freeze the production dashboard/frontend framework
 - `fixtures/`
   - deterministic fixtures
 - `gold_set/`
@@ -253,7 +258,7 @@ last_frozen_version: repo_mapping_v2
 - `python3 -m src.cli product-drill-down --product-id <id> [--mart-path <path>]`
   - 当前已实现从 mart-backed drill-down trace 回链 `product / observation / evidence / review_issue` 的本地 CLI 路径
 - `python3 -m src.cli operator-api-snapshot [--mart-path <path>] [--product-id <id>] [--open-review-only]`
-  - 当前已实现 Phase2-3 framework-neutral operator API read snapshot；该入口组合 mart-backed dashboard view、trace-only product drill-down、review queue view 与 task inspection view，并输出 read-only audit envelope；未传 `--mart-path` 时只从默认 fixture 派生 mart payload，不创建 runtime task；不冻结 dashboard/web framework，不执行 runtime cutover，不把 DB-backed runtime 设为默认，也不声明 production DB readiness
+  - 当前已实现 Phase2-3 framework-neutral operator API read snapshot；该入口组合 mart-backed dashboard view、trace-only product drill-down、review queue view 与 task inspection view，并输出 read-only audit envelope；未传 `--mart-path` 时只从默认 fixture 派生 mart payload，不创建 runtime task；可作为 Phase2-4 Streamlit read-only preview / adaptor 输入，但不冻结 production dashboard/web framework，不执行 runtime cutover，不把 DB-backed runtime 设为默认，也不声明 production DB readiness
 - `python3 -m src.cli operator-api-contract [--request-id <id>]`
   - 当前已实现 Phase2-3 read-only operator API capability catalog；只列出 supported read commands、required params、required caller-provided context、blocked write operations、no-cutover guardrails 与 evidence refs，不开放 task submission / review resolution / replay trigger / runtime cutover 写入口
 - `python3 -m src.cli operator-dashboard-view [--mart-path <path>]`
@@ -264,6 +269,10 @@ last_frozen_version: repo_mapping_v2
   - 当前已实现 Phase2-3 review queue 单视图 inspect surface；保留 `review_issue` / maker-checker 语义，不扁平化成 generic success/failure
 - `python3 -m src.cli operator-task-inspection [--task-id <id>] [--status <task_status>]`
   - 当前已实现 Phase2-3 task inspection 单视图 inspect surface；保留 runtime task status、blocked replay 与 processing_error 边界，不自动放行 blocked replay
+- `python3 -m src.cli operator-preview-model [--mart-path <path>] [--product-id <id>] [--open-review-only] [--task-id <id>] [--task-status <task_status>]`
+  - 当前已实现 Phase2-4 framework-neutral read-only preview model；它只消费 Phase2-3 operator API catalog、dispatch adapter 与 mart-backed read payload，输出稳定 preview navigation / view-model metadata、audit envelope、evidence refs 与 no-cutover guardrails；不新增 mutation UI、service write path、runtime cutover path、DB-backed runtime default 或 production DB readiness claim
+- `python3 -m src.frontend.streamlit_preview`
+  - 当前已提供 Phase2-4 optional Streamlit read-only renderer；Streamlit 不是 core dependency，仅通过 `phase2-4-preview` optional extra 显式安装，导入失败只影响显式 preview invocation；该 renderer 不提供 mutation controls，也不冻结 production dashboard/frontend framework
 - `python3 -m src.cli trigger-taxonomy-review --source-item-path <path> --record-path <path>`
   - 当前已实现 Phase1-D taxonomy unresolved / low-confidence -> local `review_issue` store 的最小 CLI 落点
 - `python3 -m src.cli trigger-entity-review --source-item-path <path> --existing-products-path <path>`
@@ -272,7 +281,7 @@ last_frozen_version: repo_mapping_v2
   - 当前已实现 `score_conflict` / `suspicious_result` -> local `review_issue` store 的最小 CLI 落点
 - `python3 -m src.cli migrate --shadow-validate`
   - 当前已实现 owner-approved local-only PostgreSQL 17 shadow validation 命令；只读取当前 shell/session 中的 `APO_SHADOW_DATABASE_URL`，要求 DSN 指向 localhost 且 user/database 名显式包含 `shadow`
-  - 该命令只对 disposable shadow DB 应用 reviewed raw SQL task-table scaffold 并执行 task row round-trip / timezone / nullable / claim / heartbeat / reclaim / negative-control checks；它不执行 runtime cutover，不把 DB backend 设为默认，也不冻结 production driver、migration tool、managed vendor 或 secrets manager
+  - 该命令只对 disposable shadow DB 应用 reviewed raw SQL task-table scaffold 并执行 task row round-trip / timezone / nullable / claim / heartbeat / reclaim / negative-control checks；`psycopg3 sync` 只是首个 conformance-validation candidate；它不执行 runtime cutover，不把 DB backend 设为默认，也不冻结 production driver、migration runner/wrapper、managed vendor 或 production secret backend
 - `python3 -m src.cli review-queue --open-only`
   - 当前已实现从 `.runtime/task_store/review_issues.json` 派生 `review_queue_view` 的本地 CLI 读取路径
 - `python3 -m src.cli resolve-taxonomy-review --record-path <path> --review-issue-id <id> ...`

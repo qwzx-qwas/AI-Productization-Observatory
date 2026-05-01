@@ -35,6 +35,7 @@ from src.runtime.processing_errors import default_processing_error_store_path
 from src.runtime.replay import build_default_mart, build_mart_window, replay_source_window
 from src.runtime.shadow_validation import run_postgresql_shadow_validation
 from src.service.operator_api import dispatch_operator_read
+from src.service.preview_adapter import build_phase2_4_preview_model
 from src.review.runtime import (
     list_review_queue,
     resolve_taxonomy_review_from_record_path,
@@ -1275,6 +1276,17 @@ def build_parser() -> argparse.ArgumentParser:
     operator_task_parser.add_argument("--status")
     operator_task_parser.add_argument("--request-id")
 
+    operator_preview_parser = subparsers.add_parser(
+        "operator-preview-model",
+        help="Render the Phase2-4 framework-neutral read-only preview model.",
+    )
+    operator_preview_parser.add_argument("--mart-path")
+    operator_preview_parser.add_argument("--product-id")
+    operator_preview_parser.add_argument("--open-review-only", action="store_true")
+    operator_preview_parser.add_argument("--task-id")
+    operator_preview_parser.add_argument("--task-status")
+    operator_preview_parser.add_argument("--request-id")
+
     trigger_review_parser = subparsers.add_parser(
         "trigger-taxonomy-review",
         help="Run the Phase1-D taxonomy path for one source_item JSON and persist any triggered review_issue.",
@@ -1736,6 +1748,24 @@ def main(argv: list[str] | None = None) -> int:
                             "request_id": args.request_id,
                         },
                         config=config,
+                    ),
+                    ensure_ascii=True,
+                )
+            )
+            return 0
+
+        if args.command == "operator-preview-model":
+            mart = _load_or_read_mart(config, args.mart_path)
+            print(
+                json.dumps(
+                    build_phase2_4_preview_model(
+                        config=config,
+                        mart=mart,
+                        product_id=args.product_id,
+                        open_review_only=args.open_review_only,
+                        task_id=args.task_id,
+                        task_status=args.task_status,
+                        request_id=args.request_id,
                     ),
                     ensure_ascii=True,
                 )

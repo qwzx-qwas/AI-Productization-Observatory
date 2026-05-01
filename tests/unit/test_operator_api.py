@@ -24,6 +24,7 @@ from src.service.operator_api import (
     build_operator_task_inspection_response,
     dispatch_operator_read,
 )
+from src.service.preview_adapter import build_phase2_4_preview_model
 from tests.helpers import REPO_ROOT, temp_config
 
 
@@ -726,6 +727,194 @@ class OperatorApiTests(unittest.TestCase):
             self.assertFalse((root / "task_store" / "tasks.json").exists())
             self.assertFalse((root / "task_store" / "tasks.json.lock").exists())
             self.assertFalse(default_review_issue_store_path(root / "task_store" / "tasks.json").exists())
+
+    def test_phase2_4_preview_model_consumes_operator_reads_without_freezing_frontend(self) -> None:
+        with temp_config() as config:
+            mart = build_default_mart(config)
+            pre_existing_side_paths = {path for path in _operator_write_side_paths(config.task_store_path) if path.exists()}
+            preview = build_phase2_4_preview_model(
+                config=config,
+                mart=mart,
+                product_id="prod_003",
+                open_review_only=True,
+                task_status="blocked",
+                request_id="preview_req",
+            )
+
+            self.assertEqual(preview["audit"]["operation"], "phase2_4_preview_model")
+            self.assertEqual(preview["audit"]["phase"], "Phase2-4")
+            self.assertTrue(preview["audit"]["read_only"])
+            self.assertEqual(preview["audit"]["side_effects"], [])
+            self.assertEqual(preview["preview_contract_version"], "phase2_4_preview_model_v1")
+            self.assertEqual(preview["preview_status"], "read_only_preview_adapter_started")
+            self.assertTrue(preview["contract_checks"]["all_passed"])
+            self.assertEqual(preview["contract_checks"]["passed_count"], preview["contract_checks"]["check_count"])
+            check_ids = {check["check_id"] for check in preview["contract_checks"]["checks"]}
+            self.assertIn("production_frontend_framework_unfrozen", check_ids)
+            self.assertIn("production_db_readiness_not_claimed", check_ids)
+            self.assertIn("runtime_cutover_blocked", check_ids)
+            self.assertTrue(preview["framework_policy"]["streamlit_allowed_as_preview_only"])
+            self.assertFalse(preview["framework_policy"]["production_dashboard_framework_frozen"])
+            self.assertIsNone(preview["framework_policy"]["framework_binding"])
+            self.assertFalse(preview["framework_policy"]["frontend_completion_claimed"])
+
+            nav_by_id = {item["nav_id"]: item for item in preview["navigation"]}
+            self.assertEqual(nav_by_id["overview"]["operator_read_command"], "operator_dashboard_view")
+            self.assertEqual(nav_by_id["product_trace"]["selected_params"]["product_id"], "prod_003")
+            self.assertTrue(nav_by_id["product_trace"]["read_only"])
+            self.assertEqual(nav_by_id["task_inspection"]["selected_params"]["status"], "blocked")
+
+            self.assertEqual(preview["service_reads"]["operator_api_contract"]["view_type"], "operator_api_contract_catalog")
+            self.assertEqual(preview["service_reads"]["dashboard_mart_view"]["read_model"], "mart_backed")
+            self.assertEqual(preview["service_reads"]["product_drill_down"]["product_id"], "prod_003")
+            self.assertFalse(preview["service_reads"]["review_queue_view"]["generic_success_failure_flattening_allowed"])
+            self.assertFalse(preview["service_reads"]["task_inspection_view"]["blocked_replay_bypass_allowed"])
+            self.assertIn("task_submission", preview["blocked_actions"])
+            self.assertIn("review_resolution", preview["blocked_actions"])
+            guardrails = preview["cutover_guardrails"]
+            self.assertFalse(guardrails["cutover_eligible"])
+            self.assertFalse(guardrails["runtime_cutover_executed"])
+            self.assertFalse(guardrails["production_db_readiness_claimed"])
+            self.assertFalse(guardrails["db_backed_runtime_default"])
+            self.assertIn({"ref_type": "review_issue", "review_issue_id": "rev_003"}, preview["evidence_refs"])
+            post_existing_side_paths = {path for path in _operator_write_side_paths(config.task_store_path) if path.exists()}
+            self.assertEqual(post_existing_side_paths, pre_existing_side_paths)
+
+    def test_phase2_4_preview_model_rejects_invalid_params_without_write_side_effects(self) -> None:
+        with temp_config() as config:
+            mart = build_default_mart(config)
+            pre_existing_side_paths = {path for path in _operator_write_side_paths(config.task_store_path) if path.exists()}
+            with self.assertRaisesRegex(ContractValidationError, "open_review_only must be a boolean"):
+                build_phase2_4_preview_model(
+                    config=config,
+                    mart=mart,
+                    open_review_only="yes",  # type: ignore[arg-type]
+                    request_id="bad_preview",
+                )
+            with self.assertRaisesRegex(ContractValidationError, "Unsupported task status filter: done"):
+                build_phase2_4_preview_model(
+                    config=config,
+                    mart=mart,
+                    task_status="done",
+                    request_id="bad_status_preview",
+                )
+            post_existing_side_paths = {path for path in _operator_write_side_paths(config.task_store_path) if path.exists()}
+            self.assertEqual(post_existing_side_paths, pre_existing_side_paths)
+
+    def test_operator_preview_model_cli_is_read_only_json(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            env = os.environ.copy()
+            env.update(
+                {
+                    "APO_RAW_STORE_DIR": str(root / "raw_store"),
+                    "APO_TASK_STORE_PATH": str(root / "task_store" / "tasks.json"),
+                    "APO_MART_OUTPUT_DIR": str(root / "marts"),
+                }
+            )
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "src.cli",
+                    "operator-preview-model",
+                    "--product-id",
+                    "prod_003",
+                    "--task-status",
+                    "blocked",
+                    "--request-id",
+                    "preview_cli",
+                ],
+                cwd=REPO_ROOT,
+                env=env,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+
+            self.assertEqual(result.returncode, 0, msg=result.stderr)
+            payload = json.loads(result.stdout)
+            self.assertEqual(payload["audit"]["phase"], "Phase2-4")
+            self.assertTrue(payload["audit"]["read_only"])
+            self.assertFalse(payload["framework_policy"]["production_dashboard_framework_frozen"])
+            self.assertTrue(payload["contract_checks"]["all_passed"])
+            self.assertFalse(payload["cutover_guardrails"]["runtime_cutover_executed"])
+            self.assertFalse(payload["cutover_guardrails"]["production_db_readiness_claimed"])
+            self.assertEqual(payload["service_reads"]["product_drill_down"]["product_id"], "prod_003")
+            self.assertFalse((root / "task_store" / "tasks.json").exists())
+            self.assertFalse((root / "task_store" / "tasks.json.lock").exists())
+
+    def test_operator_preview_model_cli_invalid_params_fail_without_write_side_effects(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            env = os.environ.copy()
+            env.update(
+                {
+                    "APO_RAW_STORE_DIR": str(root / "raw_store"),
+                    "APO_TASK_STORE_PATH": str(root / "task_store" / "tasks.json"),
+                    "APO_MART_OUTPUT_DIR": str(root / "marts"),
+                }
+            )
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "src.cli",
+                    "operator-preview-model",
+                    "--task-status",
+                    "done",
+                    "--request-id",
+                    "bad_preview_cli",
+                ],
+                cwd=REPO_ROOT,
+                env=env,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("Unsupported task status filter: done", result.stderr)
+            for path in _operator_write_side_paths(root / "task_store" / "tasks.json"):
+                self.assertFalse(path.exists())
+
+    def test_operator_preview_model_cli_does_not_leak_secret_environment_values(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            secret_dsn = "postgresql://shadow_user:super_secret_password@127.0.0.1:55432/apo_shadow"
+            secret_token = "ghp_super_secret_preview_token"
+            env = os.environ.copy()
+            env.update(
+                {
+                    "APO_RAW_STORE_DIR": str(root / "raw_store"),
+                    "APO_TASK_STORE_PATH": str(root / "task_store" / "tasks.json"),
+                    "APO_MART_OUTPUT_DIR": str(root / "marts"),
+                    "APO_SHADOW_DATABASE_URL": secret_dsn,
+                    "PRODUCT_HUNT_TOKEN": secret_token,
+                }
+            )
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "src.cli",
+                    "operator-preview-model",
+                    "--request-id",
+                    "secret_preview_cli",
+                ],
+                cwd=REPO_ROOT,
+                env=env,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+
+            self.assertEqual(result.returncode, 0, msg=result.stderr)
+            combined_output = result.stdout + result.stderr
+            self.assertNotIn(secret_dsn, combined_output)
+            self.assertNotIn(secret_token, combined_output)
+            self.assertNotIn("super_secret_password", combined_output)
+            self.assertNotIn("super_secret_preview_token", combined_output)
 
 
 if __name__ == "__main__":

@@ -12,7 +12,7 @@ depends_on:
   - TEST-PLAN-ACCEPTANCE
 supersedes: []
 implementation_ready: true
-last_frozen_version: runtime_profile_v2
+last_frozen_version: runtime_profile_v3
 ---
 
 这份文档冻结 v0 runtime profile，并保留少量二级选型点待后续确认。它定义：
@@ -127,7 +127,9 @@ last_frozen_version: runtime_profile_v2
 - 进入 `cloud_managed` 阶段后，可再评估托管 PostgreSQL 产品，但不更换数据库引擎
 - 当前仓库中的本地 file-backed task store 只允许作为 Task 1 / `local_only` 骨架与 fixture/replay harness 使用；它用于镜像 task contract，不得被描述为当前版本的最终 runtime backend
 - 当前阶段的最小 runnable baseline 不应被描述为依赖 `PRODUCT_HUNT_TOKEN`；该 token 仅保留给未来恢复 Product Hunt live integration 时使用，而当前 live source 执行默认优先 GitHub。
-- 具体 dashboard framework 与 secrets manager 仍可后续确认
+- `DEC-030` 进一步确认：`psycopg3 sync` 只是首个 runtime DB driver conformance-validation candidate，用于验证既有 runtime task / row-shape / timezone / CAS / replay contract；这不批准 runtime cutover，不把 DB-backed runtime 设为默认，也不声明 production DB readiness。
+- `DEC-030` 进一步确认：托管 PostgreSQL vendor freeze 延后；Phase3 不连接也不集成 SQL service provider。当前文档只可保留未来选型所需的接口与 evaluation hook，不得把任何 provider 写成已选。
+- 具体 production dashboard/frontend framework、production secret backend、object storage vendor、long-term deployment target 与 model provider vendor binding 仍可后续确认。
 
 ## 4. Storage Split
 
@@ -244,8 +246,13 @@ last_frozen_version: runtime_profile_v2
 最小要求：
 
 - secrets 不硬编码进 repo
+- environment variables 是当前 runtime secret interface
+- 本地开发可使用 gitignored `.env` 文件注入 environment variables；仓库不得提交真实 `.env` 值
+- CI 可使用 GitHub Actions secrets 注入 environment variables
+- production secret backend 仍为后续保留选型；当前不冻结具体 secrets manager provider
 - 本地开发与部署环境有分离配置
 - 轮换方式和注入方式可审计
+- 日志、CLI 输出、证据文档与错误消息必须显式 redaction，不能打印或提交 real DSN、password、token 或 secret value
 
 ## 8. Migrations / Versioning
 
@@ -253,6 +260,7 @@ last_frozen_version: runtime_profile_v2
 
 - 默认采用 `forward-only + additive-first`
 - schema 变更走 migration
+- raw reviewed SQL 是 migration semantics 的 canonical source of truth
 - config / taxonomy / rubric / prompt / model routing 变更走 version
 - 新增可空列优先于破坏性改列
 - 破坏性变更优先拆成 `expand -> backfill -> contract`
@@ -260,7 +268,9 @@ last_frozen_version: runtime_profile_v2
 
 ### migration tooling 要求
 
-- 支持 schema diff / migration history
+- migration runner / scaffold / history wrapper 可以后续评估，但不得取代 raw reviewed SQL 的语义权威
+- Alembic autogenerate 不具备 authoritative status；若后续评估 Alembic，只能作为 runner、scaffold 或 history wrapper
+- 支持 migration history
 - 支持回滚或至少支持明确前滚策略
 - 支持本地与部署环境一致执行
 
@@ -306,14 +316,17 @@ last_frozen_version: runtime_profile_v2
 - dashboard 默认展示分项 score 与 `source` 切片
 - dashboard 可提供任务化 sort preset，例如 `high_attention`、`high_build_evidence`、`balanced`
 - dashboard 不提供官方综合榜，不现场构造 total score / composite score
+- Streamlit 已由 `DEC-030` 批准为 Phase2-4 read-only preview/adaptor surface，但这不冻结 production dashboard/frontend framework
+- Phase2-4 frontend/serviceization 仍限于只读 preview/adaptor work；不得新增 task submission、review resolution、replay trigger、runtime cutover 或其他 service write API
 
 ## 11. Secondary Selections After Runtime Profile Freeze
 
-- relational DB product vendor: `TBD_HUMAN`
+- managed PostgreSQL product vendor: deferred; Phase3 must not connect to or integrate a SQL service provider
 - object storage product vendor: `TBD_HUMAN`
-- dashboard framework: `TBD_HUMAN`
-- migration tool: `TBD_HUMAN`
-- secrets manager: `TBD_HUMAN`
+- production dashboard/frontend framework: deferred; Streamlit is approved only for Phase2-4 read-only preview/adaptor work
+- runtime DB driver: `psycopg3 sync` is the first conformance-validation candidate only, not production driver freeze or cutover approval
+- migration source of truth: raw reviewed SQL; migration runner/wrapper tooling remains deferred
+- production secret backend: deferred; runtime secret interface is environment variables
 - long-term deployment target beyond `local_only / single_vps`: `TBD_HUMAN`
 - model provider vendor binding: `TBD_HUMAN`
 

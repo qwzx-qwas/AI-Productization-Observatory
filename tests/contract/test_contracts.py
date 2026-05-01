@@ -274,6 +274,7 @@ class ContractCommandTests(unittest.TestCase):
         self.assertIn("dashboard-view", result.stdout)
         self.assertIn("fill-gold-set-staging-until-complete", result.stdout)
         self.assertIn("product-drill-down", result.stdout)
+        self.assertIn("operator-preview-model", result.stdout)
         self.assertIn("replay-window", result.stdout)
         self.assertIn("review-queue", result.stdout)
         self.assertIn("run-candidate-prescreen", result.stdout)
@@ -311,6 +312,32 @@ class ContractCommandTests(unittest.TestCase):
     def test_validate_configs(self) -> None:
         result = self.run_cli("validate-configs")
         self.assertEqual(result.returncode, 0, msg=result.stderr)
+
+    def test_operator_preview_model_cli_contract_preserves_phase2_4_guardrails(self) -> None:
+        result = self.run_cli(
+            "operator-preview-model",
+            "--product-id",
+            "prod_003",
+            "--task-status",
+            "blocked",
+            "--request-id",
+            "contract_preview",
+        )
+        self.assertEqual(result.returncode, 0, msg=result.stderr)
+        payload = json.loads(result.stdout)
+        self.assertEqual(payload["audit"]["phase"], "Phase2-4")
+        self.assertTrue(payload["audit"]["read_only"])
+        self.assertEqual(payload["audit"]["side_effects"], [])
+        self.assertTrue(payload["contract_checks"]["all_passed"])
+        self.assertFalse(payload["framework_policy"]["production_dashboard_framework_frozen"])
+        self.assertFalse(payload["framework_policy"]["frontend_completion_claimed"])
+        self.assertEqual(payload["framework_policy"]["framework_binding"], None)
+        self.assertIn("task_submission", payload["blocked_actions"])
+        self.assertIn("review_resolution", payload["blocked_actions"])
+        self.assertIn("replay_trigger", payload["blocked_actions"])
+        self.assertFalse(payload["cutover_guardrails"]["cutover_eligible"])
+        self.assertFalse(payload["cutover_guardrails"]["runtime_cutover_executed"])
+        self.assertFalse(payload["cutover_guardrails"]["production_db_readiness_claimed"])
 
     def test_validate_gold_set_stub_contract(self) -> None:
         with TemporaryDirectory() as tmp_dir:
@@ -861,6 +888,9 @@ class Phase1GAcceptanceEvidenceContractTests(unittest.TestCase):
         self.assertIn("`dashboard-reconciliation`", content)
         self.assertIn("`dashboard-view`", content)
         self.assertIn("`product-drill-down`", content)
+        self.assertIn("`operator-preview-model`", content)
+        self.assertIn("`src/service/preview_adapter.py`", content)
+        self.assertIn("`src/frontend/streamlit_preview.py`", content)
         self.assertIn("`phase1-g-audit-ready-report`", content)
         self.assertIn("merge spot-check", content)
         self.assertIn("GitHub 完整抓取周期", content)
